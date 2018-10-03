@@ -13,4 +13,8 @@ class PlatformEndLevel : Platform
     override func HitPlayer(player: Player) {
         player.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 80.0))
     }
+    
+    override func Score() -> Int {
+        return 50
+    }
 }

@@ -59,7 +59,11 @@ class Platform : SKSpriteNode
     }
     
     public func DeactivateCollisions() {
-        self.physicsBody?.categoryBitMask = 0x0
-        self.physicsBody?.contactTestBitMask = 0x0
+        self.physicsBody?.categoryBitMask = NodeCategories.PlatformDeactivated
+        self.physicsBody?.contactTestBitMask = NodeCategories.PlatformDeactivated
+    }
+    
+    public func Score() -> Int {
+        return 5
     }
 }

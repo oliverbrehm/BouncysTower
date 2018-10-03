@@ -25,9 +25,7 @@ class Game: SKScene, SKPhysicsContactDelegate {
     private var lastDebug : TimeInterval = 0.0;
     
     private var lastX : CGFloat = 0.0;
-    
-    private var score = 0
-    
+        
     private let player = Player()
     private let world = World()
     private let cameraNode = Camera()
@@ -35,6 +33,7 @@ class Game: SKScene, SKPhysicsContactDelegate {
     private let gameOverOverlay = OverlayGameOver()
     private let pausedOverlay = OverlayPause()
     private var pauseButton = Button(caption: "")
+    private var scoreLabel = Button(caption: "")
     
     public var GameViewController : GameViewController?
     
@@ -54,7 +53,7 @@ class Game: SKScene, SKPhysicsContactDelegate {
         if(player.parent == nil) {
             self.physicsWorld.contactDelegate = self
             
-            self.player.World = self.world
+            self.player.Initialize(world: self.world, scene: self)
             
             self.camera = cameraNode
             self.addChild(cameraNode)
@@ -76,15 +75,22 @@ class Game: SKScene, SKPhysicsContactDelegate {
             self.pausedOverlay.Game = self
             self.cameraNode.addChild(self.pausedOverlay)
             
-            self.pauseButton = Button(caption: "Pause", size: CGSize(width: 60.0, height: 30.0), fontSize: 16.0, fontColor: SKColor.red, backgroundColor: SKColor.darkGray, pressedColor: SKColor.white)
+            self.pauseButton = Button(caption: "Pause", size: CGSize(width: 60.0, height: 30.0), fontSize: 16.0, fontColor: SKColor.red, backgroundColor: SKColor.brown, pressedColor: SKColor.white)
             self.pauseButton.Action = {
                 self.Pause()
             }
             self.pauseButton.zPosition = NodeZOrder.Overlay
             self.pauseButton.position = CGPoint(
-                x: world.Width / 2.0 - pauseButton.frame.size.width / 2.0 - 5.0 ,
-                y: world.Height / 2.0 - pauseButton.frame.size.height / 2.0 - 5.0)
+                x: world.Width / 2.0 - pauseButton.frame.size.width / 2.0,
+                y: world.Height / 2.0 - pauseButton.frame.size.height / 2.0)
             self.cameraNode.addChild(self.pauseButton)
+            
+            self.scoreLabel = Button(caption: "0", size: CGSize(width: 60.0, height: 30.0), fontSize: 20.0, fontColor: SKColor.red, backgroundColor: SKColor.brown, pressedColor: SKColor.brown)
+            self.scoreLabel.zPosition = NodeZOrder.Overlay
+            self.scoreLabel.position = CGPoint(
+                x: -world.Width / 2.0 + scoreLabel.frame.size.width / 2.0,
+                y: -world.Height / 2.0 + scoreLabel.frame.size.height / 2.0)
+            self.cameraNode.addChild(self.scoreLabel)
             
             if(Game.VISUAL_DEBUG)
             {
@@ -207,10 +213,7 @@ class Game: SKScene, SKPhysicsContactDelegate {
             let platform = contact.bodyA.node is Platform ? contact.bodyA.node as! Platform : contact.bodyB.node as! Platform
             player.LandOnPlatform(platform: platform)
             world.LandOnPlatform(platform: platform, player: player)
-            
-            if(platform.PlatformNumber > self.score) {
-                self.score = platform.PlatformNumber
-            }
+            self.scoreLabel.SetText(text: "\(player.Score)")
         } else if(contact.bodyA.node?.name == "Wall" || contact.bodyB.node?.name == "Wall") {
             player.HitWall()
         }
@@ -218,15 +221,13 @@ class Game: SKScene, SKPhysicsContactDelegate {
     
     private func gameOver()
     {
-        self.gameOverOverlay.Show(score: self.score)
+        self.gameOverOverlay.Show(score: self.player.PlatformNumber())
         self.pauseButton.isHidden = true
         self.gameState = .Over
     }
     
     public func resetGame()
     {
-        self.score = 0
-        
         debugLeft.position = CGPoint(x: -world.Width / 2.0 + 2.0, y: camera!.position.y)
         debugRight.position = CGPoint(x: world.Width / 2.0 - 2.0, y: camera!.position.y)
         
@@ -244,6 +245,8 @@ class Game: SKScene, SKPhysicsContactDelegate {
         
         self.player.Reset()
         player.position = CGPoint(x: 0.0, y: world.AbsoluteZero() + player.size.height / 2.0)
+        
+        self.scoreLabel.SetText(text: "0")
     }
     
     public func Pause()

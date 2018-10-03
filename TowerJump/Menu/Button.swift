@@ -23,9 +23,9 @@ class Button : SKSpriteNode
         } set {
             pressed = newValue
             if(newValue) {
-                self.color = SKColor.white
+                self.color = self.pressedColor
             } else {
-                self.color = SKColor.darkGray
+                self.color = self.backgroundColor
             }
         }
     }
@@ -85,5 +85,9 @@ class Button : SKSpriteNode
                 self.TouchUp(point: t.location(in: parent))
             }
         }
+    }
+    
+    public func SetText(text: String) {
+        self.label.text = text
     }
 }

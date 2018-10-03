@@ -24,6 +24,8 @@ class Player : SKSpriteNode
     
     public var CurrentPlatform : Platform?
     
+    public var Score = 0
+    
     private var state : PlayerState = .OnPlatform
     public var State : PlayerState {
         get {
@@ -35,6 +37,8 @@ class Player : SKSpriteNode
             }
         }
     }
+    
+    private let particleEmitter = SKEmitterNode(fileNamed: "ScoreParticle")!
     
     init() {
         super.init(texture: SKTexture(imageNamed: "Player"), color: SKColor.red, size: CGSize(width: Player.SIZE, height: Player.SIZE))
@@ -50,6 +54,15 @@ class Player : SKSpriteNode
         self.physicsBody?.mass = 0.05
         
         self.zPosition = NodeZOrder.Player
+        
+        self.particleEmitter.particleBirthRate = 10.0
+        self.addChild(self.particleEmitter)
+    }
+    
+    public func Initialize(world: World, scene: Game) {
+        self.World = world
+        self.particleEmitter.targetNode = scene
+        self.particleEmitter.particleBirthRate = 0.0
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -60,8 +73,10 @@ class Player : SKSpriteNode
     {
         self.physicsBody?.velocity = CGVector.zero
         self.physicsBody?.angularVelocity = 0.0
+        self.zRotation = 0.0
         
         self.State = .OnPlatform
+        self.Score = 0
     }
     
     public func Jump()
@@ -88,6 +103,16 @@ class Player : SKSpriteNode
                 self.State = .OnPlatform
             }
         }
+        
+        if let rotation = self.physicsBody?.angularVelocity {
+            if(abs(rotation) < 18.0) {
+                self.particleEmitter.particleBirthRate = 0.0
+            } else if(abs(rotation) < 30.0) {
+                self.particleEmitter.particleBirthRate = 10.0
+            } else {
+                self.particleEmitter.particleBirthRate = 40.0
+            }
+        }
     }
     
     public func LandOnPlatform(platform: Platform)
@@ -95,6 +120,7 @@ class Player : SKSpriteNode
         self.State = PlayerState.OnPlatform
         self.physicsBody?.velocity.dy = 0.0
         self.CurrentPlatform = platform
+        self.Score = self.Score + platform.Score()
     }
     
     public func HitWall()
@@ -125,5 +151,9 @@ class Player : SKSpriteNode
         }
         
         self.physicsBody?.applyForce(CGVector(dx: dx, dy: 0.0))
+    }
+    
+    public func PlatformNumber() -> Int {
+        return self.CurrentPlatform?.PlatformNumber ?? 0
     }
 }
