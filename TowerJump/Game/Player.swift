@@ -1,0 +1,129 @@
+//
+//  Player.swift
+//  TowerJump
+//
+//  Created by Oliver Brehm on 26.06.18.
+//  Copyright © 2018 Oliver Brehm. All rights reserved.
+//
+
+import Foundation
+import SpriteKit
+
+class Player : SKSpriteNode
+{
+    public enum PlayerState {
+        case OnPlatform
+        case Jumping
+        case Falling
+    }
+    
+    public static let SIZE : CGFloat = 35.0;
+    public static let JUMP_IMPULSE : CGFloat = 35.0
+    
+    public var World : World?
+    
+    public var CurrentPlatform : Platform?
+    
+    private var state : PlayerState = .OnPlatform
+    public var State : PlayerState {
+        get {
+            return state
+        } set {
+            if(state != newValue) {
+                state = newValue
+                self.World?.UpdateCollisionTests(player: self)
+            }
+        }
+    }
+    
+    init() {
+        super.init(texture: SKTexture(imageNamed: "Player"), color: SKColor.red, size: CGSize(width: Player.SIZE, height: Player.SIZE))
+        
+        self.physicsBody = SKPhysicsBody.init(circleOfRadius: Player.SIZE / 2.0)
+        self.physicsBody?.allowsRotation = true;
+        self.physicsBody?.angularDamping = 0.8
+        self.physicsBody?.usesPreciseCollisionDetection = true
+        self.physicsBody?.categoryBitMask = NodeCategories.Player
+        self.physicsBody?.collisionBitMask = NodeCategories.Platform | NodeCategories.Wall
+        self.physicsBody?.contactTestBitMask = NodeCategories.Platform | NodeCategories.Player;
+        self.physicsBody?.friction = 3.0
+        self.physicsBody?.mass = 0.05
+        
+        self.zPosition = NodeZOrder.Player
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    public func Reset()
+    {
+        self.physicsBody?.velocity = CGVector.zero
+        self.physicsBody?.angularVelocity = 0.0
+        
+        self.State = .OnPlatform
+    }
+    
+    public func Jump()
+    {
+        if(self.State == PlayerState.OnPlatform)
+        {
+            let vxMax : CGFloat = 2000.0
+            let vx : CGFloat = abs(self.physicsBody!.velocity.dx)
+            
+            let xVelocityFactor : CGFloat = 1.0 + min((vx / vxMax), 2.0)
+
+            self.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: xVelocityFactor * Player.JUMP_IMPULSE))
+            self.State = PlayerState.Jumping
+        }
+    }
+    
+    public func Update()
+    {
+        if let p = self.physicsBody {
+            if(p.velocity.dy < -0.1)
+            {
+                self.State = .Falling
+            } else if(self.State == .Falling && p.velocity.dy > -0.000001) {
+                self.State = .OnPlatform
+            }
+        }
+    }
+    
+    public func LandOnPlatform(platform: Platform)
+    {        
+        self.State = PlayerState.OnPlatform
+        self.physicsBody?.velocity.dy = 0.0
+        self.CurrentPlatform = platform
+    }
+    
+    public func HitWall()
+    {
+        if(self.State == PlayerState.Jumping && self.physicsBody!.velocity.dy > 0.0) {
+            self.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 0.4 * Player.JUMP_IMPULSE))
+        }
+        
+        if let pb = self.physicsBody {
+            if(self.position.x < 0.0) {
+                // left wall, rotate right after collision
+                pb.angularVelocity = -abs(pb.angularVelocity)
+            } else {
+                // right wall, rotate left after collision
+                pb.angularVelocity = abs(pb.angularVelocity)
+            }
+        }
+    }
+    
+    public func Move(x : CGFloat)
+    {
+        var dx : CGFloat = 0.0
+        
+        if(self.State == PlayerState.Jumping || self.State == PlayerState.Falling) {
+            dx = x * 12.0
+        } else if(self.State == PlayerState.OnPlatform) {
+            dx = x * 16.0
+        }
+        
+        self.physicsBody?.applyForce(CGVector(dx: dx, dy: 0.0))
+    }
+}

@@ -1,0 +1,39 @@
+TODO
+
+	M0 Initiation
+	OK - basic entities (World, Player)
+	OK - basic game logic (moving, jumping, player state)
+
+	M1 Basic Gameplay and GameOver
+	OK - only landscape mode
+	OK - more accurate collision and player state
+	OK - gameover and restart
+
+	M2 Levels
+	OK - Logic for level up after number of blocks
+	OK - Transition (high jump) to next level
+	OK - Level changes (block size, color)
+
+	M3 Main Menu
+	OK - Basic options Start Game, Credits
+	OK - Pause and cancel game in level
+
+TODO Refactor code conventions, warnings, dependencies
+
+M4 Template Graphics
+
+M5 Animations
+- Rotation and other actions
+- Particles
+
+M6 Menu settings
+
+M7 Fine-Tuning Gameplay
+
+M8 GameCenter
+
+M9 Designed graphics
+
+M10 Visual fine tuning
+
+M11 V1.0
