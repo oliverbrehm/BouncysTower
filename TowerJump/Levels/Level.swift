@@ -18,6 +18,10 @@ class Level
     
     private var lastPlatform : Platform?
     
+    var platformTexture : SKTexture?
+    var wallLeftTexture: SKTexture?
+    var wallRightTexture: SKTexture?
+    
     private var reached : Bool = false
     public var Reached : Bool
     {
@@ -38,11 +42,16 @@ class Level
     
     init(worldWidth: CGFloat) {
         WorldWidth = worldWidth
-        CurrentY = 0.0
+        CurrentY = 0.0        
     }
     
+    // TODO remove deprecated, was platform color but now using textures
     func Color() -> SKColor {
         return SKColor.white
+    }
+    
+    func BackgroundColor() -> SKColor {
+        return SKColor.black
     }
     
     func GetPlatform(platformNumber: Int) -> Platform {
@@ -71,9 +80,9 @@ class Level
         var platform : Platform? = nil
         
         if(self.IsFinished()) {
-            platform = PlatformEndLevel(width: w, color: self.Color(), level: self, platformNumber: platformNumber)
+            platform = PlatformEndLevel(width: w, texture: self.PlatformTexture(), level: self, platformNumber: platformNumber)
         } else {
-            platform = Platform(width: w, color: self.Color(), level: self, platformNumber: platformNumber)
+            platform = Platform(width: w, texture: self.PlatformTexture(), level: self, platformNumber: platformNumber)
         }
 
         platform!.position = CGPoint(x: x, y: CurrentY)
@@ -105,5 +114,9 @@ class Level
     
     func GameSpeed() -> CGFloat {
         return 1.0
+    }
+    
+    func PlatformTexture() -> SKTexture? {
+        return self.platformTexture;
     }
 }

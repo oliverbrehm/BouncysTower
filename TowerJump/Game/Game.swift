@@ -29,6 +29,7 @@ class Game: SKScene, SKPhysicsContactDelegate {
     private let player = Player()
     private let world = World()
     private let cameraNode = Camera()
+    private let background = SKSpriteNode.init(color: SKColor.black, size: CGSize.zero)
     
     private let gameOverOverlay = OverlayGameOver()
     private let pausedOverlay = OverlayPause()
@@ -46,7 +47,7 @@ class Game: SKScene, SKPhysicsContactDelegate {
     var debugRight : SKSpriteNode = SKSpriteNode(color: SKColor.red, size: CGSize.zero)
     
     override func sceneDidLoad() {
-        
+        self.backgroundColor = SKColor.white
     }
     
     override func didMove(to view: SKView) {
@@ -58,11 +59,14 @@ class Game: SKScene, SKPhysicsContactDelegate {
             self.camera = cameraNode
             self.addChild(cameraNode)
             
-            resetGame()
+            self.background.size = self.size
+            self.cameraNode.addChild(self.background)
             
             self.addChild(world)
             self.addChild(player)
             
+            resetGame()
+
             self.gameOverOverlay.size = CGSize(
                 width: self.frame.size.width * 0.6,
                 height: self.frame.size.height * 0.9)
@@ -75,7 +79,7 @@ class Game: SKScene, SKPhysicsContactDelegate {
             self.pausedOverlay.Game = self
             self.cameraNode.addChild(self.pausedOverlay)
             
-            self.pauseButton = Button(caption: "Pause", size: CGSize(width: 60.0, height: 30.0), fontSize: 16.0, fontColor: SKColor.red, backgroundColor: SKColor.brown, pressedColor: SKColor.white)
+            self.pauseButton = Button(caption: "||", size: CGSize(width: World.WALL_WIDTH, height: 30.0), fontSize: 16.0, fontColor: SKColor.black, backgroundColor: SKColor.white, pressedColor: SKColor.white)
             self.pauseButton.Action = {
                 self.Pause()
             }
@@ -85,11 +89,11 @@ class Game: SKScene, SKPhysicsContactDelegate {
                 y: world.Height / 2.0 - pauseButton.frame.size.height / 2.0)
             self.cameraNode.addChild(self.pauseButton)
             
-            self.scoreLabel = Button(caption: "0", size: CGSize(width: 60.0, height: 30.0), fontSize: 20.0, fontColor: SKColor.red, backgroundColor: SKColor.brown, pressedColor: SKColor.brown)
+            self.scoreLabel = Button(caption: "0", size: CGSize(width: World.WALL_WIDTH, height: 30.0), fontSize: 20.0, fontColor: SKColor.black, backgroundColor: SKColor.white, pressedColor: SKColor.brown)
             self.scoreLabel.zPosition = NodeZOrder.Overlay
             self.scoreLabel.position = CGPoint(
                 x: -world.Width / 2.0 + scoreLabel.frame.size.width / 2.0,
-                y: -world.Height / 2.0 + scoreLabel.frame.size.height / 2.0)
+                y: world.Height / 2.0 - scoreLabel.frame.size.height / 2.0)
             self.cameraNode.addChild(self.scoreLabel)
             
             if(Game.VISUAL_DEBUG)
@@ -264,5 +268,9 @@ class Game: SKScene, SKPhysicsContactDelegate {
         self.scene?.isPaused = false
         self.pauseButton.isHidden = false
         self.timeWasPaused = true
+    }
+    
+    public func LevelReached(level: Level) {
+        self.background.run(SKAction.colorize(with: level.BackgroundColor(), colorBlendFactor: 0.6, duration: 0.5))
     }
 }

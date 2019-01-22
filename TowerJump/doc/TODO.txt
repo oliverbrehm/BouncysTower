@@ -18,9 +18,11 @@ TODO
 	OK - Basic options Start Game, Credits
 	OK - Pause and cancel game in level
 
-TODO Refactor code conventions, warnings, dependencies
-
 M4 Template Graphics
+- Level Platforms
+- Floor
+- Walls
+- Buttons
 
 M5 Animations
 - Rotation and other actions
@@ -36,4 +38,4 @@ M9 Designed graphics
 
 M10 Visual fine tuning
 
-M11 V1.0
+M11 Test V1.0
