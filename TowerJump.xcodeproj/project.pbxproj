@@ -17,6 +17,8 @@
 		A71A5195215E41F000E7CDDB /* Level03.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A5194215E41F000E7CDDB /* Level03.swift */; };
 		A71A5197215E41FD00E7CDDB /* Level04.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A5196215E41FD00E7CDDB /* Level04.swift */; };
 		A71A519A215E907400E7CDDB /* PlatformEndLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A5199215E907300E7CDDB /* PlatformEndLevel.swift */; };
+		A71E741321F9035900E7E193 /* Overlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71E741221F9035900E7E193 /* Overlay.swift */; };
+		A71E741521F907BD00E7E193 /* OverlayMainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71E741421F907BD00E7E193 /* OverlayMainMenu.swift */; };
 		A71F2D9C2163956D00FAF0EB /* Level08.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71F2D9B2163956D00FAF0EB /* Level08.swift */; };
 		A71F2D9E2163A4BF00FAF0EB /* Credits.sks in Resources */ = {isa = PBXBuildFile; fileRef = A71F2D9D2163A4BF00FAF0EB /* Credits.sks */; };
 		A71F2DA02163A4D600FAF0EB /* Credits.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71F2D9F2163A4D600FAF0EB /* Credits.swift */; };
@@ -54,6 +56,8 @@
 		A71A5194215E41F000E7CDDB /* Level03.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level03.swift; sourceTree = "<group>"; };
 		A71A5196215E41FD00E7CDDB /* Level04.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level04.swift; sourceTree = "<group>"; };
 		A71A5199215E907300E7CDDB /* PlatformEndLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformEndLevel.swift; sourceTree = "<group>"; };
+		A71E741221F9035900E7E193 /* Overlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Overlay.swift; sourceTree = "<group>"; };
+		A71E741421F907BD00E7E193 /* OverlayMainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayMainMenu.swift; sourceTree = "<group>"; };
 		A71F2D9B2163956D00FAF0EB /* Level08.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level08.swift; sourceTree = "<group>"; };
 		A71F2D9D2163A4BF00FAF0EB /* Credits.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Credits.sks; sourceTree = "<group>"; };
 		A71F2D9F2163A4D600FAF0EB /* Credits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credits.swift; sourceTree = "<group>"; };
@@ -185,6 +189,8 @@
 				A7AE06712162479C0009D905 /* MainMenu.swift */,
 				A7AE067621624B500009D905 /* Button.swift */,
 				A71F2D9F2163A4D600FAF0EB /* Credits.swift */,
+				A71E741221F9035900E7E193 /* Overlay.swift */,
+				A71E741421F907BD00E7E193 /* OverlayMainMenu.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -284,6 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A71F2DA22163A93700FAF0EB /* OverlayGameOver.swift in Sources */,
+				A71E741321F9035900E7E193 /* Overlay.swift in Sources */,
 				A71F2DA82164ED4500FAF0EB /* SpriteNodeExtensions.swift in Sources */,
 				A7175FB320E2AA0300968329 /* Player.swift in Sources */,
 				A7797EF020E2A89200E3B664 /* Game.swift in Sources */,
@@ -298,6 +305,7 @@
 				A7AE06722162479C0009D905 /* MainMenu.swift in Sources */,
 				A7AE066C216243E40009D905 /* Level07.swift in Sources */,
 				A7797EEA20E2A89200E3B664 /* AppDelegate.swift in Sources */,
+				A71E741521F907BD00E7E193 /* OverlayMainMenu.swift in Sources */,
 				A7AE066E216243FE0009D905 /* Level05.swift in Sources */,
 				A71A5197215E41FD00E7CDDB /* Level04.swift in Sources */,
 				A71F2DA42164D2D000FAF0EB /* OverlayPause.swift in Sources */,

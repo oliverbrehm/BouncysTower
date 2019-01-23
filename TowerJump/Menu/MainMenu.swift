@@ -12,21 +12,16 @@ class MainMenu : SKScene
 {
     public var GameViewController : GameViewController?
     
+    private var menuOverlay = OverlayMainMenu()
+    
     override func didMove(to view: SKView) {
-        let startButton = Button(caption: "Start Game")
-        startButton.position = CGPoint(x: 0.0, y: 50.0)
-        startButton.Action = {
-            self.GameViewController?.ShowGame()
-        }
-
-        self.addChild(startButton)
+        self.addChild(self.menuOverlay)
+        self.menuOverlay.Setup(menu: self)
+        self.menuOverlay.Show()
         
-        let creditsButton = Button(caption: "Credits")
-        creditsButton.position = CGPoint(x: 0.0, y: -50.0)
-        creditsButton.Action = {
-            self.GameViewController?.ShowCredits()
-        }
-        
-        self.addChild(creditsButton)
+        let towerImage = SKSpriteNode(imageNamed: "menuTower")
+        towerImage.size = CGSize(width: self.frame.size.width / 2.0, height: self.frame.size.height)
+        towerImage.position = CGPoint(x: -0.25 * self.frame.size.width, y: 0.0)
+        self.addChild(towerImage)
     }
 }

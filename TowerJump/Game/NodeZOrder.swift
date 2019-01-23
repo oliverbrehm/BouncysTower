@@ -12,4 +12,5 @@ class NodeZOrder {
     public static let World     : CGFloat = 0.0
     public static let Player    : CGFloat = 1.0
     public static let Overlay   : CGFloat = 2.0
+    public static let Button    : CGFloat = 3.0
 }

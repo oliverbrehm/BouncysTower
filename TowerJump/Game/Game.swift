@@ -67,17 +67,13 @@ class Game: SKScene, SKPhysicsContactDelegate {
             
             resetGame()
 
-            self.gameOverOverlay.size = CGSize(
-                width: self.frame.size.width * 0.6,
-                height: self.frame.size.height * 0.9)
-            self.gameOverOverlay.Game = self
             self.cameraNode.addChild(self.gameOverOverlay)
+            self.gameOverOverlay.Setup(game: self)
+            self.gameOverOverlay.Hide()
             
-            self.pausedOverlay.size = CGSize(
-                width: self.frame.size.width * 0.6,
-                height: self.frame.size.height * 0.9)
-            self.pausedOverlay.Game = self
             self.cameraNode.addChild(self.pausedOverlay)
+            self.pausedOverlay.Setup(game: self)
+            self.gameOverOverlay.Hide()
             
             self.pauseButton = Button(caption: "||", size: CGSize(width: World.WALL_WIDTH, height: 30.0), fontSize: 16.0, fontColor: SKColor.black, backgroundColor: SKColor.white, pressedColor: SKColor.white)
             self.pauseButton.Action = {
@@ -243,7 +239,8 @@ class Game: SKScene, SKPhysicsContactDelegate {
         self.gameOverOverlay.Hide()
         self.pauseButton.isHidden = false
         
-        self.scene?.isPaused = false
+        self.world.isPaused = false
+        self.player.isPaused = false
         self.pauseButton.isHidden = false
         self.pausedOverlay.Hide()
         
@@ -257,17 +254,23 @@ class Game: SKScene, SKPhysicsContactDelegate {
     {
         self.pausedOverlay.Show()
         self.gameState = .Paused
-        self.scene?.isPaused = true
-        self.pauseButton.isHidden = true
+        self.pauseButton.isHidden = true 
+        
+        self.world.isPaused = true
+        self.player.isPaused = true
+        self.physicsWorld.speed = 0.0
     }
     
     public func Resume()
     {
         self.pausedOverlay.Hide()
         self.gameState = .Running
-        self.scene?.isPaused = false
         self.pauseButton.isHidden = false
         self.timeWasPaused = true
+        
+        self.world.isPaused = false
+        self.player.isPaused = false
+        self.physicsWorld.speed = 1.0
     }
     
     public func LevelReached(level: Level) {

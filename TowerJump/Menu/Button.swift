@@ -47,6 +47,8 @@ class Button : SKSpriteNode
         
         super.init(texture: nil, color: backgroundColor, size: size)
         
+        self.zPosition = NodeZOrder.Button
+        
         self.isUserInteractionEnabled = true
         
         self.addChild(self.label)

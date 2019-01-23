@@ -8,50 +8,30 @@
 
 import SpriteKit
 
-class OverlayPause : SKSpriteNode
+class OverlayPause : Overlay
 {
-    public var Game : Game?
-    
-    init() {
-        super.init(texture: nil, color: SKColor.white, size: CGSize.zero)
+    func Setup(game: Game) {
+        super.Setup(scene: game)
         
         let backButton = Button(caption: "Resume")
-        backButton.position = CGPoint(x: 0.0, y: 80.0)
+        backButton.position = CGPoint(x: 40.0, y: 80.0)
         backButton.Action = {
-            self.Game?.Resume()
+            game.Resume()
         }
         self.addChild(backButton)
         
         let retryButton = Button(caption: "Retry")
-        retryButton.position = CGPoint(x: 0.0, y: 0.0)
+        retryButton.position = CGPoint(x: 40.0, y: 0.0)
         retryButton.Action = {
-            self.Game?.resetGame()
+            game.resetGame()
         }
         self.addChild(retryButton)
         
         let exitButton = Button(caption: "Exit")
-        exitButton.position = CGPoint(x: 0.0, y: -80.0)
+        exitButton.position = CGPoint(x: 40.0, y: -80.0)
         exitButton.Action = {
-            self.Game?.GameViewController?.ShowMainMenu()
+            game.GameViewController?.ShowMainMenu()
         }
         self.addChild(exitButton)
-        
-        self.isHidden = true
-
-        self.zPosition = NodeZOrder.Overlay
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
-    func Show()
-    {
-        self.isHidden = false
-    }
-    
-    func Hide()
-    {
-        self.isHidden = true
     }
 }
