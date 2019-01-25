@@ -18,10 +18,6 @@ class Level01 : Level
         self.wallRightTexture = SKTexture(imageNamed: "wallRight01")
     }
     
-    override func Color() -> SKColor {
-        return SKColor.lightGray
-    }
-    
     override func BackgroundColor() -> SKColor {
         return SKColor.init(named: "bgLevel01") ?? super.BackgroundColor()
     }

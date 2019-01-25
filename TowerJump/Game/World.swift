@@ -145,7 +145,7 @@ class World : SKNode
         
         if(CurrentLevel.IsFinished()) {
             let c1 = SKAction.colorize(with: SKColor.red, colorBlendFactor: 0.5, duration: 0.4)
-            let c2 = SKAction.colorize(with: CurrentLevel.Color(), colorBlendFactor: 0.5, duration: 0.4)
+            let c2 = SKAction.colorize(with: SKColor.init(white: 0.0, alpha: 0.0), colorBlendFactor: 0.5, duration: 0.4)
             
             platform.run(SKAction.repeatForever(SKAction.sequence([c1, c2])))
             
@@ -189,7 +189,7 @@ class World : SKNode
     
     public func SpawnPlatformsAbove(y : CGFloat)
     {
-        while(TopPlatformY() - y < 5.0 * Height) {
+        while(TopPlatformY() - y < 6.0 * Height) {
             SpawnPlatform(scene: self.scene as! Game)
         }
     }

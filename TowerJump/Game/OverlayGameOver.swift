@@ -14,25 +14,27 @@ class OverlayGameOver : Overlay
     private let label = SKLabelNode(text: "")
     
     func Setup(game: Game) {
-        super.Setup(scene: game)
+        super.Setup(scene: game, width: 0.8)
         
         let backButton = Button(caption: "Back")
-        backButton.position = CGPoint(x: 40.0, y: 20.0)
+        backButton.position = CGPoint(x: 60.0, y: 20.0)
         backButton.Action = {
             game.GameViewController?.ShowMainMenu()
         }
         self.addChild(backButton)
         
         let retryButton = Button(caption: "Retry")
-        retryButton.position = CGPoint(x: 40.0, y: -80.0)
+        retryButton.position = CGPoint(x: 60.0, y: -80.0)
         retryButton.Action = {
             game.resetGame()
         }
         self.addChild(retryButton)
         
-        self.label.position = CGPoint(x: 40.0, y: 75.0)
+        self.label.position = CGPoint(x: 60.0, y: 85.0)
+        self.label.fontName = "AmericanTypewriter-Bold"
         self.label.fontSize = 24.0
         self.label.fontColor = SKColor.red
+        self.label.zPosition = NodeZOrder.Label
         self.addChild(self.label)
     }
     

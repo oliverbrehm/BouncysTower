@@ -16,7 +16,7 @@
    version="1.1"
    inkscape:version="0.91 r13725"
    sodipodi:docname="wallLeft01.svg"
-   inkscape:export-filename="/Users/oliver/Documents/TowerJump/TowerJump/resources/player.png"
+   inkscape:export-filename="/projects/TowerJump/TowerJump/resources/wallLeft01.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
   <defs
@@ -28,9 +28,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="5.6"
-     inkscape:cx="12.557592"
-     inkscape:cy="23.090659"
+     inkscape:zoom="11.2"
+     inkscape:cx="17.767692"
+     inkscape:cy="30.233516"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -58,17 +58,17 @@
      id="layer1"
      transform="translate(0,-989.86222)">
     <rect
-       style="opacity:1;fill:#666666;fill-opacity:1;stroke:#f9f9f9;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="opacity:1;fill:#666666;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4137"
        width="63.035713"
        height="64.285713"
-       x="0.17857143"
-       y="-1053.9694"
-       ry="0.88326001"
+       x="-0.17857145"
+       y="-1053.8801"
+       ry="0"
        transform="scale(1,-1)" />
     <g
        id="g4191"
-       transform="translate(-2.1462142e-4,-2.6178826)">
+       transform="translate(-0.3573575,-2.7071683)">
       <ellipse
          ry="5.9821429"
          rx="5.5357141"
@@ -102,9 +102,9 @@
        style="opacity:1;fill:#444444;fill-opacity:1;stroke:none;stroke-width:2.29999995;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4197"
        width="3.7500017"
-       height="63.928543"
-       x="58.928574"
-       y="990.04083"
+       height="64.64283"
+       x="59.107143"
+       y="989.50507"
        ry="0" />
   </g>
 </svg>

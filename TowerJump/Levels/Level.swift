@@ -45,11 +45,6 @@ class Level
         CurrentY = 0.0        
     }
     
-    // TODO remove deprecated, was platform color but now using textures
-    func Color() -> SKColor {
-        return SKColor.white
-    }
-    
     func BackgroundColor() -> SKColor {
         return SKColor.black
     }

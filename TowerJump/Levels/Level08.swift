@@ -16,11 +16,7 @@ class Level08 : Level
         self.wallLeftTexture = SKTexture(imageNamed: "wallLeft01")
         self.wallRightTexture = SKTexture(imageNamed: "wallRight01")
     }
-    
-    override func Color() -> SKColor {
-        return SKColor.black
-    }
-    
+
     override func BackgroundColor() -> SKColor {
         return SKColor.init(named: "bgLevel02") ?? super.BackgroundColor()
     }

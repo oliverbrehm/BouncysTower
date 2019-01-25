@@ -34,7 +34,9 @@ class Game: SKScene, SKPhysicsContactDelegate {
     private let gameOverOverlay = OverlayGameOver()
     private let pausedOverlay = OverlayPause()
     private var pauseButton = Button(caption: "")
+    
     private var scoreLabel = Button(caption: "")
+    private var currentScore = 0
     
     public var GameViewController : GameViewController?
     
@@ -85,7 +87,7 @@ class Game: SKScene, SKPhysicsContactDelegate {
                 y: world.Height / 2.0 - pauseButton.frame.size.height / 2.0)
             self.cameraNode.addChild(self.pauseButton)
             
-            self.scoreLabel = Button(caption: "0", size: CGSize(width: World.WALL_WIDTH, height: 30.0), fontSize: 20.0, fontColor: SKColor.black, backgroundColor: SKColor.white, pressedColor: SKColor.brown)
+            self.scoreLabel = Button(caption: "0", size: CGSize(width: World.WALL_WIDTH, height: 30.0), fontSize: 16.0, fontColor: SKColor.black, backgroundColor: SKColor.white, pressedColor: SKColor.brown)
             self.scoreLabel.zPosition = NodeZOrder.Overlay
             self.scoreLabel.position = CGPoint(
                 x: -world.Width / 2.0 + scoreLabel.frame.size.width / 2.0,
@@ -113,6 +115,7 @@ class Game: SKScene, SKPhysicsContactDelegate {
     
     
     func touchDown(atPoint pos : CGPoint) {
+        self.player.StartMoving()
         lastX = pos.x
     }
     
@@ -213,21 +216,44 @@ class Game: SKScene, SKPhysicsContactDelegate {
             let platform = contact.bodyA.node is Platform ? contact.bodyA.node as! Platform : contact.bodyB.node as! Platform
             player.LandOnPlatform(platform: platform)
             world.LandOnPlatform(platform: platform, player: player)
-            self.scoreLabel.SetText(text: "\(player.Score)")
+            self.updateScore()
         } else if(contact.bodyA.node?.name == "Wall" || contact.bodyB.node?.name == "Wall") {
             player.HitWall()
         }
     }
     
+    func updateScore() {
+        if(self.gameState != GameState.Running) {
+            return
+        }
+        
+        self.removeAllActions()
+
+        self.scoreLabel.run(SKAction.repeatForever(SKAction.sequence([
+            SKAction.run {
+                if(self.currentScore >= self.player.Score) {
+                    self.scoreLabel.removeAllActions()
+                    return
+                }
+                
+                self.currentScore = self.currentScore + 1
+                self.scoreLabel.SetText(text: "\(self.currentScore)")
+            },
+            SKAction.wait(forDuration: 0.06)
+        ])))
+    }
+    
     private func gameOver()
     {
-        self.gameOverOverlay.Show(score: self.player.PlatformNumber())
+        self.gameOverOverlay.Show(score: self.player.Score)
         self.pauseButton.isHidden = true
         self.gameState = .Over
     }
     
     public func resetGame()
     {
+        self.Resume()
+
         debugLeft.position = CGPoint(x: -world.Width / 2.0 + 2.0, y: camera!.position.y)
         debugRight.position = CGPoint(x: world.Width / 2.0 - 2.0, y: camera!.position.y)
         
@@ -245,8 +271,9 @@ class Game: SKScene, SKPhysicsContactDelegate {
         self.pausedOverlay.Hide()
         
         self.player.Reset()
-        player.position = CGPoint(x: 0.0, y: world.AbsoluteZero() + player.size.height / 2.0)
+        self.player.position = CGPoint(x: 0.0, y: world.AbsoluteZero() + player.size.height / 2.0)
         
+        self.currentScore = 0
         self.scoreLabel.SetText(text: "0")
     }
     

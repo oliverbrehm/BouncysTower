@@ -31,19 +31,24 @@ class GameViewController: UIViewController {
             scene.GameViewController = self
             
             if let view = self.view as! SKView? {
-                view.presentScene(scene)
+                view.presentScene(scene, transition: SKTransition.push(with: SKTransitionDirection.left, duration: 0.5))
             }
         }
     }
     
     public func ShowMainMenu()
     {
-        if let scene = SKScene(fileNamed: "MainMenu") as? MainMenu {
-            scene.scaleMode = .resizeFill
-            scene.GameViewController = self
+        if let view = self.view as! SKView? {
             
-            if let view = self.view as! SKView? {
-                view.presentScene(scene)
+            var transitionDirection = SKTransitionDirection.right
+            if(view.scene is Credits) {
+                transitionDirection = SKTransitionDirection.left
+            }
+            
+            if let scene = SKScene(fileNamed: "MainMenu") as? MainMenu {
+                scene.scaleMode = .resizeFill
+                scene.GameViewController = self
+                view.presentScene(scene, transition: SKTransition.push(with: transitionDirection, duration: 0.5))
             }
         }
     }
@@ -55,7 +60,7 @@ class GameViewController: UIViewController {
             scene.GameViewController = self
             
             if let view = self.view as! SKView? {
-                view.presentScene(scene)
+                view.presentScene(scene, transition: SKTransition.push(with: SKTransitionDirection.right, duration: 0.5))
             }
         }
     }

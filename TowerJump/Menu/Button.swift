@@ -44,6 +44,8 @@ class Button : SKSpriteNode
         self.label.fontColor = fontColor
         self.label.position = CGPoint(x: 0.0, y: -fontSize / 2.0)
         self.label.fontSize = fontSize
+        self.label.fontName = "AmericanTypewriter-Bold"
+        self.label.zPosition = NodeZOrder.Label
         
         super.init(texture: nil, color: backgroundColor, size: size)
         

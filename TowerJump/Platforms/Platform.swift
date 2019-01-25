@@ -34,13 +34,16 @@ class Platform : SKSpriteNode
         
         if(platformNumber % 5 == 0) {
             let label = SKLabelNode(text: "\(platformNumber)")
-            label.fontSize = 20.0
+            label.fontName = "AmericanTypewriter-Bold"
+            label.fontSize = 16.0
             label.fontColor = SKColor.white
             label.position = CGPoint(x: 0.0, y: -label.frame.size.height)
             let container = SKSpriteNode(color: SKColor.brown,
                                          size: CGSize(width: label.frame.size.width + 2.0, height: label.frame.size.height + 2.0))
             container.anchorPoint = CGPoint(x: 0.5, y: 1.0)
             container.addChild(label)
+            container.zPosition = NodeZOrder.PlatformLabelContainer
+            label.zPosition = NodeZOrder.PlatformLabel
             self.addChild(container)
         }
         

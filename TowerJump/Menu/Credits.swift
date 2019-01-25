@@ -17,8 +17,10 @@ class Credits : SKScene
     override func didMove(to view: SKView) {
         let infoLabel = SKLabelNode(text: "Made by Oliver Brehm")
         infoLabel.fontColor = SKColor.green
+        infoLabel.fontName = "AmericanTypewriter-Bold"
         infoLabel.fontSize = 28.0
         infoLabel.position = CGPoint(x: 0.0, y: 50.0)
+        infoLabel.zPosition = NodeZOrder.Label
         self.addChild(infoLabel)
         
         let backButton = Button(caption: "Back")

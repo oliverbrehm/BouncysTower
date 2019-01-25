@@ -11,10 +11,10 @@ import SpriteKit
 class OverlayMainMenu : Overlay
 {
     func Setup(menu: MainMenu) {
-        super.Setup(scene: menu)
+        super.Setup(scene: menu, width: 0.65)
         
         let startButton = Button(caption: "Start Game")
-        startButton.position = CGPoint(x: 40.0, y: 50.0)
+        startButton.position = CGPoint(x: 60.0, y: 50.0)
         startButton.Action = {
             menu.GameViewController?.ShowGame()
         }
@@ -22,7 +22,7 @@ class OverlayMainMenu : Overlay
         self.addChild(startButton)
         
         let creditsButton = Button(caption: "Credits")
-        creditsButton.position = CGPoint(x: 40.0, y: -50.0)
+        creditsButton.position = CGPoint(x: 60.0, y: -50.0)
         creditsButton.Action = {
             menu.GameViewController?.ShowCredits()
         }

@@ -77,10 +77,14 @@ class Player : SKSpriteNode
         
         self.State = .OnPlatform
         self.Score = 0
+        
+        self.particleEmitter.particleBirthRate = 0.0
     }
     
     public func Jump()
     {
+        self.run(SKAction.scale(to: 1.0, duration: 0.2))
+
         if(self.State == PlayerState.OnPlatform)
         {
             let vxMax : CGFloat = 2000.0
@@ -91,6 +95,10 @@ class Player : SKSpriteNode
             self.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: xVelocityFactor * Player.JUMP_IMPULSE))
             self.State = PlayerState.Jumping
         }
+    }
+    
+    public func StartMoving() {
+        self.run(SKAction.scale(to: 0.85, duration: 0.15))
     }
     
     public func Update()
@@ -116,11 +124,16 @@ class Player : SKSpriteNode
     }
     
     public func LandOnPlatform(platform: Platform)
-    {        
+    {
+        // calculate score
+        let previousPlatformNumber = self.CurrentPlatform?.PlatformNumber ?? 0
+        let nPlatformsJumped = platform.PlatformNumber - previousPlatformNumber
+        let platformBonus = nPlatformsJumped > 0 ? platform.Score() : 0
+        self.Score = self.Score + (nPlatformsJumped * nPlatformsJumped) + platformBonus
+
         self.State = PlayerState.OnPlatform
         self.physicsBody?.velocity.dy = 0.0
         self.CurrentPlatform = platform
-        self.Score = self.Score + platform.Score()
     }
     
     public func HitWall()
