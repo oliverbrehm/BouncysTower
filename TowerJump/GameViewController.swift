@@ -19,6 +19,8 @@ class GameViewController: UIViewController {
             view.ignoresSiblingOrder = true
             view.showsFPS = true
             view.showsNodeCount = true
+            
+            AdvertisingController.Default.Setup(view: view)
         }
         
         ShowMainMenu()
@@ -26,12 +28,23 @@ class GameViewController: UIViewController {
     
     public func ShowGame()
     {
-        if let scene = SKScene(fileNamed: "Game") as? Game {
+        if let scene = SKScene(fileNamed: "MainGame") as? MainGame {
             scene.scaleMode = .resizeFill
             scene.GameViewController = self
             
             if let view = self.view as! SKView? {
                 view.presentScene(scene, transition: SKTransition.push(with: SKTransitionDirection.left, duration: 0.5))
+            }
+        }
+    }
+    
+    public func ShowTutorial() {
+        if let scene = SKScene(fileNamed: "Tutorial") as? Tutorial {
+            scene.scaleMode = .resizeFill
+            scene.GameViewController = self
+            
+            if let view = self.view as! SKView? {
+                view.presentScene(scene, transition: SKTransition.push(with: SKTransitionDirection.right, duration: 0.5))
             }
         }
     }

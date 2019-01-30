@@ -19,37 +19,39 @@ enum GameState {
 class Game: SKScene, SKPhysicsContactDelegate {
     public var GameOverY : CGFloat = 0.0
     
-    private var gameState = GameState.Started
+    public var gameState = GameState.Started
     
-    private var lastTime : TimeInterval = -1.0
-    private var lastDebug : TimeInterval = 0.0;
+    public var lastTime : TimeInterval = -1.0
+    public var lastDebug : TimeInterval = 0.0;
     
-    private var lastX : CGFloat = 0.0;
+    public var lastX : CGFloat = 0.0;
         
-    private let player = Player()
-    private let world = World()
-    private let cameraNode = Camera()
-    private let background = SKSpriteNode.init(color: SKColor.black, size: CGSize.zero)
+    public let player = Player()
+    public let world = World()
+    public let cameraNode = Camera()
+    public let background = SKSpriteNode.init(color: SKColor.black, size: CGSize.zero)
     
-    private let gameOverOverlay = OverlayGameOver()
-    private let pausedOverlay = OverlayPause()
-    private let extralifeOverlay = OverlayExtralife()
-    private var pauseButton = Button(caption: "")
-    
-    private var scoreLabel = Button(caption: "")
-    private var currentScore = 0
+    public let pausedOverlay = OverlayPause()
+    public var pauseButton = Button(caption: "")
     
     public var GameViewController : GameViewController?
     
-    private var timeWasPaused = false // after game paused do not calculate time delta
+    public var timeWasPaused = false // after game paused do not calculate time delta
     
-    private var numberOfLives = 0
+    public var currentGameTime: TimeInterval = 0.0
+    
+    public var numberOfLives = 0
     
     private static let VISUAL_DEBUG = false
     let debugLabel = SKLabelNode(text: "DEBUG")
     var debugGameOver : SKSpriteNode = SKSpriteNode(color: SKColor.red, size: CGSize.zero)
     var debugLeft : SKSpriteNode = SKSpriteNode(color: SKColor.red, size: CGSize.zero)
     var debugRight : SKSpriteNode = SKSpriteNode(color: SKColor.red, size: CGSize.zero)
+    
+    func Setup() {} // abstract
+    func updateGame(_ dt: TimeInterval) {} // abstract
+    func hitPlatform(platform: Platform) {} // abstract
+    func hitCoin(coin: Coin) {} // abstract
     
     override func sceneDidLoad() {
         self.backgroundColor = SKColor.white
@@ -72,21 +74,11 @@ class Game: SKScene, SKPhysicsContactDelegate {
             
             ResetGame()
 
-            self.cameraNode.addChild(self.gameOverOverlay)
-            self.gameOverOverlay.Setup(game: self)
-            self.gameOverOverlay.Hide()
-            
             self.cameraNode.addChild(self.pausedOverlay)
             self.pausedOverlay.Setup(game: self)
-            self.gameOverOverlay.Hide()
+            self.pausedOverlay.Hide()
             
-            self.cameraNode.addChild(self.extralifeOverlay)
-            self.extralifeOverlay.Setup(game: self)
-            self.extralifeOverlay.Hide()
-            
-            let buttonsColor = SKColor.init(white: 1.0, alpha: 0.8)
-            
-            self.pauseButton = Button(caption: "||", size: CGSize(width: World.WALL_WIDTH, height: 30.0), fontSize: 18.0, fontColor: SKColor.black, backgroundColor: buttonsColor, pressedColor: SKColor.white)
+            self.pauseButton = Button(caption: "||", size: CGSize(width: World.WALL_WIDTH, height: 30.0), fontSize: 18.0, fontColor: SKColor.black, backgroundColor: SKColor.init(white: 1.0, alpha: 0.8), pressedColor: SKColor.white)
             self.pauseButton.Action = {
                 self.Pause()
             }
@@ -95,14 +87,7 @@ class Game: SKScene, SKPhysicsContactDelegate {
                 x: world.Width / 2.0 - pauseButton.frame.size.width / 2.0,
                 y: world.Height / 2.0 - pauseButton.frame.size.height / 2.0)
             self.cameraNode.addChild(self.pauseButton)
-            
-            self.scoreLabel = Button(caption: "0", size: CGSize(width: World.WALL_WIDTH, height: 30.0), fontSize: 12.0, fontColor: SKColor.black, backgroundColor: buttonsColor, pressedColor: SKColor.white)
-            self.scoreLabel.zPosition = NodeZOrder.Overlay
-            self.scoreLabel.position = CGPoint(
-                x: -world.Width / 2.0 + scoreLabel.frame.size.width / 2.0,
-                y: world.Height / 2.0 - scoreLabel.frame.size.height / 2.0)
-            self.cameraNode.addChild(self.scoreLabel)
-            
+
             if(Game.VISUAL_DEBUG)
             {
                 debugLabel.position = CGPoint(x: 0.0, y: self.size.height / 2.0 - 30.0)
@@ -119,9 +104,10 @@ class Game: SKScene, SKPhysicsContactDelegate {
                 debugRight.size = CGSize(width: 2.0, height: self.frame.height - 5.0)
                 self.addChild(debugRight)
             }
+            
+            self.Setup()
         }
     }
-    
     
     func touchDown(atPoint pos : CGPoint) {
         self.player.StartMoving()
@@ -172,39 +158,19 @@ class Game: SKScene, SKPhysicsContactDelegate {
             dt = 0.0
             self.timeWasPaused = false
         }
-
+        
         if(gameState == .Started || gameState == .Running)
         {
-            self.cameraNode.Update(gameScene: self, player: player, world: world)
             world.UpdateWallY(player.position.y)
-            self.showDebugText(text: "goy: \(GameOverY)", currentTime: currentTime, pause: true)
         }
         
         if(gameState == .Running) {
             player.Update()
-                        
-            self.CheckGameOver(dt: dt)
         }
+
+        self.updateGame(dt)
         
         lastTime = currentTime
-    }
-    
-    private func CheckGameOver(dt: Double)
-    {
-        let advanceLine = GameOverY + (self.player.CurrentPlatform != nil ? self.player.CurrentPlatform!.Level.GameSpeed() : 0.0) * CGFloat(dt)
-        let lineUnderPlayer = player.position.y - 0.7 * world.Height
-        self.GameOverY = max(advanceLine, lineUnderPlayer)
-
-        debugGameOver.position.y = self.GameOverY
-        
-        if(player.position.y + player.size.height / 2.0 < GameOverY)
-        {
-            if(Config.Default.HasExtralives()) {
-                self.ShowExtralifeDialog()
-            } else {
-                self.GameOver()
-            }
-        }
     }
     
     func showDebugText(text: String, currentTime: TimeInterval, pause: Bool)
@@ -229,54 +195,13 @@ class Game: SKScene, SKPhysicsContactDelegate {
             let platform = contact.bodyA.node is Platform ? contact.bodyA.node as! Platform : contact.bodyB.node as! Platform
             player.LandOnPlatform(platform: platform)
             world.LandOnPlatform(platform: platform, player: player)
-            self.updateScore()
+            self.hitPlatform(platform: platform)
         } else if(contact.bodyA.node?.name == "Wall" || contact.bodyB.node?.name == "Wall") {
             player.HitWall()
         } else if(contact.bodyA.node is Coin || contact.bodyB.node is Coin) {
             let coin = (contact.bodyA.node is Coin ? contact.bodyA.node : contact.bodyB.node) as! Coin
             coin.hit()
-            self.player.Score += Coin.SCORE
-            self.updateScore()
-        }
-    }
-    
-    func updateScore() {
-        if(self.gameState != GameState.Running) {
-            return
-        }
-        
-        self.removeAllActions()
-
-        self.scoreLabel.run(SKAction.repeatForever(SKAction.sequence([
-            SKAction.run {
-                if(self.currentScore >= self.player.Score) {
-                    self.scoreLabel.removeAllActions()
-                    return
-                }
-                
-                self.currentScore = self.currentScore + 1
-                self.scoreLabel.SetText(text: "\(self.currentScore)")
-            },
-            SKAction.wait(forDuration: 0.06)
-        ])))
-    }
-    
-    public func GameOver()
-    {
-        self.gameOverOverlay.Show(score: self.player.Score)
-        self.pauseButton.isHidden = true
-        self.gameState = .Over
-    }
-    
-    public func UseExtralife() {
-        if(Config.Default.UseExtralive()) {
-            self.player.position = CGPoint(x: 0.0, y: self.player.position.y + 300.0)
-            self.player.zRotation = 0.0
-            self.player.physicsBody?.velocity = CGVector.zero
-            self.world.CurrentLevel.EaseInSpeed()
-            self.Resume()
-        } else {
-            self.GameOver()
+            self.hitCoin(coin: coin)
         }
     }
     
@@ -292,20 +217,19 @@ class Game: SKScene, SKPhysicsContactDelegate {
         debugGameOver.position.y = self.GameOverY
         
         self.gameState = .Started
-        self.gameOverOverlay.Hide()
         self.pauseButton.isHidden = false
         
         self.world.isPaused = false
         self.player.isPaused = false
         self.pauseButton.isHidden = false
         self.pausedOverlay.Hide()
-        self.extralifeOverlay.Hide()
         
         self.player.Reset()
         self.player.position = CGPoint(x: 0.0, y: world.AbsoluteZero() + player.size.height / 2.0)
         
-        self.currentScore = 0
-        self.scoreLabel.SetText(text: "0")
+        self.currentGameTime = 0.0
+        
+        AdvertisingController.Default.PresentIfNeccessary(returnScene: self.scene!, completionHandler: {})
     }
     
     public func Pause()
@@ -318,19 +242,7 @@ class Game: SKScene, SKPhysicsContactDelegate {
         self.player.isPaused = true
         self.physicsWorld.speed = 0.0
     }
-    
-    public func ShowExtralifeDialog() {
-        self.extralifeOverlay.Show()
-        self.extralifeOverlay.Start(game: self)
-        
-        self.gameState = .Paused
-        self.pauseButton.isHidden = true
-        
-        self.world.isPaused = true
-        self.player.isPaused = true
-        self.physicsWorld.speed = 0.0
-    }
-    
+     
     public func Resume()
     {
         self.pausedOverlay.Hide()

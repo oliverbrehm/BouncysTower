@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A702E8B92202099800EB13B8 /* Advertising01.sks in Resources */ = {isa = PBXBuildFile; fileRef = A702E8B82202099800EB13B8 /* Advertising01.sks */; };
+		A702E8BB22020ADE00EB13B8 /* AdvertisingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A702E8BA22020ADE00EB13B8 /* AdvertisingController.swift */; };
+		A702E8BD2202105900EB13B8 /* Advertising.swift in Sources */ = {isa = PBXBuildFile; fileRef = A702E8BC2202105900EB13B8 /* Advertising.swift */; };
+		A702E8C022021E1700EB13B8 /* MainGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = A702E8BF22021E1700EB13B8 /* MainGame.swift */; };
+		A702E8C222021E1F00EB13B8 /* Tutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = A702E8C122021E1F00EB13B8 /* Tutorial.swift */; };
+		A702E8C422021F0600EB13B8 /* Tutorial.sks in Resources */ = {isa = PBXBuildFile; fileRef = A702E8C322021F0600EB13B8 /* Tutorial.sks */; };
 		A7175FB320E2AA0300968329 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7175FB220E2AA0300968329 /* Player.swift */; };
 		A7175FB520E2B4DA00968329 /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7175FB420E2B4DA00968329 /* Platform.swift */; };
 		A7175FB720E2BD3A00968329 /* NodeCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7175FB620E2BD3A00968329 /* NodeCategories.swift */; };
@@ -27,7 +33,7 @@
 		A71F2DA62164E1B100FAF0EB /* NodeZOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71F2DA52164E1B100FAF0EB /* NodeZOrder.swift */; };
 		A71F2DA82164ED4500FAF0EB /* SpriteNodeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71F2DA72164ED4500FAF0EB /* SpriteNodeExtensions.swift */; };
 		A7797EEA20E2A89200E3B664 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7797EE920E2A89200E3B664 /* AppDelegate.swift */; };
-		A7797EEC20E2A89200E3B664 /* Game.sks in Resources */ = {isa = PBXBuildFile; fileRef = A7797EEB20E2A89200E3B664 /* Game.sks */; };
+		A7797EEC20E2A89200E3B664 /* MainGame.sks in Resources */ = {isa = PBXBuildFile; fileRef = A7797EEB20E2A89200E3B664 /* MainGame.sks */; };
 		A7797EEE20E2A89200E3B664 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = A7797EED20E2A89200E3B664 /* Actions.sks */; };
 		A7797EF020E2A89200E3B664 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7797EEF20E2A89200E3B664 /* Game.swift */; };
 		A7797EF220E2A89200E3B664 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7797EF120E2A89200E3B664 /* GameViewController.swift */; };
@@ -49,6 +55,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A702E8B82202099800EB13B8 /* Advertising01.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Advertising01.sks; sourceTree = "<group>"; };
+		A702E8BA22020ADE00EB13B8 /* AdvertisingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisingController.swift; sourceTree = "<group>"; };
+		A702E8BC2202105900EB13B8 /* Advertising.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Advertising.swift; sourceTree = "<group>"; };
+		A702E8BF22021E1700EB13B8 /* MainGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGame.swift; sourceTree = "<group>"; };
+		A702E8C122021E1F00EB13B8 /* Tutorial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutorial.swift; sourceTree = "<group>"; };
+		A702E8C322021F0600EB13B8 /* Tutorial.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Tutorial.sks; sourceTree = "<group>"; };
 		A7175FB220E2AA0300968329 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		A7175FB420E2B4DA00968329 /* Platform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
 		A7175FB620E2BD3A00968329 /* NodeCategories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeCategories.swift; sourceTree = "<group>"; };
@@ -70,7 +82,7 @@
 		A71F2DA72164ED4500FAF0EB /* SpriteNodeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteNodeExtensions.swift; sourceTree = "<group>"; };
 		A7797EE620E2A89200E3B664 /* TowerJump.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TowerJump.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7797EE920E2A89200E3B664 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A7797EEB20E2A89200E3B664 /* Game.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Game.sks; sourceTree = "<group>"; };
+		A7797EEB20E2A89200E3B664 /* MainGame.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainGame.sks; sourceTree = "<group>"; };
 		A7797EED20E2A89200E3B664 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		A7797EEF20E2A89200E3B664 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		A7797EF120E2A89200E3B664 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +115,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A702E8B72202088300EB13B8 /* Advertising */ = {
+			isa = PBXGroup;
+			children = (
+				A702E8BA22020ADE00EB13B8 /* AdvertisingController.swift */,
+				A702E8BC2202105900EB13B8 /* Advertising.swift */,
+				A702E8B82202099800EB13B8 /* Advertising01.sks */,
+			);
+			path = Advertising;
+			sourceTree = "<group>";
+		};
+		A702E8BE22021DF200EB13B8 /* Modes */ = {
+			isa = PBXGroup;
+			children = (
+				A7797EEF20E2A89200E3B664 /* Game.swift */,
+				A702E8BF22021E1700EB13B8 /* MainGame.swift */,
+				A702E8C122021E1F00EB13B8 /* Tutorial.swift */,
+			);
+			path = Modes;
+			sourceTree = "<group>";
+		};
 		A7175FAF20E2A90000968329 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +188,7 @@
 		A7797EE820E2A89200E3B664 /* TowerJump */ = {
 			isa = PBXGroup;
 			children = (
+				A702E8B72202088300EB13B8 /* Advertising */,
 				A7AE06732162488A0009D905 /* Scenes */,
 				A7AE06702162478B0009D905 /* Menu */,
 				A7AE066F216247660009D905 /* Game */,
@@ -178,7 +211,7 @@
 		A7AE066F216247660009D905 /* Game */ = {
 			isa = PBXGroup;
 			children = (
-				A7797EEF20E2A89200E3B664 /* Game.swift */,
+				A702E8BE22021DF200EB13B8 /* Modes */,
 				A7175FB220E2AA0300968329 /* Player.swift */,
 				A7175FB620E2BD3A00968329 /* NodeCategories.swift */,
 				A71F2DA52164E1B100FAF0EB /* NodeZOrder.swift */,
@@ -207,7 +240,8 @@
 		A7AE06732162488A0009D905 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				A7797EEB20E2A89200E3B664 /* Game.sks */,
+				A7797EEB20E2A89200E3B664 /* MainGame.sks */,
+				A702E8C322021F0600EB13B8 /* Tutorial.sks */,
 				A7AE0674216248AA0009D905 /* Main.sks */,
 				A71F2D9D2163A4BF00FAF0EB /* Settings.sks */,
 			);
@@ -280,10 +314,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A702E8B92202099800EB13B8 /* Advertising01.sks in Resources */,
 				A792AE07216538DC004280A5 /* ScoreParticle.sks in Resources */,
 				A7797EF520E2A89200E3B664 /* Main.storyboard in Resources */,
 				A7AE0675216248AA0009D905 /* Main.sks in Resources */,
-				A7797EEC20E2A89200E3B664 /* Game.sks in Resources */,
+				A7797EEC20E2A89200E3B664 /* MainGame.sks in Resources */,
+				A702E8C422021F0600EB13B8 /* Tutorial.sks in Resources */,
 				A7797EF720E2A89200E3B664 /* Assets.xcassets in Resources */,
 				A7797EFA20E2A89200E3B664 /* LaunchScreen.storyboard in Resources */,
 				A71F2D9E2163A4BF00FAF0EB /* Settings.sks in Resources */,
@@ -310,10 +346,14 @@
 				A71F2DA62164E1B100FAF0EB /* NodeZOrder.swift in Sources */,
 				A7AE067721624B500009D905 /* Button.swift in Sources */,
 				A7797EF220E2A89200E3B664 /* GameViewController.swift in Sources */,
+				A702E8BD2202105900EB13B8 /* Advertising.swift in Sources */,
+				A702E8BB22020ADE00EB13B8 /* AdvertisingController.swift in Sources */,
 				A71A5191215A6AC200E7CDDB /* Level01.swift in Sources */,
 				A7AE06722162479C0009D905 /* Main.swift in Sources */,
 				A7AE066C216243E40009D905 /* Level07.swift in Sources */,
 				A7D4C8302201BB9E0060F352 /* Coin.swift in Sources */,
+				A702E8C022021E1700EB13B8 /* MainGame.swift in Sources */,
+				A702E8C222021E1F00EB13B8 /* Tutorial.swift in Sources */,
 				A7797EEA20E2A89200E3B664 /* AppDelegate.swift in Sources */,
 				A7D4C8322201C8C90060F352 /* Config.swift in Sources */,
 				A71E741521F907BD00E7E193 /* OverlayMain.swift in Sources */,

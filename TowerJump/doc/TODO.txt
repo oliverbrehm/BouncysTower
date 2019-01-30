@@ -33,12 +33,25 @@ TODO
 M7 Fine-Tuning Gameplay
 	OK - Coins
 	OK - Extra lives
+	OK - Advertising scene
 - Tutorial
+- Collect Extra lives
+- Collect coins
+- shop scene
+  - buy lives for coins
+  - buy coins
 
-M8 GameCenter
+M8 Sounds
 
-M9 Designed graphics
+M9 GameCenter
 
-M10 Visual fine tuning
+M10 Purchases
+- buy coins
+- buy premium
 
-M11 Test V1.0
+M11 Designed graphics
+
+
+M12 Visual fine tuning
+
+M13 Test V1.0
