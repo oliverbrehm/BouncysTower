@@ -84,7 +84,7 @@ class World : SKNode
         
         // floor
         let floorTexture = SKTexture(imageNamed: "platform01")
-        let platform = Platform(width: Width, texture: floorTexture, level: self.CurrentLevel, platformNumber: 0)
+        let platform = Platform(width: Width, texture: floorTexture, level: self.CurrentLevel, platformNumber: 0, numberOfCoins: 0)
         platform.position = CGPoint(x: 0.0, y: AbsoluteZero())
         self.addChild(platform)
 
@@ -96,7 +96,11 @@ class World : SKNode
     
     public func SpawnNextLevel(y: CGFloat) {
         if(self.levels.count > 0) {
+            if(self.CurrentLevel.parent != nil) {
+                self.CurrentLevel.removeFromParent()
+            }
             self.CurrentLevel = self.levels.first!
+            self.addChild(self.CurrentLevel)
             if(self.CurrentLevel is Level01) {
                 self.CurrentLevel.CurrentY = y
             } else {

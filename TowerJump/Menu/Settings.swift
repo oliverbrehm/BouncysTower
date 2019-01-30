@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class Credits : SKScene
+class Settings : SKScene
 {
     public var GameViewController : GameViewController?
     

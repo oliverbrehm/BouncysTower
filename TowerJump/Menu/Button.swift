@@ -32,7 +32,7 @@ class Button : SKSpriteNode
     
     public convenience init(caption: String)
     {
-        self.init(caption: caption, size: CGSize(width: 200.0, height: 70.0), fontSize: 30.0, fontColor: SKColor.red, backgroundColor: SKColor.darkGray, pressedColor: SKColor.lightGray)
+        self.init(caption: caption, size: CGSize(width: 200.0, height: 70.0), fontSize: 30.0, fontColor: SKColor.init(named: "overlay")!, backgroundColor: SKColor.lightGray, pressedColor: SKColor.white)
     }
     
     public init(caption: String, size: CGSize, fontSize: CGFloat, fontColor: SKColor, backgroundColor: SKColor, pressedColor: SKColor)

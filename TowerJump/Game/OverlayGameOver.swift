@@ -26,7 +26,7 @@ class OverlayGameOver : Overlay
         let retryButton = Button(caption: "Retry")
         retryButton.position = CGPoint(x: 60.0, y: -80.0)
         retryButton.Action = {
-            game.resetGame()
+            game.ResetGame()
         }
         self.addChild(retryButton)
         

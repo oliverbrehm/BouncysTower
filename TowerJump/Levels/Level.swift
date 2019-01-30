@@ -9,13 +9,13 @@
 import Foundation
 import SpriteKit
 
-class Level
+class Level: SKNode
 {
     var CurrentY : CGFloat
     var WorldWidth : CGFloat
     
     private var currentPlatformNumber = 0
-    
+    private var easeInSpeed: CGFloat = 999999999.0
     private var lastPlatform : Platform?
     
     var platformTexture : SKTexture?
@@ -42,7 +42,12 @@ class Level
     
     init(worldWidth: CGFloat) {
         WorldWidth = worldWidth
-        CurrentY = 0.0        
+        CurrentY = 0.0
+        super.init()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     func BackgroundColor() -> SKColor {
@@ -75,9 +80,10 @@ class Level
         var platform : Platform? = nil
         
         if(self.IsFinished()) {
-            platform = PlatformEndLevel(width: w, texture: self.PlatformTexture(), level: self, platformNumber: platformNumber)
+            platform = PlatformEndLevel(width: w, texture: self.PlatformTexture(), level: self, platformNumber: platformNumber, numberOfCoins: 0)
         } else {
-            platform = Platform(width: w, texture: self.PlatformTexture(), level: self, platformNumber: platformNumber)
+            let nCoins = platformNumber % 4 == 0 ? 5 : 0
+            platform = Platform(width: w, texture: self.PlatformTexture(), level: self, platformNumber: platformNumber, numberOfCoins: nCoins)
         }
 
         platform!.position = CGPoint(x: x, y: CurrentY)
@@ -107,11 +113,31 @@ class Level
         return 50
     }
     
-    func GameSpeed() -> CGFloat {
+    func LevelSpeed() -> CGFloat {
         return 1.0
+    }
+    
+    func GameSpeed() -> CGFloat {
+        return min(easeInSpeed, self.LevelSpeed())
     }
     
     func PlatformTexture() -> SKTexture? {
         return self.platformTexture;
+    }
+    
+    func EaseInSpeed() {
+        self.easeInSpeed = 0.0
+        
+        let easeInDuration = 5.0 // seconds
+        let easeInStepTime = 0.25 // seconds
+        let n = Int(easeInDuration / easeInStepTime)
+        let easeInStep = self.LevelSpeed() / CGFloat(n)
+
+        self.run(SKAction.repeat(SKAction.sequence([
+            SKAction.wait(forDuration: easeInStepTime),
+            SKAction.run {
+                self.easeInSpeed += easeInStep
+            }
+        ]), count: n))
     }
 }

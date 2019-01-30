@@ -15,4 +15,5 @@ class NodeCategories
     public static let PlatformDeactivated   : UInt32 = 0x1 << 3
     public static let Wall                  : UInt32 = 0x1 << 4
     public static let Particle              : UInt32 = 0x1 << 5
+    public static let Coin                  : UInt32 = 0x1 << 6
 }

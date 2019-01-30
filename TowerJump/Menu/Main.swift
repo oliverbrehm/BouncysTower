@@ -8,11 +8,11 @@
 
 import SpriteKit
 
-class MainMenu : SKScene
+class Main : SKScene
 {
     public var GameViewController : GameViewController?
     
-    private var menuOverlay = OverlayMainMenu()
+    private var menuOverlay = OverlayMain()
     
     override func didMove(to view: SKView) {
         self.addChild(self.menuOverlay)

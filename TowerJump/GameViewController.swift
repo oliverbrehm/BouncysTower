@@ -41,11 +41,11 @@ class GameViewController: UIViewController {
         if let view = self.view as! SKView? {
             
             var transitionDirection = SKTransitionDirection.right
-            if(view.scene is Credits) {
+            if(view.scene is Settings) {
                 transitionDirection = SKTransitionDirection.left
             }
             
-            if let scene = SKScene(fileNamed: "MainMenu") as? MainMenu {
+            if let scene = SKScene(fileNamed: "Main") as? Main {
                 scene.scaleMode = .resizeFill
                 scene.GameViewController = self
                 view.presentScene(scene, transition: SKTransition.push(with: transitionDirection, duration: 0.5))
@@ -55,7 +55,7 @@ class GameViewController: UIViewController {
     
     public func ShowCredits()
     {
-        if let scene = SKScene(fileNamed: "Credits") as? Credits {
+        if let scene = SKScene(fileNamed: "Settings") as? Settings {
             scene.scaleMode = .resizeFill
             scene.GameViewController = self
             

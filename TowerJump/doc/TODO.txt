@@ -18,19 +18,22 @@ TODO
 	OK - Basic options Start Game, Credits
 	OK - Pause and cancel game in level
 
-M4 Template Graphics
-- Level Platforms
-- Floor
-- Walls
-- Buttons
+	M4 Template Graphics
+	OK - Level Platforms
+	OK - Floor
+	OK - Walls
+	OK - Buttons
 
-M5 Animations
-- Rotation and other actions
-- Particles
+	M5 Animations
+	OK - Rotation and other actions
+	OK - Particles
 
-M6 Menu settings
+	M6 Menu settings
 
 M7 Fine-Tuning Gameplay
+	OK - Coins
+	OK - Extra lives
+- Tutorial
 
 M8 GameCenter
 

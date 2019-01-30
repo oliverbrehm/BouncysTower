@@ -16,7 +16,7 @@ class Platform : SKSpriteNode
     
     public let Level : Level
     
-    init(width : CGFloat, texture: SKTexture?, level: Level, platformNumber: Int) {
+    init(width : CGFloat, texture: SKTexture?, level: Level, platformNumber: Int, numberOfCoins: Int) {
         self.Level = level
         self.PlatformNumber = platformNumber
         let platformSize = CGSize(width: width, height: Platform.HEIGHT);
@@ -48,10 +48,29 @@ class Platform : SKSpriteNode
         }
         
         self.zPosition = NodeZOrder.World
+        
+        self.spawnCoins(platformSize: platformSize, n: numberOfCoins)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func spawnCoins(platformSize: CGSize, n: Int) {
+        let coinPlatformMargin: CGFloat = 15.0
+        let d = (platformSize.width - 2 * coinPlatformMargin) / CGFloat(n - 1)
+        
+        var x = -platformSize.width / 2.0 + coinPlatformMargin
+        
+        var i = 0
+        while i < n {
+            let coin = Coin()
+            coin.position = CGPoint(x: x, y: platformSize.height / 2.0 + Coin.COIN_SIZE / 2.0 + 2.0)
+            self.addChild(coin)
+            
+            x = x + d
+            i = i + 1
+        }
     }
     
     public func HitPlayer(player: Player) {

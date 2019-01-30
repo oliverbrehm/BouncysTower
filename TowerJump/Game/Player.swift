@@ -41,7 +41,7 @@ class Player : SKSpriteNode
     private let particleEmitter = SKEmitterNode(fileNamed: "ScoreParticle")!
     
     init() {
-        super.init(texture: SKTexture(imageNamed: "Player"), color: SKColor.red, size: CGSize(width: Player.SIZE, height: Player.SIZE))
+        super.init(texture: SKTexture(imageNamed: "player"), color: SKColor.red, size: CGSize(width: Player.SIZE, height: Player.SIZE))
         
         self.physicsBody = SKPhysicsBody.init(circleOfRadius: Player.SIZE / 2.0)
         self.physicsBody?.allowsRotation = true;
@@ -49,7 +49,7 @@ class Player : SKSpriteNode
         self.physicsBody?.usesPreciseCollisionDetection = true
         self.physicsBody?.categoryBitMask = NodeCategories.Player
         self.physicsBody?.collisionBitMask = NodeCategories.Platform | NodeCategories.Wall
-        self.physicsBody?.contactTestBitMask = NodeCategories.Platform | NodeCategories.Player;
+        self.physicsBody?.contactTestBitMask = NodeCategories.Platform | NodeCategories.Player | NodeCategories.Coin;
         self.physicsBody?.friction = 3.0
         self.physicsBody?.mass = 0.05
         
@@ -83,7 +83,7 @@ class Player : SKSpriteNode
     
     public func Jump()
     {
-        self.run(SKAction.scale(to: 1.0, duration: 0.2))
+        self.run(SKAction.scale(to: 1.0, duration: 0.15))
 
         if(self.State == PlayerState.OnPlatform)
         {

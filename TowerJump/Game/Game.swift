@@ -33,6 +33,7 @@ class Game: SKScene, SKPhysicsContactDelegate {
     
     private let gameOverOverlay = OverlayGameOver()
     private let pausedOverlay = OverlayPause()
+    private let extralifeOverlay = OverlayExtralife()
     private var pauseButton = Button(caption: "")
     
     private var scoreLabel = Button(caption: "")
@@ -41,6 +42,8 @@ class Game: SKScene, SKPhysicsContactDelegate {
     public var GameViewController : GameViewController?
     
     private var timeWasPaused = false // after game paused do not calculate time delta
+    
+    private var numberOfLives = 0
     
     private static let VISUAL_DEBUG = false
     let debugLabel = SKLabelNode(text: "DEBUG")
@@ -67,7 +70,7 @@ class Game: SKScene, SKPhysicsContactDelegate {
             self.addChild(world)
             self.addChild(player)
             
-            resetGame()
+            ResetGame()
 
             self.cameraNode.addChild(self.gameOverOverlay)
             self.gameOverOverlay.Setup(game: self)
@@ -77,7 +80,13 @@ class Game: SKScene, SKPhysicsContactDelegate {
             self.pausedOverlay.Setup(game: self)
             self.gameOverOverlay.Hide()
             
-            self.pauseButton = Button(caption: "||", size: CGSize(width: World.WALL_WIDTH, height: 30.0), fontSize: 16.0, fontColor: SKColor.black, backgroundColor: SKColor.white, pressedColor: SKColor.white)
+            self.cameraNode.addChild(self.extralifeOverlay)
+            self.extralifeOverlay.Setup(game: self)
+            self.extralifeOverlay.Hide()
+            
+            let buttonsColor = SKColor.init(white: 1.0, alpha: 0.8)
+            
+            self.pauseButton = Button(caption: "||", size: CGSize(width: World.WALL_WIDTH, height: 30.0), fontSize: 18.0, fontColor: SKColor.black, backgroundColor: buttonsColor, pressedColor: SKColor.white)
             self.pauseButton.Action = {
                 self.Pause()
             }
@@ -87,7 +96,7 @@ class Game: SKScene, SKPhysicsContactDelegate {
                 y: world.Height / 2.0 - pauseButton.frame.size.height / 2.0)
             self.cameraNode.addChild(self.pauseButton)
             
-            self.scoreLabel = Button(caption: "0", size: CGSize(width: World.WALL_WIDTH, height: 30.0), fontSize: 16.0, fontColor: SKColor.black, backgroundColor: SKColor.white, pressedColor: SKColor.brown)
+            self.scoreLabel = Button(caption: "0", size: CGSize(width: World.WALL_WIDTH, height: 30.0), fontSize: 12.0, fontColor: SKColor.black, backgroundColor: buttonsColor, pressedColor: SKColor.white)
             self.scoreLabel.zPosition = NodeZOrder.Overlay
             self.scoreLabel.position = CGPoint(
                 x: -world.Width / 2.0 + scoreLabel.frame.size.width / 2.0,
@@ -182,7 +191,7 @@ class Game: SKScene, SKPhysicsContactDelegate {
     
     private func CheckGameOver(dt: Double)
     {
-        let advanceLine = GameOverY + self.world.CurrentLevel.GameSpeed() * CGFloat(dt)
+        let advanceLine = GameOverY + (self.player.CurrentPlatform != nil ? self.player.CurrentPlatform!.Level.GameSpeed() : 0.0) * CGFloat(dt)
         let lineUnderPlayer = player.position.y - 0.7 * world.Height
         self.GameOverY = max(advanceLine, lineUnderPlayer)
 
@@ -190,7 +199,11 @@ class Game: SKScene, SKPhysicsContactDelegate {
         
         if(player.position.y + player.size.height / 2.0 < GameOverY)
         {
-            gameOver()
+            if(Config.Default.HasExtralives()) {
+                self.ShowExtralifeDialog()
+            } else {
+                self.GameOver()
+            }
         }
     }
     
@@ -219,6 +232,11 @@ class Game: SKScene, SKPhysicsContactDelegate {
             self.updateScore()
         } else if(contact.bodyA.node?.name == "Wall" || contact.bodyB.node?.name == "Wall") {
             player.HitWall()
+        } else if(contact.bodyA.node is Coin || contact.bodyB.node is Coin) {
+            let coin = (contact.bodyA.node is Coin ? contact.bodyA.node : contact.bodyB.node) as! Coin
+            coin.hit()
+            self.player.Score += Coin.SCORE
+            self.updateScore()
         }
     }
     
@@ -243,14 +261,26 @@ class Game: SKScene, SKPhysicsContactDelegate {
         ])))
     }
     
-    private func gameOver()
+    public func GameOver()
     {
         self.gameOverOverlay.Show(score: self.player.Score)
         self.pauseButton.isHidden = true
         self.gameState = .Over
     }
     
-    public func resetGame()
+    public func UseExtralife() {
+        if(Config.Default.UseExtralive()) {
+            self.player.position = CGPoint(x: 0.0, y: self.player.position.y + 300.0)
+            self.player.zRotation = 0.0
+            self.player.physicsBody?.velocity = CGVector.zero
+            self.world.CurrentLevel.EaseInSpeed()
+            self.Resume()
+        } else {
+            self.GameOver()
+        }
+    }
+    
+    public func ResetGame()
     {
         self.Resume()
 
@@ -269,6 +299,7 @@ class Game: SKScene, SKPhysicsContactDelegate {
         self.player.isPaused = false
         self.pauseButton.isHidden = false
         self.pausedOverlay.Hide()
+        self.extralifeOverlay.Hide()
         
         self.player.Reset()
         self.player.position = CGPoint(x: 0.0, y: world.AbsoluteZero() + player.size.height / 2.0)
@@ -282,6 +313,18 @@ class Game: SKScene, SKPhysicsContactDelegate {
         self.pausedOverlay.Show()
         self.gameState = .Paused
         self.pauseButton.isHidden = true 
+        
+        self.world.isPaused = true
+        self.player.isPaused = true
+        self.physicsWorld.speed = 0.0
+    }
+    
+    public func ShowExtralifeDialog() {
+        self.extralifeOverlay.Show()
+        self.extralifeOverlay.Start(game: self)
+        
+        self.gameState = .Paused
+        self.pauseButton.isHidden = true
         
         self.world.isPaused = true
         self.player.isPaused = true

@@ -16,6 +16,10 @@ class Level06 : Level
         self.wallLeftTexture = SKTexture(imageNamed: "wallLeft01")
         self.wallRightTexture = SKTexture(imageNamed: "wallRight01")
     }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func BackgroundColor() -> SKColor {
         return SKColor.init(named: "bgLevel02") ?? super.BackgroundColor()
@@ -28,10 +32,10 @@ class Level06 : Level
     
     override func PlatformMaxFactor() -> CGFloat
     {
-        return 0.45
+        return 0.40
     }
     
-    override func GameSpeed() -> CGFloat {
-        return 110.0
+    override func LevelSpeed() -> CGFloat {
+        return 100.0
     }
 }
