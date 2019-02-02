@@ -16,7 +16,7 @@ class Platform : SKSpriteNode
     
     public let Level : Level
     
-    init(width : CGFloat, texture: SKTexture?, level: Level, platformNumber: Int, numberOfCoins: Int) {
+    init(width : CGFloat, texture: SKTexture?, level: Level, platformNumber: Int) {
         self.Level = level
         self.PlatformNumber = platformNumber
         let platformSize = CGSize(width: width, height: Platform.HEIGHT);
@@ -48,15 +48,17 @@ class Platform : SKSpriteNode
         }
         
         self.zPosition = NodeZOrder.World
-        
-        self.spawnCoins(platformSize: platformSize, n: numberOfCoins)
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        self.PlatformNumber = -1
+        self.Level = Level01(worldWidth: 0.0)
+        super.init(coder: aDecoder)
     }
     
-    private func spawnCoins(platformSize: CGSize, n: Int) {
+    public func SpawnCoinsInWorld(world: World, n: Int) {
+        let platformSize = CGSize(width: self.size.width, height: Platform.HEIGHT);
+        
         let coinPlatformMargin: CGFloat = 15.0
         let d = (platformSize.width - 2 * coinPlatformMargin) / CGFloat(n - 1)
         
@@ -64,9 +66,7 @@ class Platform : SKSpriteNode
         
         var i = 0
         while i < n {
-            let coin = Coin()
-            coin.position = CGPoint(x: x, y: platformSize.height / 2.0 + Coin.COIN_SIZE / 2.0 + 2.0)
-            self.addChild(coin)
+            world.SpawnCoin(position: CGPoint(x: self.position.x + x, y: self.position.y + platformSize.height / 2.0 + Coin.COIN_SIZE / 2.0 + 2.0))
             
             x = x + d
             i = i + 1

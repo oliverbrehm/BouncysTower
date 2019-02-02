@@ -6,8 +6,6 @@
 //  Copyright © 2018 Oliver Brehm. All rights reserved.
 //
 
-import Foundation
-
 import SpriteKit
 
 class World : SKNode
@@ -15,6 +13,7 @@ class World : SKNode
     public var CurrentLevel : Level = Level01(worldWidth: 0)
 
     private var levels : [Level] = []
+    private var coins: [Coin] = []
     private var currentPlatformNumber = 0
     
     private static let MAX_PLATFORMS = 50
@@ -82,15 +81,31 @@ class World : SKNode
         self.SpawnNextLevel(y: AbsoluteZero())
         scene.LevelReached(level: self.CurrentLevel)
         
-        // floor
+        self.SpawnFloor(numberOfCoins: 0)
+    }
+    
+    public func SpawnFloor(numberOfCoins: Int) {
         let floorTexture = SKTexture(imageNamed: "platform01")
-        let platform = Platform(width: Width, texture: floorTexture, level: self.CurrentLevel, platformNumber: 0, numberOfCoins: 0)
+        let platform = Platform(width: Width - 2 * World.WALL_WIDTH, texture: floorTexture, level: self.CurrentLevel, platformNumber: 0)
         platform.position = CGPoint(x: 0.0, y: AbsoluteZero())
         self.addChild(platform)
-
-        // first platforms
-        for _ in 0..<8 {
-            self.SpawnPlatform(scene: scene)
+        platform.SpawnCoinsInWorld(world: self, n: numberOfCoins)
+    }
+    
+    public func SpawnCoin(position: CGPoint) {
+        let coin = Coin()
+        coin.position = position
+        self.addChild(coin)
+        self.coins.append(coin)
+    }
+    
+    public func NumberOfCoins() -> Int {
+        return self.coins.count
+    }
+    
+    public func RemoveCoin(coin: Coin) {
+        if let index = self.coins.index(of: coin) {
+            self.coins.remove(at: index)
         }
     }
     
@@ -130,10 +145,7 @@ class World : SKNode
     }
     
     public func LandOnPlatform(platform: Platform, player: Player) {
-        let y = platform.position.y
-        self.SpawnPlatformsAbove(y: y)
-        platform.HitPlayer(player: player)
-        
+        platform.HitPlayer(player: player)        
         (self.scene as? Game)?.LevelReached(level: platform.Level)
     }
     
@@ -144,7 +156,10 @@ class World : SKNode
         let platform = self.CurrentLevel.GetPlatform(platformNumber: self.currentPlatformNumber)
         self.addChild(platform)
         self.Platforms.append(platform)
+        platform.SpawnCoinsInWorld(world: self, n: platform.PlatformNumber % 4 == 0 ? 5 : 0)
         
+        platform.DeactivateCollisions()
+
         self.SpawnWallTilesForPlatform(platform: platform)
         
         if(CurrentLevel.IsFinished()) {
@@ -166,10 +181,14 @@ class World : SKNode
     
     public func SpawnWallTilesForPlatform(platform: Platform)
     {
-        let texL = platform.Level.wallLeftTexture
-        let texR = platform.Level.wallRightTexture
+        self.SpawnWallTilesForLevel(platform.Level, beneath: platform.position.y)
+    }
+    
+    public func SpawnWallTilesForLevel(_ level: Level, beneath y: CGFloat) {
+        let texL = level.wallLeftTexture
+        let texR = level.wallRightTexture
         
-        while(self.wallY <= platform.position.y) {
+        while(self.wallY <= y) {
             let left = SKSpriteNode(texture: texL, color: SKColor.white, size: CGSize(width: World.WALL_WIDTH, height: World.WALL_WIDTH))
             let right = SKSpriteNode(texture: texR, color: SKColor.white, size: CGSize(width: World.WALL_WIDTH, height: World.WALL_WIDTH))
             
@@ -193,7 +212,7 @@ class World : SKNode
     
     public func SpawnPlatformsAbove(y : CGFloat)
     {
-        while(TopPlatformY() - y < 6.0 * Height) {
+        while(TopPlatformY() - y < 3.0 * Height) {
             SpawnPlatform(scene: self.scene as! Game)
         }
     }

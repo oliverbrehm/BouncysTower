@@ -39,6 +39,11 @@ class MainGame: Game {
         self.gameOverOverlay.Hide()
         self.extralifeOverlay.Hide()
         
+        // first platforms
+        for _ in 0..<8 {
+            self.world.SpawnPlatform(scene: self)
+        }
+        
         self.currentScore = 0
         self.scoreLabel.SetText(text: "0")
     }
@@ -47,6 +52,7 @@ class MainGame: Game {
         if(gameState == .Started || gameState == .Running)
         {
             self.cameraNode.UpdateGame(gameScene: self, player: player, world: world)
+            self.world.SpawnPlatformsAbove(y: self.player.position.y)
         }
         
         if(gameState == .Running) {

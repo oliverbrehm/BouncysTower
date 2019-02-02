@@ -81,6 +81,7 @@ class Game: SKScene, SKPhysicsContactDelegate {
             self.pauseButton = Button(caption: "||", size: CGSize(width: World.WALL_WIDTH, height: 30.0), fontSize: 18.0, fontColor: SKColor.black, backgroundColor: SKColor.init(white: 1.0, alpha: 0.8), pressedColor: SKColor.white)
             self.pauseButton.Action = {
                 self.Pause()
+                self.pausedOverlay.Show()
             }
             self.pauseButton.zPosition = NodeZOrder.Overlay
             self.pauseButton.position = CGPoint(
@@ -201,6 +202,7 @@ class Game: SKScene, SKPhysicsContactDelegate {
         } else if(contact.bodyA.node is Coin || contact.bodyB.node is Coin) {
             let coin = (contact.bodyA.node is Coin ? contact.bodyA.node : contact.bodyB.node) as! Coin
             coin.hit()
+            self.world.RemoveCoin(coin: coin)
             self.hitCoin(coin: coin)
         }
     }
@@ -228,13 +230,12 @@ class Game: SKScene, SKPhysicsContactDelegate {
         self.player.position = CGPoint(x: 0.0, y: world.AbsoluteZero() + player.size.height / 2.0)
         
         self.currentGameTime = 0.0
-        
+                
         AdvertisingController.Default.PresentIfNeccessary(returnScene: self.scene!, completionHandler: {})
     }
     
     public func Pause()
     {
-        self.pausedOverlay.Show()
         self.gameState = .Paused
         self.pauseButton.isHidden = true 
         

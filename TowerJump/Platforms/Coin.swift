@@ -23,7 +23,7 @@ class Coin: SKSpriteNode
         self.physicsBody?.collisionBitMask = 0x0
         self.physicsBody?.usesPreciseCollisionDetection = true
         
-        self.zPosition = NodeZOrder.Coin
+        self.zPosition = NodeZOrder.Coin        
     }
     
     public func hit() {

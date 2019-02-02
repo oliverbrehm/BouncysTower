@@ -32,6 +32,7 @@
 		A71F2DA42164D2D000FAF0EB /* OverlayPause.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71F2DA32164D2D000FAF0EB /* OverlayPause.swift */; };
 		A71F2DA62164E1B100FAF0EB /* NodeZOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71F2DA52164E1B100FAF0EB /* NodeZOrder.swift */; };
 		A71F2DA82164ED4500FAF0EB /* SpriteNodeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71F2DA72164ED4500FAF0EB /* SpriteNodeExtensions.swift */; };
+		A7736A912205D6B600A28B5D /* InfoBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7736A902205D6B600A28B5D /* InfoBox.swift */; };
 		A7797EEA20E2A89200E3B664 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7797EE920E2A89200E3B664 /* AppDelegate.swift */; };
 		A7797EEC20E2A89200E3B664 /* MainGame.sks in Resources */ = {isa = PBXBuildFile; fileRef = A7797EEB20E2A89200E3B664 /* MainGame.sks */; };
 		A7797EEE20E2A89200E3B664 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = A7797EED20E2A89200E3B664 /* Actions.sks */; };
@@ -80,6 +81,7 @@
 		A71F2DA32164D2D000FAF0EB /* OverlayPause.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayPause.swift; sourceTree = "<group>"; };
 		A71F2DA52164E1B100FAF0EB /* NodeZOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeZOrder.swift; sourceTree = "<group>"; };
 		A71F2DA72164ED4500FAF0EB /* SpriteNodeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteNodeExtensions.swift; sourceTree = "<group>"; };
+		A7736A902205D6B600A28B5D /* InfoBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoBox.swift; sourceTree = "<group>"; };
 		A7797EE620E2A89200E3B664 /* TowerJump.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TowerJump.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7797EE920E2A89200E3B664 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7797EEB20E2A89200E3B664 /* MainGame.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainGame.sks; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				A7797EEF20E2A89200E3B664 /* Game.swift */,
 				A702E8BF22021E1700EB13B8 /* MainGame.swift */,
 				A702E8C122021E1F00EB13B8 /* Tutorial.swift */,
+				A7736A902205D6B600A28B5D /* InfoBox.swift */,
 			);
 			path = Modes;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 				A71E741521F907BD00E7E193 /* OverlayMain.swift in Sources */,
 				A7AE066E216243FE0009D905 /* Level05.swift in Sources */,
 				A71A5197215E41FD00E7CDDB /* Level04.swift in Sources */,
+				A7736A912205D6B600A28B5D /* InfoBox.swift in Sources */,
 				A71F2DA42164D2D000FAF0EB /* OverlayPause.swift in Sources */,
 				A71A519A215E907400E7CDDB /* PlatformEndLevel.swift in Sources */,
 				A7D4C8342201CEAA0060F352 /* OverlayExtralife.swift in Sources */,

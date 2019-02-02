@@ -80,10 +80,9 @@ class Level: SKNode
         var platform : Platform? = nil
         
         if(self.IsFinished()) {
-            platform = PlatformEndLevel(width: w, texture: self.PlatformTexture(), level: self, platformNumber: platformNumber, numberOfCoins: 0)
+            platform = PlatformEndLevel(width: w, texture: self.PlatformTexture(), level: self, platformNumber: platformNumber)
         } else {
-            let nCoins = platformNumber % 4 == 0 ? 5 : 0
-            platform = Platform(width: w, texture: self.PlatformTexture(), level: self, platformNumber: platformNumber, numberOfCoins: nCoins)
+            platform = Platform(width: w, texture: self.PlatformTexture(), level: self, platformNumber: platformNumber)
         }
 
         platform!.position = CGPoint(x: x, y: CurrentY)
