@@ -20,6 +20,7 @@ class Game: SKScene, SKPhysicsContactDelegate {
     public var GameOverY : CGFloat = 0.0
     
     public var gameState = GameState.Started
+    public var allowJump = true
     
     public var lastTime : TimeInterval = -1.0
     public var lastDebug : TimeInterval = 0.0;
@@ -124,7 +125,7 @@ class Game: SKScene, SKPhysicsContactDelegate {
     }
     
     func touchUp(atPoint pos : CGPoint) {
-        if(gameState == .Started || gameState == .Running) {
+        if(self.allowJump && (gameState == .Started || gameState == .Running)) {
             player.Jump()
         }
         
@@ -148,7 +149,6 @@ class Game: SKScene, SKPhysicsContactDelegate {
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches { self.touchUp(atPoint: t.location(in: self)) }
     }
-    
     
     override func update(_ currentTime: TimeInterval) {
         if(lastTime < 0.0) {

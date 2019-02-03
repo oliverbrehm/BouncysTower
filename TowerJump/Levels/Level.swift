@@ -54,8 +54,18 @@ class Level: SKNode
         return SKColor.black
     }
     
-    func GetPlatform(platformNumber: Int) -> Platform {
-        CurrentY += self.PlatformYDistance()
+    func Reset() {
+        self.currentPlatformNumber = 0
+        self.CurrentY = 0.0
+    }
+    
+    func GetPlatform(platformNumber: Int, yDistance: CGFloat = -1.0) -> Platform {
+        if(yDistance < 0) {
+            CurrentY += self.PlatformYDistance()
+        } else {
+            CurrentY += yDistance
+        }
+        
         self.currentPlatformNumber = self.currentPlatformNumber + 1
         
         let levelWidth = WorldWidth - 2 * World.WALL_WIDTH

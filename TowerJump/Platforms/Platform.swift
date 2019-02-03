@@ -59,7 +59,7 @@ class Platform : SKSpriteNode
     public func SpawnCoinsInWorld(world: World, n: Int) {
         let platformSize = CGSize(width: self.size.width, height: Platform.HEIGHT);
         
-        let coinPlatformMargin: CGFloat = 15.0
+        let coinPlatformMargin: CGFloat = platformSize.width * 0.175
         let d = (platformSize.width - 2 * coinPlatformMargin) / CGFloat(n - 1)
         
         var x = -platformSize.width / 2.0 + coinPlatformMargin

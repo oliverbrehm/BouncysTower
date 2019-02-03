@@ -19,6 +19,8 @@ class Config {
     
     private var _extraLives = 3
     
+    public var TutorialShown = true // TODO persistence, set to false
+    
     public var ExtraLives: Int {
         get {
             return _extraLives

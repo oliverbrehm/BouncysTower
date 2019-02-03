@@ -109,6 +109,13 @@ class World : SKNode
         }
     }
     
+    public func RemoveAllPlatforms() {
+        for node in self.Platforms {
+            node.removeFromParent()
+        }
+        self.Platforms.removeAll()
+    }
+    
     public func SpawnNextLevel(y: CGFloat) {
         if(self.levels.count > 0) {
             if(self.CurrentLevel.parent != nil) {
@@ -145,18 +152,22 @@ class World : SKNode
     }
     
     public func LandOnPlatform(platform: Platform, player: Player) {
-        platform.HitPlayer(player: player)        
-        (self.scene as? Game)?.LevelReached(level: platform.Level)
+        if(!platform.Level.Reached) {
+            (self.scene as? Game)?.LevelReached(level: platform.Level)
+        }
+        platform.HitPlayer(player: player)
     }
     
-    public func SpawnPlatform(scene: Game)
+    public func SpawnPlatform(scene: Game, numberOfCoins: Int? = nil, yDistance: CGFloat = -1.0)
     {
         self.currentPlatformNumber = self.currentPlatformNumber + 1
         
-        let platform = self.CurrentLevel.GetPlatform(platformNumber: self.currentPlatformNumber)
+        let platform = self.CurrentLevel.GetPlatform(platformNumber: self.currentPlatformNumber, yDistance: yDistance)
         self.addChild(platform)
         self.Platforms.append(platform)
-        platform.SpawnCoinsInWorld(world: self, n: platform.PlatformNumber % 4 == 0 ? 5 : 0)
+        
+        let n = numberOfCoins ?? (platform.PlatformNumber % 4 == 0 ? 5 : 0)
+        platform.SpawnCoinsInWorld(world: self, n: n)
         
         platform.DeactivateCollisions()
 

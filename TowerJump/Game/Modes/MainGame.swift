@@ -103,11 +103,9 @@ class MainGame: Game {
     
     public func UseExtralife() {
         if(Config.Default.UseExtralive()) {
-            self.player.position = CGPoint(x: 0.0, y: self.player.position.y + 300.0)
-            self.player.zRotation = 0.0
-            self.player.physicsBody?.velocity = CGVector.zero
-            self.world.CurrentLevel.EaseInSpeed()
             self.Resume()
+            self.player.UseExtralife()
+            self.world.CurrentLevel.EaseInSpeed()
         } else {
             self.GameOver()
         }

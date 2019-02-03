@@ -34,9 +34,14 @@ M7 Fine-Tuning Gameplay
 	OK - Coins
 	OK - Extra lives
 	OK - Advertising scene
-- Tutorial
+	OK - Tutorial
+  	OK - Platforms
+  	OK - Disable jump in first step
+  	OK - Show on first startup
+  	OK - Bigger info box, style
 - Collect Extra lives
 - Collect coins
+- persistence state, coins, lives
 - shop scene
   - buy lives for coins
   - buy coins

@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:TowerJump.xcodeproj">
+      location = "self:/projects/TowerJump/TowerJump.xcodeproj">
    </FileRef>
 </Workspace>

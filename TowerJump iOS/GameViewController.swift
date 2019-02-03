@@ -1,9 +1,9 @@
 //
 //  GameViewController.swift
-//  TowerJump
+//  TowerJump iOS
 //
-//  Created by Oliver Brehm on 26.06.18.
-//  Copyright © 2018 Oliver Brehm. All rights reserved.
+//  Created by Oliver Brehm on 02.02.19.
+//  Copyright © 2019 Oliver Brehm. All rights reserved.
 //
 
 import UIKit
@@ -11,7 +11,7 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,6 +28,11 @@ class GameViewController: UIViewController {
     
     public func ShowGame()
     {
+        if !Config.Default.TutorialShown {
+            self.ShowTutorial()
+            return
+        }
+        
         if let scene = SKScene(fileNamed: "MainGame") as? MainGame {
             scene.scaleMode = .resizeFill
             scene.GameViewController = self
@@ -77,20 +82,20 @@ class GameViewController: UIViewController {
             }
         }
     }
-
+    
     override var shouldAutorotate: Bool {
         return true
     }
-
+    
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .landscape
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Release any cached data, images, etc that aren't in use.
     }
-
+    
     override var prefersStatusBarHidden: Bool {
         return true
     }

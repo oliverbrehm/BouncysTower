@@ -153,6 +153,17 @@ class Player : SKSpriteNode
         }
     }
     
+    public func UseExtralife() {
+        self.state = .Jumping
+        self.zRotation = 0.0
+        self.position = CGPoint(x: 0.0, y: self.position.y + 100.0)
+        
+        self.World?.UpdateCollisionTests(player: self)
+
+        self.physicsBody?.velocity = CGVector.zero
+        self.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 100.0))
+    }
+    
     public func Move(x : CGFloat)
     {
         var dx : CGFloat = 0.0
