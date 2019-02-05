@@ -86,7 +86,7 @@ class Tutorial: Game {
     }
     
     private func tutorialStart() {
-        self.world.SpawnWallTilesForLevel(self.world.CurrentLevel, beneath: 5 * self.world.Height)
+        self.world.CurrentLevel!.SpawnWallTiles(beneath: 5 * self.world.Height)
         
         self.run(SKAction.sequence([
             SKAction.wait(forDuration: 0.5),
@@ -163,9 +163,9 @@ class Tutorial: Game {
                 SKAction.wait(forDuration: 1.0), // player falls to the floor
                 SKAction.run {
                     for _ in 0..<9 {
-                        self.world.SpawnPlatform(scene: self, numberOfCoins: 0)
+                        self.world.SpawnPlatform(numberOfCoins: 0)
                     }
-                    self.world.SpawnPlatform(scene: self, numberOfCoins: 8)
+                    self.world.SpawnPlatform(numberOfCoins: 8)
                 }
             ]))
         })
@@ -179,7 +179,7 @@ class Tutorial: Game {
         self.infoBox.AddLine(text: "Can you reach the coins all the way up there?")
         self.ShowInfo(completion: {
             self.state = .T5WallJumps
-            self.world.RemoveAllPlatforms()
+            self.world.CurrentLevel!.RemoveAllPlatforms()
 
             self.run(SKAction.sequence([
                 SKAction.wait(forDuration: 2.0), // player falls to the floor
@@ -213,19 +213,19 @@ class Tutorial: Game {
         self.infoBox.AddLine(text: "Try it!")
         self.ShowInfo(completion: {
             self.state = .T6HighPlatformJumps
-            self.world.CurrentLevel.Reset()
+            self.world.CurrentLevel!.Reset()
 
             self.run(SKAction.sequence([
                 SKAction.wait(forDuration: 0.5), // player falls to the floor
                 SKAction.run {
-                    self.world.SpawnPlatform(scene: self, numberOfCoins: 0, yDistance: 110.0)
-                    self.world.SpawnPlatform(scene: self, numberOfCoins: 0, yDistance: 110.0)
-                    self.world.SpawnPlatform(scene: self, numberOfCoins: 0, yDistance: 220.0)
-                    self.world.SpawnPlatform(scene: self, numberOfCoins: 0, yDistance: 110.0)
-                    self.world.SpawnPlatform(scene: self, numberOfCoins: 0, yDistance: 110.0)
-                    self.world.SpawnPlatform(scene: self, numberOfCoins: 0, yDistance: 300.0)
-                    self.world.SpawnPlatform(scene: self, numberOfCoins: 0, yDistance: 110.0)
-                    self.world.SpawnPlatform(scene: self, numberOfCoins: 8, yDistance: 110.0)
+                    self.world.SpawnPlatform(numberOfCoins: 0, yDistance: 110.0)
+                    self.world.SpawnPlatform(numberOfCoins: 0, yDistance: 110.0)
+                    self.world.SpawnPlatform(numberOfCoins: 0, yDistance: 220.0)
+                    self.world.SpawnPlatform(numberOfCoins: 0, yDistance: 110.0)
+                    self.world.SpawnPlatform(numberOfCoins: 0, yDistance: 110.0)
+                    self.world.SpawnPlatform(numberOfCoins: 0, yDistance: 300.0)
+                    self.world.SpawnPlatform(numberOfCoins: 0, yDistance: 110.0)
+                    self.world.SpawnPlatform(numberOfCoins: 8, yDistance: 110.0)
                 }
             ]))
         })

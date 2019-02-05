@@ -22,7 +22,8 @@ class Player : SKSpriteNode
     
     public var World : World?
     
-    public var CurrentPlatform : Platform?
+    public var CurrentPlatform: Platform?
+    public var CurrentLevel: Level?
     
     public var Score = 0
     

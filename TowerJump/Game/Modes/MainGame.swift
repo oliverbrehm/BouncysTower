@@ -41,7 +41,7 @@ class MainGame: Game {
         
         // first platforms
         for _ in 0..<8 {
-            self.world.SpawnPlatform(scene: self)
+            self.world.SpawnPlatform()
         }
         
         self.currentScore = 0
@@ -105,7 +105,7 @@ class MainGame: Game {
         if(Config.Default.UseExtralive()) {
             self.Resume()
             self.player.UseExtralife()
-            self.world.CurrentLevel.EaseInSpeed()
+            self.world.CurrentLevel!.EaseInSpeed()
         } else {
             self.GameOver()
         }

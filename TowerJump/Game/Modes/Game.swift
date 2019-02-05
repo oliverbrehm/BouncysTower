@@ -55,7 +55,7 @@ class Game: SKScene, SKPhysicsContactDelegate {
     func hitCoin(coin: Coin) {} // abstract
     
     override func sceneDidLoad() {
-        self.backgroundColor = SKColor.white
+        self.backgroundColor = SKColor.black
     }
     
     override func didMove(to view: SKView) {
@@ -68,6 +68,7 @@ class Game: SKScene, SKPhysicsContactDelegate {
             self.addChild(cameraNode)
             
             self.background.size = self.size
+            self.background.zPosition = NodeZOrder.Background
             self.cameraNode.addChild(self.background)
             
             self.addChild(world)
@@ -257,6 +258,6 @@ class Game: SKScene, SKPhysicsContactDelegate {
     }
     
     public func LevelReached(level: Level) {
-        self.background.run(SKAction.colorize(with: level.BackgroundColor(), colorBlendFactor: 0.6, duration: 0.5))
+        //self.background.run(SKAction.colorize(with: level.BackgroundColor(), colorBlendFactor: 0.6, duration: 0.5))
     }
 }
