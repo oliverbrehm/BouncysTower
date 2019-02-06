@@ -26,6 +26,8 @@ class Tutorial: Game {
         self.camera?.addChild(self.infoBox)
         self.infoBox.position = CGPoint(x: 0.0, y: 0.25 * self.world.Height)
         self.infoBox.Setup(size: CGSize(width: 0.75 * self.world.Width, height: 0.35 * self.world.Height))
+        self.world.CurrentLevel?.SpawnBackground(beneath: 2500.0)
+        self.world.CurrentLevel?.SpawnWallTiles(beneath: 2500.0)
     }
     
     override func ResetGame() {
@@ -97,15 +99,26 @@ class Tutorial: Game {
     }
     
     private func tutorial1Move() {
+        self.allowJump = false
+        self.state = .T1Move
+
         self.infoBox.Clear()
         self.infoBox.AddLine(text: "Hi! Let's learn how to play.")
         self.infoBox.AddLine(text: "Touch and move you finger to the left or right to move.")
         self.infoBox.AddLine(text: "Start by collecting all the coins on the floor.")
         self.ShowInfo(completion: {
-            self.state = .T1Move
-            self.allowJump = false
+            self.world.SpawnFloor()
             
-            self.world.SpawnFloor(numberOfCoins: 8)
+            let coinY = self.world.AbsoluteZero() + 25.0
+            self.world.SpawnCoin(position: CGPoint(x: -200.0, y: coinY))
+            self.world.SpawnCoin(position: CGPoint(x: -150.0, y: coinY))
+            self.world.SpawnCoin(position: CGPoint(x: -100.0, y: coinY))
+            self.world.SpawnCoin(position: CGPoint(x: -50.0, y: coinY))
+
+            self.world.SpawnCoin(position: CGPoint(x: 50.0, y: coinY))
+            self.world.SpawnCoin(position: CGPoint(x: 100.0, y: coinY))
+            self.world.SpawnCoin(position: CGPoint(x: 150.0, y: coinY))
+            self.world.SpawnCoin(position: CGPoint(x: 200.0, y: coinY))
         })
     }
     

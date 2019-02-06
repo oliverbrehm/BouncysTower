@@ -12,7 +12,7 @@ class World : SKNode
 {
     public var CurrentLevel : Level?
 
-    private var levels : [Level] = []
+    public var Levels : [Level] = []
     private var coins: [Coin] = []
     private var currentPlatformNumber = 0
     
@@ -60,7 +60,7 @@ class World : SKNode
         rightWall.zPosition = NodeZOrder.World
         
         // levels
-        self.levels = [
+        self.Levels = [
             Level01(worldWidth: Width),
             Level02(worldWidth: Width),
             Level03(worldWidth: Width),
@@ -70,18 +70,18 @@ class World : SKNode
             Level07(worldWidth: Width),
             Level08(worldWidth: Width)];
         
+        self.CurrentLevel = nil
         self.SpawnNextLevel(y: AbsoluteZero())
         scene.LevelReached(level: self.CurrentLevel!)
         
-        self.SpawnFloor(numberOfCoins: 0)
+        self.SpawnFloor()
     }
     
-    public func SpawnFloor(numberOfCoins: Int) {
+    public func SpawnFloor() {
         let floorTexture = SKTexture(imageNamed: "platform01")
         let platform = Platform(width: Width - 2 * World.WALL_WIDTH, texture: floorTexture, level: self.CurrentLevel!, platformNumber: 0)
         platform.position = CGPoint(x: 0.0, y: AbsoluteZero())
         self.addChild(platform)
-        platform.SpawnCoinsInWorld(world: self, n: numberOfCoins)
     }
     
     public func SpawnCoin(position: CGPoint) {
@@ -102,11 +102,11 @@ class World : SKNode
     }
     
     public func SpawnNextLevel(y: CGFloat) {
-        if(self.levels.count > 0) {
-            self.CurrentLevel = self.levels.first!
+        let levelIndex = self.CurrentLevel != nil ? self.Levels.firstIndex(of: self.CurrentLevel!)! + 1 : 0
+        if(self.Levels.count > levelIndex) {
+            self.CurrentLevel = self.Levels[levelIndex]
             self.addChild(self.CurrentLevel!)
             self.CurrentLevel!.position = CGPoint(x: 0.0, y: y)
-            self.levels.remove(at: 0)
         }
     }
     
@@ -131,9 +131,8 @@ class World : SKNode
     
     public func UpdateCollisionTests(player : Player)
     {
-        self.CurrentLevel!.UpdateCollisionTests(player: player)
-        if(self.CurrentLevel != player.CurrentLevel) {
-            player.CurrentLevel?.UpdateCollisionTests(player: player)
+        for level in self.Levels {
+            level.UpdateCollisionTests(player: player)
         }
     }
     

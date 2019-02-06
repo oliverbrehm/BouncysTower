@@ -14,7 +14,7 @@ class OverlayGameOver : Overlay
     private let label = SKLabelNode(text: "")
     
     func Setup(game: Game) {
-        super.Setup(scene: game, width: 0.8)
+        super.Setup(size: game.frame.size, width: 0.8)
         
         let backButton = Button(caption: "Back")
         backButton.position = CGPoint(x: 60.0, y: 20.0)

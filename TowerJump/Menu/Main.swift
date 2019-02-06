@@ -15,19 +15,23 @@ class Main : SKScene
     private var menuOverlay = OverlayMain()
     
     override func didMove(to view: SKView) {
-        self.addChild(self.menuOverlay)
-        self.menuOverlay.Setup(menu: self)
-        self.menuOverlay.Show()
+        let w = self.frame.size.width
+        let h = self.frame.size.height
+        let size = CGSize(width: max(w, h), height: min(w, h))
         
+        self.addChild(self.menuOverlay)
+        self.menuOverlay.Setup(size: size, menu: self)
+        self.menuOverlay.Show()
+          
         let background = SKSpriteNode(imageNamed: "bg")
-        background.size = self.frame.size
+        background.size = size
         background.color = SKColor.init(named: "bgLevel01")!
         background.colorBlendFactor = 1.0
         self.addChild(background)
         
         let towerImage = SKSpriteNode(imageNamed: "menuTower")
-        towerImage.size = CGSize(width: self.frame.size.width / 2.0, height: self.frame.size.height)
-        towerImage.position = CGPoint(x: -0.25 * self.frame.size.width, y: 0.0)
+        towerImage.size = CGSize(width: size.width / 2.0, height: size.height)
+        towerImage.position = CGPoint(x: -0.25 * size.width, y: 0.0)
         self.addChild(towerImage)
     }
 }

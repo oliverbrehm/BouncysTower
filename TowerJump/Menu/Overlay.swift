@@ -21,15 +21,15 @@ class Overlay : SKSpriteNode
         super.init(coder: aDecoder)
     }
     
-    func Setup(scene: SKScene, width: CGFloat) {
+    func Setup(size: CGSize, width: CGFloat) {
         self.isHidden = true
         
         self.zPosition = NodeZOrder.Overlay
         
-        self.positionHidden = CGPoint(x: (0.5 + width / 2.0) * scene.frame.size.width, y: 0.0)
-        self.positionShown = CGPoint(x: (0.5 - width / 2.0) * scene.frame.size.width, y: 0.0)
+        self.positionHidden = CGPoint(x: (0.5 + width / 2.0) * size.width, y: 0.0)
+        self.positionShown = CGPoint(x: (0.5 - width / 2.0) * size.width, y: 0.0)
         self.position = self.positionHidden
-        self.size = CGSize(width: width * scene.frame.size.width, height: scene.frame.size.height)
+        self.size = CGSize(width: width * size.width, height: size.height)
     }
     
     func Show()

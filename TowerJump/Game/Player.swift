@@ -76,6 +76,7 @@ class Player : SKSpriteNode
         self.physicsBody?.angularVelocity = 0.0
         self.zRotation = 0.0
         
+        self.CurrentPlatform = nil
         self.State = .OnPlatform
         self.Score = 0
         

@@ -93,6 +93,7 @@ class Level: SKNode
         
         if(self.IsFinished()) {
             platform = PlatformEndLevel(width: worldWidth, texture: nil, level: self, platformNumber: platformNumber)
+            self.SpawnBackground(beneath: platformY, exact: true)
         } else {
             let minWidth = levelWidth * self.PlatformMinFactor()
             let maxWidth = levelWidth * self.PlatformMaxFactor()
@@ -102,25 +103,37 @@ class Level: SKNode
                 between: -levelWidth / 2.0 + w / 2.0,
                 and: levelWidth / 2.0 - w / 2.0)
             platform = Platform(width: w, texture: self.PlatformTexture(), level: self, platformNumber: platformNumber)
+            self.SpawnBackground(beneath: platformY)
         }
 
         platform!.position = CGPoint(x: x, y: platformY)
-        
-        self.SpawnBackground(beneath: platformY)
-        
         return platform!
     }
     
-    func SpawnBackground(beneath y:CGFloat) {
-        let texture = SKTexture(imageNamed: "bg")
-        let size = CGSize(width: self.worldWidth, height: self.worldWidth * texture.size().height / texture.size().width)
+    /**
+     @ param exact: if set texture is made smaller so it fits exactly beneath y and spawn all the textures beneath y, if not set textures might not get spawned all the way to y
+    **/
+    func SpawnBackground(beneath y: CGFloat, exact: Bool = false) {
+        var texture = SKTexture(imageNamed: "bg")
+        var size = CGSize(width: self.worldWidth, height: self.worldWidth * texture.size().height / texture.size().width)
         
-        while(self.backgroundY < y + size.height / 2.0) {
+        while(self.backgroundY < y - size.height || (exact && self.backgroundY < y)) {
+            let heightLeft = y - self.backgroundY
+
+            if((size.height > heightLeft) && exact) {
+                // get sub texture and size that fits exactly
+                let textureHeight = heightLeft / size.height
+                size.height = heightLeft
+                texture = SKTexture(rect: CGRect(origin: CGPoint.zero, size: CGSize(width: 1.0, height: textureHeight)), in: texture)
+            }
+            
             let background = SKSpriteNode(texture: texture, color: self.BackgroundColor(), size: size)
             background.colorBlendFactor = 1.0
             background.position = CGPoint(x: 0.0, y: self.backgroundY + size.height / 2.0)
             background.zPosition = NodeZOrder.Background
+            
             self.addChild(background)
+            
             self.backgroundY = self.backgroundY + size.height
         }        
     }
@@ -232,7 +245,7 @@ class Level: SKNode
     }
     
     func NumberOfPlatforms() -> Int  {
-        return 50
+        return 25 // TODO 50
     }
     
     func LevelSpeed() -> CGFloat {

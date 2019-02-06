@@ -11,7 +11,7 @@ import SpriteKit
 class OverlayPause : Overlay
 {
     func Setup(game: Game) {
-        super.Setup(scene: game, width: 0.8)
+        super.Setup(size: game.frame.size, width: 0.8)
         
         let backButton = Button(caption: "Resume")
         backButton.position = CGPoint(x: 60.0, y: 80.0)

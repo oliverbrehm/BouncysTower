@@ -10,8 +10,8 @@ import SpriteKit
 
 class OverlayMain : Overlay
 {
-    func Setup(menu: Main) {
-        super.Setup(scene: menu, width: 0.65)
+    func Setup(size: CGSize, menu: Main) {
+        super.Setup(size: size, width: 0.65)
         
         let startButton = Button(caption: "Start Game")
         startButton.position = CGPoint(x: 60.0, y: 80.0)

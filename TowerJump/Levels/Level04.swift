@@ -22,7 +22,7 @@ class Level04 : Level
     }
     
     override func BackgroundColor() -> SKColor {
-        return SKColor.init(named: "bgLevel02") ?? super.BackgroundColor()
+        return SKColor.init(named: "bgLevel04") ?? super.BackgroundColor()
     }
     
     override func PlatformMinFactor() -> CGFloat

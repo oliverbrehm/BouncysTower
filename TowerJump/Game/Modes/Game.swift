@@ -229,6 +229,7 @@ class Game: SKScene, SKPhysicsContactDelegate {
         
         self.player.Reset()
         self.player.position = CGPoint(x: 0.0, y: world.AbsoluteZero() + player.size.height / 2.0)
+        self.player.CurrentLevel = self.world.Levels.first!
         
         self.currentGameTime = 0.0
                 
