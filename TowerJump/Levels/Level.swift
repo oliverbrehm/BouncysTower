@@ -212,13 +212,11 @@ class Level: SKNode
             platform.run(SKAction.repeatForever(SKAction.sequence([c1, c2])))
         }
         
-        /*
-        if(self.Platforms.count > World.MAX_PLATFORMS)
-        {
-            let platform = Platforms.first
-            self.Platforms.removeFirst()
-            platform?.removeFromParent()
-        }*/
+        if(self.levelPlatformIndex == 13 && (self is Level02 || self is Level05 || self is Level07)) {
+            let extraLife = ExtraLife()
+            extraLife.position = CGPoint(x: platform.position.x, y: platform.position.y + 40.0)
+            self.addChild(extraLife)
+        }
     }
     
     public func TopPlatformY() -> CGFloat

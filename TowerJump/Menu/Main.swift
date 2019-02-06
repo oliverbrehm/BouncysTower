@@ -22,14 +22,16 @@ class Main : SKScene
         self.addChild(self.menuOverlay)
         self.menuOverlay.Setup(size: size, menu: self)
         self.menuOverlay.Show()
-          
+        
         let background = SKSpriteNode(imageNamed: "bg")
+        background.zPosition = NodeZOrder.Background
         background.size = size
         background.color = SKColor.init(named: "bgLevel01")!
         background.colorBlendFactor = 1.0
         self.addChild(background)
         
         let towerImage = SKSpriteNode(imageNamed: "menuTower")
+        towerImage.zPosition = NodeZOrder.Background + 0.01
         towerImage.size = CGSize(width: size.width / 2.0, height: size.height)
         towerImage.position = CGPoint(x: -0.25 * size.width, y: 0.0)
         self.addChild(towerImage)

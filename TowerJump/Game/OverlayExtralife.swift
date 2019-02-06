@@ -18,7 +18,7 @@ class OverlayExtralife : Overlay
         let label = SKLabelNode(text: "Use extralife?")
         label.fontSize = 20.0
         label.fontName = "AmericanTypewriter-Bold"
-        label.fontColor = SKColor.red
+        label.fontColor = SKColor.white
         label.position = CGPoint(x: 60.0, y: 100.0)
         label.zPosition = NodeZOrder.Button
         self.addChild(label)

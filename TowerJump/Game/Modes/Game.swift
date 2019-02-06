@@ -205,6 +205,9 @@ class Game: SKScene, SKPhysicsContactDelegate {
             coin.hit()
             self.world.RemoveCoin(coin: coin)
             self.hitCoin(coin: coin)
+        } else if(contact.bodyA.node is ExtraLife || contact.bodyB.node is ExtraLife) {
+            let extraLife = (contact.bodyA.node is ExtraLife ? contact.bodyA.node : contact.bodyB.node) as! ExtraLife
+            extraLife.hit()
         }
     }
     

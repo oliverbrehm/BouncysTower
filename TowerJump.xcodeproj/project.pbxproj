@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A71875B3220AFB11003ED6F1 /* ResourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71875B2220AFB11003ED6F1 /* ResourceView.swift */; };
+		A71875B5220B0619003ED6F1 /* ExtraLife.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71875B4220B0619003ED6F1 /* ExtraLife.swift */; };
+		A71875B6220B0619003ED6F1 /* ExtraLife.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71875B4220B0619003ED6F1 /* ExtraLife.swift */; };
+		A71875B7220B0619003ED6F1 /* ExtraLife.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71875B4220B0619003ED6F1 /* ExtraLife.swift */; };
 		A7736A9E2206025100A28B5D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7736A9D2206025100A28B5D /* AppDelegate.swift */; };
 		A7736AA02206025100A28B5D /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7736A9F2206025100A28B5D /* GameViewController.swift */; };
 		A7736AA32206025100A28B5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7736AA12206025100A28B5D /* Main.storyboard */; };
@@ -153,6 +157,8 @@
 		A7175FB420E2B4DA00968329 /* Platform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
 		A7175FB620E2BD3A00968329 /* NodeCategories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeCategories.swift; sourceTree = "<group>"; };
 		A7175FB820E2C2ED00968329 /* World.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = World.swift; sourceTree = "<group>"; };
+		A71875B2220AFB11003ED6F1 /* ResourceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceView.swift; sourceTree = "<group>"; };
+		A71875B4220B0619003ED6F1 /* ExtraLife.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraLife.swift; sourceTree = "<group>"; };
 		A71A518D215A6A0600E7CDDB /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		A71A5190215A6AC200E7CDDB /* Level01.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level01.swift; sourceTree = "<group>"; };
 		A71A5192215A6B0400E7CDDB /* Level02.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level02.swift; sourceTree = "<group>"; };
@@ -369,6 +375,7 @@
 				A71F2DA32164D2D000FAF0EB /* OverlayPause.swift */,
 				A792AE0421652706004280A5 /* ScoreParticle.swift */,
 				A7D4C8332201CEAA0060F352 /* OverlayExtralife.swift */,
+				A71875B4220B0619003ED6F1 /* ExtraLife.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -381,6 +388,7 @@
 				A71F2D9F2163A4D600FAF0EB /* Settings.swift */,
 				A71E741221F9035900E7E193 /* Overlay.swift */,
 				A71E741421F907BD00E7E193 /* OverlayMain.swift */,
+				A71875B2220AFB11003ED6F1 /* ResourceView.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -579,12 +587,14 @@
 				A7A2285A220604D500081E0E /* Advertising.swift in Sources */,
 				A7A22887220604E700081E0E /* OverlayPause.swift in Sources */,
 				A7736AA02206025100A28B5D /* GameViewController.swift in Sources */,
+				A71875B5220B0619003ED6F1 /* ExtraLife.swift in Sources */,
 				A7A22872220604E000081E0E /* OverlayMain.swift in Sources */,
 				A7A228CC2206050E00081E0E /* Config.swift in Sources */,
 				A7A22886220604E700081E0E /* OverlayGameOver.swift in Sources */,
 				A7A22889220604E700081E0E /* OverlayExtralife.swift in Sources */,
 				A7A22870220604E000081E0E /* Settings.swift in Sources */,
 				A7A22888220604E700081E0E /* ScoreParticle.swift in Sources */,
+				A71875B3220AFB11003ED6F1 /* ResourceView.swift in Sources */,
 				A7A22859220604D500081E0E /* AdvertisingController.swift in Sources */,
 				A7736A9E2206025100A28B5D /* AppDelegate.swift in Sources */,
 			);
@@ -600,6 +610,7 @@
 				A7A22891220604E800081E0E /* World.swift in Sources */,
 				A7A22873220604E100081E0E /* Main.swift in Sources */,
 				A7A2288C220604E800081E0E /* Tutorial.swift in Sources */,
+				A71875B6220B0619003ED6F1 /* ExtraLife.swift in Sources */,
 				A7A228CF2206050E00081E0E /* SpriteNodeExtensions.swift in Sources */,
 				A7A228BC220604F700081E0E /* Level06.swift in Sources */,
 				A7A228B7220604F700081E0E /* Level01.swift in Sources */,
@@ -643,6 +654,7 @@
 				A7A2289E220604E800081E0E /* World.swift in Sources */,
 				A7A22878220604E100081E0E /* Main.swift in Sources */,
 				A7A22899220604E800081E0E /* Tutorial.swift in Sources */,
+				A71875B7220B0619003ED6F1 /* ExtraLife.swift in Sources */,
 				A7A228D42206050E00081E0E /* SpriteNodeExtensions.swift in Sources */,
 				A7A228C5220604F700081E0E /* Level06.swift in Sources */,
 				A7A228C0220604F700081E0E /* Level01.swift in Sources */,
