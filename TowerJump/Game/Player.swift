@@ -96,6 +96,8 @@ class Player : SKSpriteNode
 
             self.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: xVelocityFactor * Player.JUMP_IMPULSE))
             self.State = PlayerState.Jumping
+            
+            self.run(SoundController.Default.GetSoundAction(action: .Jump))
         }
     }
     

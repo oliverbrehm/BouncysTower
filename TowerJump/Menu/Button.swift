@@ -75,6 +75,7 @@ class Button : SKSpriteNode
     public func TouchDown(point : CGPoint)
     {
         self.Pressed = true
+        self.run(SoundController.Default.GetSoundAction(action: .Button))
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

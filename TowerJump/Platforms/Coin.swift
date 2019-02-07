@@ -28,11 +28,16 @@ class Coin: SKSpriteNode
     
     public func hit() {
         Config.Default.AddCoin()
-        
+
         self.run(SKAction.sequence([
-            SKAction.moveBy(x: 0.0, y: 4.0, duration: 0.1),
-            SKAction.scale(by: 0.2, duration: 0.1),
-            SKAction.fadeOut(withDuration: 0.2),
+            SKAction.group([
+                SoundController.Default.GetSoundAction(action: .Coin),
+                SKAction.sequence([
+                    SKAction.moveBy(x: 0.0, y: 4.0, duration: 0.1),
+                    SKAction.scale(by: 0.2, duration: 0.1),
+                    SKAction.fadeOut(withDuration: 0.2)
+                ])
+            ]),
             SKAction.run {
                 self.removeAllActions()
                 self.removeFromParent()

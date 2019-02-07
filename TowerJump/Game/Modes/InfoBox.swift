@@ -69,5 +69,6 @@ class InfoBox : Button {
         }
         
         self.run(SKAction.scale(to: 1.0, duration: 0.3))
+        self.run(SoundController.Default.GetSoundAction(action: .Message))
     }
 }

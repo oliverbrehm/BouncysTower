@@ -87,6 +87,8 @@ class MainGame: Game {
         self.gameOverOverlay.Show(score: self.player.Score)
         self.pauseButton.isHidden = true
         self.gameState = .Over
+        
+        self.run(SoundController.Default.GetSoundAction(action: .GameOver))
     }
     
     public func ShowExtralifeDialog() {
@@ -106,6 +108,7 @@ class MainGame: Game {
             self.Resume()
             self.player.UseExtralife()
             self.world.CurrentLevel!.EaseInSpeed()
+            self.run(SoundController.Default.GetSoundAction(action: .SuperJump))
         } else {
             self.GameOver()
         }
