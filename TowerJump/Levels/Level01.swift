@@ -39,4 +39,9 @@ class Level01 : Level
     override func LevelSpeed() -> CGFloat {
         return 40.0
     }
+    
+    override func FirstPlatformOffset() -> CGFloat {
+        // no offset for first level
+        return 0.0
+    }
 }

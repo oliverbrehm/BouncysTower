@@ -46,14 +46,12 @@ M7 Fine-Tuning Gameplay
 - shop scene
   - buy lives for coins
   - buy coins
+- better collision detection
+- remove unused platforms/levels
+
+	OK - M8 Sounds
 
 
-
-
-
-
-
-M8 Sounds
 
 M9 GameCenter
 

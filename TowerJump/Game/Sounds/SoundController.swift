@@ -24,12 +24,12 @@ class SoundController {
     private let coinSound: SKAction
     private let buttonSound: SKAction
     private let messageSound: SKAction
-    private let jumpSound: SKAction
+    private let jumpSound: SKAction 
     private let superJumpSound: SKAction
     private let gameOverSound: SKAction
     
     public init() {
-        self.coinSound = SKAction.playSoundFileNamed("coin.aif", waitForCompletion: true)
+        self.coinSound = SKAction.playSoundFileNamed("collectcoin.aif", waitForCompletion: true)
         self.buttonSound = SKAction.playSoundFileNamed("button.aif", waitForCompletion: true)
         self.messageSound = SKAction.playSoundFileNamed("message.aif", waitForCompletion: true)
         self.jumpSound = SKAction.playSoundFileNamed("jump.aif", waitForCompletion: true)

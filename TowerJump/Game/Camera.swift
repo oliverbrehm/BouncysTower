@@ -13,7 +13,7 @@ class Camera : SKCameraNode
 {
     public func UpdateGame(gameScene: Game, player: Player, world: World)
     {
-        self.position.y = gameScene.GameOverY + 0.5 * world.Height
+        self.position.y = max(gameScene.GameOverY + 0.5 * world.Height, player.position.y - (Game.GAME_OVER_LINE_UNDER_PLAYER_PERCENT - 0.5) * world.Height)
     }
     
     public func UpdateTutorial(player: Player, world: World) {

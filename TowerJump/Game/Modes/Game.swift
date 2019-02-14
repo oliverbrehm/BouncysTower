@@ -8,6 +8,7 @@
 
 import SpriteKit
 import GameplayKit
+import CoreMotion
 
 enum GameState {
     case Started
@@ -17,6 +18,10 @@ enum GameState {
 }
 
 class Game: SKScene, SKPhysicsContactDelegate {
+    private var lastGravityX: CGFloat = 0.0 // TODO move elsewhere
+    
+    private let motionManager = CMMotionManager()
+    
     public var GameOverY : CGFloat = 0.0
     
     public var gameState = GameState.Started
@@ -24,9 +29,7 @@ class Game: SKScene, SKPhysicsContactDelegate {
     
     public var lastTime : TimeInterval = -1.0
     public var lastDebug : TimeInterval = 0.0;
-    
-    public var lastX : CGFloat = 0.0;
-        
+            
     public let player = Player()
     public let world = World()
     public let cameraNode = Camera()
@@ -36,6 +39,8 @@ class Game: SKScene, SKPhysicsContactDelegate {
     public var pauseButton = Button(caption: "")
     
     public var GameViewController : GameViewController?
+    
+    public static let GAME_OVER_LINE_UNDER_PLAYER_PERCENT: CGFloat = 0.7
     
     public var timeWasPaused = false // after game paused do not calculate time delta
     
@@ -108,47 +113,10 @@ class Game: SKScene, SKPhysicsContactDelegate {
                 self.addChild(debugRight)
             }
             
+            self.motionManager.startDeviceMotionUpdates()
+            
             self.Setup()
         }
-    }
-    
-    func touchDown(atPoint pos : CGPoint) {
-        self.player.StartMoving()
-        lastX = pos.x
-    }
-    
-    func touchMoved(toPoint pos : CGPoint) {
-        let dx = pos.x - lastX
-        
-        player.Move(x: dx)
-        
-        lastX = pos.x
-    }
-    
-    func touchUp(atPoint pos : CGPoint) {
-        if(self.allowJump && (gameState == .Started || gameState == .Running)) {
-            player.Jump()
-        }
-        
-        if(gameState == .Started) {
-            gameState = .Running
-        }
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchDown(atPoint: t.location(in: self)) }
-    }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchMoved(toPoint: t.location(in: self)) }
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
-    }
-    
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -169,10 +137,39 @@ class Game: SKScene, SKPhysicsContactDelegate {
         if(gameState == .Running) {
             player.Update()
         }
-
+        
         self.updateGame(dt)
         
+        // TODO remove, experimental motion control
+        /* if(self.motionManager.isDeviceMotionAvailable) {
+            if let g = self.motionManager.deviceMotion?.gravity {
+                if(abs(g.y) > 0.05) {
+                    var dx = CGFloat(g.y)
+                    if(abs(dx) > 0.2) {
+                        dx = dx > 0 ? 0.2 : -0.2
+                    }
+                    dx = dx * CGFloat(dt) * 2400 * (UIDevice.current.orientation == UIDeviceOrientation.landscapeRight ? 1 : -1)
+                    
+                    if(abs(dx) >= abs(self.lastGravityX)) {
+                        self.player.Move(x: dx)
+                    } else {
+                        self.player.NeutralizeHorizontalSpeed()
+                    }
+                    
+                    self.lastGravityX = dx
+                }
+                //var gravity = CGVector(dx: 0.0, dy: -1.0)
+                // self.updateGravity(gravity.normalized() * 9.81)
+                // print(String(format: "g: %.2f, %.2f, %.2f", g.x, g.y, g.z))
+                print(String(format: "g: %.2f", g.y))
+            }
+        }*/
+        
         lastTime = currentTime
+    }
+    
+    func updateGravity(_ gravity: CGVector) {
+        self.scene?.physicsWorld.gravity = gravity
     }
     
     func showDebugText(text: String, currentTime: TimeInterval, pause: Bool)

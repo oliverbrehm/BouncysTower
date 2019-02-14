@@ -50,10 +50,11 @@ class Level: SKNode
     
     init(worldWidth: CGFloat) {
         self.worldWidth = worldWidth
-        platformY = 0.0
         backgroundY = 0.0
+        platformY = 0.0
         super.init()
         
+        self.platformY = self.FirstPlatformOffset()
         self.SpawnBackground(beneath: BACKGROUND_HEIGHT)
     }
     
@@ -243,7 +244,7 @@ class Level: SKNode
     }
     
     func NumberOfPlatforms() -> Int  {
-        return 25 // TODO 50
+        return 50
     }
     
     func LevelSpeed() -> CGFloat {
@@ -256,6 +257,10 @@ class Level: SKNode
     
     func PlatformTexture() -> SKTexture? {
         return self.platformTexture;
+    }
+    
+    func FirstPlatformOffset() -> CGFloat {
+        return 500.0
     }
     
     func EaseInSpeed() {

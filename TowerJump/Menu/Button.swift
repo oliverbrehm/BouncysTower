@@ -16,18 +16,22 @@ class Button : SKSpriteNode
     private var backgroundColor : SKColor = SKColor.darkGray
     private var pressedColor : SKColor = SKColor.lightGray
     
-    private var pressed : Bool = false
-    public var Pressed : Bool {
+    private var focussed : Bool = false
+    public var Focussed : Bool {
         get {
-            return pressed
+            return focussed
         } set {
-            pressed = newValue
+            focussed = newValue
             if(newValue) {
                 self.color = self.pressedColor
             } else {
                 self.color = self.backgroundColor
             }
         }
+    }
+    
+    public static func focusNextInScene(_ scene: SKScene) {
+        // TODO
     }
     
     public convenience init(caption: String)
@@ -48,7 +52,8 @@ class Button : SKSpriteNode
         self.label.zPosition = NodeZOrder.Label
         
         super.init(texture: nil, color: backgroundColor, size: size)
-        
+        self.name = "button"
+
         self.zPosition = NodeZOrder.Button
         
         self.isUserInteractionEnabled = true
@@ -63,8 +68,8 @@ class Button : SKSpriteNode
     
     public func TouchUp(point : CGPoint)
     {
-        if(self.pressed) {
-            self.Pressed = false
+        if(self.focussed) {
+            self.Focussed = false
             
             if(self.frame.contains(point) && self.Action != nil) {
                 self.Action?()
@@ -74,7 +79,7 @@ class Button : SKSpriteNode
     
     public func TouchDown(point : CGPoint)
     {
-        self.Pressed = true
+        self.Focussed = true
         self.run(SoundController.Default.GetSoundAction(action: .Button))
     }
     

@@ -1,8 +1,8 @@
 //
 //  GameViewController.swift
-//  TowerJump iOS
+//  TowerJump
 //
-//  Created by Oliver Brehm on 02.02.19.
+//  Created by Oliver Brehm on 12.02.19.
 //  Copyright © 2019 Oliver Brehm. All rights reserved.
 //
 
@@ -11,6 +11,7 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
+    public var Game: Game?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +26,7 @@ class GameViewController: UIViewController {
         
         ShowMainMenu()
     }
-    
+
     public func ShowGame()
     {
         if !Config.Default.TutorialShown {
@@ -37,23 +38,27 @@ class GameViewController: UIViewController {
             scene.scaleMode = .resizeFill
             scene.GameViewController = self
             
+            self.Game = scene
+            
             if let view = self.view as! SKView? {
                 view.presentScene(scene, transition: SKTransition.push(with: SKTransitionDirection.left, duration: 0.5))
             }
         }
     }
-    
+
     public func ShowTutorial() {
         if let scene = SKScene(fileNamed: "Tutorial") as? Tutorial {
             scene.scaleMode = .resizeFill
             scene.GameViewController = self
+            
+            self.Game = scene
             
             if let view = self.view as! SKView? {
                 view.presentScene(scene, transition: SKTransition.push(with: SKTransitionDirection.right, duration: 0.5))
             }
         }
     }
-    
+
     public func ShowMainMenu()
     {
         if let view = self.view as! SKView? {
@@ -70,7 +75,7 @@ class GameViewController: UIViewController {
             }
         }
     }
-    
+
     public func ShowCredits()
     {
         if let scene = SKScene(fileNamed: "Settings") as? Settings {
@@ -81,22 +86,5 @@ class GameViewController: UIViewController {
                 view.presentScene(scene, transition: SKTransition.push(with: SKTransitionDirection.right, duration: 0.5))
             }
         }
-    }
-    
-    override var shouldAutorotate: Bool {
-        return true
-    }
-    
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return .landscape
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Release any cached data, images, etc that aren't in use.
-    }
-    
-    override var prefersStatusBarHidden: Bool {
-        return true
     }
 }

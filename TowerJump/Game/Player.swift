@@ -19,7 +19,8 @@ class Player : SKSpriteNode
     
     public static let SIZE : CGFloat = 35.0;
     public static let JUMP_IMPULSE : CGFloat = 35.0
-    
+    public static let SUPER_JUMP_IMPULSE : CGFloat = 120.0
+    private let READY_ACTION_KEY = "readyAction"
     public var World : World?
     
     public var CurrentPlatform: Platform?
@@ -38,6 +39,9 @@ class Player : SKSpriteNode
             }
         }
     }
+    
+    private var jumpReady = false
+    private var loadingJump = false
     
     private let particleEmitter = SKEmitterNode(fileNamed: "ScoreParticle")!
     
@@ -83,11 +87,12 @@ class Player : SKSpriteNode
         self.particleEmitter.particleBirthRate = 0.0
     }
     
-    public func Jump()
+    public func ReleaseMove()
     {
-        self.run(SKAction.scale(to: 1.0, duration: 0.15))
+        self.removeAction(forKey: READY_ACTION_KEY)
 
-        if(self.State == PlayerState.OnPlatform)
+        // jump if ready
+        if(self.State == PlayerState.OnPlatform && self.jumpReady)
         {
             let vxMax : CGFloat = 2000.0
             let vx : CGFloat = abs(self.physicsBody!.velocity.dx)
@@ -98,11 +103,37 @@ class Player : SKSpriteNode
             self.State = PlayerState.Jumping
             
             self.run(SoundController.Default.GetSoundAction(action: .Jump))
+            
+            self.run(SKAction.scale(to: 1.0, duration: 0.1))
+            self.run(SKAction.colorize(with: SKColor.orange, colorBlendFactor: 0.0, duration: 0.05))
+            self.jumpReady = false
         }
+        
+        self.loadingJump = false
+    }
+    
+    public func SuperJump()
+    {
+        self.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: Player.SUPER_JUMP_IMPULSE))
+        self.State = PlayerState.Jumping
+
+        self.run(SoundController.Default.GetSoundAction(action: .SuperJump))
     }
     
     public func StartMoving() {
-        self.run(SKAction.scale(to: 0.85, duration: 0.15))
+        self.loadingJump = true
+        
+        let jumpReadyTime = 0.2
+        self.run(SKAction.scale(to: 0.85, duration: jumpReadyTime))
+        
+        let readyAction = SKAction.sequence([
+            SKAction.wait(forDuration: jumpReadyTime),
+            SKAction.run {
+                self.jumpReady = true
+            },
+            SKAction.colorize(with: SKColor.orange, colorBlendFactor: 1.0, duration: 0.05)
+        ])
+        self.run(readyAction, withKey: READY_ACTION_KEY)
     }
     
     public func Update()
@@ -138,6 +169,12 @@ class Player : SKSpriteNode
         self.State = PlayerState.OnPlatform
         self.physicsBody?.velocity.dy = 0.0
         self.CurrentPlatform = platform
+        
+        if(self.jumpReady && !self.loadingJump) {
+            // user already released but has not yet landed yet
+            // -> auto jump
+            self.ReleaseMove()
+        }
     }
     
     public func HitWall()
@@ -179,6 +216,10 @@ class Player : SKSpriteNode
         }
         
         self.physicsBody?.applyForce(CGVector(dx: dx, dy: 0.0))
+    }
+    
+    public func NeutralizeHorizontalSpeed() {
+        self.physicsBody?.angularVelocity = (self.physicsBody?.angularVelocity ?? 0.0) * 0.95
     }
     
     public func PlatformNumber() -> Int {

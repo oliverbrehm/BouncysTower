@@ -11,8 +11,7 @@ import SpriteKit
 class PlatformEndLevel : Platform
 {
     override func HitPlayer(player: Player) {
-        player.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 80.0))
-        self.run(SoundController.Default.GetSoundAction(action: .SuperJump))
+        player.SuperJump()
     }
     
     override func Score() -> Int {

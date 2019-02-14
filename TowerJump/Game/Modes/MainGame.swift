@@ -16,6 +16,8 @@ class MainGame: Game {
     public var scoreLabel = Button(caption: "")
     public var currentScore = 0
     
+    private let GAME_OVER_TOLERANCE: CGFloat = 20.0
+    
     override func Setup() {
         self.cameraNode.addChild(self.gameOverOverlay)
         self.gameOverOverlay.Setup(game: self)
@@ -64,13 +66,19 @@ class MainGame: Game {
     private func CheckGameOver(dt: Double)
     {
         let advanceLine = GameOverY + (self.player.CurrentPlatform != nil ? self.player.CurrentPlatform!.Level.GameSpeed() : 0.0) * CGFloat(dt)
-        let lineUnderPlayer = player.position.y - 0.7 * world.Height
+        let lineUnderPlayer = player.position.y - Game.GAME_OVER_LINE_UNDER_PLAYER_PERCENT * world.Height
         self.GameOverY = max(advanceLine, lineUnderPlayer)
+        
+        if let l = self.player.CurrentLevel {
+            self.GameOverY = min(self.GameOverY, l.position.y + l.TopPlatformY())
+        }
         
         debugGameOver.position.y = self.GameOverY
         
-        if(player.position.y + player.size.height / 2.0 < GameOverY)
+        if(player.position.y + player.size.height / 2.0 + GAME_OVER_TOLERANCE < GameOverY)
         {
+            self.run(SoundController.Default.GetSoundAction(action: .GameOver))
+
             if(Config.Default.HasExtralives()) {
                 self.ShowExtralifeDialog()
             } else {
@@ -87,8 +95,6 @@ class MainGame: Game {
         self.gameOverOverlay.Show(score: self.player.Score)
         self.pauseButton.isHidden = true
         self.gameState = .Over
-        
-        self.run(SoundController.Default.GetSoundAction(action: .GameOver))
     }
     
     public func ShowExtralifeDialog() {
