@@ -38,4 +38,8 @@ class Level08 : Level
     override func levelSpeed() -> CGFloat {
         return 110.0
     }
+    
+    override func numberOfPlatforms() -> Int {
+        return Int.max
+    }
 }

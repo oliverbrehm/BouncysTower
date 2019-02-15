@@ -69,7 +69,7 @@ class MainGame: Game {
         let lineUnderPlayer = player.position.y - Game.GAME_OVER_LINE_UNDER_PLAYER_PERCENT * world.height
         self.State.GameOverY = max(advanceLine, lineUnderPlayer)
         
-        if let l = self.player.currentLevel {
+        if let l = self.world.currentLevel {
             self.State.GameOverY = min(self.State.GameOverY, l.position.y + l.topPlatformY())
         }
         

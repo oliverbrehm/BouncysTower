@@ -16,9 +16,12 @@ class Platform : SKSpriteNode
     
     let level : Level
     
-    init(width : CGFloat, texture: SKTexture?, level: Level, platformNumber: Int) {
+    let backgroundColor: SKColor
+    
+    init(width : CGFloat, texture: SKTexture?, level: Level, platformNumber: Int, backgroundColor: SKColor = SKColor.white) {
         self.level = level
         self.platformNumber = platformNumber
+        self.backgroundColor = backgroundColor
         let platformSize = CGSize(width: width, height: Platform.height);
 
         super.init(texture: nil, color: SKColor.init(white: 0.0, alpha: 0.0), size: platformSize)
@@ -53,7 +56,12 @@ class Platform : SKSpriteNode
     required init?(coder aDecoder: NSCoder) {
         self.platformNumber = -1
         self.level = Level01(worldWidth: 0.0)
+        self.backgroundColor = SKColor.white
         super.init(coder: aDecoder)
+    }
+    
+    func setup() {
+        // override in subclasses
     }
     
     func spawnCoinsInWorld(world: World, n: Int) {
@@ -74,7 +82,7 @@ class Platform : SKSpriteNode
         }
     }
     
-    func hitPlayer(player: Player) {
+    func hitPlayer(player: Player, world: World) {
         self.level.reached = true
         // special behaviour in subclasses
     }

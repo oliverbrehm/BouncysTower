@@ -24,7 +24,6 @@ class Player : SKSpriteNode
     var world : World?
     
     var currentPlatform: Platform?
-    var currentLevel: Level?
     
     var score = 0
     
@@ -35,7 +34,7 @@ class Player : SKSpriteNode
         } set {
             if(_state != newValue) {
                 _state = newValue
-                self.world?.updateCollisionTests(player: self)
+                self.world?.currentLevel?.updateCollisionTests(player: self)
             }
         }
     }
@@ -199,7 +198,7 @@ class Player : SKSpriteNode
         self.zRotation = 0.0
         self.position = CGPoint(x: 0.0, y: self.position.y + 100.0)
         
-        self.world?.updateCollisionTests(player: self)
+        self.world?.currentLevel?.updateCollisionTests(player: self)
 
         self.physicsBody?.velocity = CGVector.zero
         self.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 100.0))

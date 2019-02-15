@@ -174,7 +174,6 @@ class Game: SKScene, SKPhysicsContactDelegate {
         
         self.player.reset()
         self.player.position = CGPoint(x: 0.0, y: world.absoluteZero() + player.size.height / 2.0)
-        self.player.currentLevel = self.world.levels.first!
         
         self.State.currentGameTime = 0.0
                 

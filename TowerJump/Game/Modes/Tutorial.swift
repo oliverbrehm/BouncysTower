@@ -26,8 +26,8 @@ class Tutorial: Game {
         self.camera?.addChild(self.infoBox)
         self.infoBox.position = CGPoint(x: 0.0, y: 0.25 * self.world.height)
         self.infoBox.setup(size: CGSize(width: 0.75 * self.world.width, height: 0.35 * self.world.height))
-        self.world.currentLevel?.spawnBackground(beneath: 2500.0)
-        self.world.currentLevel?.spawnWallTiles(beneath: 2500.0)
+        self.world.currentLevel?.spawnBackground(above: 2000.0)
+        self.world.currentLevel?.spawnWallTiles(above: 2000.0)
     }
     
     override func resetGame() {
@@ -88,7 +88,7 @@ class Tutorial: Game {
     }
     
     private func tutorialStart() {
-        self.world.currentLevel!.spawnWallTiles(beneath: 5 * self.world.height)
+        self.world.currentLevel!.spawnWallTiles(above: 5 * self.world.height)
         
         self.run(SKAction.sequence([
             SKAction.wait(forDuration: 0.5),

@@ -71,7 +71,7 @@ class World : SKNode
             Level08(worldWidth: width)];
         
         self.currentLevel = nil
-        self.spawnNextLevel(y: absoluteZero())
+        self.spawnNextLevel()
         scene.levelReached(level: self.currentLevel!)
         
         self.spawnFloor()
@@ -101,18 +101,22 @@ class World : SKNode
         }
     }
     
-    func spawnNextLevel(y: CGFloat) {
-        let levelIndex = self.currentLevel != nil ? self.levels.firstIndex(of: self.currentLevel!)! + 1 : 0
-        if(self.levels.count > levelIndex) {
-            self.currentLevel = self.levels[levelIndex]
+    func spawnNextLevel() {
+        let y = topPlatformY()
+        if(self.levels.count > 0) {
+            self.currentLevel?.fadeOutAndRemove()
+            
+            self.currentLevel = self.levels.removeFirst()
             self.addChild(self.currentLevel!)
+            self.currentLevel!.fadeIn()
             self.currentLevel!.position = CGPoint(x: 0.0, y: y)
         }
     }
     
     func spawnPlatformsAbove(y : CGFloat)
     {
-        while(topPlatformY() - y < 3.0 * height) {
+        while((self.currentLevel != nil && !self.currentLevel!.isFinished())
+                && (topPlatformY() - y < 3.0 * height)) {
             self.spawnPlatform()
         }
     }
@@ -120,28 +124,21 @@ class World : SKNode
     func spawnPlatform(numberOfCoins: Int? = nil, yDistance: CGFloat = -1.0) {
         self.currentLevel!.spawnPlatform(scene: self.scene as! Game, number: self.currentPlatformNumber, numberOfCoins: numberOfCoins, yDistance: yDistance)
         self.currentPlatformNumber = self.currentPlatformNumber + 1
-        if(self.currentLevel!.isFinished()) {
-            self.spawnNextLevel(y: topPlatformY())
-        }
     }
     
     func topPlatformY() -> CGFloat {
-        return self.currentLevel!.topPlatformY() + self.currentLevel!.position.y
-    }
-    
-    func updateCollisionTests(player : Player)
-    {
-        for level in self.levels {
-            level.updateCollisionTests(player: player)
+        if let l = self.currentLevel {
+            return l.topPlatformY() + l.position.y
         }
+        
+        return self.absoluteZero()
     }
     
     func landOnPlatform(platform: Platform, player: Player) {
         if(!platform.level.reached) {
             (self.scene as? Game)?.levelReached(level: platform.level)
-            player.currentLevel = platform.level
         }
-        platform.hitPlayer(player: player)
+        platform.hitPlayer(player: player, world: self)
     }
 
     func updateWallY(_ y : CGFloat)

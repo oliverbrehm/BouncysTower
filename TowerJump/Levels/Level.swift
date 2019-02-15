@@ -16,8 +16,10 @@ class Level: SKNode
     private var worldWidth : CGFloat
     
     private var platforms: [Platform] = []
+    private let maxPlatforms = 25
     private var wallY: CGFloat = 0.0
     private var wallTiles: [SKSpriteNode] = []
+    private let maxWallTiles = 200
     
     private var levelPlatformIndex = 0
     private var speedEaseIn: CGFloat = 999999999.0
@@ -28,7 +30,6 @@ class Level: SKNode
     var wallRightTexture: SKTexture?
     
     private let backgroundHeight:CGFloat = 500.0
-    private let maxWallTiles = 150
     
     private var _reached : Bool = false
     var reached : Bool
@@ -49,7 +50,7 @@ class Level: SKNode
         super.init()
         
         self.platformY = self.firstPlatformOffset()
-        self.spawnBackground(beneath: backgroundHeight)
+        self.spawnBackground(above: backgroundHeight)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -72,7 +73,11 @@ class Level: SKNode
         self.platformY = 0.0
     }
     
-    func getPlatform(platformNumber: Int, yDistance: CGFloat = -1.0) -> Platform {
+    func getPlatform(platformNumber: Int, yDistance: CGFloat = -1.0) -> Platform? {
+        if(self.isFinished()) {
+            return nil
+        }
+        
         if(yDistance < 0) {
             platformY += self.platformYDistance()
         } else {
@@ -86,9 +91,9 @@ class Level: SKNode
         
         var platform : Platform? = nil
         
-        if(self.isFinished()) {
-            platform = PlatformEndLevel(width: worldWidth, texture: nil, level: self, platformNumber: platformNumber)
-            self.spawnBackground(beneath: platformY, exact: true)
+        if(self.isLastPlatform()) {
+            platform = PlatformEndLevel(width: worldWidth, texture: nil, level: self, platformNumber: platformNumber, backgroundColor: self.backgroundColor())
+            self.spawnBackground(above: platformY)
         } else {
             let minWidth = levelWidth * self.platformMinFactor()
             let maxWidth = levelWidth * self.platformMaxFactor()
@@ -97,29 +102,24 @@ class Level: SKNode
             x = CGFloat.random(in: -levelWidth / 2.0 + w / 2.0
                 ..< levelWidth / 2.0 - w / 2.0)
             platform = Platform(width: w, texture: self.platformTexture(), level: self, platformNumber: platformNumber)
-            self.spawnBackground(beneath: platformY)
+            self.spawnBackground(above: platformY)
         }
 
         platform!.position = CGPoint(x: x, y: platformY)
         return platform!
     }
     
-    /**
-     @ param exact: if set texture is made smaller so it fits exactly beneath y and spawn all the textures beneath y, if not set textures might not get spawned all the way to y
-    **/
-    func spawnBackground(beneath y: CGFloat, exact: Bool = false) {
-        var texture = SKTexture(imageNamed: "bg")
-        var size = CGSize(width: self.worldWidth, height: self.worldWidth * texture.size().height / texture.size().width)
+    func spawnBackground(above y: CGFloat) {
+        let texture = SKTexture(imageNamed: "bg")
+        let size = CGSize(width: self.worldWidth, height: self.worldWidth * texture.size().height / texture.size().width)
         
-        while(self.backgroundY < y - size.height || (exact && self.backgroundY < y)) {
-            let heightLeft = y - self.backgroundY
-
-            if((size.height > heightLeft) && exact) {
-                // get sub texture and size that fits exactly
-                let textureHeight = heightLeft / size.height
-                size.height = heightLeft
-                texture = SKTexture(rect: CGRect(origin: CGPoint.zero, size: CGSize(width: 1.0, height: textureHeight)), in: texture)
-            }
+        while(self.backgroundY < y + 2 * size.height) {
+            // get sub texture and size that fits exactly
+            /*
+            let textureHeight = heightLeft / size.height
+            size.height = heightLeft
+            texture = SKTexture(rect: CGRect(origin: CGPoint.zero, size: CGSize(width: 1.0, height: textureHeight)), in: texture)
+            */
             
             let background = SKSpriteNode(texture: texture, color: self.backgroundColor(), size: size)
             background.colorBlendFactor = 1.0
@@ -134,14 +134,14 @@ class Level: SKNode
     
     func spawnWallTilesForPlatform(platform: Platform)
     {
-        self.spawnWallTiles(beneath: platform.position.y)
+        self.spawnWallTiles(above: platform.position.y)
     }
     
-    func spawnWallTiles(beneath y: CGFloat) {
+    func spawnWallTiles(above y: CGFloat) {
         let texL = self.wallLeftTexture
         let texR = self.wallRightTexture
         
-        while(self.wallY <= y) {
+        while(self.wallY <= y + 2 * self.worldWidth) {
             let left = SKSpriteNode(texture: texL, color: SKColor.white, size: CGSize(width: World.wallWidth, height: World.wallWidth))
             left.zPosition = NodeZOrder.world
             let right = SKSpriteNode(texture: texR, color: SKColor.white, size: CGSize(width: World.wallWidth, height: World.wallWidth))
@@ -188,29 +188,40 @@ class Level: SKNode
     {
         self.levelPlatformIndex = self.levelPlatformIndex + 1
         
-        let platform = self.getPlatform(platformNumber: number, yDistance: yDistance)
-        self.addChild(platform)
-        self.platforms.append(platform)
-        
-        let n = numberOfCoins ?? (platform.platformNumber % 4 == 0 ? 5 : 0)
-        platform.spawnCoinsInWorld(world: scene.world, n: n)
-        
-        platform.deactivateCollisions()
-        
-        self.spawnWallTilesForPlatform(platform: platform)
-        
-        if(self.isFinished()) {
-            let c1 = SKAction.colorize(with: self.backgroundColor(), colorBlendFactor: 1.0, duration: 0.4)
-            let c2 = SKAction.colorize(with: SKColor.red, colorBlendFactor: 1.0, duration: 0.4)
+        if let platform = self.getPlatform(platformNumber: number, yDistance: yDistance) {
+            self.addChild(platform)
+            self.platforms.append(platform)
+            platform.setup()
             
-            platform.run(SKAction.repeatForever(SKAction.sequence([c1, c2])))
+            if(self.platforms.count > self.maxPlatforms) {
+                self.platforms.removeFirst().removeFromParent()
+            }
+            
+            let n = numberOfCoins ?? (platform.platformNumber % 4 == 0 ? 5 : 0)
+            platform.spawnCoinsInWorld(world: scene.world, n: n)
+            
+            platform.deactivateCollisions()
+            
+            self.spawnWallTilesForPlatform(platform: platform)
+            
+            if(self.levelPlatformIndex == 13 && (self is Level02 || self is Level05 || self is Level07)) {
+                let extraLife = ExtraLife()
+                extraLife.position = CGPoint(x: platform.position.x, y: platform.position.y + 40.0)
+                self.addChild(extraLife)
+            }
         }
-        
-        if(self.levelPlatformIndex == 13 && (self is Level02 || self is Level05 || self is Level07)) {
-            let extraLife = ExtraLife()
-            extraLife.position = CGPoint(x: platform.position.x, y: platform.position.y + 40.0)
-            self.addChild(extraLife)
-        }
+    }
+    
+    func fadeIn() {
+        self.alpha = 0.0
+        self.run(SKAction.fadeIn(withDuration: 0.5))
+    }
+    
+    func fadeOutAndRemove() {
+        self.run(SKAction.sequence([
+            SKAction.fadeOut(withDuration: 0.5),
+            SKAction.removeFromParent()
+        ]))
     }
     
     func topPlatformY() -> CGFloat
@@ -228,8 +239,12 @@ class Level: SKNode
         return 1.0
     }
     
-    func isFinished() -> Bool {
+    func isLastPlatform() -> Bool {
         return self.levelPlatformIndex == self.numberOfPlatforms()
+    }
+    
+    func isFinished() -> Bool {
+        return self.levelPlatformIndex > self.numberOfPlatforms()
     }
     
     func platformYDistance() -> CGFloat {
