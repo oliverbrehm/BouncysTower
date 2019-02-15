@@ -11,31 +11,31 @@ import SpriteKit
 
 class Player : SKSpriteNode
 {
-    public enum PlayerState {
+    enum PlayerState {
         case OnPlatform
         case Jumping
         case Falling
     }
     
-    public static let SIZE : CGFloat = 35.0;
-    public static let JUMP_IMPULSE : CGFloat = 35.0
-    public static let SUPER_JUMP_IMPULSE : CGFloat = 120.0
-    private let READY_ACTION_KEY = "readyAction"
-    public var World : World?
+    static let size : CGFloat = 35.0;
+    static let jumpImpulse : CGFloat = 35.0
+    static let superJumpImpulse : CGFloat = 120.0
+    private let readyActionKey = "readyAction"
+    var world : World?
     
-    public var CurrentPlatform: Platform?
-    public var CurrentLevel: Level?
+    var currentPlatform: Platform?
+    var currentLevel: Level?
     
-    public var Score = 0
+    var score = 0
     
-    private var state : PlayerState = .OnPlatform
-    public var State : PlayerState {
+    private var _state : PlayerState = .OnPlatform
+    var state : PlayerState {
         get {
-            return state
+            return _state
         } set {
-            if(state != newValue) {
-                state = newValue
-                self.World?.UpdateCollisionTests(player: self)
+            if(_state != newValue) {
+                _state = newValue
+                self.world?.updateCollisionTests(player: self)
             }
         }
     }
@@ -46,26 +46,26 @@ class Player : SKSpriteNode
     private let particleEmitter = SKEmitterNode(fileNamed: "ScoreParticle")!
     
     init() {
-        super.init(texture: SKTexture(imageNamed: "player"), color: SKColor.red, size: CGSize(width: Player.SIZE, height: Player.SIZE))
+        super.init(texture: SKTexture(imageNamed: "player"), color: SKColor.red, size: CGSize(width: Player.size, height: Player.size))
         
-        self.physicsBody = SKPhysicsBody.init(circleOfRadius: Player.SIZE / 2.0)
+        self.physicsBody = SKPhysicsBody.init(circleOfRadius: Player.size / 2.0)
         self.physicsBody?.allowsRotation = true;
         self.physicsBody?.angularDamping = 0.8
         self.physicsBody?.usesPreciseCollisionDetection = true
-        self.physicsBody?.categoryBitMask = NodeCategories.Player
-        self.physicsBody?.collisionBitMask = NodeCategories.Platform | NodeCategories.Wall
-        self.physicsBody?.contactTestBitMask = NodeCategories.Platform | NodeCategories.Player | NodeCategories.Coin;
+        self.physicsBody?.categoryBitMask = NodeCategories.player
+        self.physicsBody?.collisionBitMask = NodeCategories.platform | NodeCategories.wall
+        self.physicsBody?.contactTestBitMask = NodeCategories.platform | NodeCategories.player | NodeCategories.coin;
         self.physicsBody?.friction = 3.0
         self.physicsBody?.mass = 0.05
         
-        self.zPosition = NodeZOrder.Player
+        self.zPosition = NodeZOrder.player
         
         self.particleEmitter.particleBirthRate = 10.0
         self.addChild(self.particleEmitter)
     }
     
-    public func Initialize(world: World, scene: Game) {
-        self.World = world
+    func initialize(world: World, scene: Game) {
+        self.world = world
         self.particleEmitter.targetNode = scene
         self.particleEmitter.particleBirthRate = 0.0
     }
@@ -74,35 +74,35 @@ class Player : SKSpriteNode
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func Reset()
+    func reset()
     {
         self.physicsBody?.velocity = CGVector.zero
         self.physicsBody?.angularVelocity = 0.0
         self.zRotation = 0.0
         
-        self.CurrentPlatform = nil
-        self.State = .OnPlatform
-        self.Score = 0
+        self.currentPlatform = nil
+        self.state = .OnPlatform
+        self.score = 0
         
         self.particleEmitter.particleBirthRate = 0.0
     }
     
-    public func ReleaseMove()
+    func releaseMove()
     {
-        self.removeAction(forKey: READY_ACTION_KEY)
+        self.removeAction(forKey: readyActionKey)
 
         // jump if ready
-        if(self.State == PlayerState.OnPlatform && self.jumpReady)
+        if(self.state == PlayerState.OnPlatform && self.jumpReady)
         {
             let vxMax : CGFloat = 2000.0
             let vx : CGFloat = abs(self.physicsBody!.velocity.dx)
             
             let xVelocityFactor : CGFloat = 1.0 + min((vx / vxMax), 2.0)
 
-            self.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: xVelocityFactor * Player.JUMP_IMPULSE))
-            self.State = PlayerState.Jumping
+            self.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: xVelocityFactor * Player.jumpImpulse))
+            self.state = PlayerState.Jumping
             
-            self.run(SoundController.Default.GetSoundAction(action: .Jump))
+            self.run(SoundController.standard.getSoundAction(action: .jump))
             
             self.run(SKAction.scale(to: 1.0, duration: 0.1))
             self.run(SKAction.colorize(with: SKColor.orange, colorBlendFactor: 0.0, duration: 0.05))
@@ -112,15 +112,15 @@ class Player : SKSpriteNode
         self.loadingJump = false
     }
     
-    public func SuperJump()
+    func superJump()
     {
-        self.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: Player.SUPER_JUMP_IMPULSE))
-        self.State = PlayerState.Jumping
+        self.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: Player.superJumpImpulse))
+        self.state = PlayerState.Jumping
 
-        self.run(SoundController.Default.GetSoundAction(action: .SuperJump))
+        self.run(SoundController.standard.getSoundAction(action: .superJump))
     }
     
-    public func StartMoving() {
+    func startMoving() {
         self.loadingJump = true
         
         let jumpReadyTime = 0.2
@@ -133,17 +133,17 @@ class Player : SKSpriteNode
             },
             SKAction.colorize(with: SKColor.orange, colorBlendFactor: 1.0, duration: 0.05)
         ])
-        self.run(readyAction, withKey: READY_ACTION_KEY)
+        self.run(readyAction, withKey: readyActionKey)
     }
     
-    public func Update()
+    func update()
     {
         if let p = self.physicsBody {
             if(p.velocity.dy < -0.1)
             {
-                self.State = .Falling
-            } else if(self.State == .Falling && p.velocity.dy > -0.000001) {
-                self.State = .OnPlatform
+                self.state = .Falling
+            } else if(self.state == .Falling && p.velocity.dy > -0.000001) {
+                self.state = .OnPlatform
             }
         }
         
@@ -158,29 +158,29 @@ class Player : SKSpriteNode
         }
     }
     
-    public func LandOnPlatform(platform: Platform)
+    func landOnPlatform(platform: Platform)
     {
         // calculate score
-        let previousPlatformNumber = self.CurrentPlatform?.PlatformNumber ?? 0
-        let nPlatformsJumped = platform.PlatformNumber - previousPlatformNumber
-        let platformBonus = nPlatformsJumped > 0 ? platform.Score() : 0
-        self.Score = self.Score + (nPlatformsJumped * nPlatformsJumped) + platformBonus
+        let previousPlatformNumber = self.currentPlatform?.platformNumber ?? 0
+        let nPlatformsJumped = platform.platformNumber - previousPlatformNumber
+        let platformBonus = nPlatformsJumped > 0 ? platform.score() : 0
+        self.score = self.score + (nPlatformsJumped * nPlatformsJumped) + platformBonus
 
-        self.State = PlayerState.OnPlatform
+        self.state = PlayerState.OnPlatform
         self.physicsBody?.velocity.dy = 0.0
-        self.CurrentPlatform = platform
+        self.currentPlatform = platform
         
         if(self.jumpReady && !self.loadingJump) {
             // user already released but has not yet landed yet
             // -> auto jump
-            self.ReleaseMove()
+            self.releaseMove()
         }
     }
     
-    public func HitWall()
+    func hitWall()
     {
-        if(self.State == PlayerState.Jumping && self.physicsBody!.velocity.dy > 0.0) {
-            self.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 0.4 * Player.JUMP_IMPULSE))
+        if(self.state == PlayerState.Jumping && self.physicsBody!.velocity.dy > 0.0) {
+            self.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 0.4 * Player.jumpImpulse))
         }
         
         if let pb = self.physicsBody {
@@ -194,35 +194,35 @@ class Player : SKSpriteNode
         }
     }
     
-    public func UseExtralife() {
-        self.state = .Jumping
+    func useExtralife() {
+        self._state = .Jumping
         self.zRotation = 0.0
         self.position = CGPoint(x: 0.0, y: self.position.y + 100.0)
         
-        self.World?.UpdateCollisionTests(player: self)
+        self.world?.updateCollisionTests(player: self)
 
         self.physicsBody?.velocity = CGVector.zero
         self.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 100.0))
     }
     
-    public func Move(x : CGFloat)
+    func move(x : CGFloat)
     {
         var dx : CGFloat = 0.0
         
-        if(self.State == PlayerState.Jumping || self.State == PlayerState.Falling) {
+        if(self.state == PlayerState.Jumping || self.state == PlayerState.Falling) {
             dx = x * 12.0
-        } else if(self.State == PlayerState.OnPlatform) {
+        } else if(self.state == PlayerState.OnPlatform) {
             dx = x * 16.0
         }
         
         self.physicsBody?.applyForce(CGVector(dx: dx, dy: 0.0))
     }
     
-    public func NeutralizeHorizontalSpeed() {
+    func neutralizeHorizontalSpeed() {
         self.physicsBody?.angularVelocity = (self.physicsBody?.angularVelocity ?? 0.0) * 0.95
     }
     
-    public func PlatformNumber() -> Int {
-        return self.CurrentPlatform?.PlatformNumber ?? 0
+    func platformNumber() -> Int {
+        return self.currentPlatform?.platformNumber ?? 0
     }
 }

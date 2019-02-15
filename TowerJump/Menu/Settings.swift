@@ -10,7 +10,7 @@ import SpriteKit
 
 class Settings : SKScene
 {
-    public var GameViewController : GameViewController?
+    var gameViewController : GameViewController?
     
     override func didMove(to view: SKView) {
         let infoLabel = SKLabelNode(text: "Made by Oliver Brehm")
@@ -18,20 +18,20 @@ class Settings : SKScene
         infoLabel.fontName = "AmericanTypewriter-Bold"
         infoLabel.fontSize = 28.0
         infoLabel.position = CGPoint(x: 0.0, y: 100.0)
-        infoLabel.zPosition = NodeZOrder.Label
+        infoLabel.zPosition = NodeZOrder.label
         self.addChild(infoLabel)
         
         let tutorialButton = Button(caption: "Tutorial")
         tutorialButton.position = CGPoint(x: 0.0, y: 0.0)
-        tutorialButton.Action = {
-            self.GameViewController?.ShowTutorial()
+        tutorialButton.action = {
+            self.gameViewController?.showTutorial()
         }
         self.addChild(tutorialButton)
         
         let backButton = Button(caption: "Back")
         backButton.position = CGPoint(x: 0.0, y: -100.0)
-        backButton.Action = {
-            self.GameViewController?.ShowMainMenu()
+        backButton.action = {
+            self.gameViewController?.showMainMenu()
         }
         self.addChild(backButton)
     }

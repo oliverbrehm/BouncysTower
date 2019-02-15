@@ -95,7 +95,6 @@
 		A7A22885220604E700081E0E /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE0667216239AF0009D905 /* Camera.swift */; };
 		A7A22886220604E700081E0E /* OverlayGameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71F2DA12163A93700FAF0EB /* OverlayGameOver.swift */; };
 		A7A22887220604E700081E0E /* OverlayPause.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71F2DA32164D2D000FAF0EB /* OverlayPause.swift */; };
-		A7A22888220604E700081E0E /* ScoreParticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A792AE0421652706004280A5 /* ScoreParticle.swift */; };
 		A7A22889220604E700081E0E /* OverlayExtralife.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D4C8332201CEAA0060F352 /* OverlayExtralife.swift */; };
 		A7A2288A220604E800081E0E /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7797EEF20E2A89200E3B664 /* Game.swift */; };
 		A7A2288B220604E800081E0E /* MainGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = A702E8BF22021E1700EB13B8 /* MainGame.swift */; };
@@ -108,7 +107,6 @@
 		A7A22892220604E800081E0E /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE0667216239AF0009D905 /* Camera.swift */; };
 		A7A22893220604E800081E0E /* OverlayGameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71F2DA12163A93700FAF0EB /* OverlayGameOver.swift */; };
 		A7A22894220604E800081E0E /* OverlayPause.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71F2DA32164D2D000FAF0EB /* OverlayPause.swift */; };
-		A7A22895220604E800081E0E /* ScoreParticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A792AE0421652706004280A5 /* ScoreParticle.swift */; };
 		A7A22896220604E800081E0E /* OverlayExtralife.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D4C8332201CEAA0060F352 /* OverlayExtralife.swift */; };
 		A7A22897220604E800081E0E /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7797EEF20E2A89200E3B664 /* Game.swift */; };
 		A7A22898220604E800081E0E /* MainGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = A702E8BF22021E1700EB13B8 /* MainGame.swift */; };
@@ -121,17 +119,16 @@
 		A7A2289F220604E800081E0E /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE0667216239AF0009D905 /* Camera.swift */; };
 		A7A228A0220604E800081E0E /* OverlayGameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71F2DA12163A93700FAF0EB /* OverlayGameOver.swift */; };
 		A7A228A1220604E800081E0E /* OverlayPause.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71F2DA32164D2D000FAF0EB /* OverlayPause.swift */; };
-		A7A228A2220604E800081E0E /* ScoreParticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A792AE0421652706004280A5 /* ScoreParticle.swift */; };
 		A7A228A3220604E800081E0E /* OverlayExtralife.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D4C8332201CEAA0060F352 /* OverlayExtralife.swift */; };
 		A7A228A4220604EE00081E0E /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7175FB420E2B4DA00968329 /* Platform.swift */; };
 		A7A228A5220604EE00081E0E /* PlatformEndLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A5199215E907300E7CDDB /* PlatformEndLevel.swift */; };
-		A7A228A6220604EE00081E0E /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D4C82F2201BB9E0060F352 /* Coin.swift */; };
+		A7A228A6220604EE00081E0E /* coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D4C82F2201BB9E0060F352 /* coin.swift */; };
 		A7A228A7220604EF00081E0E /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7175FB420E2B4DA00968329 /* Platform.swift */; };
 		A7A228A8220604EF00081E0E /* PlatformEndLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A5199215E907300E7CDDB /* PlatformEndLevel.swift */; };
-		A7A228A9220604EF00081E0E /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D4C82F2201BB9E0060F352 /* Coin.swift */; };
+		A7A228A9220604EF00081E0E /* coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D4C82F2201BB9E0060F352 /* coin.swift */; };
 		A7A228AA220604EF00081E0E /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7175FB420E2B4DA00968329 /* Platform.swift */; };
 		A7A228AB220604EF00081E0E /* PlatformEndLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A5199215E907300E7CDDB /* PlatformEndLevel.swift */; };
-		A7A228AC220604EF00081E0E /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D4C82F2201BB9E0060F352 /* Coin.swift */; };
+		A7A228AC220604EF00081E0E /* coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D4C82F2201BB9E0060F352 /* coin.swift */; };
 		A7A228AD220604F600081E0E /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A518D215A6A0600E7CDDB /* Level.swift */; };
 		A7A228AE220604F600081E0E /* Level01.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A5190215A6AC200E7CDDB /* Level01.swift */; };
 		A7A228AF220604F600081E0E /* Level02.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A5192215A6B0400E7CDDB /* Level02.swift */; };
@@ -160,17 +157,18 @@
 		A7A228C6220604F700081E0E /* Level07.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE066B216243E40009D905 /* Level07.swift */; };
 		A7A228C7220604F700081E0E /* Level08.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71F2D9B2163956D00FAF0EB /* Level08.swift */; };
 		A7A228C82206050E00081E0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7797EF620E2A89200E3B664 /* Assets.xcassets */; };
-		A7A228CA2206050E00081E0E /* SpriteNodeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71F2DA72164ED4500FAF0EB /* SpriteNodeExtensions.swift */; };
+		A7A228CA2206050E00081E0E /* SKSpriteNode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71F2DA72164ED4500FAF0EB /* SKSpriteNode+Extensions.swift */; };
 		A7A228CB2206050E00081E0E /* ScoreParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = A792AE06216538DC004280A5 /* ScoreParticle.sks */; };
 		A7A228CC2206050E00081E0E /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D4C8312201C8C80060F352 /* Config.swift */; };
 		A7A228CD2206050E00081E0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7797EF620E2A89200E3B664 /* Assets.xcassets */; };
-		A7A228CF2206050E00081E0E /* SpriteNodeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71F2DA72164ED4500FAF0EB /* SpriteNodeExtensions.swift */; };
+		A7A228CF2206050E00081E0E /* SKSpriteNode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71F2DA72164ED4500FAF0EB /* SKSpriteNode+Extensions.swift */; };
 		A7A228D02206050E00081E0E /* ScoreParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = A792AE06216538DC004280A5 /* ScoreParticle.sks */; };
 		A7A228D12206050E00081E0E /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D4C8312201C8C80060F352 /* Config.swift */; };
 		A7A228D22206050E00081E0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7797EF620E2A89200E3B664 /* Assets.xcassets */; };
-		A7A228D42206050E00081E0E /* SpriteNodeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71F2DA72164ED4500FAF0EB /* SpriteNodeExtensions.swift */; };
+		A7A228D42206050E00081E0E /* SKSpriteNode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71F2DA72164ED4500FAF0EB /* SKSpriteNode+Extensions.swift */; };
 		A7A228D52206050E00081E0E /* ScoreParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = A792AE06216538DC004280A5 /* ScoreParticle.sks */; };
 		A7A228D62206050E00081E0E /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D4C8312201C8C80060F352 /* Config.swift */; };
+		A7DC9BB62216BF670038EC58 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DC9BB52216BF670038EC58 /* GameState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -207,7 +205,7 @@
 		A71F2DA12163A93700FAF0EB /* OverlayGameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayGameOver.swift; sourceTree = "<group>"; };
 		A71F2DA32164D2D000FAF0EB /* OverlayPause.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayPause.swift; sourceTree = "<group>"; };
 		A71F2DA52164E1B100FAF0EB /* NodeZOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeZOrder.swift; sourceTree = "<group>"; };
-		A71F2DA72164ED4500FAF0EB /* SpriteNodeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteNodeExtensions.swift; sourceTree = "<group>"; };
+		A71F2DA72164ED4500FAF0EB /* SKSpriteNode+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKSpriteNode+Extensions.swift"; sourceTree = "<group>"; };
 		A74E3C8722131B2400D38AEB /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		A765DC022215A48400B34284 /* CGVector+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGVector+Extensions.swift"; sourceTree = "<group>"; };
 		A7736A902205D6B600A28B5D /* InfoBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoBox.swift; sourceTree = "<group>"; };
@@ -231,7 +229,6 @@
 		A7797EEF20E2A89200E3B664 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		A7797EF620E2A89200E3B664 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A7797EFB20E2A89200E3B664 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A792AE0421652706004280A5 /* ScoreParticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreParticle.swift; sourceTree = "<group>"; };
 		A792AE06216538DC004280A5 /* ScoreParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ScoreParticle.sks; sourceTree = "<group>"; };
 		A7AE0667216239AF0009D905 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		A7AE0669216243D70009D905 /* Level06.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level06.swift; sourceTree = "<group>"; };
@@ -240,9 +237,10 @@
 		A7AE06712162479C0009D905 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		A7AE0674216248AA0009D905 /* Main.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Main.sks; sourceTree = "<group>"; };
 		A7AE067621624B500009D905 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
-		A7D4C82F2201BB9E0060F352 /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
+		A7D4C82F2201BB9E0060F352 /* coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = coin.swift; sourceTree = "<group>"; };
 		A7D4C8312201C8C80060F352 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		A7D4C8332201CEAA0060F352 /* OverlayExtralife.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayExtralife.swift; sourceTree = "<group>"; };
+		A7DC9BB52216BF670038EC58 /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -287,6 +285,7 @@
 				A702E8BF22021E1700EB13B8 /* MainGame.swift */,
 				A702E8C122021E1F00EB13B8 /* Tutorial.swift */,
 				A7736A902205D6B600A28B5D /* InfoBox.swift */,
+				A7DC9BB52216BF670038EC58 /* GameState.swift */,
 			);
 			path = Modes;
 			sourceTree = "<group>";
@@ -333,7 +332,7 @@
 			children = (
 				A7175FB420E2B4DA00968329 /* Platform.swift */,
 				A71A5199215E907300E7CDDB /* PlatformEndLevel.swift */,
-				A7D4C82F2201BB9E0060F352 /* Coin.swift */,
+				A7D4C82F2201BB9E0060F352 /* coin.swift */,
 			);
 			path = Platforms;
 			sourceTree = "<group>";
@@ -342,6 +341,7 @@
 			isa = PBXGroup;
 			children = (
 				A765DC022215A48400B34284 /* CGVector+Extensions.swift */,
+				A71F2DA72164ED4500FAF0EB /* SKSpriteNode+Extensions.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -414,7 +414,6 @@
 				A71A518F215A6A9A00E7CDDB /* Levels */,
 				A7797EF620E2A89200E3B664 /* Assets.xcassets */,
 				A7797EFB20E2A89200E3B664 /* Info.plist */,
-				A71F2DA72164ED4500FAF0EB /* SpriteNodeExtensions.swift */,
 				A792AE06216538DC004280A5 /* ScoreParticle.sks */,
 				A7D4C8312201C8C80060F352 /* Config.swift */,
 				A74E3C8722131B2400D38AEB /* GameViewController.swift */,
@@ -434,7 +433,6 @@
 				A7AE0667216239AF0009D905 /* Camera.swift */,
 				A71F2DA12163A93700FAF0EB /* OverlayGameOver.swift */,
 				A71F2DA32164D2D000FAF0EB /* OverlayPause.swift */,
-				A792AE0421652706004280A5 /* ScoreParticle.swift */,
 				A7D4C8332201CEAA0060F352 /* OverlayExtralife.swift */,
 				A71875B4220B0619003ED6F1 /* ExtraLife.swift */,
 			);
@@ -644,7 +642,7 @@
 				A7A22884220604E700081E0E /* World.swift in Sources */,
 				A7A2286E220604E000081E0E /* Main.swift in Sources */,
 				A7A2287F220604E700081E0E /* Tutorial.swift in Sources */,
-				A7A228CA2206050E00081E0E /* SpriteNodeExtensions.swift in Sources */,
+				A7A228CA2206050E00081E0E /* SKSpriteNode+Extensions.swift in Sources */,
 				A765DC032215A48400B34284 /* CGVector+Extensions.swift in Sources */,
 				A7A228B3220604F600081E0E /* Level06.swift in Sources */,
 				A7A228AE220604F600081E0E /* Level01.swift in Sources */,
@@ -659,11 +657,12 @@
 				A7A228B1220604F600081E0E /* Level04.swift in Sources */,
 				A7A228B5220604F600081E0E /* Level08.swift in Sources */,
 				A7A22883220604E700081E0E /* NodeZOrder.swift in Sources */,
+				A7DC9BB62216BF670038EC58 /* GameState.swift in Sources */,
 				A74E3C8822131B2400D38AEB /* GameViewController.swift in Sources */,
 				A7A228B4220604F600081E0E /* Level07.swift in Sources */,
 				A7A22871220604E000081E0E /* Overlay.swift in Sources */,
 				A7A22882220604E700081E0E /* NodeCategories.swift in Sources */,
-				A7A228A6220604EE00081E0E /* Coin.swift in Sources */,
+				A7A228A6220604EE00081E0E /* coin.swift in Sources */,
 				A7A228A5220604EE00081E0E /* PlatformEndLevel.swift in Sources */,
 				A7A228B2220604F600081E0E /* Level05.swift in Sources */,
 				A7A2285A220604D500081E0E /* Advertising.swift in Sources */,
@@ -675,7 +674,6 @@
 				A7A22886220604E700081E0E /* OverlayGameOver.swift in Sources */,
 				A7A22889220604E700081E0E /* OverlayExtralife.swift in Sources */,
 				A7A22870220604E000081E0E /* Settings.swift in Sources */,
-				A7A22888220604E700081E0E /* ScoreParticle.swift in Sources */,
 				A71875B3220AFB11003ED6F1 /* ResourceView.swift in Sources */,
 				A7A22859220604D500081E0E /* AdvertisingController.swift in Sources */,
 				A7736A9E2206025100A28B5D /* AppDelegate.swift in Sources */,
@@ -694,7 +692,7 @@
 				A7A22873220604E100081E0E /* Main.swift in Sources */,
 				A7A2288C220604E800081E0E /* Tutorial.swift in Sources */,
 				A71875B6220B0619003ED6F1 /* ExtraLife.swift in Sources */,
-				A7A228CF2206050E00081E0E /* SpriteNodeExtensions.swift in Sources */,
+				A7A228CF2206050E00081E0E /* SKSpriteNode+Extensions.swift in Sources */,
 				A7A228BC220604F700081E0E /* Level06.swift in Sources */,
 				A7A228B7220604F700081E0E /* Level01.swift in Sources */,
 				A7A228B8220604F700081E0E /* Level02.swift in Sources */,
@@ -711,7 +709,7 @@
 				A7A228BD220604F700081E0E /* Level07.swift in Sources */,
 				A7A22876220604E100081E0E /* Overlay.swift in Sources */,
 				A7A2288F220604E800081E0E /* NodeCategories.swift in Sources */,
-				A7A228A9220604EF00081E0E /* Coin.swift in Sources */,
+				A7A228A9220604EF00081E0E /* coin.swift in Sources */,
 				A7A228A8220604EF00081E0E /* PlatformEndLevel.swift in Sources */,
 				A7A228BB220604F700081E0E /* Level05.swift in Sources */,
 				A7A2285D220604D500081E0E /* Advertising.swift in Sources */,
@@ -723,7 +721,6 @@
 				A7A22893220604E800081E0E /* OverlayGameOver.swift in Sources */,
 				A7A22896220604E800081E0E /* OverlayExtralife.swift in Sources */,
 				A7A22875220604E100081E0E /* Settings.swift in Sources */,
-				A7A22895220604E800081E0E /* ScoreParticle.swift in Sources */,
 				A7A2285C220604D500081E0E /* AdvertisingController.swift in Sources */,
 				A7736AAF2206025100A28B5D /* AppDelegate.swift in Sources */,
 			);
@@ -741,7 +738,7 @@
 				A7A22878220604E100081E0E /* Main.swift in Sources */,
 				A7A22899220604E800081E0E /* Tutorial.swift in Sources */,
 				A71875B7220B0619003ED6F1 /* ExtraLife.swift in Sources */,
-				A7A228D42206050E00081E0E /* SpriteNodeExtensions.swift in Sources */,
+				A7A228D42206050E00081E0E /* SKSpriteNode+Extensions.swift in Sources */,
 				A7A228C5220604F700081E0E /* Level06.swift in Sources */,
 				A7A228C0220604F700081E0E /* Level01.swift in Sources */,
 				A7A228C1220604F700081E0E /* Level02.swift in Sources */,
@@ -758,7 +755,7 @@
 				A7A228C6220604F700081E0E /* Level07.swift in Sources */,
 				A7A2287B220604E100081E0E /* Overlay.swift in Sources */,
 				A7A2289C220604E800081E0E /* NodeCategories.swift in Sources */,
-				A7A228AC220604EF00081E0E /* Coin.swift in Sources */,
+				A7A228AC220604EF00081E0E /* coin.swift in Sources */,
 				A7A228AB220604EF00081E0E /* PlatformEndLevel.swift in Sources */,
 				A7A228C4220604F700081E0E /* Level05.swift in Sources */,
 				A7A22860220604D600081E0E /* Advertising.swift in Sources */,
@@ -770,7 +767,6 @@
 				A7A228A0220604E800081E0E /* OverlayGameOver.swift in Sources */,
 				A7A228A3220604E800081E0E /* OverlayExtralife.swift in Sources */,
 				A7A2287A220604E100081E0E /* Settings.swift in Sources */,
-				A7A228A2220604E800081E0E /* ScoreParticle.swift in Sources */,
 				A7A2285F220604D600081E0E /* AdvertisingController.swift in Sources */,
 				A7736ABD2206025200A28B5D /* AppDelegate.swift in Sources */,
 			);

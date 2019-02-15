@@ -12,7 +12,7 @@ class Level04 : Level
 {
     override init(worldWidth: CGFloat) {
         super.init(worldWidth: worldWidth)
-        self.platformTexture = SKTexture(imageNamed: "platform02")
+        self.texturePlatform = SKTexture(imageNamed: "platform02")
         self.wallLeftTexture = SKTexture(imageNamed: "wallLeft01")
         self.wallRightTexture = SKTexture(imageNamed: "wallRight01")
     }
@@ -21,21 +21,21 @@ class Level04 : Level
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func BackgroundColor() -> SKColor {
-        return SKColor.init(named: "bgLevel04") ?? super.BackgroundColor()
+    override func backgroundColor() -> SKColor {
+        return SKColor.init(named: "bgLevel04") ?? super.backgroundColor()
     }
     
-    override func PlatformMinFactor() -> CGFloat
+    override func platformMinFactor() -> CGFloat
     {
         return 0.3
     }
     
-    override func PlatformMaxFactor() -> CGFloat
+    override func platformMaxFactor() -> CGFloat
     {
         return 0.55
     }
     
-    override func LevelSpeed() -> CGFloat {
+    override func levelSpeed() -> CGFloat {
         return 80.0
     }
 }

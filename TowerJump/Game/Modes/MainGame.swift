@@ -10,98 +10,96 @@ import SpriteKit
 
 class MainGame: Game {
     
-    public let gameOverOverlay = OverlayGameOver()
-    public let extralifeOverlay = OverlayExtralife()
+    let gameOverOverlay = OverlayGameOver()
+    let extralifeOverlay = OverlayExtralife()
     
-    public var scoreLabel = Button(caption: "")
-    public var currentScore = 0
+    var scoreLabel = Button(caption: "")
+    var currentScore = 0
     
-    private let GAME_OVER_TOLERANCE: CGFloat = 20.0
+    private let gameOverTolerance: CGFloat = 20.0
     
-    override func Setup() {
+    override func setup() {
         self.cameraNode.addChild(self.gameOverOverlay)
-        self.gameOverOverlay.Setup(game: self)
-        self.gameOverOverlay.Hide()
+        self.gameOverOverlay.setup(game: self)
+        self.gameOverOverlay.hide()
         
         self.cameraNode.addChild(self.extralifeOverlay)
         self.extralifeOverlay.Setup(game: self)
-        self.extralifeOverlay.Hide()
+        self.extralifeOverlay.hide()
         
-        self.scoreLabel = Button(caption: "0", size: CGSize(width: World.WALL_WIDTH, height: 30.0), fontSize: 12.0, fontColor: SKColor.black, backgroundColor: SKColor.init(white: 1.0, alpha: 0.8), pressedColor: SKColor.white)
-        self.scoreLabel.zPosition = NodeZOrder.Overlay
+        self.scoreLabel = Button(caption: "0", size: CGSize(width: World.wallWidth, height: 30.0), fontSize: 12.0, fontColor: SKColor.black, backgroundColor: SKColor.init(white: 1.0, alpha: 0.8), pressedColor: SKColor.white)
+        self.scoreLabel.zPosition = NodeZOrder.overlay
         self.scoreLabel.position = CGPoint(
-            x: -world.Width / 2.0 + scoreLabel.frame.size.width / 2.0,
-            y: world.Height / 2.0 - scoreLabel.frame.size.height / 2.0)
+            x: -world.width / 2.0 + scoreLabel.frame.size.width / 2.0,
+            y: world.height / 2.0 - scoreLabel.frame.size.height / 2.0)
         self.cameraNode.addChild(self.scoreLabel)
     }
     
-    override func ResetGame() {
-        super.ResetGame()
+    override func resetGame() {
+        super.resetGame()
         
-        self.gameOverOverlay.Hide()
-        self.extralifeOverlay.Hide()
+        self.gameOverOverlay.hide()
+        self.extralifeOverlay.hide()
         
         // first platforms
         for _ in 0..<8 {
-            self.world.SpawnPlatform()
+            self.world.spawnPlatform()
         }
         
         self.currentScore = 0
-        self.scoreLabel.SetText(text: "0")
+        self.scoreLabel.setText(text: "0")
     }
     
     override func updateGame(_ dt: TimeInterval) {
-        if(gameState == .Started || gameState == .Running)
+        if(State.runningState == .started || State.runningState == .running)
         {
-            self.cameraNode.UpdateGame(gameScene: self, player: player, world: world)
-            self.world.SpawnPlatformsAbove(y: self.player.position.y)
+            self.cameraNode.updateIn(game: self, player: player, world: world)
+            self.world.spawnPlatformsAbove(y: self.player.position.y)
         }
         
-        if(gameState == .Running) {
-            self.currentGameTime += dt
-            self.CheckGameOver(dt: dt)
+        if(State.runningState == .running) {
+            self.State.currentGameTime += dt
+            self.checkGameOver(dt: dt)
         }
     }
     
-    private func CheckGameOver(dt: Double)
+    private func checkGameOver(dt: Double)
     {
-        let advanceLine = GameOverY + (self.player.CurrentPlatform != nil ? self.player.CurrentPlatform!.Level.GameSpeed() : 0.0) * CGFloat(dt)
-        let lineUnderPlayer = player.position.y - Game.GAME_OVER_LINE_UNDER_PLAYER_PERCENT * world.Height
-        self.GameOverY = max(advanceLine, lineUnderPlayer)
+        let advanceLine = State.GameOverY + (self.player.currentPlatform != nil ? self.player.currentPlatform!.level.gameSpeed() : 0.0) * CGFloat(dt)
+        let lineUnderPlayer = player.position.y - Game.GAME_OVER_LINE_UNDER_PLAYER_PERCENT * world.height
+        self.State.GameOverY = max(advanceLine, lineUnderPlayer)
         
-        if let l = self.player.CurrentLevel {
-            self.GameOverY = min(self.GameOverY, l.position.y + l.TopPlatformY())
+        if let l = self.player.currentLevel {
+            self.State.GameOverY = min(self.State.GameOverY, l.position.y + l.topPlatformY())
         }
         
-        debugGameOver.position.y = self.GameOverY
-        
-        if(player.position.y + player.size.height / 2.0 + GAME_OVER_TOLERANCE < GameOverY)
+        if(player.position.y + player.size.height / 2.0 + gameOverTolerance < State.GameOverY)
         {
-            self.run(SoundController.Default.GetSoundAction(action: .GameOver))
+            self.run(SoundController.standard.getSoundAction(action: .gameOver))
 
-            if(Config.Default.HasExtralives()) {
-                self.ShowExtralifeDialog()
+            if(Config.standard.hasExtralives()) {
+                self.showExtralifeDialog()
             } else {
-                self.GameOver()
+                self.gameOver()
             }
         }
     }
     
-    public func GameOver()
+    func gameOver()
     {
-        print("played: \(self.currentGameTime)")
-        AdvertisingController.Default.GamePlayed(gameTime: self.currentGameTime)
+        print("played: \(self.State.currentGameTime)")
+        AdvertisingController.Default.GamePlayed(gameTime: self.State.currentGameTime)
         
-        self.gameOverOverlay.Show(score: self.player.Score)
+        self.gameOverOverlay.show(score: self.player.score)
         self.pauseButton.isHidden = true
-        self.gameState = .Over
+        self.State.runningState = .over
     }
     
-    public func ShowExtralifeDialog() {
-        self.extralifeOverlay.Show()
-        self.extralifeOverlay.Start(game: self)
+    func showExtralifeDialog() {
+        self.extralifeOverlay.show()
+        self.extralifeOverlay.start(game: self)
         
-        self.gameState = .Paused
+        self.State.runningState = .paused
         self.pauseButton.isHidden = true
         
         self.world.isPaused = true
@@ -109,19 +107,19 @@ class MainGame: Game {
         self.physicsWorld.speed = 0.0
     }
     
-    public func UseExtralife() {
-        if(Config.Default.UseExtralive()) {
-            self.Resume()
-            self.player.UseExtralife()
-            self.world.CurrentLevel!.EaseInSpeed()
-            self.run(SoundController.Default.GetSoundAction(action: .SuperJump))
+    func useExtralife() {
+        if(Config.standard.useExtralive()) {
+            self.resume()
+            self.player.useExtralife()
+            self.world.currentLevel!.easeInSpeed()
+            self.run(SoundController.standard.getSoundAction(action: .superJump))
         } else {
-            self.GameOver()
+            self.gameOver()
         }
     }
     
     func updateScore() {
-        if(self.gameState != GameState.Running) {
+        if(self.State.runningState != .running) {
             return
         }
         
@@ -129,13 +127,13 @@ class MainGame: Game {
         
         self.scoreLabel.run(SKAction.repeatForever(SKAction.sequence([
             SKAction.run {
-                if(self.currentScore >= self.player.Score) {
+                if(self.currentScore >= self.player.score) {
                     self.scoreLabel.removeAllActions()
                     return
                 }
                 
                 self.currentScore = self.currentScore + 1
-                self.scoreLabel.SetText(text: "\(self.currentScore)")
+                self.scoreLabel.setText(text: "\(self.currentScore)")
             },
             SKAction.wait(forDuration: 0.06)
             ])))
@@ -146,7 +144,7 @@ class MainGame: Game {
     }
     
     override func hitCoin(coin: Coin) {
-        self.player.Score += Coin.SCORE
+        self.player.score += Coin.score
         self.updateScore()
     }
 }

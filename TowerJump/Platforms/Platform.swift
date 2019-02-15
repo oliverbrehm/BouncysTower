@@ -10,23 +10,23 @@ import SpriteKit
 
 class Platform : SKSpriteNode
 {
-    public static let HEIGHT : CGFloat = 15.0;
+    static let height : CGFloat = 15.0;
     
-    public let PlatformNumber : Int
+    let platformNumber : Int
     
-    public let Level : Level
+    let level : Level
     
     init(width : CGFloat, texture: SKTexture?, level: Level, platformNumber: Int) {
-        self.Level = level
-        self.PlatformNumber = platformNumber
-        let platformSize = CGSize(width: width, height: Platform.HEIGHT);
+        self.level = level
+        self.platformNumber = platformNumber
+        let platformSize = CGSize(width: width, height: Platform.height);
 
         super.init(texture: nil, color: SKColor.init(white: 0.0, alpha: 0.0), size: platformSize)
         
         self.physicsBody = SKPhysicsBody.init(rectangleOf: platformSize)
         self.physicsBody?.isDynamic = false
-        self.physicsBody?.categoryBitMask = NodeCategories.Platform
-        self.physicsBody?.contactTestBitMask = NodeCategories.Platform | NodeCategories.Player;
+        self.physicsBody?.categoryBitMask = NodeCategories.platform
+        self.physicsBody?.contactTestBitMask = NodeCategories.platform | NodeCategories.player;
         self.physicsBody?.collisionBitMask = 0x0
         self.physicsBody?.usesPreciseCollisionDetection = true
         
@@ -42,23 +42,23 @@ class Platform : SKSpriteNode
                                          size: CGSize(width: label.frame.size.width + 2.0, height: label.frame.size.height + 2.0))
             container.anchorPoint = CGPoint(x: 0.5, y: 1.0)
             container.addChild(label)
-            container.zPosition = NodeZOrder.PlatformLabelContainer
-            label.zPosition = NodeZOrder.PlatformLabel
+            container.zPosition = NodeZOrder.platformLabelContainer
+            label.zPosition = NodeZOrder.platformLabel
             self.addChild(container)
         }
         
-        self.zPosition = NodeZOrder.World
+        self.zPosition = NodeZOrder.world
     }
     
     required init?(coder aDecoder: NSCoder) {
-        self.PlatformNumber = -1
-        self.Level = Level01(worldWidth: 0.0)
+        self.platformNumber = -1
+        self.level = Level01(worldWidth: 0.0)
         super.init(coder: aDecoder)
     }
     
-    public func SpawnCoinsInWorld(world: World, n: Int) {
-        let platformSize = CGSize(width: self.size.width, height: Platform.HEIGHT);
-        let platformInWorld = self.Level.convert(self.position, to: world)
+    func spawnCoinsInWorld(world: World, n: Int) {
+        let platformSize = CGSize(width: self.size.width, height: Platform.height);
+        let platformInWorld = self.level.convert(self.position, to: world)
         
         let coinPlatformMargin: CGFloat = platformSize.width * 0.175
         let d = (platformSize.width - 2 * coinPlatformMargin) / CGFloat(n - 1)
@@ -67,29 +67,29 @@ class Platform : SKSpriteNode
         
         var i = 0
         while i < n {
-            world.SpawnCoin(position: CGPoint(x: platformInWorld.x + x, y: platformInWorld.y + platformSize.height / 2.0 + Coin.COIN_SIZE / 2.0 + 2.0))
+            world.spawnCoin(position: CGPoint(x: platformInWorld.x + x, y: platformInWorld.y + platformSize.height / 2.0 + Coin.size / 2.0 + 2.0))
             
             x = x + d
             i = i + 1
         }
     }
     
-    public func HitPlayer(player: Player) {
-        self.Level.Reached = true
+    func hitPlayer(player: Player) {
+        self.level.reached = true
         // special behaviour in subclasses
     }
     
-    public func ActivateCollisions() {
-        self.physicsBody?.categoryBitMask = NodeCategories.Platform
-        self.physicsBody?.contactTestBitMask = NodeCategories.Platform | NodeCategories.Player
+    func activateCollisions() {
+        self.physicsBody?.categoryBitMask = NodeCategories.platform
+        self.physicsBody?.contactTestBitMask = NodeCategories.platform | NodeCategories.player
     }
     
-    public func DeactivateCollisions() {
-        self.physicsBody?.categoryBitMask = NodeCategories.PlatformDeactivated
-        self.physicsBody?.contactTestBitMask = NodeCategories.PlatformDeactivated
+    func deactivateCollisions() {
+        self.physicsBody?.categoryBitMask = NodeCategories.platformDeactivated
+        self.physicsBody?.contactTestBitMask = NodeCategories.platformDeactivated
     }
     
-    public func Score() -> Int {
+    func score() -> Int {
         return 5
     }
     

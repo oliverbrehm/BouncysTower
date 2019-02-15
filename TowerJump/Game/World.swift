@@ -10,148 +10,148 @@ import SpriteKit
 
 class World : SKNode
 {
-    public var CurrentLevel : Level?
+    var currentLevel : Level?
 
-    public var Levels : [Level] = []
+    var levels : [Level] = []
     private var coins: [Coin] = []
     private var currentPlatformNumber = 0
     
-    static let WALL_WIDTH : CGFloat = 35.0
+    static let wallWidth : CGFloat = 35.0
     
     // walls are invisible nodes, used only for collision with player, textures are spawned as tiles with platforms
-    private let leftWall = SKSpriteNode.init(color: SKColor.init(white: 0.0, alpha: 0.0), size: CGSize(width: World.WALL_WIDTH, height: 0.0))
-    private let rightWall = SKSpriteNode.init(color: SKColor.init(white: 0.0, alpha: 0.0), size: CGSize(width: World.WALL_WIDTH, height: 0.0))
+    private let leftWall = SKSpriteNode.init(color: SKColor.init(white: 0.0, alpha: 0.0), size: CGSize(width: World.wallWidth, height: 0.0))
+    private let rightWall = SKSpriteNode.init(color: SKColor.init(white: 0.0, alpha: 0.0), size: CGSize(width: World.wallWidth, height: 0.0))
     
-    public var Height : CGFloat = 0.0
-    public var Width : CGFloat = 0.0
+    var height : CGFloat = 0.0
+    var width : CGFloat = 0.0
     
-    public func Create(_ scene : Game)
+    func create(_ scene : Game)
     {
         self.currentPlatformNumber = 0
         self.removeAllChildren()
         
-        self.Width = scene.size.width * scene.xScale
-        self.Height = scene.size.height * scene.yScale
+        self.width = scene.size.width * scene.xScale
+        self.height = scene.size.height * scene.yScale
         //print("Width: \(Width), Height: \(Height)")
         //print("Saclex: \(xScale), Scaley: \(yScale)")
 
         // left wall
-        leftWall.size.height = Height * 3.0
-        leftWall.position.x = -Width / 2.0 + World.WALL_WIDTH / 2.0
+        leftWall.size.height = height * 3.0
+        leftWall.position.x = -width / 2.0 + World.wallWidth / 2.0
         leftWall.physicsBody = SKPhysicsBody.init(rectangleOf: leftWall.size)
         leftWall.physicsBody?.isDynamic = false
-        leftWall.physicsBody?.categoryBitMask = NodeCategories.Wall
-        leftWall.physicsBody?.contactTestBitMask = NodeCategories.Player | NodeCategories.Wall
+        leftWall.physicsBody?.categoryBitMask = NodeCategories.wall
+        leftWall.physicsBody?.contactTestBitMask = NodeCategories.player | NodeCategories.wall
         leftWall.physicsBody?.collisionBitMask = 0x0
         leftWall.name = "Wall" // TODO make own entity
         self.addChild(leftWall)
-        leftWall.zPosition = NodeZOrder.World
+        leftWall.zPosition = NodeZOrder.world
         
         // right wall
-        rightWall.size.height = Height * 3.0
-        rightWall.position.x = Width / 2.0 - World.WALL_WIDTH / 2.0
+        rightWall.size.height = height * 3.0
+        rightWall.position.x = width / 2.0 - World.wallWidth / 2.0
         rightWall.physicsBody = SKPhysicsBody.init(rectangleOf: rightWall.size)
         rightWall.physicsBody?.isDynamic = false
-        rightWall.physicsBody?.categoryBitMask = NodeCategories.Wall
-        rightWall.physicsBody?.contactTestBitMask = NodeCategories.Player | NodeCategories.Wall
+        rightWall.physicsBody?.categoryBitMask = NodeCategories.wall
+        rightWall.physicsBody?.contactTestBitMask = NodeCategories.player | NodeCategories.wall
         rightWall.physicsBody?.collisionBitMask = 0x0
         rightWall.name = "Wall"
         self.addChild(rightWall)
-        rightWall.zPosition = NodeZOrder.World
+        rightWall.zPosition = NodeZOrder.world
         
         // levels
-        self.Levels = [
-            Level01(worldWidth: Width),
-            Level02(worldWidth: Width),
-            Level03(worldWidth: Width),
-            Level04(worldWidth: Width),
-            Level05(worldWidth: Width),
-            Level06(worldWidth: Width),
-            Level07(worldWidth: Width),
-            Level08(worldWidth: Width)];
+        self.levels = [
+            Level01(worldWidth: width),
+            Level02(worldWidth: width),
+            Level03(worldWidth: width),
+            Level04(worldWidth: width),
+            Level05(worldWidth: width),
+            Level06(worldWidth: width),
+            Level07(worldWidth: width),
+            Level08(worldWidth: width)];
         
-        self.CurrentLevel = nil
-        self.SpawnNextLevel(y: AbsoluteZero())
-        scene.LevelReached(level: self.CurrentLevel!)
+        self.currentLevel = nil
+        self.spawnNextLevel(y: absoluteZero())
+        scene.levelReached(level: self.currentLevel!)
         
-        self.SpawnFloor()
+        self.spawnFloor()
     }
     
-    public func SpawnFloor() {
+    func spawnFloor() {
         let floorTexture = SKTexture(imageNamed: "platform01")
-        let platform = Platform(width: Width - 2 * World.WALL_WIDTH, texture: floorTexture, level: self.CurrentLevel!, platformNumber: 0)
-        platform.position = CGPoint(x: 0.0, y: AbsoluteZero())
+        let platform = Platform(width: width - 2 * World.wallWidth, texture: floorTexture, level: self.currentLevel!, platformNumber: 0)
+        platform.position = CGPoint(x: 0.0, y: absoluteZero())
         self.addChild(platform)
     }
     
-    public func SpawnCoin(position: CGPoint) {
+    func spawnCoin(position: CGPoint) {
         let coin = Coin()
         coin.position = position
         self.addChild(coin)
         self.coins.append(coin)
     }
     
-    public func NumberOfCoins() -> Int {
+    func numberOfCoins() -> Int {
         return self.coins.count
     }
     
-    public func RemoveCoin(coin: Coin) {
+    func removeCoin(coin: Coin) {
         if let index = self.coins.index(of: coin) {
             self.coins.remove(at: index)
         }
     }
     
-    public func SpawnNextLevel(y: CGFloat) {
-        let levelIndex = self.CurrentLevel != nil ? self.Levels.firstIndex(of: self.CurrentLevel!)! + 1 : 0
-        if(self.Levels.count > levelIndex) {
-            self.CurrentLevel = self.Levels[levelIndex]
-            self.addChild(self.CurrentLevel!)
-            self.CurrentLevel!.position = CGPoint(x: 0.0, y: y)
+    func spawnNextLevel(y: CGFloat) {
+        let levelIndex = self.currentLevel != nil ? self.levels.firstIndex(of: self.currentLevel!)! + 1 : 0
+        if(self.levels.count > levelIndex) {
+            self.currentLevel = self.levels[levelIndex]
+            self.addChild(self.currentLevel!)
+            self.currentLevel!.position = CGPoint(x: 0.0, y: y)
         }
     }
     
-    public func SpawnPlatformsAbove(y : CGFloat)
+    func spawnPlatformsAbove(y : CGFloat)
     {
-        while(TopPlatformY() - y < 3.0 * Height) {
-            self.SpawnPlatform()
+        while(topPlatformY() - y < 3.0 * height) {
+            self.spawnPlatform()
         }
     }
     
-    public func SpawnPlatform(numberOfCoins: Int? = nil, yDistance: CGFloat = -1.0) {
-        self.CurrentLevel!.SpawnPlatform(scene: self.scene as! Game, number: self.currentPlatformNumber, numberOfCoins: numberOfCoins, yDistance: yDistance)
+    func spawnPlatform(numberOfCoins: Int? = nil, yDistance: CGFloat = -1.0) {
+        self.currentLevel!.spawnPlatform(scene: self.scene as! Game, number: self.currentPlatformNumber, numberOfCoins: numberOfCoins, yDistance: yDistance)
         self.currentPlatformNumber = self.currentPlatformNumber + 1
-        if(self.CurrentLevel!.IsFinished()) {
-            self.SpawnNextLevel(y: TopPlatformY())
+        if(self.currentLevel!.isFinished()) {
+            self.spawnNextLevel(y: topPlatformY())
         }
     }
     
-    public func TopPlatformY() -> CGFloat {
-        return self.CurrentLevel!.TopPlatformY() + self.CurrentLevel!.position.y
+    func topPlatformY() -> CGFloat {
+        return self.currentLevel!.topPlatformY() + self.currentLevel!.position.y
     }
     
-    public func UpdateCollisionTests(player : Player)
+    func updateCollisionTests(player : Player)
     {
-        for level in self.Levels {
-            level.UpdateCollisionTests(player: player)
+        for level in self.levels {
+            level.updateCollisionTests(player: player)
         }
     }
     
-    public func LandOnPlatform(platform: Platform, player: Player) {
-        if(!platform.Level.Reached) {
-            (self.scene as? Game)?.LevelReached(level: platform.Level)
-            player.CurrentLevel = platform.Level
+    func landOnPlatform(platform: Platform, player: Player) {
+        if(!platform.level.reached) {
+            (self.scene as? Game)?.levelReached(level: platform.level)
+            player.currentLevel = platform.level
         }
-        platform.HitPlayer(player: player)
+        platform.hitPlayer(player: player)
     }
 
-    public func UpdateWallY(_ y : CGFloat)
+    func updateWallY(_ y : CGFloat)
     {
         self.leftWall.position.y = y
         self.rightWall.position.y = y
     }
 
-    public func AbsoluteZero() -> CGFloat
+    func absoluteZero() -> CGFloat
     {
-        return -Height / 2.0 + Platform.HEIGHT / 2.0
+        return -height / 2.0 + Platform.height / 2.0
     }
 }

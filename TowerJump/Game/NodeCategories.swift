@@ -10,10 +10,10 @@ import Foundation
 
 class NodeCategories
 {
-    public static let Player                : UInt32 = 0x1 << 1
-    public static let Platform              : UInt32 = 0x1 << 2
-    public static let PlatformDeactivated   : UInt32 = 0x1 << 3
-    public static let Wall                  : UInt32 = 0x1 << 4
-    public static let Particle              : UInt32 = 0x1 << 5
-    public static let Coin                  : UInt32 = 0x1 << 6
+    static let player                : UInt32 = 0x1 << 1
+    static let platform              : UInt32 = 0x1 << 2
+    static let platformDeactivated   : UInt32 = 0x1 << 3
+    static let wall                  : UInt32 = 0x1 << 4
+    static let particle              : UInt32 = 0x1 << 5
+    static let coin                  : UInt32 = 0x1 << 6
 }

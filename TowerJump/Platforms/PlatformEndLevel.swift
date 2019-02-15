@@ -10,11 +10,11 @@ import SpriteKit
 
 class PlatformEndLevel : Platform
 {
-    override func HitPlayer(player: Player) {
-        player.SuperJump()
+    override func hitPlayer(player: Player) {
+        player.superJump()
     }
     
-    override func Score() -> Int {
+    override func score() -> Int {
         return 50
     }
 }

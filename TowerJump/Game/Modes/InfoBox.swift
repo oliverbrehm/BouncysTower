@@ -22,7 +22,7 @@ class InfoBox : Button {
         super.init(coder: aDecoder)
     }
     
-    public func Setup(size: CGSize) {
+    func setup(size: CGSize) {
         self.size = size
         
         let label = SKLabelNode(fontNamed: "AmericanTypewriter-Bold")
@@ -34,14 +34,14 @@ class InfoBox : Button {
         self.addChild(label)
     }
     
-    public func Clear() {
+    func clear() {
         for node in self.lines {
             node.removeFromParent()
         }
         self.lines.removeAll()
     }
     
-    public func AddLine(text: String) {
+    func addLine(text: String) {
         let label = SKLabelNode(fontNamed: "AmericanTypewriter-Bold")
         label.text = text
         label.fontSize = 12.0
@@ -58,8 +58,8 @@ class InfoBox : Button {
         }
     }
     
-    public func Show(completion: @escaping () -> Void) {
-        self.Action = {
+    func show(completion: @escaping () -> Void) {
+        self.action = {
             self.run(SKAction.sequence([
                 SKAction.scale(to: 0.0, duration: 0.3),
                 SKAction.run {
@@ -69,6 +69,6 @@ class InfoBox : Button {
         }
         
         self.run(SKAction.scale(to: 1.0, duration: 0.3))
-        self.run(SoundController.Default.GetSoundAction(action: .Message))
+        self.run(SoundController.standard.getSoundAction(action: .message))
     }
 }

@@ -9,35 +9,35 @@
 import SpriteKit
 
 extension SKSpriteNode {
-    func Top() -> CGFloat
+    func top() -> CGFloat
     {
         return self.position.y + self.frame.size.height / 2.0
     }
     
-    func Bottom() -> CGFloat
+    func bottom() -> CGFloat
     {
         return self.position.y - self.frame.size.height / 2.0
     }
     
-    func Left() -> CGFloat
+    func left() -> CGFloat
     {
         return self.position.x - self.frame.size.width / 2.0
     }
     
-    func Right() -> CGFloat
+    func right() -> CGFloat
     {
         return self.position.x + self.frame.size.width / 2.0
     }
 }
 
 extension CGPoint {
-    func DistanceTo(point: CGPoint) -> CGFloat {
+    func distanceTo(point: CGPoint) -> CGFloat {
         let dx = self.x - point.x
         let dy = self.y - point.y
         return sqrt(dx*dx + dy*dy)
     }
     
-    func VectorTo(point: CGPoint) -> CGVector {
+    func vectorTo(point: CGPoint) -> CGVector {
         let dx = point.x - self.x
         let dy = point.y - self.y
         return CGVector(dx: dx, dy: dy)

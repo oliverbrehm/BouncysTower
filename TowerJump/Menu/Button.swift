@@ -10,18 +10,18 @@ import SpriteKit
 
 class Button : SKSpriteNode
 {
-    public var Action : (() -> Void)?
+    var action : (() -> Void)?
     
     private var label : SKLabelNode
     private var backgroundColor : SKColor = SKColor.darkGray
     private var pressedColor : SKColor = SKColor.lightGray
     
-    private var focussed : Bool = false
-    public var Focussed : Bool {
+    private var _focussed : Bool = false
+    var focussed : Bool {
         get {
-            return focussed
+            return _focussed
         } set {
-            focussed = newValue
+            _focussed = newValue
             if(newValue) {
                 self.color = self.pressedColor
             } else {
@@ -30,16 +30,16 @@ class Button : SKSpriteNode
         }
     }
     
-    public static func focusNextInScene(_ scene: SKScene) {
+    static func focusNextInScene(_ scene: SKScene) {
         // TODO
     }
     
-    public convenience init(caption: String)
+    convenience init(caption: String)
     {
         self.init(caption: caption, size: CGSize(width: 200.0, height: 70.0), fontSize: 30.0, fontColor: SKColor.init(named: "overlay")!, backgroundColor: SKColor.lightGray, pressedColor: SKColor.white)
     }
     
-    public init(caption: String, size: CGSize, fontSize: CGFloat, fontColor: SKColor, backgroundColor: SKColor, pressedColor: SKColor)
+    init(caption: String, size: CGSize, fontSize: CGFloat, fontColor: SKColor, backgroundColor: SKColor, pressedColor: SKColor)
     {
         self.backgroundColor = backgroundColor
         self.pressedColor = pressedColor
@@ -49,12 +49,12 @@ class Button : SKSpriteNode
         self.label.position = CGPoint(x: 0.0, y: -fontSize / 2.0)
         self.label.fontSize = fontSize
         self.label.fontName = "AmericanTypewriter-Bold"
-        self.label.zPosition = NodeZOrder.Label
+        self.label.zPosition = NodeZOrder.label
         
         super.init(texture: nil, color: backgroundColor, size: size)
         self.name = "button"
 
-        self.zPosition = NodeZOrder.Button
+        self.zPosition = NodeZOrder.button
         
         self.isUserInteractionEnabled = true
         
@@ -66,38 +66,38 @@ class Button : SKSpriteNode
         super.init(coder: aDecoder)
     }
     
-    public func TouchUp(point : CGPoint)
+    func touchUp(point : CGPoint)
     {
-        if(self.focussed) {
-            self.Focussed = false
+        if(self._focussed) {
+            self.focussed = false
             
-            if(self.frame.contains(point) && self.Action != nil) {
-                self.Action?()
+            if(self.frame.contains(point) && self.action != nil) {
+                self.action?()
             }
         }
     }
     
-    public func TouchDown(point : CGPoint)
+    func touchDown(point : CGPoint)
     {
-        self.Focussed = true
-        self.run(SoundController.Default.GetSoundAction(action: .Button))
+        self.focussed = true
+        self.run(SoundController.standard.getSoundAction(action: .button))
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches {
-            self.TouchDown(point: t.location(in: self))
+            self.touchDown(point: t.location(in: self))
         }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches {
             if let parent = self.parent {
-                self.TouchUp(point: t.location(in: parent))
+                self.touchUp(point: t.location(in: parent))
             }
         }
     }
     
-    public func SetText(text: String) {
+    func setText(text: String) {
         self.label.text = text
     }
 }

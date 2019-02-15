@@ -11,7 +11,7 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
-    public var Game: Game?
+    var game: Game?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,13 +24,13 @@ class GameViewController: UIViewController {
             AdvertisingController.Default.Setup(view: view)
         }
         
-        ShowMainMenu()
+        showMainMenu()
     }
 
-    public func ShowGame()
+    func showGame()
     {
-        if !Config.Default.TutorialShown {
-            self.ShowTutorial()
+        if !Config.standard.tutorialShown {
+            self.showTutorial()
             return
         }
         
@@ -38,7 +38,7 @@ class GameViewController: UIViewController {
             scene.scaleMode = .resizeFill
             scene.GameViewController = self
             
-            self.Game = scene
+            self.game = scene
             
             if let view = self.view as! SKView? {
                 view.presentScene(scene, transition: SKTransition.push(with: SKTransitionDirection.left, duration: 0.5))
@@ -46,12 +46,12 @@ class GameViewController: UIViewController {
         }
     }
 
-    public func ShowTutorial() {
+    func showTutorial() {
         if let scene = SKScene(fileNamed: "Tutorial") as? Tutorial {
             scene.scaleMode = .resizeFill
             scene.GameViewController = self
             
-            self.Game = scene
+            self.game = scene
             
             if let view = self.view as! SKView? {
                 view.presentScene(scene, transition: SKTransition.push(with: SKTransitionDirection.right, duration: 0.5))
@@ -59,7 +59,7 @@ class GameViewController: UIViewController {
         }
     }
 
-    public func ShowMainMenu()
+    func showMainMenu()
     {
         if let view = self.view as! SKView? {
             
@@ -70,17 +70,17 @@ class GameViewController: UIViewController {
             
             if let scene = SKScene(fileNamed: "Main") as? Main {
                 scene.scaleMode = .resizeFill
-                scene.GameViewController = self
+                scene.gameViewController = self
                 view.presentScene(scene, transition: SKTransition.push(with: transitionDirection, duration: 0.5))
             }
         }
     }
 
-    public func ShowCredits()
+    func showCredits()
     {
         if let scene = SKScene(fileNamed: "Settings") as? Settings {
             scene.scaleMode = .resizeFill
-            scene.GameViewController = self
+            scene.gameViewController = self
             
             if let view = self.view as! SKView? {
                 view.presentScene(scene, transition: SKTransition.push(with: SKTransitionDirection.right, duration: 0.5))

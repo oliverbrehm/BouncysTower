@@ -12,7 +12,7 @@ import GameplayKit
 
 class IOSGameViewController: GameViewController {
     
-    public var lastX : CGFloat = 0.0;
+    var lastX : CGFloat = 0.0;
 
     override var shouldAutorotate: Bool {
         return true
@@ -32,25 +32,25 @@ class IOSGameViewController: GameViewController {
     }
     
     func touchDown(atPoint pos : CGPoint) {
-        self.Game?.player.StartMoving()
+        self.game?.player.startMoving()
         lastX = pos.x
     }
     
     func touchMoved(toPoint pos : CGPoint) {
         let dx = pos.x - lastX
         
-        self.Game?.player.Move(x: dx)
+        self.game?.player.move(x: dx)
         
         lastX = pos.x
     }
     
     func touchUp(atPoint pos : CGPoint) {
-        if(self.Game?.allowJump ?? false && (self.Game?.gameState == .Started || self.Game?.gameState == .Running)) {
-            self.Game?.player.ReleaseMove()
+        if(self.game?.State.allowJump ?? false && (self.game?.State.runningState == .started || self.game?.State.runningState == .running)) {
+            self.game?.player.releaseMove()
         }
         
-        if(self.Game?.gameState == .Started) {
-            self.Game?.gameState = .Running
+        if(self.game?.State.runningState == .started) {
+            self.game?.State.runningState = .running
         }
     }
     

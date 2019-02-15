@@ -12,19 +12,19 @@ class Advertising : SKScene
 {
     private var secondsLeft = 2
     
-    public func Execute(completion: @escaping () -> Void) { // TODO what is @escaping
+    func Execute(completion: @escaping () -> Void) { // TODO what is @escaping
         let infoLabel = SKLabelNode(text: "\(self.secondsLeft)")
         infoLabel.fontColor = SKColor.green
         infoLabel.fontName = "AmericanTypewriter-Bold"
         infoLabel.fontSize = 28.0
         infoLabel.position = CGPoint(x: 0.0, y: -100.0)
-        infoLabel.zPosition = NodeZOrder.Label
+        infoLabel.zPosition = NodeZOrder.label
         self.addChild(infoLabel)
         
         let closeButton = Button(caption: "Close")
         closeButton.position = CGPoint(x: 0.0, y: -100.0)
         closeButton.isHidden = true
-        closeButton.Action = {
+        closeButton.action = {
             completion()
         }
         self.addChild(closeButton)

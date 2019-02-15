@@ -10,16 +10,16 @@ import SpriteKit
 
 enum SoundAction
 {
-    case Coin
-    case Button
-    case Message
-    case Jump
-    case SuperJump
-    case GameOver
+    case coin
+    case button
+    case message
+    case jump
+    case superJump
+    case gameOver
 }
 
 class SoundController {
-    public static let Default = SoundController()
+    static let standard = SoundController()
 
     private let coinSound: SKAction
     private let buttonSound: SKAction
@@ -28,7 +28,7 @@ class SoundController {
     private let superJumpSound: SKAction
     private let gameOverSound: SKAction
     
-    public init() {
+    init() {
         self.coinSound = SKAction.playSoundFileNamed("collectcoin.aif", waitForCompletion: true)
         self.buttonSound = SKAction.playSoundFileNamed("button.aif", waitForCompletion: true)
         self.messageSound = SKAction.playSoundFileNamed("message.aif", waitForCompletion: true)
@@ -37,19 +37,19 @@ class SoundController {
         self.gameOverSound = SKAction.playSoundFileNamed("gameover.aif", waitForCompletion: true)
     }
     
-    public func GetSoundAction(action: SoundAction) -> SKAction {
+    func getSoundAction(action: SoundAction) -> SKAction {
         switch(action) {
-        case .Coin:
+        case .coin:
             return self.coinSound
-        case .Button:
+        case .button:
             return self.buttonSound
-        case .Message:
+        case .message:
             return self.messageSound
-        case .Jump:
+        case .jump:
             return self.jumpSound
-        case .SuperJump:
+        case .superJump:
             return self.superJumpSound
-        case .GameOver:
+        case .gameOver:
             return self.gameOverSound
         }
     }

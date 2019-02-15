@@ -10,28 +10,28 @@ import SpriteKit
 
 class Coin: SKSpriteNode
 {
-    public static let COIN_SIZE: CGFloat = 12.0
-    public static let SCORE = 2
+    static let size: CGFloat = 12.0
+    static let score = 2
     
     init() {
-        super.init(texture: SKTexture(imageNamed: "coin"), color: SKColor.init(white: 0.0, alpha: 0.0), size: CGSize(width: Coin.COIN_SIZE, height: Coin.COIN_SIZE))
+        super.init(texture: SKTexture(imageNamed: "coin"), color: SKColor.init(white: 0.0, alpha: 0.0), size: CGSize(width: Coin.size, height: Coin.size))
         
-        self.physicsBody = SKPhysicsBody.init(circleOfRadius: Coin.COIN_SIZE / 2.0)
+        self.physicsBody = SKPhysicsBody.init(circleOfRadius: Coin.size / 2.0)
         self.physicsBody?.isDynamic = false
-        self.physicsBody?.categoryBitMask = NodeCategories.Coin
-        self.physicsBody?.contactTestBitMask = NodeCategories.Player;
+        self.physicsBody?.categoryBitMask = NodeCategories.coin
+        self.physicsBody?.contactTestBitMask = NodeCategories.player;
         self.physicsBody?.collisionBitMask = 0x0
         self.physicsBody?.usesPreciseCollisionDetection = true
         
-        self.zPosition = NodeZOrder.Item        
+        self.zPosition = NodeZOrder.item        
     }
     
-    public func hit() {
-        Config.Default.AddCoin()
+    func hit() {
+        Config.standard.addCoin()
 
         self.run(SKAction.sequence([
             SKAction.group([
-                SoundController.Default.GetSoundAction(action: .Coin),
+                SoundController.standard.getSoundAction(action: .coin),
                 SKAction.sequence([
                     SKAction.moveBy(x: 0.0, y: 4.0, duration: 0.1),
                     SKAction.scale(by: 0.2, duration: 0.1),

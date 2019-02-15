@@ -15,37 +15,31 @@ class Level: SKNode
     private var backgroundY: CGFloat
     private var worldWidth : CGFloat
     
-    private var Platforms: [Platform] = []
+    private var platforms: [Platform] = []
     private var wallY: CGFloat = 0.0
     private var wallTiles: [SKSpriteNode] = []
     
     private var levelPlatformIndex = 0
-    private var easeInSpeed: CGFloat = 999999999.0
+    private var speedEaseIn: CGFloat = 999999999.0
     private var lastPlatform : Platform?
     
-    var platformTexture : SKTexture?
+    var texturePlatform : SKTexture?
     var wallLeftTexture: SKTexture?
     var wallRightTexture: SKTexture?
     
-    private let BACKGROUND_HEIGHT:CGFloat = 500.0
-    private let MAX_WALL_TILES = 150
+    private let backgroundHeight:CGFloat = 500.0
+    private let maxWallTiles = 150
     
-    private var reached : Bool = false
-    public var Reached : Bool
+    private var _reached : Bool = false
+    var reached : Bool
     {
         get {
-            return reached
+            return _reached
         }
         
         set {
-            reached = newValue
+            _reached = newValue
         }
-    }
-    
-    public static func RandomNumber(between a : CGFloat, and b: CGFloat) -> CGFloat
-    {
-        let r = arc4random_uniform(UInt32(b - a))
-        return CGFloat(r) + a
     }
     
     init(worldWidth: CGFloat) {
@@ -54,57 +48,56 @@ class Level: SKNode
         platformY = 0.0
         super.init()
         
-        self.platformY = self.FirstPlatformOffset()
-        self.SpawnBackground(beneath: BACKGROUND_HEIGHT)
+        self.platformY = self.firstPlatformOffset()
+        self.spawnBackground(beneath: backgroundHeight)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func RemoveAllPlatforms() {
-        for node in self.Platforms {
+    func removeAllPlatforms() {
+        for node in self.platforms {
             node.removeFromParent()
         }
-        self.Platforms.removeAll()
+        self.platforms.removeAll()
     }
     
-    func BackgroundColor() -> SKColor {
+    func backgroundColor() -> SKColor {
         return SKColor.black
     }
     
-    func Reset() {
+    func reset() {
         self.levelPlatformIndex = 0
         self.platformY = 0.0
     }
     
-    func GetPlatform(platformNumber: Int, yDistance: CGFloat = -1.0) -> Platform {
+    func getPlatform(platformNumber: Int, yDistance: CGFloat = -1.0) -> Platform {
         if(yDistance < 0) {
-            platformY += self.PlatformYDistance()
+            platformY += self.platformYDistance()
         } else {
             platformY += yDistance
         }
                 
-        let levelWidth = worldWidth - 2 * World.WALL_WIDTH
+        let levelWidth = worldWidth - 2 * World.wallWidth
         
         // TODO replace with Double.random in Swift 4.2
         var x: CGFloat = 0.0
         
         var platform : Platform? = nil
         
-        if(self.IsFinished()) {
+        if(self.isFinished()) {
             platform = PlatformEndLevel(width: worldWidth, texture: nil, level: self, platformNumber: platformNumber)
-            self.SpawnBackground(beneath: platformY, exact: true)
+            self.spawnBackground(beneath: platformY, exact: true)
         } else {
-            let minWidth = levelWidth * self.PlatformMinFactor()
-            let maxWidth = levelWidth * self.PlatformMaxFactor()
+            let minWidth = levelWidth * self.platformMinFactor()
+            let maxWidth = levelWidth * self.platformMaxFactor()
             
-            let w = Level.RandomNumber(between: minWidth, and: maxWidth)
-            x = Level.RandomNumber(
-                between: -levelWidth / 2.0 + w / 2.0,
-                and: levelWidth / 2.0 - w / 2.0)
-            platform = Platform(width: w, texture: self.PlatformTexture(), level: self, platformNumber: platformNumber)
-            self.SpawnBackground(beneath: platformY)
+            let w = CGFloat.random(in: minWidth ..< maxWidth)
+            x = CGFloat.random(in: -levelWidth / 2.0 + w / 2.0
+                ..< levelWidth / 2.0 - w / 2.0)
+            platform = Platform(width: w, texture: self.platformTexture(), level: self, platformNumber: platformNumber)
+            self.spawnBackground(beneath: platformY)
         }
 
         platform!.position = CGPoint(x: x, y: platformY)
@@ -114,7 +107,7 @@ class Level: SKNode
     /**
      @ param exact: if set texture is made smaller so it fits exactly beneath y and spawn all the textures beneath y, if not set textures might not get spawned all the way to y
     **/
-    func SpawnBackground(beneath y: CGFloat, exact: Bool = false) {
+    func spawnBackground(beneath y: CGFloat, exact: Bool = false) {
         var texture = SKTexture(imageNamed: "bg")
         var size = CGSize(width: self.worldWidth, height: self.worldWidth * texture.size().height / texture.size().width)
         
@@ -128,10 +121,10 @@ class Level: SKNode
                 texture = SKTexture(rect: CGRect(origin: CGPoint.zero, size: CGSize(width: 1.0, height: textureHeight)), in: texture)
             }
             
-            let background = SKSpriteNode(texture: texture, color: self.BackgroundColor(), size: size)
+            let background = SKSpriteNode(texture: texture, color: self.backgroundColor(), size: size)
             background.colorBlendFactor = 1.0
             background.position = CGPoint(x: 0.0, y: self.backgroundY + size.height / 2.0)
-            background.zPosition = NodeZOrder.Background
+            background.zPosition = NodeZOrder.background
             
             self.addChild(background)
             
@@ -139,20 +132,20 @@ class Level: SKNode
         }        
     }
     
-    public func SpawnWallTilesForPlatform(platform: Platform)
+    func spawnWallTilesForPlatform(platform: Platform)
     {
-        self.SpawnWallTiles(beneath: platform.position.y)
+        self.spawnWallTiles(beneath: platform.position.y)
     }
     
-    public func SpawnWallTiles(beneath y: CGFloat) {
+    func spawnWallTiles(beneath y: CGFloat) {
         let texL = self.wallLeftTexture
         let texR = self.wallRightTexture
         
         while(self.wallY <= y) {
-            let left = SKSpriteNode(texture: texL, color: SKColor.white, size: CGSize(width: World.WALL_WIDTH, height: World.WALL_WIDTH))
-            left.zPosition = NodeZOrder.World
-            let right = SKSpriteNode(texture: texR, color: SKColor.white, size: CGSize(width: World.WALL_WIDTH, height: World.WALL_WIDTH))
-            right.zPosition = NodeZOrder.World
+            let left = SKSpriteNode(texture: texL, color: SKColor.white, size: CGSize(width: World.wallWidth, height: World.wallWidth))
+            left.zPosition = NodeZOrder.world
+            let right = SKSpriteNode(texture: texR, color: SKColor.white, size: CGSize(width: World.wallWidth, height: World.wallWidth))
+            right.zPosition = NodeZOrder.world
             
             self.addChild(left)
             self.addChild(right)
@@ -160,54 +153,54 @@ class Level: SKNode
             self.wallTiles.append(left)
             self.wallTiles.append(right)
             
-            left.position = CGPoint(x: -worldWidth / 2.0 + World.WALL_WIDTH / 2.0, y: self.wallY)
-            right.position = CGPoint(x: worldWidth / 2.0 - World.WALL_WIDTH / 2.0, y: self.wallY)
+            left.position = CGPoint(x: -worldWidth / 2.0 + World.wallWidth / 2.0, y: self.wallY)
+            right.position = CGPoint(x: worldWidth / 2.0 - World.wallWidth / 2.0, y: self.wallY)
             
-            self.wallY += World.WALL_WIDTH
+            self.wallY += World.wallWidth
         }
         
-        while(self.wallTiles.count > MAX_WALL_TILES) {
+        while(self.wallTiles.count > maxWallTiles) {
             self.wallTiles.first?.removeFromParent()
             self.wallTiles.removeFirst()
         }
     }
     
-    public func UpdateCollisionTests(player : Player)
+    func updateCollisionTests(player : Player)
     {
-        if(player.State == .Falling)
+        if(player.state == .Falling)
         {
-            for platform in Platforms
+            for platform in platforms
             {
-                if(player.convert(CGPoint(x: 0.0, y: -player.size.height / 2.0), to: self).y > platform.Top() - 10.0) {
-                    platform.ActivateCollisions()
+                if(player.convert(CGPoint(x: 0.0, y: -player.size.height / 2.0), to: self).y > platform.top() - 10.0) {
+                    platform.activateCollisions()
                 } else {
-                    platform.DeactivateCollisions()
+                    platform.deactivateCollisions()
                 }
             }
-        } else if(player.State == .Jumping) {
-            for platform in Platforms {
-                platform.DeactivateCollisions()
+        } else if(player.state == .Jumping) {
+            for platform in platforms {
+                platform.deactivateCollisions()
             }
         }
     }
     
-    public func SpawnPlatform(scene: Game, number: Int, numberOfCoins: Int? = nil, yDistance: CGFloat = -1.0)
+    func spawnPlatform(scene: Game, number: Int, numberOfCoins: Int? = nil, yDistance: CGFloat = -1.0)
     {
         self.levelPlatformIndex = self.levelPlatformIndex + 1
         
-        let platform = self.GetPlatform(platformNumber: number, yDistance: yDistance)
+        let platform = self.getPlatform(platformNumber: number, yDistance: yDistance)
         self.addChild(platform)
-        self.Platforms.append(platform)
+        self.platforms.append(platform)
         
-        let n = numberOfCoins ?? (platform.PlatformNumber % 4 == 0 ? 5 : 0)
-        platform.SpawnCoinsInWorld(world: scene.world, n: n)
+        let n = numberOfCoins ?? (platform.platformNumber % 4 == 0 ? 5 : 0)
+        platform.spawnCoinsInWorld(world: scene.world, n: n)
         
-        platform.DeactivateCollisions()
+        platform.deactivateCollisions()
         
-        self.SpawnWallTilesForPlatform(platform: platform)
+        self.spawnWallTilesForPlatform(platform: platform)
         
-        if(self.IsFinished()) {
-            let c1 = SKAction.colorize(with: self.BackgroundColor(), colorBlendFactor: 1.0, duration: 0.4)
+        if(self.isFinished()) {
+            let c1 = SKAction.colorize(with: self.backgroundColor(), colorBlendFactor: 1.0, duration: 0.4)
             let c2 = SKAction.colorize(with: SKColor.red, colorBlendFactor: 1.0, duration: 0.4)
             
             platform.run(SKAction.repeatForever(SKAction.sequence([c1, c2])))
@@ -220,61 +213,61 @@ class Level: SKNode
         }
     }
     
-    public func TopPlatformY() -> CGFloat
+    func topPlatformY() -> CGFloat
     {
-        return Platforms.last?.position.y ?? 0.0
+        return platforms.last?.position.y ?? 0.0
     }
     
-    func PlatformMinFactor() -> CGFloat
+    func platformMinFactor() -> CGFloat
     {
         return 0.01
     }
     
-    func PlatformMaxFactor() -> CGFloat
+    func platformMaxFactor() -> CGFloat
     {
         return 1.0
     }
     
-    func IsFinished() -> Bool {
-        return self.levelPlatformIndex == self.NumberOfPlatforms()
+    func isFinished() -> Bool {
+        return self.levelPlatformIndex == self.numberOfPlatforms()
     }
     
-    func PlatformYDistance() -> CGFloat {
+    func platformYDistance() -> CGFloat {
         return 110.0
     }
     
-    func NumberOfPlatforms() -> Int  {
+    func numberOfPlatforms() -> Int  {
         return 50
     }
     
-    func LevelSpeed() -> CGFloat {
+    func levelSpeed() -> CGFloat {
         return 1.0
     }
     
-    func GameSpeed() -> CGFloat {
-        return min(easeInSpeed, self.LevelSpeed())
+    func gameSpeed() -> CGFloat {
+        return min(self.speedEaseIn, self.levelSpeed())
     }
     
-    func PlatformTexture() -> SKTexture? {
-        return self.platformTexture;
+    func platformTexture() -> SKTexture? {
+        return self.texturePlatform;
     }
     
-    func FirstPlatformOffset() -> CGFloat {
+    func firstPlatformOffset() -> CGFloat {
         return 500.0
     }
     
-    func EaseInSpeed() {
-        self.easeInSpeed = 0.0
+    func easeInSpeed() {
+        self.speedEaseIn = 0.0
         
         let easeInDuration = 5.0 // seconds
         let easeInStepTime = 0.25 // seconds
         let n = Int(easeInDuration / easeInStepTime)
-        let easeInStep = self.LevelSpeed() / CGFloat(n)
+        let easeInStep = self.levelSpeed() / CGFloat(n)
 
         self.run(SKAction.repeat(SKAction.sequence([
             SKAction.wait(forDuration: easeInStepTime),
             SKAction.run {
-                self.easeInSpeed += easeInStep
+                self.speedEaseIn += easeInStep
             }
         ]), count: n))
     }

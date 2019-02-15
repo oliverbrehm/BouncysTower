@@ -11,12 +11,12 @@ import SpriteKit
 
 class Camera : SKCameraNode
 {
-    public func UpdateGame(gameScene: Game, player: Player, world: World)
+    func updateIn(game: Game, player: Player, world: World)
     {
-        self.position.y = max(gameScene.GameOverY + 0.5 * world.Height, player.position.y - (Game.GAME_OVER_LINE_UNDER_PLAYER_PERCENT - 0.5) * world.Height)
+        self.position.y = max(game.State.GameOverY + 0.5 * world.height, player.position.y - (Game.GAME_OVER_LINE_UNDER_PLAYER_PERCENT - 0.5) * world.height)
     }
     
-    public func UpdateTutorial(player: Player, world: World) {
-        self.position.y = max(world.AbsoluteZero() + 0.5 * world.Height, player.position.y)
+    func updateInTutorial(player: Player, world: World) {
+        self.position.y = max(world.absoluteZero() + 0.5 * world.height, player.position.y)
     }
 }

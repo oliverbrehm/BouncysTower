@@ -9,46 +9,40 @@
 import Foundation
 
 class Config {
-    private static let _instance = Config()
+    static let standard = Config()
     
-    private static let KEY_EXTRA_LIVES = "EXTRA_LIVES"
-    private static let KEY_COINS = "COINS"
-    private static let KEY_TUTORIAL_SHOWN = "TUTORIAL_SHOWN"
+    private static let keyExtraLives = "EXTRA_LIVES"
+    private static let keyCoins = "COINS"
+    private static let keyTutorialShown = "TUTORIAL_SHOWN"
     
     init() {
-        _extraLives = UserDefaults.standard.integer(forKey: Config.KEY_EXTRA_LIVES)
-        _coins = UserDefaults.standard.integer(forKey: Config.KEY_COINS)
-    }
-    
-    public static var Default: Config {
-        get {
-            return _instance
-        }
+        _extraLives = UserDefaults.standard.integer(forKey: Config.keyExtraLives)
+        _coins = UserDefaults.standard.integer(forKey: Config.keyCoins)
     }
     
     private var _extraLives: Int
     private var _coins: Int
     
-    public var TutorialShown: Bool {
+    var tutorialShown: Bool {
         get {
-            return UserDefaults.standard.bool(forKey: Config.KEY_TUTORIAL_SHOWN)
+            return UserDefaults.standard.bool(forKey: Config.keyTutorialShown)
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: Config.KEY_TUTORIAL_SHOWN)
+            UserDefaults.standard.set(newValue, forKey: Config.keyTutorialShown)
         }
     }
     
-    public var ExtraLives: Int {
+    var extraLives: Int {
         get {
             return _extraLives
         }
     }
     
-    public func HasExtralives() -> Bool {
+    func hasExtralives() -> Bool {
         return _extraLives > 0
     }
     
-    public func UseExtralive() -> Bool {
+    func useExtralive() -> Bool {
         if (_extraLives > 0) {
             _extraLives = _extraLives - 1
             return true
@@ -57,19 +51,19 @@ class Config {
         }
     }
     
-    public func AddExtralife() {
+    func addExtralife() {
         _extraLives = _extraLives + 1
-        UserDefaults.standard.set(_extraLives, forKey: Config.KEY_EXTRA_LIVES)
+        UserDefaults.standard.set(_extraLives, forKey: Config.keyExtraLives)
     }
     
-    public var Coins: Int {
+    var coins: Int {
         get {
             return _coins
         }
     }
     
-    public func AddCoin() {
+    func addCoin() {
         _coins = _coins + 1
-        UserDefaults.standard.set(_coins, forKey: Config.KEY_COINS)
+        UserDefaults.standard.set(_coins, forKey: Config.keyCoins)
     }
 }

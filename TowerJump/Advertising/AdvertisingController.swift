@@ -10,7 +10,7 @@ import SpriteKit
 
 class AdvertisingController
 {
-    public static var Default = AdvertisingController()
+    static var Default = AdvertisingController()
     
     private let TIME_TO_ADVERTISING = 1 * 60.0; // seconds
     
@@ -18,15 +18,15 @@ class AdvertisingController
     
     private var gameView: SKView?
     
-    public func Setup(view: SKView) {
+    func Setup(view: SKView) {
         self.gameView = view
     }
     
-    public func GamePlayed(gameTime: Double) {
+    func GamePlayed(gameTime: Double) {
         self.timePlayed += gameTime
     }
     
-    public func PresentIfNeccessary(returnScene: SKScene, completionHandler: @escaping (() -> Void)) {
+    func PresentIfNeccessary(returnScene: SKScene, completionHandler: @escaping (() -> Void)) {
         print("present, time played: \(self.timePlayed)")
         if(self.timePlayed >= TIME_TO_ADVERTISING) {
             self.timePlayed = 0.0
