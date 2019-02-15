@@ -21,7 +21,7 @@ class Level: SKNode
     private var wallTiles: [SKSpriteNode] = []
     private let maxWallTiles = 200
     
-    private var levelPlatformIndex = 0
+    private var levelPlatformIndex = 1
     private var speedEaseIn: CGFloat = 999999999.0
     private var lastPlatform : Platform?
     
@@ -69,7 +69,7 @@ class Level: SKNode
     }
     
     func reset() {
-        self.levelPlatformIndex = 0
+        self.levelPlatformIndex = 1
         self.platformY = 0.0
     }
     
@@ -171,7 +171,8 @@ class Level: SKNode
         {
             for platform in platforms
             {
-                if(player.convert(CGPoint(x: 0.0, y: -player.size.height / 2.0), to: self).y > platform.top() - 10.0) {
+                let playerBottom =  self.convert(player.position, from: player.world!).y - player.size.height / 2.0
+                if(playerBottom > platform.top() - 2.0) {
                     platform.activateCollisions()
                 } else {
                     platform.deactivateCollisions()
