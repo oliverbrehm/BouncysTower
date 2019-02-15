@@ -32,8 +32,6 @@ class World : SKNode
         
         self.width = scene.size.width * scene.xScale
         self.height = scene.size.height * scene.yScale
-        //print("Width: \(Width), Height: \(Height)")
-        //print("Saclex: \(xScale), Scaley: \(yScale)")
 
         // left wall
         leftWall.size.height = height * 3.0

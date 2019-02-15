@@ -122,13 +122,13 @@
 		A7A228A3220604E800081E0E /* OverlayExtralife.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D4C8332201CEAA0060F352 /* OverlayExtralife.swift */; };
 		A7A228A4220604EE00081E0E /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7175FB420E2B4DA00968329 /* Platform.swift */; };
 		A7A228A5220604EE00081E0E /* PlatformEndLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A5199215E907300E7CDDB /* PlatformEndLevel.swift */; };
-		A7A228A6220604EE00081E0E /* coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D4C82F2201BB9E0060F352 /* coin.swift */; };
+		A7A228A6220604EE00081E0E /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D4C82F2201BB9E0060F352 /* Coin.swift */; };
 		A7A228A7220604EF00081E0E /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7175FB420E2B4DA00968329 /* Platform.swift */; };
 		A7A228A8220604EF00081E0E /* PlatformEndLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A5199215E907300E7CDDB /* PlatformEndLevel.swift */; };
-		A7A228A9220604EF00081E0E /* coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D4C82F2201BB9E0060F352 /* coin.swift */; };
+		A7A228A9220604EF00081E0E /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D4C82F2201BB9E0060F352 /* Coin.swift */; };
 		A7A228AA220604EF00081E0E /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7175FB420E2B4DA00968329 /* Platform.swift */; };
 		A7A228AB220604EF00081E0E /* PlatformEndLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A5199215E907300E7CDDB /* PlatformEndLevel.swift */; };
-		A7A228AC220604EF00081E0E /* coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D4C82F2201BB9E0060F352 /* coin.swift */; };
+		A7A228AC220604EF00081E0E /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D4C82F2201BB9E0060F352 /* Coin.swift */; };
 		A7A228AD220604F600081E0E /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A518D215A6A0600E7CDDB /* Level.swift */; };
 		A7A228AE220604F600081E0E /* Level01.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A5190215A6AC200E7CDDB /* Level01.swift */; };
 		A7A228AF220604F600081E0E /* Level02.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A5192215A6B0400E7CDDB /* Level02.swift */; };
@@ -169,6 +169,15 @@
 		A7A228D52206050E00081E0E /* ScoreParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = A792AE06216538DC004280A5 /* ScoreParticle.sks */; };
 		A7A228D62206050E00081E0E /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D4C8312201C8C80060F352 /* Config.swift */; };
 		A7DC9BB62216BF670038EC58 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DC9BB52216BF670038EC58 /* GameState.swift */; };
+		A7DC9BBC221756CF0038EC58 /* PerfectJumpDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DC9BBB221756CF0038EC58 /* PerfectJumpDetector.swift */; };
+		A7DC9BBD221756CF0038EC58 /* PerfectJumpDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DC9BBB221756CF0038EC58 /* PerfectJumpDetector.swift */; };
+		A7DC9BBE221756CF0038EC58 /* PerfectJumpDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DC9BBB221756CF0038EC58 /* PerfectJumpDetector.swift */; };
+		A7DC9BC0221775270038EC58 /* ComboParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = A7DC9BBF221775270038EC58 /* ComboParticle.sks */; };
+		A7DC9BC1221775270038EC58 /* ComboParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = A7DC9BBF221775270038EC58 /* ComboParticle.sks */; };
+		A7DC9BC2221775270038EC58 /* ComboParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = A7DC9BBF221775270038EC58 /* ComboParticle.sks */; };
+		A7DC9BC422177E430038EC58 /* SuperJump.sks in Resources */ = {isa = PBXBuildFile; fileRef = A7DC9BC322177E430038EC58 /* SuperJump.sks */; };
+		A7DC9BC522177E430038EC58 /* SuperJump.sks in Resources */ = {isa = PBXBuildFile; fileRef = A7DC9BC322177E430038EC58 /* SuperJump.sks */; };
+		A7DC9BC622177E430038EC58 /* SuperJump.sks in Resources */ = {isa = PBXBuildFile; fileRef = A7DC9BC322177E430038EC58 /* SuperJump.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -237,10 +246,13 @@
 		A7AE06712162479C0009D905 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		A7AE0674216248AA0009D905 /* Main.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Main.sks; sourceTree = "<group>"; };
 		A7AE067621624B500009D905 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
-		A7D4C82F2201BB9E0060F352 /* coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = coin.swift; sourceTree = "<group>"; };
+		A7D4C82F2201BB9E0060F352 /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
 		A7D4C8312201C8C80060F352 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		A7D4C8332201CEAA0060F352 /* OverlayExtralife.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayExtralife.swift; sourceTree = "<group>"; };
 		A7DC9BB52216BF670038EC58 /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
+		A7DC9BBB221756CF0038EC58 /* PerfectJumpDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfectJumpDetector.swift; sourceTree = "<group>"; };
+		A7DC9BBF221775270038EC58 /* ComboParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ComboParticle.sks; sourceTree = "<group>"; };
+		A7DC9BC322177E430038EC58 /* SuperJump.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SuperJump.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -332,7 +344,6 @@
 			children = (
 				A7175FB420E2B4DA00968329 /* Platform.swift */,
 				A71A5199215E907300E7CDDB /* PlatformEndLevel.swift */,
-				A7D4C82F2201BB9E0060F352 /* coin.swift */,
 			);
 			path = Platforms;
 			sourceTree = "<group>";
@@ -405,18 +416,12 @@
 		A7797EE820E2A89200E3B664 /* TowerJump */ = {
 			isa = PBXGroup;
 			children = (
+				A7DC9BBA221755A00038EC58 /* Common */,
 				A765DC012215A46F00B34284 /* Util */,
-				A702E8B72202088300EB13B8 /* Advertising */,
+				A7186DD8220C3E0100187C6E /* Sounds */,
 				A7AE06732162488A0009D905 /* Scenes */,
 				A7AE06702162478B0009D905 /* Menu */,
 				A7AE066F216247660009D905 /* Game */,
-				A71A5198215E8FB400E7CDDB /* Platforms */,
-				A71A518F215A6A9A00E7CDDB /* Levels */,
-				A7797EF620E2A89200E3B664 /* Assets.xcassets */,
-				A7797EFB20E2A89200E3B664 /* Info.plist */,
-				A792AE06216538DC004280A5 /* ScoreParticle.sks */,
-				A7D4C8312201C8C80060F352 /* Config.swift */,
-				A74E3C8722131B2400D38AEB /* GameViewController.swift */,
 			);
 			path = TowerJump;
 			sourceTree = "<group>";
@@ -424,17 +429,15 @@
 		A7AE066F216247660009D905 /* Game */ = {
 			isa = PBXGroup;
 			children = (
-				A7186DD8220C3E0100187C6E /* Sounds */,
 				A702E8BE22021DF200EB13B8 /* Modes */,
-				A7175FB220E2AA0300968329 /* Player.swift */,
+				A7DC9BB8221754FE0038EC58 /* World */,
+				A7DC9BB9221755250038EC58 /* Player */,
+				A71A518F215A6A9A00E7CDDB /* Levels */,
+				A71A5198215E8FB400E7CDDB /* Platforms */,
+				A7DC9BB7221754960038EC58 /* Overlay */,
 				A7175FB620E2BD3A00968329 /* NodeCategories.swift */,
 				A71F2DA52164E1B100FAF0EB /* NodeZOrder.swift */,
-				A7175FB820E2C2ED00968329 /* World.swift */,
 				A7AE0667216239AF0009D905 /* Camera.swift */,
-				A71F2DA12163A93700FAF0EB /* OverlayGameOver.swift */,
-				A71F2DA32164D2D000FAF0EB /* OverlayPause.swift */,
-				A7D4C8332201CEAA0060F352 /* OverlayExtralife.swift */,
-				A71875B4220B0619003ED6F1 /* ExtraLife.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -442,6 +445,7 @@
 		A7AE06702162478B0009D905 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				A702E8B72202088300EB13B8 /* Advertising */,
 				A7AE06712162479C0009D905 /* Main.swift */,
 				A7AE067621624B500009D905 /* Button.swift */,
 				A71F2D9F2163A4D600FAF0EB /* Settings.swift */,
@@ -461,6 +465,49 @@
 				A71F2D9D2163A4BF00FAF0EB /* Settings.sks */,
 			);
 			path = Scenes;
+			sourceTree = "<group>";
+		};
+		A7DC9BB7221754960038EC58 /* Overlay */ = {
+			isa = PBXGroup;
+			children = (
+				A71F2DA12163A93700FAF0EB /* OverlayGameOver.swift */,
+				A71F2DA32164D2D000FAF0EB /* OverlayPause.swift */,
+				A7D4C8332201CEAA0060F352 /* OverlayExtralife.swift */,
+			);
+			path = Overlay;
+			sourceTree = "<group>";
+		};
+		A7DC9BB8221754FE0038EC58 /* World */ = {
+			isa = PBXGroup;
+			children = (
+				A7175FB820E2C2ED00968329 /* World.swift */,
+				A71875B4220B0619003ED6F1 /* ExtraLife.swift */,
+				A7D4C82F2201BB9E0060F352 /* Coin.swift */,
+			);
+			path = World;
+			sourceTree = "<group>";
+		};
+		A7DC9BB9221755250038EC58 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				A7175FB220E2AA0300968329 /* Player.swift */,
+				A7DC9BBB221756CF0038EC58 /* PerfectJumpDetector.swift */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
+		A7DC9BBA221755A00038EC58 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				A7797EF620E2A89200E3B664 /* Assets.xcassets */,
+				A7797EFB20E2A89200E3B664 /* Info.plist */,
+				A792AE06216538DC004280A5 /* ScoreParticle.sks */,
+				A7D4C8312201C8C80060F352 /* Config.swift */,
+				A74E3C8722131B2400D38AEB /* GameViewController.swift */,
+				A7DC9BBF221775270038EC58 /* ComboParticle.sks */,
+				A7DC9BC322177E430038EC58 /* SuperJump.sks */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -575,7 +622,9 @@
 				A7186DFB220C43B700187C6E /* collectcoin.aif in Resources */,
 				A7186E0A220C4B6F00187C6E /* gameover.aif in Resources */,
 				A7186E07220C4B6F00187C6E /* superjump.aif in Resources */,
+				A7DC9BC422177E430038EC58 /* SuperJump.sks in Resources */,
 				A7A228CB2206050E00081E0E /* ScoreParticle.sks in Resources */,
+				A7DC9BC0221775270038EC58 /* ComboParticle.sks in Resources */,
 				A7A2285B220604D500081E0E /* Advertising01.sks in Resources */,
 				A7736AA32206025100A28B5D /* Main.storyboard in Resources */,
 				A7A22865220604DB00081E0E /* Settings.sks in Resources */,
@@ -595,8 +644,10 @@
 				A7A22866220604DB00081E0E /* MainGame.sks in Resources */,
 				A7736AB42206025100A28B5D /* Main.storyboard in Resources */,
 				A7A22869220604DB00081E0E /* Settings.sks in Resources */,
+				A7DC9BC1221775270038EC58 /* ComboParticle.sks in Resources */,
 				A7186DF9220C43B700187C6E /* button.aif in Resources */,
 				A7A2285E220604D500081E0E /* Advertising01.sks in Resources */,
+				A7DC9BC522177E430038EC58 /* SuperJump.sks in Resources */,
 				A7186E0B220C4B6F00187C6E /* gameover.aif in Resources */,
 				A7A228CD2206050E00081E0E /* Assets.xcassets in Resources */,
 				A7186E08220C4B6F00187C6E /* superjump.aif in Resources */,
@@ -616,8 +667,10 @@
 				A7A2286A220604DC00081E0E /* MainGame.sks in Resources */,
 				A7736AC22206025200A28B5D /* Main.storyboard in Resources */,
 				A7A2286D220604DC00081E0E /* Settings.sks in Resources */,
+				A7DC9BC2221775270038EC58 /* ComboParticle.sks in Resources */,
 				A7186DFA220C43B700187C6E /* button.aif in Resources */,
 				A7A22861220604D600081E0E /* Advertising01.sks in Resources */,
+				A7DC9BC622177E430038EC58 /* SuperJump.sks in Resources */,
 				A7186E0C220C4B6F00187C6E /* gameover.aif in Resources */,
 				A7A228D22206050E00081E0E /* Assets.xcassets in Resources */,
 				A7186E09220C4B6F00187C6E /* superjump.aif in Resources */,
@@ -662,7 +715,8 @@
 				A7A228B4220604F600081E0E /* Level07.swift in Sources */,
 				A7A22871220604E000081E0E /* Overlay.swift in Sources */,
 				A7A22882220604E700081E0E /* NodeCategories.swift in Sources */,
-				A7A228A6220604EE00081E0E /* coin.swift in Sources */,
+				A7A228A6220604EE00081E0E /* Coin.swift in Sources */,
+				A7DC9BBC221756CF0038EC58 /* PerfectJumpDetector.swift in Sources */,
 				A7A228A5220604EE00081E0E /* PlatformEndLevel.swift in Sources */,
 				A7A228B2220604F600081E0E /* Level05.swift in Sources */,
 				A7A2285A220604D500081E0E /* Advertising.swift in Sources */,
@@ -687,6 +741,7 @@
 				A7A228B9220604F700081E0E /* Level03.swift in Sources */,
 				A7A228B6220604F700081E0E /* Level.swift in Sources */,
 				A7A2288D220604E800081E0E /* InfoBox.swift in Sources */,
+				A7DC9BBD221756CF0038EC58 /* PerfectJumpDetector.swift in Sources */,
 				A7A22891220604E800081E0E /* World.swift in Sources */,
 				A74E3C8922131B2400D38AEB /* GameViewController.swift in Sources */,
 				A7A22873220604E100081E0E /* Main.swift in Sources */,
@@ -709,7 +764,7 @@
 				A7A228BD220604F700081E0E /* Level07.swift in Sources */,
 				A7A22876220604E100081E0E /* Overlay.swift in Sources */,
 				A7A2288F220604E800081E0E /* NodeCategories.swift in Sources */,
-				A7A228A9220604EF00081E0E /* coin.swift in Sources */,
+				A7A228A9220604EF00081E0E /* Coin.swift in Sources */,
 				A7A228A8220604EF00081E0E /* PlatformEndLevel.swift in Sources */,
 				A7A228BB220604F700081E0E /* Level05.swift in Sources */,
 				A7A2285D220604D500081E0E /* Advertising.swift in Sources */,
@@ -733,6 +788,7 @@
 				A7A228C2220604F700081E0E /* Level03.swift in Sources */,
 				A7A228BF220604F700081E0E /* Level.swift in Sources */,
 				A7A2289A220604E800081E0E /* InfoBox.swift in Sources */,
+				A7DC9BBE221756CF0038EC58 /* PerfectJumpDetector.swift in Sources */,
 				A7A2289E220604E800081E0E /* World.swift in Sources */,
 				A74E3C8A22131B2400D38AEB /* GameViewController.swift in Sources */,
 				A7A22878220604E100081E0E /* Main.swift in Sources */,
@@ -755,7 +811,7 @@
 				A7A228C6220604F700081E0E /* Level07.swift in Sources */,
 				A7A2287B220604E100081E0E /* Overlay.swift in Sources */,
 				A7A2289C220604E800081E0E /* NodeCategories.swift in Sources */,
-				A7A228AC220604EF00081E0E /* coin.swift in Sources */,
+				A7A228AC220604EF00081E0E /* Coin.swift in Sources */,
 				A7A228AB220604EF00081E0E /* PlatformEndLevel.swift in Sources */,
 				A7A228C4220604F700081E0E /* Level05.swift in Sources */,
 				A7A22860220604D600081E0E /* Advertising.swift in Sources */,

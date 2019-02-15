@@ -28,6 +28,8 @@ class Player : SKSpriteNode
     var score = 0
     
     private var _state : PlayerState = .OnPlatform
+    private let perfectJumpDetector = PerfectJumpDetector()
+    
     var state : PlayerState {
         get {
             return _state
@@ -61,6 +63,8 @@ class Player : SKSpriteNode
         
         self.particleEmitter.particleBirthRate = 10.0
         self.addChild(self.particleEmitter)
+        
+        self.perfectJumpDetector.setup(player: self)
     }
     
     func initialize(world: World, scene: Game) {
@@ -106,6 +110,8 @@ class Player : SKSpriteNode
             self.run(SKAction.scale(to: 1.0, duration: 0.1))
             self.run(SKAction.colorize(with: SKColor.orange, colorBlendFactor: 0.0, duration: 0.05))
             self.jumpReady = false
+            
+            self.perfectJumpDetector.playerLeftPlatform()
         }
         
         self.loadingJump = false
@@ -117,6 +123,20 @@ class Player : SKSpriteNode
         self.state = PlayerState.Jumping
 
         self.run(SoundController.standard.getSoundAction(action: .superJump))
+        
+        let particelEmitter = SKEmitterNode(fileNamed: "SuperJump")!
+        particelEmitter.targetNode = self.scene
+        particelEmitter.position = CGPoint(x: 0.0, y: (self.world?.height ?? 0.0) / 2.0)
+        self.scene?.camera?.addChild(particelEmitter)
+        
+        particelEmitter.run(SKAction.sequence([
+            SKAction.wait(forDuration: 1.0),
+            SKAction.run {
+                particelEmitter.particleBirthRate = 0.0
+            },
+            SKAction.wait(forDuration: 2.0),
+            SKAction.removeFromParent()
+        ]))
     }
     
     func startMoving() {
@@ -135,7 +155,7 @@ class Player : SKSpriteNode
         self.run(readyAction, withKey: readyActionKey)
     }
     
-    func update()
+    func update(dt: TimeInterval)
     {
         if let p = self.physicsBody {
             if(p.velocity.dy < -0.1)
@@ -155,6 +175,8 @@ class Player : SKSpriteNode
                 self.particleEmitter.particleBirthRate = 40.0
             }
         }
+        
+        self.perfectJumpDetector.update(dt: dt)
     }
     
     func landOnPlatform(platform: Platform)
@@ -168,6 +190,8 @@ class Player : SKSpriteNode
         self.state = PlayerState.OnPlatform
         self.physicsBody?.velocity.dy = 0.0
         self.currentPlatform = platform
+        
+        self.perfectJumpDetector.playerLandedOnPlatform(platform)
         
         if(self.jumpReady && !self.loadingJump) {
             // user already released but has not yet landed yet

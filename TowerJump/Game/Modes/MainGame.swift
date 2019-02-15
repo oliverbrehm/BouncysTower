@@ -87,7 +87,6 @@ class MainGame: Game {
     
     func gameOver()
     {
-        print("played: \(self.State.currentGameTime)")
         AdvertisingController.Default.GamePlayed(gameTime: self.State.currentGameTime)
         
         self.gameOverOverlay.show(score: self.player.score)

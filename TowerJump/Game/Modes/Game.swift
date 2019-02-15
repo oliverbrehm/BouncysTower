@@ -95,7 +95,7 @@ class Game: SKScene, SKPhysicsContactDelegate {
         }
         
         if(State.runningState == .running) {
-            player.update()
+            player.update(dt: dt)
         }
         
         self.updateGame(dt)

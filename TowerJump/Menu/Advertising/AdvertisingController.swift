@@ -27,7 +27,6 @@ class AdvertisingController
     }
     
     func PresentIfNeccessary(returnScene: SKScene, completionHandler: @escaping (() -> Void)) {
-        print("present, time played: \(self.timePlayed)")
         if(self.timePlayed >= TIME_TO_ADVERTISING) {
             self.timePlayed = 0.0
             if let scene = SKScene(fileNamed: "Advertising01") as? Advertising {
