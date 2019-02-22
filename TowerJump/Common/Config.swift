@@ -37,7 +37,7 @@ class Config {
     
     func useExtralive() -> Bool {
         if (extraLives > 0) {
-            extraLives = extraLives - 1
+            extraLives -= 1
             return true
         } else {
             return false
@@ -45,14 +45,14 @@ class Config {
     }
     
     func addExtralife() {
-        extraLives = extraLives + 1
+        extraLives += 1
         UserDefaults.standard.set(extraLives, forKey: Config.keyExtraLives)
     }
     
     private(set) var coins: Int
     
     func addCoin() {
-        coins = coins + 1
+        coins += 1
         UserDefaults.standard.set(coins, forKey: Config.keyCoins)
     }
 }

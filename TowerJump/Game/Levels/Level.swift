@@ -128,7 +128,7 @@ class Level: SKNode
             
             self.addChild(background)
             
-            self.backgroundY = self.backgroundY + size.height
+            self.backgroundY += size.height
         }        
     }
     
@@ -167,7 +167,7 @@ class Level: SKNode
     
     func updateCollisionTests(player : Player)
     {
-        if(player.state == .Falling)
+        if(player.state == .falling)
         {
             for platform in platforms
             {
@@ -178,7 +178,7 @@ class Level: SKNode
                     platform.deactivateCollisions()
                 }
             }
-        } else if(player.state == .Jumping) {
+        } else if(player.state == .jumping) {
             for platform in platforms {
                 platform.deactivateCollisions()
             }
@@ -187,7 +187,7 @@ class Level: SKNode
     
     func spawnPlatform(scene: Game, number: Int, numberOfCoins: Int? = nil, yDistance: CGFloat = -1.0)
     {
-        self.levelPlatformIndex = self.levelPlatformIndex + 1
+        self.levelPlatformIndex += 1
         
         if let platform = self.getPlatform(platformNumber: number, yDistance: yDistance) {
             self.addChild(platform)

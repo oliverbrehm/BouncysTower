@@ -24,7 +24,7 @@ class MainGame: Game {
         self.gameOverOverlay.hide()
         
         self.cameraNode.addChild(self.extralifeOverlay)
-        self.extralifeOverlay.Setup(game: self)
+        self.extralifeOverlay.setup(game: self)
         self.extralifeOverlay.hide()
         
         self.scoreLabel = Button(caption: "0", size: CGSize(width: World.wallWidth, height: 30.0), fontSize: 12.0, fontColor: SKColor.black, backgroundColor: SKColor.init(white: 1.0, alpha: 0.8), pressedColor: SKColor.white)
@@ -53,30 +53,27 @@ class MainGame: Game {
     }
     
     override func updateGame(_ dt: TimeInterval) {
-        if(State.runningState == .started || State.runningState == .running)
-        {
+        if(state.runningState == .started || state.runningState == .running) {
             self.cameraNode.updateIn(game: self, player: player, world: world)
             self.world.spawnPlatformsAbove(y: self.player.position.y)
         }
         
-        if(State.runningState == .running) {
-            self.State.currentGameTime += dt
+        if(state.runningState == .running) {
+            self.state.currentGameTime += dt
             self.checkGameOver(dt: dt)
         }
     }
     
-    private func checkGameOver(dt: Double)
-    {
-        let advanceLine = State.GameOverY + (self.player.currentPlatform != nil ? self.player.currentPlatform!.level.gameSpeed() : 0.0) * CGFloat(dt)
-        let lineUnderPlayer = player.position.y - Game.GAME_OVER_LINE_UNDER_PLAYER_PERCENT * world.height
-        self.State.GameOverY = max(advanceLine, lineUnderPlayer)
+    private func checkGameOver(dt: Double) {
+        let advanceLine = state.gameOverY + (self.player.currentPlatform != nil ? self.player.currentPlatform!.level.gameSpeed() : 0.0) * CGFloat(dt)
+        let lineUnderPlayer = player.position.y - Game.gameOverLineUnderPlayerPercent * world.height
+        self.state.gameOverY = max(advanceLine, lineUnderPlayer)
         
         if let l = self.world.currentLevel {
-            self.State.GameOverY = min(self.State.GameOverY, l.position.y + l.topPlatformY())
+            self.state.gameOverY = min(self.state.gameOverY, l.position.y + l.topPlatformY())
         }
         
-        if(player.position.y + player.size.height / 2.0 + gameOverTolerance < State.GameOverY)
-        {
+        if(player.position.y + player.size.height / 2.0 + gameOverTolerance < state.gameOverY) {
             self.run(SoundController.standard.getSoundAction(action: .gameOver))
 
             if(Config.standard.hasExtralives()) {
@@ -87,20 +84,19 @@ class MainGame: Game {
         }
     }
     
-    func gameOver()
-    {
-        AdvertisingController.Default.GamePlayed(gameTime: self.State.currentGameTime)
+    func gameOver() {
+        AdvertisingController.Default.gamePlayed(gameTime: self.state.currentGameTime)
         
         self.gameOverOverlay.show(score: self.player.score)
         self.pauseButton.isHidden = true
-        self.State.runningState = .over
+        self.state.runningState = .over
     }
     
     func showExtralifeDialog() {
         self.extralifeOverlay.show()
         self.extralifeOverlay.start(game: self)
         
-        self.State.runningState = .paused
+        self.state.runningState = .paused
         self.pauseButton.isHidden = true
         
         self.world.isPaused = true
@@ -120,7 +116,7 @@ class MainGame: Game {
     }
     
     func updateScore() {
-        if(self.State.runningState != .running) {
+        if(self.state.runningState != .running) {
             return
         }
         
@@ -133,7 +129,7 @@ class MainGame: Game {
                     return
                 }
                 
-                self.currentScore = self.currentScore + 1
+                self.currentScore += 1
                 self.scoreLabel.setText(text: "\(self.currentScore)")
             },
             SKAction.wait(forDuration: 0.06)

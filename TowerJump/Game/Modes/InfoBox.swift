@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class InfoBox : Button {
+class InfoBox: Button {
     
     var lines: [SKLabelNode] = []
     var image: SKSpriteNode?
@@ -58,8 +58,7 @@ class InfoBox : Button {
     }
     
     private func updateLayout() {
-        if let game = self.scene as? Game
-        {
+        if let game = self.scene as? Game {
             let margin: CGFloat = 10.0
             
             let lineHeight: CGFloat = self.lines.first != nil ? self.lines.first!.frame.size.height : 0.0

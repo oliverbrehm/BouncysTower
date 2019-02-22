@@ -10,18 +10,18 @@ import SpriteKit
 
 class Tutorial: Game {
     enum TutorialState {
-        case T0Start
-        case T1Move
-        case T2Jump
-        case T3HighJump
-        case T4Platforms
-        case T5WallJumps
-        case T6HighPlatformJumps
-        case T7Combos
+        case t0Start
+        case t1Move
+        case t2Jump
+        case t3HighJump
+        case t4Platforms
+        case t5WallJumps
+        case t6HighPlatformJumps
+        case t7Combos
     }
     
     let infoBox = InfoBox()
-    var tutorialState = TutorialState.T0Start
+    var tutorialState = TutorialState.t0Start
     
     override func setup() {
         self.camera?.addChild(self.infoBox)
@@ -37,8 +37,7 @@ class Tutorial: Game {
     }
     
     override func updateGame(_ dt: TimeInterval) {
-        if(self.State.runningState == .started || self.State.runningState == .running)
-        {
+        if(self.state.runningState == .started || self.state.runningState == .running) {
             self.cameraNode.updateInTutorial(player: self.player, world: self.world)
         }
     }
@@ -59,33 +58,26 @@ class Tutorial: Game {
     override func hitCoin(coin: Coin) {
         if(self.world.coinManager.numberOfCoins() == 0) {
             switch self.tutorialState {
-            case .T1Move:
+            case .t1Move:
                 self.tutorial2Jump()
-                break
                 
-            case .T2Jump:
+            case .t2Jump:
                 self.tutorial3HighJump()
-                break
                 
-            case .T3HighJump:
+            case .t3HighJump:
                 self.tutorial4Platforms()
-                break
                 
-            case .T4Platforms:
+            case .t4Platforms:
                 self.tutorial5WallJumps()
-                break
                 
-            case .T5WallJumps:
+            case .t5WallJumps:
                 self.tutorial6HighPlatformJumps()
-                break
 
-            case .T6HighPlatformJumps:
+            case .t6HighPlatformJumps:
                 self.tutorial7Combos()
-                break
                 
-            case .T7Combos:
+            case .t7Combos:
                 self.finishTutorial()
-                break
                 
             default: break
             }
@@ -102,8 +94,8 @@ class Tutorial: Game {
     }
     
     private func tutorial1Move() {
-        self.State.allowJump = false
-        self.tutorialState = .T1Move
+        self.state.allowJump = false
+        self.tutorialState = .t1Move
 
         self.infoBox.clear()
         self.infoBox.addLine(text: "Hi! Let's learn how to play.")
@@ -135,12 +127,18 @@ class Tutorial: Game {
             self.infoBox.setImage(name: "noup", height: 65.0)
             
             self.showInfo(completion: {
-                self.tutorialState = .T2Jump
-                self.State.allowJump = true
+                self.tutorialState = .t2Jump
+                self.state.allowJump = true
                 
-                self.world.coinManager.spawnHorizontalLine(origin: CGPoint(x: 0.0, y: self.world.absoluteZero() + 125.0), width: self.world.width - 150.0, n: 10)
-                self.world.coinManager.spawnHorizontalLine(origin: CGPoint(x: 20.0, y: self.world.absoluteZero() + 150.0), width: self.world.width - 150.0, n: 10)
-                self.world.coinManager.spawnHorizontalLine(origin: CGPoint(x: 0.0, y: self.world.absoluteZero() + 175.0), width: self.world.width - 150.0, n: 10)
+                self.world.coinManager.spawnHorizontalLine(
+                    origin: CGPoint(x: 0.0, y: self.world.absoluteZero() + 125.0),
+                    width: self.world.width - 150.0, n: 10)
+                self.world.coinManager.spawnHorizontalLine(
+                    origin: CGPoint(x: 20.0, y: self.world.absoluteZero() + 150.0),
+                    width: self.world.width - 150.0, n: 10)
+                self.world.coinManager.spawnHorizontalLine(
+                    origin: CGPoint(x: 0.0, y: self.world.absoluteZero() + 175.0),
+                    width: self.world.width - 150.0, n: 10)
             })
         })
     }
@@ -153,7 +151,7 @@ class Tutorial: Game {
         self.infoBox.setImage(name: "leftright", height: 65.0)
         
         self.showInfo(completion: {
-            self.tutorialState = .T3HighJump
+            self.tutorialState = .t3HighJump
             
             self.world.coinManager.spawnSquare(origin: CGPoint(x: -180.0, y: self.world.absoluteZero() + 280.0), distanceBetween: 8.0, nSide: 2)
             self.world.coinManager.spawnSquare(origin: CGPoint(x: 180.0, y: self.world.absoluteZero() + 280.0), distanceBetween: 8.0, nSide: 2)
@@ -165,7 +163,7 @@ class Tutorial: Game {
         self.infoBox.addLine(text: "Great!")
         self.infoBox.addLine(text: "Next jump on the platforms to collect the coins on top.")
         self.showInfo(completion: {
-            self.tutorialState = .T4Platforms
+            self.tutorialState = .t4Platforms
             self.player.jumpReadyTime = 0.25
             
             self.run(SKAction.sequence([
@@ -187,18 +185,26 @@ class Tutorial: Game {
         self.infoBox.addLine(text: "You can jump even higher if you jump against the wall.")
         self.infoBox.addLine(text: "Can you reach the coins all the way up there?")
         self.showInfo(completion: {
-            self.tutorialState = .T5WallJumps
+            self.tutorialState = .t5WallJumps
             self.world.currentLevel!.removeAllPlatforms()
             self.world.currentLevel!.reset()
 
             self.run(SKAction.sequence([
                 SKAction.wait(forDuration: 2.0), // player falls to the floor
                 SKAction.run {
-                    self.world.coinManager.spawnSquare(origin: CGPoint(x: -180.0, y: self.world.absoluteZero() + 300.0), distanceBetween: 6.0, nSide: 3)
-                    self.world.coinManager.spawnSquare(origin: CGPoint(x: 180.0, y: self.world.absoluteZero() + 300.0), distanceBetween: 6.0, nSide: 3)
+                    self.world.coinManager.spawnSquare(
+                        origin: CGPoint(x: -180.0, y: self.world.absoluteZero() + 300.0),
+                        distanceBetween: 6.0, nSide: 3)
+                    self.world.coinManager.spawnSquare(
+                        origin: CGPoint(x: 180.0, y: self.world.absoluteZero() + 300.0),
+                        distanceBetween: 6.0, nSide: 3)
                     
-                    self.world.coinManager.spawnSquare(origin: CGPoint(x: -60.0, y: self.world.absoluteZero() + 420.0), distanceBetween: 6.0, nSide: 3)
-                    self.world.coinManager.spawnSquare(origin: CGPoint(x: 60.0, y: self.world.absoluteZero() + 420.0), distanceBetween: 6.0, nSide: 3)
+                    self.world.coinManager.spawnSquare(
+                        origin: CGPoint(x: -60.0, y: self.world.absoluteZero() + 420.0),
+                        distanceBetween: 6.0, nSide: 3)
+                    self.world.coinManager.spawnSquare(
+                        origin: CGPoint(x: 60.0, y: self.world.absoluteZero() + 420.0),
+                        distanceBetween: 6.0, nSide: 3)
                 }
             ]))
         })
@@ -210,7 +216,7 @@ class Tutorial: Game {
         self.infoBox.addLine(text: "You can roll left and right on the platforms")
         self.infoBox.addLine(text: "to gain speed and jump higher.")
         self.showInfo(completion: {
-            self.tutorialState = .T6HighPlatformJumps
+            self.tutorialState = .t6HighPlatformJumps
             self.world.currentLevel!.reset()
 
             self.run(SKAction.sequence([
@@ -235,7 +241,7 @@ class Tutorial: Game {
         self.infoBox.addLine(text: "You can get combos and way more points if you")
         self.infoBox.addLine(text: "use wall jumps and just let Bouncy roll and bounce.")
         self.showInfo(completion: {
-            self.tutorialState = .T7Combos
+            self.tutorialState = .t7Combos
             self.world.currentLevel!.removeAllPlatforms()
             self.world.currentLevel!.reset()
             
@@ -269,7 +275,7 @@ class Tutorial: Game {
         self.infoBox.addLine(text: "Use your jumping skills to get as far up as possible!")
         self.showInfo(completion: {
             Config.standard.tutorialShown = true
-            self.GameViewController?.showGame()
+            self.gameViewController?.showGame()
         })
     }
 }

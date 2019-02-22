@@ -13,4 +13,3 @@ import GameplayKit
 class OSXGameViewController: GameViewController {
 
 }
-

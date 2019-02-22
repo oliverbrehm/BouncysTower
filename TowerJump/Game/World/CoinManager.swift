@@ -33,8 +33,8 @@ class CoinManager {
         var i = 0
         while i < n {
             self.spawnCoin(position: CGPoint(x: origin.x + x, y: origin.y))
-            x = x + d
-            i = i + 1
+            x += d
+            i += 1
         }
     }
     

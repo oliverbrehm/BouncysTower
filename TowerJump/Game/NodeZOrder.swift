@@ -8,6 +8,7 @@
 
 import SpriteKit
 
+// swiftlint:ignore colon
 class NodeZOrder {
     static let background                : CGFloat = 0.0
     static let world                     : CGFloat = 0.2

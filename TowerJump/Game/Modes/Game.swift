@@ -12,11 +12,11 @@ import CoreMotion
 
 class Game: SKScene, SKPhysicsContactDelegate {
     // CONSTANTS
-    static let GAME_OVER_LINE_UNDER_PLAYER_PERCENT: CGFloat = 0.7
+    static let gameOverLineUnderPlayerPercent: CGFloat = 0.7
 
     // members
-    var GameViewController : GameViewController?
-    var State = GameState()
+    var gameViewController: GameViewController?
+    var state = GameState()
 
     // nodes
     let player = Player()
@@ -62,7 +62,9 @@ class Game: SKScene, SKPhysicsContactDelegate {
             self.pausedOverlay.setup(game: self)
             self.pausedOverlay.hide()
             
-            self.pauseButton = Button(caption: "||", size: CGSize(width: World.wallWidth, height: 30.0), fontSize: 18.0, fontColor: SKColor.black, backgroundColor: SKColor.init(white: 1.0, alpha: 0.8), pressedColor: SKColor.white)
+            self.pauseButton = Button(
+                caption: "||", size: CGSize(width: World.wallWidth, height: 30.0), fontSize: 18.0,
+                fontColor: SKColor.black, backgroundColor: SKColor.init(white: 1.0, alpha: 0.8), pressedColor: SKColor.white)
             self.pauseButton.action = {
                 self.pause()
                 self.pausedOverlay.show()
@@ -80,21 +82,20 @@ class Game: SKScene, SKPhysicsContactDelegate {
     }
     
     override func update(_ currentTime: TimeInterval) {
-        if(self.State.lastTime < 0.0) {
-            self.State.lastTime = currentTime
+        if(self.state.lastTime < 0.0) {
+            self.state.lastTime = currentTime
         }
-        var dt = currentTime - self.State.lastTime
-        if(self.State.timeWasPaused) {
+        var dt = currentTime - self.state.lastTime
+        if(self.state.timeWasPaused) {
             dt = 0.0
-            self.State.timeWasPaused = false
+            self.state.timeWasPaused = false
         }
         
-        if(State.runningState == .started || State.runningState == .running)
-        {
+        if(state.runningState == .started || state.runningState == .running) {
             world.updateWallY(player.position.y)
         }
         
-        if(State.runningState == .running) {
+        if(state.runningState == .running) {
             player.update(dt: dt)
         }
         
@@ -102,7 +103,7 @@ class Game: SKScene, SKPhysicsContactDelegate {
         
         // self.updateDeviceMotionControl(dt: dt) // TODO REMOVE
         
-        State.lastTime = currentTime
+        state.lastTime = currentTime
     }
     
     // TODO remove, experimental motion control
@@ -138,8 +139,7 @@ class Game: SKScene, SKPhysicsContactDelegate {
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
-        if(player.state == .Falling && (contact.bodyA.node is Platform || contact.bodyB.node is Platform))
-        {
+        if(player.state == .falling && (contact.bodyA.node is Platform || contact.bodyB.node is Platform)) {
             let platform = contact.bodyA.node is Platform ? contact.bodyA.node as! Platform : contact.bodyB.node as! Platform
             player.landOnPlatform(platform: platform)
             world.landOnPlatform(platform: platform, player: player)
@@ -157,14 +157,13 @@ class Game: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func resetGame()
-    {
+    func resetGame() {
         self.resume()
 
         world.create(self)
-        self.State.GameOverY = world.absoluteZero()
+        self.state.gameOverY = world.absoluteZero()
         
-        self.State.runningState = .started
+        self.state.runningState = .started
         self.pauseButton.isHidden = false
         
         self.world.isPaused = false
@@ -175,14 +174,13 @@ class Game: SKScene, SKPhysicsContactDelegate {
         self.player.reset()
         self.player.position = CGPoint(x: 0.0, y: world.absoluteZero() + player.size.height / 2.0)
         
-        self.State.currentGameTime = 0.0
+        self.state.currentGameTime = 0.0
                 
-        AdvertisingController.Default.PresentIfNeccessary(returnScene: self.scene!, completionHandler: {})
+        AdvertisingController.Default.presentIfNeccessary(returnScene: self.scene!, completionHandler: {})
     }
     
-    func pause()
-    {
-        self.State.runningState = .paused
+    func pause() {
+        self.state.runningState = .paused
         self.pauseButton.isHidden = true 
         
         self.world.isPaused = true
@@ -190,12 +188,11 @@ class Game: SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.speed = 0.0
     }
      
-    func resume()
-    {
+    func resume() {
         self.pausedOverlay.hide()
-        self.State.runningState = .running
+        self.state.runningState = .running
         self.pauseButton.isHidden = false
-        self.State.timeWasPaused = true
+        self.state.timeWasPaused = true
         
         self.world.isPaused = false
         self.player.isPaused = false

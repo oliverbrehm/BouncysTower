@@ -25,13 +25,11 @@ class Level07 : Level
         return SKColor.init(named: "bgLevel07") ?? super.backgroundColor()
     }
     
-    override func platformMinFactor() -> CGFloat
-    {
+    override func platformMinFactor() -> CGFloat {
         return 0.20
     }
     
-    override func platformMaxFactor() -> CGFloat
-    {
+    override func platformMaxFactor() -> CGFloat {
         return 0.35
     }
     

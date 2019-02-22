@@ -12,9 +12,9 @@ import SpriteKit
 class Player : SKSpriteNode
 {
     enum PlayerState {
-        case OnPlatform
-        case Jumping
-        case Falling
+        case onPlatform
+        case jumping
+        case falling
     }
     
     static let size : CGFloat = 35.0;
@@ -32,7 +32,7 @@ class Player : SKSpriteNode
     var score = 0
     var jumpReadyTime = 0.25
  
-    private var _state : PlayerState = .OnPlatform
+    private var _state : PlayerState = .onPlatform
     private let perfectJumpDetector = PerfectJumpDetector()
     
     var state : PlayerState {
@@ -89,7 +89,7 @@ class Player : SKSpriteNode
         self.zRotation = 0.0
         
         self.currentPlatform = nil
-        self.state = .OnPlatform
+        self.state = .onPlatform
         self.score = 0
         
         self.particleEmitter.particleBirthRate = 0.0
@@ -100,7 +100,7 @@ class Player : SKSpriteNode
 
         if(!self.jumpReady) {
             self.removeJumpLoadingActions()
-        } else if(self.state == PlayerState.OnPlatform) // jump if ready
+        } else if(self.state == PlayerState.onPlatform) // jump if ready
         {
             let vxMax : CGFloat = 2000.0
             let vx : CGFloat = abs(self.physicsBody!.velocity.dx)
@@ -108,7 +108,7 @@ class Player : SKSpriteNode
             let xVelocityFactor : CGFloat = 1.0 + min((vx / vxMax), 2.0)
             
             self.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: xVelocityFactor * Player.jumpImpulse))
-            self.state = PlayerState.Jumping
+            self.state = PlayerState.jumping
             
             self.run(SoundController.standard.getSoundAction(action: .jump))
             
@@ -133,7 +133,7 @@ class Player : SKSpriteNode
     func superJump()
     {
         self.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: Player.superJumpImpulse))
-        self.state = PlayerState.Jumping
+        self.state = PlayerState.jumping
 
         self.run(SoundController.standard.getSoundAction(action: .superJump))
         
@@ -174,9 +174,9 @@ class Player : SKSpriteNode
         if let p = self.physicsBody {
             if(p.velocity.dy < -0.1)
             {
-                self.state = .Falling
-            } else if(self.state == .Falling && p.velocity.dy > -0.000001) {
-                self.state = .OnPlatform
+                self.state = .falling
+            } else if(self.state == .falling && p.velocity.dy > -0.000001) {
+                self.state = .onPlatform
             }
         }
         
@@ -197,14 +197,14 @@ class Player : SKSpriteNode
         let previousPlatformNumber = self.currentPlatform?.platformNumber ?? 0
         let nPlatformsJumped = platform.platformNumber - previousPlatformNumber
         let platformBonus = nPlatformsJumped > 0 ? platform.score() * self.perfectJumpDetector.scoreMultiplicator : 0
-        self.score = self.score + (nPlatformsJumped * nPlatformsJumped) + platformBonus
+        self.score += (nPlatformsJumped * nPlatformsJumped) + platformBonus
     }
     
     func landOnPlatform(platform: Platform)
     {
         updateScoreLandingOn(platform: platform)
 
-        self.state = PlayerState.OnPlatform
+        self.state = PlayerState.onPlatform
         self.physicsBody?.velocity.dy = 0.0
         self.currentPlatform = platform
         
@@ -219,7 +219,7 @@ class Player : SKSpriteNode
     
     func hitWall()
     {
-        if(self.state == PlayerState.Jumping && self.physicsBody!.velocity.dy > 0.0) {
+        if(self.state == PlayerState.jumping && self.physicsBody!.velocity.dy > 0.0) {
             self.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 0.4 * Player.jumpImpulse))
         }
         
@@ -235,7 +235,7 @@ class Player : SKSpriteNode
     }
     
     func useExtralife() {
-        self._state = .Jumping
+        self._state = .jumping
         self.zRotation = 0.0
         self.position = CGPoint(x: 0.0, y: self.position.y + 100.0)
         
@@ -249,9 +249,9 @@ class Player : SKSpriteNode
     {
         var dx : CGFloat = 0.0
         
-        if(self.state == PlayerState.Jumping || self.state == PlayerState.Falling) {
+        if(self.state == PlayerState.jumping || self.state == PlayerState.falling) {
             dx = x * 12.0
-        } else if(self.state == PlayerState.OnPlatform) {
+        } else if(self.state == PlayerState.onPlatform) {
             dx = x * 16.0
         }
         

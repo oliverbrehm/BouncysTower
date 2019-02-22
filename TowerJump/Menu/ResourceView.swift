@@ -10,8 +10,8 @@ import SpriteKit
 
 class ResourceView : SKNode
 {
-    private let ICON_SIZE: CGFloat = 30.0
-    private let TEXT_MARGIN: CGFloat = 5.0
+    private let iconSize: CGFloat = 30.0
+    private let textMargin: CGFloat = 5.0
     
     let lifeLabel = SKLabelNode(fontNamed: "AmericanTypewriter-Bold")
     let coinLabel = SKLabelNode(fontNamed: "AmericanTypewriter-Bold")
@@ -31,8 +31,8 @@ class ResourceView : SKNode
     
     private func getLifeView(y: CGFloat) -> SKSpriteNode {
         let lifeSprite = SKSpriteNode(imageNamed: "extralife")
-        lifeSprite.position = CGPoint(x: -ICON_SIZE / 2.0, y: y)
-        lifeSprite.size = CGSize(width: ICON_SIZE, height: ICON_SIZE)
+        lifeSprite.position = CGPoint(x: -iconSize / 2.0, y: y)
+        lifeSprite.size = CGSize(width: iconSize, height: iconSize)
         lifeSprite.zPosition = NodeZOrder.button
         
         lifeLabel.fontSize = 20.0
@@ -44,8 +44,8 @@ class ResourceView : SKNode
     
     private func getCoinView(y: CGFloat) -> SKSpriteNode {
         let coinSprite = SKSpriteNode(imageNamed: "coin")
-        coinSprite.position = CGPoint(x:  -ICON_SIZE / 2.0, y: y)
-        coinSprite.size = CGSize(width: ICON_SIZE, height: ICON_SIZE)
+        coinSprite.position = CGPoint(x:  -iconSize / 2.0, y: y)
+        coinSprite.size = CGSize(width: iconSize, height: iconSize)
         coinSprite.zPosition = NodeZOrder.button
         
         coinLabel.fontSize = 20.0
@@ -57,9 +57,9 @@ class ResourceView : SKNode
     
     func updateValues() {
         self.lifeLabel.text = "x \(Config.standard.extraLives)"
-        lifeLabel.position = CGPoint(x: ICON_SIZE / 2.0 + lifeLabel.frame.size.width / 2.0 + TEXT_MARGIN, y: -lifeLabel.frame.size.height / 2.0)
+        lifeLabel.position = CGPoint(x: iconSize / 2.0 + lifeLabel.frame.size.width / 2.0 + textMargin, y: -lifeLabel.frame.size.height / 2.0)
 
         self.coinLabel.text = "x \(Config.standard.coins)"
-        coinLabel.position = CGPoint(x: ICON_SIZE / 2.0 + coinLabel.frame.size.width / 2.0 + TEXT_MARGIN, y: -coinLabel.frame.size.height / 2.0)
+        coinLabel.position = CGPoint(x: iconSize / 2.0 + coinLabel.frame.size.width / 2.0 + textMargin, y: -coinLabel.frame.size.height / 2.0)
     }
 }

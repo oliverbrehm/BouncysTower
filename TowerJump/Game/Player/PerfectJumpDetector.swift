@@ -85,7 +85,7 @@ class PerfectJumpDetector {
             && self.timeOnPlatform < self.maximumTimeOnPlatform)
         {
             // perfect jump done
-            self.comboCount = self.comboCount + 1
+            self.comboCount += 1
             if(self.comboCount > 0) {
                 self.showPerfectJumpDone()
             }
@@ -106,7 +106,7 @@ class PerfectJumpDetector {
             return
         }
         
-        self.timeOnPlatform = self.timeOnPlatform + dt
+        self.timeOnPlatform += dt
         
         if let p = self.player {
             if let rotation = p.physicsBody?.angularVelocity {

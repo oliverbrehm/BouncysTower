@@ -14,12 +14,15 @@ class ExtraLife: SKSpriteNode
     static let score = 2
     
     init() {
-        super.init(texture: SKTexture(imageNamed: "extralife"), color: SKColor.init(white: 0.0, alpha: 0.0), size: CGSize(width: ExtraLife.size, height: ExtraLife.size))
+        super.init(
+            texture: SKTexture(imageNamed: "extralife"),
+            color: SKColor.init(white: 0.0, alpha: 0.0),
+            size: CGSize(width: ExtraLife.size, height: ExtraLife.size))
         
         self.physicsBody = SKPhysicsBody.init(circleOfRadius: ExtraLife.size / 2.0)
         self.physicsBody?.isDynamic = false
         self.physicsBody?.categoryBitMask = NodeCategories.coin
-        self.physicsBody?.contactTestBitMask = NodeCategories.player;
+        self.physicsBody?.contactTestBitMask = NodeCategories.player
         self.physicsBody?.collisionBitMask = 0x0
         self.physicsBody?.usesPreciseCollisionDetection = true
         

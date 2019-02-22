@@ -12,7 +12,7 @@ class Advertising : SKScene
 {
     private var secondsLeft = 2
     
-    func Execute(completion: @escaping () -> Void) { // TODO what is @escaping
+    func execute(completion: @escaping () -> Void) { // TODO what is @escaping
         let infoLabel = SKLabelNode(text: "\(self.secondsLeft)")
         infoLabel.fontColor = SKColor.green
         infoLabel.fontName = "AmericanTypewriter-Bold"
@@ -32,7 +32,7 @@ class Advertising : SKScene
         infoLabel.run(SKAction.repeat(SKAction.sequence([
             SKAction.wait(forDuration: 1.0),
             SKAction.run {
-                self.secondsLeft = self.secondsLeft - 1
+                self.secondsLeft -= 1
                 infoLabel.text = "\(self.secondsLeft)"
                 
                 if(self.secondsLeft == 0) {

@@ -34,7 +34,7 @@ class OverlayPause : Overlay
         exitButton.size = CGSize(width: 40.0, height: 40.0)
         exitButton.position = CGPoint(x: 110.0, y: 0.0)
         exitButton.action = {
-            game.GameViewController?.showMainMenu()
+            game.gameViewController?.showMainMenu()
         }
         self.addChild(exitButton)
         

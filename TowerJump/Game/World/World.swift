@@ -10,23 +10,22 @@ import SpriteKit
 
 class World : SKNode
 {
-    var currentLevel : Level?
+    var currentLevel: Level?
     let coinManager = CoinManager()
 
-    var levels : [Level] = []
+    var levels: [Level] = []
     private var currentPlatformNumber = 0
     
-    static let wallWidth : CGFloat = 35.0
+    static let wallWidth: CGFloat = 35.0
     
     // walls are invisible nodes, used only for collision with player, textures are spawned as tiles with platforms
     private let leftWall = SKSpriteNode.init(color: SKColor.init(white: 0.0, alpha: 0.0), size: CGSize(width: World.wallWidth, height: 0.0))
     private let rightWall = SKSpriteNode.init(color: SKColor.init(white: 0.0, alpha: 0.0), size: CGSize(width: World.wallWidth, height: 0.0))
     
-    var height : CGFloat = 0.0
-    var width : CGFloat = 0.0
+    var height: CGFloat = 0.0
+    var width: CGFloat = 0.0
     
-    func create(_ scene : Game)
-    {
+    func create(_ scene : Game) {
         self.currentPlatformNumber = 0
         self.removeAllChildren()
         
@@ -68,7 +67,7 @@ class World : SKNode
             Level05(worldWidth: width),
             Level06(worldWidth: width),
             Level07(worldWidth: width),
-            Level08(worldWidth: width)];
+            Level08(worldWidth: width)]
         
         self.currentLevel = nil
         self.spawnNextLevel()
@@ -96,8 +95,7 @@ class World : SKNode
         }
     }
     
-    func spawnPlatformsAbove(y : CGFloat)
-    {
+    func spawnPlatformsAbove(y : CGFloat) {
         while((self.currentLevel != nil && !self.currentLevel!.isFinished())
                 && (topPlatformY() - y < 3.0 * height)) {
             self.spawnPlatform()
@@ -106,7 +104,7 @@ class World : SKNode
     
     func spawnPlatform(numberOfCoins: Int? = nil, yDistance: CGFloat = -1.0) {
         self.currentLevel!.spawnPlatform(scene: self.scene as! Game, number: self.currentPlatformNumber, numberOfCoins: numberOfCoins, yDistance: yDistance)
-        self.currentPlatformNumber = self.currentPlatformNumber + 1
+        self.currentPlatformNumber += 1
     }
     
     func topPlatformY() -> CGFloat {
@@ -124,14 +122,12 @@ class World : SKNode
         platform.hitPlayer(player: player, world: self)
     }
 
-    func updateWallY(_ y : CGFloat)
-    {
+    func updateWallY(_ y : CGFloat) {
         self.leftWall.position.y = y
         self.rightWall.position.y = y
     }
 
-    func absoluteZero() -> CGFloat
-    {
+    func absoluteZero() -> CGFloat {
         return -height / 2.0 + Platform.height / 2.0
     }
 }

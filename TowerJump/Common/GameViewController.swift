@@ -21,7 +21,7 @@ class GameViewController: UIViewController {
             view.showsFPS = true
             view.showsNodeCount = true
             
-            AdvertisingController.Default.Setup(view: view)
+            AdvertisingController.Default.setup(view: view)
         }
         
         showMainMenu()
@@ -36,11 +36,11 @@ class GameViewController: UIViewController {
         
         if let scene = SKScene(fileNamed: "MainGame") as? MainGame {
             scene.scaleMode = .resizeFill
-            scene.GameViewController = self
+            scene.gameViewController = self
             
             self.game = scene
             
-            if let view = self.view as! SKView? {
+            if let view = self.view as? SKView {
                 view.presentScene(scene, transition: SKTransition.push(with: SKTransitionDirection.left, duration: 0.5))
             }
         }
@@ -49,19 +49,18 @@ class GameViewController: UIViewController {
     func showTutorial() {
         if let scene = SKScene(fileNamed: "Tutorial") as? Tutorial {
             scene.scaleMode = .resizeFill
-            scene.GameViewController = self
+            scene.gameViewController = self
             
             self.game = scene
             
-            if let view = self.view as! SKView? {
+            if let view = self.view as? SKView {
                 view.presentScene(scene, transition: SKTransition.push(with: SKTransitionDirection.right, duration: 0.5))
             }
         }
     }
 
-    func showMainMenu()
-    {
-        if let view = self.view as! SKView? {
+    func showMainMenu() {
+        if let view = self.view as? SKView {
             
             var transitionDirection = SKTransitionDirection.right
             if(view.scene is Settings) {
@@ -76,8 +75,7 @@ class GameViewController: UIViewController {
         }
     }
 
-    func showCredits()
-    {
+    func showCredits() {
         if let scene = SKScene(fileNamed: "Settings") as? Settings {
             scene.scaleMode = .resizeFill
             scene.gameViewController = self

@@ -12,7 +12,7 @@ class OverlayExtralife : Overlay
 {
     private let lifeSprite = SKSpriteNode(imageNamed: "extralife")
     
-    func Setup(game: MainGame) {
+    func setup(game: MainGame) {
         super.setup(size: game.frame.size, width: 0.8)
         
         let label = SKLabelNode(text: "Use extralife?")

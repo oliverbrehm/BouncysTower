@@ -34,7 +34,7 @@ class OverlayGameOver : Overlay
         backButton.size = CGSize(width: 40.0, height: 40.0)
         backButton.position = CGPoint(x: 50.0, y: 0.0)
         backButton.action = {
-            game.GameViewController?.showMainMenu()
+            game.gameViewController?.showMainMenu()
         }
         self.addChild(backButton)
         

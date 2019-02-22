@@ -33,7 +33,7 @@ class IOSGameViewController: GameViewController {
     
     func touchDown(atPoint pos : CGPoint) {
         if let g = self.game {
-            if(g.State.runningState == .running && g.State.allowJump) {
+            if(g.state.runningState == .running && g.state.allowJump) {
                 g.player.startMoving()
             }
         }
@@ -50,12 +50,12 @@ class IOSGameViewController: GameViewController {
     }
     
     func touchUp(atPoint pos : CGPoint) {
-        if(self.game?.State.allowJump ?? false && (self.game?.State.runningState == .started || self.game?.State.runningState == .running)) {
+        if(self.game?.state.allowJump ?? false && (self.game?.state.runningState == .started || self.game?.state.runningState == .running)) {
             self.game?.player.releaseMove()
         }
         
-        if(self.game?.State.runningState == .started) {
-            self.game?.State.runningState = .running
+        if(self.game?.state.runningState == .started) {
+            self.game?.state.runningState = .running
         }
     }
     

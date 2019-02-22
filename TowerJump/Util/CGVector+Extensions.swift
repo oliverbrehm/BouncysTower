@@ -20,6 +20,8 @@
  * THE SOFTWARE.
  */
 
+// swiftlint:disable all
+
 import CoreGraphics
 import SpriteKit
 

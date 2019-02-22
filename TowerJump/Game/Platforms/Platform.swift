@@ -8,32 +8,31 @@
 
 import SpriteKit
 
-class Platform : SKSpriteNode
-{
-    static let height : CGFloat = 15.0;
+class Platform: SKSpriteNode {
+    static let height: CGFloat = 15.0
     
-    let platformNumber : Int
+    let platformNumber: Int
     
-    let level : Level
+    let level: Level
     
     let backgroundColor: SKColor
     
-    init(width : CGFloat, texture: SKTexture?, level: Level, platformNumber: Int, backgroundColor: SKColor = SKColor.white) {
+    init(width: CGFloat, texture: SKTexture?, level: Level, platformNumber: Int, backgroundColor: SKColor = SKColor.white) {
         self.level = level
         self.platformNumber = platformNumber
         self.backgroundColor = backgroundColor
-        let platformSize = CGSize(width: width, height: Platform.height);
+        let platformSize = CGSize(width: width, height: Platform.height)
 
         super.init(texture: nil, color: SKColor.init(white: 0.0, alpha: 0.0), size: platformSize)
         
         self.physicsBody = SKPhysicsBody.init(rectangleOf: platformSize)
         self.physicsBody?.isDynamic = false
         self.physicsBody?.categoryBitMask = NodeCategories.platform
-        self.physicsBody?.contactTestBitMask = NodeCategories.platform | NodeCategories.player;
+        self.physicsBody?.contactTestBitMask = NodeCategories.platform | NodeCategories.player
         self.physicsBody?.collisionBitMask = 0x0
         self.physicsBody?.usesPreciseCollisionDetection = true
         
-        self.initTiles(platformSize: platformSize, texture: texture);
+        self.initTiles(platformSize: platformSize, texture: texture)
         
         if(platformNumber % 5 == 0) {
             let label = SKLabelNode(text: "\(platformNumber)")
@@ -88,7 +87,7 @@ class Platform : SKSpriteNode
         while x <= platformSize.width / 2.0 {
             // TODO don't stretch texture of last tile but cut off/crop
             let remainingWidth = platformSize.width / 2.0 - x
-            let w = min(remainingWidth, platformSize.height);
+            let w = min(remainingWidth, platformSize.height)
             let tile = SKSpriteNode(texture: texture, size: CGSize(width: w, height: platformSize.height))
             tile.position = CGPoint(x: x + w / 2.0, y: 0.0)
             self.addChild(tile)
