@@ -8,8 +8,7 @@
 
 import SpriteKit
 
-enum SoundAction
-{
+enum SoundAction {
     case coin
     case button
     case message

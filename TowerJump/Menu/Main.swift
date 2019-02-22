@@ -8,9 +8,8 @@
 
 import SpriteKit
 
-class Main : SKScene
-{
-    var gameViewController : GameViewController?
+class Main: SKScene {
+    var gameViewController: GameViewController?
     
     private var menuOverlay = OverlayMain()
     

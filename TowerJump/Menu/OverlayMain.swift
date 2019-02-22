@@ -8,8 +8,7 @@
 
 import SpriteKit
 
-class OverlayMain : Overlay
-{
+class OverlayMain: Overlay {
     func setup(size: CGSize, menu: Main) {
         super.setup(size: size, width: 0.65)
         

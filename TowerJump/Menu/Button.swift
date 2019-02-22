@@ -8,21 +8,16 @@
 
 import SpriteKit
 
-class Button : SKSpriteNode
-{
+class Button: SKSpriteNode {
     var action : (() -> Void)?
     
-    private var label : SKLabelNode
-    private var backgroundColor : SKColor = SKColor.darkGray
-    private var pressedColor : SKColor = SKColor.lightGray
+    private var label: SKLabelNode
+    private var backgroundColor: SKColor = SKColor.darkGray
+    private var pressedColor: SKColor = SKColor.lightGray
     
-    private var _focussed : Bool = false
-    var focussed : Bool {
-        get {
-            return _focussed
-        } set {
-            _focussed = newValue
-            if(newValue) {
+    var focussed: Bool = false {
+        didSet {
+            if(focussed) {
                 self.color = self.pressedColor
             } else {
                 self.color = self.backgroundColor
@@ -34,13 +29,15 @@ class Button : SKSpriteNode
         // TODO
     }
     
-    convenience init(caption: String)
-    {
-        self.init(caption: caption, size: CGSize(width: 200.0, height: 70.0), fontSize: 30.0, fontColor: SKColor.init(named: "overlay")!, backgroundColor: SKColor.lightGray, pressedColor: SKColor.white)
+    convenience init(caption: String) {
+        self.init(caption: caption,
+                  size: CGSize(width: 200.0, height: 70.0),
+                  fontSize: 30.0, fontColor: SKColor.init(named: "overlay")!,
+                  backgroundColor: SKColor.lightGray,
+                  pressedColor: SKColor.white)
     }
     
-    init(caption: String, size: CGSize, fontSize: CGFloat, fontColor: SKColor, backgroundColor: SKColor, pressedColor: SKColor)
-    {
+    init(caption: String, size: CGSize, fontSize: CGFloat, fontColor: SKColor, backgroundColor: SKColor, pressedColor: SKColor) {
         self.backgroundColor = backgroundColor
         self.pressedColor = pressedColor
         
@@ -66,9 +63,8 @@ class Button : SKSpriteNode
         super.init(coder: aDecoder)
     }
     
-    func touchUp(point : CGPoint)
-    {
-        if(self._focussed) {
+    func touchUp(point: CGPoint) {
+        if(self.focussed) {
             self.focussed = false
             
             if(self.frame.contains(point) && self.action != nil) {
@@ -77,8 +73,7 @@ class Button : SKSpriteNode
         }
     }
     
-    func touchDown(point : CGPoint)
-    {
+    func touchDown(point: CGPoint) {
         self.focussed = true
         self.run(SoundController.standard.getSoundAction(action: .button))
     }

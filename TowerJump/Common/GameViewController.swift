@@ -27,8 +27,7 @@ class GameViewController: UIViewController {
         showMainMenu()
     }
 
-    func showGame()
-    {
+    func showGame() {
         if !Config.standard.tutorialShown {
             self.showTutorial()
             return

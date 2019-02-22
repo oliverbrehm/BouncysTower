@@ -8,8 +8,7 @@
 
 import SpriteKit
 
-class OverlayExtralife : Overlay
-{
+class OverlayExtralife: Overlay {
     private let lifeSprite = SKSpriteNode(imageNamed: "extralife")
     
     func setup(game: MainGame) {

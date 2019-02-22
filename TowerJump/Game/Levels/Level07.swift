@@ -8,8 +8,7 @@
 
 import SpriteKit
 
-class Level07 : Level
-{
+class Level07: Level {
     override init(worldWidth: CGFloat) {
         super.init(worldWidth: worldWidth)
         self.texturePlatform = SKTexture(imageNamed: "platform01")

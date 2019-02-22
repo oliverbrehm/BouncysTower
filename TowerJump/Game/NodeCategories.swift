@@ -8,8 +8,8 @@
 
 import Foundation
 
-class NodeCategories
-{
+// swiftlint:disable colon
+class NodeCategories {
     static let player                : UInt32 = 0x1 << 1
     static let platform              : UInt32 = 0x1 << 2
     static let platformDeactivated   : UInt32 = 0x1 << 3

@@ -8,8 +8,7 @@
 
 import SpriteKit
 
-class World : SKNode
-{
+class World: SKNode {
     var currentLevel: Level?
     let coinManager = CoinManager()
 
@@ -25,7 +24,7 @@ class World : SKNode
     var height: CGFloat = 0.0
     var width: CGFloat = 0.0
     
-    func create(_ scene : Game) {
+    func create(_ scene: Game) {
         self.currentPlatformNumber = 0
         self.removeAllChildren()
         
@@ -95,7 +94,7 @@ class World : SKNode
         }
     }
     
-    func spawnPlatformsAbove(y : CGFloat) {
+    func spawnPlatformsAbove(y: CGFloat) {
         while((self.currentLevel != nil && !self.currentLevel!.isFinished())
                 && (topPlatformY() - y < 3.0 * height)) {
             self.spawnPlatform()
@@ -103,7 +102,11 @@ class World : SKNode
     }
     
     func spawnPlatform(numberOfCoins: Int? = nil, yDistance: CGFloat = -1.0) {
-        self.currentLevel!.spawnPlatform(scene: self.scene as! Game, number: self.currentPlatformNumber, numberOfCoins: numberOfCoins, yDistance: yDistance)
+        self.currentLevel!.spawnPlatform(
+            scene: self.scene as! Game,
+            number: self.currentPlatformNumber,
+            numberOfCoins: numberOfCoins,
+            yDistance: yDistance)
         self.currentPlatformNumber += 1
     }
     
@@ -122,7 +125,7 @@ class World : SKNode
         platform.hitPlayer(player: player, world: self)
     }
 
-    func updateWallY(_ y : CGFloat) {
+    func updateWallY(_ y: CGFloat) {
         self.leftWall.position.y = y
         self.rightWall.position.y = y
     }

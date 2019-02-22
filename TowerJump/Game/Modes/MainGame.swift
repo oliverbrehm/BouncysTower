@@ -27,7 +27,11 @@ class MainGame: Game {
         self.extralifeOverlay.setup(game: self)
         self.extralifeOverlay.hide()
         
-        self.scoreLabel = Button(caption: "0", size: CGSize(width: World.wallWidth, height: 30.0), fontSize: 12.0, fontColor: SKColor.black, backgroundColor: SKColor.init(white: 1.0, alpha: 0.8), pressedColor: SKColor.white)
+        self.scoreLabel = Button(
+            caption: "0", size: CGSize(width: World.wallWidth, height: 30.0),
+            fontSize: 12.0, fontColor: SKColor.black,
+            backgroundColor: SKColor.init(white: 1.0, alpha: 0.8),
+            pressedColor: SKColor.white)
         self.scoreLabel.zPosition = NodeZOrder.overlay
         self.scoreLabel.position = CGPoint(
             x: -world.width / 2.0 + scoreLabel.frame.size.width / 2.0,

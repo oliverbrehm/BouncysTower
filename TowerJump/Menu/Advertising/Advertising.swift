@@ -8,8 +8,7 @@
 
 import SpriteKit
 
-class Advertising : SKScene
-{
+class Advertising: SKScene {
     private var secondsLeft = 2
     
     func execute(completion: @escaping () -> Void) { // TODO what is @escaping

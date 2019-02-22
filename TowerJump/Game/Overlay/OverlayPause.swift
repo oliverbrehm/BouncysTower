@@ -8,8 +8,7 @@
 
 import SpriteKit
 
-class OverlayPause : Overlay
-{
+class OverlayPause: Overlay {
     let resourceView = ResourceView()
 
     func setup(game: Game) {

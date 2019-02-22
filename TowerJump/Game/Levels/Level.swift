@@ -9,11 +9,10 @@
 import Foundation
 import SpriteKit
 
-class Level: SKNode
-{
-    private var platformY : CGFloat
+class Level: SKNode {
+    private var platformY: CGFloat
     private var backgroundY: CGFloat
-    private var worldWidth : CGFloat
+    private var worldWidth: CGFloat
     
     private var platforms: [Platform] = []
     private let maxPlatforms = 25
@@ -23,17 +22,16 @@ class Level: SKNode
     
     private var levelPlatformIndex = 1
     private var speedEaseIn: CGFloat = 999999999.0
-    private var lastPlatform : Platform?
+    private var lastPlatform: Platform?
     
-    var texturePlatform : SKTexture?
+    var texturePlatform: SKTexture?
     var wallLeftTexture: SKTexture?
     var wallRightTexture: SKTexture?
     
-    private let backgroundHeight:CGFloat = 500.0
+    private let backgroundHeight: CGFloat = 500.0
     
-    private var _reached : Bool = false
-    var reached : Bool
-    {
+    private var _reached: Bool = false
+    var reached: Bool {
         get {
             return _reached
         }
@@ -89,10 +87,15 @@ class Level: SKNode
         // TODO replace with Double.random in Swift 4.2
         var x: CGFloat = 0.0
         
-        var platform : Platform? = nil
+        var platform: Platform?
         
         if(self.isLastPlatform()) {
-            platform = PlatformEndLevel(width: worldWidth, texture: nil, level: self, platformNumber: platformNumber, backgroundColor: self.backgroundColor())
+            platform = PlatformEndLevel(
+                width: worldWidth,
+                texture: nil,
+                level: self,
+                platformNumber: platformNumber,
+                backgroundColor: self.backgroundColor())
             self.spawnBackground(above: platformY)
         } else {
             let minWidth = levelWidth * self.platformMinFactor()
@@ -132,8 +135,7 @@ class Level: SKNode
         }        
     }
     
-    func spawnWallTilesForPlatform(platform: Platform)
-    {
+    func spawnWallTilesForPlatform(platform: Platform) {
         self.spawnWallTiles(above: platform.position.y)
     }
     
@@ -165,12 +167,9 @@ class Level: SKNode
         }
     }
     
-    func updateCollisionTests(player : Player)
-    {
-        if(player.state == .falling)
-        {
-            for platform in platforms
-            {
+    func updateCollisionTests(player: Player) {
+        if(player.state == .falling) {
+            for platform in platforms {
                 let playerBottom =  self.convert(player.position, from: player.world!).y - player.size.height / 2.0
                 if(playerBottom > platform.top() - 2.0) {
                     platform.activateCollisions()
@@ -185,8 +184,7 @@ class Level: SKNode
         }
     }
     
-    func spawnPlatform(scene: Game, number: Int, numberOfCoins: Int? = nil, yDistance: CGFloat = -1.0)
-    {
+    func spawnPlatform(scene: Game, number: Int, numberOfCoins: Int? = nil, yDistance: CGFloat = -1.0) {
         self.levelPlatformIndex += 1
         
         if let platform = self.getPlatform(platformNumber: number, yDistance: yDistance) {
@@ -199,10 +197,12 @@ class Level: SKNode
             }
             
             let n = numberOfCoins ?? (platform.platformNumber % 4 == 0 ? 5 : 0)
-            let platformSize = CGSize(width: platform.size.width, height: Platform.height);
+            let platformSize = CGSize(width: platform.size.width, height: Platform.height)
             let platformInWorld = self.convert(platform.position, to: scene.world)
             let coinPlatformMargin: CGFloat = platformSize.width * 0.175
-            scene.world.coinManager.spawnHorizontalLine(origin: CGPoint(x: platformInWorld.x, y: platformInWorld.y + platformSize.height / 2.0 + Coin.size / 2.0 + 2.0), width: platformSize.width - 2 * coinPlatformMargin, n: n)
+            scene.world.coinManager.spawnHorizontalLine(
+                origin: CGPoint(x: platformInWorld.x, y: platformInWorld.y + platformSize.height / 2.0 + Coin.size / 2.0 + 2.0),
+                width: platformSize.width - 2 * coinPlatformMargin, n: n)
             
             platform.deactivateCollisions()
             
@@ -228,18 +228,15 @@ class Level: SKNode
         ]))
     }
     
-    func topPlatformY() -> CGFloat
-    {
+    func topPlatformY() -> CGFloat {
         return platforms.last?.position.y ?? 0.0
     }
     
-    func platformMinFactor() -> CGFloat
-    {
+    func platformMinFactor() -> CGFloat {
         return 0.01
     }
     
-    func platformMaxFactor() -> CGFloat
-    {
+    func platformMaxFactor() -> CGFloat {
         return 1.0
     }
     
@@ -255,7 +252,7 @@ class Level: SKNode
         return 110.0
     }
     
-    func numberOfPlatforms() -> Int  {
+    func numberOfPlatforms() -> Int {
         return 50
     }
     
@@ -268,7 +265,7 @@ class Level: SKNode
     }
     
     func platformTexture() -> SKTexture? {
-        return self.texturePlatform;
+        return self.texturePlatform
     }
     
     func firstPlatformOffset() -> CGFloat {

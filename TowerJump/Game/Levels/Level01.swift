@@ -9,8 +9,7 @@
 import Foundation
 import SpriteKit
 
-class Level01 : Level
-{
+class Level01: Level {
     override init(worldWidth: CGFloat) {
         super.init(worldWidth: worldWidth)
         self.texturePlatform = SKTexture(imageNamed: "platform01")
@@ -26,13 +25,11 @@ class Level01 : Level
         return SKColor.init(named: "bgLevel01") ?? super.backgroundColor()
     }
 
-    override func platformMinFactor() -> CGFloat
-    {
+    override func platformMinFactor() -> CGFloat {
         return 0.4
     }
     
-    override func platformMaxFactor() -> CGFloat
-    {
+    override func platformMaxFactor() -> CGFloat {
         return 0.8
     }
     

@@ -8,8 +8,7 @@
 
 import SpriteKit
 
-class Overlay : SKSpriteNode
-{
+class Overlay: SKSpriteNode {
     private var positionHidden = CGPoint.zero
     private var positionShown = CGPoint.zero
     
@@ -32,20 +31,17 @@ class Overlay : SKSpriteNode
         self.size = CGSize(width: width * size.width, height: size.height)
     }
     
-    func show()
-    {
+    func show() {
         self.isHidden = false
-        self.run(SKAction.move(to: self.positionShown, duration: 0.1));
+        self.run(SKAction.move(to: self.positionShown, duration: 0.1))
     }
     
-    func hide()
-    {
+    func hide() {
         self.run(SKAction.sequence([
             SKAction.move(to: self.positionHidden, duration: 0.1),
             SKAction.run {
                 self.isHidden = true
             }
-            ]));
+            ]))
     }
 }
-

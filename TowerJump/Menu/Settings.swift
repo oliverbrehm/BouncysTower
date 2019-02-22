@@ -8,9 +8,8 @@
 
 import SpriteKit
 
-class Settings : SKScene
-{
-    var gameViewController : GameViewController?
+class Settings: SKScene {
+    var gameViewController: GameViewController?
     
     override func didMove(to view: SKView) {
         let infoLabel = SKLabelNode(text: "Made by Oliver Brehm")

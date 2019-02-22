@@ -8,8 +8,7 @@
 
 import SpriteKit
 
-class OverlayGameOver : Overlay
-{
+class OverlayGameOver: Overlay {
     private let scoreLabel = SKLabelNode(fontNamed: "AmericanTypewriter-Bold")
     let resourceView = ResourceView()
 
@@ -50,8 +49,7 @@ class OverlayGameOver : Overlay
         self.addChild(resourceView)
     }
     
-    func show(score: Int)
-    {
+    func show(score: Int) {
         self.scoreLabel.text = "Score: \(score)"
         self.resourceView.updateValues()
         super.show()

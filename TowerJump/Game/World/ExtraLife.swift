@@ -8,8 +8,7 @@
 
 import SpriteKit
 
-class ExtraLife: SKSpriteNode
-{
+class ExtraLife: SKSpriteNode {
     static let size: CGFloat = 25.0
     static let score = 2
     

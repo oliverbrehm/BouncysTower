@@ -8,8 +8,7 @@
 
 import SpriteKit
 
-class AdvertisingController
-{
+class AdvertisingController {
     static var Default = AdvertisingController()
     
     private let timeToAdvertising = 1 * 60.0; // seconds

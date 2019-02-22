@@ -31,9 +31,7 @@ class PerfectJumpDetector {
     
     private(set) var comboCount = -1
     var scoreMultiplicator: Int {
-        get {
-            return max(comboCount, 1)
-        }
+        return max(comboCount, 1)
     }
     
     init() {
@@ -51,7 +49,6 @@ class PerfectJumpDetector {
                 ]), count: nShakes - 1),
                 SKAction.rotate(byAngle: CGFloat(-shakeSize / 2.0), duration: halfShakeDuration)
             ])
-        
         
         self.perfectJumpAction = SKAction.sequence([
             SKAction.scale(to: 1.0, duration: 0.1),
@@ -82,8 +79,7 @@ class PerfectJumpDetector {
         print("possible: \(self.perfectJumpPossible), time: \(self.timeOnPlatform)")
         if(self.perfectJumpPossible
             && self.timeOnPlatform > self.minimumTimeOnPlatform
-            && self.timeOnPlatform < self.maximumTimeOnPlatform)
-        {
+            && self.timeOnPlatform < self.maximumTimeOnPlatform) {
             // perfect jump done
             self.comboCount += 1
             if(self.comboCount > 0) {
@@ -169,7 +165,8 @@ class PerfectJumpDetector {
             comboFinishedLabel.run(SKAction.sequence([
                 SKAction.group([
                     SKAction.fadeIn(withDuration: 0.1),
-                    SKAction.moveBy(x: 0.0, y: (self.player?.scene?.size.height ?? 0.0) / 2.0 - 2 * comboFinishedLabel.frame.size.height, duration: 0.2),
+                    SKAction.moveBy(x: 0.0,
+                                    y: (self.player?.scene?.size.height ?? 0.0) / 2.0 - 2 * comboFinishedLabel.frame.size.height, duration: 0.2),
                     self.shakeAction
                 ]),
                 SKAction.wait(forDuration: 0.25),

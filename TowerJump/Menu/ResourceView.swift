@@ -8,8 +8,7 @@
 
 import SpriteKit
 
-class ResourceView : SKNode
-{
+class ResourceView: SKNode {
     private let iconSize: CGFloat = 30.0
     private let textMargin: CGFloat = 5.0
     
@@ -44,7 +43,7 @@ class ResourceView : SKNode
     
     private func getCoinView(y: CGFloat) -> SKSpriteNode {
         let coinSprite = SKSpriteNode(imageNamed: "coin")
-        coinSprite.position = CGPoint(x:  -iconSize / 2.0, y: y)
+        coinSprite.position = CGPoint(x: -iconSize / 2.0, y: y)
         coinSprite.size = CGSize(width: iconSize, height: iconSize)
         coinSprite.zPosition = NodeZOrder.button
         
