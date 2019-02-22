@@ -32,7 +32,12 @@ class IOSGameViewController: GameViewController {
     }
     
     func touchDown(atPoint pos : CGPoint) {
-        self.game?.player.startMoving()
+        if let g = self.game {
+            if(g.State.runningState == .running && g.State.allowJump) {
+                g.player.startMoving()
+            }
+        }
+        
         lastX = pos.x
     }
     

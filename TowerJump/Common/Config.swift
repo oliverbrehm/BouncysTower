@@ -16,12 +16,9 @@ class Config {
     private static let keyTutorialShown = "TUTORIAL_SHOWN"
     
     init() {
-        _extraLives = UserDefaults.standard.integer(forKey: Config.keyExtraLives)
-        _coins = UserDefaults.standard.integer(forKey: Config.keyCoins)
+        self.extraLives = UserDefaults.standard.integer(forKey: Config.keyExtraLives)
+        self.coins = UserDefaults.standard.integer(forKey: Config.keyCoins)
     }
-    
-    private var _extraLives: Int
-    private var _coins: Int
     
     var tutorialShown: Bool {
         get {
@@ -32,19 +29,15 @@ class Config {
         }
     }
     
-    var extraLives: Int {
-        get {
-            return _extraLives
-        }
-    }
+    private(set) var extraLives: Int
     
     func hasExtralives() -> Bool {
-        return _extraLives > 0
+        return extraLives > 0
     }
     
     func useExtralive() -> Bool {
-        if (_extraLives > 0) {
-            _extraLives = _extraLives - 1
+        if (extraLives > 0) {
+            extraLives = extraLives - 1
             return true
         } else {
             return false
@@ -52,18 +45,14 @@ class Config {
     }
     
     func addExtralife() {
-        _extraLives = _extraLives + 1
-        UserDefaults.standard.set(_extraLives, forKey: Config.keyExtraLives)
+        extraLives = extraLives + 1
+        UserDefaults.standard.set(extraLives, forKey: Config.keyExtraLives)
     }
     
-    var coins: Int {
-        get {
-            return _coins
-        }
-    }
+    private(set) var coins: Int
     
     func addCoin() {
-        _coins = _coins + 1
-        UserDefaults.standard.set(_coins, forKey: Config.keyCoins)
+        coins = coins + 1
+        UserDefaults.standard.set(coins, forKey: Config.keyCoins)
     }
 }

@@ -19,7 +19,7 @@ class Level: SKNode
     private let maxPlatforms = 25
     private var wallY: CGFloat = 0.0
     private var wallTiles: [SKSpriteNode] = []
-    private let maxWallTiles = 200
+    private let maxWallTiles = 250
     
     private var levelPlatformIndex = 1
     private var speedEaseIn: CGFloat = 999999999.0
@@ -199,7 +199,10 @@ class Level: SKNode
             }
             
             let n = numberOfCoins ?? (platform.platformNumber % 4 == 0 ? 5 : 0)
-            platform.spawnCoinsInWorld(world: scene.world, n: n)
+            let platformSize = CGSize(width: platform.size.width, height: Platform.height);
+            let platformInWorld = self.convert(platform.position, to: scene.world)
+            let coinPlatformMargin: CGFloat = platformSize.width * 0.175
+            scene.world.coinManager.spawnHorizontalLine(origin: CGPoint(x: platformInWorld.x, y: platformInWorld.y + platformSize.height / 2.0 + Coin.size / 2.0 + 2.0), width: platformSize.width - 2 * coinPlatformMargin, n: n)
             
             platform.deactivateCollisions()
             

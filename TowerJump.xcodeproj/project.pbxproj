@@ -156,18 +156,21 @@
 		A7A228C5220604F700081E0E /* Level06.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE0669216243D70009D905 /* Level06.swift */; };
 		A7A228C6220604F700081E0E /* Level07.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE066B216243E40009D905 /* Level07.swift */; };
 		A7A228C7220604F700081E0E /* Level08.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71F2D9B2163956D00FAF0EB /* Level08.swift */; };
-		A7A228C82206050E00081E0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7797EF620E2A89200E3B664 /* Assets.xcassets */; };
 		A7A228CA2206050E00081E0E /* SKSpriteNode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71F2DA72164ED4500FAF0EB /* SKSpriteNode+Extensions.swift */; };
 		A7A228CB2206050E00081E0E /* ScoreParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = A792AE06216538DC004280A5 /* ScoreParticle.sks */; };
 		A7A228CC2206050E00081E0E /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D4C8312201C8C80060F352 /* Config.swift */; };
-		A7A228CD2206050E00081E0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7797EF620E2A89200E3B664 /* Assets.xcassets */; };
 		A7A228CF2206050E00081E0E /* SKSpriteNode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71F2DA72164ED4500FAF0EB /* SKSpriteNode+Extensions.swift */; };
 		A7A228D02206050E00081E0E /* ScoreParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = A792AE06216538DC004280A5 /* ScoreParticle.sks */; };
 		A7A228D12206050E00081E0E /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D4C8312201C8C80060F352 /* Config.swift */; };
-		A7A228D22206050E00081E0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7797EF620E2A89200E3B664 /* Assets.xcassets */; };
 		A7A228D42206050E00081E0E /* SKSpriteNode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71F2DA72164ED4500FAF0EB /* SKSpriteNode+Extensions.swift */; };
 		A7A228D52206050E00081E0E /* ScoreParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = A792AE06216538DC004280A5 /* ScoreParticle.sks */; };
 		A7A228D62206050E00081E0E /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D4C8312201C8C80060F352 /* Config.swift */; };
+		A7AA89B2221FE6BB00C5D73A /* CoinManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AA89B1221FE6BB00C5D73A /* CoinManager.swift */; };
+		A7AA89B3221FE6BB00C5D73A /* CoinManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AA89B1221FE6BB00C5D73A /* CoinManager.swift */; };
+		A7AA89B4221FE6BB00C5D73A /* CoinManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AA89B1221FE6BB00C5D73A /* CoinManager.swift */; };
+		A7AA89B6222019C400C5D73A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7AA89B5222019C400C5D73A /* Assets.xcassets */; };
+		A7AA89B7222019C400C5D73A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7AA89B5222019C400C5D73A /* Assets.xcassets */; };
+		A7AA89B8222019C400C5D73A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7AA89B5222019C400C5D73A /* Assets.xcassets */; };
 		A7DC9BB62216BF670038EC58 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DC9BB52216BF670038EC58 /* GameState.swift */; };
 		A7DC9BBC221756CF0038EC58 /* PerfectJumpDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DC9BBB221756CF0038EC58 /* PerfectJumpDetector.swift */; };
 		A7DC9BBD221756CF0038EC58 /* PerfectJumpDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DC9BBB221756CF0038EC58 /* PerfectJumpDetector.swift */; };
@@ -236,9 +239,10 @@
 		A7736AC32206025200A28B5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A7797EEB20E2A89200E3B664 /* MainGame.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainGame.sks; sourceTree = "<group>"; };
 		A7797EEF20E2A89200E3B664 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
-		A7797EF620E2A89200E3B664 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A7797EFB20E2A89200E3B664 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A792AE06216538DC004280A5 /* ScoreParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ScoreParticle.sks; sourceTree = "<group>"; };
+		A7AA89B1221FE6BB00C5D73A /* CoinManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinManager.swift; sourceTree = "<group>"; };
+		A7AA89B5222019C400C5D73A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A7AE0667216239AF0009D905 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		A7AE0669216243D70009D905 /* Level06.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level06.swift; sourceTree = "<group>"; };
 		A7AE066B216243E40009D905 /* Level07.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level07.swift; sourceTree = "<group>"; };
@@ -483,6 +487,7 @@
 				A7175FB820E2C2ED00968329 /* World.swift */,
 				A71875B4220B0619003ED6F1 /* ExtraLife.swift */,
 				A7D4C82F2201BB9E0060F352 /* Coin.swift */,
+				A7AA89B1221FE6BB00C5D73A /* CoinManager.swift */,
 			);
 			path = World;
 			sourceTree = "<group>";
@@ -499,7 +504,7 @@
 		A7DC9BBA221755A00038EC58 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				A7797EF620E2A89200E3B664 /* Assets.xcassets */,
+				A7AA89B5222019C400C5D73A /* Assets.xcassets */,
 				A7797EFB20E2A89200E3B664 /* Info.plist */,
 				A792AE06216538DC004280A5 /* ScoreParticle.sks */,
 				A7D4C8312201C8C80060F352 /* Config.swift */,
@@ -622,6 +627,7 @@
 				A7186DFB220C43B700187C6E /* collectcoin.aif in Resources */,
 				A7186E0A220C4B6F00187C6E /* gameover.aif in Resources */,
 				A7186E07220C4B6F00187C6E /* superjump.aif in Resources */,
+				A7AA89B6222019C400C5D73A /* Assets.xcassets in Resources */,
 				A7DC9BC422177E430038EC58 /* SuperJump.sks in Resources */,
 				A7A228CB2206050E00081E0E /* ScoreParticle.sks in Resources */,
 				A7DC9BC0221775270038EC58 /* ComboParticle.sks in Resources */,
@@ -630,7 +636,6 @@
 				A7A22865220604DB00081E0E /* Settings.sks in Resources */,
 				A7186DF8220C43B700187C6E /* button.aif in Resources */,
 				A7A22862220604DB00081E0E /* MainGame.sks in Resources */,
-				A7A228C82206050E00081E0E /* Assets.xcassets in Resources */,
 				A7736AA62206025100A28B5D /* LaunchScreen.storyboard in Resources */,
 				A7186E02220C451400187C6E /* jump.aif in Resources */,
 			);
@@ -649,12 +654,12 @@
 				A7A2285E220604D500081E0E /* Advertising01.sks in Resources */,
 				A7DC9BC522177E430038EC58 /* SuperJump.sks in Resources */,
 				A7186E0B220C4B6F00187C6E /* gameover.aif in Resources */,
-				A7A228CD2206050E00081E0E /* Assets.xcassets in Resources */,
 				A7186E08220C4B6F00187C6E /* superjump.aif in Resources */,
 				A7A22868220604DB00081E0E /* Main.sks in Resources */,
 				A7A22867220604DB00081E0E /* Tutorial.sks in Resources */,
 				A7A228D02206050E00081E0E /* ScoreParticle.sks in Resources */,
 				A7186E03220C451400187C6E /* jump.aif in Resources */,
+				A7AA89B7222019C400C5D73A /* Assets.xcassets in Resources */,
 				A7186DFC220C43B700187C6E /* collectcoin.aif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -672,12 +677,12 @@
 				A7A22861220604D600081E0E /* Advertising01.sks in Resources */,
 				A7DC9BC622177E430038EC58 /* SuperJump.sks in Resources */,
 				A7186E0C220C4B6F00187C6E /* gameover.aif in Resources */,
-				A7A228D22206050E00081E0E /* Assets.xcassets in Resources */,
 				A7186E09220C4B6F00187C6E /* superjump.aif in Resources */,
 				A7A2286C220604DC00081E0E /* Main.sks in Resources */,
 				A7A2286B220604DC00081E0E /* Tutorial.sks in Resources */,
 				A7A228D52206050E00081E0E /* ScoreParticle.sks in Resources */,
 				A7186E04220C451400187C6E /* jump.aif in Resources */,
+				A7AA89B8222019C400C5D73A /* Assets.xcassets in Resources */,
 				A7186DFD220C43B700187C6E /* collectcoin.aif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -689,6 +694,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7AA89B2221FE6BB00C5D73A /* CoinManager.swift in Sources */,
 				A7A228B0220604F600081E0E /* Level03.swift in Sources */,
 				A7A228AD220604F600081E0E /* Level.swift in Sources */,
 				A7A22880220604E700081E0E /* InfoBox.swift in Sources */,
@@ -757,6 +763,7 @@
 				A7A2288B220604E800081E0E /* MainGame.swift in Sources */,
 				A7A22892220604E800081E0E /* Camera.swift in Sources */,
 				A7A228A7220604EF00081E0E /* Platform.swift in Sources */,
+				A7AA89B3221FE6BB00C5D73A /* CoinManager.swift in Sources */,
 				A7A228BA220604F700081E0E /* Level04.swift in Sources */,
 				A7A228BE220604F700081E0E /* Level08.swift in Sources */,
 				A765DC042215A48400B34284 /* CGVector+Extensions.swift in Sources */,
@@ -804,6 +811,7 @@
 				A7A22898220604E800081E0E /* MainGame.swift in Sources */,
 				A7A2289F220604E800081E0E /* Camera.swift in Sources */,
 				A7A228AA220604EF00081E0E /* Platform.swift in Sources */,
+				A7AA89B4221FE6BB00C5D73A /* CoinManager.swift in Sources */,
 				A7A228C3220604F700081E0E /* Level04.swift in Sources */,
 				A7A228C7220604F700081E0E /* Level08.swift in Sources */,
 				A765DC052215A48400B34284 /* CGVector+Extensions.swift in Sources */,

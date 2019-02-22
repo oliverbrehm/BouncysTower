@@ -64,24 +64,6 @@ class Platform : SKSpriteNode
         // override in subclasses
     }
     
-    func spawnCoinsInWorld(world: World, n: Int) {
-        let platformSize = CGSize(width: self.size.width, height: Platform.height);
-        let platformInWorld = self.level.convert(self.position, to: world)
-        
-        let coinPlatformMargin: CGFloat = platformSize.width * 0.175
-        let d = (platformSize.width - 2 * coinPlatformMargin) / CGFloat(n - 1)
-        
-        var x = -platformSize.width / 2.0 + coinPlatformMargin
-        
-        var i = 0
-        while i < n {
-            world.spawnCoin(position: CGPoint(x: platformInWorld.x + x, y: platformInWorld.y + platformSize.height / 2.0 + Coin.size / 2.0 + 2.0))
-            
-            x = x + d
-            i = i + 1
-        }
-    }
-    
     func hitPlayer(player: Player, world: World) {
         self.level.reached = true
         // special behaviour in subclasses

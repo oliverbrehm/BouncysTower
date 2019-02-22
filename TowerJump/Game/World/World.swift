@@ -11,9 +11,9 @@ import SpriteKit
 class World : SKNode
 {
     var currentLevel : Level?
+    let coinManager = CoinManager()
 
     var levels : [Level] = []
-    private var coins: [Coin] = []
     private var currentPlatformNumber = 0
     
     static let wallWidth : CGFloat = 35.0
@@ -32,6 +32,8 @@ class World : SKNode
         
         self.width = scene.size.width * scene.xScale
         self.height = scene.size.height * scene.yScale
+        
+        self.coinManager.setup(world: self)
 
         // left wall
         leftWall.size.height = height * 3.0
@@ -80,23 +82,6 @@ class World : SKNode
         let platform = Platform(width: width - 2 * World.wallWidth, texture: floorTexture, level: self.currentLevel!, platformNumber: 0)
         platform.position = CGPoint(x: 0.0, y: absoluteZero())
         self.addChild(platform)
-    }
-    
-    func spawnCoin(position: CGPoint) {
-        let coin = Coin()
-        coin.position = position
-        self.addChild(coin)
-        self.coins.append(coin)
-    }
-    
-    func numberOfCoins() -> Int {
-        return self.coins.count
-    }
-    
-    func removeCoin(coin: Coin) {
-        if let index = self.coins.index(of: coin) {
-            self.coins.remove(at: index)
-        }
     }
     
     func spawnNextLevel() {

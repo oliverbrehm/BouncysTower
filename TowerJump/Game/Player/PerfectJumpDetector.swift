@@ -29,10 +29,10 @@ class PerfectJumpDetector {
     private let shakeAction: SKAction
     private let perfectJumpAction: SKAction
     
-    private var _comboCount = -1
-    var comboCount: Int {
+    private(set) var comboCount = -1
+    var scoreMultiplicator: Int {
         get {
-            return _comboCount
+            return max(comboCount, 1)
         }
     }
     
@@ -65,7 +65,7 @@ class PerfectJumpDetector {
     }
     
     func setup(player: Player) {
-        self._comboCount = -1
+        self.comboCount = -1
         self.player = player
     }
     
@@ -85,15 +85,15 @@ class PerfectJumpDetector {
             && self.timeOnPlatform < self.maximumTimeOnPlatform)
         {
             // perfect jump done
-            self._comboCount = self.comboCount + 1
-            if(self._comboCount > 0) {
+            self.comboCount = self.comboCount + 1
+            if(self.comboCount > 0) {
                 self.showPerfectJumpDone()
             }
         } else {
-            if(self._comboCount > 0) {
+            if(self.comboCount > 0) {
                 self.showComboFinished()
             }
-            self._comboCount = -1
+            self.comboCount = -1
         }
         
         self.lastPlatformNumber = self.currentPlatform?.platformNumber ?? -1
@@ -131,15 +131,15 @@ class PerfectJumpDetector {
         if let p = self.player {
             let comboLabel = SKLabelNode(fontNamed: "AmericanTypewriter-Bold")
             comboLabel.zPosition = NodeZOrder.item
-            comboLabel.fontSize = min(14.0 + CGFloat(2 * self._comboCount), 50.0) // bigger label with bigger combo
+            comboLabel.fontSize = min(14.0 + CGFloat(2 * self.comboCount), 50.0) // bigger label with bigger combo
             comboLabel.color = SKColor.darkGray
             comboLabel.fontColor = self.getColorForComboCount()
             comboLabel.alpha = 0.8
             comboLabel.setScale(0.0)
             
             comboLabel.position = p.position
-            comboLabel.text = self._comboCount > 2 ? "\(self._comboCount)"
-                : (self._comboCount == 1 ? "Perfect!" : "AWESOME")
+            comboLabel.text = self.comboCount > 2 ? "\(self.comboCount)"
+                : (self.comboCount == 1 ? "Perfect!" : "AWESOME")
             
             if let w = p.world {
                 w.addChild(comboLabel)
@@ -157,11 +157,11 @@ class PerfectJumpDetector {
             comboFinishedLabel.fontColor = SKColor.yellow
             
             comboFinishedLabel.position = CGPoint.zero
-            comboFinishedLabel.text = "!!COMBO: \(self._comboCount)!!"
+            comboFinishedLabel.text = "!!COMBO: \(self.comboCount)!!"
             
             let particelEmitter = SKEmitterNode(fileNamed: "ComboParticle")!
             particelEmitter.targetNode = self.player?.scene
-            particelEmitter.particleBirthRate = min(CGFloat(50 * self._comboCount), 2000.0)
+            particelEmitter.particleBirthRate = min(CGFloat(50 * self.comboCount), 2000.0)
             particelEmitter.position = CGPoint(x: 0.0, y: -(self.player?.scene?.frame.size.height ?? 0.0) / 2.0)
             c.addChild(particelEmitter)
             

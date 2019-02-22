@@ -20,13 +20,18 @@ class Player : SKSpriteNode
     static let size : CGFloat = 35.0;
     static let jumpImpulse : CGFloat = 35.0
     static let superJumpImpulse : CGFloat = 120.0
-    private let readyActionKey = "readyAction"
+    
+    private let readyActionKey = "READY_ACTION"
+    private let shrinkActionKey = "SHRINK_ACTION"
+    private let growActionKey = "GROW_ACTION"
+    
     var world : World?
     
     var currentPlatform: Platform?
     
     var score = 0
-    
+    var jumpReadyTime = 0.25
+ 
     private var _state : PlayerState = .OnPlatform
     private let perfectJumpDetector = PerfectJumpDetector()
     
@@ -92,29 +97,37 @@ class Player : SKSpriteNode
     
     func releaseMove()
     {
-        self.removeAction(forKey: readyActionKey)
 
-        // jump if ready
-        if(self.state == PlayerState.OnPlatform && self.jumpReady)
+        if(!self.jumpReady) {
+            self.removeJumpLoadingActions()
+        } else if(self.state == PlayerState.OnPlatform) // jump if ready
         {
             let vxMax : CGFloat = 2000.0
             let vx : CGFloat = abs(self.physicsBody!.velocity.dx)
             
             let xVelocityFactor : CGFloat = 1.0 + min((vx / vxMax), 2.0)
-
+            
             self.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: xVelocityFactor * Player.jumpImpulse))
             self.state = PlayerState.Jumping
             
             self.run(SoundController.standard.getSoundAction(action: .jump))
             
-            self.run(SKAction.scale(to: 1.0, duration: 0.1))
-            self.run(SKAction.colorize(with: SKColor.orange, colorBlendFactor: 0.0, duration: 0.05))
+            self.removeJumpLoadingActions()
+
+
             self.jumpReady = false
             
             self.perfectJumpDetector.playerLeftPlatform()
         }
         
         self.loadingJump = false
+    }
+    
+    private func removeJumpLoadingActions() {
+        self.removeAction(forKey: readyActionKey)
+        self.removeAction(forKey: shrinkActionKey)
+        self.run(SKAction.scale(to: 1.0, duration: 0.1), withKey: growActionKey)
+        self.run(SKAction.colorize(with: SKColor.orange, colorBlendFactor: 0.0, duration: 0.05))
     }
     
     func superJump()
@@ -140,17 +153,18 @@ class Player : SKSpriteNode
     }
     
     func startMoving() {
+        self.removeAction(forKey: self.growActionKey)
+        
         self.loadingJump = true
         
-        let jumpReadyTime = 0.2
-        self.run(SKAction.scale(to: 0.85, duration: jumpReadyTime))
+        self.run(SKAction.scale(to: 0.75, duration: self.jumpReadyTime), withKey: shrinkActionKey)
         
         let readyAction = SKAction.sequence([
             SKAction.wait(forDuration: jumpReadyTime),
             SKAction.run {
                 self.jumpReady = true
             },
-            SKAction.colorize(with: SKColor.orange, colorBlendFactor: 1.0, duration: 0.05)
+            SKAction.colorize(with: SKColor.orange, colorBlendFactor: 1.0, duration: 0.1)
         ])
         self.run(readyAction, withKey: readyActionKey)
     }
@@ -179,13 +193,16 @@ class Player : SKSpriteNode
         self.perfectJumpDetector.update(dt: dt)
     }
     
-    func landOnPlatform(platform: Platform)
-    {
-        // calculate score
+    fileprivate func updateScoreLandingOn(platform: Platform) {
         let previousPlatformNumber = self.currentPlatform?.platformNumber ?? 0
         let nPlatformsJumped = platform.platformNumber - previousPlatformNumber
-        let platformBonus = nPlatformsJumped > 0 ? platform.score() : 0
+        let platformBonus = nPlatformsJumped > 0 ? platform.score() * self.perfectJumpDetector.scoreMultiplicator : 0
         self.score = self.score + (nPlatformsJumped * nPlatformsJumped) + platformBonus
+    }
+    
+    func landOnPlatform(platform: Platform)
+    {
+        updateScoreLandingOn(platform: platform)
 
         self.state = PlayerState.OnPlatform
         self.physicsBody?.velocity.dy = 0.0

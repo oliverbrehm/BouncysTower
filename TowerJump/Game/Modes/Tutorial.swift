@@ -17,6 +17,7 @@ class Tutorial: Game {
         case T4Platforms
         case T5WallJumps
         case T6HighPlatformJumps
+        case T7Combos
     }
     
     let infoBox = InfoBox()
@@ -24,10 +25,10 @@ class Tutorial: Game {
     
     override func setup() {
         self.camera?.addChild(self.infoBox)
-        self.infoBox.position = CGPoint(x: 0.0, y: 0.25 * self.world.height)
-        self.infoBox.setup(size: CGSize(width: 0.75 * self.world.width, height: 0.35 * self.world.height))
-        self.world.currentLevel?.spawnBackground(above: 2000.0)
-        self.world.currentLevel?.spawnWallTiles(above: 2000.0)
+        self.world.currentLevel?.spawnBackground(above: 2500.0)
+        self.world.currentLevel?.spawnWallTiles(above: 2500.0)
+        
+        self.player.jumpReadyTime = 0.35
     }
     
     override func resetGame() {
@@ -56,7 +57,7 @@ class Tutorial: Game {
     }
     
     override func hitCoin(coin: Coin) {
-        if(self.world.numberOfCoins() == 0) {
+        if(self.world.coinManager.numberOfCoins() == 0) {
             switch self.tutorialState {
             case .T1Move:
                 self.tutorial2Jump()
@@ -79,6 +80,10 @@ class Tutorial: Game {
                 break
 
             case .T6HighPlatformJumps:
+                self.tutorial7Combos()
+                break
+                
+            case .T7Combos:
                 self.finishTutorial()
                 break
                 
@@ -88,8 +93,6 @@ class Tutorial: Game {
     }
     
     private func tutorialStart() {
-        self.world.currentLevel!.spawnWallTiles(above: 5 * self.world.height)
-        
         self.run(SKAction.sequence([
             SKAction.wait(forDuration: 0.5),
             SKAction.run {
@@ -104,43 +107,41 @@ class Tutorial: Game {
 
         self.infoBox.clear()
         self.infoBox.addLine(text: "Hi! Let's learn how to play.")
-        self.infoBox.addLine(text: "Touch and move you finger to the left or right to move.")
+            self.infoBox.addLine(text: "Hold your finger on the screen and move it to the left or right.")
         self.infoBox.addLine(text: "Start by collecting all the coins on the floor.")
+        self.infoBox.setImage(name: "leftright", height: 65.0)
         self.showInfo(completion: {
             self.world.spawnFloor()
             
             let coinY = self.world.absoluteZero() + 25.0
-            self.world.spawnCoin(position: CGPoint(x: -200.0, y: coinY))
-            self.world.spawnCoin(position: CGPoint(x: -150.0, y: coinY))
-            self.world.spawnCoin(position: CGPoint(x: -100.0, y: coinY))
-            self.world.spawnCoin(position: CGPoint(x: -50.0, y: coinY))
-
-            self.world.spawnCoin(position: CGPoint(x: 50.0, y: coinY))
-            self.world.spawnCoin(position: CGPoint(x: 100.0, y: coinY))
-            self.world.spawnCoin(position: CGPoint(x: 150.0, y: coinY))
-            self.world.spawnCoin(position: CGPoint(x: 200.0, y: coinY))
+            self.world.coinManager.spawnHorizontalLine(origin: CGPoint(x: 0.0, y: coinY), width: self.world.width - 150.0, n: 10)
         })
     }
     
     private func tutorial2Jump() {
         self.infoBox.clear()
-        self.infoBox.addLine(text: "Great! Now try jumping so you can climb to the top of the tower.")
-        self.infoBox.addLine(text: "Jump by releasing your finger.")
-        self.infoBox.addLine(text: "You can still move left or right while in the air!")
+        self.infoBox.addLine(text: "Great! Now try jumping:")
+        self.infoBox.addLine(text: "When you keep your finger on the screen and roll around,")
+        self.infoBox.addLine(text: "Bouncy will soon turn red.")
+        self.infoBox.addLine(text: "That means he's ready to jump, just release your finger!")
+        self.infoBox.setImage(name: "leftright", height: 65.0)
+        
         self.showInfo(completion: {
-            self.tutorialState = .T2Jump
-            self.State.allowJump = true
+            self.infoBox.clear()
+            self.infoBox.addLine(text: "There's no need to swipe up, Bouncy will jump on his own")
+            self.infoBox.addLine(text: "if you release you touch.")
+            self.infoBox.addLine(text: "You only move your finger left and right so he can roll on")
+            self.infoBox.addLine(text: "the platforms.")
+            self.infoBox.setImage(name: "noup", height: 65.0)
             
-            let y = self.world.absoluteZero() + 150.0
-            let coinPositions = [
-                CGPoint(x: -200.0, y: y),
-                CGPoint(x: 0.0, y: y),
-                CGPoint(x: 200.0, y: y)
-            ]
-            
-            for p in coinPositions {
-                self.world.spawnCoin(position: p)
-            }
+            self.showInfo(completion: {
+                self.tutorialState = .T2Jump
+                self.State.allowJump = true
+                
+                self.world.coinManager.spawnHorizontalLine(origin: CGPoint(x: 0.0, y: self.world.absoluteZero() + 125.0), width: self.world.width - 150.0, n: 10)
+                self.world.coinManager.spawnHorizontalLine(origin: CGPoint(x: 20.0, y: self.world.absoluteZero() + 150.0), width: self.world.width - 150.0, n: 10)
+                self.world.coinManager.spawnHorizontalLine(origin: CGPoint(x: 0.0, y: self.world.absoluteZero() + 175.0), width: self.world.width - 150.0, n: 10)
+            })
         })
     }
     
@@ -149,28 +150,23 @@ class Tutorial: Game {
         self.infoBox.addLine(text: "Noticed that you jump higher when rolling?")
         self.infoBox.addLine(text: "Reach these next coins by rolling fast on the ground")
         self.infoBox.addLine(text: "and then releasing your touch.")
+        self.infoBox.setImage(name: "leftright", height: 65.0)
+        
         self.showInfo(completion: {
             self.tutorialState = .T3HighJump
             
-            self.world.spawnCoin(position: CGPoint(x: -200.0, y: self.world.absoluteZero() + 240.0))
-            self.world.spawnCoin(position: CGPoint(x: -220.0, y: self.world.absoluteZero() + 240.0))
-            self.world.spawnCoin(position: CGPoint(x: -200.0, y: self.world.absoluteZero() + 260.0))
-            self.world.spawnCoin(position: CGPoint(x: -220.0, y: self.world.absoluteZero() + 260.0))
-            
-            
-            self.world.spawnCoin(position: CGPoint(x: 200.0, y: self.world.absoluteZero() + 240.0))
-            self.world.spawnCoin(position: CGPoint(x: 220.0, y: self.world.absoluteZero() + 240.0))
-            self.world.spawnCoin(position: CGPoint(x: 200.0, y: self.world.absoluteZero() + 260.0))
-            self.world.spawnCoin(position: CGPoint(x: 220.0, y: self.world.absoluteZero() + 260.0))
+            self.world.coinManager.spawnSquare(origin: CGPoint(x: -180.0, y: self.world.absoluteZero() + 280.0), distanceBetween: 8.0, nSide: 2)
+            self.world.coinManager.spawnSquare(origin: CGPoint(x: 180.0, y: self.world.absoluteZero() + 280.0), distanceBetween: 8.0, nSide: 2)
         })
     }
     
     private func tutorial4Platforms() {
         self.infoBox.clear()
-        self.infoBox.addLine(text: "Wow that was some crazy jumping!")
-        self.infoBox.addLine(text: "Next jump on the platforms to collect all coins.")
+        self.infoBox.addLine(text: "Great!")
+        self.infoBox.addLine(text: "Next jump on the platforms to collect the coins on top.")
         self.showInfo(completion: {
             self.tutorialState = .T4Platforms
+            self.player.jumpReadyTime = 0.25
             
             self.run(SKAction.sequence([
                 SKAction.wait(forDuration: 1.0), // player falls to the floor
@@ -193,27 +189,16 @@ class Tutorial: Game {
         self.showInfo(completion: {
             self.tutorialState = .T5WallJumps
             self.world.currentLevel!.removeAllPlatforms()
+            self.world.currentLevel!.reset()
 
             self.run(SKAction.sequence([
                 SKAction.wait(forDuration: 2.0), // player falls to the floor
                 SKAction.run {
-                    let coinPositions = [
-                        CGPoint(x: -80.0, y: self.world.absoluteZero() + 150.0),
-                        CGPoint(x: -140.0, y: self.world.absoluteZero() + 225.0),
-                        CGPoint(x: -200.0, y: self.world.absoluteZero() + 300.0),
-                        CGPoint(x: -140.0, y: self.world.absoluteZero() + 375.0),
-                        CGPoint(x: -80.0, y: self.world.absoluteZero() + 450.0),
-                        
-                        CGPoint(x: 80.0, y: self.world.absoluteZero() + 150.0),
-                        CGPoint(x: 140.0, y: self.world.absoluteZero() + 225.0),
-                        CGPoint(x: 200.0, y: self.world.absoluteZero() + 300.0),
-                        CGPoint(x: 140.0, y: self.world.absoluteZero() + 375.0),
-                        CGPoint(x: 80.0, y: self.world.absoluteZero() + 450.0),
-                        ]
+                    self.world.coinManager.spawnSquare(origin: CGPoint(x: -180.0, y: self.world.absoluteZero() + 300.0), distanceBetween: 6.0, nSide: 3)
+                    self.world.coinManager.spawnSquare(origin: CGPoint(x: 180.0, y: self.world.absoluteZero() + 300.0), distanceBetween: 6.0, nSide: 3)
                     
-                    for p in coinPositions {
-                        self.world.spawnCoin(position: p)
-                    }
+                    self.world.coinManager.spawnSquare(origin: CGPoint(x: -60.0, y: self.world.absoluteZero() + 420.0), distanceBetween: 6.0, nSide: 3)
+                    self.world.coinManager.spawnSquare(origin: CGPoint(x: 60.0, y: self.world.absoluteZero() + 420.0), distanceBetween: 6.0, nSide: 3)
                 }
             ]))
         })
@@ -221,9 +206,9 @@ class Tutorial: Game {
     
     private func tutorial6HighPlatformJumps() {
         self.infoBox.clear()
+        self.infoBox.addLine(text: "Wow that was some crazy jumping!")
         self.infoBox.addLine(text: "You can roll left and right on the platforms")
         self.infoBox.addLine(text: "to gain speed and jump higher.")
-        self.infoBox.addLine(text: "Try it!")
         self.showInfo(completion: {
             self.tutorialState = .T6HighPlatformJumps
             self.world.currentLevel!.reset()
@@ -241,6 +226,39 @@ class Tutorial: Game {
                     self.world.spawnPlatform(numberOfCoins: 8, yDistance: 110.0)
                 }
             ]))
+        })
+    }
+    
+    private func tutorial7Combos() {
+        self.infoBox.clear()
+        self.infoBox.addLine(text: "OK! One last thing:")
+        self.infoBox.addLine(text: "You can get combos and way more points if you")
+        self.infoBox.addLine(text: "use wall jumps and just let Bouncy roll and bounce.")
+        self.showInfo(completion: {
+            self.tutorialState = .T7Combos
+            self.world.currentLevel!.removeAllPlatforms()
+            self.world.currentLevel!.reset()
+            
+            self.infoBox.clear()
+            self.infoBox.addLine(text: "Don't be scared, this takes a while to master!")
+            self.infoBox.setImage(name: "combo", height: 250.0)
+            self.showInfo {
+                self.run(SKAction.sequence([
+                    SKAction.wait(forDuration: 1.6), // player falls to the floor
+                    SKAction.run {
+                        self.world.spawnPlatform(numberOfCoins: 0, yDistance: 200.0)
+                        self.world.spawnPlatform(numberOfCoins: 0, yDistance: 280.0)
+                        self.world.spawnPlatform(numberOfCoins: 0, yDistance: 280.0)
+                        self.world.spawnPlatform(numberOfCoins: 0, yDistance: 280.0)
+                        self.world.spawnPlatform(numberOfCoins: 0, yDistance: 280.0)
+                        self.world.spawnPlatform(numberOfCoins: 0, yDistance: 280.0)
+                        self.world.spawnPlatform(numberOfCoins: 0, yDistance: 280.0)
+                        self.world.spawnPlatform(numberOfCoins: 0, yDistance: 280.0)
+                        self.world.spawnPlatform(numberOfCoins: 0, yDistance: 280.0)
+                        self.world.spawnPlatform(numberOfCoins: 8, yDistance: 280.0)
+                    }
+                ]))
+            }
         })
     }
     

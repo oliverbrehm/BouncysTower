@@ -11,6 +11,7 @@ import SpriteKit
 class InfoBox : Button {
     
     var lines: [SKLabelNode] = []
+    var image: SKSpriteNode?
     
     init() {
         let color = SKColor(white: 1.0, alpha: 0.8)
@@ -22,23 +23,13 @@ class InfoBox : Button {
         super.init(coder: aDecoder)
     }
     
-    func setup(size: CGSize) {
-        self.size = size
-        
-        let label = SKLabelNode(fontNamed: "AmericanTypewriter-Bold")
-        label.fontSize = 16.0
-        label.fontColor = SKColor.red
-        label.text = "X"
-        
-        label.position = CGPoint(x: size.width / 2.0 - label.frame.width / 2.0 - 5.0, y: size.height / 2.0 - label.frame.height - 5.0)
-        self.addChild(label)
-    }
-    
     func clear() {
         for node in self.lines {
             node.removeFromParent()
         }
         self.lines.removeAll()
+        self.image?.removeFromParent()
+        self.image = nil
     }
     
     func addLine(text: String) {
@@ -49,16 +40,52 @@ class InfoBox : Button {
         self.addChild(label)
         self.lines.append(label)
         
-        // layout lines y position
-        let lineHeight = label.frame.size.height
-        let lineMargin: CGFloat = 6.0
-        let totalHeight = CGFloat(self.lines.count) * lineHeight + CGFloat(self.lines.count - 1) * lineMargin
-        for (index, node) in self.lines.enumerated() {
-            node.position.y = totalHeight / 2.0 - CGFloat(index) * (lineHeight + lineMargin) - lineHeight
+        self.updateLayout()
+    }
+    
+    func setImage(name: String, height: CGFloat) {
+        if(self.image != nil) {
+            self.image?.removeFromParent()
+        }
+        
+        let img = SKSpriteNode(imageNamed: name)
+        self.image = img
+        img.size = CGSize(width: height / img.size.height * img.size.width, height: height)
+        
+        self.addChild(img)
+        
+        self.updateLayout()
+    }
+    
+    private func updateLayout() {
+        if let game = self.scene as? Game
+        {
+            let margin: CGFloat = 10.0
+            
+            let lineHeight: CGFloat = self.lines.first != nil ? self.lines.first!.frame.size.height : 0.0
+            let lineMargin: CGFloat = 6.0
+            let imageHeight: CGFloat = self.image != nil ? self.image!.frame.height : 0.0
+            let nElements = self.lines.count + (self.image != nil ? 1 : 0)
+            
+            let contentHeight = CGFloat(self.lines.count) * lineHeight + (self.image != nil ? imageHeight : 0.0) + CGFloat(nElements - 1) * lineMargin
+            
+            for (index, node) in self.lines.enumerated() {
+                node.position.y = contentHeight / 2.0 - CGFloat(index) * (lineHeight + lineMargin) - lineHeight
+            }
+            
+            if let img = self.image {
+                img.position.y = -contentHeight / 2.0 + imageHeight / 2.0
+            }
+            
+            let totalHeight = contentHeight + 2 * margin
+            self.size = CGSize(width: game.world.width * 0.75, height: totalHeight)
+            self.position = CGPoint(x: 0.0, y: game.world.height / 2.0 - margin - totalHeight / 2.0)
         }
     }
     
     func show(completion: @escaping () -> Void) {
+        self.removeAllActions()
+        
         self.action = {
             self.run(SKAction.sequence([
                 SKAction.scale(to: 0.0, duration: 0.3),
@@ -70,5 +97,11 @@ class InfoBox : Button {
         
         self.run(SKAction.scale(to: 1.0, duration: 0.3))
         self.run(SoundController.standard.getSoundAction(action: .message))
+        print("playing sound")
+        
+        self.run(SKAction.repeatForever(SKAction.sequence([
+            SKAction.fadeAlpha(to: 0.9, duration: 0.5),
+            SKAction.fadeAlpha(to: 0.7, duration: 0.5)
+        ])))
     }
 }
