@@ -21,11 +21,18 @@ class Settings: SKScene {
         self.addChild(infoLabel)
         
         let tutorialButton = Button(caption: "Tutorial")
-        tutorialButton.position = CGPoint(x: 0.0, y: 0.0)
+        tutorialButton.position = CGPoint(x: -120.0, y: 0.0)
         tutorialButton.action = {
             self.gameViewController?.showTutorial()
         }
         self.addChild(tutorialButton)
+        
+        let scoresButton = Button(caption: "Scores")
+        scoresButton.position = CGPoint(x: 120.0, y: 0.0)
+        scoresButton.action = {
+            self.gameViewController?.showScores()
+        }
+        self.addChild(scoresButton)
         
         let backButton = Button(caption: "Back")
         backButton.position = CGPoint(x: 0.0, y: -100.0)

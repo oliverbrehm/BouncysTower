@@ -26,10 +26,16 @@ class Config {
         }
         set {
             UserDefaults.standard.set(newValue, forKey: Config.keyTutorialShown)
+            UserDefaults.standard.synchronize()
         }
     }
     
-    private(set) var extraLives: Int
+    private(set) var extraLives: Int {
+        didSet {
+            UserDefaults.standard.set(extraLives, forKey: Config.keyExtraLives)
+            UserDefaults.standard.synchronize()
+        }
+    }
     
     func hasExtralives() -> Bool {
         return extraLives > 0
@@ -46,13 +52,16 @@ class Config {
     
     func addExtralife() {
         extraLives += 1
-        UserDefaults.standard.set(extraLives, forKey: Config.keyExtraLives)
     }
     
-    private(set) var coins: Int
+    private(set) var coins: Int {
+        didSet {
+            UserDefaults.standard.set(coins, forKey: Config.keyCoins)
+            UserDefaults.standard.synchronize()
+        }
+    }
     
     func addCoin() {
         coins += 1
-        UserDefaults.standard.set(coins, forKey: Config.keyCoins)
     }
 }

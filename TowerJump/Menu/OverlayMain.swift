@@ -22,7 +22,7 @@ class OverlayMain: Overlay {
         let creditsButton = Button(caption: "Settings")
         creditsButton.position = CGPoint(x: 60.0, y: 0.0)
         creditsButton.action = {
-            menu.gameViewController?.showCredits()
+            menu.gameViewController?.showSettings()
         }
         self.addChild(creditsButton)
         

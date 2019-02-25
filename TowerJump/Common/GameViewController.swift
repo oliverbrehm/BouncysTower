@@ -44,6 +44,17 @@ class GameViewController: UIViewController {
             }
         }
     }
+    
+    func showScores() {
+        if let scene = SKScene(fileNamed: "Scores") as? ScoresScene {
+            scene.scaleMode = .resizeFill
+            scene.setup(gameViewController: self)
+            
+            if let view = self.view as! SKView? {
+                view.presentScene(scene, transition: SKTransition.push(with: SKTransitionDirection.down, duration: 0.5))
+            }
+        }
+    }
 
     func showTutorial() {
         if let scene = SKScene(fileNamed: "Tutorial") as? Tutorial {
@@ -74,7 +85,7 @@ class GameViewController: UIViewController {
         }
     }
 
-    func showCredits() {
+    func showSettings() {
         if let scene = SKScene(fileNamed: "Settings") as? Settings {
             scene.scaleMode = .resizeFill
             scene.gameViewController = self

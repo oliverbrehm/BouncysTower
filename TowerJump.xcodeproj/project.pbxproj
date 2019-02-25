@@ -32,6 +32,21 @@
 		A71875B5220B0619003ED6F1 /* ExtraLife.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71875B4220B0619003ED6F1 /* ExtraLife.swift */; };
 		A71875B6220B0619003ED6F1 /* ExtraLife.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71875B4220B0619003ED6F1 /* ExtraLife.swift */; };
 		A71875B7220B0619003ED6F1 /* ExtraLife.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71875B4220B0619003ED6F1 /* ExtraLife.swift */; };
+		A724098322243DF100B18095 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = A724098222243DF100B18095 /* Score.swift */; };
+		A724098422243DF100B18095 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = A724098222243DF100B18095 /* Score.swift */; };
+		A724098522243DF100B18095 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = A724098222243DF100B18095 /* Score.swift */; };
+		A72409872224447300B18095 /* Scores.sks in Resources */ = {isa = PBXBuildFile; fileRef = A72409862224447300B18095 /* Scores.sks */; };
+		A72409882224447300B18095 /* Scores.sks in Resources */ = {isa = PBXBuildFile; fileRef = A72409862224447300B18095 /* Scores.sks */; };
+		A72409892224447300B18095 /* Scores.sks in Resources */ = {isa = PBXBuildFile; fileRef = A72409862224447300B18095 /* Scores.sks */; };
+		A724098B2224449600B18095 /* Shop.sks in Resources */ = {isa = PBXBuildFile; fileRef = A724098A2224449600B18095 /* Shop.sks */; };
+		A724098C2224449600B18095 /* Shop.sks in Resources */ = {isa = PBXBuildFile; fileRef = A724098A2224449600B18095 /* Shop.sks */; };
+		A724098D2224449600B18095 /* Shop.sks in Resources */ = {isa = PBXBuildFile; fileRef = A724098A2224449600B18095 /* Shop.sks */; };
+		A724098F222444AE00B18095 /* Purchases.sks in Resources */ = {isa = PBXBuildFile; fileRef = A724098E222444AE00B18095 /* Purchases.sks */; };
+		A7240990222444AE00B18095 /* Purchases.sks in Resources */ = {isa = PBXBuildFile; fileRef = A724098E222444AE00B18095 /* Purchases.sks */; };
+		A7240991222444AE00B18095 /* Purchases.sks in Resources */ = {isa = PBXBuildFile; fileRef = A724098E222444AE00B18095 /* Purchases.sks */; };
+		A7240993222444F100B18095 /* ScoresScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7240992222444F100B18095 /* ScoresScene.swift */; };
+		A7240994222444F100B18095 /* ScoresScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7240992222444F100B18095 /* ScoresScene.swift */; };
+		A7240995222444F100B18095 /* ScoresScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7240992222444F100B18095 /* ScoresScene.swift */; };
 		A74E3C8822131B2400D38AEB /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74E3C8722131B2400D38AEB /* GameViewController.swift */; };
 		A74E3C8922131B2400D38AEB /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74E3C8722131B2400D38AEB /* GameViewController.swift */; };
 		A74E3C8A22131B2400D38AEB /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74E3C8722131B2400D38AEB /* GameViewController.swift */; };
@@ -218,6 +233,11 @@
 		A71F2DA32164D2D000FAF0EB /* OverlayPause.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayPause.swift; sourceTree = "<group>"; };
 		A71F2DA52164E1B100FAF0EB /* NodeZOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeZOrder.swift; sourceTree = "<group>"; };
 		A71F2DA72164ED4500FAF0EB /* SKSpriteNode+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKSpriteNode+Extensions.swift"; sourceTree = "<group>"; };
+		A724098222243DF100B18095 /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
+		A72409862224447300B18095 /* Scores.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Scores.sks; sourceTree = "<group>"; };
+		A724098A2224449600B18095 /* Shop.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Shop.sks; sourceTree = "<group>"; };
+		A724098E222444AE00B18095 /* Purchases.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Purchases.sks; sourceTree = "<group>"; };
+		A7240992222444F100B18095 /* ScoresScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresScene.swift; sourceTree = "<group>"; };
 		A74E3C8722131B2400D38AEB /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		A765DC022215A48400B34284 /* CGVector+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGVector+Extensions.swift"; sourceTree = "<group>"; };
 		A7736A902205D6B600A28B5D /* InfoBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoBox.swift; sourceTree = "<group>"; };
@@ -456,6 +476,7 @@
 				A71E741221F9035900E7E193 /* Overlay.swift */,
 				A71E741421F907BD00E7E193 /* OverlayMain.swift */,
 				A71875B2220AFB11003ED6F1 /* ResourceView.swift */,
+				A7240992222444F100B18095 /* ScoresScene.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -467,6 +488,9 @@
 				A702E8C322021F0600EB13B8 /* Tutorial.sks */,
 				A7AE0674216248AA0009D905 /* Main.sks */,
 				A71F2D9D2163A4BF00FAF0EB /* Settings.sks */,
+				A72409862224447300B18095 /* Scores.sks */,
+				A724098A2224449600B18095 /* Shop.sks */,
+				A724098E222444AE00B18095 /* Purchases.sks */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -511,6 +535,7 @@
 				A74E3C8722131B2400D38AEB /* GameViewController.swift */,
 				A7DC9BBF221775270038EC58 /* ComboParticle.sks */,
 				A7DC9BC322177E430038EC58 /* SuperJump.sks */,
+				A724098222243DF100B18095 /* Score.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -628,6 +653,8 @@
 				A7186DFB220C43B700187C6E /* collectcoin.aif in Resources */,
 				A7186E0A220C4B6F00187C6E /* gameover.aif in Resources */,
 				A7186E07220C4B6F00187C6E /* superjump.aif in Resources */,
+				A724098F222444AE00B18095 /* Purchases.sks in Resources */,
+				A72409872224447300B18095 /* Scores.sks in Resources */,
 				A7AA89B6222019C400C5D73A /* Assets.xcassets in Resources */,
 				A7DC9BC422177E430038EC58 /* SuperJump.sks in Resources */,
 				A7A228CB2206050E00081E0E /* ScoreParticle.sks in Resources */,
@@ -639,6 +666,7 @@
 				A7A22862220604DB00081E0E /* MainGame.sks in Resources */,
 				A7736AA62206025100A28B5D /* LaunchScreen.storyboard in Resources */,
 				A7186E02220C451400187C6E /* jump.aif in Resources */,
+				A724098B2224449600B18095 /* Shop.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -646,6 +674,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7240990222444AE00B18095 /* Purchases.sks in Resources */,
+				A72409882224447300B18095 /* Scores.sks in Resources */,
 				A7186DFF220C43B700187C6E /* message.aif in Resources */,
 				A7A22866220604DB00081E0E /* MainGame.sks in Resources */,
 				A7736AB42206025100A28B5D /* Main.storyboard in Resources */,
@@ -654,6 +684,7 @@
 				A7186DF9220C43B700187C6E /* button.aif in Resources */,
 				A7A2285E220604D500081E0E /* Advertising01.sks in Resources */,
 				A7DC9BC522177E430038EC58 /* SuperJump.sks in Resources */,
+				A724098C2224449600B18095 /* Shop.sks in Resources */,
 				A7186E0B220C4B6F00187C6E /* gameover.aif in Resources */,
 				A7186E08220C4B6F00187C6E /* superjump.aif in Resources */,
 				A7A22868220604DB00081E0E /* Main.sks in Resources */,
@@ -669,6 +700,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7240991222444AE00B18095 /* Purchases.sks in Resources */,
+				A72409892224447300B18095 /* Scores.sks in Resources */,
 				A7186E00220C43B700187C6E /* message.aif in Resources */,
 				A7A2286A220604DC00081E0E /* MainGame.sks in Resources */,
 				A7736AC22206025200A28B5D /* Main.storyboard in Resources */,
@@ -677,6 +710,7 @@
 				A7186DFA220C43B700187C6E /* button.aif in Resources */,
 				A7A22861220604D600081E0E /* Advertising01.sks in Resources */,
 				A7DC9BC622177E430038EC58 /* SuperJump.sks in Resources */,
+				A724098D2224449600B18095 /* Shop.sks in Resources */,
 				A7186E0C220C4B6F00187C6E /* gameover.aif in Resources */,
 				A7186E09220C4B6F00187C6E /* superjump.aif in Resources */,
 				A7A2286C220604DC00081E0E /* Main.sks in Resources */,
@@ -757,7 +791,9 @@
 				A7A22870220604E000081E0E /* Settings.swift in Sources */,
 				A71875B3220AFB11003ED6F1 /* ResourceView.swift in Sources */,
 				A7A22859220604D500081E0E /* AdvertisingController.swift in Sources */,
+				A724098322243DF100B18095 /* Score.swift in Sources */,
 				A7736A9E2206025100A28B5D /* AppDelegate.swift in Sources */,
+				A7240993222444F100B18095 /* ScoresScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -784,6 +820,7 @@
 				A7A2288B220604E800081E0E /* MainGame.swift in Sources */,
 				A7A22892220604E800081E0E /* Camera.swift in Sources */,
 				A7A228A7220604EF00081E0E /* Platform.swift in Sources */,
+				A7240994222444F100B18095 /* ScoresScene.swift in Sources */,
 				A7AA89B3221FE6BB00C5D73A /* CoinManager.swift in Sources */,
 				A7A228BA220604F700081E0E /* Level04.swift in Sources */,
 				A7A228BE220604F700081E0E /* Level08.swift in Sources */,
@@ -793,6 +830,7 @@
 				A7A22876220604E100081E0E /* Overlay.swift in Sources */,
 				A7A2288F220604E800081E0E /* NodeCategories.swift in Sources */,
 				A7A228A9220604EF00081E0E /* Coin.swift in Sources */,
+				A724098422243DF100B18095 /* Score.swift in Sources */,
 				A7A228A8220604EF00081E0E /* PlatformEndLevel.swift in Sources */,
 				A7A228BB220604F700081E0E /* Level05.swift in Sources */,
 				A7A2285D220604D500081E0E /* Advertising.swift in Sources */,
@@ -832,6 +870,7 @@
 				A7A22898220604E800081E0E /* MainGame.swift in Sources */,
 				A7A2289F220604E800081E0E /* Camera.swift in Sources */,
 				A7A228AA220604EF00081E0E /* Platform.swift in Sources */,
+				A7240995222444F100B18095 /* ScoresScene.swift in Sources */,
 				A7AA89B4221FE6BB00C5D73A /* CoinManager.swift in Sources */,
 				A7A228C3220604F700081E0E /* Level04.swift in Sources */,
 				A7A228C7220604F700081E0E /* Level08.swift in Sources */,
@@ -841,6 +880,7 @@
 				A7A2287B220604E100081E0E /* Overlay.swift in Sources */,
 				A7A2289C220604E800081E0E /* NodeCategories.swift in Sources */,
 				A7A228AC220604EF00081E0E /* Coin.swift in Sources */,
+				A724098522243DF100B18095 /* Score.swift in Sources */,
 				A7A228AB220604EF00081E0E /* PlatformEndLevel.swift in Sources */,
 				A7A228C4220604F700081E0E /* Level05.swift in Sources */,
 				A7A22860220604D600081E0E /* Advertising.swift in Sources */,

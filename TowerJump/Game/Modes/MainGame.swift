@@ -91,7 +91,10 @@ class MainGame: Game {
     func gameOver() {
         AdvertisingController.Default.gamePlayed(gameTime: self.state.currentGameTime)
         
-        self.gameOverOverlay.show(score: self.player.score)
+        let score = self.player.score
+        let rank = Score.standard.addScore(score)
+        
+        self.gameOverOverlay.show(score: score, rank: rank)
         self.pauseButton.isHidden = true
         self.state.runningState = .over
     }
