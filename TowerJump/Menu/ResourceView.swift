@@ -8,13 +8,23 @@
 
 import SpriteKit
 
-class ResourceView: SKNode {
+class ResourceView: Button {
     private let iconSize: CGFloat = 30.0
     private let textMargin: CGFloat = 5.0
     
     let lifeLabel = SKLabelNode(fontNamed: "AmericanTypewriter-Bold")
     let coinLabel = SKLabelNode(fontNamed: "AmericanTypewriter-Bold")
-
+    
+    init() {
+        super.init(
+            caption: "", size: CGSize(width: 50.0, height: 50.0),
+            fontSize: 0.0, fontColor: SKColor.clear, backgroundColor: SKColor.clear, pressedColor: SKColor.clear)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
     func setup(position: CGPoint) {
         self.position = position
         self.zPosition = NodeZOrder.label
@@ -24,6 +34,12 @@ class ResourceView: SKNode {
         
         let coinView = self.getCoinView(y: -20.0)
         self.addChild(coinView)
+        
+        self.action = {
+            if let vc = self.scene?.view?.window?.rootViewController as? GameViewController {
+                vc.showShop()
+            }
+        }
         
         self.updateValues()
     }
@@ -60,5 +76,7 @@ class ResourceView: SKNode {
 
         self.coinLabel.text = "x \(Config.standard.coins)"
         coinLabel.position = CGPoint(x: iconSize / 2.0 + coinLabel.frame.size.width / 2.0 + textMargin, y: -coinLabel.frame.size.height / 2.0)
+        
+        self.size = CGSize(width: coinLabel.frame.size.width + iconSize, height: 2 * coinLabel.frame.size.height + 20.0)
     }
 }

@@ -55,6 +55,20 @@ class GameViewController: UIViewController {
             }
         }
     }
+    
+    func showShop() {
+        /*
+        if let scene = SKScene(fileNamed: "Shop") as? ShopScene {
+            scene.scaleMode = .resizeFill
+            scene.setup(gameViewController: self)
+            
+            if let view = self.view as! SKView? {
+                view.presentScene(scene, transition: SKTransition.push(with: SKTransitionDirection.up, duration: 0.5))
+            }
+        }*/
+        
+        self.performSegue(withIdentifier: "showShop", sender: self)
+    }
 
     func showTutorial() {
         if let scene = SKScene(fileNamed: "Tutorial") as? Tutorial {

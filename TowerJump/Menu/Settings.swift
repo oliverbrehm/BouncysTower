@@ -34,8 +34,15 @@ class Settings: SKScene {
         }
         self.addChild(scoresButton)
         
+        let shopButton = Button(caption: "Shop")
+        shopButton.position = CGPoint(x: -120.0, y: -100.0)
+        shopButton.action = {
+            self.gameViewController?.showShop()
+        }
+        self.addChild(shopButton)
+        
         let backButton = Button(caption: "Back")
-        backButton.position = CGPoint(x: 0.0, y: -100.0)
+        backButton.position = CGPoint(x: 120.0, y: -100.0)
         backButton.action = {
             self.gameViewController?.showMainMenu()
         }

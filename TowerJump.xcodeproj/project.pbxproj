@@ -63,6 +63,15 @@
 		A7736ABD2206025200A28B5D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7736ABC2206025200A28B5D /* AppDelegate.swift */; };
 		A7736ABF2206025200A28B5D /* OSXGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7736ABE2206025200A28B5D /* OSXGameViewController.swift */; };
 		A7736AC22206025200A28B5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7736AC02206025200A28B5D /* Main.storyboard */; };
+		A77B389922253F15003DEB38 /* ShopScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77B389822253F15003DEB38 /* ShopScene.swift */; };
+		A77B389A22253F15003DEB38 /* ShopScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77B389822253F15003DEB38 /* ShopScene.swift */; };
+		A77B389B22253F15003DEB38 /* ShopScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77B389822253F15003DEB38 /* ShopScene.swift */; };
+		A77B389D22254F3F003DEB38 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77B389C22254F3F003DEB38 /* ShopViewController.swift */; };
+		A77B389E22254F3F003DEB38 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77B389C22254F3F003DEB38 /* ShopViewController.swift */; };
+		A77B389F22254F3F003DEB38 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77B389C22254F3F003DEB38 /* ShopViewController.swift */; };
+		A77B38A122255D32003DEB38 /* ShopTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77B38A022255D32003DEB38 /* ShopTableViewController.swift */; };
+		A77B38A222255D32003DEB38 /* ShopTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77B38A022255D32003DEB38 /* ShopTableViewController.swift */; };
+		A77B38A322255D32003DEB38 /* ShopTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77B38A022255D32003DEB38 /* ShopTableViewController.swift */; };
 		A7A22859220604D500081E0E /* AdvertisingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A702E8BA22020ADE00EB13B8 /* AdvertisingController.swift */; };
 		A7A2285A220604D500081E0E /* Advertising.swift in Sources */ = {isa = PBXBuildFile; fileRef = A702E8BC2202105900EB13B8 /* Advertising.swift */; };
 		A7A2285B220604D500081E0E /* Advertising01.sks in Resources */ = {isa = PBXBuildFile; fileRef = A702E8B82202099800EB13B8 /* Advertising01.sks */; };
@@ -260,6 +269,9 @@
 		A7797EEB20E2A89200E3B664 /* MainGame.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainGame.sks; sourceTree = "<group>"; };
 		A7797EEF20E2A89200E3B664 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		A7797EFB20E2A89200E3B664 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A77B389822253F15003DEB38 /* ShopScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopScene.swift; sourceTree = "<group>"; };
+		A77B389C22254F3F003DEB38 /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
+		A77B38A022255D32003DEB38 /* ShopTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopTableViewController.swift; sourceTree = "<group>"; };
 		A792AE06216538DC004280A5 /* ScoreParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ScoreParticle.sks; sourceTree = "<group>"; };
 		A7AA89B1221FE6BB00C5D73A /* CoinManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinManager.swift; sourceTree = "<group>"; };
 		A7AA89B5222019C400C5D73A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -389,6 +401,8 @@
 				A7736AA12206025100A28B5D /* Main.storyboard */,
 				A7736AA42206025100A28B5D /* LaunchScreen.storyboard */,
 				A7736AA72206025100A28B5D /* Info.plist */,
+				A77B389C22254F3F003DEB38 /* ShopViewController.swift */,
+				A77B38A022255D32003DEB38 /* ShopTableViewController.swift */,
 			);
 			path = "TowerJump iOS";
 			sourceTree = "<group>";
@@ -477,6 +491,7 @@
 				A71E741421F907BD00E7E193 /* OverlayMain.swift */,
 				A71875B2220AFB11003ED6F1 /* ResourceView.swift */,
 				A7240992222444F100B18095 /* ScoresScene.swift */,
+				A77B389822253F15003DEB38 /* ShopScene.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -749,6 +764,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A77B389D22254F3F003DEB38 /* ShopViewController.swift in Sources */,
 				A7AA89B2221FE6BB00C5D73A /* CoinManager.swift in Sources */,
 				A7A228B0220604F600081E0E /* Level03.swift in Sources */,
 				A7A228AD220604F600081E0E /* Level.swift in Sources */,
@@ -763,6 +779,7 @@
 				A7A228AF220604F600081E0E /* Level02.swift in Sources */,
 				A7186DDE220C3F8900187C6E /* SoundController.swift in Sources */,
 				A7A2287D220604E700081E0E /* Game.swift in Sources */,
+				A77B389922253F15003DEB38 /* ShopScene.swift in Sources */,
 				A7A22881220604E700081E0E /* Player.swift in Sources */,
 				A7A2286F220604E000081E0E /* Button.swift in Sources */,
 				A7A2287E220604E700081E0E /* MainGame.swift in Sources */,
@@ -788,6 +805,7 @@
 				A7A228CC2206050E00081E0E /* Config.swift in Sources */,
 				A7A22886220604E700081E0E /* OverlayGameOver.swift in Sources */,
 				A7A22889220604E700081E0E /* OverlayExtralife.swift in Sources */,
+				A77B38A122255D32003DEB38 /* ShopTableViewController.swift in Sources */,
 				A7A22870220604E000081E0E /* Settings.swift in Sources */,
 				A71875B3220AFB11003ED6F1 /* ResourceView.swift in Sources */,
 				A7A22859220604D500081E0E /* AdvertisingController.swift in Sources */,
@@ -803,6 +821,7 @@
 			files = (
 				A7A228B9220604F700081E0E /* Level03.swift in Sources */,
 				A7A228B6220604F700081E0E /* Level.swift in Sources */,
+				A77B389E22254F3F003DEB38 /* ShopViewController.swift in Sources */,
 				A7A2288D220604E800081E0E /* InfoBox.swift in Sources */,
 				A7DC9BBD221756CF0038EC58 /* PerfectJumpDetector.swift in Sources */,
 				A7A22891220604E800081E0E /* World.swift in Sources */,
@@ -827,6 +846,7 @@
 				A765DC042215A48400B34284 /* CGVector+Extensions.swift in Sources */,
 				A7A22890220604E800081E0E /* NodeZOrder.swift in Sources */,
 				A7A228BD220604F700081E0E /* Level07.swift in Sources */,
+				A77B38A222255D32003DEB38 /* ShopTableViewController.swift in Sources */,
 				A7A22876220604E100081E0E /* Overlay.swift in Sources */,
 				A7A2288F220604E800081E0E /* NodeCategories.swift in Sources */,
 				A7A228A9220604EF00081E0E /* Coin.swift in Sources */,
@@ -835,6 +855,7 @@
 				A7A228BB220604F700081E0E /* Level05.swift in Sources */,
 				A7A2285D220604D500081E0E /* Advertising.swift in Sources */,
 				A7A22894220604E800081E0E /* OverlayPause.swift in Sources */,
+				A77B389A22253F15003DEB38 /* ShopScene.swift in Sources */,
 				A7736AB12206025100A28B5D /* TVOSGameViewController.swift in Sources */,
 				A7186DDF220C3F8900187C6E /* SoundController.swift in Sources */,
 				A7A22877220604E100081E0E /* OverlayMain.swift in Sources */,
@@ -853,6 +874,7 @@
 			files = (
 				A7A228C2220604F700081E0E /* Level03.swift in Sources */,
 				A7A228BF220604F700081E0E /* Level.swift in Sources */,
+				A77B389F22254F3F003DEB38 /* ShopViewController.swift in Sources */,
 				A7A2289A220604E800081E0E /* InfoBox.swift in Sources */,
 				A7DC9BBE221756CF0038EC58 /* PerfectJumpDetector.swift in Sources */,
 				A7A2289E220604E800081E0E /* World.swift in Sources */,
@@ -877,6 +899,7 @@
 				A765DC052215A48400B34284 /* CGVector+Extensions.swift in Sources */,
 				A7A2289D220604E800081E0E /* NodeZOrder.swift in Sources */,
 				A7A228C6220604F700081E0E /* Level07.swift in Sources */,
+				A77B38A322255D32003DEB38 /* ShopTableViewController.swift in Sources */,
 				A7A2287B220604E100081E0E /* Overlay.swift in Sources */,
 				A7A2289C220604E800081E0E /* NodeCategories.swift in Sources */,
 				A7A228AC220604EF00081E0E /* Coin.swift in Sources */,
@@ -885,6 +908,7 @@
 				A7A228C4220604F700081E0E /* Level05.swift in Sources */,
 				A7A22860220604D600081E0E /* Advertising.swift in Sources */,
 				A7A228A1220604E800081E0E /* OverlayPause.swift in Sources */,
+				A77B389B22253F15003DEB38 /* ShopScene.swift in Sources */,
 				A7736ABF2206025200A28B5D /* OSXGameViewController.swift in Sources */,
 				A7186DE0220C3F8900187C6E /* SoundController.swift in Sources */,
 				A7A2287C220604E100081E0E /* OverlayMain.swift in Sources */,
