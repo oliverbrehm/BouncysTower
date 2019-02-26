@@ -28,7 +28,7 @@ class Tutorial: Game {
         self.world.currentLevel?.spawnBackground(above: 2500.0)
         self.world.currentLevel?.spawnWallTiles(above: 2500.0)
         
-        self.player.jumpReadyTime = 0.35
+        //self.player.jumpReadyTime = 0.35
     }
     
     override func resetGame() {
@@ -164,7 +164,7 @@ class Tutorial: Game {
         self.infoBox.addLine(text: "Next jump on the platforms to collect the coins on top.")
         self.showInfo(completion: {
             self.tutorialState = .t4Platforms
-            self.player.jumpReadyTime = 0.25
+            //self.player.jumpReadyTime = 0.25
             
             self.run(SKAction.sequence([
                 SKAction.wait(forDuration: 1.0), // player falls to the floor

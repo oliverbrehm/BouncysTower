@@ -38,7 +38,7 @@ class MainGame: Game {
             y: world.height / 2.0 - scoreLabel.frame.size.height / 2.0)
         self.cameraNode.addChild(self.scoreLabel)
         
-        self.player.jumpReadyTime = 0.25
+        //self.player.jumpReadyTime = 0.25
     }
     
     override func resetGame() {
