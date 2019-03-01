@@ -24,7 +24,7 @@ class Game: SKScene, SKPhysicsContactDelegate {
     let cameraNode = Camera()
     let background = SKSpriteNode.init(color: SKColor.black, size: CGSize.zero)
     let pausedOverlay = OverlayPause()
-    var pauseButton = Button(caption: "")
+    var pauseButton = IconButton(image: "pause")
     
     // abstract callbacks to be overridden
     func setup() {} // abstract
@@ -62,9 +62,6 @@ class Game: SKScene, SKPhysicsContactDelegate {
             self.pausedOverlay.setup(game: self)
             self.pausedOverlay.hide()
             
-            self.pauseButton = Button(
-                caption: "||", size: CGSize(width: World.wallWidth, height: 30.0), fontSize: 18.0,
-                fontColor: SKColor.black, backgroundColor: SKColor.init(white: 1.0, alpha: 0.8), pressedColor: SKColor.white)
             self.pauseButton.action = {
                 self.pause()
                 self.pausedOverlay.show()

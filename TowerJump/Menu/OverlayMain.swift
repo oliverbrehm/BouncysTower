@@ -12,15 +12,15 @@ class OverlayMain: Overlay {
     func setup(size: CGSize, menu: Main) {
         super.setup(size: size, width: 0.65)
         
-        let startButton = Button(caption: "Start Game")
-        startButton.position = CGPoint(x: 60.0, y: 100.0)
+        let startButton = IconButton(image: "play")
+        startButton.position = CGPoint(x: 60.0, y: 90.0)
         startButton.action = {
             menu.gameViewController?.showGame()
         }
         self.addChild(startButton)
         
-        let creditsButton = Button(caption: "Settings")
-        creditsButton.position = CGPoint(x: 60.0, y: 0.0)
+        let creditsButton = IconButton(image: "options")
+        creditsButton.position = CGPoint(x: 60.0, y: 10.0)
         creditsButton.action = {
             menu.gameViewController?.showSettings()
         }

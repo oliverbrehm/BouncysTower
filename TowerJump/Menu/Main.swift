@@ -16,11 +16,20 @@ class PersonalTower: SKNode {
     override init() {
         super.init()
         
+        let towerImage = SKSpriteNode(imageNamed: "menuTower")
+        towerImage.zPosition = NodeZOrder.background + 0.01
+        towerImage.size = CGSize(width: 200.0, height: 200.0)
+        self.addChild(towerImage)
+        
+        var y: CGFloat = 10.0
+        towerImage.position = CGPoint(x: 0.0, y: y + towerImage.size.height / 2.0)
+        
+        y += towerImage.size.height
+
         let numberOfBricks = Config.standard.bricks
         
-        let brickSize = 15.0
+        let brickSize = 25.0
         
-        var y: CGFloat = 0.0
         for _ in 0 ..< numberOfBricks {
             let brick = SKSpriteNode(imageNamed: "platform01")
             brick.size = CGSize(width: brickSize, height: brickSize)
@@ -95,15 +104,9 @@ class Main: SKScene {
         self.background = Background(screenSize: size)
         self.addChild(background!)
         
-        /*
-        let towerImage = SKSpriteNode(imageNamed: "menuTower")
-        towerImage.zPosition = NodeZOrder.background + 0.01
-        towerImage.size = CGSize(width: size.width / 2.0, height: size.height)
-        towerImage.position = CGPoint(x: -0.25 * size.width, y: 0.0)
-        self.addChild(towerImage)*/
+        self.bottom = -size.height / 2.0
         
         self.addChild(tower)
-        self.bottom = -size.height / 2.0
         tower.position = CGPoint(x: -0.25 * size.width, y: bottom + 10.0)
         background!.position = CGPoint(x: 0.0, y: bottom)
     }

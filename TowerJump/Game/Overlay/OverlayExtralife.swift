@@ -12,24 +12,24 @@ class OverlayExtralife: Overlay {
     private let lifeSprite = SKSpriteNode(imageNamed: "extralife")
     
     func setup(game: MainGame) {
-        super.setup(size: game.frame.size, width: 0.8)
+        super.setup(size: game.frame.size, width: 0.6)
         
         let label = SKLabelNode(text: "Use extralife?")
         label.fontSize = 20.0
         label.fontName = "AmericanTypewriter-Bold"
         label.fontColor = SKColor.white
-        label.position = CGPoint(x: 60.0, y: 100.0)
+        label.position = CGPoint(x: 80.0, y: 100.0)
         label.zPosition = NodeZOrder.button
         self.addChild(label)
         
-        self.lifeSprite.position = CGPoint(x: 60.0, y: 0.0)
+        self.lifeSprite.position = CGPoint(x: 80.0, y: 0.0)
         self.lifeSprite.size = CGSize(width: 60.0, height: 60.0)
         self.lifeSprite.zPosition = NodeZOrder.button
         self.lifeSprite.zPosition = NodeZOrder.button
         self.addChild(lifeSprite)
         
-        let useExtralifeButton = Button(caption: "GO!")
-        useExtralifeButton.position = CGPoint(x: 60.0, y: -80.0)
+        let useExtralifeButton = IconButton(image: "play")
+        useExtralifeButton.position = CGPoint(x: 80.0, y: -80.0)
         useExtralifeButton.action = {
             self.lifeSprite.removeAllActions()
             game.useExtralife()

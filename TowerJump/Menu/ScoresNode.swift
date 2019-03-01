@@ -8,12 +8,9 @@
 
 import SpriteKit
 
-class ScoresScene: SKScene {
-    
-    var gameViewController: GameViewController?
-    
-    func setup(gameViewController: GameViewController) {
-        self.gameViewController = gameViewController
+class ScoreNode: SKNode {
+    override init() {
+        super.init()
         
         var currentY = 80.0
         let dY = 20.0
@@ -23,6 +20,7 @@ class ScoresScene: SKScene {
         titleLabel.fontColor = SKColor.yellow
         titleLabel.fontSize = 30.0
         titleLabel.text = "SCORES"
+        titleLabel.zPosition = NodeZOrder.label
         self.addChild(titleLabel)
         
         let scores = Score.standard.scores
@@ -32,6 +30,7 @@ class ScoresScene: SKScene {
             emptyLabel.fontColor = SKColor.white
             emptyLabel.fontSize = 15.0
             emptyLabel.text = "No scores yet..."
+            emptyLabel.zPosition = NodeZOrder.label
             self.addChild(emptyLabel)
             
             currentY -= dY
@@ -42,18 +41,16 @@ class ScoresScene: SKScene {
                 scoreLabel.position = CGPoint(x: 0.0, y: currentY)
                 scoreLabel.fontColor = SKColor.white
                 scoreLabel.fontSize = 15.0
+                scoreLabel.zPosition = NodeZOrder.label
                 scoreLabel.text = "\(index + 1): \(score)"
                 self.addChild(scoreLabel)
                 
                 currentY -= dY
             }
         }
-  
-        let backButton = Button(caption: "Back")
-        backButton.position = CGPoint(x: 0.0, y: currentY - 10.0)
-        backButton.action = {
-            self.gameViewController?.showSettings()
-        }
-        self.addChild(backButton)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
 }

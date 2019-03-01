@@ -16,9 +16,7 @@ class ResourceView: Button {
     let coinLabel = SKLabelNode(fontNamed: "AmericanTypewriter-Bold")
     
     init() {
-        super.init(
-            caption: "", size: CGSize(width: 50.0, height: 50.0),
-            fontSize: 0.0, fontColor: SKColor.clear, backgroundColor: SKColor.clear, pressedColor: SKColor.clear)
+        super.init(size: CGSize(width: 50.0, height: 50.0))
     }
     
     required init?(coder aDecoder: NSCoder) {

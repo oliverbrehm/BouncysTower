@@ -8,12 +8,48 @@
 
 import SpriteKit
 
+class ScoreLabel: SKSpriteNode {
+    var scoreLabel = SKLabelNode(fontNamed: "AmericanTypewriter-Bold")
+
+    init() {
+        super.init(texture: SKTexture(imageNamed: "buttonbg"), color: SKColor(named: "buttonBackground") ?? SKColor.white, size: CGSize.zero)
+        
+        self.colorBlendFactor = 1.0
+        self.zPosition = NodeZOrder.overlay
+        
+        self.scoreLabel.fontSize = 14.0
+        self.scoreLabel.zPosition = NodeZOrder.label
+        self.scoreLabel.text = "0"
+        self.scoreLabel.position = CGPoint(x: 0.0, y: -self.scoreLabel.frame.size.height / 2.0)
+        self.addChild(self.scoreLabel)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(texture: nil, color: SKColor.white, size: CGSize.zero)
+    }
+    
+    var text: String {
+        get {
+            return self.scoreLabel.text ?? ""
+        }
+        set {
+            self.scoreLabel.text = newValue
+            let quant = 25 // quantization by
+            let size = self.scoreLabel.frame.size.width * 2.0
+            let n = Int(size) / quant
+            let newWidth = CGFloat((n + 1) * quant)
+            self.size = CGSize(width: newWidth, height: self.scoreLabel.frame.size.height * 2.0)
+        }
+    }
+}
+
 class MainGame: Game {
     
     let gameOverOverlay = OverlayGameOver()
     let extralifeOverlay = OverlayExtralife()
     
-    var scoreLabel = Button(caption: "")
+    let scoreLabel = ScoreLabel()
+    
     var currentScore = 0
     
     private let gameOverTolerance: CGFloat = 20.0
@@ -27,18 +63,9 @@ class MainGame: Game {
         self.extralifeOverlay.setup(game: self)
         self.extralifeOverlay.hide()
         
-        self.scoreLabel = Button(
-            caption: "0", size: CGSize(width: World.wallWidth, height: 30.0),
-            fontSize: 12.0, fontColor: SKColor.black,
-            backgroundColor: SKColor.init(white: 1.0, alpha: 0.8),
-            pressedColor: SKColor.white)
-        self.scoreLabel.zPosition = NodeZOrder.overlay
-        self.scoreLabel.position = CGPoint(
-            x: -world.width / 2.0 + scoreLabel.frame.size.width / 2.0,
-            y: world.height / 2.0 - scoreLabel.frame.size.height / 2.0)
         self.cameraNode.addChild(self.scoreLabel)
-        
-        //self.player.jumpReadyTime = 0.25
+        self.scoreLabel.text = "0"
+        self.updateScorePosition()
     }
     
     override func resetGame() {
@@ -53,7 +80,7 @@ class MainGame: Game {
         }
         
         self.currentScore = 0
-        self.scoreLabel.setText(text: "0")
+        self.scoreLabel.text = "0"
     }
     
     override func updateGame(_ dt: TimeInterval) {
@@ -137,10 +164,17 @@ class MainGame: Game {
                 }
                 
                 self.currentScore += 1
-                self.scoreLabel.setText(text: "\(self.currentScore)")
+                self.scoreLabel.text = "\(self.currentScore)"
+                self.updateScorePosition()
             },
             SKAction.wait(forDuration: 0.06)
             ])))
+    }
+    
+    func updateScorePosition() {
+        self.scoreLabel.position = CGPoint(
+            x: -world.width / 2.0 + scoreLabel.size.width / 2.0 + 5.0,
+            y: world.height / 2.0 - scoreLabel.size.height / 2.0 - 5.0)
     }
     
     override func hitPlatform(platform: Platform) {

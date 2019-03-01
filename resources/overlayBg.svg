@@ -17,7 +17,7 @@
    version="1.1"
    inkscape:version="0.91 r13725"
    sodipodi:docname="overlayBg.svg"
-   inkscape:export-filename="/projects/TowerJump/TowerJump/resources/overlayBg.png"
+   inkscape:export-filename="/projects/TowerJump/resources/overlayBg.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
   <defs
@@ -26,11 +26,11 @@
        inkscape:collect="always"
        id="linearGradient4162">
       <stop
-         style="stop-color:#acacac;stop-opacity:0"
+         style="stop-color:#ffffff;stop-opacity:0"
          offset="0"
          id="stop4164" />
       <stop
-         style="stop-color:#ffb361;stop-opacity:1"
+         style="stop-color:#ffffff;stop-opacity:1"
          offset="1"
          id="stop4166" />
     </linearGradient>
@@ -52,18 +52,18 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.24748737"
-     inkscape:cx="2053.122"
-     inkscape:cy="-745.2649"
+     inkscape:cx="1083.3755"
+     inkscape:cy="62.857147"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      units="mm"
      width="960mm"
-     inkscape:window-width="1920"
-     inkscape:window-height="1036"
-     inkscape:window-x="1280"
-     inkscape:window-y="0"
-     inkscape:window-maximized="1" />
+     inkscape:window-width="1280"
+     inkscape:window-height="705"
+     inkscape:window-x="57"
+     inkscape:window-y="20"
+     inkscape:window-maximized="0" />
   <metadata
      id="metadata7">
     <rdf:RDF>

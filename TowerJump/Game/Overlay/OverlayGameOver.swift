@@ -36,17 +36,15 @@ class OverlayGameOver: Overlay {
         self.scoreLabel.zPosition = NodeZOrder.label
         self.scoreLabel.addChild(self.rankLabel)
         
-        let backButton = Button(caption: "B")
-        backButton.size = CGSize(width: 40.0, height: 40.0)
-        backButton.position = CGPoint(x: 50.0, y: 0.0)
+        let backButton = IconButton(image: "back")
+        backButton.position = CGPoint(x: 110.0, y: 0.0)
         backButton.action = {
             game.gameViewController?.showMainMenu()
         }
         self.addChild(backButton)
         
-        let retryButton = Button(caption: "R")
-        retryButton.size = CGSize(width: 40.0, height: 40.0)
-        retryButton.position = CGPoint(x: 110.0, y: 0.0)
+        let retryButton = IconButton(image: "retry")
+        retryButton.position = CGPoint(x: 50.0, y: 0.0)
         retryButton.action = {
             game.resetGame()
         }

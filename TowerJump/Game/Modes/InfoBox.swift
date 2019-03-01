@@ -14,8 +14,7 @@ class InfoBox: Button {
     var image: SKSpriteNode?
     
     init() {
-        let color = SKColor(white: 1.0, alpha: 0.8)
-        super.init(caption: "", size: CGSize.zero, fontSize: 14.0, fontColor: SKColor.black, backgroundColor: color, pressedColor: color)
+        super.init(size: CGSize.zero)
         self.setScale(0.0)
     }
     

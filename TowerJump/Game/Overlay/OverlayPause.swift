@@ -12,32 +12,38 @@ class OverlayPause: Overlay {
     let resourceView = ResourceView()
 
     func setup(game: Game) {
-        super.setup(size: game.frame.size, width: 0.8)
+        super.setup(size: game.frame.size, width: 0.6)
         
-        let backButton = Button(caption: "Resume")
+        let pausedLabel = SKLabelNode(fontNamed: "AmericanTypewriter-Bold")
+        pausedLabel.position = CGPoint(x: 80.0, y: 120.0)
+        pausedLabel.text = "PAUSED"
+        pausedLabel.fontSize = 24.0
+        pausedLabel.fontColor = SKColor.white
+        pausedLabel.zPosition = NodeZOrder.label
+        self.addChild(pausedLabel)
+        
+        let backButton = IconButton(image: "play")
         backButton.position = CGPoint(x: 80.0, y: 80.0)
         backButton.action = {
             game.resume()
         }
         self.addChild(backButton)
         
-        let retryButton = Button(caption: "R")
-        retryButton.size = CGSize(width: 40.0, height: 40.0)
+        let retryButton = IconButton(image: "retry")
         retryButton.position = CGPoint(x: 50.0, y: 0.0)
         retryButton.action = {
             game.resetGame()
         }
         self.addChild(retryButton)
         
-        let exitButton = Button(caption: "E")
-        exitButton.size = CGSize(width: 40.0, height: 40.0)
+        let exitButton = IconButton(image: "back")
         exitButton.position = CGPoint(x: 110.0, y: 0.0)
         exitButton.action = {
             game.gameViewController?.showMainMenu()
         }
         self.addChild(exitButton)
         
-        resourceView.setup(position: CGPoint(x: 80.0, y: -90.0))
+        resourceView.setup(position: CGPoint(x: 60.0, y: -90.0))
         self.addChild(resourceView)
     }
     

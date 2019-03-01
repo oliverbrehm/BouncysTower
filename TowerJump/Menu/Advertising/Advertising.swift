@@ -20,7 +20,7 @@ class Advertising: SKScene {
         infoLabel.zPosition = NodeZOrder.label
         self.addChild(infoLabel)
         
-        let closeButton = Button(caption: "Close")
+        let closeButton = IconButton(image: "play")
         closeButton.position = CGPoint(x: 0.0, y: -100.0)
         closeButton.isHidden = true
         closeButton.action = {
