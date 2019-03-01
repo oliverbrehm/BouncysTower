@@ -69,12 +69,12 @@ class MainGame: Game {
     }
     
     private func checkGameOver(dt: Double) {
-        let advanceLine = state.gameOverY + (self.player.currentPlatform != nil ? self.player.currentPlatform!.level.gameSpeed() : 0.0) * CGFloat(dt)
+        let advanceLine = state.gameOverY + (self.player.currentPlatform != nil ? self.player.currentPlatform!.level.gameSpeed : 0.0) * CGFloat(dt)
         let lineUnderPlayer = player.position.y - Game.gameOverLineUnderPlayerPercent * world.height
         self.state.gameOverY = max(advanceLine, lineUnderPlayer)
         
         if let l = self.world.currentLevel {
-            self.state.gameOverY = min(self.state.gameOverY, l.position.y + l.topPlatformY())
+            self.state.gameOverY = min(self.state.gameOverY, l.position.y + l.topPlatformY)
         }
         
         if(player.position.y + player.size.height / 2.0 + gameOverTolerance < state.gameOverY) {

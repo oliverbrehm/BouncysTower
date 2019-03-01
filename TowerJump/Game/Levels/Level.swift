@@ -9,7 +9,7 @@
 import Foundation
 import SpriteKit
 
-class Level: SKNode {
+class Level: SKNode, LevelConfiguration {
     private var platformY: CGFloat
     private var backgroundY: CGFloat
     private var worldWidth: CGFloat
@@ -30,16 +30,7 @@ class Level: SKNode {
     
     private let backgroundHeight: CGFloat = 500.0
     
-    private var _reached: Bool = false
-    var reached: Bool {
-        get {
-            return _reached
-        }
-        
-        set {
-            _reached = newValue
-        }
-    }
+    var reached = false
     
     init(worldWidth: CGFloat) {
         self.worldWidth = worldWidth
@@ -47,12 +38,40 @@ class Level: SKNode {
         platformY = 0.0
         super.init()
         
-        self.platformY = self.firstPlatformOffset()
+        self.platformY = self.firstPlatformOffset
         self.spawnBackground(above: backgroundHeight)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    var backgroundColor: SKColor {
+        return SKColor.black
+    }
+    
+    var platformMinFactor: CGFloat {
+        return 0.01
+    }
+    
+    var platformMaxFactor: CGFloat {
+        return 1.0
+    }
+    
+    var platformYDistance: CGFloat {
+        return 110.0
+    }
+    
+    var numberOfPlatforms: Int {
+        return 50
+    }
+    
+    var levelSpeed: CGFloat {
+        return 1.0
+    }
+    
+    var firstPlatformOffset: CGFloat {
+        return 500.0
     }
     
     func removeAllPlatforms() {
@@ -62,22 +81,38 @@ class Level: SKNode {
         self.platforms.removeAll()
     }
     
-    func backgroundColor() -> SKColor {
-        return SKColor.black
-    }
-    
     func reset() {
         self.levelPlatformIndex = 1
         self.platformY = 0.0
     }
     
+    var topPlatformY: CGFloat {
+        return platforms.last?.position.y ?? 0.0
+    }
+    
+    var isLastPlatform: Bool {
+        return self.levelPlatformIndex == self.numberOfPlatforms
+    }
+    
+    var isFinished: Bool {
+        return self.levelPlatformIndex > self.numberOfPlatforms
+    }
+    
+    var gameSpeed: CGFloat {
+        return min(self.speedEaseIn, self.levelSpeed)
+    }
+    
+    var platformTexture: SKTexture? {
+        return self.texturePlatform
+    }
+    
     func getPlatform(platformNumber: Int, yDistance: CGFloat = -1.0) -> Platform? {
-        if(self.isFinished()) {
+        if(self.isFinished) {
             return nil
         }
         
         if(yDistance < 0) {
-            platformY += self.platformYDistance()
+            platformY += self.platformYDistance
         } else {
             platformY += yDistance
         }
@@ -89,22 +124,22 @@ class Level: SKNode {
         
         var platform: Platform?
         
-        if(self.isLastPlatform()) {
+        if(self.isLastPlatform) {
             platform = PlatformEndLevel(
                 width: worldWidth,
                 texture: nil,
                 level: self,
                 platformNumber: platformNumber,
-                backgroundColor: self.backgroundColor())
+                backgroundColor: self.backgroundColor)
             self.spawnBackground(above: platformY)
         } else {
-            let minWidth = levelWidth * self.platformMinFactor()
-            let maxWidth = levelWidth * self.platformMaxFactor()
+            let minWidth = levelWidth * self.platformMinFactor
+            let maxWidth = levelWidth * self.platformMaxFactor
             
             let w = CGFloat.random(in: minWidth ..< maxWidth)
             x = CGFloat.random(in: -levelWidth / 2.0 + w / 2.0
                 ..< levelWidth / 2.0 - w / 2.0)
-            platform = Platform(width: w, texture: self.platformTexture(), level: self, platformNumber: platformNumber)
+            platform = Platform(width: w, texture: self.platformTexture, level: self, platformNumber: platformNumber)
             self.spawnBackground(above: platformY)
         }
 
@@ -124,7 +159,7 @@ class Level: SKNode {
             texture = SKTexture(rect: CGRect(origin: CGPoint.zero, size: CGSize(width: 1.0, height: textureHeight)), in: texture)
             */
             
-            let background = SKSpriteNode(texture: texture, color: self.backgroundColor(), size: size)
+            let background = SKSpriteNode(texture: texture, color: self.backgroundColor, size: size)
             background.colorBlendFactor = 1.0
             background.position = CGPoint(x: 0.0, y: self.backgroundY + size.height / 2.0)
             background.zPosition = NodeZOrder.background
@@ -228,57 +263,13 @@ class Level: SKNode {
         ]))
     }
     
-    func topPlatformY() -> CGFloat {
-        return platforms.last?.position.y ?? 0.0
-    }
-    
-    func platformMinFactor() -> CGFloat {
-        return 0.01
-    }
-    
-    func platformMaxFactor() -> CGFloat {
-        return 1.0
-    }
-    
-    func isLastPlatform() -> Bool {
-        return self.levelPlatformIndex == self.numberOfPlatforms()
-    }
-    
-    func isFinished() -> Bool {
-        return self.levelPlatformIndex > self.numberOfPlatforms()
-    }
-    
-    func platformYDistance() -> CGFloat {
-        return 110.0
-    }
-    
-    func numberOfPlatforms() -> Int {
-        return 50
-    }
-    
-    func levelSpeed() -> CGFloat {
-        return 1.0
-    }
-    
-    func gameSpeed() -> CGFloat {
-        return min(self.speedEaseIn, self.levelSpeed())
-    }
-    
-    func platformTexture() -> SKTexture? {
-        return self.texturePlatform
-    }
-    
-    func firstPlatformOffset() -> CGFloat {
-        return 500.0
-    }
-    
     func easeInSpeed() {
         self.speedEaseIn = 0.0
         
         let easeInDuration = 5.0 // seconds
         let easeInStepTime = 0.25 // seconds
         let n = Int(easeInDuration / easeInStepTime)
-        let easeInStep = self.levelSpeed() / CGFloat(n)
+        let easeInStep = self.levelSpeed / CGFloat(n)
 
         self.run(SKAction.repeat(SKAction.sequence([
             SKAction.wait(forDuration: easeInStepTime),

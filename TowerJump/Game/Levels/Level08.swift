@@ -20,23 +20,23 @@ class Level08: Level {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func backgroundColor() -> SKColor {
-        return SKColor.init(named: "bgLevel08") ?? super.backgroundColor()
+    override var backgroundColor: SKColor {
+        return SKColor.init(named: "bgLevel08") ?? super.backgroundColor
     }
     
-    override func platformMinFactor() -> CGFloat {
+    override var platformMinFactor: CGFloat {
         return 0.15
     }
     
-    override func platformMaxFactor() -> CGFloat {
+    override var platformMaxFactor: CGFloat {
         return 0.30
     }
     
-    override func levelSpeed() -> CGFloat {
+    override var levelSpeed: CGFloat {
         return 110.0
     }
     
-    override func numberOfPlatforms() -> Int {
+    override var numberOfPlatforms: Int {
         return Int.max
     }
 }

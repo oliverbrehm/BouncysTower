@@ -95,7 +95,7 @@ class World: SKNode {
     }
     
     func spawnPlatformsAbove(y: CGFloat) {
-        while((self.currentLevel != nil && !self.currentLevel!.isFinished())
+        while((self.currentLevel != nil && !self.currentLevel!.isFinished)
                 && (topPlatformY() - y < 3.0 * height)) {
             self.spawnPlatform()
         }
@@ -112,7 +112,7 @@ class World: SKNode {
     
     func topPlatformY() -> CGFloat {
         if let l = self.currentLevel {
-            return l.topPlatformY() + l.position.y
+            return l.topPlatformY + l.position.y
         }
         
         return self.absoluteZero()
