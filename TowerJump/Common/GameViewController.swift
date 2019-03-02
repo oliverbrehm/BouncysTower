@@ -28,11 +28,6 @@ class GameViewController: UIViewController {
     }
 
     func showGame() {
-        if !Config.standard.tutorialShown {
-            self.showTutorial()
-            return
-        }
-        
         if let scene = SKScene(fileNamed: "MainGame") as? MainGame {
             scene.scaleMode = .resizeFill
             scene.gameViewController = self

@@ -8,53 +8,6 @@
 
 import SpriteKit
 
-class PersonalTower: SKNode {
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
-    override init() {
-        super.init()
-        
-        let towerImage = SKSpriteNode(imageNamed: "menuTower")
-        towerImage.zPosition = NodeZOrder.background + 0.01
-        towerImage.size = CGSize(width: 200.0, height: 200.0)
-        self.addChild(towerImage)
-        
-        var y: CGFloat = 10.0
-        towerImage.position = CGPoint(x: 0.0, y: y + towerImage.size.height / 2.0)
-        
-        y += towerImage.size.height
-
-        let numberOfBricks = Config.standard.bricks
-        
-        let brickSize = 25.0
-        
-        for _ in 0 ..< numberOfBricks {
-            let brick = SKSpriteNode(imageNamed: "platform01")
-            brick.size = CGSize(width: brickSize, height: brickSize)
-            brick.zPosition = NodeZOrder.world
-            self.addChild(brick)
-            brick.position = CGPoint(x: 0.0, y: y + brick.size.height / 2.0)
-            
-            y += brick.size.height
-        }
-        
-        let player = Player()
-        self.addChild(player)
-        player.position = CGPoint(x: 0.0, y: y + 2.0 + player.size.height / 2.0)
-        player.physicsBody?.isDynamic = false
-        
-        let label = SKLabelNode(fontNamed: "AmericanTypewriter-Bold")
-        label.zPosition = NodeZOrder.world
-        self.addChild(label)
-        label.text = "\(numberOfBricks) BRICKS"
-        label.fontColor = SKColor.blue
-        label.fontSize = 18.0
-        label.position = CGPoint(x: 0.0, y: player.position.y + player.size.height / 2.0 + 10.0)
-    }
-}
-
 class Background: SKNode {
     init(screenSize: CGSize) {
         super.init()

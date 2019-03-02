@@ -274,7 +274,6 @@ class Tutorial: Game {
         self.infoBox.addLine(text: "The tower is waiting for you.")
         self.infoBox.addLine(text: "Use your jumping skills to get as far up as possible!")
         self.showInfo(completion: {
-            Config.standard.tutorialShown = true
             self.gameViewController?.showGame()
         })
     }

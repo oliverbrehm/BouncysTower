@@ -16,7 +16,10 @@ class ShopTableViewController: UITableViewController {
             Config.standard.buyExtralife()
             update()
         case 1:
-            Config.standard.buyBrick()
+            Config.standard.buyBrick(Brick.standard)
+            update()
+        case 2:
+            Config.standard.buyBrick(Brick.diamond)
             update()
         default: break
         }

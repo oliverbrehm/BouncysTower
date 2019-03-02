@@ -21,24 +21,12 @@ class Config {
     private static let keyExtraLives = "EXTRA_LIVES"
     private static let keyCoins = "COINS"
     private static let keyTutorialShown = "TUTORIAL_SHOWN"
-    private static let keyBricks = "BRICKS"
     
     init() {
         self.extraLives = UserDefaults.standard.integer(forKey: Config.keyExtraLives)
         self.coins = UserDefaults.standard.integer(forKey: Config.keyCoins)
-        self.bricks = UserDefaults.standard.integer(forKey: Config.keyBricks)
     }
-    
-    var tutorialShown: Bool {
-        get {
-            return UserDefaults.standard.bool(forKey: Config.keyTutorialShown)
-        }
-        set {
-            UserDefaults.standard.set(newValue, forKey: Config.keyTutorialShown)
-            UserDefaults.standard.synchronize()
-        }
-    }
-    
+        
     private(set) var coins: Int {
         didSet {
             UserDefaults.standard.set(coins, forKey: Config.keyCoins)
@@ -49,13 +37,6 @@ class Config {
     private(set) var extraLives: Int {
         didSet {
             UserDefaults.standard.set(extraLives, forKey: Config.keyExtraLives)
-            UserDefaults.standard.synchronize()
-        }
-    }
-    
-    private(set) var bricks: Int {
-        didSet {
-            UserDefaults.standard.set(bricks, forKey: Config.keyBricks)
             UserDefaults.standard.synchronize()
         }
     }
@@ -93,14 +74,10 @@ class Config {
         }
     }
     
-    func addBrick() {
-        bricks += 1
-    }
-    
-    func buyBrick() {
+    func buyBrick(_ brick: Brick) {
         if(self.coins >= Config.prices.brick) {
-            self.coins -= Config.prices.brick
-            addBrick()
+            self.coins -= brick.cost
+            TowerBricks.standard.add(brick: brick)
         }
     }
 }
