@@ -9,6 +9,13 @@
 import SpriteKit
 
 class PersonalTower: SKNode {
+    private let brickWidth: CGFloat = 42.0
+    private let brickHeight: CGFloat = 28.0
+    
+    private var brickSize: CGSize {
+        return CGSize(width: brickWidth, height: brickHeight)
+    }
+    
     private let towerImage = SKSpriteNode(imageNamed: "menuTower")
     private let bricksLabel = SKLabelNode(fontNamed: "AmericanTypewriter-Bold")
     private let rowsLabel = SKLabelNode(fontNamed: "AmericanTypewriter-Bold")
@@ -24,7 +31,8 @@ class PersonalTower: SKNode {
         super.init()
         
         towerImage.zPosition = NodeZOrder.background + 0.01
-        towerImage.size = CGSize(width: 200.0, height: 200.0)
+        let towerSize = CGFloat(TowerBricks.numberOfBricksInRow) * brickWidth
+        towerImage.size = CGSize(width: towerSize, height: towerSize)
         towerImage.position = CGPoint(x: 0.0, y: 10.0 + towerImage.size.height / 2.0)
         
         towerTop.size = CGSize(
@@ -55,31 +63,8 @@ class PersonalTower: SKNode {
         
         self.addChild(towerImage)
         
-        let towerWidth = towerImage.size.width
-        let brickWidth = towerWidth / CGFloat(TowerBricks.numberOfBricksInRow)
-        let brickHeight = brickWidth * (2.0 / 3.0)
-        let brickSize = CGSize(width: brickWidth, height: brickHeight)
-        
         var y: CGFloat = 10.0 + towerImage.size.height
-        
-        // bricks in tower
-        let rows = TowerBricks.standard.rows
-        rowsLabel.text = "Tower height: \(rows.count)"
-        for row in rows {
-            var x: CGFloat = -towerImage.size.width / 2.0
-            for brick in row {
-                let brickNode = SKSpriteNode(imageNamed: brick.textureName)
-                brickNode.zPosition = NodeZOrder.world
-                brickNode.size = brickSize
-                brickNode.position = CGPoint(x: x + brickWidth / 2.0, y: y + brickHeight / 2.0)
-                self.addChild(brickNode)
-                x += brickWidth
-            }
-            y += brickHeight
-        }
-        
-        let bricks = TowerBricks.standard.bricks
-        bricksLabel.text = "Bricks left: \(bricks.count)"
+        y += self.buildTower(at: y)
         
         player.position = CGPoint(x: 0.0, y: y + 2.0 + player.size.height / 2.0)
         self.addChild(player)
@@ -98,7 +83,37 @@ class PersonalTower: SKNode {
         
         // bricks in store
         y = player.position.y - player.size.height / 2.0
+        self.buildBrickStore(at: y)
+    }
+    
+    private func buildTower(at startY: CGFloat) -> CGFloat {
+        var y = startY
+        
+        let rows = TowerBricks.standard.rows
+        rowsLabel.text = "Tower height: \(rows.count)"
+        for row in rows {
+            var x: CGFloat = -towerImage.size.width / 2.0
+            for brick in row {
+                let brickNode = SKSpriteNode(imageNamed: brick.textureName)
+                brickNode.zPosition = NodeZOrder.world
+                brickNode.size = brickSize
+                brickNode.position = CGPoint(x: x + brickWidth / 2.0, y: y + brickHeight / 2.0)
+                self.addChild(brickNode)
+                x += brickWidth
+            }
+            y += brickHeight
+        }
+        
+        return y - startY
+    }
+    
+    private func buildBrickStore(at startY: CGFloat) {
+        let bricks = TowerBricks.standard.bricks
+        bricksLabel.text = bricks.count > 0 ? "Bricks left: \(bricks.count)" : ""
+        
         let x = player.position.x - player.size.width / 2.0 - brickWidth / 2.0 - 35.0
+        var y = startY
+        
         for brick in bricks {
             let brickNode = SKSpriteNode(imageNamed: brick.textureName)
             brickNode.alpha = 0.7

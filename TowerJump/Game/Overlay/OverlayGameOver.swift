@@ -9,6 +9,7 @@
 import SpriteKit
 
 class OverlayGameOver: Overlay {
+    
     private let scoreLabel = SKLabelNode(fontNamed: "AmericanTypewriter-Bold")
     private let rankLabel = SKLabelNode(fontNamed: "AmericanTypewriter-Bold")
     private let resourceView = ResourceView()

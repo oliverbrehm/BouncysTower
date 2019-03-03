@@ -40,18 +40,18 @@ class GameViewController: UIViewController {
         }
     }
     
-    func showShop() {
-        /*
-        if let scene = SKScene(fileNamed: "Shop") as? ShopScene {
-            scene.scaleMode = .resizeFill
-            scene.setup(gameViewController: self)
-            
-            if let view = self.view as! SKView? {
-                view.presentScene(scene, transition: SKTransition.push(with: SKTransitionDirection.up, duration: 0.5))
-            }
-        }*/
-        
+    var shopDelegate: ShopDelegate?
+    func showShop(delegate: ShopDelegate? = nil) {
+        self.shopDelegate = delegate
         self.performSegue(withIdentifier: "showShop", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "showShop") {
+            if let vc = segue.destination as? ShopViewController {
+                vc.delegate = self.shopDelegate
+            }
+        }
     }
 
     func showTutorial() {

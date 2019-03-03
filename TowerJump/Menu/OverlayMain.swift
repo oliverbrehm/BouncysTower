@@ -27,7 +27,7 @@ class OverlayMain: Overlay {
         self.addChild(creditsButton)
         
         let resourceView = ResourceView()
-        resourceView.setup(position: CGPoint(x: 60.0, y: -90.0))
+        resourceView.setup(position: CGPoint(x: 60.0, y: -90.0), shopDelegate: menu)
         self.addChild(resourceView)
     }
 }

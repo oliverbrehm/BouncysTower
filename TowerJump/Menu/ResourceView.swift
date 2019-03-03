@@ -8,12 +8,14 @@
 
 import SpriteKit
 
-class ResourceView: Button {
+class ResourceView: Button, ShopDelegate {
     private let iconSize: CGFloat = 30.0
     private let textMargin: CGFloat = 5.0
     
     let lifeLabel = SKLabelNode(fontNamed: "AmericanTypewriter-Bold")
     let coinLabel = SKLabelNode(fontNamed: "AmericanTypewriter-Bold")
+    
+    var shopDelegate: ShopDelegate?
     
     init() {
         super.init(size: CGSize(width: 50.0, height: 50.0))
@@ -23,7 +25,14 @@ class ResourceView: Button {
         super.init(coder: aDecoder)
     }
     
-    func setup(position: CGPoint) {
+    func purchaseDone() {
+        self.updateValues()
+        self.shopDelegate?.purchaseDone()
+    }
+    
+    func setup(position: CGPoint, shopDelegate: ShopDelegate? = nil) {
+        self.shopDelegate = shopDelegate
+        
         self.position = position
         self.zPosition = NodeZOrder.label
         
@@ -35,7 +44,7 @@ class ResourceView: Button {
         
         self.action = {
             if let vc = self.scene?.view?.window?.rootViewController as? GameViewController {
-                vc.showShop()
+                vc.showShop(delegate: self)
             }
         }
         

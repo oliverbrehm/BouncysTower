@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A71538EF222BEDE900A81322 /* ShopDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71538EE222BEDE900A81322 /* ShopDelegate.swift */; };
+		A71538F0222BEDE900A81322 /* ShopDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71538EE222BEDE900A81322 /* ShopDelegate.swift */; };
+		A71538F1222BEDEA00A81322 /* ShopDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71538EE222BEDE900A81322 /* ShopDelegate.swift */; };
 		A7186DDE220C3F8900187C6E /* SoundController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7186DDD220C3F8900187C6E /* SoundController.swift */; };
 		A7186DDF220C3F8900187C6E /* SoundController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7186DDD220C3F8900187C6E /* SoundController.swift */; };
 		A7186DE0220C3F8900187C6E /* SoundController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7186DDD220C3F8900187C6E /* SoundController.swift */; };
@@ -210,6 +213,7 @@
 		A702E8BC2202105900EB13B8 /* Advertising.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Advertising.swift; sourceTree = "<group>"; };
 		A702E8BF22021E1700EB13B8 /* MainGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGame.swift; sourceTree = "<group>"; };
 		A702E8C122021E1F00EB13B8 /* Tutorial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutorial.swift; sourceTree = "<group>"; };
+		A71538EE222BEDE900A81322 /* ShopDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDelegate.swift; sourceTree = "<group>"; };
 		A7175FB220E2AA0300968329 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		A7175FB420E2B4DA00968329 /* Platform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
 		A7175FB620E2BD3A00968329 /* NodeCategories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeCategories.swift; sourceTree = "<group>"; };
@@ -554,6 +558,7 @@
 				A7DC9BC322177E430038EC58 /* SuperJump.sks */,
 				A724098222243DF100B18095 /* Score.swift */,
 				A7901470222AF1470025368A /* TowerBricks.swift */,
+				A71538EE222BEDE900A81322 /* ShopDelegate.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -773,6 +778,7 @@
 				A7A22881220604E700081E0E /* Player.swift in Sources */,
 				A7A2286F220604E000081E0E /* Button.swift in Sources */,
 				A7A2287E220604E700081E0E /* MainGame.swift in Sources */,
+				A71538EF222BEDE900A81322 /* ShopDelegate.swift in Sources */,
 				A7A22885220604E700081E0E /* Camera.swift in Sources */,
 				A7A228A4220604EE00081E0E /* Platform.swift in Sources */,
 				A7A228B1220604F600081E0E /* Level04.swift in Sources */,
@@ -819,6 +825,7 @@
 				A7A2288D220604E800081E0E /* InfoBox.swift in Sources */,
 				A7DC9BBD221756CF0038EC58 /* PerfectJumpDetector.swift in Sources */,
 				A7A22891220604E800081E0E /* World.swift in Sources */,
+				A71538F0222BEDE900A81322 /* ShopDelegate.swift in Sources */,
 				A74E3C8922131B2400D38AEB /* GameViewController.swift in Sources */,
 				A7901469222962830025368A /* LevelConfiguration.swift in Sources */,
 				A7A22873220604E100081E0E /* Main.swift in Sources */,
@@ -875,6 +882,7 @@
 				A7A2289A220604E800081E0E /* InfoBox.swift in Sources */,
 				A7DC9BBE221756CF0038EC58 /* PerfectJumpDetector.swift in Sources */,
 				A7A2289E220604E800081E0E /* World.swift in Sources */,
+				A71538F1222BEDEA00A81322 /* ShopDelegate.swift in Sources */,
 				A74E3C8A22131B2400D38AEB /* GameViewController.swift in Sources */,
 				A790146A222962830025368A /* LevelConfiguration.swift in Sources */,
 				A7A22878220604E100081E0E /* Main.swift in Sources */,

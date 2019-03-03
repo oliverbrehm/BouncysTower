@@ -9,6 +9,8 @@
 import UIKit
 
 class ShopViewController: UIViewController {
+    
+    var delegate: ShopDelegate?
 
     @IBOutlet weak var coinsLabel: UILabel!
     @IBOutlet weak var extralivesLabel: UILabel!
@@ -24,5 +26,7 @@ class ShopViewController: UIViewController {
     func updateInventory() {
         self.coinsLabel.text = "x \(Config.standard.coins)"
         self.extralivesLabel.text = "x \(Config.standard.extraLives)"
+        
+        self.delegate?.purchaseDone()
     }
 }

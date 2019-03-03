@@ -36,7 +36,11 @@ class Background: SKNode {
     }
 }
 
-class Main: SKScene {
+class Main: SKScene, ShopDelegate {
+    func purchaseDone() {
+        self.tower.update()
+    }
+    
     var gameViewController: GameViewController?
     
     private var menuOverlay = OverlayMain()
