@@ -344,7 +344,6 @@
 				A7797EEF20E2A89200E3B664 /* Game.swift */,
 				A702E8BF22021E1700EB13B8 /* MainGame.swift */,
 				A702E8C122021E1F00EB13B8 /* Tutorial.swift */,
-				A7736A902205D6B600A28B5D /* InfoBox.swift */,
 				A7DC9BB52216BF670038EC58 /* GameState.swift */,
 			);
 			path = Modes;
@@ -525,6 +524,7 @@
 				A71875B2220AFB11003ED6F1 /* ResourceView.swift */,
 				A7240992222444F100B18095 /* ScoresNode.swift */,
 				A7901474222B2DB30025368A /* PersonalTower.swift */,
+				A7736A902205D6B600A28B5D /* InfoBox.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";

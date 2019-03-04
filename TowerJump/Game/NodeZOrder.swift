@@ -19,4 +19,5 @@ class NodeZOrder {
     static let overlay                   : CGFloat = 2.0
     static let button                    : CGFloat = 3.0
     static let label                     : CGFloat = 4.0
+    static let info                      : CGFloat = 5.0
 }

@@ -308,6 +308,11 @@
                             <outlet property="delegate" destination="NJV-lS-sxP" id="rXg-Oo-ead"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="costBrickDiamond" destination="nHZ-9q-gu2" id="g5X-Av-JrC"/>
+                        <outlet property="costBrickStandard" destination="X75-up-uUh" id="VD7-1A-qkE"/>
+                        <outlet property="costExtraLife" destination="530-LG-b2b" id="Kmp-aU-hGr"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aVm-um-qlg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

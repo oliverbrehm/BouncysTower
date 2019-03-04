@@ -10,6 +10,17 @@ import UIKit
 
 class ShopTableViewController: UITableViewController {
 
+    
+    @IBOutlet weak var costExtraLife: UILabel!
+    @IBOutlet weak var costBrickStandard: UILabel!
+    @IBOutlet weak var costBrickDiamond: UILabel!
+    
+    override func didMove(toParent parent: UIViewController?) {
+        costExtraLife.text = "x \(ResourceManager.costExtraLife)"
+        costBrickStandard.text = "x \(Brick.standard.cost)"
+        costBrickDiamond.text = "x \(Brick.diamond.cost)"
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch(indexPath.row) {
         case 0:

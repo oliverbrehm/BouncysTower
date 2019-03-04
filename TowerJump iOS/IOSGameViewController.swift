@@ -69,7 +69,7 @@ class IOSGameViewController: GameViewController {
         }
         
         if(self.game?.state.runningState == .started) {
-            self.game?.state.runningState = .running
+            self.game?.run()
         }
     }
     

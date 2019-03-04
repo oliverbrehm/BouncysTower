@@ -54,19 +54,6 @@ class GameViewController: UIViewController {
         }
     }
 
-    func showTutorial() {
-        if let scene = SKScene(fileNamed: "Tutorial") as? Tutorial {
-            scene.scaleMode = .resizeFill
-            scene.gameViewController = self
-            
-            self.game = scene
-            
-            if let view = self.view as? SKView {
-                view.presentScene(scene, transition: SKTransition.push(with: SKTransitionDirection.right, duration: 0.5))
-            }
-        }
-    }
-
     func showMainMenu() {
         if let view = self.view as? SKView {
             

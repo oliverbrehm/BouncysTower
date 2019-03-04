@@ -8,15 +8,17 @@
 
 import Foundation
 
-struct Prices {
-    let extralife = 200
-    let brick = 50
+enum Tutorial: String {
+    case move = "TUTORIAL_MOVE"
+    case wallJump = "TUTORIAL_WALL_JUMP"
+    case combos = "TUTORIAL_COMBOS"
+    case extraLives = "TUTORIAL_EXTRA_LIVES"
+    case bricks = "TUTORIAL_BRICKS"
+    case shop = "TUTORIAL_SHOP"
 }
 
 class Config {
     static let standard = Config()
-    
-    private static let prices = Prices()
     
     private static let keyExtraLives = "EXTRA_LIVES"
     private static let keyCoins = "COINS"
@@ -68,16 +70,24 @@ class Config {
     }
     
     func buyExtralife() {
-        if(self.coins >= Config.prices.extralife) {
-            self.coins -= Config.prices.extralife
+        if(self.coins >= ResourceManager.costExtraLife) {
+            self.coins -= ResourceManager.costExtraLife
             addExtralife()
         }
     }
     
     func buyBrick(_ brick: Brick) {
-        if(self.coins >= Config.prices.brick) {
+        if(self.coins >= brick.cost) {
             self.coins -= brick.cost
             TowerBricks.standard.add(brick: brick)
         }
+    }
+    
+    func setTutorialShown(_ tutorial: Tutorial) {
+        UserDefaults.standard.set(true, forKey: tutorial.rawValue)
+    }
+    
+    func shouldShow(tutorial: Tutorial) -> Bool {
+        return !UserDefaults.standard.bool(forKey: tutorial.rawValue)
     }
 }

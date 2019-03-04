@@ -9,6 +9,7 @@
 import SpriteKit
 
 class IconButton: Button {
+    private let backgroundImage = SKSpriteNode(imageNamed: "buttonbg")
     private let buttonImage: SKSpriteNode
     
     private var normalColor: SKColor?
@@ -39,9 +40,13 @@ class IconButton: Button {
         self.buttonImage.colorBlendFactor = 1.0
         self.buttonImage.zPosition = NodeZOrder.button + 0.01
         
-        super.init(size: standardSize, color: backgroundColor)
-        self.colorBlendFactor = 1.0
-        self.texture = SKTexture(imageNamed: "buttonbg")
+        super.init(size: standardSize)
+        
+        self.backgroundImage.size = standardSize
+        self.addChild(backgroundImage)
+        backgroundImage.color = backgroundColor
+        backgroundImage.colorBlendFactor = 1.0
+        backgroundImage.zPosition = NodeZOrder.button
         
         self.addChild(self.buttonImage)
     }
@@ -49,5 +54,12 @@ class IconButton: Button {
     required init?(coder aDecoder: NSCoder) {
         self.buttonImage = SKSpriteNode(texture: nil, color: SKColor.clear, size: CGSize.zero)
         super.init(coder: aDecoder)
+    }
+    
+    override func touchDown(point: CGPoint) {
+        super.touchDown(point: point)
+        let rotate = SKAction.rotate(byAngle: -1.5, duration: 0.15)
+        rotate.timingMode = .easeInEaseOut
+        self.backgroundImage.run(rotate)
     }
 }

@@ -42,8 +42,13 @@ class ConsumableBrick: SKSpriteNode, Collectable {
                 SKAction.fadeOut(withDuration: 0.3)
                 ]),
             SKAction.run {
+                if let game = self.scene as? Game {
+                    game.checkShowTutorial(.bricks)
+                }
+                
                 self.removeAllActions()
                 self.removeFromParent()
+
             }
             ]))
     }

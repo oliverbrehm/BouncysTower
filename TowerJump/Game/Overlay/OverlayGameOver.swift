@@ -60,7 +60,7 @@ class OverlayGameOver: Overlay {
         self.resourceView.updateValues()
         
         if let r = rank {
-            self.rankLabel.text = (r == 0) ? "NEW HIGHSCORE" : "RANK: \(r + 1)"
+            self.rankLabel.text = (r == 0) ? "NEW HIGHSCORE" : "RANK \(r + 1)"
             self.rankLabel.isHidden = false
             self.rankLabel.run(SKAction.repeatForever(SKAction.sequence([
                 SKAction.colorize(with: SKColor.yellow, colorBlendFactor: 1.0, duration: 0.3),

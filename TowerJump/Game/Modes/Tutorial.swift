@@ -8,6 +8,8 @@
 
 import SpriteKit
 
+// TODO REMOVE
+/*
 class Tutorial: Game {
     enum TutorialState {
         case t0Start
@@ -278,3 +280,4 @@ class Tutorial: Game {
         })
     }
 }
+*/

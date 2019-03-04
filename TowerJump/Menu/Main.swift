@@ -37,7 +37,7 @@ class Background: SKNode {
     }
 }
 
-class Main: SKScene, ShopDelegate {
+class Main: SKScene, ShopDelegate, PersonalTowerDelegate {
     func purchaseDone() {
         self.tower.update()
     }
@@ -53,6 +53,7 @@ class Main: SKScene, ShopDelegate {
     private var menuOverlay = OverlayMain()
     private var tower = PersonalTower()
     private var background: Background?
+    private let stopViewModeButton = IconButton(image: "options")
     
     private var bottom: CGFloat = 0.0
     
@@ -73,6 +74,15 @@ class Main: SKScene, ShopDelegate {
         self.addChild(tower)
         tower.position = CGPoint(x: -0.25 * size.width, y: bottom + 10.0)
         background!.position = CGPoint(x: 0.0, y: bottom)
+        
+        stopViewModeButton.position = CGPoint(
+            x: size.width / 2.0 - stopViewModeButton.size.width / 2.0 - 10.0,
+            y: size.height / 2.0 - stopViewModeButton.size.height / 2.0 - 10.0)
+        stopViewModeButton.isHidden = true
+        self.addChild(stopViewModeButton)
+        stopViewModeButton.action = self.towerViewModeStopped
+        
+        tower.delegate = self
     }
     
     private func moveTower(dy: CGFloat) {
@@ -110,5 +120,18 @@ class Main: SKScene, ShopDelegate {
             let dt = currentTime - releaseTime
             self.scrollSpeed = CGFloat(afterScrollTime - dt) * scrollReleaseSpeed
         }
+    }
+    
+    func towerViewModeStarted() {
+        self.menuOverlay.hide()
+        self.tower.run(SKAction.moveTo(x: 0.0, duration: 0.5))
+        self.stopViewModeButton.isHidden = false
+    }
+    
+    func towerViewModeStopped() {
+        self.menuOverlay.show()
+        self.tower.run(SKAction.moveTo(x: -0.25 * size.width, duration: 0.5))
+        self.tower.update()
+        self.stopViewModeButton.isHidden = true
     }
 }

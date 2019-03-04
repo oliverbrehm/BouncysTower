@@ -8,6 +8,10 @@
 
 import SpriteKit
 
+protocol PersonalTowerDelegate {
+    func towerViewModeStarted()
+}
+
 class PersonalTower: SKNode {
     private let brickWidth: CGFloat = 42.0
     private let brickHeight: CGFloat = 28.0
@@ -20,8 +24,11 @@ class PersonalTower: SKNode {
     private let bricksLabel = SKLabelNode(fontNamed: "AmericanTypewriter-Bold")
     private let rowsLabel = SKLabelNode(fontNamed: "AmericanTypewriter-Bold")
     private let buildRowButton = IconButton(image: "build")
+    private let viewModeButton = IconButton(image: "back")
     private let player = Player()
     private let towerTop = SKSpriteNode(imageNamed: "towerTop")
+    
+    var delegate: PersonalTowerDelegate?
     
     var height: CGFloat {
         return bricksLabel.position.y + bricksLabel.frame.size.height
@@ -51,17 +58,22 @@ class PersonalTower: SKNode {
                 TowerBricks.standard.buildRow()
                 self.update()
             } else {
-                // TODO show info
-                /*
-                let info = InfoBox()
-                info.zPosition = NodeZOrder.button
-                self.addChild(info)
-                info.addLine(text: "Collect five bricks to build a row")
-                info.addLine(text: "in your tower!")
-                info.show {
-                    info.removeFromParent()
-                }*/
+                if let main = self.scene as? Main {
+                    self.buildRowButton.isHidden = true
+                    main.isUserInteractionEnabled = false
+                    // TODO freeze user input in main
+                    InfoBox.showOnce(in: main,
+                                     text: "Here you can build your own personal tower! Collect or buy five bricks to build a new row.", completion: {
+                                        self.buildRowButton.isHidden = false
+                                        main.isUserInteractionEnabled = true
+                    })
+                }
             }
+        }
+        
+        viewModeButton.action = {
+            self.update(viewMode: true)
+            self.delegate?.towerViewModeStarted()
         }
         
         bricksLabel.zPosition = NodeZOrder.world
@@ -75,7 +87,7 @@ class PersonalTower: SKNode {
         self.update()
     }
     
-    func update() {
+    func update(viewMode: Bool = false) {
         self.removeAllChildren()
         
         self.addChild(towerImage)
@@ -86,21 +98,26 @@ class PersonalTower: SKNode {
         player.position = CGPoint(x: 0.0, y: y + 2.0 + player.size.height / 2.0)
         self.addChild(player)
         
-        towerTop.position = player.position
-        self.addChild(towerTop)
-        
-        buildRowButton.position = CGPoint(x: 0.0, y: player.position.y + player.size.height / 2.0 + 10.0 + buildRowButton.size.height / 2.0)
-        self.addChild(buildRowButton)
-        
-        rowsLabel.position = CGPoint(x: 0.0, y: buildRowButton.position.y + buildRowButton.size.height / 2.0 + 10.0)
-        self.addChild(rowsLabel)
-        
-        bricksLabel.position = CGPoint(x: 0.0, y: rowsLabel.position.y + rowsLabel.frame.size.height / 2.0 + 10.0)
-        self.addChild(bricksLabel)
-        
-        // bricks in store
-        y = player.position.y - player.size.height / 2.0
-        self.buildBrickStore(at: y)
+        if(!viewMode) {
+            towerTop.position = player.position
+            self.addChild(towerTop)
+            
+            buildRowButton.position = CGPoint(x: 0.0, y: player.position.y + player.size.height / 2.0 + 10.0 + buildRowButton.size.height / 2.0)
+            self.addChild(buildRowButton)
+            
+            viewModeButton.position = buildRowButton.position
+            viewModeButton.position.x += buildRowButton.size.width + 10.0
+            self.addChild(viewModeButton)
+            
+            rowsLabel.position = CGPoint(x: 0.0, y: buildRowButton.position.y + buildRowButton.size.height / 2.0 + 10.0)
+            self.addChild(rowsLabel)
+            
+            bricksLabel.position = CGPoint(x: 0.0, y: rowsLabel.position.y + rowsLabel.frame.size.height / 2.0 + 10.0)
+            self.addChild(bricksLabel)
+
+            y = player.position.y - player.size.height / 2.0
+            self.buildBrickStore(at: y)
+        }
     }
     
     private func buildTower(at startY: CGFloat) -> CGFloat {

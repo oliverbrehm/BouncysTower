@@ -194,7 +194,60 @@ class Game: SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.speed = 1.0
     }
     
+    func run() {
+        self.state.runningState = .running
+        
+        self.checkShowTutorial(.move)
+    }
+    
     func levelReached(level: Level) {
-        //self.background.run(SKAction.colorize(with: level.BackgroundColor(), colorBlendFactor: 0.6, duration: 0.5))
+        switch level {
+        case is Level02:
+            self.checkShowTutorial(.wallJump)
+        case is Level03:
+            self.checkShowTutorial(.combos)
+        default:
+            break
+        }
+    }
+    
+    func checkShowTutorial(_ tutorial: Tutorial) {
+        let message: String
+        
+        switch tutorial {
+        case .move:
+            message = "Touch and hold to move. "
+                + "Use the entire left half of the screen to move left and the right half to move right."
+            
+        case .wallJump:
+            message = "Great, you reached the next Level! Did you notice: "
+                + "You get an extra boost upwards if you jump against the wall, try it."
+            
+        case .combos:
+            message = "You get a higher score if you do combos. "
+                + "Always keep rolling by holding your touch while on the platform. "
+                + "You have to jump at least two platforms at once to get a combo."
+            
+        case .bricks:
+            message = "Cool, you collected a loose brick! "
+                + "Use it in the main screen to build your own personal tower."
+            
+        case .extraLives:
+            message = "Hey, you found an extra life! "
+                + "If you fall down, you can decide to use it and it will save you once."
+            
+        case .shop:
+            message = "You've collected a lot of coins! Why not visit the shop? "
+                + "You can get extra lives and shiny bricks for your personal tower! "
+                + "Click on the coin icon in the menu any time to open the shop."
+        }
+        
+        if(Config.standard.shouldShow(tutorial: tutorial)) {
+            self.pause()
+            InfoBox.showOnce(in: self, text: message) {
+                Config.standard.setTutorialShown(tutorial)
+                self.resume()
+            }
+        }
     }
 }
