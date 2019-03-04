@@ -42,13 +42,14 @@ class PersonalTower: SKNode {
         super.init()
         
         towerImage.zPosition = NodeZOrder.background + 0.01
-        let towerSize = CGFloat(TowerBricks.numberOfBricksInRow) * brickWidth
-        towerImage.size = CGSize(width: towerSize, height: towerSize)
+        let towerWidth = CGFloat(TowerBricks.numberOfBricksInRow + 2) * brickWidth
+        let towerHeight = CGFloat(TowerBricks.numberOfBricksInRow) * brickWidth
+        towerImage.size = CGSize(width: towerWidth, height: towerHeight)
         towerImage.position = CGPoint(x: 0.0, y: towerImage.size.height / 2.0)
         
         towerTop.size = CGSize(
-            width: towerImage.size.width * 1.2,
-            height: towerImage.size.height * 0.3)
+            width: towerImage.size.width * 0.8,
+            height: towerImage.size.height * 0.25)
         towerTop.zPosition = NodeZOrder.background + 0.02
         
         player.physicsBody?.isDynamic = false
@@ -126,7 +127,7 @@ class PersonalTower: SKNode {
         let rows = TowerBricks.standard.rows
         rowsLabel.text = "Tower height: \(rows.count)"
         for row in rows {
-            var x: CGFloat = -towerImage.size.width / 2.0
+            var x: CGFloat = -CGFloat(TowerBricks.numberOfBricksInRow) / 2.0 * brickWidth
             for brick in row {
                 let brickNode = SKSpriteNode(imageNamed: brick.textureName)
                 brickNode.zPosition = NodeZOrder.world + 0.02
