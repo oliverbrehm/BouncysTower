@@ -23,6 +23,10 @@ class PersonalTower: SKNode {
     private let player = Player()
     private let towerTop = SKSpriteNode(imageNamed: "towerTop")
     
+    var height: CGFloat {
+        return bricksLabel.position.y + bricksLabel.frame.size.height
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -33,7 +37,7 @@ class PersonalTower: SKNode {
         towerImage.zPosition = NodeZOrder.background + 0.01
         let towerSize = CGFloat(TowerBricks.numberOfBricksInRow) * brickWidth
         towerImage.size = CGSize(width: towerSize, height: towerSize)
-        towerImage.position = CGPoint(x: 0.0, y: 10.0 + towerImage.size.height / 2.0)
+        towerImage.position = CGPoint(x: 0.0, y: towerImage.size.height / 2.0)
         
         towerTop.size = CGSize(
             width: towerImage.size.width * 1.2,
@@ -43,8 +47,21 @@ class PersonalTower: SKNode {
         player.physicsBody?.isDynamic = false
         
         buildRowButton.action = {
-            TowerBricks.standard.buildRow()
-            self.update()
+            if(TowerBricks.standard.canBuildRow) {
+                TowerBricks.standard.buildRow()
+                self.update()
+            } else {
+                // TODO show info
+                /*
+                let info = InfoBox()
+                info.zPosition = NodeZOrder.button
+                self.addChild(info)
+                info.addLine(text: "Collect five bricks to build a row")
+                info.addLine(text: "in your tower!")
+                info.show {
+                    info.removeFromParent()
+                }*/
+            }
         }
         
         bricksLabel.zPosition = NodeZOrder.world
@@ -63,7 +80,7 @@ class PersonalTower: SKNode {
         
         self.addChild(towerImage)
         
-        var y: CGFloat = 10.0 + towerImage.size.height
+        var y: CGFloat = towerImage.size.height
         y += self.buildTower(at: y)
         
         player.position = CGPoint(x: 0.0, y: y + 2.0 + player.size.height / 2.0)
@@ -95,12 +112,20 @@ class PersonalTower: SKNode {
             var x: CGFloat = -towerImage.size.width / 2.0
             for brick in row {
                 let brickNode = SKSpriteNode(imageNamed: brick.textureName)
-                brickNode.zPosition = NodeZOrder.world
+                brickNode.zPosition = NodeZOrder.world + 0.02
                 brickNode.size = brickSize
                 brickNode.position = CGPoint(x: x + brickWidth / 2.0, y: y + brickHeight / 2.0)
                 self.addChild(brickNode)
                 x += brickWidth
             }
+            
+            let rowBackground = SKSpriteNode(
+                color: SKColor(named: "towerBg") ?? SKColor.black,
+                size: CGSize(width: CGFloat(row.count) * brickWidth, height: brickHeight))
+            rowBackground.zPosition = NodeZOrder.world + 0.01
+            rowBackground.position = CGPoint(x: 0.0, y: y + brickHeight / 2.0)
+            self.addChild(rowBackground)
+            
             y += brickHeight
         }
         

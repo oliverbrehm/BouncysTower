@@ -9,6 +9,7 @@
 import SpriteKit
 
 class Background: SKNode {
+    
     init(screenSize: CGSize) {
         super.init()
         
@@ -41,6 +42,12 @@ class Main: SKScene, ShopDelegate {
         self.tower.update()
     }
     
+    private var scrollSpeed: CGFloat = 0.0
+    private var scrollReleaseSpeed: CGFloat = 0.0
+    private var touching = false
+    private var releaseTime: TimeInterval = 0.0
+    private let afterScrollTime: TimeInterval = 0.6
+    
     var gameViewController: GameViewController?
     
     private var menuOverlay = OverlayMain()
@@ -68,13 +75,40 @@ class Main: SKScene, ShopDelegate {
         background!.position = CGPoint(x: 0.0, y: bottom)
     }
     
+    private func moveTower(dy: CGFloat) {
+        self.tower.position.y = min(self.bottom + 10.0, self.tower.position.y + dy)
+        self.tower.position.y = max(self.tower.position.y, -self.tower.height - 10.0 + self.size.height / 2.0)
+        self.background?.position.y = bottom + (self.tower.position.y - bottom - 10.0) * 0.2
+    }
+    
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         let y2 = touches.first?.location(in: self).y
         let y1 = touches.first?.previousLocation(in: self).y
         if(y1 != nil && y2 != nil) {
             let dy = CGFloat(y2! - y1!)
-            self.tower.position.y = min(self.bottom + 10.0, self.tower.position.y + dy)
-            self.background?.position.y = min(self.bottom, self.background!.position.y + 0.2 * dy)
+            self.moveTower(dy: dy)
+            self.scrollSpeed = dy
+            self.scrollReleaseSpeed = dy
+        }
+        
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.touching = true
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.touching = false
+    }
+    
+    override func update(_ currentTime: TimeInterval) {
+        if(touching) {
+            self.releaseTime = currentTime
+        } else if(abs(scrollSpeed) > 0.1) {
+            self.moveTower(dy: scrollSpeed)
+            
+            let dt = currentTime - releaseTime
+            self.scrollSpeed = CGFloat(afterScrollTime - dt) * scrollReleaseSpeed
         }
     }
 }

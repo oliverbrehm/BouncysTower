@@ -81,14 +81,14 @@ class InfoBox: Button {
         }
     }
     
-    func show(completion: @escaping () -> Void) {
+    func show(completion: (() -> Void)? = nil) {
         self.removeAllActions()
         
         self.action = {
             self.run(SKAction.sequence([
                 SKAction.scale(to: 0.0, duration: 0.3),
                 SKAction.run {
-                    completion()
+                    completion?()
                 }
             ]))
         }

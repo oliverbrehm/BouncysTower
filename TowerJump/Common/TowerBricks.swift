@@ -70,8 +70,12 @@ class TowerBricks {
         self.bricks += [brick]
     }
     
+    var canBuildRow: Bool {
+        return self.bricks.count >= TowerBricks.numberOfBricksInRow
+    }
+    
     func buildRow() {
-        if(self.bricks.count >= TowerBricks.numberOfBricksInRow) {
+        if(self.canBuildRow) {
             self.rows += [Array(bricks[0 ..< TowerBricks.numberOfBricksInRow])]
             self.bricks.removeFirst(TowerBricks.numberOfBricksInRow)
         }
