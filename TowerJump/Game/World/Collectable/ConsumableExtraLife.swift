@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class ExtraLife: SKSpriteNode {
+class ConsumableExtraLife: SKSpriteNode, Collectable {
     static let size: CGFloat = 25.0
     static let score = 2
     
@@ -16,16 +16,16 @@ class ExtraLife: SKSpriteNode {
         super.init(
             texture: SKTexture(imageNamed: "extralife"),
             color: SKColor.init(white: 0.0, alpha: 0.0),
-            size: CGSize(width: ExtraLife.size, height: ExtraLife.size))
+            size: CGSize(width: ConsumableExtraLife.size, height: ConsumableExtraLife.size))
         
-        self.physicsBody = SKPhysicsBody.init(circleOfRadius: ExtraLife.size / 2.0)
+        self.physicsBody = SKPhysicsBody.init(circleOfRadius: ConsumableExtraLife.size / 2.0)
         self.physicsBody?.isDynamic = false
-        self.physicsBody?.categoryBitMask = NodeCategories.coin
+        self.physicsBody?.categoryBitMask = NodeCategories.consumable
         self.physicsBody?.contactTestBitMask = NodeCategories.player
         self.physicsBody?.collisionBitMask = 0x0
         self.physicsBody?.usesPreciseCollisionDetection = true
         
-        self.zPosition = NodeZOrder.item
+        self.zPosition = NodeZOrder.consumable
     }
     
     func hit() {

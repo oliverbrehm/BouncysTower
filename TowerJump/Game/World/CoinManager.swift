@@ -19,7 +19,7 @@ class CoinManager {
     
     func spawnCoin(position: CGPoint) {
         if let w = self.world {
-            let coin = Coin()
+            let coin = Coin(manager: self)
             coin.position = position
             w.addChild(coin)
             self.coins.append(coin)

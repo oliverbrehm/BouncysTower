@@ -32,6 +32,8 @@ class Platform: SKSpriteNode {
         self.physicsBody?.collisionBitMask = 0x0
         self.physicsBody?.usesPreciseCollisionDetection = true
         
+        ResourceManager.standard.advancePlatform()
+        
         self.initTiles(platformSize: platformSize, texture: texture)
         
         if(platformNumber % 5 == 0) {
@@ -49,6 +51,10 @@ class Platform: SKSpriteNode {
             self.addChild(container)
         }
         
+        // consumables
+        self.spawnBrick()
+        self.spawnExtraLife()
+        
         self.zPosition = NodeZOrder.world
     }
     
@@ -57,6 +63,30 @@ class Platform: SKSpriteNode {
         self.level = Level01(worldWidth: 0.0)
         self.backgroundColor = SKColor.white
         super.init(coder: aDecoder)
+    }
+    
+    private func randomX(withOffset offset: CGFloat) -> CGFloat {
+        let xRangeMin = -self.size.width / 2.0 + offset
+        let xRangeMax = self.size.width / 2.0 - offset
+        return CGFloat.random(in: xRangeMin ..< xRangeMax)
+    }
+    
+    private func spawnBrick() {
+        if let brick = ResourceManager.standard.consumeBrick() {
+            let brickNode = ConsumableBrick(brick: brick)
+            let y = self.size.height / 2.0 + brickNode.size.height / 2.0 + 5.0
+            brickNode.position = CGPoint(x: self.randomX(withOffset: brickNode.size.width / 2.0), y: y)
+            self.addChild(brickNode)
+        }
+    }
+    
+    private func spawnExtraLife() {
+        if(ResourceManager.standard.consumeExtraLife()) {
+            let extraLife = ConsumableExtraLife()
+            let y = self.size.height / 2.0 + extraLife.size.height / 2.0 + 5.0
+            extraLife.position = CGPoint(x: self.randomX(withOffset: extraLife.size.width / 2.0), y: y)
+            self.addChild(extraLife)
+        }
     }
     
     func setup() {

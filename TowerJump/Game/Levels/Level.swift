@@ -231,7 +231,7 @@ class Level: SKNode, LevelConfiguration {
                 self.platforms.removeFirst().removeFromParent()
             }
             
-            let n = numberOfCoins ?? (platform.platformNumber % 4 == 0 ? 5 : 0)
+            let n = numberOfCoins ?? ResourceManager.standard.consumeCoins()
             let platformSize = CGSize(width: platform.size.width, height: Platform.height)
             let platformInWorld = self.convert(platform.position, to: scene.world)
             let coinPlatformMargin: CGFloat = platformSize.width * 0.175
@@ -242,12 +242,6 @@ class Level: SKNode, LevelConfiguration {
             platform.deactivateCollisions()
             
             self.spawnWallTilesForPlatform(platform: platform)
-            
-            if(self.levelPlatformIndex == 13 && (self is Level02 || self is Level05 || self is Level07)) {
-                let extraLife = ExtraLife()
-                extraLife.position = CGPoint(x: platform.position.x, y: platform.position.y + 40.0)
-                self.addChild(extraLife)
-            }
         }
     }
     

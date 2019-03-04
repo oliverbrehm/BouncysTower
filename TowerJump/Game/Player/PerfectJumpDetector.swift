@@ -126,7 +126,7 @@ class PerfectJumpDetector {
     private func showPerfectJumpDone() {
         if let p = self.player {
             let comboLabel = SKLabelNode(fontNamed: "AmericanTypewriter-Bold")
-            comboLabel.zPosition = NodeZOrder.item
+            comboLabel.zPosition = NodeZOrder.consumable
             comboLabel.fontSize = min(14.0 + CGFloat(2 * self.comboCount), 50.0) // bigger label with bigger combo
             comboLabel.color = SKColor.darkGray
             comboLabel.fontColor = self.getColorForComboCount()
@@ -147,7 +147,7 @@ class PerfectJumpDetector {
     private func showComboFinished() {
         if let c = self.player?.scene?.camera {
             let comboFinishedLabel = SKLabelNode(fontNamed: "AmericanTypewriter-Bold")
-            comboFinishedLabel.zPosition = NodeZOrder.item
+            comboFinishedLabel.zPosition = NodeZOrder.consumable
             comboFinishedLabel.fontSize = 32.0
             comboFinishedLabel.color = SKColor.darkGray
             comboFinishedLabel.fontColor = SKColor.yellow

@@ -10,6 +10,15 @@
 		A71538EF222BEDE900A81322 /* ShopDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71538EE222BEDE900A81322 /* ShopDelegate.swift */; };
 		A71538F0222BEDE900A81322 /* ShopDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71538EE222BEDE900A81322 /* ShopDelegate.swift */; };
 		A71538F1222BEDEA00A81322 /* ShopDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71538EE222BEDE900A81322 /* ShopDelegate.swift */; };
+		A71538F4222D10DA00A81322 /* Collectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71538F3222D10DA00A81322 /* Collectable.swift */; };
+		A71538F5222D10DA00A81322 /* Collectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71538F3222D10DA00A81322 /* Collectable.swift */; };
+		A71538F6222D10DA00A81322 /* Collectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71538F3222D10DA00A81322 /* Collectable.swift */; };
+		A71538F8222D1AD200A81322 /* ResourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71538F7222D1AD200A81322 /* ResourceManager.swift */; };
+		A71538F9222D1AD200A81322 /* ResourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71538F7222D1AD200A81322 /* ResourceManager.swift */; };
+		A71538FA222D1AD200A81322 /* ResourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71538F7222D1AD200A81322 /* ResourceManager.swift */; };
+		A71538FC222D241F00A81322 /* ConsumableBrick.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71538FB222D241F00A81322 /* ConsumableBrick.swift */; };
+		A71538FD222D241F00A81322 /* ConsumableBrick.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71538FB222D241F00A81322 /* ConsumableBrick.swift */; };
+		A71538FE222D241F00A81322 /* ConsumableBrick.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71538FB222D241F00A81322 /* ConsumableBrick.swift */; };
 		A7186DDE220C3F8900187C6E /* SoundController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7186DDD220C3F8900187C6E /* SoundController.swift */; };
 		A7186DDF220C3F8900187C6E /* SoundController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7186DDD220C3F8900187C6E /* SoundController.swift */; };
 		A7186DE0220C3F8900187C6E /* SoundController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7186DDD220C3F8900187C6E /* SoundController.swift */; };
@@ -32,9 +41,9 @@
 		A7186E0B220C4B6F00187C6E /* gameover.aif in Resources */ = {isa = PBXBuildFile; fileRef = A7186E06220C4B6E00187C6E /* gameover.aif */; };
 		A7186E0C220C4B6F00187C6E /* gameover.aif in Resources */ = {isa = PBXBuildFile; fileRef = A7186E06220C4B6E00187C6E /* gameover.aif */; };
 		A71875B3220AFB11003ED6F1 /* ResourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71875B2220AFB11003ED6F1 /* ResourceView.swift */; };
-		A71875B5220B0619003ED6F1 /* ExtraLife.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71875B4220B0619003ED6F1 /* ExtraLife.swift */; };
-		A71875B6220B0619003ED6F1 /* ExtraLife.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71875B4220B0619003ED6F1 /* ExtraLife.swift */; };
-		A71875B7220B0619003ED6F1 /* ExtraLife.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71875B4220B0619003ED6F1 /* ExtraLife.swift */; };
+		A71875B5220B0619003ED6F1 /* ConsumableExtraLife.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71875B4220B0619003ED6F1 /* ConsumableExtraLife.swift */; };
+		A71875B6220B0619003ED6F1 /* ConsumableExtraLife.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71875B4220B0619003ED6F1 /* ConsumableExtraLife.swift */; };
+		A71875B7220B0619003ED6F1 /* ConsumableExtraLife.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71875B4220B0619003ED6F1 /* ConsumableExtraLife.swift */; };
 		A724098322243DF100B18095 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = A724098222243DF100B18095 /* Score.swift */; };
 		A724098422243DF100B18095 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = A724098222243DF100B18095 /* Score.swift */; };
 		A724098522243DF100B18095 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = A724098222243DF100B18095 /* Score.swift */; };
@@ -214,6 +223,9 @@
 		A702E8BF22021E1700EB13B8 /* MainGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGame.swift; sourceTree = "<group>"; };
 		A702E8C122021E1F00EB13B8 /* Tutorial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutorial.swift; sourceTree = "<group>"; };
 		A71538EE222BEDE900A81322 /* ShopDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDelegate.swift; sourceTree = "<group>"; };
+		A71538F3222D10DA00A81322 /* Collectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collectable.swift; sourceTree = "<group>"; };
+		A71538F7222D1AD200A81322 /* ResourceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceManager.swift; sourceTree = "<group>"; };
+		A71538FB222D241F00A81322 /* ConsumableBrick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumableBrick.swift; sourceTree = "<group>"; };
 		A7175FB220E2AA0300968329 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		A7175FB420E2B4DA00968329 /* Platform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
 		A7175FB620E2BD3A00968329 /* NodeCategories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeCategories.swift; sourceTree = "<group>"; };
@@ -226,7 +238,7 @@
 		A7186E05220C4B6E00187C6E /* superjump.aif */ = {isa = PBXFileReference; lastKnownFileType = file; name = superjump.aif; path = resources/sounds/superjump.aif; sourceTree = SOURCE_ROOT; };
 		A7186E06220C4B6E00187C6E /* gameover.aif */ = {isa = PBXFileReference; lastKnownFileType = file; name = gameover.aif; path = resources/sounds/gameover.aif; sourceTree = SOURCE_ROOT; };
 		A71875B2220AFB11003ED6F1 /* ResourceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceView.swift; sourceTree = "<group>"; };
-		A71875B4220B0619003ED6F1 /* ExtraLife.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraLife.swift; sourceTree = "<group>"; };
+		A71875B4220B0619003ED6F1 /* ConsumableExtraLife.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumableExtraLife.swift; sourceTree = "<group>"; };
 		A71A518D215A6A0600E7CDDB /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		A71A5190215A6AC200E7CDDB /* Level01.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level01.swift; sourceTree = "<group>"; };
 		A71A5192215A6B0400E7CDDB /* Level02.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level02.swift; sourceTree = "<group>"; };
@@ -336,6 +348,17 @@
 				A7DC9BB52216BF670038EC58 /* GameState.swift */,
 			);
 			path = Modes;
+			sourceTree = "<group>";
+		};
+		A71538F2222D109400A81322 /* Collectable */ = {
+			isa = PBXGroup;
+			children = (
+				A71875B4220B0619003ED6F1 /* ConsumableExtraLife.swift */,
+				A7D4C82F2201BB9E0060F352 /* Coin.swift */,
+				A71538F3222D10DA00A81322 /* Collectable.swift */,
+				A71538FB222D241F00A81322 /* ConsumableBrick.swift */,
+			);
+			path = Collectable;
 			sourceTree = "<group>";
 		};
 		A7175FAF20E2A90000968329 /* Frameworks */ = {
@@ -529,9 +552,8 @@
 		A7DC9BB8221754FE0038EC58 /* World */ = {
 			isa = PBXGroup;
 			children = (
+				A71538F2222D109400A81322 /* Collectable */,
 				A7175FB820E2C2ED00968329 /* World.swift */,
-				A71875B4220B0619003ED6F1 /* ExtraLife.swift */,
-				A7D4C82F2201BB9E0060F352 /* Coin.swift */,
 				A7AA89B1221FE6BB00C5D73A /* CoinManager.swift */,
 			);
 			path = World;
@@ -557,6 +579,7 @@
 				A7DC9BBF221775270038EC58 /* ComboParticle.sks */,
 				A7DC9BC322177E430038EC58 /* SuperJump.sks */,
 				A724098222243DF100B18095 /* Score.swift */,
+				A71538F7222D1AD200A81322 /* ResourceManager.swift */,
 				A7901470222AF1470025368A /* TowerBricks.swift */,
 				A71538EE222BEDE900A81322 /* ShopDelegate.swift */,
 			);
@@ -767,6 +790,7 @@
 				A7A22880220604E700081E0E /* InfoBox.swift in Sources */,
 				A7A22884220604E700081E0E /* World.swift in Sources */,
 				A7A2286E220604E000081E0E /* Main.swift in Sources */,
+				A71538F8222D1AD200A81322 /* ResourceManager.swift in Sources */,
 				A7A2287F220604E700081E0E /* Tutorial.swift in Sources */,
 				A7A228CA2206050E00081E0E /* SKSpriteNode+Extensions.swift in Sources */,
 				A765DC032215A48400B34284 /* CGVector+Extensions.swift in Sources */,
@@ -791,6 +815,7 @@
 				A7A22882220604E700081E0E /* NodeCategories.swift in Sources */,
 				A7A228A6220604EE00081E0E /* Coin.swift in Sources */,
 				A7901475222B2DB30025368A /* PersonalTower.swift in Sources */,
+				A71538F4222D10DA00A81322 /* Collectable.swift in Sources */,
 				A7DC9BBC221756CF0038EC58 /* PerfectJumpDetector.swift in Sources */,
 				A790146D222984120025368A /* IconButton.swift in Sources */,
 				A7A228A5220604EE00081E0E /* PlatformEndLevel.swift in Sources */,
@@ -799,7 +824,7 @@
 				A7A2285A220604D500081E0E /* Advertising.swift in Sources */,
 				A7A22887220604E700081E0E /* OverlayPause.swift in Sources */,
 				A7736AA02206025100A28B5D /* IOSGameViewController.swift in Sources */,
-				A71875B5220B0619003ED6F1 /* ExtraLife.swift in Sources */,
+				A71875B5220B0619003ED6F1 /* ConsumableExtraLife.swift in Sources */,
 				A7A22872220604E000081E0E /* OverlayMain.swift in Sources */,
 				A7A228CC2206050E00081E0E /* Config.swift in Sources */,
 				A7A22886220604E700081E0E /* OverlayGameOver.swift in Sources */,
@@ -808,6 +833,7 @@
 				A7901468222962830025368A /* LevelConfiguration.swift in Sources */,
 				A7A22870220604E000081E0E /* Settings.swift in Sources */,
 				A71875B3220AFB11003ED6F1 /* ResourceView.swift in Sources */,
+				A71538FC222D241F00A81322 /* ConsumableBrick.swift in Sources */,
 				A7A22859220604D500081E0E /* AdvertisingController.swift in Sources */,
 				A724098322243DF100B18095 /* Score.swift in Sources */,
 				A7736A9E2206025100A28B5D /* AppDelegate.swift in Sources */,
@@ -831,7 +857,7 @@
 				A7A22873220604E100081E0E /* Main.swift in Sources */,
 				A7901476222B2DB30025368A /* PersonalTower.swift in Sources */,
 				A7A2288C220604E800081E0E /* Tutorial.swift in Sources */,
-				A71875B6220B0619003ED6F1 /* ExtraLife.swift in Sources */,
+				A71875B6220B0619003ED6F1 /* ConsumableExtraLife.swift in Sources */,
 				A7901472222AF1470025368A /* TowerBricks.swift in Sources */,
 				A7A228CF2206050E00081E0E /* SKSpriteNode+Extensions.swift in Sources */,
 				A7A228BC220604F700081E0E /* Level06.swift in Sources */,
@@ -842,6 +868,7 @@
 				A7A22874220604E100081E0E /* Button.swift in Sources */,
 				A7A2288B220604E800081E0E /* MainGame.swift in Sources */,
 				A7A22892220604E800081E0E /* Camera.swift in Sources */,
+				A71538F9222D1AD200A81322 /* ResourceManager.swift in Sources */,
 				A7A228A7220604EF00081E0E /* Platform.swift in Sources */,
 				A7240994222444F100B18095 /* ScoresNode.swift in Sources */,
 				A7AA89B3221FE6BB00C5D73A /* CoinManager.swift in Sources */,
@@ -849,7 +876,9 @@
 				A7A228BE220604F700081E0E /* Level08.swift in Sources */,
 				A765DC042215A48400B34284 /* CGVector+Extensions.swift in Sources */,
 				A7A22890220604E800081E0E /* NodeZOrder.swift in Sources */,
+				A71538F5222D10DA00A81322 /* Collectable.swift in Sources */,
 				A7A228BD220604F700081E0E /* Level07.swift in Sources */,
+				A71538FD222D241F00A81322 /* ConsumableBrick.swift in Sources */,
 				A77B38A222255D32003DEB38 /* ShopTableViewController.swift in Sources */,
 				A7A22876220604E100081E0E /* Overlay.swift in Sources */,
 				A7A2288F220604E800081E0E /* NodeCategories.swift in Sources */,
@@ -888,7 +917,7 @@
 				A7A22878220604E100081E0E /* Main.swift in Sources */,
 				A7901477222B2DB30025368A /* PersonalTower.swift in Sources */,
 				A7A22899220604E800081E0E /* Tutorial.swift in Sources */,
-				A71875B7220B0619003ED6F1 /* ExtraLife.swift in Sources */,
+				A71875B7220B0619003ED6F1 /* ConsumableExtraLife.swift in Sources */,
 				A7901473222AF1470025368A /* TowerBricks.swift in Sources */,
 				A7A228D42206050E00081E0E /* SKSpriteNode+Extensions.swift in Sources */,
 				A7A228C5220604F700081E0E /* Level06.swift in Sources */,
@@ -899,6 +928,7 @@
 				A7A22879220604E100081E0E /* Button.swift in Sources */,
 				A7A22898220604E800081E0E /* MainGame.swift in Sources */,
 				A7A2289F220604E800081E0E /* Camera.swift in Sources */,
+				A71538FA222D1AD200A81322 /* ResourceManager.swift in Sources */,
 				A7A228AA220604EF00081E0E /* Platform.swift in Sources */,
 				A7240995222444F100B18095 /* ScoresNode.swift in Sources */,
 				A7AA89B4221FE6BB00C5D73A /* CoinManager.swift in Sources */,
@@ -906,7 +936,9 @@
 				A7A228C7220604F700081E0E /* Level08.swift in Sources */,
 				A765DC052215A48400B34284 /* CGVector+Extensions.swift in Sources */,
 				A7A2289D220604E800081E0E /* NodeZOrder.swift in Sources */,
+				A71538F6222D10DA00A81322 /* Collectable.swift in Sources */,
 				A7A228C6220604F700081E0E /* Level07.swift in Sources */,
+				A71538FE222D241F00A81322 /* ConsumableBrick.swift in Sources */,
 				A77B38A322255D32003DEB38 /* ShopTableViewController.swift in Sources */,
 				A7A2287B220604E100081E0E /* Overlay.swift in Sources */,
 				A7A2289C220604E800081E0E /* NodeCategories.swift in Sources */,

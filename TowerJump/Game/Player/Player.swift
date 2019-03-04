@@ -61,7 +61,7 @@ class Player: SKSpriteNode {
         self.physicsBody?.usesPreciseCollisionDetection = true
         self.physicsBody?.categoryBitMask = NodeCategories.player
         self.physicsBody?.collisionBitMask = NodeCategories.platform | NodeCategories.wall
-        self.physicsBody?.contactTestBitMask = NodeCategories.platform | NodeCategories.player | NodeCategories.coin
+        self.physicsBody?.contactTestBitMask = NodeCategories.platform | NodeCategories.player | NodeCategories.consumable
         self.physicsBody?.friction = 3.0
         self.physicsBody?.mass = 0.05
         

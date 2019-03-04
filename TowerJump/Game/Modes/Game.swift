@@ -143,14 +143,12 @@ class Game: SKScene, SKPhysicsContactDelegate {
             self.hitPlatform(platform: platform)
         } else if(contact.bodyA.node?.name == "Wall" || contact.bodyB.node?.name == "Wall") {
             player.hitWall()
-        } else if(contact.bodyA.node is Coin || contact.bodyB.node is Coin) {
-            let coin = (contact.bodyA.node is Coin ? contact.bodyA.node : contact.bodyB.node) as! Coin
-            coin.hit()
-            self.world.coinManager.removeCoin(coin: coin)
-            self.hitCoin(coin: coin)
-        } else if(contact.bodyA.node is ExtraLife || contact.bodyB.node is ExtraLife) {
-            let extraLife = (contact.bodyA.node is ExtraLife ? contact.bodyA.node : contact.bodyB.node) as! ExtraLife
-            extraLife.hit()
+        } else if(contact.bodyA.node is Collectable || contact.bodyB.node is Collectable) {
+            let collectable = (contact.bodyA.node is Collectable ? contact.bodyA.node : contact.bodyB.node) as! Collectable
+            collectable.hit()
+            if let coin = collectable as? Coin {
+                self.hitCoin(coin: coin)
+            }
         }
     }
     

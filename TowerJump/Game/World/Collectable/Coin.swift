@@ -8,22 +8,26 @@
 
 import SpriteKit
 
-class Coin: SKSpriteNode {
+class Coin: SKSpriteNode, Collectable {
     static let size: CGFloat = 12.0
     static let score = 2
     
-    init() {
+    private let manager: CoinManager
+    
+    init(manager: CoinManager) {
+        self.manager = manager
+        
         super.init(texture: SKTexture(imageNamed: "coin"), color: SKColor.init(white: 0.0, alpha: 0.0),
             size: CGSize(width: Coin.size, height: Coin.size))
         
         self.physicsBody = SKPhysicsBody.init(circleOfRadius: Coin.size / 2.0)
         self.physicsBody?.isDynamic = false
-        self.physicsBody?.categoryBitMask = NodeCategories.coin
+        self.physicsBody?.categoryBitMask = NodeCategories.consumable
         self.physicsBody?.contactTestBitMask = NodeCategories.player
         self.physicsBody?.collisionBitMask = 0x0
         self.physicsBody?.usesPreciseCollisionDetection = true
         
-        self.zPosition = NodeZOrder.item        
+        self.zPosition = NodeZOrder.consumable        
     }
     
     func hit() {
@@ -41,6 +45,7 @@ class Coin: SKSpriteNode {
             SKAction.run {
                 self.removeAllActions()
                 self.removeFromParent()
+                self.manager.removeCoin(coin: self)
             }
         ]))
     }
