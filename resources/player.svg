@@ -16,7 +16,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="player2.svg"
+   sodipodi:docname="player.svg"
    inkscape:export-filename="/Users/oliver/Documents/TowerJump/TowerJump/resources/player.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
@@ -24,25 +24,13 @@
      id="defs4">
     <linearGradient
        inkscape:collect="always"
-       id="linearGradient5611">
-      <stop
-         style="stop-color:#f5bb7d;stop-opacity:1"
-         offset="0"
-         id="stop5613" />
-      <stop
-         style="stop-color:#ffefde;stop-opacity:1"
-         offset="1"
-         id="stop5615" />
-    </linearGradient>
-    <linearGradient
-       inkscape:collect="always"
        id="linearGradient5603">
       <stop
-         style="stop-color:#ffc98f;stop-opacity:1"
+         style="stop-color:#000000;stop-opacity:1"
          offset="0"
          id="stop5605" />
       <stop
-         style="stop-color:#ffefde;stop-opacity:1"
+         style="stop-color:#ffe000;stop-opacity:1"
          offset="1"
          id="stop5607" />
     </linearGradient>
@@ -50,11 +38,11 @@
        inkscape:collect="always"
        id="linearGradient5587">
       <stop
-         style="stop-color:#fec485;stop-opacity:1"
+         style="stop-color:#ffaf00;stop-opacity:1"
          offset="0"
          id="stop5589" />
       <stop
-         style="stop-color:#ffb361;stop-opacity:1"
+         style="stop-color:#ff9500;stop-opacity:1"
          offset="1"
          id="stop5591" />
     </linearGradient>
@@ -62,12 +50,13 @@
        inkscape:collect="always"
        xlink:href="#linearGradient5587"
        id="radialGradient5593"
-       cx="30.535717"
-       cy="1029.505"
-       fx="30.535717"
-       fy="1029.505"
+       cx="31.555519"
+       cy="996.15283"
+       fx="31.555519"
+       fy="996.15283"
        r="30.550002"
-       gradientUnits="userSpaceOnUse" />
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.81243585,0.00347267,-0.00360213,0.84274157,9.5585902,184.89603)" />
     <radialGradient
        inkscape:collect="always"
        xlink:href="#linearGradient5603"
@@ -78,18 +67,18 @@
        fy="1004.3265"
        r="6.2500005"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.3403158,0.01446679,-0.01703189,0.40065712,30.888274,601.63367)" />
+       gradientTransform="matrix(0.6281475,0.0031975,-0.01499717,0.73376995,22.652547,270.95486)" />
     <radialGradient
        inkscape:collect="always"
-       xlink:href="#linearGradient5611"
-       id="radialGradient5619"
-       cx="41.785721"
-       cy="1004.3265"
-       fx="41.785721"
-       fy="1004.3265"
-       r="6.2500005"
+       xlink:href="#linearGradient5603"
+       id="radialGradient4187"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.3700961,-0.04073803,0.04376205,0.39756861,-17.630397,606.74007)" />
+       gradientTransform="matrix(0.6281475,0.0031975,-0.01499717,0.73376995,40.652547,270.95486)"
+       cx="20.892857"
+       cy="1004.3265"
+       fx="20.892857"
+       fy="1004.3265"
+       r="6.2500005" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -98,9 +87,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="5.6"
-     inkscape:cx="-16.013837"
-     inkscape:cy="0.81220343"
+     inkscape:zoom="5.500974"
+     inkscape:cx="31.785713"
+     inkscape:cy="-3.114258"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -128,27 +117,43 @@
      id="layer1"
      transform="translate(0,-989.86222)">
     <circle
-       style="opacity:1;fill:url(#radialGradient5593);fill-opacity:1;stroke:#ffefde;stroke-width:1.09999997;stroke-miterlimit:5;stroke-dasharray:none;stroke-opacity:1;stroke-dashoffset:0"
+       style="opacity:1;fill:url(#radialGradient5593);fill-opacity:1;stroke:#ffe000;stroke-width:1.50000009;stroke-miterlimit:5;stroke-dasharray:none;stroke-opacity:1;stroke-dashoffset:0"
        id="path4138"
        cx="31.250002"
        cy="1021.1122"
        r="30.000002" />
+    <path
+       style="fill:#ffe000;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1"
+       d="m 3.9285714,1008.4336 -3.03571426,-16.24995 7.14285716,8.92855 1.4285714,-4.46427 1.9642853,1.78572 4.107143,-5.35714 1.607143,1.96428 5,-4.10714 3.035714,1.25 5,-2.32143 4.464286,1.42857 6.428572,-0.71428 2.321428,3.21428 6.785714,-0.71428 0,4.64285 4.107143,0.35715 -0.178571,3.39289 7.142857,-9.64289 -2.857143,16.60709 -3.75,-5.5357 -3.392857,-3.92854 -3.928571,-3.03571 -5,-2.85714 -5.357143,-1.60715 -7.5,-0.17857 -8.035715,1.60714 -5.892857,2.5 -3.571428,2.67858 -3.5714289,3.57139 -3.2142857,5 z"
+       id="path4177"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#ffe000;stroke-width:5.57587624;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 18.912544,1039.8429 24.674915,0"
+       id="path4179"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#ffe000;stroke-width:4.00000048;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 30.728834,1020.3679 c 0,0 7.089654,5.09 -1.636074,10.3618"
+       id="path4181"
+       inkscape:connector-curvature="0" />
     <g
-       id="g4144"
-       transform="translate(-0.0892878,0)"
-       style="fill:#ffefde;fill-opacity:1">
-      <circle
-         r="6.2500005"
-         cy="1004.3265"
-         cx="20.892859"
+       id="g4189"
+       transform="translate(1.5357151,0)">
+      <ellipse
+         ry="7.4316092"
+         rx="6.2500005"
+         cy="1007.9662"
+         cx="20.714287"
          id="path4140"
          style="opacity:1;fill:url(#radialGradient5609);fill-opacity:1;stroke:none;stroke-width:1.10000002;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-      <circle
-         r="6.2500005"
-         cy="1004.3265"
-         cx="41.785721"
-         id="path4142"
-         style="opacity:1;fill:url(#radialGradient5619);fill-opacity:1;stroke:none;stroke-width:1.10000002;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <ellipse
+         style="opacity:1;fill:url(#radialGradient4187);fill-opacity:1;stroke:none;stroke-width:1.10000002;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="ellipse4185"
+         cx="38.714287"
+         cy="1007.9662"
+         rx="6.2500005"
+         ry="7.4316092" />
     </g>
   </g>
 </svg>

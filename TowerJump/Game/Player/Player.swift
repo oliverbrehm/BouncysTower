@@ -20,19 +20,20 @@ class Player: SKSpriteNode {
     static let jumpImpulse: CGFloat = 35.0
     static let superJumpImpulse: CGFloat = 120.0
     
-    /*private let readyActionKey = "READY_ACTION"
-    private let shrinkActionKey = "SHRINK_ACTION"
-    private let growActionKey = "GROW_ACTION"*/
+    private let movingForce: CGFloat = 6200.0
+    private let onPlatformForceMultiplicator: CGFloat = 1.5
+    private let actionScale = "PLAYER_SCALE"
     
     var world: World?
     
     var currentPlatform: Platform?
     
     var score = 0
-    //var jumpReadyTime = 0.25
  
     private var _state: PlayerState = .onPlatform
     private let perfectJumpDetector = PerfectJumpDetector()
+    
+    var controllerMovingDirectionLeft: Bool? // nil: not moving, false: left, true: right
     
     var state: PlayerState {
         get {
@@ -44,11 +45,6 @@ class Player: SKSpriteNode {
             }
         }
     }
-    
-    //private var jumpReady = false
-    //private var loadingJump = false
-    
-    private var movingDirectionLeft: Bool? = true
     
     private let particleEmitter = SKEmitterNode(fileNamed: "ScoreParticle")!
     
@@ -95,40 +91,6 @@ class Player: SKSpriteNode {
         self.particleEmitter.particleBirthRate = 0.0
     }
     
-    /*
-    func releaseMove() {
-
-        if(!self.jumpReady) {
-            self.removeJumpLoadingActions()
-        } else if(self.state == PlayerState.onPlatform) // jump if ready
-        {
-            let vxMax: CGFloat = 2000.0
-            let vx: CGFloat = abs(self.physicsBody!.velocity.dx)
-            
-            let xVelocityFactor: CGFloat = 1.0 + min((vx / vxMax), 2.0)
-            
-            self.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: xVelocityFactor * Player.jumpImpulse))
-            self.state = PlayerState.jumping
-            
-            self.run(SoundController.standard.getSoundAction(action: .jump))
-            
-            self.removeJumpLoadingActions()
-
-            self.jumpReady = false
-            
-            self.perfectJumpDetector.playerLeftPlatform()
-        }
-        
-        self.loadingJump = false
-    }*/
-    
-    /*private func removeJumpLoadingActions() {
-        self.removeAction(forKey: readyActionKey)
-        self.removeAction(forKey: shrinkActionKey)
-        self.run(SKAction.scale(to: 1.0, duration: 0.1), withKey: growActionKey)
-        self.run(SKAction.colorize(with: SKColor.orange, colorBlendFactor: 0.0, duration: 0.05))
-    }*/
-    
     func superJump() {
         self.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: Player.superJumpImpulse))
         self.state = PlayerState.jumping
@@ -149,59 +111,32 @@ class Player: SKSpriteNode {
             SKAction.removeFromParent()
         ]))
     }
-    
-    /*
-    func startMoving(directionLeft: Bool) {
-        self.removeAction(forKey: self.growActionKey)
-        
-        self.loadingJump = true
-        
-        self.run(SKAction.scale(to: 0.75, duration: self.jumpReadyTime), withKey: shrinkActionKey)
-        
-        let readyAction = SKAction.sequence([
-            SKAction.wait(forDuration: jumpReadyTime),
-            SKAction.run {
-                self.jumpReady = true
-            },
-            SKAction.colorize(with: SKColor.orange, colorBlendFactor: 1.0, duration: 0.1)
-        ])
-        self.run(readyAction, withKey: readyActionKey)
-    }*/
-    
-    func startMoving(directionLeft: Bool) {
-        var impulseStrength = 0.0
-        
-        if(self.movingDirectionLeft == nil || self.movingDirectionLeft != directionLeft) {
-            // started moving or direction changed
-            impulseStrength = 5.0
-            
-            if let p = self.physicsBody {
-                if(directionLeft && p.velocity.dx > 0           // steering left but moving right
-                    || !directionLeft && p.velocity.dx < 0   // steering right but moving left
-                    ) {
-                    // increase impule to help change moving direction
-                    impulseStrength = 15.0
-                }
-            }
-        }
-        
-        if(impulseStrength > 0) {
-            if(directionLeft) {
-                self.physicsBody?.applyImpulse(CGVector(dx: -impulseStrength, dy: 0.0))
-            } else {
-                self.physicsBody?.applyImpulse(CGVector(dx: impulseStrength, dy: 0.0))
-            }
-        }
 
-        self.movingDirectionLeft = directionLeft
+    var movingDirectionLeft: Bool {
+        return self.physicsBody?.velocity.dx ?? 0.0 < 0 ? true : false
+    }
+    
+    func startMoving(directionLeft: Bool) {
+        if(self.movingDirectionLeft != directionLeft) {
+            // direction changed
+            self.physicsBody?.velocity.dx = 0.0
+        }
+        
+        self.controllerMovingDirectionLeft = directionLeft
+        
+        self.removeAction(forKey: self.actionScale)
+        self.run(SKAction.scale(to: 0.8, duration: 0.3), withKey: self.actionScale)
     }
     
     func stopMoving() {
-        if(self.state == .onPlatform) {
+        if(self.state == .onPlatform && self.currentPlatform != nil) {
             self.jump()
         }
         
-        self.movingDirectionLeft = nil
+        self.controllerMovingDirectionLeft = nil
+        
+        self.removeAction(forKey: self.actionScale)
+        self.run(SKAction.scale(to: 1.0, duration: 0.3), withKey: self.actionScale)
     }
     
     func jump() {
@@ -227,9 +162,8 @@ class Player: SKSpriteNode {
             }
         }
         
-        let movingForce: CGFloat = 5000.0
-        if let movingLeft = self.movingDirectionLeft {
-            if(movingLeft) {
+        if let movingDirectionLeft = self.controllerMovingDirectionLeft {
+            if(movingDirectionLeft) {
                 self.move(x: -movingForce * CGFloat(dt))
             } else {
                 self.move(x: movingForce * CGFloat(dt))
@@ -265,7 +199,7 @@ class Player: SKSpriteNode {
         
         self.perfectJumpDetector.playerLandedOnPlatform(platform)
         
-        if(self.movingDirectionLeft == nil) {
+        if(self.controllerMovingDirectionLeft == nil) {
             // user not moving left or right -> auto jump
             self.jump()
         }
@@ -299,12 +233,11 @@ class Player: SKSpriteNode {
     }
     
     func move(x: CGFloat) {
-        var dx: CGFloat = 0.0
+        var dx = x
         
-        if(self.state == PlayerState.jumping || self.state == PlayerState.falling) {
-            dx = x * 0.7
-        } else if(self.state == PlayerState.onPlatform) {
-            dx = x * 2.5
+        // while in the air, less force is needed because of friction
+        if(self.state == PlayerState.onPlatform) {
+            dx = x * self.onPlatformForceMultiplicator
         }
         
         self.physicsBody?.applyForce(CGVector(dx: dx, dy: 0.0))

@@ -89,7 +89,9 @@ class World: SKNode {
             
             self.currentLevel = self.levels.removeFirst()
             self.addChild(self.currentLevel!)
-            self.currentLevel!.fadeIn()
+            if(!(self.currentLevel is Level01)) {
+                self.currentLevel!.fadeIn()
+            }
             self.currentLevel!.position = CGPoint(x: 0.0, y: y)
         }
     }

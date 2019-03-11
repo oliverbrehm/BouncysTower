@@ -122,9 +122,9 @@ class MainGame: Game {
         let rank = Score.standard.addScore(score)
         
         self.gameOverOverlay.show(score: score, rank: rank)
-        self.pauseButton.isHidden = true
+        self.pause()
         self.state.runningState = .over
-        
+
         if(Config.standard.coins > ResourceManager.costExtraLife) {
             // show shop if player collected enough coins for an extra life
             self.checkShowTutorial(.shop)
