@@ -62,4 +62,11 @@ class IconButton: Button {
         rotate.timingMode = .easeInEaseOut
         self.backgroundImage.run(rotate)
     }
+    
+    override func touchUp(point: CGPoint) {
+        super.touchUp(point: point)
+        let rotate = SKAction.rotate(byAngle: 1.5, duration: 0.15)
+        rotate.timingMode = .easeInEaseOut
+        self.backgroundImage.run(rotate)
+    }
 }

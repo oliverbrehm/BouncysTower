@@ -25,14 +25,22 @@ class Level04: Level {
     }
     
     override var platformMinFactor: CGFloat {
-        return 0.3
+        return 0.2
     }
     
     override var platformMaxFactor: CGFloat {
-        return 0.55
+        return 0.65
     }
     
     override var levelSpeed: CGFloat {
         return 80.0
+    }
+    
+    override var platformYDistance: CGFloat {
+        return 100.0
+    }
+    
+    override var numberOfPlatforms: Int {
+        return 80
     }
 }

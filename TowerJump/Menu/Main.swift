@@ -85,6 +85,11 @@ class Main: SKScene, ShopDelegate, PersonalTowerDelegate {
         tower.delegate = self
     }
     
+    func disableUserInteraction() {
+        self.isUserInteractionEnabled = false
+        self.menuOverlay.isUserInteractionEnabled = false
+    }
+    
     private func moveTower(dy: CGFloat) {
         self.tower.position.y = min(self.bottom + 10.0, self.tower.position.y + dy)
         self.tower.position.y = max(self.tower.position.y, -self.tower.height - 10.0 + self.size.height / 2.0)

@@ -47,14 +47,10 @@ class Platform: SKSpriteNode {
             container.anchorPoint = CGPoint(x: 0.5, y: 1.0)
             container.addChild(label)
             container.zPosition = NodeZOrder.platformLabelContainer
-            label.zPosition = NodeZOrder.platformLabel
+            label.zPosition = 0.1 // relative to parent node
             self.addChild(container)
         }
-        
-        // consumables
-        self.spawnBrick()
-        self.spawnExtraLife()
-        
+
         self.zPosition = NodeZOrder.world
     }
     
@@ -71,7 +67,7 @@ class Platform: SKSpriteNode {
         return CGFloat.random(in: xRangeMin ..< xRangeMax)
     }
     
-    private func spawnBrick() {
+    func spawnBrick() {
         if let brick = ResourceManager.standard.consumeBrick() {
             let brickNode = ConsumableBrick(brick: brick)
             let y = self.size.height / 2.0 + brickNode.size.height / 2.0 + 5.0
@@ -80,7 +76,7 @@ class Platform: SKSpriteNode {
         }
     }
     
-    private func spawnExtraLife() {
+    func spawnExtraLife() {
         if(ResourceManager.standard.consumeExtraLife()) {
             let extraLife = ConsumableExtraLife()
             let y = self.size.height / 2.0 + extraLife.size.height / 2.0 + 5.0

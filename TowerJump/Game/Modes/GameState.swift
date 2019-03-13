@@ -9,14 +9,13 @@
 import SpriteKit
 
 enum RunningState {
-    case started
     case running
     case paused
     case over
 }
 
 class GameState {
-    var runningState = RunningState.started
+    var runningState = RunningState.running
     var numberOfLives = 0
     var allowJump = true
     var lastTime: TimeInterval = -1.0

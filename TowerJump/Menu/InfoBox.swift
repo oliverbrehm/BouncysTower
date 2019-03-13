@@ -98,10 +98,11 @@ class InfoBox: Button {
             contentHeight += margin + img.size.height
         }
         
-        label.position = CGPoint(x: 0.0, y: -margin - label.frame.size.height)
-        image?.position = CGPoint(x: 0.0, y: label.position.y - margin - image!.size.height)
-        
         self.size.height = max(contentHeight + 2 * margin, self.minHeight)
+        
+        label.position = CGPoint(x: 0.0, y: -self.size.height / 2.0 + contentHeight / 2.0 - label.frame.size.height)
+        image?.position = CGPoint(x: 0.0, y: label.position.y - margin - image!.size.height / 2.0)
+        
     }
     
     func show(completion: (() -> Void)? = nil) {
@@ -120,8 +121,8 @@ class InfoBox: Button {
         self.run(SoundController.standard.getSoundAction(action: .message))
         
         self.run(SKAction.repeatForever(SKAction.sequence([
-            SKAction.fadeAlpha(to: 0.9, duration: 0.5),
-            SKAction.fadeAlpha(to: 0.7, duration: 0.5)
+            SKAction.fadeAlpha(to: 0.95, duration: 0.5),
+            SKAction.fadeAlpha(to: 0.85, duration: 0.5)
         ])))
     }
 }

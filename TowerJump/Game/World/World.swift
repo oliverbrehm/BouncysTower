@@ -135,4 +135,18 @@ class World: SKNode {
     func absoluteZero() -> CGFloat {
         return -height / 2.0 + Platform.height / 2.0
     }
+    
+    func makeExplosion(at position: CGPoint, color: SKColor = SKColor.white) {
+        if let emitter = SKEmitterNode(fileNamed: "JumpParticle") {
+            self.addChild(emitter)
+            emitter.position = position
+            emitter.particleColor = color
+            emitter.run(SKAction.wait(forDuration: 0.1)) {
+                emitter.particleBirthRate = 0.0
+                emitter.run(SKAction.wait(forDuration: 1.0)) {
+                    emitter.removeFromParent()
+                }
+            }
+        }
+    }
 }

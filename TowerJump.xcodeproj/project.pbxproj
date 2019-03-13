@@ -50,6 +50,10 @@
 		A7240993222444F100B18095 /* ScoresNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7240992222444F100B18095 /* ScoresNode.swift */; };
 		A7240994222444F100B18095 /* ScoresNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7240992222444F100B18095 /* ScoresNode.swift */; };
 		A7240995222444F100B18095 /* ScoresNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7240992222444F100B18095 /* ScoresNode.swift */; };
+		A745E17722395C260043EC5A /* JumpParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = A745E17622395C260043EC5A /* JumpParticle.sks */; };
+		A745E1792239648A0043EC5A /* StandardPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = A745E1782239648A0043EC5A /* StandardPlatform.swift */; };
+		A745E17A2239648A0043EC5A /* StandardPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = A745E1782239648A0043EC5A /* StandardPlatform.swift */; };
+		A745E17B2239648A0043EC5A /* StandardPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = A745E1782239648A0043EC5A /* StandardPlatform.swift */; };
 		A74E3C8822131B2400D38AEB /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74E3C8722131B2400D38AEB /* GameViewController.swift */; };
 		A74E3C8922131B2400D38AEB /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74E3C8722131B2400D38AEB /* GameViewController.swift */; };
 		A74E3C8A22131B2400D38AEB /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74E3C8722131B2400D38AEB /* GameViewController.swift */; };
@@ -151,13 +155,13 @@
 		A7A228A1220604E800081E0E /* OverlayPause.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71F2DA32164D2D000FAF0EB /* OverlayPause.swift */; };
 		A7A228A3220604E800081E0E /* OverlayExtralife.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D4C8332201CEAA0060F352 /* OverlayExtralife.swift */; };
 		A7A228A4220604EE00081E0E /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7175FB420E2B4DA00968329 /* Platform.swift */; };
-		A7A228A5220604EE00081E0E /* PlatformEndLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A5199215E907300E7CDDB /* PlatformEndLevel.swift */; };
+		A7A228A5220604EE00081E0E /* EndLevelPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A5199215E907300E7CDDB /* EndLevelPlatform.swift */; };
 		A7A228A6220604EE00081E0E /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D4C82F2201BB9E0060F352 /* Coin.swift */; };
 		A7A228A7220604EF00081E0E /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7175FB420E2B4DA00968329 /* Platform.swift */; };
-		A7A228A8220604EF00081E0E /* PlatformEndLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A5199215E907300E7CDDB /* PlatformEndLevel.swift */; };
+		A7A228A8220604EF00081E0E /* EndLevelPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A5199215E907300E7CDDB /* EndLevelPlatform.swift */; };
 		A7A228A9220604EF00081E0E /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D4C82F2201BB9E0060F352 /* Coin.swift */; };
 		A7A228AA220604EF00081E0E /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7175FB420E2B4DA00968329 /* Platform.swift */; };
-		A7A228AB220604EF00081E0E /* PlatformEndLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A5199215E907300E7CDDB /* PlatformEndLevel.swift */; };
+		A7A228AB220604EF00081E0E /* EndLevelPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A5199215E907300E7CDDB /* EndLevelPlatform.swift */; };
 		A7A228AC220604EF00081E0E /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D4C82F2201BB9E0060F352 /* Coin.swift */; };
 		A7A228AD220604F600081E0E /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A518D215A6A0600E7CDDB /* Level.swift */; };
 		A7A228AE220604F600081E0E /* Level01.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A5190215A6AC200E7CDDB /* Level01.swift */; };
@@ -240,7 +244,7 @@
 		A71A5192215A6B0400E7CDDB /* Level02.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level02.swift; sourceTree = "<group>"; };
 		A71A5194215E41F000E7CDDB /* Level03.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level03.swift; sourceTree = "<group>"; };
 		A71A5196215E41FD00E7CDDB /* Level04.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level04.swift; sourceTree = "<group>"; };
-		A71A5199215E907300E7CDDB /* PlatformEndLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformEndLevel.swift; sourceTree = "<group>"; };
+		A71A5199215E907300E7CDDB /* EndLevelPlatform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndLevelPlatform.swift; sourceTree = "<group>"; };
 		A71E741221F9035900E7E193 /* Overlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Overlay.swift; sourceTree = "<group>"; };
 		A71E741421F907BD00E7E193 /* OverlayMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayMain.swift; sourceTree = "<group>"; };
 		A71F2D9B2163956D00FAF0EB /* Level08.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level08.swift; sourceTree = "<group>"; };
@@ -252,6 +256,8 @@
 		A71F2DA72164ED4500FAF0EB /* SKSpriteNode+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKSpriteNode+Extensions.swift"; sourceTree = "<group>"; };
 		A724098222243DF100B18095 /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
 		A7240992222444F100B18095 /* ScoresNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresNode.swift; sourceTree = "<group>"; };
+		A745E17622395C260043EC5A /* JumpParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = JumpParticle.sks; sourceTree = "<group>"; };
+		A745E1782239648A0043EC5A /* StandardPlatform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardPlatform.swift; sourceTree = "<group>"; };
 		A74E3C8722131B2400D38AEB /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		A765DC022215A48400B34284 /* CGVector+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGVector+Extensions.swift"; sourceTree = "<group>"; };
 		A7736A902205D6B600A28B5D /* InfoBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoBox.swift; sourceTree = "<group>"; };
@@ -397,7 +403,8 @@
 			isa = PBXGroup;
 			children = (
 				A7175FB420E2B4DA00968329 /* Platform.swift */,
-				A71A5199215E907300E7CDDB /* PlatformEndLevel.swift */,
+				A71A5199215E907300E7CDDB /* EndLevelPlatform.swift */,
+				A745E1782239648A0043EC5A /* StandardPlatform.swift */,
 			);
 			path = Platforms;
 			sourceTree = "<group>";
@@ -577,6 +584,7 @@
 				A71538F7222D1AD200A81322 /* ResourceManager.swift */,
 				A7901470222AF1470025368A /* TowerBricks.swift */,
 				A71538EE222BEDE900A81322 /* ShopDelegate.swift */,
+				A745E17622395C260043EC5A /* JumpParticle.sks */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -704,6 +712,7 @@
 				A7A22862220604DB00081E0E /* MainGame.sks in Resources */,
 				A7736AA62206025100A28B5D /* LaunchScreen.storyboard in Resources */,
 				A7186E02220C451400187C6E /* jump.aif in Resources */,
+				A745E17722395C260043EC5A /* JumpParticle.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -789,6 +798,7 @@
 				A7A228CA2206050E00081E0E /* SKSpriteNode+Extensions.swift in Sources */,
 				A765DC032215A48400B34284 /* CGVector+Extensions.swift in Sources */,
 				A7A228B3220604F600081E0E /* Level06.swift in Sources */,
+				A745E1792239648A0043EC5A /* StandardPlatform.swift in Sources */,
 				A7A228AE220604F600081E0E /* Level01.swift in Sources */,
 				A7A228AF220604F600081E0E /* Level02.swift in Sources */,
 				A7186DDE220C3F8900187C6E /* SoundController.swift in Sources */,
@@ -812,7 +822,7 @@
 				A71538F4222D10DA00A81322 /* Collectable.swift in Sources */,
 				A7DC9BBC221756CF0038EC58 /* PerfectJumpDetector.swift in Sources */,
 				A790146D222984120025368A /* IconButton.swift in Sources */,
-				A7A228A5220604EE00081E0E /* PlatformEndLevel.swift in Sources */,
+				A7A228A5220604EE00081E0E /* EndLevelPlatform.swift in Sources */,
 				A7A228B2220604F600081E0E /* Level05.swift in Sources */,
 				A7901471222AF1470025368A /* TowerBricks.swift in Sources */,
 				A7A2285A220604D500081E0E /* Advertising.swift in Sources */,
@@ -877,7 +887,7 @@
 				A7A2288F220604E800081E0E /* NodeCategories.swift in Sources */,
 				A7A228A9220604EF00081E0E /* Coin.swift in Sources */,
 				A724098422243DF100B18095 /* Score.swift in Sources */,
-				A7A228A8220604EF00081E0E /* PlatformEndLevel.swift in Sources */,
+				A7A228A8220604EF00081E0E /* EndLevelPlatform.swift in Sources */,
 				A7A228BB220604F700081E0E /* Level05.swift in Sources */,
 				A7A2285D220604D500081E0E /* Advertising.swift in Sources */,
 				A7A22894220604E800081E0E /* OverlayPause.swift in Sources */,
@@ -890,6 +900,7 @@
 				A7A22875220604E100081E0E /* Settings.swift in Sources */,
 				A7A2285C220604D500081E0E /* AdvertisingController.swift in Sources */,
 				A790146E222984120025368A /* IconButton.swift in Sources */,
+				A745E17A2239648A0043EC5A /* StandardPlatform.swift in Sources */,
 				A7736AAF2206025100A28B5D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -936,7 +947,7 @@
 				A7A2289C220604E800081E0E /* NodeCategories.swift in Sources */,
 				A7A228AC220604EF00081E0E /* Coin.swift in Sources */,
 				A724098522243DF100B18095 /* Score.swift in Sources */,
-				A7A228AB220604EF00081E0E /* PlatformEndLevel.swift in Sources */,
+				A7A228AB220604EF00081E0E /* EndLevelPlatform.swift in Sources */,
 				A7A228C4220604F700081E0E /* Level05.swift in Sources */,
 				A7A22860220604D600081E0E /* Advertising.swift in Sources */,
 				A7A228A1220604E800081E0E /* OverlayPause.swift in Sources */,
@@ -949,6 +960,7 @@
 				A7A2287A220604E100081E0E /* Settings.swift in Sources */,
 				A7A2285F220604D600081E0E /* AdvertisingController.swift in Sources */,
 				A790146F222984120025368A /* IconButton.swift in Sources */,
+				A745E17B2239648A0043EC5A /* StandardPlatform.swift in Sources */,
 				A7736ABD2206025200A28B5D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

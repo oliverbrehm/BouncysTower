@@ -16,12 +16,12 @@ class Player: SKSpriteNode {
         case falling
     }
     
-    static let size: CGFloat = 35.0
-    static let jumpImpulse: CGFloat = 35.0
-    static let superJumpImpulse: CGFloat = 120.0
+    static let size: CGFloat = 30.0
     
-    private let movingForce: CGFloat = 6200.0
-    private let onPlatformForceMultiplicator: CGFloat = 1.5
+    private let jumpImpulse: CGFloat = 35.0
+    private let superJumpImpulse: CGFloat = 100.0
+    private let movingForce: CGFloat = 5000.0
+    private let onPlatformForceMultiplicator: CGFloat = 1.8
     private let actionScale = "PLAYER_SCALE"
     
     var world: World?
@@ -30,19 +30,14 @@ class Player: SKSpriteNode {
     
     var score = 0
  
-    private var _state: PlayerState = .onPlatform
     private let perfectJumpDetector = PerfectJumpDetector()
     
     var controllerMovingDirectionLeft: Bool? // nil: not moving, false: left, true: right
     
-    var state: PlayerState {
-        get {
-            return _state
-        } set {
-            if(_state != newValue) {
-                _state = newValue
-                self.world?.currentLevel?.updateCollisionTests(player: self)
-            }
+    private(set) var state: PlayerState = .onPlatform {
+        didSet {
+            self.world?.currentLevel?.updateCollisionTests(player: self)
+            print("set state: \(self.state), y: \(self.physicsBody?.velocity.dy ?? 0.0)")
         }
     }
     
@@ -89,10 +84,12 @@ class Player: SKSpriteNode {
         self.score = 0
         
         self.particleEmitter.particleBirthRate = 0.0
+        
+        self.perfectJumpDetector.reset()
     }
     
     func superJump() {
-        self.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: Player.superJumpImpulse))
+        self.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: superJumpImpulse))
         self.state = PlayerState.jumping
 
         self.run(SoundController.standard.getSoundAction(action: .superJump))
@@ -129,7 +126,7 @@ class Player: SKSpriteNode {
     }
     
     func stopMoving() {
-        if(self.state == .onPlatform && self.currentPlatform != nil) {
+        if(self.state == .onPlatform) {
             self.jump()
         }
         
@@ -145,21 +142,21 @@ class Player: SKSpriteNode {
         
         let xVelocityFactor: CGFloat = 1.0 + min((vx / vxMax), 2.0)
         
-        self.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: xVelocityFactor * Player.jumpImpulse))
+        self.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: xVelocityFactor * jumpImpulse))
         self.state = PlayerState.jumping
         
         self.run(SoundController.standard.getSoundAction(action: .jump))
         
         self.perfectJumpDetector.playerLeftPlatform()
+        
+        if let w = self.world {
+            w.makeExplosion(at: self.position)
+        }
     }
     
     func update(dt: TimeInterval) {
-        if let p = self.physicsBody {
-            if(p.velocity.dy < -0.1) {
-                self.state = .falling
-            } else if(self.state == .falling && p.velocity.dy > -0.000001) {
-                self.state = .onPlatform
-            }
+        if let p = self.physicsBody, p.velocity.dy < -Player.size {
+            self.state = .falling
         }
         
         if let movingDirectionLeft = self.controllerMovingDirectionLeft {
@@ -191,45 +188,60 @@ class Player: SKSpriteNode {
     }
     
     func landOnPlatform(platform: Platform) {
-        updateScoreLandingOn(platform: platform)
-
-        self.state = PlayerState.onPlatform
+        if(self.state == .onPlatform) {
+            return
+        }
+        
+        self.state = .onPlatform
         self.physicsBody?.velocity.dy = 0.0
         self.currentPlatform = platform
         
-        self.perfectJumpDetector.playerLandedOnPlatform(platform)
+        updateScoreLandingOn(platform: platform)
+
+        if(platform is StandardPlatform) {
+            self.perfectJumpDetector.playerLandedOnPlatform(platform)
+        }
         
         if(self.controllerMovingDirectionLeft == nil) {
             // user not moving left or right -> auto jump
-            self.jump()
+            self.run(SKAction.wait(forDuration: 0.07)) {
+                if(self.controllerMovingDirectionLeft == nil && self.state == .onPlatform) {
+                    self.jump()
+                }
+            }
         }
     }
     
     func hitWall() {
         if(self.state == PlayerState.jumping && self.physicsBody!.velocity.dy > 0.0) {
-            self.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 0.4 * Player.jumpImpulse))
+            self.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 0.4 * jumpImpulse))
+            self.world?.makeExplosion(at: self.position, color: SKColor.yellow)
         }
         
         if let pb = self.physicsBody {
-            if(self.position.x < 0.0) {
-                // left wall, rotate right after collision
-                pb.angularVelocity = -abs(pb.angularVelocity)
-            } else {
-                // right wall, rotate left after collision
-                pb.angularVelocity = abs(pb.angularVelocity)
-            }
+            pb.angularVelocity = -pb.angularVelocity
         }
+        
+        self.perfectJumpDetector.playerHitWall()
     }
     
     func useExtralife() {
-        self._state = .jumping
+        self.state = .jumping
         self.zRotation = 0.0
         self.position = CGPoint(x: 0.0, y: self.position.y + 100.0)
         
         self.world?.currentLevel?.updateCollisionTests(player: self)
-
-        self.physicsBody?.velocity = CGVector.zero
-        self.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 100.0))
+        
+        if let platform = self.currentPlatform {
+            // calculate a factor so the player won't jump too far if very near the end of the level
+            let distanceToLevelTop = platform.level.topPlatformY - platform.position.y
+            let minDistanceForFullImpulse: CGFloat = 800.0
+            let impulseFactor = min(800.0, distanceToLevelTop * 2.5) / minDistanceForFullImpulse
+            let impulse = max(impulseFactor * superJumpImpulse, 0.5 * superJumpImpulse)
+            
+            self.physicsBody?.velocity = CGVector.zero
+            self.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: impulse))
+        }
     }
     
     func move(x: CGFloat) {

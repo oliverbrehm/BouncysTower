@@ -10,7 +10,7 @@ import SpriteKit
 
 class ScoreLabel: SKSpriteNode {
     var scoreLabel = SKLabelNode(fontNamed: "AmericanTypewriter-Bold")
-
+    
     init() {
         super.init(texture: SKTexture(imageNamed: "buttonbg"), color: SKColor(named: "buttonBackground") ?? SKColor.white, size: CGSize.zero)
         
@@ -53,6 +53,7 @@ class MainGame: Game {
     var currentScore = 0
     
     private let gameOverTolerance: CGFloat = 20.0
+    private let keyUpdateScoreAction = "ACTION_UPDATE_SCORE"
     
     override func setup() {
         self.cameraNode.addChild(self.gameOverOverlay)
@@ -84,7 +85,7 @@ class MainGame: Game {
     }
     
     override func updateGame(_ dt: TimeInterval) {
-        if(state.runningState == .started || state.runningState == .running) {
+        if(state.runningState == .running) {
             self.cameraNode.updateIn(game: self, player: player, world: world)
             self.world.spawnPlatformsAbove(y: self.player.position.y)
         }
@@ -159,12 +160,12 @@ class MainGame: Game {
             return
         }
         
-        self.removeAllActions()
+        self.removeAction(forKey: keyUpdateScoreAction)
         
         self.scoreLabel.run(SKAction.repeatForever(SKAction.sequence([
             SKAction.run {
                 if(self.currentScore >= self.player.score) {
-                    self.scoreLabel.removeAllActions()
+                    self.scoreLabel.removeAction(forKey: self.keyUpdateScoreAction)
                     return
                 }
                 
@@ -172,8 +173,8 @@ class MainGame: Game {
                 self.scoreLabel.text = "\(self.currentScore)"
                 self.updateScorePosition()
             },
-            SKAction.wait(forDuration: 0.06)
-            ])))
+            SKAction.wait(forDuration: 0.02)
+            ])), withKey: self.keyUpdateScoreAction)
     }
     
     func updateScorePosition() {

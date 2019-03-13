@@ -71,7 +71,7 @@ class Level: SKNode, LevelConfiguration {
     }
     
     var firstPlatformOffset: CGFloat {
-        return 500.0
+        return 600.0
     }
     
     func removeAllPlatforms() {
@@ -125,7 +125,7 @@ class Level: SKNode, LevelConfiguration {
         var platform: Platform?
         
         if(self.isLastPlatform) {
-            platform = PlatformEndLevel(
+            platform = EndLevelPlatform(
                 width: worldWidth,
                 texture: nil,
                 level: self,
@@ -139,7 +139,7 @@ class Level: SKNode, LevelConfiguration {
             let w = CGFloat.random(in: minWidth ..< maxWidth)
             x = CGFloat.random(in: -levelWidth / 2.0 + w / 2.0
                 ..< levelWidth / 2.0 - w / 2.0)
-            platform = Platform(width: w, texture: self.platformTexture, level: self, platformNumber: platformNumber)
+            platform = StandardPlatform(width: w, texture: self.platformTexture, level: self, platformNumber: platformNumber)
             self.spawnBackground(above: platformY)
         }
 
@@ -206,7 +206,7 @@ class Level: SKNode, LevelConfiguration {
         if(player.state == .falling) {
             for platform in platforms {
                 let playerBottom =  self.convert(player.position, from: player.world!).y - player.size.height / 2.0
-                if(playerBottom > platform.top() - 2.0) {
+                if(playerBottom > platform.top() - 3.5) {
                     platform.activateCollisions()
                 } else {
                     platform.deactivateCollisions()

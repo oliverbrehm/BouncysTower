@@ -12,7 +12,6 @@ class PerfectJumpDetector {
     
     // constants
     private let minimumRotation: CGFloat = 4.0
-    private let minimumTimeOnPlatform: TimeInterval = 0.01
     private let maximumTimeOnPlatform: TimeInterval = 0.5
     
     // nodes
@@ -20,16 +19,17 @@ class PerfectJumpDetector {
     private var currentPlatform: Platform?
     
     // state
-    private var rotationOnLanding: CGFloat = 0.0
+    //private var rotationOnLanding: CGFloat = 0.0 // TODO REMOVE
     private var lastPlatformNumber = -1
     private var perfectJumpPossible = false
     private var timeOnPlatform: TimeInterval = 0.0
+    private var hitWallSinceJump = false
     
     // actions
     private let shakeAction: SKAction
     private let perfectJumpAction: SKAction
     
-    private(set) var comboCount = -1
+    private(set) var comboCount = 0
     var scoreMultiplicator: Int {
         return max(comboCount, 1)
     }
@@ -62,24 +62,33 @@ class PerfectJumpDetector {
     }
     
     func setup(player: Player) {
-        self.comboCount = -1
         self.player = player
+        self.reset()
+    }
+    
+    func reset() {
+        self.comboCount = 0
     }
     
     func playerLandedOnPlatform(_ platform: Platform) {
         self.currentPlatform = platform
-        self.rotationOnLanding = player?.physicsBody?.angularVelocity ?? 0.0
+        //self.rotationOnLanding = player?.physicsBody?.angularVelocity ?? 0.0
         self.timeOnPlatform = 0.0
         
-        // player must have jumped at least 2 platforms at once
-        self.perfectJumpPossible = platform.platformNumber >= self.lastPlatformNumber + 2
+        // player must have hit wall and jumped at least 2 platforms at once
+        self.perfectJumpPossible = self.hitWallSinceJump && platform.platformNumber >= self.lastPlatformNumber + 2
+        self.hitWallSinceJump = false
+        
+        print("LAND. possible: \(self.perfectJumpPossible)")
+    }
+    
+    func playerHitWall() {
+        self.hitWallSinceJump = true
     }
     
     func playerLeftPlatform() {
-        print("possible: \(self.perfectJumpPossible), time: \(self.timeOnPlatform)")
-        if(self.perfectJumpPossible
-            && self.timeOnPlatform > self.minimumTimeOnPlatform
-            && self.timeOnPlatform < self.maximumTimeOnPlatform) {
+        print("LEFT. possible: \(self.perfectJumpPossible)")
+        if(self.perfectJumpPossible && self.timeOnPlatform < self.maximumTimeOnPlatform) {
             // perfect jump done
             self.comboCount += 1
             if(self.comboCount > 0) {
@@ -89,7 +98,7 @@ class PerfectJumpDetector {
             if(self.comboCount > 0) {
                 self.showComboFinished()
             }
-            self.comboCount = -1
+            self.comboCount = 0
         }
         
         self.lastPlatformNumber = self.currentPlatform?.platformNumber ?? -1
@@ -98,12 +107,13 @@ class PerfectJumpDetector {
     }
     
     func update(dt: TimeInterval) {
-        if(!self.perfectJumpPossible) {
+        /*if(!self.perfectJumpPossible) {
             return
-        }
+        }*/
         
         self.timeOnPlatform += dt
         
+        /*
         if let p = self.player {
             if let rotation = p.physicsBody?.angularVelocity {
                 if(abs(rotation) < minimumRotation) {
@@ -120,7 +130,7 @@ class PerfectJumpDetector {
                     return
                 }
             }
-        }
+        }*/
     }
     
     private func showPerfectJumpDone() {

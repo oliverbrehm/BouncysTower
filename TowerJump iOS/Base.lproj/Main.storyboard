@@ -136,7 +136,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="696" height="79.666666666666671"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="extralife" translatesAutoresizingMaskIntoConstraints="NO" id="x8p-KT-P8x">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="extralife" translatesAutoresizingMaskIntoConstraints="NO" id="x8p-KT-P8x">
                                                     <rect key="frame" x="15" y="14.999999999999996" width="49" height="49.666666666666657"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="49" id="CBC-H6-LPc"/>
@@ -193,7 +193,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="696" height="79.666666666666671"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="brick" translatesAutoresizingMaskIntoConstraints="NO" id="fhc-Mz-eyc">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="brick" translatesAutoresizingMaskIntoConstraints="NO" id="fhc-Mz-eyc">
                                                     <rect key="frame" x="15" y="14.999999999999996" width="49" height="49.666666666666657"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="49" id="1PH-Y8-2GU"/>
@@ -250,7 +250,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="696" height="79.666666666666671"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="brick2" translatesAutoresizingMaskIntoConstraints="NO" id="3BT-ic-9hW">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="brick2" translatesAutoresizingMaskIntoConstraints="NO" id="3BT-ic-9hW">
                                                     <rect key="frame" x="15" y="14.999999999999996" width="49" height="49.666666666666657"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="49" id="6WN-Yn-MPN"/>

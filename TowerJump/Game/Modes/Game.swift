@@ -17,6 +17,7 @@ class Game: SKScene, SKPhysicsContactDelegate {
     // members
     var gameViewController: GameViewController?
     var state = GameState()
+    var lastX: CGFloat = 0.0
 
     // nodes
     let player = Player()
@@ -63,17 +64,14 @@ class Game: SKScene, SKPhysicsContactDelegate {
             self.pausedOverlay.hide()
             
             self.pauseButton.action = {
-                self.pause()
-                self.pausedOverlay.show()
+                self.showPause()
             }
             self.pauseButton.zPosition = NodeZOrder.overlay
             self.pauseButton.position = CGPoint(
                 x: world.width / 2.0 - pauseButton.frame.size.width / 2.0,
                 y: world.height / 2.0 - pauseButton.frame.size.height / 2.0)
             self.cameraNode.addChild(self.pauseButton)
-            
-            // self.motionManager.startDeviceMotionUpdates() // TODO REMOVE
-            
+                        
             self.setup()
         }
     }
@@ -88,7 +86,7 @@ class Game: SKScene, SKPhysicsContactDelegate {
             self.state.timeWasPaused = false
         }
         
-        if(state.runningState == .started || state.runningState == .running) {
+        if(state.runningState == .running) {
             world.updateWallY(player.position.y)
         }
         
@@ -98,41 +96,12 @@ class Game: SKScene, SKPhysicsContactDelegate {
         
         self.updateGame(dt)
         
-        // self.updateDeviceMotionControl(dt: dt) // TODO REMOVE
-        
         state.lastTime = currentTime
     }
     
-    // TODO remove, experimental motion control
-    private func updateDeviceMotionControl(dt: CGFloat) {
-        /*
-        if(self.motionManager.isDeviceMotionAvailable) {
-            if let g = self.motionManager.deviceMotion?.gravity {
-                if(abs(g.y) > 0.05) {
-                    var dx = CGFloat(g.y)
-                    if(abs(dx) > 0.2) {
-                        dx = dx > 0 ? 0.2 : -0.2
-                    }
-                    dx = dx * CGFloat(dt) * 2400 * (UIDevice.current.orientation == UIDeviceOrientation.landscapeRight ? 1 : -1)
-                    
-                    if(abs(dx) >= abs(self.lastGravityX)) {
-                        self.player.Move(x: dx)
-                    } else {
-                        self.player.NeutralizeHorizontalSpeed()
-                    }
-                    
-                    self.lastGravityX = dx
-                }
-                //var gravity = CGVector(dx: 0.0, dy: -1.0)
-                // self.updateGravity(gravity.normalized() * 9.81)
-                // print(String(format: "g: %.2f, %.2f, %.2f", g.x, g.y, g.z))
-                print(String(format: "g: %.2f", g.y))
-            }
-        }*/
-    }
-    
-    func updateGravity(_ gravity: CGVector) {
-        // self.scene?.physicsWorld.gravity = gravity // TODO REMOVE
+    func showPause() {
+        self.pause()
+        self.pausedOverlay.show()
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
@@ -158,7 +127,7 @@ class Game: SKScene, SKPhysicsContactDelegate {
         world.create(self)
         self.state.gameOverY = world.absoluteZero()
         
-        self.state.runningState = .started
+        self.state.runningState = .running
         self.pauseButton.isHidden = false
         
         self.world.isPaused = false
@@ -172,6 +141,8 @@ class Game: SKScene, SKPhysicsContactDelegate {
         self.state.currentGameTime = 0.0
                 
         AdvertisingController.Default.presentIfNeccessary(returnScene: self.scene!, completionHandler: {})
+        
+        self.checkShowTutorial(.move)
     }
     
     func pause() {
@@ -194,12 +165,6 @@ class Game: SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.speed = 1.0
     }
     
-    func run() {
-        self.state.runningState = .running
-        
-        self.checkShowTutorial(.move)
-    }
-    
     func levelReached(level: Level) {
         switch level {
         case is Level02:
@@ -213,20 +178,27 @@ class Game: SKScene, SKPhysicsContactDelegate {
     
     func checkShowTutorial(_ tutorial: Tutorial) {
         let message: String
+        var image: String?
+        var imageHeight: CGFloat = 0.0
         
         switch tutorial {
         case .move:
             message = "Touch and hold to move. "
                 + "Use the entire left half of the screen to move left and the right half to move right."
+            image = "leftright"
+            imageHeight = 80.0
             
         case .wallJump:
             message = "Great, you reached the next Level! Did you notice: "
-                + "You get an extra boost upwards if you jump against the wall, try it."
+                + "You get an extra boost upwards if you jump against the wall! "
+                + "If you roll left or right on the platform, you gain more speed."
             
         case .combos:
             message = "You get a higher score if you do combos. "
                 + "Always keep rolling by holding your touch while on the platform. "
                 + "You have to jump at least two platforms at once to get a combo."
+            image = "combo"
+            imageHeight = 160.0
             
         case .bricks:
             message = "Cool, you collected a loose brick! "
@@ -243,11 +215,52 @@ class Game: SKScene, SKPhysicsContactDelegate {
         }
         
         if(Config.standard.shouldShow(tutorial: tutorial)) {
-            self.pause()
-            InfoBox.showOnce(in: self, text: message) {
-                Config.standard.setTutorialShown(tutorial)
-                self.resume()
+            self.run(SKAction.wait(forDuration: 0.3)) {
+                self.pause()
+                InfoBox.showOnce(in: self, text: message, imageName: image, imageHeight: imageHeight) {
+                    Config.standard.setTutorialShown(tutorial)
+                    self.resume()
+                }
             }
         }
+    }
+    
+    func touchDown(atPoint pos: CGPoint) {
+        self.movePlayer(pos: pos)
+        lastX = pos.x
+    }
+    
+    func touchMoved(toPoint pos: CGPoint) {
+        self.movePlayer(pos: pos)
+    }
+    
+    private func movePlayer(pos: CGPoint) {
+        if(state.runningState == .running && state.allowJump) {
+            if pos.x < self.frame.size.width / 2.0 {
+                player.startMoving(directionLeft: true)
+            } else {
+                player.startMoving(directionLeft: false)
+            }
+        }
+    }
+    
+    func touchUp(atPoint pos: CGPoint) {
+        player.stopMoving()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for t in touches { self.touchDown(atPoint: t.location(in: self.view)) }
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for t in touches { self.touchMoved(toPoint: t.location(in: self.view)) }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for t in touches { self.touchUp(atPoint: t.location(in: self.view)) }
+    }
+    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for t in touches { self.touchUp(atPoint: t.location(in: self.view)) }
     }
 }

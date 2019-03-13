@@ -61,7 +61,7 @@ class PersonalTower: SKNode {
             } else {
                 if let main = self.scene as? Main {
                     self.buildRowButton.isHidden = true
-                    main.isUserInteractionEnabled = false
+                    main.disableUserInteraction()
                     // TODO freeze user input in main
                     InfoBox.showOnce(in: main,
                                      text: "Here you can build your own personal tower! Collect or buy five bricks to build a new row.", completion: {
