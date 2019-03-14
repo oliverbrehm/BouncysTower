@@ -57,6 +57,12 @@
 		A74E3C8822131B2400D38AEB /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74E3C8722131B2400D38AEB /* GameViewController.swift */; };
 		A74E3C8922131B2400D38AEB /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74E3C8722131B2400D38AEB /* GameViewController.swift */; };
 		A74E3C8A22131B2400D38AEB /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74E3C8722131B2400D38AEB /* GameViewController.swift */; };
+		A74EF244223A3A9C00A69176 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74EF243223A3A9C00A69176 /* ProductCell.swift */; };
+		A74EF245223A3A9C00A69176 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74EF243223A3A9C00A69176 /* ProductCell.swift */; };
+		A74EF246223A3A9C00A69176 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74EF243223A3A9C00A69176 /* ProductCell.swift */; };
+		A74EF248223A3C9E00A69176 /* ShopTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74EF247223A3C9E00A69176 /* ShopTVC.swift */; };
+		A74EF249223A3C9E00A69176 /* ShopTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74EF247223A3C9E00A69176 /* ShopTVC.swift */; };
+		A74EF24A223A3C9E00A69176 /* ShopTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74EF247223A3C9E00A69176 /* ShopTVC.swift */; };
 		A765DC032215A48400B34284 /* CGVector+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A765DC022215A48400B34284 /* CGVector+Extensions.swift */; };
 		A765DC042215A48400B34284 /* CGVector+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A765DC022215A48400B34284 /* CGVector+Extensions.swift */; };
 		A765DC052215A48400B34284 /* CGVector+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A765DC022215A48400B34284 /* CGVector+Extensions.swift */; };
@@ -73,9 +79,6 @@
 		A77B389D22254F3F003DEB38 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77B389C22254F3F003DEB38 /* ShopViewController.swift */; };
 		A77B389E22254F3F003DEB38 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77B389C22254F3F003DEB38 /* ShopViewController.swift */; };
 		A77B389F22254F3F003DEB38 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77B389C22254F3F003DEB38 /* ShopViewController.swift */; };
-		A77B38A122255D32003DEB38 /* ShopTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77B38A022255D32003DEB38 /* ShopTableViewController.swift */; };
-		A77B38A222255D32003DEB38 /* ShopTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77B38A022255D32003DEB38 /* ShopTableViewController.swift */; };
-		A77B38A322255D32003DEB38 /* ShopTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77B38A022255D32003DEB38 /* ShopTableViewController.swift */; };
 		A7901468222962830025368A /* LevelConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7901467222962830025368A /* LevelConfiguration.swift */; };
 		A7901469222962830025368A /* LevelConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7901467222962830025368A /* LevelConfiguration.swift */; };
 		A790146A222962830025368A /* LevelConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7901467222962830025368A /* LevelConfiguration.swift */; };
@@ -259,6 +262,8 @@
 		A745E17622395C260043EC5A /* JumpParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = JumpParticle.sks; sourceTree = "<group>"; };
 		A745E1782239648A0043EC5A /* StandardPlatform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardPlatform.swift; sourceTree = "<group>"; };
 		A74E3C8722131B2400D38AEB /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		A74EF243223A3A9C00A69176 /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
+		A74EF247223A3C9E00A69176 /* ShopTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopTVC.swift; sourceTree = "<group>"; };
 		A765DC022215A48400B34284 /* CGVector+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGVector+Extensions.swift"; sourceTree = "<group>"; };
 		A7736A902205D6B600A28B5D /* InfoBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoBox.swift; sourceTree = "<group>"; };
 		A7736A9B2206025100A28B5D /* BouncyJump.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BouncyJump.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -281,7 +286,6 @@
 		A7797EEF20E2A89200E3B664 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		A7797EFB20E2A89200E3B664 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A77B389C22254F3F003DEB38 /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
-		A77B38A022255D32003DEB38 /* ShopTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopTableViewController.swift; sourceTree = "<group>"; };
 		A7901467222962830025368A /* LevelConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelConfiguration.swift; sourceTree = "<group>"; };
 		A790146C222984120025368A /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		A7901470222AF1470025368A /* TowerBricks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TowerBricks.swift; sourceTree = "<group>"; };
@@ -427,7 +431,8 @@
 				A7736AA42206025100A28B5D /* LaunchScreen.storyboard */,
 				A7736AA72206025100A28B5D /* Info.plist */,
 				A77B389C22254F3F003DEB38 /* ShopViewController.swift */,
-				A77B38A022255D32003DEB38 /* ShopTableViewController.swift */,
+				A74EF243223A3A9C00A69176 /* ProductCell.swift */,
+				A74EF247223A3C9E00A69176 /* ShopTVC.swift */,
 			);
 			path = "BouncyJump iOS";
 			sourceTree = "<group>";
@@ -800,6 +805,7 @@
 				A7A228B3220604F600081E0E /* Level06.swift in Sources */,
 				A745E1792239648A0043EC5A /* StandardPlatform.swift in Sources */,
 				A7A228AE220604F600081E0E /* Level01.swift in Sources */,
+				A74EF244223A3A9C00A69176 /* ProductCell.swift in Sources */,
 				A7A228AF220604F600081E0E /* Level02.swift in Sources */,
 				A7186DDE220C3F8900187C6E /* SoundController.swift in Sources */,
 				A7A2287D220604E700081E0E /* Game.swift in Sources */,
@@ -809,6 +815,7 @@
 				A71538EF222BEDE900A81322 /* ShopDelegate.swift in Sources */,
 				A7A22885220604E700081E0E /* Camera.swift in Sources */,
 				A7A228A4220604EE00081E0E /* Platform.swift in Sources */,
+				A74EF248223A3C9E00A69176 /* ShopTVC.swift in Sources */,
 				A7A228B1220604F600081E0E /* Level04.swift in Sources */,
 				A7A228B5220604F600081E0E /* Level08.swift in Sources */,
 				A7A22883220604E700081E0E /* NodeZOrder.swift in Sources */,
@@ -833,7 +840,6 @@
 				A7A228CC2206050E00081E0E /* Config.swift in Sources */,
 				A7A22886220604E700081E0E /* OverlayGameOver.swift in Sources */,
 				A7A22889220604E700081E0E /* OverlayExtralife.swift in Sources */,
-				A77B38A122255D32003DEB38 /* ShopTableViewController.swift in Sources */,
 				A7901468222962830025368A /* LevelConfiguration.swift in Sources */,
 				A7A22870220604E000081E0E /* Settings.swift in Sources */,
 				A71875B3220AFB11003ED6F1 /* ResourceView.swift in Sources */,
@@ -869,6 +875,7 @@
 				A7A2288A220604E800081E0E /* Game.swift in Sources */,
 				A7A2288E220604E800081E0E /* Player.swift in Sources */,
 				A7A22874220604E100081E0E /* Button.swift in Sources */,
+				A74EF249223A3C9E00A69176 /* ShopTVC.swift in Sources */,
 				A7A2288B220604E800081E0E /* MainGame.swift in Sources */,
 				A7A22892220604E800081E0E /* Camera.swift in Sources */,
 				A71538F9222D1AD200A81322 /* ResourceManager.swift in Sources */,
@@ -878,11 +885,11 @@
 				A7A228BA220604F700081E0E /* Level04.swift in Sources */,
 				A7A228BE220604F700081E0E /* Level08.swift in Sources */,
 				A765DC042215A48400B34284 /* CGVector+Extensions.swift in Sources */,
+				A74EF245223A3A9C00A69176 /* ProductCell.swift in Sources */,
 				A7A22890220604E800081E0E /* NodeZOrder.swift in Sources */,
 				A71538F5222D10DA00A81322 /* Collectable.swift in Sources */,
 				A7A228BD220604F700081E0E /* Level07.swift in Sources */,
 				A71538FD222D241F00A81322 /* ConsumableBrick.swift in Sources */,
-				A77B38A222255D32003DEB38 /* ShopTableViewController.swift in Sources */,
 				A7A22876220604E100081E0E /* Overlay.swift in Sources */,
 				A7A2288F220604E800081E0E /* NodeCategories.swift in Sources */,
 				A7A228A9220604EF00081E0E /* Coin.swift in Sources */,
@@ -929,6 +936,7 @@
 				A7A22897220604E800081E0E /* Game.swift in Sources */,
 				A7A2289B220604E800081E0E /* Player.swift in Sources */,
 				A7A22879220604E100081E0E /* Button.swift in Sources */,
+				A74EF24A223A3C9E00A69176 /* ShopTVC.swift in Sources */,
 				A7A22898220604E800081E0E /* MainGame.swift in Sources */,
 				A7A2289F220604E800081E0E /* Camera.swift in Sources */,
 				A71538FA222D1AD200A81322 /* ResourceManager.swift in Sources */,
@@ -938,11 +946,11 @@
 				A7A228C3220604F700081E0E /* Level04.swift in Sources */,
 				A7A228C7220604F700081E0E /* Level08.swift in Sources */,
 				A765DC052215A48400B34284 /* CGVector+Extensions.swift in Sources */,
+				A74EF246223A3A9C00A69176 /* ProductCell.swift in Sources */,
 				A7A2289D220604E800081E0E /* NodeZOrder.swift in Sources */,
 				A71538F6222D10DA00A81322 /* Collectable.swift in Sources */,
 				A7A228C6220604F700081E0E /* Level07.swift in Sources */,
 				A71538FE222D241F00A81322 /* ConsumableBrick.swift in Sources */,
-				A77B38A322255D32003DEB38 /* ShopTableViewController.swift in Sources */,
 				A7A2287B220604E100081E0E /* Overlay.swift in Sources */,
 				A7A2289C220604E800081E0E /* NodeCategories.swift in Sources */,
 				A7A228AC220604EF00081E0E /* Coin.swift in Sources */,

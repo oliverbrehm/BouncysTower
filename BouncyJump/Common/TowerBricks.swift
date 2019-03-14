@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Brick: Int {
+enum Brick: Int, CaseIterable {
     case standard
     case diamond
     
@@ -27,6 +27,24 @@ enum Brick: Int {
             return "brick"
         case .diamond:
             return "brick2"
+        }
+    }
+    
+    var name: String {
+        switch self {
+        case .standard:
+            return "Brick"
+        case .diamond:
+            return "Diamond Brick"
+        }
+    }
+        
+    var description: String {
+        switch self {
+        case .standard:
+            return "Use it to build your personal tower"
+        case .diamond:
+            return "Fancy brick for your tower"
         }
     }
 }
