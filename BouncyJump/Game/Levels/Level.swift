@@ -206,7 +206,7 @@ class Level: SKNode, LevelConfiguration {
         if(player.state == .falling) {
             for platform in platforms {
                 let playerBottom =  self.convert(player.position, from: player.world!).y - player.size.height / 2.0
-                if(playerBottom > platform.top() - 3.5) {
+                if(playerBottom > platform.top() - 0.5) {
                     platform.activateCollisions()
                 } else {
                     platform.deactivateCollisions()

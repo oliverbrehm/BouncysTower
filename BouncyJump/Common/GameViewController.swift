@@ -20,8 +20,6 @@ class GameViewController: UIViewController {
             view.ignoresSiblingOrder = true
             view.showsFPS = true
             view.showsNodeCount = true
-            
-            AdvertisingController.Default.setup(view: view)
         }
         
         showMainMenu()
@@ -50,6 +48,10 @@ class GameViewController: UIViewController {
         if(segue.identifier == "showShop") {
             if let vc = segue.destination as? ShopViewController {
                 vc.delegate = self.shopDelegate
+            }
+        } else if(segue.identifier == "showPremium") {
+            if let vc = segue.destination as? PremiumViewController {
+                vc.setCountdown(seconds: AdvertisingController.standard.waitingTime)
             }
         }
     }

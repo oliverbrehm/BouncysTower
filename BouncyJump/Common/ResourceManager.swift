@@ -17,7 +17,7 @@ extension Int {
 class ResourceManager {
     static let standard = ResourceManager()
     
-    static let costExtraLife = 50
+    static let costExtraLife = 300
     
     private let maxCoins = 8
     private var coinsStore = 0

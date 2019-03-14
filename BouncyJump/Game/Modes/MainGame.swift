@@ -117,7 +117,7 @@ class MainGame: Game {
     }
     
     func gameOver() {
-        AdvertisingController.Default.gamePlayed(gameTime: self.state.currentGameTime)
+        AdvertisingController.standard.gamePlayed(gameTime: self.state.currentGameTime)
         
         let score = self.player.score
         let rank = Score.standard.addScore(score)

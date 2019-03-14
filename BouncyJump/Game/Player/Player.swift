@@ -37,7 +37,6 @@ class Player: SKSpriteNode {
     private(set) var state: PlayerState = .onPlatform {
         didSet {
             self.world?.currentLevel?.updateCollisionTests(player: self)
-            print("set state: \(self.state), y: \(self.physicsBody?.velocity.dy ?? 0.0)")
         }
     }
     
@@ -156,8 +155,12 @@ class Player: SKSpriteNode {
     }
     
     func update(dt: TimeInterval) {
-        if let p = self.physicsBody, p.velocity.dy < -Player.size {
-            self.state = .falling
+        if let p = self.physicsBody, self.state != .falling {
+            if((self.state == .onPlatform && p.velocity.dy < -Player.size)
+                || (self.state == .jumping && p.velocity.dy < 0.0)
+            ) {
+                self.state = .falling
+            }
         }
         
         if let movingDirectionLeft = self.controllerMovingDirectionLeft {

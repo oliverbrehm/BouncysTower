@@ -8,23 +8,9 @@
 
 import UIKit
 
-enum ProductType {
-    case buyPremium
-    case extalife
-    case brick(Brick)
-}
-
-struct Product {
-    let imageName: String
-    let title: String
-    let description: String
-    let cost: Int
-    let type: ProductType
-}
-
 class ShopTVC: UITableViewController {
     
-    private var products: [Product] = []
+    private var products: [ShopProduct] = []
     
     override func didMove(toParent parent: UIViewController?) {
         self.makeProducts()
@@ -33,18 +19,18 @@ class ShopTVC: UITableViewController {
     private func makeProducts() {
         products = []
         
-        let buyPremium = Product(imageName: "player", title: "Buy premium",
+        let buyPremium = ShopProduct(imageName: "player", title: "Buy premium",
                                  description: "For no more reminders to buy and a good concience",
                                  cost: 0, type: .buyPremium)
         products.append(buyPremium)
         
-        let extralife = Product(imageName: "extralife", title: "Extra life",
+        let extralife = ShopProduct(imageName: "extralife", title: "Extra life",
                                 description: "Saves you once from falling down",
                                 cost: ResourceManager.costExtraLife, type: .extalife)
         products.append(extralife)
         
         for brick in Brick.allCases {
-            let brickProduct = Product(imageName: brick.textureName, title: brick.name,
+            let brickProduct = ShopProduct(imageName: brick.textureName, title: brick.name,
                                        description: brick.description,
                                        cost: brick.cost, type: .brick(brick))
             products.append(brickProduct)
@@ -57,7 +43,7 @@ class ShopTVC: UITableViewController {
         }
     }
     
-    private func showNotEnoughCoinsAlert(for product: Product) {
+    private func showNotEnoughCoinsAlert(for product: ShopProduct) {
         let message = "Sorry, but you don't have enough coins to buy this. Come back if you have collected \(product.cost) coins!"
         let alert = UIAlertController(title: "Not enough coins", message: message, preferredStyle: .alert)
         
@@ -67,7 +53,7 @@ class ShopTVC: UITableViewController {
         self.present(alert, animated: true)
     }
     
-    private func askToBuy(product: Product, didBuyHandler: @escaping () -> Void) {
+    private func askToBuy(product: ShopProduct, didBuyHandler: @escaping () -> Void) {
         let question = "Do you want to buy \"\(product.title)\" for \(product.cost) coins?"
         let alert = UIAlertController(title: "Buy", message: question, preferredStyle: .alert)
         
@@ -82,7 +68,7 @@ class ShopTVC: UITableViewController {
         self.present(alert, animated: true)
     }
     
-    private func confirmPurchase(for product: Product) {
+    private func confirmPurchase(for product: ShopProduct) {
         let message = "You bought a new \(product.title)!"
         let alert = UIAlertController(title: "Thanks!", message: message, preferredStyle: .alert)
         
@@ -117,11 +103,18 @@ class ShopTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "productCell", for: indexPath) as? ProductCell {
             let product = products[indexPath.row]
+            cell.product = product
             
             cell.productImageView.image = UIImage(named: product.imageName)
             cell.productTitleLabel.text = product.title
             cell.productDescriptionLabel.text = product.description
-            cell.productCostLabel.text = "x \(product.cost)"
+            
+            if(product.cost > 0) {
+                cell.productCostLabel.text = "x \(product.cost)"
+            } else {
+                cell.productCostLabel.isHidden = true
+                cell.coinImageView.isHidden = true
+            }
             
             return cell
         }
@@ -139,7 +132,9 @@ class ShopTVC: UITableViewController {
         
         switch product.type {
         case .buyPremium:
-        break // TODO
+            if let shop = self.parent as? ShopViewController {
+                AdvertisingController.standard.present(in: shop)
+            }
         case .extalife:
             self.askToBuy(product: product) {
                 Config.standard.buyExtralife()

@@ -9,35 +9,43 @@
 import SpriteKit
 
 class AdvertisingController {
-    static var Default = AdvertisingController()
+    static var standard = AdvertisingController()
     
-    private let timeToAdvertising = 1 * 60.0; // seconds
+    private let timeToAdvertising = 2 * 60.0; // seconds
     
     private var timePlayed = 0.0
+    private var gamesPlayedSinceLastPresent = 0
     
-    private var gameView: SKView?
+    private var dismissHandler: (() -> Void)?
     
-    func setup(view: SKView) {
-        self.gameView = view
+    var waitingTime: Int {
+        return 5 // seconds
     }
     
     func gamePlayed(gameTime: Double) {
         self.timePlayed += gameTime
+        self.gamesPlayedSinceLastPresent += 1
     }
     
-    func presentIfNeccessary(returnScene: SKScene, completionHandler: @escaping (() -> Void)) {
-        if(self.timePlayed >= timeToAdvertising) {
+    // returns true if advertising was presented
+    func presentIfNeccessary(in viewController: UIViewController, completion: @escaping () -> Void) -> Bool {
+        if(self.gamesPlayedSinceLastPresent >= 2 && self.timePlayed >= timeToAdvertising) {
             self.timePlayed = 0.0
-            if let scene = SKScene(fileNamed: "Advertising01") as? Advertising {
-                scene.scaleMode = .resizeFill
-                self.gameView?.presentScene(scene, transition: SKTransition.moveIn(with: SKTransitionDirection.down, duration: 0.5))
-                scene.execute {
-                    if let view = self.gameView {
-                        view.presentScene(returnScene, transition: SKTransition.reveal(with: SKTransitionDirection.up, duration: 0.5))
-                        completionHandler()
-                    }
-                }
-            }
+            self.gamesPlayedSinceLastPresent = 0
+            self.present(in: viewController)
+            self.dismissHandler = completion
+            return true
         }
+        
+        return false
+    }
+    
+    func present(in viewController: UIViewController) {
+        viewController.performSegue(withIdentifier: "showPremium", sender: viewController)
+    }
+    
+    func dismiss() {
+        self.dismissHandler?()
+        self.dismissHandler = nil
     }
 }

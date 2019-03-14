@@ -33,10 +33,6 @@ class Game: SKScene, SKPhysicsContactDelegate {
     func hitPlatform(platform: Platform) {} // abstract
     func hitCoin(coin: Coin) {} // abstract
     
-    // TODO gravity code REMOVE
-    // private var lastGravityX: CGFloat = 0.0
-    // private let motionManager = CMMotionManager()
-    
     override func sceneDidLoad() {
         self.backgroundColor = SKColor.black
     }
@@ -100,8 +96,10 @@ class Game: SKScene, SKPhysicsContactDelegate {
     }
     
     func showPause() {
-        self.pause()
-        self.pausedOverlay.show()
+        if(self.state.runningState == .running) {
+            self.pause()
+            self.pausedOverlay.show()
+        }
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
@@ -122,8 +120,6 @@ class Game: SKScene, SKPhysicsContactDelegate {
     }
     
     func resetGame() {
-        self.resume()
-
         world.create(self)
         self.state.gameOverY = world.absoluteZero()
         
@@ -139,8 +135,17 @@ class Game: SKScene, SKPhysicsContactDelegate {
         self.player.position = CGPoint(x: 0.0, y: world.absoluteZero() + player.size.height / 2.0)
         
         self.state.currentGameTime = 0.0
-                
-        AdvertisingController.Default.presentIfNeccessary(returnScene: self.scene!, completionHandler: {})
+        
+        self.resume()
+        
+        if let game = self.gameViewController {
+            let presented = AdvertisingController.standard.presentIfNeccessary(in: game) {
+                self.resume()
+            }
+            if(presented) {
+                self.pause()
+            }
+        }
         
         self.checkShowTutorial(.move)
     }
