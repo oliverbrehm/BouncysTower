@@ -78,11 +78,11 @@ class PersonalTower: SKNode {
         }
         
         bricksLabel.zPosition = NodeZOrder.world
-        bricksLabel.fontColor = SKColor.blue
+        bricksLabel.fontColor = SKColor.yellow
         bricksLabel.fontSize = 16.0
         
         rowsLabel.zPosition = NodeZOrder.world
-        rowsLabel.fontColor = SKColor.blue
+        rowsLabel.fontColor = SKColor.yellow
         rowsLabel.fontSize = 18.0
         
         self.update()

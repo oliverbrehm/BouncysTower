@@ -18,6 +18,7 @@ class ScoreLabel: SKSpriteNode {
         self.zPosition = NodeZOrder.overlay
         
         self.scoreLabel.fontSize = 14.0
+        self.scoreLabel.fontColor = SKColor(named: "overlay")
         self.scoreLabel.zPosition = NodeZOrder.label
         self.scoreLabel.text = "0"
         self.scoreLabel.position = CGPoint(x: 0.0, y: -self.scoreLabel.frame.size.height / 2.0)

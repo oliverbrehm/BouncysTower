@@ -13,6 +13,7 @@ class Background: SKNode {
     init(screenSize: CGSize) {
         super.init()
         
+        /*
         let bg1 = SKSpriteNode(imageNamed: "bgmenu1")
         bg1.zPosition = NodeZOrder.background
         bg1.size = screenSize
@@ -30,6 +31,13 @@ class Background: SKNode {
         bg3.size = screenSize
         bg3.position = CGPoint(x: 0.0, y: 2.5 * screenSize.height)
         self.addChild(bg3)
+         */
+        
+        let bg = SKSpriteNode(imageNamed: "menuBackground")
+        bg.zPosition = NodeZOrder.background
+        bg.size = CGSize(width: screenSize.width, height: 3 * screenSize.height)
+        bg.position = CGPoint(x: 0.0, y: 1.5 * screenSize.height)
+        self.addChild(bg)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -72,12 +80,12 @@ class Main: SKScene, ShopDelegate, PersonalTowerDelegate {
         self.bottom = -size.height / 2.0
         
         self.addChild(tower)
-        tower.position = CGPoint(x: -0.25 * size.width, y: bottom + 10.0)
+        tower.position = CGPoint(x: -0.25 * size.width, y: bottom)
         background!.position = CGPoint(x: 0.0, y: bottom)
         
         stopViewModeButton.position = CGPoint(
-            x: size.width / 2.0 - stopViewModeButton.size.width / 2.0 - 10.0,
-            y: size.height / 2.0 - stopViewModeButton.size.height / 2.0 - 10.0)
+            x: size.width / 2.0 - stopViewModeButton.size.width / 2.0,
+            y: size.height / 2.0 - stopViewModeButton.size.height / 2.0)
         stopViewModeButton.isHidden = true
         self.addChild(stopViewModeButton)
         stopViewModeButton.action = self.towerViewModeStopped
@@ -91,9 +99,9 @@ class Main: SKScene, ShopDelegate, PersonalTowerDelegate {
     }
     
     private func moveTower(dy: CGFloat) {
-        self.tower.position.y = min(self.bottom + 10.0, self.tower.position.y + dy)
-        self.tower.position.y = max(self.tower.position.y, -self.tower.height - 10.0 + self.size.height / 2.0)
-        self.background?.position.y = bottom + (self.tower.position.y - bottom - 10.0) * 0.2
+        self.tower.position.y = min(self.bottom, self.tower.position.y + dy)
+        self.tower.position.y = max(self.tower.position.y, -self.tower.height + self.size.height / 2.0)
+        self.background?.position.y = bottom + (self.tower.position.y - bottom) * 0.2
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
