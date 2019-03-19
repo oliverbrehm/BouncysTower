@@ -111,6 +111,8 @@ class ShopTVC: UITableViewController {
             
             if(product.cost > 0) {
                 cell.productCostLabel.text = "x \(product.cost)"
+                cell.productCostLabel.isHidden = false
+                cell.coinImageView.isHidden = false
             } else {
                 cell.productCostLabel.isHidden = true
                 cell.coinImageView.isHidden = true

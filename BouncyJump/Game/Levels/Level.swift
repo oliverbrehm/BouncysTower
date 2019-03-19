@@ -14,6 +14,8 @@ class Level: SKNode, LevelConfiguration {
     private var backgroundY: CGFloat
     private var worldWidth: CGFloat
     
+    private var backgroundTiles: [SKSpriteNode] = []
+    
     private var platforms: [Platform] = []
     private let maxPlatforms = 25
     private var wallY: CGFloat = 0.0
@@ -152,13 +154,6 @@ class Level: SKNode, LevelConfiguration {
         let size = CGSize(width: self.worldWidth, height: self.worldWidth * texture.size().height / texture.size().width)
         
         while(self.backgroundY < y + 2 * size.height) {
-            // get sub texture and size that fits exactly
-            /*
-            let textureHeight = heightLeft / size.height
-            size.height = heightLeft
-            texture = SKTexture(rect: CGRect(origin: CGPoint.zero, size: CGSize(width: 1.0, height: textureHeight)), in: texture)
-            */
-            
             let background = SKSpriteNode(texture: texture, color: self.backgroundColor, size: size)
             background.colorBlendFactor = 1.0
             background.position = CGPoint(x: 0.0, y: self.backgroundY + size.height / 2.0)
@@ -167,6 +162,7 @@ class Level: SKNode, LevelConfiguration {
             self.addChild(background)
             
             self.backgroundY += size.height
+            self.backgroundTiles.append(background)
         }        
     }
     
@@ -202,20 +198,51 @@ class Level: SKNode, LevelConfiguration {
         }
     }
     
-    func updateCollisionTests(player: Player) {
-        if(player.state == .falling) {
+    func updatePlatforms(for player: Player) {
+        let playerBottom =  self.convert(player.position, from: player.world!).y - player.size.height / 2.0
+        let sceneHeight = self.scene?.size.height ?? 500.0
+        
+        if(player.state == .onPlatform) {
+            // landing on platform: remove platforms under player and deactivate collisions
+            var toRemove: [Platform] = []
             for platform in platforms {
-                let playerBottom =  self.convert(player.position, from: player.world!).y - player.size.height / 2.0
-                if(playerBottom > platform.top() - 0.5) {
-                    platform.activateCollisions()
-                } else {
+                if platform.position.y < playerBottom - sceneHeight {
+                    toRemove.append(platform)
+                } else if(playerBottom < platform.top() - 0.25 * player.size.height) {
                     platform.deactivateCollisions()
                 }
             }
-        } else if(player.state == .jumping) {
-            for platform in platforms {
-                platform.deactivateCollisions()
+            // remove platforms
+            for platform in toRemove {
+                self.removePlatform(platform)
             }
+        } else if(player.state == .falling) {
+            // falling: activate collisions for platforms underneath player
+            for platform in platforms {
+                if(playerBottom > platform.top() - 0.1 * player.size.height) {
+                    platform.activateCollisions()
+                } else {
+                    platform.deactivateCollisions()
+                    break
+                }
+            }
+        }
+    }
+    
+    private func removePlatform(_ platform: Platform) {
+        platform.removeFromParent()
+        if let index = platforms.firstIndex(of: platform) {
+            platforms.remove(at: index)
+        }
+        
+        while let wallTile = wallTiles.first, wallTile.position.y < platform.position.y {
+            wallTile.removeFromParent()
+            wallTiles.removeFirst()
+        }
+        
+        while let backgroundTile = backgroundTiles.first, backgroundTile.position.y < platform.position.y - backgroundTile.size.height / 2.0 {
+            backgroundTile.removeFromParent()
+            backgroundTiles.removeFirst()
         }
     }
     

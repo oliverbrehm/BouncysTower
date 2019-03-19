@@ -125,6 +125,8 @@ class World: SKNode {
             (self.scene as? Game)?.levelReached(level: platform.level)
         }
         platform.hitPlayer(player: player, world: self)
+        
+        self.coinManager.removeCoinsUnder(player: player)
     }
 
     func updateWallY(_ y: CGFloat) {

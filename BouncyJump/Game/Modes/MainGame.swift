@@ -108,7 +108,9 @@ class MainGame: Game {
         
         if(player.position.y + player.size.height / 2.0 + gameOverTolerance < state.gameOverY) {
             self.run(SoundController.standard.getSoundAction(action: .gameOver))
-
+            
+            player.died()
+            
             if(Config.standard.hasExtralives()) {
                 self.showExtralifeDialog()
             } else {

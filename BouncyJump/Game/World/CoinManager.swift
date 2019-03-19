@@ -57,7 +57,15 @@ class CoinManager {
         return self.coins.count
     }
     
+    func removeCoinsUnder(player: Player) {
+        while let coin = self.coins.first, coin.position.y < player.position.y - (world?.height ?? 500.0) {
+            self.removeCoin(coin: coin)
+        }
+    }
+    
     func removeCoin(coin: Coin) {
+        coin.removeFromParent()
+
         if let index = self.coins.index(of: coin) {
             self.coins.remove(at: index)
         }

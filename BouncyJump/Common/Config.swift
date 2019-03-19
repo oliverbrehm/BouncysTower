@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Tutorial: String {
+enum Tutorial: String, CaseIterable {
     case move = "TUTORIAL_MOVE"
     case wallJump = "TUTORIAL_WALL_JUMP"
     case combos = "TUTORIAL_COMBOS"
@@ -89,5 +89,20 @@ class Config {
     
     func shouldShow(tutorial: Tutorial) -> Bool {
         return !UserDefaults.standard.bool(forKey: tutorial.rawValue)
+    }
+    
+    // returns true if all "level" tutorials were shown
+    func allTutorialsShown() -> Bool {
+        for tutorial in Tutorial.allCases {
+            if(tutorial == .extraLives || tutorial == .bricks) {
+                continue
+            }
+            
+            if(shouldShow(tutorial: tutorial)) {
+                return false
+            }
+        }
+        
+        return true
     }
 }

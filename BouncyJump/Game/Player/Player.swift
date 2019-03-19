@@ -36,9 +36,12 @@ class Player: SKSpriteNode {
     
     private(set) var state: PlayerState = .onPlatform {
         didSet {
-            self.world?.currentLevel?.updateCollisionTests(player: self)
+            Logger.standard.playerState(message: "STATE: \(state)")
+            self.world?.currentLevel?.updatePlatforms(for: self)
         }
     }
+    
+    private(set) var hitWallSinceJumping = false
     
     private let particleEmitter = SKEmitterNode(fileNamed: "ScoreParticle")!
     
@@ -156,11 +159,18 @@ class Player: SKSpriteNode {
     
     func update(dt: TimeInterval) {
         if let p = self.physicsBody, self.state != .falling {
-            if((self.state == .onPlatform && p.velocity.dy < -Player.size)
-                || (self.state == .jumping && p.velocity.dy < 0.0)
-            ) {
+            if self.state == .onPlatform && p.velocity.dy < -50.0 { // TODO why -50.0?
+                // falling from platform
+                Logger.standard.playerState(message: "--- falling from platform, dy: \(p.velocity.dy)")
+                self.state = .falling
+            } else if self.state == .jumping && p.velocity.dy < 0.0 {
+                // falling after jump
                 self.state = .falling
             }
+        }
+        
+        if(self.state == .falling) {
+            self.world?.currentLevel?.updatePlatforms(for: self)
         }
         
         if let movingDirectionLeft = self.controllerMovingDirectionLeft {
@@ -198,9 +208,10 @@ class Player: SKSpriteNode {
         
         updateScoreLandingOn(platform: platform)
 
-        self.state = .onPlatform
         self.physicsBody?.velocity.dy = 0.0
+        self.state = .onPlatform
         self.currentPlatform = platform
+        self.hitWallSinceJumping = false
 
         if(platform is StandardPlatform) {
             self.perfectJumpDetector.playerLandedOnPlatform(platform)
@@ -217,7 +228,7 @@ class Player: SKSpriteNode {
     }
     
     func hitWall() {
-        if(self.state == PlayerState.jumping && self.physicsBody!.velocity.dy > 0.0) {
+        if(self.state == PlayerState.jumping && !hitWallSinceJumping && self.physicsBody!.velocity.dy > 0.0) {
             self.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 0.4 * jumpImpulse))
             self.world?.makeExplosion(at: self.position, color: SKColor.yellow)
         }
@@ -226,15 +237,21 @@ class Player: SKSpriteNode {
             pb.angularVelocity = -pb.angularVelocity
         }
         
+        Logger.standard.playerState(message: "HIT WALL")
         self.perfectJumpDetector.playerHitWall()
+        
+        self.hitWallSinceJumping = true
+    }
+    
+    func died() {
+        self.perfectJumpDetector.reset()
     }
     
     func useExtralife() {
-        self.state = .jumping
         self.zRotation = 0.0
         self.position = CGPoint(x: 0.0, y: self.position.y + 100.0)
-        
-        self.world?.currentLevel?.updateCollisionTests(player: self)
+        self.state = .jumping
+
         self.perfectJumpDetector.playerHitWall()
         
         if let platform = self.currentPlatform {

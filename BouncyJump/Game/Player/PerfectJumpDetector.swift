@@ -72,14 +72,15 @@ class PerfectJumpDetector {
     
     func playerLandedOnPlatform(_ platform: Platform) {
         self.currentPlatform = platform
-        //self.rotationOnLanding = player?.physicsBody?.angularVelocity ?? 0.0
         self.timeOnPlatform = 0.0
         
         // player must have hit wall and jumped at least 2 platforms at once
-        self.perfectJumpPossible = self.hitWallSinceJump && platform.platformNumber >= self.lastPlatformNumber + 2
-        self.hitWallSinceJump = false
+        let hasJumpedMinPlatforms = platform.platformNumber >= self.lastPlatformNumber + 2
+        self.perfectJumpPossible = self.hitWallSinceJump && hasJumpedMinPlatforms
         
-        print("LAND. possible: \(self.perfectJumpPossible)")
+        Logger.standard.perfectJumpState(message: "LAND. possible: \(self.perfectJumpPossible), min2platforms: \(hasJumpedMinPlatforms), hitWall: \(hitWallSinceJump)")
+        
+        self.hitWallSinceJump = false
     }
     
     func playerHitWall() {
@@ -87,7 +88,8 @@ class PerfectJumpDetector {
     }
     
     func playerLeftPlatform() {
-        print("LEFT. possible: \(self.perfectJumpPossible)")
+        Logger.standard.perfectJumpState(message: "LEFT. possible: \(self.perfectJumpPossible)")
+
         if(self.perfectJumpPossible && self.timeOnPlatform < self.maximumTimeOnPlatform) {
             // perfect jump done
             self.comboCount += 1
@@ -107,30 +109,7 @@ class PerfectJumpDetector {
     }
     
     func update(dt: TimeInterval) {
-        /*if(!self.perfectJumpPossible) {
-            return
-        }*/
-        
         self.timeOnPlatform += dt
-        
-        /*
-        if let p = self.player {
-            if let rotation = p.physicsBody?.angularVelocity {
-                if(abs(rotation) < minimumRotation) {
-                    self.perfectJumpPossible = false
-                    return
-                }
-                
-                // player must not decrease speed more than half
-                if(rotation >= 0 && rotation < self.rotationOnLanding / 2.0) {
-                    self.perfectJumpPossible = false
-                    return
-                } else if(rotation < 0 && rotation > self.rotationOnLanding / 2.0) {
-                    self.perfectJumpPossible = false
-                    return
-                }
-            }
-        }*/
     }
     
     private func showPerfectJumpDone() {

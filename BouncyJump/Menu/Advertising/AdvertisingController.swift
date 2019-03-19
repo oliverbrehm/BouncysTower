@@ -29,6 +29,11 @@ class AdvertisingController {
     
     // returns true if advertising was presented
     func presentIfNeccessary(in viewController: UIViewController, completion: @escaping () -> Void) -> Bool {
+        if(!Config.standard.allTutorialsShown()) {
+            // don't show if player is still "learning"
+            return false
+        }
+        
         if(self.gamesPlayedSinceLastPresent >= 2 && self.timePlayed >= timeToAdvertising) {
             self.timePlayed = 0.0
             self.gamesPlayedSinceLastPresent = 0
