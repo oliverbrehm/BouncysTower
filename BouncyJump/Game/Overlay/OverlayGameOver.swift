@@ -10,14 +10,14 @@ import SpriteKit
 
 class OverlayGameOver: Overlay {
     
-    private let scoreLabel = SKLabelNode(fontNamed: "AmericanTypewriter-Bold")
-    private let rankLabel = SKLabelNode(fontNamed: "AmericanTypewriter-Bold")
+    private let scoreLabel = SKLabelNode(fontNamed: Constants.fontName)
+    private let rankLabel = SKLabelNode(fontNamed: Constants.fontName)
     private let resourceView = ResourceView()
 
     func setup(game: Game) {
         super.setup(size: game.frame.size, width: 0.8)
         
-        let gameOverLabel = SKLabelNode(fontNamed: "AmericanTypewriter-Bold")
+        let gameOverLabel = SKLabelNode(fontNamed: Constants.fontName)
         gameOverLabel.position = CGPoint(x: 80.0, y: 100.0)
         gameOverLabel.text = "GAME OVER"
         gameOverLabel.fontSize = 24.0

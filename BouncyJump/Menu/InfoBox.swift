@@ -10,7 +10,7 @@ import SpriteKit
 
 class InfoBox: Button {
     
-    private let label = SKLabelNode(fontNamed: "AmericanTypewriter-Bold")
+    private let label = SKLabelNode(fontNamed: Constants.fontName)
     private var image: SKSpriteNode?
     
     private let minHeight: CGFloat

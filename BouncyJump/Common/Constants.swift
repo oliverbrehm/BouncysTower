@@ -14,4 +14,6 @@ class Constants {
     }
     
     static let colors = Colors()
+    
+    static let fontName = "AmericanTypewriter-Bold"
 }

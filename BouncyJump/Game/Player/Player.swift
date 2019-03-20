@@ -19,7 +19,7 @@ class Player: SKSpriteNode {
     static let size: CGFloat = 30.0
     
     private let jumpImpulse: CGFloat = 35.0
-    private let superJumpImpulse: CGFloat = 100.0
+    private let superJumpImpulse: CGFloat = 120.0
     private let movingForce: CGFloat = 5000.0
     private let onPlatformForceMultiplicator: CGFloat = 1.8
     private let actionScale = "PLAYER_SCALE"
@@ -90,12 +90,8 @@ class Player: SKSpriteNode {
         self.perfectJumpDetector.reset()
     }
     
-    func superJump() {
-        self.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: superJumpImpulse))
-        self.state = PlayerState.jumping
-        self.perfectJumpDetector.playerHitWall()
-
-        self.run(SoundController.standard.getSoundAction(action: .superJump))
+    func nextLevelJump() {
+        self.superJump(impulse: superJumpImpulse)
         
         let particelEmitter = SKEmitterNode(fileNamed: "SuperJump")!
         particelEmitter.targetNode = self.scene
@@ -110,6 +106,32 @@ class Player: SKSpriteNode {
             SKAction.wait(forDuration: 2.0),
             SKAction.removeFromParent()
         ]))
+    }
+    
+    func useExtralife() {
+        self.zRotation = 0.0
+        self.position = CGPoint(x: 0.0, y: self.position.y + 100.0)
+        self.physicsBody?.velocity = CGVector.zero
+
+        if let s = self.scene, let level = self.currentPlatform?.level {
+            // calculate a factor so the player won't jump too far if very near the end of the level
+            let playerYInLevel = level.convert(self.position, from: s).y
+            
+            let distanceToLevelTop = level.topPlatformY - playerYInLevel
+            let minDistanceForFullImpulse: CGFloat = 800.0
+            let impulseFactor = min(minDistanceForFullImpulse, distanceToLevelTop * 2.5) / minDistanceForFullImpulse
+            let impulse = max(impulseFactor * superJumpImpulse, 0.5 * superJumpImpulse)
+            
+            superJump(impulse: impulse)
+        }
+    }
+    
+    private func superJump(impulse: CGFloat) {
+        self.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: impulse))
+        self.state = PlayerState.jumping
+        self.perfectJumpDetector.playerHitWall()
+        
+        self.run(SoundController.standard.getSoundAction(action: .superJump))
     }
 
     var movingDirectionLeft: Bool {
@@ -229,7 +251,7 @@ class Player: SKSpriteNode {
     
     func hitWall() {
         if(self.state == PlayerState.jumping && !hitWallSinceJumping && self.physicsBody!.velocity.dy > 0.0) {
-            self.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 0.4 * jumpImpulse))
+            self.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 0.5 * jumpImpulse))
             self.world?.makeExplosion(at: self.position, color: Constants.colors.menuForeground)
         }
         
@@ -245,25 +267,6 @@ class Player: SKSpriteNode {
     
     func died() {
         self.perfectJumpDetector.reset()
-    }
-    
-    func useExtralife() {
-        self.zRotation = 0.0
-        self.position = CGPoint(x: 0.0, y: self.position.y + 100.0)
-        self.state = .jumping
-
-        self.perfectJumpDetector.playerHitWall()
-        
-        if let platform = self.currentPlatform {
-            // calculate a factor so the player won't jump too far if very near the end of the level
-            let distanceToLevelTop = platform.level.topPlatformY - platform.position.y
-            let minDistanceForFullImpulse: CGFloat = 800.0
-            let impulseFactor = min(800.0, distanceToLevelTop * 2.5) / minDistanceForFullImpulse
-            let impulse = max(impulseFactor * superJumpImpulse, 0.5 * superJumpImpulse)
-            
-            self.physicsBody?.velocity = CGVector.zero
-            self.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: impulse))
-        }
     }
     
     func move(x: CGFloat) {

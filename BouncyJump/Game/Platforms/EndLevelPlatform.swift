@@ -17,7 +17,7 @@ class EndLevelPlatform: Platform {
     
     override func hitPlayer(player: Player, world: World) {
         world.spawnNextLevel()
-        player.superJump()
+        player.nextLevelJump()
     }
     
     override func score() -> Int {

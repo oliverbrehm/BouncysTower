@@ -12,8 +12,8 @@ class ResourceView: Button, ShopDelegate {
     private let iconSize: CGFloat = 30.0
     private let textMargin: CGFloat = 5.0
     
-    let lifeLabel = SKLabelNode(fontNamed: "AmericanTypewriter-Bold")
-    let coinLabel = SKLabelNode(fontNamed: "AmericanTypewriter-Bold")
+    let lifeLabel = SKLabelNode(fontNamed: Constants.fontName)
+    let coinLabel = SKLabelNode(fontNamed: Constants.fontName)
     
     var shopDelegate: ShopDelegate?
     
@@ -58,7 +58,7 @@ class ResourceView: Button, ShopDelegate {
         lifeSprite.zPosition = NodeZOrder.button
         
         lifeLabel.fontSize = 20.0
-        lifeLabel.fontColor = SKColor.darkGray
+        lifeLabel.fontColor = SKColor.white
         
         lifeSprite.addChild(lifeLabel)
         return lifeSprite
@@ -71,7 +71,7 @@ class ResourceView: Button, ShopDelegate {
         coinSprite.zPosition = NodeZOrder.button
         
         coinLabel.fontSize = 20.0
-        coinLabel.fontColor = SKColor.darkGray
+        coinLabel.fontColor = SKColor.white
         
         coinSprite.addChild(coinLabel)
         return coinSprite

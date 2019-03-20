@@ -21,8 +21,8 @@ class PersonalTower: SKNode {
     }
     
     private let towerImage = SKSpriteNode(imageNamed: "menuTower")
-    private let bricksLabel = SKLabelNode(fontNamed: "AmericanTypewriter-Bold")
-    private let rowsLabel = SKLabelNode(fontNamed: "AmericanTypewriter-Bold")
+    private let bricksLabel = SKLabelNode(fontNamed: Constants.fontName)
+    private let rowsLabel = SKLabelNode(fontNamed: Constants.fontName)
     private let buildRowButton = IconButton(image: "build")
     private let viewModeButton = IconButton(image: "back")
     private let player = Player()

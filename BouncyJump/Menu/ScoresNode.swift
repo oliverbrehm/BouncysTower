@@ -15,7 +15,7 @@ class ScoreNode: SKNode {
         var currentY = 80.0
         let dY = 20.0
         
-        let titleLabel = SKLabelNode(fontNamed: "AmericanTypewriter-Bold")
+        let titleLabel = SKLabelNode(fontNamed: Constants.fontName)
         titleLabel.position = CGPoint(x: 0.0, y: currentY + 35.0)
         titleLabel.fontColor = Constants.colors.menuForeground
         titleLabel.fontSize = 30.0
@@ -25,7 +25,7 @@ class ScoreNode: SKNode {
         
         let scores = Score.standard.scores
         if(scores.isEmpty) {
-            let emptyLabel = SKLabelNode(fontNamed: "AmericanTypewriter-Bold")
+            let emptyLabel = SKLabelNode(fontNamed: Constants.fontName)
             emptyLabel.position = CGPoint(x: 0.0, y: currentY)
             emptyLabel.fontColor = SKColor.white
             emptyLabel.fontSize = 15.0
@@ -37,7 +37,7 @@ class ScoreNode: SKNode {
         } else {
             for index in scores.indices {
                 let score = scores[index]
-                let scoreLabel = SKLabelNode(fontNamed: "AmericanTypewriter-Bold")
+                let scoreLabel = SKLabelNode(fontNamed: Constants.fontName)
                 scoreLabel.position = CGPoint(x: 0.0, y: currentY)
                 scoreLabel.fontColor = SKColor.white
                 scoreLabel.fontSize = 15.0

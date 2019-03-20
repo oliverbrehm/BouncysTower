@@ -9,7 +9,7 @@
 import SpriteKit
 
 class ScoreLabel: SKSpriteNode {
-    var scoreLabel = SKLabelNode(fontNamed: "AmericanTypewriter-Bold")
+    var scoreLabel = SKLabelNode(fontNamed: Constants.fontName)
     
     init() {
         super.init(texture: SKTexture(imageNamed: "scorebg"), color: Constants.colors.menuForeground, size: CGSize.zero)
