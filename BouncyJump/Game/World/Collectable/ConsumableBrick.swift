@@ -43,7 +43,7 @@ class ConsumableBrick: SKSpriteNode, Collectable {
                 ]),
             SKAction.run {
                 if let game = self.scene as? Game {
-                    game.checkShowTutorial(.bricks)
+                    game.checkShowTutorial(.bricks, brick: self.brick)
                 }
                 
                 self.removeAllActions()

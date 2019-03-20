@@ -218,9 +218,7 @@ class Level: SKNode, LevelConfiguration {
             }
         } else if(player.state == .falling) {
             // falling: activate collisions for platforms underneath player
-            print("-------------------")
             for platform in platforms {
-                print("platform top: \(platform.top())")
                 if(playerBottom > platform.top() - 0.25 * player.size.height) {
                     platform.activateCollisions()
                 } else {

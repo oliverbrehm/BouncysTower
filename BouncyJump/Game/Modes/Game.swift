@@ -181,8 +181,8 @@ class Game: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func checkShowTutorial(_ tutorial: Tutorial) {
-        let message: String
+    func checkShowTutorial(_ tutorial: Tutorial, brick: Brick? = nil) {
+        let message: String?
         var image: String?
         var imageHeight: CGFloat = 0.0
         
@@ -208,24 +208,30 @@ class Game: SKScene, SKPhysicsContactDelegate {
         case .bricks:
             message = "Cool, you collected a loose brick! "
                 + "Use it in the main screen to build your own personal tower."
+            image = brick?.textureName
+            imageHeight = 50.0
             
         case .extraLives:
             message = "Hey, you found an extra life! "
                 + "If you fall down, you can decide to use it and it will save you once."
-            
-        case .shop:
-            message = "You've collected a lot of coins! Why not visit the shop? "
-                + "You can get extra lives and shiny bricks for your personal tower! "
-                + "Click on the coin icon in the menu any time to open the shop."
+            image = "extralife"
+            imageHeight = 50.0
+        default:
+            message = nil
+        }
+        
+        if(message == nil) {
+            return
         }
         
         if(Config.standard.shouldShow(tutorial: tutorial)) {
             self.run(SKAction.wait(forDuration: 0.3)) {
-                self.pause()
-                InfoBox.showOnce(in: self, text: message, imageName: image, imageHeight: imageHeight) {
+                InfoBox.show(in: self, text: message!, imageName: image, imageHeight: imageHeight, onShow: {
+                    self.pause()
+                }, completion:  {
                     Config.standard.setTutorialShown(tutorial)
                     self.resume()
-                }
+                })
             }
         }
     }

@@ -15,6 +15,11 @@ class InfoBox: Button {
     
     private let minHeight: CGFloat
     
+    private var onShow: (() -> Void)?
+    
+    private static var messageQueue: [InfoBox] = []
+    private static var messageQueueBusy = false
+    
     init(width: CGFloat, minHeight: CGFloat) {
         self.minHeight = minHeight
         super.init(size: CGSize(width: width, height: minHeight), color: SKColor.white)
@@ -22,6 +27,7 @@ class InfoBox: Button {
         self.zPosition = NodeZOrder.info
         self.anchorPoint = CGPoint(x: 0.5, y: 1.0)
         //self.setScale(0.0) // TODO somehow background is missing and text too long
+        self.isHidden = true
         
         label.fontSize = 12.0
         label.fontColor = SKColor.black
@@ -36,10 +42,11 @@ class InfoBox: Button {
         super.init(coder: aDecoder)
     }
     
-    static func showOnce(in scene: SKScene,
-                         text: String,
-                         imageName: String? = nil, imageHeight: CGFloat? = nil,
-                         completion: (() -> Void)? = nil) {
+    static func show(in scene: SKScene,
+                     text: String,
+                     imageName: String? = nil, imageHeight: CGFloat? = nil,
+                     onShow: (() -> Void)? = nil,
+                     completion: (() -> Void)? = nil) {
         let width = scene.size.width * 0.8
         let height = scene.size.height * 0.3
         let infoBox = InfoBox(width: width, minHeight: height)
@@ -58,11 +65,33 @@ class InfoBox: Button {
         
         infoBox.position = CGPoint(x: 0.0, y: scene.size.height / 2.0 - 20.0)
         
-        infoBox.show {
-            if infoBox.parent != nil {
-                infoBox.removeFromParent()
-            }
-            completion?()
+        infoBox.onShow = onShow
+        
+        infoBox.action = {
+            infoBox.run(SKAction.sequence([
+                SKAction.scale(to: 0.0, duration: 0.3),
+                SKAction.run {
+                    if infoBox.parent != nil {
+                        infoBox.removeFromParent()
+                    }
+                    completion?()
+                    messageQueueBusy = false
+                    showNextInQueue()
+                }
+            ]))
+        }
+        
+        messageQueue.append(infoBox)
+        showNextInQueue()
+    }
+    
+    private static func showNextInQueue() {
+        if(!messageQueueBusy && !self.messageQueue.isEmpty) {
+            let infoBox = messageQueue.removeFirst()
+            infoBox.onShow?()
+            infoBox.show()
+            
+            messageQueueBusy = true
         }
     }
     
@@ -105,20 +134,12 @@ class InfoBox: Button {
         
     }
     
-    func show(completion: (() -> Void)? = nil) {
+    private func show() {
         self.removeAllActions()
-        
-        self.action = {
-            self.run(SKAction.sequence([
-                SKAction.scale(to: 0.0, duration: 0.3),
-                SKAction.run {
-                    completion?()
-                }
-            ]))
-        }
-        
+
         self.run(SKAction.scale(to: 1.0, duration: 0.3))
         self.run(SoundController.standard.getSoundAction(action: .message))
+        self.isHidden = false
         
         self.run(SKAction.repeatForever(SKAction.sequence([
             SKAction.fadeAlpha(to: 0.95, duration: 0.5),

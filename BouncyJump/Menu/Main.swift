@@ -28,6 +28,7 @@ class Background: SKNode {
 class Main: SKScene, ShopDelegate, PersonalTowerDelegate {
     func purchaseDone() {
         self.tower.update()
+        self.menuOverlay.stopHighlightingResourceView()
     }
     
     private var scrollSpeed: CGFloat = 0.0
@@ -71,6 +72,21 @@ class Main: SKScene, ShopDelegate, PersonalTowerDelegate {
         stopViewModeButton.action = self.towerViewModeStopped
         
         tower.delegate = self
+        
+        if(Config.standard.coins > ResourceManager.costExtraLife) {
+            // show shop if player collected enough coins for an extra life
+            if(Config.standard.shouldShow(tutorial: .shop)) {
+                self.run(SKAction.wait(forDuration: 1.0)) {
+                    let message = "Hey there, it seems you have collected a lot of coins! Why not visit the shop? "
+                        + "You can get extra lives and shiny bricks for your personal tower! "
+                        + "Click on the coin icon in the menu any time to open the shop."
+                    InfoBox.show(in: self, text: message) {
+                        Config.standard.setTutorialShown(.shop)
+                        self.menuOverlay.highlightResourceView()
+                    }
+                }
+            }
+        }
     }
     
     func disableUserInteraction() {

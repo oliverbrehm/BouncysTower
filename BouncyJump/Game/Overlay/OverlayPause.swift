@@ -43,7 +43,7 @@ class OverlayPause: Overlay {
         }
         self.addChild(exitButton)
         
-        resourceView.setup(position: CGPoint(x: 60.0, y: -90.0))
+        resourceView.setup(position: CGPoint(x: 80.0, y: -90.0))
         self.addChild(resourceView)
     }
     

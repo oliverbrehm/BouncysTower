@@ -12,8 +12,11 @@ class ResourceView: Button, ShopDelegate {
     private let iconSize: CGFloat = 30.0
     private let textMargin: CGFloat = 5.0
     
-    let lifeLabel = SKLabelNode(fontNamed: Constants.fontName)
-    let coinLabel = SKLabelNode(fontNamed: Constants.fontName)
+    private lazy var lifeView = self.getLifeView()
+    private lazy var coinView = self.getCoinView()
+
+    private let lifeLabel = SKLabelNode(fontNamed: Constants.fontName)
+    private let coinLabel = SKLabelNode(fontNamed: Constants.fontName)
     
     var shopDelegate: ShopDelegate?
     
@@ -36,11 +39,11 @@ class ResourceView: Button, ShopDelegate {
         self.position = position
         self.zPosition = NodeZOrder.label
         
-        let lifeView = self.getLifeView(y: 20.0)
         self.addChild(lifeView)
-        
-        let coinView = self.getCoinView(y: -20.0)
         self.addChild(coinView)
+        
+        self.addChild(lifeLabel)
+        self.addChild(coinLabel)
         
         self.action = {
             if let vc = self.scene?.view?.window?.rootViewController as? GameViewController {
@@ -51,39 +54,42 @@ class ResourceView: Button, ShopDelegate {
         self.updateValues()
     }
     
-    private func getLifeView(y: CGFloat) -> SKSpriteNode {
+    private func getLifeView() -> SKSpriteNode {
         let lifeSprite = SKSpriteNode(imageNamed: "extralife")
-        lifeSprite.position = CGPoint(x: -iconSize / 2.0, y: y)
         lifeSprite.size = CGSize(width: iconSize, height: iconSize)
         lifeSprite.zPosition = NodeZOrder.button
         
         lifeLabel.fontSize = 20.0
         lifeLabel.fontColor = SKColor.white
         
-        lifeSprite.addChild(lifeLabel)
         return lifeSprite
     }
     
-    private func getCoinView(y: CGFloat) -> SKSpriteNode {
+    private func getCoinView() -> SKSpriteNode {
         let coinSprite = SKSpriteNode(imageNamed: "coin")
-        coinSprite.position = CGPoint(x: -iconSize / 2.0, y: y)
         coinSprite.size = CGSize(width: iconSize, height: iconSize)
         coinSprite.zPosition = NodeZOrder.button
         
         coinLabel.fontSize = 20.0
         coinLabel.fontColor = SKColor.white
         
-        coinSprite.addChild(coinLabel)
         return coinSprite
     }
     
     func updateValues() {
         self.lifeLabel.text = "x \(Config.standard.extraLives)"
-        lifeLabel.position = CGPoint(x: iconSize / 2.0 + lifeLabel.frame.size.width / 2.0 + textMargin, y: -lifeLabel.frame.size.height / 2.0)
-
         self.coinLabel.text = "x \(Config.standard.coins)"
-        coinLabel.position = CGPoint(x: iconSize / 2.0 + coinLabel.frame.size.width / 2.0 + textMargin, y: -coinLabel.frame.size.height / 2.0)
+
+        let width = iconSize + textMargin + max(lifeLabel.frame.size.width, coinLabel.frame.size.width)
+        let height = 2 * iconSize + textMargin
+        self.size = CGSize(width: width, height: height)
         
-        self.size = CGSize(width: coinLabel.frame.size.width + iconSize, height: 2 * coinLabel.frame.size.height + 20.0)
+        lifeView.position = CGPoint(x: -width / 2.0 + iconSize / 2.0, y: textMargin / 2.0 + iconSize / 2.0)
+        coinView.position = CGPoint(x: -width / 2.0 + iconSize / 2.0, y: -textMargin / 2.0 + -iconSize / 2.0)
+        
+        lifeLabel.position = CGPoint(x: -width / 2.0 + iconSize + textMargin + lifeLabel.frame.size.width / 2.0,
+                                     y: textMargin / 2.0 + iconSize / 2.0 - lifeLabel.frame.size.height / 2.0)
+        coinLabel.position = CGPoint(x: -width / 2.0 + iconSize + textMargin + coinLabel.frame.size.width / 2.0,
+                                     y: -height / 2.0 + iconSize / 2.0 - coinLabel.frame.size.height / 2.0)
     }
 }
