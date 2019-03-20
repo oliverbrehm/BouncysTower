@@ -12,10 +12,11 @@ class ScoreLabel: SKSpriteNode {
     var scoreLabel = SKLabelNode(fontNamed: "AmericanTypewriter-Bold")
     
     init() {
-        super.init(texture: SKTexture(imageNamed: "buttonbg"), color: SKColor(named: "buttonBackground") ?? SKColor.white, size: CGSize.zero)
+        super.init(texture: SKTexture(imageNamed: "scorebg"), color: Constants.colors.menuForeground, size: CGSize.zero)
         
         self.colorBlendFactor = 1.0
         self.zPosition = NodeZOrder.overlay
+        self.updateCenterRect()
         
         self.scoreLabel.fontSize = 14.0
         self.scoreLabel.fontColor = SKColor(named: "overlay")
@@ -35,12 +36,17 @@ class ScoreLabel: SKSpriteNode {
         }
         set {
             self.scoreLabel.text = newValue
-            let quant = 25 // quantization by
-            let size = self.scoreLabel.frame.size.width * 2.0
+            let quant = 20 // quantization by
+            let size = self.scoreLabel.frame.size.width * 1.2
             let n = Int(size) / quant
             let newWidth = CGFloat((n + 1) * quant)
             self.size = CGSize(width: newWidth, height: self.scoreLabel.frame.size.height * 2.0)
+            self.updateCenterRect()
         }
+    }
+    
+    private func updateCenterRect() {
+        self.centerRect = CGRect(x: 0.4, y: 0.4, width: 0.2, height: 0.2)
     }
 }
 
@@ -83,6 +89,7 @@ class MainGame: Game {
         
         self.currentScore = 0
         self.scoreLabel.text = "0"
+        self.updateScorePosition()
     }
     
     override func updateGame(_ dt: TimeInterval) {

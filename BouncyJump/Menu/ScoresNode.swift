@@ -17,7 +17,7 @@ class ScoreNode: SKNode {
         
         let titleLabel = SKLabelNode(fontNamed: "AmericanTypewriter-Bold")
         titleLabel.position = CGPoint(x: 0.0, y: currentY + 35.0)
-        titleLabel.fontColor = SKColor.yellow
+        titleLabel.fontColor = Constants.colors.menuForeground
         titleLabel.fontSize = 30.0
         titleLabel.text = "SCORES"
         titleLabel.zPosition = NodeZOrder.label

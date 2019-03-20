@@ -139,7 +139,7 @@ class PerfectJumpDetector {
             comboFinishedLabel.zPosition = NodeZOrder.consumable
             comboFinishedLabel.fontSize = 32.0
             comboFinishedLabel.color = SKColor.darkGray
-            comboFinishedLabel.fontColor = SKColor.yellow
+            comboFinishedLabel.fontColor = Constants.colors.menuForeground
             
             comboFinishedLabel.position = CGPoint.zero
             comboFinishedLabel.text = "!!COMBO: \(self.comboCount)!!"

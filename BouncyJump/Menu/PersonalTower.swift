@@ -78,11 +78,11 @@ class PersonalTower: SKNode {
         }
         
         bricksLabel.zPosition = NodeZOrder.world
-        bricksLabel.fontColor = SKColor.yellow
+        bricksLabel.fontColor = Constants.colors.menuForeground
         bricksLabel.fontSize = 16.0
         
         rowsLabel.zPosition = NodeZOrder.world
-        rowsLabel.fontColor = SKColor.yellow
+        rowsLabel.fontColor = Constants.colors.menuForeground
         rowsLabel.fontSize = 18.0
         
         self.update()
@@ -103,17 +103,17 @@ class PersonalTower: SKNode {
             towerTop.position = player.position
             self.addChild(towerTop)
             
-            buildRowButton.position = CGPoint(x: 0.0, y: player.position.y + player.size.height / 2.0 + 10.0 + buildRowButton.size.height / 2.0)
+            buildRowButton.position = CGPoint(x: 0.0, y: player.position.y + player.size.height / 2.0 + 20.0 + buildRowButton.size.height / 2.0)
             self.addChild(buildRowButton)
             
             viewModeButton.position = buildRowButton.position
             viewModeButton.position.x += buildRowButton.size.width + 10.0
             self.addChild(viewModeButton)
             
-            rowsLabel.position = CGPoint(x: 0.0, y: buildRowButton.position.y + buildRowButton.size.height / 2.0 + 10.0)
+            rowsLabel.position = CGPoint(x: 0.0, y: buildRowButton.position.y + buildRowButton.size.height / 2.0 + 20.0)
             self.addChild(rowsLabel)
             
-            bricksLabel.position = CGPoint(x: 0.0, y: rowsLabel.position.y + rowsLabel.frame.size.height / 2.0 + 10.0)
+            bricksLabel.position = CGPoint(x: 0.0, y: rowsLabel.position.y + rowsLabel.frame.size.height / 2.0 + 15.0)
             self.addChild(bricksLabel)
 
             y = player.position.y - player.size.height / 2.0

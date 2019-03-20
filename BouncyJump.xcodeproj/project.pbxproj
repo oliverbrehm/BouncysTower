@@ -84,6 +84,9 @@
 		A74EF260223AC74300A69176 /* ClosePremiumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74EF25F223AC74300A69176 /* ClosePremiumCell.swift */; };
 		A74EF261223AC74300A69176 /* ClosePremiumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74EF25F223AC74300A69176 /* ClosePremiumCell.swift */; };
 		A74EF262223AC74300A69176 /* ClosePremiumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74EF25F223AC74300A69176 /* ClosePremiumCell.swift */; };
+		A756880E22423A3F00E793A1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A756880D22423A3F00E793A1 /* Constants.swift */; };
+		A756880F22423A3F00E793A1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A756880D22423A3F00E793A1 /* Constants.swift */; };
+		A756881022423A3F00E793A1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A756880D22423A3F00E793A1 /* Constants.swift */; };
 		A765DC032215A48400B34284 /* CGVector+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A765DC022215A48400B34284 /* CGVector+Extensions.swift */; };
 		A765DC042215A48400B34284 /* CGVector+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A765DC022215A48400B34284 /* CGVector+Extensions.swift */; };
 		A765DC052215A48400B34284 /* CGVector+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A765DC022215A48400B34284 /* CGVector+Extensions.swift */; };
@@ -284,6 +287,7 @@
 		A74EF257223A709200A69176 /* BuyPremiumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyPremiumCell.swift; sourceTree = "<group>"; };
 		A74EF25B223A70A700A69176 /* PremiumFeatureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumFeatureCell.swift; sourceTree = "<group>"; };
 		A74EF25F223AC74300A69176 /* ClosePremiumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosePremiumCell.swift; sourceTree = "<group>"; };
+		A756880D22423A3F00E793A1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A765DC022215A48400B34284 /* CGVector+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGVector+Extensions.swift"; sourceTree = "<group>"; };
 		A7736A902205D6B600A28B5D /* InfoBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoBox.swift; sourceTree = "<group>"; };
 		A7736A9B2206025100A28B5D /* BouncyJump.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BouncyJump.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -615,6 +619,7 @@
 				A745E17622395C260043EC5A /* JumpParticle.sks */,
 				A74EF24B223A5E4E00A69176 /* ShopProduct.swift */,
 				A72F3BCD2241319000D7267A /* Logger.swift */,
+				A756880D22423A3F00E793A1 /* Constants.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -867,6 +872,7 @@
 				A7A22886220604E700081E0E /* OverlayGameOver.swift in Sources */,
 				A74EF250223A6EE000A69176 /* PremiumCVC.swift in Sources */,
 				A7A22889220604E700081E0E /* OverlayExtralife.swift in Sources */,
+				A756880E22423A3F00E793A1 /* Constants.swift in Sources */,
 				A7901468222962830025368A /* LevelConfiguration.swift in Sources */,
 				A7A22870220604E000081E0E /* Settings.swift in Sources */,
 				A71875B3220AFB11003ED6F1 /* ResourceView.swift in Sources */,
@@ -925,6 +931,7 @@
 				A7A228A9220604EF00081E0E /* Coin.swift in Sources */,
 				A724098422243DF100B18095 /* Score.swift in Sources */,
 				A7A228A8220604EF00081E0E /* EndLevelPlatform.swift in Sources */,
+				A756880F22423A3F00E793A1 /* Constants.swift in Sources */,
 				A7A228BB220604F700081E0E /* Level05.swift in Sources */,
 				A74EF259223A709200A69176 /* BuyPremiumCell.swift in Sources */,
 				A7A22894220604E800081E0E /* OverlayPause.swift in Sources */,
@@ -992,6 +999,7 @@
 				A7A228AC220604EF00081E0E /* Coin.swift in Sources */,
 				A724098522243DF100B18095 /* Score.swift in Sources */,
 				A7A228AB220604EF00081E0E /* EndLevelPlatform.swift in Sources */,
+				A756881022423A3F00E793A1 /* Constants.swift in Sources */,
 				A7A228C4220604F700081E0E /* Level05.swift in Sources */,
 				A74EF25A223A709200A69176 /* BuyPremiumCell.swift in Sources */,
 				A7A228A1220604E800081E0E /* OverlayPause.swift in Sources */,

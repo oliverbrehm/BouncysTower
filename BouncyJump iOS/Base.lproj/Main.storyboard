@@ -261,7 +261,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CLOSE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j87-SK-xKg">
-                                            <rect key="frame" x="34" y="3.6666666666666714" width="82" height="30.000000000000004"/>
+                                            <rect key="frame" x="34" y="3.6666666666666679" width="82" height="30.000000000000004"/>
                                             <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="24"/>
                                             <color key="textColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -377,7 +377,7 @@
     </scenes>
     <resources>
         <image name="brick" width="600" height="400"/>
-        <image name="buttonbg" width="63" height="63"/>
+        <image name="buttonbg" width="62" height="62"/>
         <image name="coin" width="63" height="63"/>
         <image name="extralife" width="64" height="64"/>
         <image name="player" width="62" height="62"/>

@@ -26,7 +26,7 @@ class IconButton: Button {
     }
     
     init(image: String,
-         backgroundColor: SKColor = SKColor(named: "buttonBackground") ?? SKColor.black,
+         backgroundColor: SKColor = Constants.colors.menuForeground,
          color: SKColor = SKColor(named: "buttonColor") ?? SKColor.lightGray,
          pressedColor: SKColor = SKColor(named: "buttonPressed") ?? SKColor.white) {
         let standardSize = CGSize(width: 50.0, height: 50.0)
@@ -35,7 +35,7 @@ class IconButton: Button {
         self.pressedColor = pressedColor
         
         self.buttonImage = SKSpriteNode(imageNamed: image)
-        self.buttonImage.size = CGSize(width: standardSize.width * 0.5, height: standardSize.height * 0.5)
+        self.buttonImage.size = CGSize(width: standardSize.width * 0.35, height: standardSize.height * 0.35)
         self.buttonImage.color = color
         self.buttonImage.colorBlendFactor = 1.0
         self.buttonImage.zPosition = NodeZOrder.button + 0.01

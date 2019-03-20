@@ -13,26 +13,6 @@ class Background: SKNode {
     init(screenSize: CGSize) {
         super.init()
         
-        /*
-        let bg1 = SKSpriteNode(imageNamed: "bgmenu1")
-        bg1.zPosition = NodeZOrder.background
-        bg1.size = screenSize
-        bg1.position = CGPoint(x: 0.0, y: 0.5 * screenSize.height)
-        self.addChild(bg1)
-        
-        let bg2 = SKSpriteNode(imageNamed: "bgmenu2")
-        bg2.zPosition = NodeZOrder.background
-        bg2.size = screenSize
-        bg2.position = CGPoint(x: 0.0, y: 1.5 * screenSize.height)
-        self.addChild(bg2)
-        
-        let bg3 = SKSpriteNode(imageNamed: "bgmenu3")
-        bg3.zPosition = NodeZOrder.background
-        bg3.size = screenSize
-        bg3.position = CGPoint(x: 0.0, y: 2.5 * screenSize.height)
-        self.addChild(bg3)
-         */
-        
         let bg = SKSpriteNode(imageNamed: "menuBackground")
         bg.zPosition = NodeZOrder.background
         bg.size = CGSize(width: screenSize.width, height: 3 * screenSize.height)
@@ -100,7 +80,7 @@ class Main: SKScene, ShopDelegate, PersonalTowerDelegate {
     
     private func moveTower(dy: CGFloat) {
         self.tower.position.y = min(self.bottom, self.tower.position.y + dy)
-        self.tower.position.y = max(self.tower.position.y, -self.tower.height + self.size.height / 2.0)
+        self.tower.position.y = max(self.tower.position.y, -self.tower.height + self.size.height / 2.0 - 20.0)
         self.background?.position.y = bottom + (self.tower.position.y - bottom) * 0.2
     }
     

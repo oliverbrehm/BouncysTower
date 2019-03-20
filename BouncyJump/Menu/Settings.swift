@@ -28,7 +28,7 @@ class Settings: SKScene {
         self.addChild(scoreNode)
         
         let info1 = SKLabelNode(text: "Made by")
-        info1.fontColor = SKColor.yellow
+        info1.fontColor = Constants.colors.menuForeground
         info1.fontName = "AmericanTypewriter-Bold"
         info1.fontSize = 22.0
         info1.position = CGPoint(x: rightX, y: -70.0)
@@ -36,7 +36,7 @@ class Settings: SKScene {
         self.addChild(info1)
         
         let info2 = SKLabelNode(text: "Oliver Brehm")
-        info2.fontColor = SKColor.yellow
+        info2.fontColor = Constants.colors.menuForeground
         info2.fontName = "AmericanTypewriter-Bold"
         info2.fontSize = 22.0
         info2.position = CGPoint(x: rightX, y: -100.0)
