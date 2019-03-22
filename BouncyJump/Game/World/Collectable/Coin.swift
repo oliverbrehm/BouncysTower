@@ -8,29 +8,20 @@
 
 import SpriteKit
 
-class Coin: SKSpriteNode, Collectable {
+class Coin: Collectable {
     static let size: CGFloat = 12.0
-    static let score = 2
     
     private let manager: CoinManager
     
     init(manager: CoinManager) {
         self.manager = manager
         
-        super.init(texture: SKTexture(imageNamed: "coin"), color: SKColor.init(white: 0.0, alpha: 0.0),
-            size: CGSize(width: Coin.size, height: Coin.size))
-        
-        self.physicsBody = SKPhysicsBody.init(circleOfRadius: Coin.size / 2.0)
-        self.physicsBody?.isDynamic = false
-        self.physicsBody?.categoryBitMask = NodeCategories.consumable
-        self.physicsBody?.contactTestBitMask = NodeCategories.player
-        self.physicsBody?.collisionBitMask = 0x0
-        self.physicsBody?.usesPreciseCollisionDetection = true
-        
-        self.zPosition = NodeZOrder.consumable        
+        super.init(textureName: "coin", size: CGSize(width: Coin.size, height: Coin.size))
     }
     
-    func hit() {
+    override func hit() {
+        super.hit()
+        
         Config.standard.addCoin()
 
         self.run(SKAction.sequence([
@@ -49,8 +40,12 @@ class Coin: SKSpriteNode, Collectable {
             }
         ]))
     }
+    override var score: Int {
+        return 2
+    }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        manager = CoinManager()
+        super.init(coder: aDecoder)
     }
 }

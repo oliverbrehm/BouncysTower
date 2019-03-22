@@ -8,34 +8,20 @@
 
 import SpriteKit
 
-class ConsumableBrick: SKSpriteNode, Collectable {
-    static let size = CGSize(width: 36.0, height: 24.0)
-    static let score = 2
-    
+class ConsumableBrick: Collectable {
     let brick: Brick
     
     init(brick: Brick) {
         self.brick = brick
-        
-        super.init(
-            texture: SKTexture(imageNamed: brick.textureName),
-            color: SKColor.init(white: 0.0, alpha: 0.0),
-            size: ConsumableBrick.size)
-        
-        self.physicsBody = SKPhysicsBody(rectangleOf: ConsumableBrick.size)
-        self.physicsBody?.isDynamic = false
-        self.physicsBody?.categoryBitMask = NodeCategories.consumable
-        self.physicsBody?.contactTestBitMask = NodeCategories.player
-        self.physicsBody?.collisionBitMask = 0x0
-        self.physicsBody?.usesPreciseCollisionDetection = true
-        
-        self.zPosition = NodeZOrder.consumable
+        super.init(textureName: brick.textureName, size: CGSize(width: 36.0, height: 24.0), useBacklight: true)
     }
     
-    func hit() {
+    override func hit() {
+        super.hit()
+        print("hit brick")
+        
         TowerBricks.standard.add(brick: brick)
         
-        // TODO make Collectable superclass not protocal and move to super
         self.run(SKAction.sequence([
             SKAction.group([
                 SoundController.standard.getSoundAction(action: .brick(type: brick)),
@@ -49,12 +35,16 @@ class ConsumableBrick: SKSpriteNode, Collectable {
                 
                 self.removeAllActions()
                 self.removeFromParent()
-
             }
-            ]))
+        ]))
+    }
+    
+    override var score: Int {
+        return brick.cost
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        brick = .standard
+        super.init(coder: aDecoder)
     }
 }

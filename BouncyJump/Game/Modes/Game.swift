@@ -228,23 +228,14 @@ class Game: SKScene, SKPhysicsContactDelegate {
             self.run(SKAction.wait(forDuration: 0.3)) {
                 InfoBox.show(in: self, text: message!, imageName: image, imageHeight: imageHeight, onShow: {
                     self.pause()
-                }, completion:  {
+                }, completion: {
                     Config.standard.setTutorialShown(tutorial)
                     self.resume()
                 })
             }
         }
     }
-    
-    func touchDown(atPoint pos: CGPoint) {
-        self.movePlayer(pos: pos)
-        lastX = pos.x
-    }
-    
-    func touchMoved(toPoint pos: CGPoint) {
-        self.movePlayer(pos: pos)
-    }
-    
+
     private func movePlayer(pos: CGPoint) {
         if(state.runningState == .running && state.allowJump) {
             if pos.x < self.frame.size.width / 2.0 {
@@ -255,23 +246,40 @@ class Game: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func touchUp(atPoint pos: CGPoint) {
-        player.stopMoving()
-    }
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchDown(atPoint: t.location(in: self.view)) }
+        if let touch = touches.first {
+            let pos = touch.location(in: self.view)
+            self.movePlayer(pos: pos)
+            lastX = pos.x
+        }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchMoved(toPoint: t.location(in: self.view)) }
+        if let touch = touches.first {
+            self.moveForTouch(touch)
+        }
+    }
+    
+    private func moveForTouch(_ touch: UITouch) {
+        let pos = touch.location(in: self.view)
+        self.movePlayer(pos: pos)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchUp(atPoint: t.location(in: self.view)) }
-    }
-    
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchUp(atPoint: t.location(in: self.view)) }
+        let nTouchesEnded = touches.count
+        if let e = event, let v = self.view, let eventTouches = e.touches(for: v) {
+            let nTouchesTotal = eventTouches.count
+            if(nTouchesEnded == nTouchesTotal) {
+                player.stopMoving()
+            } else {
+                // not all touches ended -> find touch that is still there and move in this direction
+                for touch in eventTouches {
+                    if(!touches.contains(touch)) {
+                        moveForTouch(touch)
+                        return
+                    }
+                }
+            }
+        }
     }
 }

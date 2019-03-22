@@ -87,6 +87,8 @@ class Main: SKScene, ShopDelegate, PersonalTowerDelegate {
                 }
             }
         }
+        
+        Score.standard.unsetRecentRank() // clear recent rank (will not be highlighted in score list)
     }
     
     func disableUserInteraction() {

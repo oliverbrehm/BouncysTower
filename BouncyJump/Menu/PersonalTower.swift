@@ -123,6 +123,8 @@ class PersonalTower: SKNode {
         let towerHeight = CGFloat(TowerBricks.numberOfBricksInRow) * TowerBrick.brickWidth
         towerImage.size = CGSize(width: towerWidth, height: towerHeight)
         towerImage.position = CGPoint(x: 0.0, y: towerImage.size.height / 2.0)
+        towerImage.physicsBody = SKPhysicsBody(rectangleOf: towerImage.size)
+        towerImage.physicsBody?.isDynamic = false
         
         towerTop.size = CGSize(
             width: towerImage.size.width * 0.8,

@@ -27,6 +27,12 @@ class Score {
         }
     }
     
+    private(set) var mostRecentRank: Int?
+    
+    func unsetRecentRank() {
+        mostRecentRank = nil
+    }
+    
     init() {
         if let scores = UserDefaults.standard.array(forKey: Score.scoresKey) as? [Int] {
             self.scores = scores
@@ -36,6 +42,7 @@ class Score {
     // adds the score and returns the rank (0-based)
     func addScore(_ score: Int) -> Int? {
         self.scores.append(score)
-        return self.scores.firstIndex(of: score)
+        mostRecentRank = self.scores.firstIndex(of: score)
+        return mostRecentRank
     }
 }

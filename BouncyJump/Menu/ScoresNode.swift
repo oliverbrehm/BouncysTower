@@ -45,6 +45,14 @@ class ScoreNode: SKNode {
                 scoreLabel.text = "\(index + 1): \(score)"
                 self.addChild(scoreLabel)
                 
+                if let mostRecentRank = Score.standard.mostRecentRank, index == mostRecentRank {
+                    scoreLabel.run(SKAction.repeatForever(SKAction.sequence([
+                        SKAction.colorize(with: Constants.colors.menuForeground, colorBlendFactor: 1.0, duration: 0.3),
+                        SKAction.colorize(with: SKColor.white, colorBlendFactor: 1.0, duration: 0.3)
+                    ])))
+                    scoreLabel.fontSize = 20.0
+                }
+                
                 currentY -= dY
             }
         }

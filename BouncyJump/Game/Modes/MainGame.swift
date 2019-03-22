@@ -219,7 +219,7 @@ class MainGame: Game {
     }
     
     override func hitCoin(coin: Coin) {
-        self.player.score += Coin.score
+        self.player.score += coin.score
         self.updateScore()
     }
 }

@@ -8,27 +8,18 @@
 
 import SpriteKit
 
-class ConsumableExtraLife: SKSpriteNode, Collectable {
-    static let size: CGFloat = 25.0
-    static let score = 2
-    
+class ConsumableExtraLife: Collectable {
     init() {
-        super.init(
-            texture: SKTexture(imageNamed: "extralife"),
-            color: SKColor.init(white: 0.0, alpha: 0.0),
-            size: CGSize(width: ConsumableExtraLife.size, height: ConsumableExtraLife.size))
-        
-        self.physicsBody = SKPhysicsBody.init(circleOfRadius: ConsumableExtraLife.size / 2.0)
-        self.physicsBody?.isDynamic = false
-        self.physicsBody?.categoryBitMask = NodeCategories.consumable
-        self.physicsBody?.contactTestBitMask = NodeCategories.player
-        self.physicsBody?.collisionBitMask = 0x0
-        self.physicsBody?.usesPreciseCollisionDetection = true
-        
-        self.zPosition = NodeZOrder.consumable
+        super.init(textureName: "extralife", size: CGSize(width: 25.0, height: 25.0), useBacklight: true)
     }
     
-    func hit() {
+    override var score: Int {
+        return ResourceManager.costExtraLife
+    }
+    
+    override func hit() {
+        super.hit()
+        
         Config.standard.addExtralife()
         
         self.run(SKAction.sequence([

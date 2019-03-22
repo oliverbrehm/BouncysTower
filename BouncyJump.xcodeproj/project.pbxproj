@@ -115,6 +115,9 @@
 		A776C4F822455FE6004FAD3B /* extralife.aif in Resources */ = {isa = PBXBuildFile; fileRef = A776C4F722455FE5004FAD3B /* extralife.aif */; };
 		A776C4F922455FE6004FAD3B /* extralife.aif in Resources */ = {isa = PBXBuildFile; fileRef = A776C4F722455FE5004FAD3B /* extralife.aif */; };
 		A776C4FA22455FE6004FAD3B /* extralife.aif in Resources */ = {isa = PBXBuildFile; fileRef = A776C4F722455FE5004FAD3B /* extralife.aif */; };
+		A776C4FC224575C9004FAD3B /* CGSize+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A776C4FB224575C9004FAD3B /* CGSize+Extensions.swift */; };
+		A776C4FD224575C9004FAD3B /* CGSize+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A776C4FB224575C9004FAD3B /* CGSize+Extensions.swift */; };
+		A776C4FE224575C9004FAD3B /* CGSize+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A776C4FB224575C9004FAD3B /* CGSize+Extensions.swift */; };
 		A77B389D22254F3F003DEB38 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77B389C22254F3F003DEB38 /* ShopViewController.swift */; };
 		A77B389E22254F3F003DEB38 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77B389C22254F3F003DEB38 /* ShopViewController.swift */; };
 		A77B389F22254F3F003DEB38 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77B389C22254F3F003DEB38 /* ShopViewController.swift */; };
@@ -326,6 +329,7 @@
 		A776C4EC22455EE7004FAD3B /* brick_standard.aif */ = {isa = PBXFileReference; lastKnownFileType = file; name = brick_standard.aif; path = resources/sounds/brick_standard.aif; sourceTree = SOURCE_ROOT; };
 		A776C4ED22455EE8004FAD3B /* cheer.aif */ = {isa = PBXFileReference; lastKnownFileType = file; name = cheer.aif; path = resources/sounds/cheer.aif; sourceTree = SOURCE_ROOT; };
 		A776C4F722455FE5004FAD3B /* extralife.aif */ = {isa = PBXFileReference; lastKnownFileType = file; name = extralife.aif; path = resources/sounds/extralife.aif; sourceTree = SOURCE_ROOT; };
+		A776C4FB224575C9004FAD3B /* CGSize+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+Extensions.swift"; sourceTree = "<group>"; };
 		A7797EEB20E2A89200E3B664 /* MainGame.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainGame.sks; sourceTree = "<group>"; };
 		A7797EEF20E2A89200E3B664 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		A7797EFB20E2A89200E3B664 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -464,6 +468,7 @@
 			children = (
 				A765DC022215A48400B34284 /* CGVector+Extensions.swift */,
 				A71F2DA72164ED4500FAF0EB /* SKSpriteNode+Extensions.swift */,
+				A776C4FB224575C9004FAD3B /* CGSize+Extensions.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -914,6 +919,7 @@
 				A7A22870220604E000081E0E /* Settings.swift in Sources */,
 				A71875B3220AFB11003ED6F1 /* ResourceView.swift in Sources */,
 				A71538FC222D241F00A81322 /* ConsumableBrick.swift in Sources */,
+				A776C4FC224575C9004FAD3B /* CGSize+Extensions.swift in Sources */,
 				A7A22859220604D500081E0E /* AdvertisingController.swift in Sources */,
 				A724098322243DF100B18095 /* Score.swift in Sources */,
 				A7736A9E2206025100A28B5D /* AppDelegate.swift in Sources */,
@@ -985,6 +991,7 @@
 				A790146E222984120025368A /* IconButton.swift in Sources */,
 				A74EF255223A6F1B00A69176 /* PremiumViewController.swift in Sources */,
 				A72F3BCF2241319000D7267A /* Logger.swift in Sources */,
+				A776C4FD224575C9004FAD3B /* CGSize+Extensions.swift in Sources */,
 				A74EF25D223A70A700A69176 /* PremiumFeatureCell.swift in Sources */,
 				A745E17A2239648A0043EC5A /* StandardPlatform.swift in Sources */,
 				A7736AAF2206025100A28B5D /* AppDelegate.swift in Sources */,
@@ -1054,6 +1061,7 @@
 				A790146F222984120025368A /* IconButton.swift in Sources */,
 				A74EF256223A6F1B00A69176 /* PremiumViewController.swift in Sources */,
 				A72F3BD02241319000D7267A /* Logger.swift in Sources */,
+				A776C4FE224575C9004FAD3B /* CGSize+Extensions.swift in Sources */,
 				A74EF25E223A70A700A69176 /* PremiumFeatureCell.swift in Sources */,
 				A745E17B2239648A0043EC5A /* StandardPlatform.swift in Sources */,
 				A7736ABD2206025200A28B5D /* AppDelegate.swift in Sources */,
