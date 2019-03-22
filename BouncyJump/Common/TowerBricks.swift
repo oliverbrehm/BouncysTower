@@ -6,7 +6,7 @@
 //  Copyright © 2019 Oliver Brehm. All rights reserved.
 //
 
-import Foundation
+import SpriteKit
 
 enum Brick: Int, CaseIterable {
     case standard
@@ -45,6 +45,32 @@ enum Brick: Int, CaseIterable {
             return "Use it to build your personal tower"
         case .diamond:
             return "Fancy brick for your tower"
+        }
+    }
+    
+    var soundName: String {
+        switch self {
+        case .standard:
+            return "collectcoin.aif" // TODO
+        case .diamond:
+            return "collectcoin.aif" // TODO
+        }
+    }
+    
+    var selectAction: SKAction {
+        switch self {
+        case .standard:
+            return SKAction.sequence([
+                SKAction.scale(to: 1.2, duration: 0.2),
+                SKAction.wait(forDuration: 0.2),
+                SKAction.scale(to: 1.0, duration: 0.2)
+            ])
+        case .diamond:
+            return SKAction.sequence([
+                SKAction.scale(to: 1.3, duration: 0.2),
+                SKAction.rotate(byAngle: 2 * CGFloat.pi, duration: 0.2),
+                SKAction.scale(to: 1.0, duration: 0.2)
+                ])
         }
     }
 }

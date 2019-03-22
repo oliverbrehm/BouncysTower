@@ -12,6 +12,42 @@ protocol PersonalTowerDelegate {
     func towerViewModeStarted()
 }
 
+class TowerBrick: SKSpriteNode {
+    private let brick: Brick
+    
+    init(brick: Brick, size: CGSize) {
+        self.brick = brick
+        
+        super.init(texture: SKTexture.init(imageNamed: brick.textureName), color: UIColor.clear, size: size)
+        
+        self.zPosition = NodeZOrder.overlay + 0.02
+        self.isUserInteractionEnabled = true
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        self.brick = .standard
+        super.init(coder: aDecoder)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        
+        self.zPosition = NodeZOrder.overlay + 0.03
+        self.run(SoundController.standard.getSoundAction(action: .brick(type: self.brick)))
+        self.run(self.brick.selectAction) {
+            self.zPosition = NodeZOrder.overlay + 0.02
+        }
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesMoved(touches, with: event)
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+    }
+}
+
 class PersonalTower: SKNode {
     private let brickWidth: CGFloat = 42.0
     private let brickHeight: CGFloat = 28.0
@@ -25,7 +61,7 @@ class PersonalTower: SKNode {
     private let rowsLabel = SKLabelNode(fontNamed: Constants.fontName)
     private let buildRowButton = IconButton(image: "build")
     private let viewModeButton = IconButton(image: "back")
-    private let player = Player()
+    private let player = Player(jumpOnTouch: true)
     private let towerTop = SKSpriteNode(imageNamed: "towerTop")
     
     var delegate: PersonalTowerDelegate?
@@ -52,11 +88,10 @@ class PersonalTower: SKNode {
             height: towerImage.size.height * 0.25)
         towerTop.zPosition = NodeZOrder.background + 0.02
         
-        player.physicsBody?.isDynamic = false
-        
         buildRowButton.action = {
             if(TowerBricks.standard.canBuildRow) {
                 TowerBricks.standard.buildRow()
+                self.run(SoundController.standard.getSoundAction(action: .cheer))
                 self.update()
             } else {
                 if let main = self.scene as? Main {
@@ -130,24 +165,25 @@ class PersonalTower: SKNode {
         
         let rows = TowerBricks.standard.rows
         rowsLabel.text = "Tower height: \(rows.count)"
+        
+        let background = SKSpriteNode(
+            color: SKColor(named: "towerBg") ?? SKColor.black,
+            size: CGSize(width: 5 * brickWidth, height: CGFloat(rows.count) * brickHeight))
+        background.zPosition = NodeZOrder.world + 0.01
+        background.position = CGPoint(x: 0.0, y: y + background.size.height / 2.0)
+        background.physicsBody = SKPhysicsBody.init(rectangleOf: background.size)
+        background.physicsBody?.isDynamic = false
+        self.addChild(background)
+        
         for row in rows {
             var x: CGFloat = -CGFloat(TowerBricks.numberOfBricksInRow) / 2.0 * brickWidth
             for brick in row {
-                let brickNode = SKSpriteNode(imageNamed: brick.textureName)
-                brickNode.zPosition = NodeZOrder.world + 0.02
-                brickNode.size = brickSize
+                let brickNode = TowerBrick(brick: brick, size: brickSize)
                 brickNode.position = CGPoint(x: x + brickWidth / 2.0, y: y + brickHeight / 2.0)
                 self.addChild(brickNode)
                 x += brickWidth
             }
-            
-            let rowBackground = SKSpriteNode(
-                color: SKColor(named: "towerBg") ?? SKColor.black,
-                size: CGSize(width: CGFloat(row.count) * brickWidth, height: brickHeight))
-            rowBackground.zPosition = NodeZOrder.world + 0.01
-            rowBackground.position = CGPoint(x: 0.0, y: y + brickHeight / 2.0)
-            self.addChild(rowBackground)
-            
+
             y += brickHeight
         }
         

@@ -45,8 +45,10 @@ class Player: SKSpriteNode {
     
     private let particleEmitter = SKEmitterNode(fileNamed: "ScoreParticle")!
     
-    init() {
+    init(jumpOnTouch: Bool = false) {
         super.init(texture: SKTexture(imageNamed: "player"), color: SKColor.red, size: CGSize(width: Player.size, height: Player.size))
+        
+        self.isUserInteractionEnabled = jumpOnTouch
         
         self.physicsBody = SKPhysicsBody.init(circleOfRadius: Player.size / 2.0)
         self.physicsBody?.allowsRotation = true
@@ -60,7 +62,7 @@ class Player: SKSpriteNode {
         
         self.zPosition = NodeZOrder.player
         
-        self.particleEmitter.particleBirthRate = 10.0
+        self.particleEmitter.particleBirthRate = 0.0
         self.addChild(self.particleEmitter)
         
         self.perfectJumpDetector.setup(player: self)
@@ -74,6 +76,14 @@ class Player: SKSpriteNode {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let p = self.physicsBody {
+            if p.velocity.dy == 0.0 {
+                self.jump()
+            }
+        }
     }
     
     func reset() {

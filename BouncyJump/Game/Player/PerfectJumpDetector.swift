@@ -146,9 +146,13 @@ class PerfectJumpDetector {
             
             let particelEmitter = SKEmitterNode(fileNamed: "ComboParticle")!
             particelEmitter.targetNode = self.player?.scene
-            particelEmitter.particleBirthRate = min(CGFloat(50 * self.comboCount), 2000.0)
+            particelEmitter.particleBirthRate = comboCount >= 10 ? min(CGFloat(50 * self.comboCount), 2000.0) : 0.0
             particelEmitter.position = CGPoint(x: 0.0, y: -(self.player?.scene?.frame.size.height ?? 0.0) / 2.0)
             c.addChild(particelEmitter)
+            
+            if(self.comboCount >= 10) {
+                self.player!.scene!.run(SoundController.standard.getSoundAction(action: .cheer))
+            }
             
             c.addChild(comboFinishedLabel)
             comboFinishedLabel.run(SKAction.sequence([

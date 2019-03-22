@@ -8,48 +8,61 @@
 
 import SpriteKit
 
-enum SoundAction {
+enum SoundAction: CaseIterable, Hashable {
     case coin
     case button
     case message
     case jump
     case superJump
     case gameOver
+    case brick(type: Brick)
+    case collectExtralife
+    case cheer
+    
+    static var allCases: [SoundAction] {
+        var cases: [SoundAction] = [.coin, .button, .message, .jump, .superJump, .gameOver, .collectExtralife, .cheer]
+        for brick in Brick.allCases {
+            cases.append(.brick(type: brick))
+        }
+        return cases
+    }
+    
+    var soundFileName: String {
+        switch self {
+        case .coin:
+            return "collectcoin.aif"
+        case .button:
+            return "button.aif"
+        case .message:
+            return "message.aif"
+        case .jump:
+            return "jump.aif"
+        case .superJump:
+            return "superjump.aif"
+        case .gameOver:
+            return "gameover.aif"
+        case .collectExtralife:
+            return "collectcoin.aif" // TODO
+        case .cheer:
+            return "superjump.aif" // TODO
+        case .brick(let brick):
+            return brick.soundName
+        }
+    }
 }
 
 class SoundController {
     static let standard = SoundController()
-
-    private let coinSound: SKAction
-    private let buttonSound: SKAction
-    private let messageSound: SKAction
-    private let jumpSound: SKAction 
-    private let superJumpSound: SKAction
-    private let gameOverSound: SKAction
+    
+    private var sounds: [SoundAction:SKAction] = [:]
     
     init() {
-        self.coinSound = SKAction.playSoundFileNamed("collectcoin.aif", waitForCompletion: true)
-        self.buttonSound = SKAction.playSoundFileNamed("button.aif", waitForCompletion: true)
-        self.messageSound = SKAction.playSoundFileNamed("message.aif", waitForCompletion: true)
-        self.jumpSound = SKAction.playSoundFileNamed("jump.aif", waitForCompletion: true)
-        self.superJumpSound = SKAction.playSoundFileNamed("superjump.aif", waitForCompletion: true)
-        self.gameOverSound = SKAction.playSoundFileNamed("gameover.aif", waitForCompletion: true)
+        for soundAction in SoundAction.allCases {
+            sounds[soundAction] = SKAction.playSoundFileNamed(soundAction.soundFileName, waitForCompletion: true)
+        }
     }
     
     func getSoundAction(action: SoundAction) -> SKAction {
-        switch(action) {
-        case .coin:
-            return self.coinSound
-        case .button:
-            return self.buttonSound
-        case .message:
-            return self.messageSound
-        case .jump:
-            return self.jumpSound
-        case .superJump:
-            return self.superJumpSound
-        case .gameOver:
-            return self.gameOverSound
-        }
+        return self.sounds[action] ?? SKAction.wait(forDuration: 0.0)
     }
 }
