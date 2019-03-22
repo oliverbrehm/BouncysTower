@@ -20,6 +20,10 @@ class Level03: Level {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override var multiplicator: Int {
+        return 3
+    }
+    
     override var backgroundColor: SKColor {
         return SKColor.init(named: "bgLevel03") ?? super.backgroundColor
     }

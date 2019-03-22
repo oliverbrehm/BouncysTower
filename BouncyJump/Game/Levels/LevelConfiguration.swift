@@ -21,4 +21,5 @@ protocol LevelConfiguration {
     var gameSpeed: CGFloat { get }
     var platformTexture: SKTexture? { get }
     var firstPlatformOffset: CGFloat { get }
+    var multiplicator: Int { get }
 }

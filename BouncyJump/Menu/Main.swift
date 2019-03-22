@@ -73,7 +73,7 @@ class Main: SKScene, ShopDelegate, PersonalTowerDelegate {
         
         tower.delegate = self
         
-        if(Config.standard.coins > ResourceManager.costExtraLife) {
+        if(Config.standard.coins >= ResourceManager.costExtraLife) {
             // show shop if player collected enough coins for an extra life
             if(Config.standard.shouldShow(tutorial: .shop)) {
                 self.run(SKAction.wait(forDuration: 1.0)) {

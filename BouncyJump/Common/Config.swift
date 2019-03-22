@@ -15,6 +15,7 @@ enum Tutorial: String, CaseIterable {
     case extraLives = "TUTORIAL_EXTRA_LIVES"
     case bricks = "TUTORIAL_BRICKS"
     case shop = "TUTORIAL_SHOP"
+    case towerMultiplicator = "TUTORIAL_TOWER_MULTIPLICATOR"
 }
 
 class Config {
@@ -94,7 +95,9 @@ class Config {
     // returns true if all "level" tutorials were shown
     func allTutorialsShown() -> Bool {
         for tutorial in Tutorial.allCases {
-            if(tutorial == .extraLives || tutorial == .bricks) {
+            if(tutorial == .extraLives
+                || tutorial == .bricks
+                || tutorial == .towerMultiplicator) {
                 continue
             }
             

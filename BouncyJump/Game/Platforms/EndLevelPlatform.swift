@@ -21,6 +21,6 @@ class EndLevelPlatform: Platform {
     }
     
     override func score() -> Int {
-        return 50
+        return 10
     }
 }

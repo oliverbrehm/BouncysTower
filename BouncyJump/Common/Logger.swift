@@ -13,6 +13,7 @@ class Logger {
     
     private let logPlayerState = false
     private let logPerfectJumpState = false
+    private let logScore = true
     
     func playerState(message: String) {
         if(logPlayerState) {
@@ -23,6 +24,12 @@ class Logger {
     func perfectJumpState(message: String) {
         if(logPerfectJumpState) {
             print("Logger(PerfectJumpState): \(message)")
+        }
+    }
+    
+    func logScore(message: String) {
+        if(logScore) {
+            print("Logger(Score): \(message)")
         }
     }
 }

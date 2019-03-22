@@ -19,6 +19,10 @@ class Level08: Level {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override var multiplicator: Int {
+        return 8
+    }
 
     override var backgroundColor: SKColor {
         return SKColor.init(named: "bgLevel08") ?? super.backgroundColor

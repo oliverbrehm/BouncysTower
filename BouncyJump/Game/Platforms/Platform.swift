@@ -105,7 +105,7 @@ class Platform: SKSpriteNode {
     }
     
     func score() -> Int {
-        return 5
+        return 1
     }
     
     private func initTiles(platformSize: CGSize, texture: SKTexture?) {

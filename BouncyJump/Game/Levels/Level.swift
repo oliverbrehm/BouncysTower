@@ -48,6 +48,10 @@ class Level: SKNode, LevelConfiguration {
         fatalError("init(coder:) has not been implemented")
     }
     
+    var multiplicator: Int {
+        return 1
+    }
+    
     var backgroundColor: SKColor {
         return SKColor.black
     }

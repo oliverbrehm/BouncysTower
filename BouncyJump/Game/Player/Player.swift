@@ -226,11 +226,28 @@ class Player: SKSpriteNode {
         self.perfectJumpDetector.update(dt: dt)
     }
     
-    fileprivate func updateScoreLandingOn(platform: Platform) {
+    func updateScoreLandingOn(platform: Platform) {
         let previousPlatformNumber = self.currentPlatform?.platformNumber ?? 0
-        let nPlatformsJumped = platform.platformNumber - previousPlatformNumber
-        let platformBonus = nPlatformsJumped > 0 ? platform.score() * self.perfectJumpDetector.scoreMultiplicator : 0
-        self.score += (nPlatformsJumped * nPlatformsJumped) + platformBonus
+        Logger.standard.logScore(message: "--------------")
+
+        let nPlatformsJumped = min(10, platform.platformNumber - previousPlatformNumber)
+        Logger.standard.logScore(message: "nPlatforms: \(nPlatformsJumped)")
+
+        let baseScore = nPlatformsJumped > 0 ? platform.score() * nPlatformsJumped : 0
+        Logger.standard.logScore(message: "baseScore: \(baseScore)")
+        
+        let comboMultiplicator = self.perfectJumpDetector.scoreMultiplicator
+        Logger.standard.logScore(message: "comboMultiplicator: \(comboMultiplicator)")
+        
+        let personalTowerMultiplicator = max(1, TowerBricks.standard.rows.count)
+        Logger.standard.logScore(message: "personalTowerMultiplicator: \(personalTowerMultiplicator)")
+        
+        let landingScore = baseScore * comboMultiplicator + baseScore * personalTowerMultiplicator
+        Logger.standard.logScore(message: "landingScore: \(landingScore)")
+        
+        let toalScore = landingScore * (currentPlatform?.level.multiplicator ?? 1)
+        Logger.standard.logScore(message: "totalScore: \(toalScore)")
+        self.score += toalScore
     }
     
     func landOnPlatform(platform: Platform) {

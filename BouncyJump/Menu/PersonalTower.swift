@@ -209,9 +209,18 @@ class PersonalTower: SKNode {
         
         self.run(SKAction.sequence([
             buildAction,
+            SKAction.wait(forDuration: 0.5),
             SoundController.standard.getSoundAction(action: .cheer)
         ])) {
             self.buildRowButton.isHidden = false
+            self.rowsLabel.text = "Tower height: \(nRows)"
+            if let main = self.scene, nRows >= 2 && Config.standard.shouldShow(tutorial: .towerMultiplicator) {
+                InfoBox.show(in: main, text: "x2\n\n"
+                    + "Awesome, your tower is growing!\n"
+                    + "You even get a higher in-game score the taller the tower gets. "
+                    + "The score for each jump will be multiplied by the height of your tower.")
+                Config.standard.setTutorialShown(.towerMultiplicator)
+            }
         }
     }
     

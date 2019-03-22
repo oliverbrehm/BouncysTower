@@ -93,14 +93,14 @@ class PerfectJumpDetector {
         if(self.perfectJumpPossible && self.timeOnPlatform < self.maximumTimeOnPlatform) {
             // perfect jump done
             self.comboCount += 1
-            if(self.comboCount > 0) {
+            if(self.comboCount >= 0) {
                 self.showPerfectJumpDone()
             }
         } else {
             if(self.comboCount > 1) {
                 self.showComboFinished()
             }
-            self.comboCount = 0
+            self.comboCount = -1
         }
         
         self.lastPlatformNumber = self.currentPlatform?.platformNumber ?? -1
@@ -123,8 +123,8 @@ class PerfectJumpDetector {
             comboLabel.setScale(0.0)
             
             comboLabel.position = p.position
-            comboLabel.text = self.comboCount > 2 ? "\(self.comboCount)"
-                : (self.comboCount == 1 ? "Perfect!" : "AWESOME")
+            comboLabel.text = self.comboCount >= 2 ? "x \(self.comboCount)"
+                : (self.comboCount == 0 ? "Perfect!" : "AWESOME")
             
             if let w = p.world {
                 w.addChild(comboLabel)

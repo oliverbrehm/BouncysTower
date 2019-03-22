@@ -10,6 +10,7 @@ import SpriteKit
 
 class ScoreLabel: SKSpriteNode {
     var scoreLabel = SKLabelNode(fontNamed: Constants.fontName)
+    var multiplicatorLabel = SKLabelNode(fontNamed: Constants.fontName)
     
     init() {
         super.init(texture: SKTexture(imageNamed: "scorebg"), color: Constants.colors.menuForeground, size: CGSize.zero)
@@ -20,17 +21,27 @@ class ScoreLabel: SKSpriteNode {
         
         self.scoreLabel.fontSize = 14.0
         self.scoreLabel.fontColor = SKColor(named: "overlay")
+
+        self.text = "0"
+
         self.scoreLabel.zPosition = NodeZOrder.label
-        self.scoreLabel.text = "0"
         self.scoreLabel.position = CGPoint(x: 0.0, y: -self.scoreLabel.frame.size.height / 2.0)
         self.addChild(self.scoreLabel)
+        
+        self.multiplicatorLabel.text = "x 1"
+        self.multiplicatorLabel.fontSize = 12.0
+        self.multiplicatorLabel.fontColor = Constants.colors.menuForeground
+        self.multiplicatorLabel.zPosition = NodeZOrder.label
+        self.multiplicatorLabel.position =
+            CGPoint(x: 0.0, y: -self.size.height / 2.0 - 5.0 - multiplicatorLabel.frame.size.height / 2.0)
+        self.addChild(multiplicatorLabel)
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(texture: nil, color: SKColor.white, size: CGSize.zero)
     }
     
-    var text: String {
+    private var text: String {
         get {
             return self.scoreLabel.text ?? ""
         }
@@ -43,6 +54,17 @@ class ScoreLabel: SKSpriteNode {
             self.size = CGSize(width: newWidth, height: self.scoreLabel.frame.size.height * 2.0)
             self.updateCenterRect()
         }
+    }
+    
+    func reset() {
+        self.text = "0"
+        
+        let personalTowerHeight = TowerBricks.standard.rows.count
+        multiplicatorLabel.text = personalTowerHeight > 1 ? "x \(personalTowerHeight)" : ""
+    }
+    
+    func update(text: String) {
+        self.text = text
     }
     
     private func updateCenterRect() {
@@ -72,7 +94,8 @@ class MainGame: Game {
         self.extralifeOverlay.hide()
         
         self.cameraNode.addChild(self.scoreLabel)
-        self.scoreLabel.text = "0"
+        
+        self.scoreLabel.reset()
         self.updateScorePosition()
     }
     
@@ -88,7 +111,7 @@ class MainGame: Game {
         }
         
         self.currentScore = 0
-        self.scoreLabel.text = "0"
+        self.scoreLabel.reset()
         self.updateScorePosition()
     }
     
@@ -174,8 +197,11 @@ class MainGame: Game {
                     return
                 }
                 
-                self.currentScore += 1
-                self.scoreLabel.text = "\(self.currentScore)"
+                let dif = self.player.score - self.currentScore
+                let step = dif <= 50 ? 1 : dif / 10 - 1
+                
+                self.currentScore += step
+                self.scoreLabel.update(text: "\(self.currentScore)")
                 self.updateScorePosition()
             },
             SKAction.wait(forDuration: 0.02)

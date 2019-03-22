@@ -15,9 +15,9 @@ enum Brick: Int, CaseIterable {
     var cost: Int {
         switch self {
         case .standard:
-            return 100
+            return 80
         case .diamond:
-            return 300
+            return 250
         }
     }
     
