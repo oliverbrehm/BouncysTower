@@ -51,9 +51,9 @@ enum Brick: Int, CaseIterable {
     var soundName: String {
         switch self {
         case .standard:
-            return "collectcoin.aif" // TODO
+            return "brick_standard.aif"
         case .diamond:
-            return "collectcoin.aif" // TODO
+            return "brick_diamond.aif"
         }
     }
     

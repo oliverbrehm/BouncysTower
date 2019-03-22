@@ -42,9 +42,9 @@ enum SoundAction: CaseIterable, Hashable {
         case .gameOver:
             return "gameover.aif"
         case .collectExtralife:
-            return "collectcoin.aif" // TODO
+            return "extralife.aif"
         case .cheer:
-            return "superjump.aif" // TODO
+            return "cheer.aif"
         case .brick(let brick):
             return brick.soundName
         }
@@ -54,7 +54,7 @@ enum SoundAction: CaseIterable, Hashable {
 class SoundController {
     static let standard = SoundController()
     
-    private var sounds: [SoundAction:SKAction] = [:]
+    private var sounds: [SoundAction: SKAction] = [:]
     
     init() {
         for soundAction in SoundAction.allCases {

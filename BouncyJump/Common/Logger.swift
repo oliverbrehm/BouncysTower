@@ -13,7 +13,7 @@ class Logger {
     
     private let logPlayerState = false
     private let logPerfectJumpState = false
-    private let logScore = true
+    private let logScore = false
     
     func playerState(message: String) {
         if(logPlayerState) {

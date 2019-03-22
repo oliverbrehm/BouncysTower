@@ -177,7 +177,7 @@ class MainGame: Game {
             self.resume()
             self.player.useExtralife()
             self.world.currentLevel!.easeInSpeed()
-            self.run(SoundController.standard.getSoundAction(action: .superJump))
+            self.run(SoundController.standard.getSoundAction(action: .collectExtralife))
         } else {
             self.gameOver()
         }

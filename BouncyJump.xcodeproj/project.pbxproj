@@ -103,6 +103,18 @@
 		A7736ABD2206025200A28B5D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7736ABC2206025200A28B5D /* AppDelegate.swift */; };
 		A7736ABF2206025200A28B5D /* OSXGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7736ABE2206025200A28B5D /* OSXGameViewController.swift */; };
 		A7736AC22206025200A28B5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7736AC02206025200A28B5D /* Main.storyboard */; };
+		A776C4EE22455EE8004FAD3B /* brick_diamond.aif in Resources */ = {isa = PBXBuildFile; fileRef = A776C4EB22455EE7004FAD3B /* brick_diamond.aif */; };
+		A776C4EF22455EE8004FAD3B /* brick_diamond.aif in Resources */ = {isa = PBXBuildFile; fileRef = A776C4EB22455EE7004FAD3B /* brick_diamond.aif */; };
+		A776C4F022455EE8004FAD3B /* brick_diamond.aif in Resources */ = {isa = PBXBuildFile; fileRef = A776C4EB22455EE7004FAD3B /* brick_diamond.aif */; };
+		A776C4F122455EE8004FAD3B /* brick_standard.aif in Resources */ = {isa = PBXBuildFile; fileRef = A776C4EC22455EE7004FAD3B /* brick_standard.aif */; };
+		A776C4F222455EE8004FAD3B /* brick_standard.aif in Resources */ = {isa = PBXBuildFile; fileRef = A776C4EC22455EE7004FAD3B /* brick_standard.aif */; };
+		A776C4F322455EE8004FAD3B /* brick_standard.aif in Resources */ = {isa = PBXBuildFile; fileRef = A776C4EC22455EE7004FAD3B /* brick_standard.aif */; };
+		A776C4F422455EE8004FAD3B /* cheer.aif in Resources */ = {isa = PBXBuildFile; fileRef = A776C4ED22455EE8004FAD3B /* cheer.aif */; };
+		A776C4F522455EE8004FAD3B /* cheer.aif in Resources */ = {isa = PBXBuildFile; fileRef = A776C4ED22455EE8004FAD3B /* cheer.aif */; };
+		A776C4F622455EE8004FAD3B /* cheer.aif in Resources */ = {isa = PBXBuildFile; fileRef = A776C4ED22455EE8004FAD3B /* cheer.aif */; };
+		A776C4F822455FE6004FAD3B /* extralife.aif in Resources */ = {isa = PBXBuildFile; fileRef = A776C4F722455FE5004FAD3B /* extralife.aif */; };
+		A776C4F922455FE6004FAD3B /* extralife.aif in Resources */ = {isa = PBXBuildFile; fileRef = A776C4F722455FE5004FAD3B /* extralife.aif */; };
+		A776C4FA22455FE6004FAD3B /* extralife.aif in Resources */ = {isa = PBXBuildFile; fileRef = A776C4F722455FE5004FAD3B /* extralife.aif */; };
 		A77B389D22254F3F003DEB38 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77B389C22254F3F003DEB38 /* ShopViewController.swift */; };
 		A77B389E22254F3F003DEB38 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77B389C22254F3F003DEB38 /* ShopViewController.swift */; };
 		A77B389F22254F3F003DEB38 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77B389C22254F3F003DEB38 /* ShopViewController.swift */; };
@@ -310,6 +322,10 @@
 		A7736ABE2206025200A28B5D /* OSXGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSXGameViewController.swift; sourceTree = "<group>"; };
 		A7736AC12206025200A28B5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A7736AC32206025200A28B5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A776C4EB22455EE7004FAD3B /* brick_diamond.aif */ = {isa = PBXFileReference; lastKnownFileType = file; name = brick_diamond.aif; path = resources/sounds/brick_diamond.aif; sourceTree = SOURCE_ROOT; };
+		A776C4EC22455EE7004FAD3B /* brick_standard.aif */ = {isa = PBXFileReference; lastKnownFileType = file; name = brick_standard.aif; path = resources/sounds/brick_standard.aif; sourceTree = SOURCE_ROOT; };
+		A776C4ED22455EE8004FAD3B /* cheer.aif */ = {isa = PBXFileReference; lastKnownFileType = file; name = cheer.aif; path = resources/sounds/cheer.aif; sourceTree = SOURCE_ROOT; };
+		A776C4F722455FE5004FAD3B /* extralife.aif */ = {isa = PBXFileReference; lastKnownFileType = file; name = extralife.aif; path = resources/sounds/extralife.aif; sourceTree = SOURCE_ROOT; };
 		A7797EEB20E2A89200E3B664 /* MainGame.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainGame.sks; sourceTree = "<group>"; };
 		A7797EEF20E2A89200E3B664 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		A7797EFB20E2A89200E3B664 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -401,6 +417,10 @@
 		A7186DD8220C3E0100187C6E /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				A776C4F722455FE5004FAD3B /* extralife.aif */,
+				A776C4EB22455EE7004FAD3B /* brick_diamond.aif */,
+				A776C4EC22455EE7004FAD3B /* brick_standard.aif */,
+				A776C4ED22455EE8004FAD3B /* cheer.aif */,
 				A7186DDD220C3F8900187C6E /* SoundController.swift */,
 				A7186E06220C4B6E00187C6E /* gameover.aif */,
 				A7186E05220C4B6E00187C6E /* superjump.aif */,
@@ -739,11 +759,14 @@
 				A7A22864220604DB00081E0E /* Main.sks in Resources */,
 				A7186DFE220C43B700187C6E /* message.aif in Resources */,
 				A7186DFB220C43B700187C6E /* collectcoin.aif in Resources */,
+				A776C4EE22455EE8004FAD3B /* brick_diamond.aif in Resources */,
 				A7186E0A220C4B6F00187C6E /* gameover.aif in Resources */,
 				A7186E07220C4B6F00187C6E /* superjump.aif in Resources */,
 				A7AA89B6222019C400C5D73A /* Assets.xcassets in Resources */,
+				A776C4F122455EE8004FAD3B /* brick_standard.aif in Resources */,
 				A7DC9BC422177E430038EC58 /* SuperJump.sks in Resources */,
 				A7A228CB2206050E00081E0E /* ScoreParticle.sks in Resources */,
+				A776C4F422455EE8004FAD3B /* cheer.aif in Resources */,
 				A7DC9BC0221775270038EC58 /* ComboParticle.sks in Resources */,
 				A7736AA32206025100A28B5D /* Main.storyboard in Resources */,
 				A7A22865220604DB00081E0E /* Settings.sks in Resources */,
@@ -752,6 +775,7 @@
 				A7736AA62206025100A28B5D /* LaunchScreen.storyboard in Resources */,
 				A7186E02220C451400187C6E /* jump.aif in Resources */,
 				A745E17722395C260043EC5A /* JumpParticle.sks in Resources */,
+				A776C4F822455FE6004FAD3B /* extralife.aif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -760,15 +784,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7186DFF220C43B700187C6E /* message.aif in Resources */,
+				A776C4F922455FE6004FAD3B /* extralife.aif in Resources */,
 				A7A22866220604DB00081E0E /* MainGame.sks in Resources */,
 				A7736AB42206025100A28B5D /* Main.storyboard in Resources */,
 				A7A22869220604DB00081E0E /* Settings.sks in Resources */,
 				A7DC9BC1221775270038EC58 /* ComboParticle.sks in Resources */,
 				A7186DF9220C43B700187C6E /* button.aif in Resources */,
+				A776C4F522455EE8004FAD3B /* cheer.aif in Resources */,
 				A7DC9BC522177E430038EC58 /* SuperJump.sks in Resources */,
 				A7186E0B220C4B6F00187C6E /* gameover.aif in Resources */,
 				A7186E08220C4B6F00187C6E /* superjump.aif in Resources */,
+				A776C4EF22455EE8004FAD3B /* brick_diamond.aif in Resources */,
 				A7A22868220604DB00081E0E /* Main.sks in Resources */,
+				A776C4F222455EE8004FAD3B /* brick_standard.aif in Resources */,
 				A7A228D02206050E00081E0E /* ScoreParticle.sks in Resources */,
 				A7186E03220C451400187C6E /* jump.aif in Resources */,
 				A7AA89B7222019C400C5D73A /* Assets.xcassets in Resources */,
@@ -781,15 +809,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7186E00220C43B700187C6E /* message.aif in Resources */,
+				A776C4FA22455FE6004FAD3B /* extralife.aif in Resources */,
 				A7A2286A220604DC00081E0E /* MainGame.sks in Resources */,
 				A7736AC22206025200A28B5D /* Main.storyboard in Resources */,
 				A7A2286D220604DC00081E0E /* Settings.sks in Resources */,
 				A7DC9BC2221775270038EC58 /* ComboParticle.sks in Resources */,
 				A7186DFA220C43B700187C6E /* button.aif in Resources */,
+				A776C4F622455EE8004FAD3B /* cheer.aif in Resources */,
 				A7DC9BC622177E430038EC58 /* SuperJump.sks in Resources */,
 				A7186E0C220C4B6F00187C6E /* gameover.aif in Resources */,
 				A7186E09220C4B6F00187C6E /* superjump.aif in Resources */,
+				A776C4F022455EE8004FAD3B /* brick_diamond.aif in Resources */,
 				A7A2286C220604DC00081E0E /* Main.sks in Resources */,
+				A776C4F322455EE8004FAD3B /* brick_standard.aif in Resources */,
 				A7A228D52206050E00081E0E /* ScoreParticle.sks in Resources */,
 				A7186E04220C451400187C6E /* jump.aif in Resources */,
 				A7AA89B8222019C400C5D73A /* Assets.xcassets in Resources */,
