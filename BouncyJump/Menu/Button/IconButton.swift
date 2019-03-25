@@ -27,8 +27,8 @@ class IconButton: Button {
     
     init(image: String,
          backgroundColor: SKColor = Constants.colors.menuForeground,
-         color: SKColor = SKColor(named: "buttonColor") ?? SKColor.lightGray,
-         pressedColor: SKColor = SKColor(named: "buttonPressed") ?? SKColor.white) {
+         color: SKColor = SKColor(named: "overlay") ?? SKColor.lightGray,
+         pressedColor: SKColor = SKColor(named: "cellBg") ?? SKColor.white) {
         let standardSize = CGSize(width: 50.0, height: 50.0)
         
         self.normalColor = color

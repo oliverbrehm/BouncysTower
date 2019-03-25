@@ -11,9 +11,9 @@ import SpriteKit
 class Level05: Level {
     override init(worldWidth: CGFloat) {
         super.init(worldWidth: worldWidth)
-        self.texturePlatform = SKTexture(imageNamed: "platform01")
-        self.wallLeftTexture = SKTexture(imageNamed: "wallLeft01")
-        self.wallRightTexture = SKTexture(imageNamed: "wallRight01")
+        self.texturePlatform = SKTexture(imageNamed: "platformFinal")
+        self.wallTexture = SKTexture(imageNamed: "wallFinal")
+        self.textureBackground = SKTexture(imageNamed: "bgFinal")
     }
     
     required init?(coder aDecoder: NSCoder) {

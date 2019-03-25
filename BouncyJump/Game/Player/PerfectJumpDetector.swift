@@ -78,7 +78,8 @@ class PerfectJumpDetector {
         let hasJumpedMinPlatforms = platform.platformNumber >= self.lastPlatformNumber + 2
         self.perfectJumpPossible = self.hitWallSinceJump && hasJumpedMinPlatforms
         
-        Logger.standard.perfectJumpState(message: "LAND. possible: \(self.perfectJumpPossible), min2platforms: \(hasJumpedMinPlatforms), hitWall: \(hitWallSinceJump)")
+        Logger.standard.perfectJumpState(message:
+            "LAND. possible: \(self.perfectJumpPossible), min2platforms: \(hasJumpedMinPlatforms), hitWall: \(hitWallSinceJump)")
         
         self.hitWallSinceJump = false
     }

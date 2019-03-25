@@ -21,13 +21,9 @@ class IconDescriptionButton: SKSpriteNode {
         }
     }
     
-    init(description: String,
-         image: String,
-         backgroundColor: SKColor = Constants.colors.menuForeground,
-         color: SKColor = SKColor(named: "buttonColor") ?? SKColor.lightGray,
-         pressedColor: SKColor = SKColor(named: "buttonPressed") ?? SKColor.white) {
+    init(description: String, image: String) {
 
-        iconButton = IconButton(image: image, backgroundColor: backgroundColor, color: color, pressedColor: pressedColor)
+        iconButton = IconButton(image: image)
 
         super.init(texture: nil, color: SKColor.clear, size: CGSize.zero)
         

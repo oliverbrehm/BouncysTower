@@ -27,8 +27,8 @@ class Level: SKNode, LevelConfiguration {
     private var lastPlatform: Platform?
     
     var texturePlatform: SKTexture?
-    var wallLeftTexture: SKTexture?
-    var wallRightTexture: SKTexture?
+    var wallTexture: SKTexture?
+    var textureBackground: SKTexture?
     
     private let backgroundHeight: CGFloat = 500.0
     
@@ -154,20 +154,21 @@ class Level: SKNode, LevelConfiguration {
     }
     
     func spawnBackground(above y: CGFloat) {
-        let texture = SKTexture(imageNamed: "bg")
-        let size = CGSize(width: self.worldWidth, height: self.worldWidth * texture.size().height / texture.size().width)
-        
-        while(self.backgroundY < y + 2 * size.height) {
-            let background = SKSpriteNode(texture: texture, color: self.backgroundColor, size: size)
-            background.colorBlendFactor = 1.0
-            background.position = CGPoint(x: 0.0, y: self.backgroundY + size.height / 2.0)
-            background.zPosition = NodeZOrder.background
+        if let texture = self.textureBackground {
+            let size = CGSize(width: self.worldWidth, height: self.worldWidth * texture.size().height / texture.size().width)
             
-            self.addChild(background)
-            
-            self.backgroundY += size.height
-            self.backgroundTiles.append(background)
-        }        
+            while(self.backgroundY < y + 2 * size.height) {
+                let background = SKSpriteNode(texture: texture, color: self.backgroundColor, size: size)
+                background.colorBlendFactor = 1.0
+                background.position = CGPoint(x: 0.0, y: self.backgroundY + size.height / 2.0)
+                background.zPosition = NodeZOrder.background
+                
+                self.addChild(background)
+                
+                self.backgroundY += size.height
+                self.backgroundTiles.append(background)
+            }
+        }
     }
     
     func spawnWallTilesForPlatform(platform: Platform) {
@@ -175,14 +176,12 @@ class Level: SKNode, LevelConfiguration {
     }
     
     func spawnWallTiles(above y: CGFloat) {
-        let texL = self.wallLeftTexture
-        let texR = self.wallRightTexture
-        
         while(self.wallY <= y + 2 * self.worldWidth) {
-            let left = SKSpriteNode(texture: texL, color: SKColor.white, size: CGSize(width: World.wallWidth, height: World.wallWidth))
+            let left = SKSpriteNode(texture: self.wallTexture, color: SKColor.white, size: CGSize(width: World.wallWidth, height: World.wallWidth))
             left.zPosition = NodeZOrder.world
-            let right = SKSpriteNode(texture: texR, color: SKColor.white, size: CGSize(width: World.wallWidth, height: World.wallWidth))
+            let right = SKSpriteNode(texture: self.wallTexture, color: SKColor.white, size: CGSize(width: World.wallWidth, height: World.wallWidth))
             right.zPosition = NodeZOrder.world
+            right.xScale = -1
             
             self.addChild(left)
             self.addChild(right)

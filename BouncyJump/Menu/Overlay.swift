@@ -13,7 +13,7 @@ class Overlay: SKSpriteNode {
     private var positionShown = CGPoint.zero
     
     init() {
-        super.init(texture: SKTexture.init(imageNamed: "overlayBg"), color: SKColor(named: "overlay") ?? SKColor.white, size: CGSize.zero)
+        super.init(texture: SKTexture.init(imageNamed: "overlay"), color: SKColor(named: "overlay") ?? SKColor.white, size: CGSize.zero)
         self.colorBlendFactor = 1.0
     }
     

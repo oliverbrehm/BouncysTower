@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A70CCB512246C72E0013B2BE /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A70CCB502246C72E0013B2BE /* GameKit.framework */; };
+		A70CCB532246C7360013B2BE /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A70CCB522246C7360013B2BE /* StoreKit.framework */; };
 		A71538EF222BEDE900A81322 /* ShopDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71538EE222BEDE900A81322 /* ShopDelegate.swift */; };
 		A71538F0222BEDE900A81322 /* ShopDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71538EE222BEDE900A81322 /* ShopDelegate.swift */; };
 		A71538F1222BEDEA00A81322 /* ShopDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71538EE222BEDE900A81322 /* ShopDelegate.swift */; };
@@ -259,6 +261,8 @@
 /* Begin PBXFileReference section */
 		A702E8BA22020ADE00EB13B8 /* AdvertisingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisingController.swift; sourceTree = "<group>"; };
 		A702E8BF22021E1700EB13B8 /* MainGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGame.swift; sourceTree = "<group>"; };
+		A70CCB502246C72E0013B2BE /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		A70CCB522246C7360013B2BE /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		A71538EE222BEDE900A81322 /* ShopDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDelegate.swift; sourceTree = "<group>"; };
 		A71538F3222D10DA00A81322 /* Collectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collectable.swift; sourceTree = "<group>"; };
 		A71538F7222D1AD200A81322 /* ResourceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceManager.swift; sourceTree = "<group>"; };
@@ -362,6 +366,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A70CCB512246C72E0013B2BE /* GameKit.framework in Frameworks */,
+				A70CCB532246C7360013B2BE /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,6 +420,8 @@
 		A7175FAF20E2A90000968329 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A70CCB522246C7360013B2BE /* StoreKit.framework */,
+				A70CCB502246C72E0013B2BE /* GameKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -723,6 +731,14 @@
 						CreatedOnToolsVersion = 10.1;
 						DevelopmentTeam = CR6FRMMTU7;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.GameCenter.iOS = {
+								enabled = 1;
+							};
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 					A7736AAB2206025100A28B5D = {
 						CreatedOnToolsVersion = 10.1;
@@ -1123,7 +1139,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "Oliver-Brehm.BouncyJump";
+				PRODUCT_BUNDLE_IDENTIFIER = "Oliver-Brehm.BouncysTower";
 				PRODUCT_NAME = BouncyJump;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 4.2;
@@ -1146,7 +1162,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "Oliver-Brehm.BouncyJump";
+				PRODUCT_BUNDLE_IDENTIFIER = "Oliver-Brehm.BouncysTower";
 				PRODUCT_NAME = BouncyJump;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 4.2;
