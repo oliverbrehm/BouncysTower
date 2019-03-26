@@ -12,7 +12,6 @@ import SpriteKit
 class Level: SKNode, LevelConfiguration {
     private var platformY: CGFloat
     private var backgroundY: CGFloat
-    private var worldWidth: CGFloat
     
     private var backgroundTiles: [SKSpriteNode] = []
     
@@ -35,22 +34,32 @@ class Level: SKNode, LevelConfiguration {
     
     var reached = false
     
-    init(worldWidth: CGFloat) {
-        self.worldWidth = worldWidth
+    let world: World
+    
+    init(world: World) {
+        self.world = world
         backgroundY = 0.0
         platformY = 0.0
         super.init()
         
-        self.platformY = self.firstPlatformOffset
+        self.platformY = self.firstPlatformOffset * world.height
+        
         self.spawnBackground(above: backgroundHeight)
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        world = World()
+        backgroundY = 0.0
+        platformY = 0.0
+        super.init(coder: aDecoder)
     }
-    
+
     var multiplicator: Int {
         return 1
+    }
+    
+    var staticBackground: Bool {
+        return false
     }
     
     var backgroundColor: SKColor {
@@ -65,8 +74,9 @@ class Level: SKNode, LevelConfiguration {
         return 1.0
     }
     
+    // of screen height
     var platformYDistance: CGFloat {
-        return 110.0
+        return 0.3
     }
     
     var numberOfPlatforms: Int {
@@ -78,7 +88,11 @@ class Level: SKNode, LevelConfiguration {
     }
     
     var firstPlatformOffset: CGFloat {
-        return 600.0
+        return 2.0
+    }
+    
+    var amientParticleName: String? {
+        return nil
     }
     
     func removeAllPlatforms() {
@@ -115,12 +129,12 @@ class Level: SKNode, LevelConfiguration {
         }
         
         if(yDistance < 0) {
-            platformY += self.platformYDistance
+            platformY += self.platformYDistance * world.height
         } else {
             platformY += yDistance
         }
                 
-        let levelWidth = worldWidth - 2 * World.wallWidth
+        let levelWidth = world.width - 2 * World.wallWidth
         
         var x: CGFloat = 0.0
         
@@ -128,7 +142,7 @@ class Level: SKNode, LevelConfiguration {
         
         if(self.isLastPlatform) {
             platform = EndLevelPlatform(
-                width: worldWidth,
+                width: world.width,
                 level: self,
                 platformNumber: platformNumber,
                 backgroundColor: self.backgroundColor)
@@ -150,8 +164,12 @@ class Level: SKNode, LevelConfiguration {
     }
     
     func spawnBackground(above y: CGFloat) {
+        if(self.staticBackground) {
+            return
+        }
+        
         if let texture = self.textureBackground {
-            let size = CGSize(width: self.worldWidth, height: self.worldWidth * texture.size().height / texture.size().width)
+            let size = CGSize(width: world.width, height: world.width * texture.size().height / texture.size().width)
             
             while(self.backgroundY < y + 2 * size.height) {
                 let background = SKSpriteNode(texture: texture, color: self.backgroundColor, size: size)
@@ -172,7 +190,7 @@ class Level: SKNode, LevelConfiguration {
     }
     
     func spawnWallTiles(above y: CGFloat) {
-        while(self.wallY <= y + 2 * self.worldWidth) {
+        while(self.wallY <= y + 2 * world.width) {
             let left = SKSpriteNode(texture: self.textureWall, color: SKColor.white, size: CGSize(width: World.wallWidth, height: World.wallWidth))
             left.zPosition = NodeZOrder.world
             let right = SKSpriteNode(texture: self.textureWall, color: SKColor.white, size: CGSize(width: World.wallWidth, height: World.wallWidth))
@@ -185,8 +203,8 @@ class Level: SKNode, LevelConfiguration {
             self.wallTiles.append(left)
             self.wallTiles.append(right)
             
-            left.position = CGPoint(x: -worldWidth / 2.0 + World.wallWidth / 2.0, y: self.wallY)
-            right.position = CGPoint(x: worldWidth / 2.0 - World.wallWidth / 2.0, y: self.wallY)
+            left.position = CGPoint(x: -world.width / 2.0 + World.wallWidth / 2.0, y: self.wallY)
+            right.position = CGPoint(x: world.width / 2.0 - World.wallWidth / 2.0, y: self.wallY)
             
             self.wallY += World.wallWidth
         }
@@ -245,10 +263,10 @@ class Level: SKNode, LevelConfiguration {
         }
     }
     
-    func spawnPlatform(scene: Game, number: Int, numberOfCoins: Int? = nil, yDistance: CGFloat = -1.0) {
+    func spawnPlatform(scene: Game, number: Int, numberOfCoins: Int? = nil) {
         self.levelPlatformIndex += 1
         
-        if let platform = self.getPlatform(platformNumber: number, yDistance: yDistance) {
+        if let platform = self.getPlatform(platformNumber: number) {
             self.addChild(platform)
             self.platforms.append(platform)
             platform.setup()

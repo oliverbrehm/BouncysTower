@@ -189,19 +189,21 @@ class Game: SKScene, SKPhysicsContactDelegate {
         switch tutorial {
         case .move:
             message = "Touch and hold to move. "
-                + "Use the entire left half of the screen to move left and the right half to move right."
+                + "Use the entire left half of the screen to move left and the right half to move right. "
+                + "You move faster the longer you touch the screen."
             image = "leftright"
             imageHeight = 80.0
             
         case .wallJump:
             message = "Great, you reached the next Level! Did you notice: "
                 + "You get an extra boost upwards if you jump against the wall! "
-                + "If you roll left or right on the platform, you gain more speed."
+                + "If you roll left or right on the platform, you gain more speed and jump higher."
             
         case .combos:
-            message = "You get a higher score if you do combos. "
+            message = "Nice jumping! You get an even higher score if you do combos. "
                 + "Always keep rolling by holding your touch while on the platform. "
-                + "You have to jump at least two platforms at once to get a combo."
+                + "To get a combo you have to jump at least two platforms at once "
+                + "and hit the left or right wall between each jump."
             image = "combo"
             imageHeight = 160.0
             

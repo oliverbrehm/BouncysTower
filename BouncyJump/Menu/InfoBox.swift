@@ -34,6 +34,7 @@ class InfoBox: Button {
         label.numberOfLines = 0
         label.preferredMaxLayoutWidth = size.width * 0.9
         label.lineBreakMode = .byWordWrapping
+        label.horizontalAlignmentMode = .center
         self.addChild(label)
     }
     

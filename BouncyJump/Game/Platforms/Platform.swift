@@ -58,7 +58,7 @@ class Platform: SKSpriteNode {
     
     required init?(coder aDecoder: NSCoder) {
         self.platformNumber = -1
-        self.level = Level01(worldWidth: 0.0)
+        self.level = Level01(world: World())
         self.backgroundColor = SKColor.white
         super.init(coder: aDecoder)
     }

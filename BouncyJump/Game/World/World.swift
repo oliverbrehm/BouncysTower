@@ -21,6 +21,9 @@ class World: SKNode {
     private let leftWall = SKSpriteNode.init(color: SKColor.init(white: 0.0, alpha: 0.0), size: CGSize(width: World.wallWidth, height: 0.0))
     private let rightWall = SKSpriteNode.init(color: SKColor.init(white: 0.0, alpha: 0.0), size: CGSize(width: World.wallWidth, height: 0.0))
     
+    private var ambientParticles: SKEmitterNode?
+    private var staticLevelBackground: SKSpriteNode?
+    
     var height: CGFloat = 0.0
     var width: CGFloat = 0.0
     
@@ -59,14 +62,14 @@ class World: SKNode {
         
         // levels
         self.levels = [
-            Level01(worldWidth: width),
-            Level02(worldWidth: width),
-            Level03(worldWidth: width),
-            Level04(worldWidth: width),
-            Level05(worldWidth: width),
-            Level06(worldWidth: width),
-            Level07(worldWidth: width),
-            Level08(worldWidth: width)]
+            Level01(world: self),
+            Level02(world: self),
+            Level03(world: self),
+            Level04(world: self),
+            Level05(world: self),
+            Level06(world: self),
+            Level07(world: self),
+            Level08(world: self)]
         
         self.currentLevel = nil
         self.spawnNextLevel()
@@ -86,13 +89,49 @@ class World: SKNode {
         let y = topPlatformY()
         if(self.levels.count > 0) {
             self.currentLevel?.fadeOutAndRemove()
-            
             self.currentLevel = self.levels.removeFirst()
-            self.addChild(self.currentLevel!)
-            if(!(self.currentLevel is Level01)) {
-                self.currentLevel!.fadeIn()
+
+            if let level = self.currentLevel {
+                self.addChild(level)
+                if(!(level is Level01)) {
+                    level.fadeIn()
+                }
+                level.position = CGPoint(x: 0.0, y: y)
+                
+                self.initAmbientParticlesFor(level: level)
+                self.initBackgroundFor(level: level)
             }
-            self.currentLevel!.position = CGPoint(x: 0.0, y: y)
+        }
+    }
+    
+    private func initAmbientParticlesFor(level: Level) {
+        if let currentParticles = self.ambientParticles {
+            currentParticles.removeFromParent()
+        }
+        
+        if let particleFile = level.amientParticleName, let camera = self.scene?.camera {
+            self.ambientParticles = SKEmitterNode(fileNamed: particleFile)
+            if let particles = self.ambientParticles {
+                camera.addChild(particles)
+                particles.position.y = self.height / 2.0
+                particles.targetNode = self
+                particles.particlePositionRange.dx = self.width
+            }
+        }
+    }
+    
+    private func initBackgroundFor(level: Level) {
+        if let bg = self.staticLevelBackground {
+            bg.removeFromParent()
+            self.staticLevelBackground = nil
+        }
+        
+        if level.staticBackground, let texture = level.textureBackground, let camera = self.scene?.camera {
+            let size = CGSize(width: self.width, height: self.height)
+            self.staticLevelBackground = SKSpriteNode(texture: texture, color: level.backgroundColor, size: size)
+            staticLevelBackground!.colorBlendFactor = 1.0
+            staticLevelBackground!.zPosition = NodeZOrder.background
+            camera.addChild(staticLevelBackground!)
         }
     }
     
@@ -103,12 +142,11 @@ class World: SKNode {
         }
     }
     
-    func spawnPlatform(numberOfCoins: Int? = nil, yDistance: CGFloat = -1.0) {
+    func spawnPlatform(numberOfCoins: Int? = nil) {
         self.currentLevel!.spawnPlatform(
             scene: self.scene as! Game,
             number: self.currentPlatformNumber,
-            numberOfCoins: numberOfCoins,
-            yDistance: yDistance)
+            numberOfCoins: numberOfCoins)
         self.currentPlatformNumber += 1
     }
     

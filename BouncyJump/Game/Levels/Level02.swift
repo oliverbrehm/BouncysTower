@@ -10,15 +10,20 @@ import Foundation
 import SpriteKit
 
 class Level02: Level {
-    override init(worldWidth: CGFloat) {
-        super.init(worldWidth: worldWidth)
-        self.texturePlatform = SKTexture(imageNamed: "platformFinal")
-        self.textureWall = SKTexture(imageNamed: "wallBase")
-        self.textureBackground = SKTexture(imageNamed: "bg")
+    override init(world: World) {
+        super.init(world: world)
+        self.texturePlatform = SKTexture(imageNamed: "platformSnow")
+        self.texturePlatformEnds = SKTexture(imageNamed: "platformEndsSnow")
+        self.textureWall = SKTexture(imageNamed: "wallSnow")
+        self.textureBackground = SKTexture(imageNamed: "bgSnow")
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override var amientParticleName: String? {
+        return "AmbientSnow"
     }
     
     override var multiplicator: Int {
@@ -42,10 +47,10 @@ class Level02: Level {
     }
     
     override var platformYDistance: CGFloat {
-        return 85.0
+        return 0.3
     }
     
     override var numberOfPlatforms: Int {
-        return 80
+        return 100
     }
 }

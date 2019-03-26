@@ -9,15 +9,19 @@
 import SpriteKit
 
 class Level08: Level {
-    override init(worldWidth: CGFloat) {
-        super.init(worldWidth: worldWidth)
+    override init(world: World) {
+        super.init(world: world)
         self.texturePlatform = SKTexture(imageNamed: "platformFinal")
         self.textureWall = SKTexture(imageNamed: "wallFinal")
         self.textureBackground = SKTexture(imageNamed: "bgFinal")
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
+    }
+    
+    override var staticBackground: Bool {
+        return true
     }
     
     override var multiplicator: Int {
@@ -45,6 +49,6 @@ class Level08: Level {
     }
     
     override var platformYDistance: CGFloat {
-        return 100.0
+        return 0.35
     }
 }

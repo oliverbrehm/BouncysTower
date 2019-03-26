@@ -10,8 +10,8 @@ import Foundation
 import SpriteKit
 
 class Level01: Level {
-    override init(worldWidth: CGFloat) {
-        super.init(worldWidth: worldWidth)
+    override init(world: World) {
+        super.init(world: world)
         self.texturePlatform = SKTexture(imageNamed: "platformBase")
         self.texturePlatformEnds = SKTexture(imageNamed: "platformBaseEnds")
         self.textureWall = SKTexture(imageNamed: "wallBase")
@@ -19,7 +19,7 @@ class Level01: Level {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
     
     override var multiplicator: Int {
@@ -29,7 +29,7 @@ class Level01: Level {
     override var backgroundColor: SKColor {
         return SKColor.init(named: "bgLevel01") ?? super.backgroundColor
     }
-
+    
     override var platformMinFactor: CGFloat {
         return 0.2
     }
@@ -43,7 +43,7 @@ class Level01: Level {
     }
     
     override var platformYDistance: CGFloat {
-        return 70.0
+        return 0.22
     }
     
     override var firstPlatformOffset: CGFloat {

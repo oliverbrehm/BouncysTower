@@ -10,6 +10,8 @@ import SpriteKit
 
 protocol LevelConfiguration {
     var backgroundColor: SKColor { get }
+    var staticBackground: Bool { get }
+    var amientParticleName: String? { get }
     var topPlatformY: CGFloat { get }
     var platformMinFactor: CGFloat { get }
     var platformMaxFactor: CGFloat { get }
