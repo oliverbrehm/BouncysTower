@@ -77,7 +77,7 @@ class World: SKNode {
     
     func spawnFloor() {
         let floorTexture = SKTexture(imageNamed: "platformBase")
-        let platform = Platform(width: width - 2 * World.wallWidth, texture: floorTexture, level: self.currentLevel!, platformNumber: 0)
+        let platform = Platform(width: width - 2 * World.wallWidth, texture: floorTexture, textureEnds: nil, level: self.currentLevel!, platformNumber: 0)
         platform.position = CGPoint(x: 0.0, y: absoluteZero())
         self.addChild(platform)
     }

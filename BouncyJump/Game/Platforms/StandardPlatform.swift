@@ -10,8 +10,8 @@ import SpriteKit
 
 class StandardPlatform: Platform {
     
-    override init(width: CGFloat, texture: SKTexture?, level: Level, platformNumber: Int, backgroundColor: SKColor = SKColor.white) {
-        super.init(width: width, texture: texture, level: level,
+    override init(width: CGFloat, texture: SKTexture?, textureEnds: SKTexture?, level: Level, platformNumber: Int, backgroundColor: SKColor = SKColor.white) {
+        super.init(width: width, texture: texture, textureEnds: textureEnds, level: level,
                    platformNumber: platformNumber, backgroundColor: backgroundColor)
         
         // consumables

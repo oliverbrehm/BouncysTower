@@ -27,7 +27,8 @@ class Level: SKNode, LevelConfiguration {
     private var lastPlatform: Platform?
     
     var texturePlatform: SKTexture?
-    var wallTexture: SKTexture?
+    var texturePlatformEnds: SKTexture?
+    var textureWall: SKTexture?
     var textureBackground: SKTexture?
     
     private let backgroundHeight: CGFloat = 500.0
@@ -108,10 +109,6 @@ class Level: SKNode, LevelConfiguration {
         return min(self.speedEaseIn, self.levelSpeed)
     }
     
-    var platformTexture: SKTexture? {
-        return self.texturePlatform
-    }
-    
     func getPlatform(platformNumber: Int, yDistance: CGFloat = -1.0) -> Platform? {
         if(self.isFinished) {
             return nil
@@ -125,7 +122,6 @@ class Level: SKNode, LevelConfiguration {
                 
         let levelWidth = worldWidth - 2 * World.wallWidth
         
-        // TODO replace with Double.random in Swift 4.2
         var x: CGFloat = 0.0
         
         var platform: Platform?
@@ -133,7 +129,6 @@ class Level: SKNode, LevelConfiguration {
         if(self.isLastPlatform) {
             platform = EndLevelPlatform(
                 width: worldWidth,
-                texture: nil,
                 level: self,
                 platformNumber: platformNumber,
                 backgroundColor: self.backgroundColor)
@@ -145,7 +140,8 @@ class Level: SKNode, LevelConfiguration {
             let w = CGFloat.random(in: minWidth ..< maxWidth)
             x = CGFloat.random(in: -levelWidth / 2.0 + w / 2.0
                 ..< levelWidth / 2.0 - w / 2.0)
-            platform = StandardPlatform(width: w, texture: self.platformTexture, level: self, platformNumber: platformNumber)
+            platform = StandardPlatform(width: w, texture: self.texturePlatform, textureEnds: self.texturePlatformEnds,
+                                        level: self, platformNumber: platformNumber)
             self.spawnBackground(above: platformY)
         }
 
@@ -177,9 +173,9 @@ class Level: SKNode, LevelConfiguration {
     
     func spawnWallTiles(above y: CGFloat) {
         while(self.wallY <= y + 2 * self.worldWidth) {
-            let left = SKSpriteNode(texture: self.wallTexture, color: SKColor.white, size: CGSize(width: World.wallWidth, height: World.wallWidth))
+            let left = SKSpriteNode(texture: self.textureWall, color: SKColor.white, size: CGSize(width: World.wallWidth, height: World.wallWidth))
             left.zPosition = NodeZOrder.world
-            let right = SKSpriteNode(texture: self.wallTexture, color: SKColor.white, size: CGSize(width: World.wallWidth, height: World.wallWidth))
+            let right = SKSpriteNode(texture: self.textureWall, color: SKColor.white, size: CGSize(width: World.wallWidth, height: World.wallWidth))
             right.zPosition = NodeZOrder.world
             right.xScale = -1
             

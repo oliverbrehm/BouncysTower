@@ -12,8 +12,8 @@ import SpriteKit
 class Level02: Level {
     override init(worldWidth: CGFloat) {
         super.init(worldWidth: worldWidth)
-        self.texturePlatform = SKTexture(imageNamed: "platformBase")
-        self.wallTexture = SKTexture(imageNamed: "wallBase")
+        self.texturePlatform = SKTexture(imageNamed: "platformFinal")
+        self.textureWall = SKTexture(imageNamed: "wallBase")
         self.textureBackground = SKTexture(imageNamed: "bg")
     }
     

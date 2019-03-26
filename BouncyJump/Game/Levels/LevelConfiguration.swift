@@ -19,7 +19,6 @@ protocol LevelConfiguration {
     var numberOfPlatforms: Int { get }
     var levelSpeed: CGFloat { get }
     var gameSpeed: CGFloat { get }
-    var platformTexture: SKTexture? { get }
     var firstPlatformOffset: CGFloat { get }
     var multiplicator: Int { get }
 }

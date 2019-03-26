@@ -12,7 +12,7 @@ class Level03: Level {
     override init(worldWidth: CGFloat) {
         super.init(worldWidth: worldWidth)
         self.texturePlatform = SKTexture(imageNamed: "platformFinal")
-        self.wallTexture = SKTexture(imageNamed: "wallFinal")
+        self.textureWall = SKTexture(imageNamed: "wallFinal")
         self.textureBackground = SKTexture(imageNamed: "bgFinal")
     }
     
