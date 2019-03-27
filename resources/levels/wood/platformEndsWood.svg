@@ -16,53 +16,53 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="platformEndsMoon.svg"
-   inkscape:export-filename="/projects/TowerJump/resources/levels/moon/platformEndsMoon.png"
+   sodipodi:docname="platformEndsWood.svg"
+   inkscape:export-filename="/projects/TowerJump/resources/levels/wood/platformEndsWood.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
   <defs
      id="defs4">
     <linearGradient
-       inkscape:collect="always"
-       id="linearGradient4136">
+       id="linearGradient4164"
+       inkscape:collect="always">
       <stop
-         style="stop-color:#45154c;stop-opacity:1"
+         id="stop4166"
          offset="0"
-         id="stop4138" />
+         style="stop-color:#643200;stop-opacity:1" />
       <stop
-         style="stop-color:#f1ffe0;stop-opacity:1"
+         id="stop4168"
          offset="1"
-         id="stop4140" />
+         style="stop-color:#6b4015;stop-opacity:1" />
     </linearGradient>
     <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient4136"
-       id="linearGradient4143"
-       x1="62.629459"
-       y1="1005.2721"
-       x2="62.629459"
-       y2="916.37866"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(2.5704714,0,0,1,1.1981744e-5,44.709431)" />
+       y2="1015.22"
+       x2="67.500008"
+       y1="924.86279"
+       x1="67.500008"
+       id="linearGradient4170"
+       xlink:href="#linearGradient4164"
+       inkscape:collect="always"
+       gradientTransform="matrix(1,0,0,1.4010743,0.64975754,-370.7379)" />
   </defs>
   <sodipodi:namedview
      id="base"
-     pagecolor="#d7f5ff"
+     pagecolor="#38774e"
      bordercolor="#666666"
      borderopacity="1.0"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:zoom="3.959798"
-     inkscape:cx="84.246642"
-     inkscape:cy="42.092253"
+     inkscape:cx="77.98978"
+     inkscape:cy="69.079214"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      units="px"
-     inkscape:window-width="1903"
-     inkscape:window-height="1023"
-     inkscape:window-x="1099"
-     inkscape:window-y="324"
+     inkscape:window-width="1833"
+     inkscape:window-height="942"
+     inkscape:window-x="1383"
+     inkscape:window-y="19"
      inkscape:window-maximized="0" />
   <metadata
      id="metadata7">
@@ -81,13 +81,11 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(0,-924.36221)">
-    <rect
-       style="opacity:1;fill:url(#linearGradient4143);fill-opacity:1;stroke:none;stroke-width:5.00000048;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="rect4145"
-       width="329.02042"
-       height="128.00002"
-       x="-7.6293932e-06"
-       y="924.36218"
-       ry="64.000008" />
+    <path
+       style="opacity:1;fill:url(#linearGradient4170);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:26;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 128.64979,924.3622 0,128 c 0,0 -89.471907,-23.2642 -117.645971,-55.30587 -41.644278,-74.55211 62.699476,-71.74226 117.645971,-72.69413 z"
+       id="rect4143-8"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc" />
   </g>
 </svg>

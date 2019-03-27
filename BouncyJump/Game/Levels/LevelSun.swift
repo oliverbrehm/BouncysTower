@@ -31,7 +31,7 @@ class LevelSun: Level {
     }
     
     override var backgroundColor: SKColor {
-        return SKColor.init(named: "bgLevel02") ?? super.backgroundColor
+        return SKColor.white
     }
     
     override var platformMinFactor: CGFloat {

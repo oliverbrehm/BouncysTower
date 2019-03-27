@@ -12,10 +12,10 @@ import SpriteKit
 class LevelWood: Level {
     override init(world: World) {
         super.init(world: world)
-        self.texturePlatform = SKTexture(imageNamed: "platformSnow")
-        self.texturePlatformEnds = SKTexture(imageNamed: "platformEndsSnow")
-        self.textureWall = SKTexture(imageNamed: "wallSnow")
-        self.textureBackground = SKTexture(imageNamed: "bgSnow")
+        self.texturePlatform = SKTexture(imageNamed: "platformWood")
+        self.texturePlatformEnds = SKTexture(imageNamed: "platformEndsWood")
+        self.textureWall = SKTexture(imageNamed: "wallWood")
+        self.textureBackground = SKTexture(imageNamed: "bgWood")
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -27,7 +27,7 @@ class LevelWood: Level {
     }
     
     override var backgroundColor: SKColor {
-        return SKColor.init(named: "bgLevel02") ?? super.backgroundColor
+        return SKColor.white
     }
     
     override var platformMinFactor: CGFloat {

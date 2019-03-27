@@ -30,7 +30,7 @@ class LevelSnow: Level {
     }
     
     override var backgroundColor: SKColor {
-        return SKColor.init(named: "bgLevel03") ?? super.backgroundColor
+        return SKColor.white
     }
     
     override var platformMinFactor: CGFloat {

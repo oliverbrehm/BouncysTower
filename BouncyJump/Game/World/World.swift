@@ -18,8 +18,8 @@ class World: SKNode {
     static let wallWidth: CGFloat = 35.0
     
     // walls are invisible nodes, used only for collision with player, textures are spawned as tiles with platforms
-    private let leftWall = SKSpriteNode.init(color: SKColor.init(white: 0.0, alpha: 0.0), size: CGSize(width: World.wallWidth, height: 0.0))
-    private let rightWall = SKSpriteNode.init(color: SKColor.init(white: 0.0, alpha: 0.0), size: CGSize(width: World.wallWidth, height: 0.0))
+    private let leftWall = SKSpriteNode.init(color: SKColor.clear, size: CGSize(width: World.wallWidth, height: 0.0))
+    private let rightWall = SKSpriteNode.init(color: SKColor.clear, size: CGSize(width: World.wallWidth, height: 0.0))
     
     private var ambientParticles: SKEmitterNode?
     private var staticLevelBackground: SKSpriteNode?
@@ -65,10 +65,10 @@ class World: SKNode {
             LevelBase1(world: self),
             //LevelBase2(world: self),
             LevelWood(world: self),
-            LevelDesert(world: self),
-            LevelSun(world: self),
+            //LevelDesert(world: self),
+            //LevelSun(world: self),
             LevelSnow(world: self),
-            LevelSunset(world: self),
+            //LevelSunset(world: self),
             LevelMoon(world: self),
             LevelMoonStars(world: self),
             LevelFinal(world: self)

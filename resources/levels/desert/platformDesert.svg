@@ -16,34 +16,57 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="platformEndsMoon.svg"
-   inkscape:export-filename="/projects/TowerJump/resources/levels/moon/platformEndsMoon.png"
+   sodipodi:docname="platformSnow.svg"
+   inkscape:export-filename="/projects/TowerJump/resources/levels/snow/platformSnow.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
   <defs
      id="defs4">
     <linearGradient
        inkscape:collect="always"
-       id="linearGradient4136">
+       id="linearGradient4140">
       <stop
-         style="stop-color:#45154c;stop-opacity:1"
+         style="stop-color:#f2f2f2;stop-opacity:1"
          offset="0"
-         id="stop4138" />
+         id="stop4142" />
       <stop
-         style="stop-color:#f1ffe0;stop-opacity:1"
+         style="stop-color:#38adff;stop-opacity:1"
          offset="1"
-         id="stop4140" />
+         id="stop4144" />
     </linearGradient>
     <linearGradient
        inkscape:collect="always"
+       id="linearGradient4136">
+      <stop
+         style="stop-color:#ebebeb;stop-opacity:1"
+         offset="0"
+         id="stop4138" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="1"
+         id="stop4140" />
+    </linearGradient>
+    <radialGradient
+       inkscape:collect="always"
        xlink:href="#linearGradient4136"
-       id="linearGradient4143"
-       x1="62.629459"
-       y1="1005.2721"
-       x2="62.629459"
-       y2="916.37866"
+       id="radialGradient4142"
+       cx="31.298113"
+       cy="1026.7736"
+       fx="31.298113"
+       fy="1026.7736"
+       r="31.5625"
+       gradientTransform="matrix(68.287502,-1.583466e-5,0,0.79910473,-2073.0329,154.48322)"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4140"
+       id="linearGradient4146"
+       x1="62.629467"
+       y1="946.16992"
+       x2="62.629467"
+       y2="991.37427"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(2.5704714,0,0,1,1.1981744e-5,44.709431)" />
+       gradientTransform="matrix(1,0,0,1.9710988,-9.2060411e-7,-899.47242)" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -53,16 +76,16 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:zoom="3.959798"
-     inkscape:cx="84.246642"
-     inkscape:cy="42.092253"
+     inkscape:cx="53.998657"
+     inkscape:cy="62.295304"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      units="px"
      inkscape:window-width="1903"
      inkscape:window-height="1023"
-     inkscape:window-x="1099"
-     inkscape:window-y="324"
+     inkscape:window-x="1302"
+     inkscape:window-y="14"
      inkscape:window-maximized="0" />
   <metadata
      id="metadata7">
@@ -82,12 +105,17 @@
      id="layer1"
      transform="translate(0,-924.36221)">
     <rect
-       style="opacity:1;fill:url(#linearGradient4143);fill-opacity:1;stroke:none;stroke-width:5.00000048;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="opacity:1;fill:url(#radialGradient4142);fill-opacity:1;stroke:none;stroke-width:5.00000048;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4145"
-       width="329.02042"
-       height="128.00002"
+       width="128.00003"
+       height="84.290611"
        x="-7.6293932e-06"
-       y="924.36218"
-       ry="64.000008" />
+       y="923.36218" />
+    <path
+       style="fill:url(#linearGradient4146);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M -4.7206041e-6,967.87206 23.991118,1050.3419 l 14.394674,-80.09107 14.394673,8.95998 5.808378,23.03649 10.354063,-34.48538 31.567274,45.38248 10.85914,-34.18613 16.6307,-11.08621"
+       id="path4138"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccc" />
   </g>
 </svg>

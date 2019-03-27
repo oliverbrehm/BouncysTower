@@ -16,8 +16,8 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="platformEndsMoon.svg"
-   inkscape:export-filename="/projects/TowerJump/resources/levels/moon/platformEndsMoon.png"
+   sodipodi:docname="platformEndsSnow.svg"
+   inkscape:export-filename="/projects/TowerJump/resources/levels/snow/platformEndsSnow.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
   <defs
@@ -26,24 +26,25 @@
        inkscape:collect="always"
        id="linearGradient4136">
       <stop
-         style="stop-color:#45154c;stop-opacity:1"
+         style="stop-color:#ebebeb;stop-opacity:1"
          offset="0"
          id="stop4138" />
       <stop
-         style="stop-color:#f1ffe0;stop-opacity:1"
+         style="stop-color:#ffffff;stop-opacity:1"
          offset="1"
          id="stop4140" />
     </linearGradient>
-    <linearGradient
+    <radialGradient
        inkscape:collect="always"
        xlink:href="#linearGradient4136"
-       id="linearGradient4143"
-       x1="62.629459"
-       y1="1005.2721"
-       x2="62.629459"
-       y2="916.37866"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(2.5704714,0,0,1,1.1981744e-5,44.709431)" />
+       id="radialGradient4142"
+       cx="31.298113"
+       cy="1026.7736"
+       fx="31.298113"
+       fy="1026.7736"
+       r="31.5625"
+       gradientTransform="matrix(103.58627,-1.583466e-5,0,0.79910473,-3144.6126,155.48324)"
+       gradientUnits="userSpaceOnUse" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -53,16 +54,16 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:zoom="3.959798"
-     inkscape:cx="84.246642"
-     inkscape:cy="42.092253"
+     inkscape:cx="53.998657"
+     inkscape:cy="62.295304"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      units="px"
      inkscape:window-width="1903"
      inkscape:window-height="1023"
-     inkscape:window-x="1099"
-     inkscape:window-y="324"
+     inkscape:window-x="1302"
+     inkscape:window-y="14"
      inkscape:window-maximized="0" />
   <metadata
      id="metadata7">
@@ -82,12 +83,12 @@
      id="layer1"
      transform="translate(0,-924.36221)">
     <rect
-       style="opacity:1;fill:url(#linearGradient4143);fill-opacity:1;stroke:none;stroke-width:5.00000048;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="opacity:1;fill:url(#radialGradient4142);fill-opacity:1;stroke:none;stroke-width:5.00000048;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4145"
-       width="329.02042"
-       height="128.00002"
-       x="-7.6293932e-06"
+       width="194.16504"
+       height="84.290611"
+       x="-3.8146982e-06"
        y="924.36218"
-       ry="64.000008" />
+       ry="42.145306" />
   </g>
 </svg>
