@@ -1,5 +1,5 @@
 //
-//  Level03.swift
+//  Level04.swift
 //  BouncyJump
 //
 //  Created by Oliver Brehm on 28.09.18.
@@ -8,40 +8,37 @@
 
 import SpriteKit
 
-class Level03: Level {
+class LevelDesert: Level {
     override init(world: World) {
         super.init(world: world)
-        self.texturePlatform = SKTexture(imageNamed: "platformFinal")
-        self.textureWall = SKTexture(imageNamed: "wallFinal")
-        self.textureBackground = SKTexture(imageNamed: "bgFinal")
+        self.texturePlatform = SKTexture(imageNamed: "platformMoon")
+        self.texturePlatformEnds = SKTexture(imageNamed: "platformEndsMoon")
+        self.textureWall = SKTexture(imageNamed: "wallMoonStars")
+        self.textureStaticBackground = SKTexture(imageNamed: "bgStaticMoonStars")
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    override var staticBackground: Bool {
-        return true
-    }
-    
     override var multiplicator: Int {
-        return 3
+        return 4
     }
     
     override var backgroundColor: SKColor {
-        return SKColor.init(named: "bgLevel03") ?? super.backgroundColor
+        return SKColor.init(named: "bgLevel04") ?? super.backgroundColor
     }
     
     override var platformMinFactor: CGFloat {
-        return 0.3
+        return 0.2
     }
     
     override var platformMaxFactor: CGFloat {
-        return 0.7
+        return 0.65
     }
     
     override var levelSpeed: CGFloat {
-        return 70.0
+        return 80.0
     }
     
     override var platformYDistance: CGFloat {
@@ -49,6 +46,6 @@ class Level03: Level {
     }
     
     override var numberOfPlatforms: Int {
-        return 70
+        return 80
     }
 }

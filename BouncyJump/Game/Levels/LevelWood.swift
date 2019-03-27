@@ -1,15 +1,15 @@
 //
-//  Level02.swift
+//  LevelWood.swift
 //  BouncyJump
 //
-//  Created by Oliver Brehm on 25.09.18.
-//  Copyright © 2018 Oliver Brehm. All rights reserved.
+//  Created by Oliver Brehm on 27.03.19.
+//  Copyright © 2019 Oliver Brehm. All rights reserved.
 //
 
 import Foundation
 import SpriteKit
 
-class Level02: Level {
+class LevelWood: Level {
     override init(world: World) {
         super.init(world: world)
         self.texturePlatform = SKTexture(imageNamed: "platformSnow")
@@ -22,14 +22,10 @@ class Level02: Level {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override var amientParticleName: String? {
-        return "AmbientSnow"
-    }
-    
     override var multiplicator: Int {
         return 2
     }
-
+    
     override var backgroundColor: SKColor {
         return SKColor.init(named: "bgLevel02") ?? super.backgroundColor
     }

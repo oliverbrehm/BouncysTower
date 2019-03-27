@@ -29,6 +29,7 @@ class Level: SKNode, LevelConfiguration {
     var texturePlatformEnds: SKTexture?
     var textureWall: SKTexture?
     var textureBackground: SKTexture?
+    var textureStaticBackground: SKTexture?
     
     private let backgroundHeight: CGFloat = 500.0
     
@@ -58,10 +59,6 @@ class Level: SKNode, LevelConfiguration {
         return 1
     }
     
-    var staticBackground: Bool {
-        return false
-    }
-    
     var backgroundColor: SKColor {
         return SKColor.black
     }
@@ -87,8 +84,9 @@ class Level: SKNode, LevelConfiguration {
         return 1.0
     }
     
+    // of screen height
     var firstPlatformOffset: CGFloat {
-        return 2.0
+        return 0.0// TODO reset 2.0
     }
     
     var amientParticleName: String? {
@@ -164,10 +162,6 @@ class Level: SKNode, LevelConfiguration {
     }
     
     func spawnBackground(above y: CGFloat) {
-        if(self.staticBackground) {
-            return
-        }
-        
         if let texture = self.textureBackground {
             let size = CGSize(width: world.width, height: world.width * texture.size().height / texture.size().width)
             

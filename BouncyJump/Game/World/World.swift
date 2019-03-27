@@ -62,14 +62,17 @@ class World: SKNode {
         
         // levels
         self.levels = [
-            Level01(world: self),
-            Level02(world: self),
-            Level03(world: self),
-            Level04(world: self),
-            Level05(world: self),
-            Level06(world: self),
-            Level07(world: self),
-            Level08(world: self)]
+            LevelBase1(world: self),
+            //LevelBase2(world: self),
+            LevelWood(world: self),
+            LevelDesert(world: self),
+            LevelSun(world: self),
+            LevelSnow(world: self),
+            LevelSunset(world: self),
+            LevelMoon(world: self),
+            LevelMoonStars(world: self),
+            LevelFinal(world: self)
+        ]
         
         self.currentLevel = nil
         self.spawnNextLevel()
@@ -80,7 +83,9 @@ class World: SKNode {
     
     func spawnFloor() {
         let floorTexture = SKTexture(imageNamed: "platformBase")
-        let platform = Platform(width: width - 2 * World.wallWidth, texture: floorTexture, textureEnds: nil, level: self.currentLevel!, platformNumber: 0)
+        let platform = Platform(width: width - 2 * World.wallWidth,
+                                texture: floorTexture, textureEnds: nil,
+                                level: self.currentLevel!, platformNumber: 0)
         platform.position = CGPoint(x: 0.0, y: absoluteZero())
         self.addChild(platform)
     }
@@ -93,7 +98,7 @@ class World: SKNode {
 
             if let level = self.currentLevel {
                 self.addChild(level)
-                if(!(level is Level01)) {
+                if(!(level is LevelBase1)) {
                     level.fadeIn()
                 }
                 level.position = CGPoint(x: 0.0, y: y)
@@ -122,16 +127,19 @@ class World: SKNode {
     
     private func initBackgroundFor(level: Level) {
         if let bg = self.staticLevelBackground {
-            bg.removeFromParent()
+            bg.run(SKAction.fadeOut(withDuration: 0.5)) {
+                bg.removeFromParent()
+            }
             self.staticLevelBackground = nil
         }
         
-        if level.staticBackground, let texture = level.textureBackground, let camera = self.scene?.camera {
+        if let texture = level.textureStaticBackground, let camera = self.scene?.camera {
             let size = CGSize(width: self.width, height: self.height)
             self.staticLevelBackground = SKSpriteNode(texture: texture, color: level.backgroundColor, size: size)
             staticLevelBackground!.colorBlendFactor = 1.0
-            staticLevelBackground!.zPosition = NodeZOrder.background
+            staticLevelBackground!.zPosition = NodeZOrder.background - 0.1
             camera.addChild(staticLevelBackground!)
+            staticLevelBackground?.run(SKAction.fadeIn(withDuration: 0.5))
         }
     }
     

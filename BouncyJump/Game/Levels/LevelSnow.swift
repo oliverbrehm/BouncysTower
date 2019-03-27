@@ -1,54 +1,55 @@
 //
-//  Level07.swift
+//  Level03.swift
 //  BouncyJump
 //
-//  Created by Oliver Brehm on 01.10.18.
+//  Created by Oliver Brehm on 28.09.18.
 //  Copyright © 2018 Oliver Brehm. All rights reserved.
 //
 
 import SpriteKit
 
-class Level07: Level {
+class LevelSnow: Level {
     override init(world: World) {
         super.init(world: world)
-        self.texturePlatform = SKTexture(imageNamed: "platformFinal")
-        self.textureWall = SKTexture(imageNamed: "wallFinal")
-        self.textureBackground = SKTexture(imageNamed: "bgFinal")
+        self.texturePlatform = SKTexture(imageNamed: "platformSnow")
+        self.texturePlatformEnds = SKTexture(imageNamed: "platformEndsSnow")
+        self.textureWall = SKTexture(imageNamed: "wallSnow")
+        self.textureBackground = SKTexture(imageNamed: "bgSnow")
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    override var staticBackground: Bool {
-        return true
+    override var amientParticleName: String? {
+        return "AmbientSnow"
     }
     
     override var multiplicator: Int {
-        return 7
+        return 3
     }
     
     override var backgroundColor: SKColor {
-        return SKColor.init(named: "bgLevel07") ?? super.backgroundColor
+        return SKColor.init(named: "bgLevel03") ?? super.backgroundColor
     }
     
     override var platformMinFactor: CGFloat {
-        return 0.15
+        return 0.3
     }
     
     override var platformMaxFactor: CGFloat {
-        return 0.35
+        return 0.7
     }
     
     override var levelSpeed: CGFloat {
-        return 110.0
+        return 70.0
     }
     
     override var platformYDistance: CGFloat {
-        return 0.4
+        return 0.3
     }
     
     override var numberOfPlatforms: Int {
-        return 100
+        return 70
     }
 }

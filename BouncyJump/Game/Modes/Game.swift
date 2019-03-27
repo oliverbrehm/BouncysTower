@@ -23,7 +23,6 @@ class Game: SKScene, SKPhysicsContactDelegate {
     let player = Player()
     let world = World()
     let cameraNode = Camera()
-    let background = SKSpriteNode.init(color: SKColor.black, size: CGSize.zero)
     let pausedOverlay = OverlayPause()
     var pauseButton = IconButton(image: "pause")
     
@@ -45,10 +44,6 @@ class Game: SKScene, SKPhysicsContactDelegate {
             
             self.camera = cameraNode
             self.addChild(cameraNode)
-            
-            self.background.size = self.size
-            self.background.zPosition = NodeZOrder.background
-            self.cameraNode.addChild(self.background)
             
             self.addChild(world)
             self.addChild(player)
@@ -172,9 +167,9 @@ class Game: SKScene, SKPhysicsContactDelegate {
     
     func levelReached(level: Level) {
         switch level {
-        case is Level02:
+        case is LevelBase2:
             self.checkShowTutorial(.wallJump)
-        case is Level03:
+        case is LevelWood:
             self.checkShowTutorial(.combos)
         default:
             break

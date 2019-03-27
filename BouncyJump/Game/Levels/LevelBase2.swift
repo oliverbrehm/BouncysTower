@@ -1,5 +1,5 @@
 //
-//  Level01.swift
+//  Level02.swift
 //  BouncyJump
 //
 //  Created by Oliver Brehm on 25.09.18.
@@ -9,7 +9,7 @@
 import Foundation
 import SpriteKit
 
-class Level01: Level {
+class LevelBase2: Level {
     override init(world: World) {
         super.init(world: world)
         self.texturePlatform = SKTexture(imageNamed: "platformBase")
@@ -19,36 +19,31 @@ class Level01: Level {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        fatalError("init(coder:) has not been implemented")
     }
     
     override var multiplicator: Int {
-        return 1
+        return 2
     }
-    
+
     override var backgroundColor: SKColor {
-        return SKColor.init(named: "bgLevel01") ?? super.backgroundColor
+        return SKColor.init(named: "bgLevel02") ?? super.backgroundColor
     }
     
     override var platformMinFactor: CGFloat {
-        return 0.2
+        return 0.25
     }
     
     override var platformMaxFactor: CGFloat {
-        return 0.9
+        return 0.8
     }
     
     override var levelSpeed: CGFloat {
-        return 40.0
+        return 60.0
     }
     
     override var platformYDistance: CGFloat {
-        return 0.22
-    }
-    
-    override var firstPlatformOffset: CGFloat {
-        // no offset for first level
-        return 0.0
+        return 0.3
     }
     
     override var numberOfPlatforms: Int {

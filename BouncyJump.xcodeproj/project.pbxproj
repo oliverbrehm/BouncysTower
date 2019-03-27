@@ -58,9 +58,6 @@
 		A73B3FF5224A3696002B8D2C /* AmbientSnow.sks in Resources */ = {isa = PBXBuildFile; fileRef = A73B3FF3224A3696002B8D2C /* AmbientSnow.sks */; };
 		A73B3FF6224A3696002B8D2C /* AmbientSnow.sks in Resources */ = {isa = PBXBuildFile; fileRef = A73B3FF3224A3696002B8D2C /* AmbientSnow.sks */; };
 		A73B3FF7224A3696002B8D2C /* AmbientSnow.sks in Resources */ = {isa = PBXBuildFile; fileRef = A73B3FF3224A3696002B8D2C /* AmbientSnow.sks */; };
-		A73B3FF8224A3696002B8D2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A73B3FF4224A3696002B8D2C /* Assets.xcassets */; };
-		A73B3FF9224A3696002B8D2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A73B3FF4224A3696002B8D2C /* Assets.xcassets */; };
-		A73B3FFA224A3696002B8D2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A73B3FF4224A3696002B8D2C /* Assets.xcassets */; };
 		A745E17722395C260043EC5A /* JumpParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = A745E17622395C260043EC5A /* JumpParticle.sks */; };
 		A745E1792239648A0043EC5A /* StandardPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = A745E1782239648A0043EC5A /* StandardPlatform.swift */; };
 		A745E17A2239648A0043EC5A /* StandardPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = A745E1782239648A0043EC5A /* StandardPlatform.swift */; };
@@ -98,6 +95,12 @@
 		A75688122242608D00E793A1 /* IconDescriptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75688112242608D00E793A1 /* IconDescriptionButton.swift */; };
 		A75688132242608D00E793A1 /* IconDescriptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75688112242608D00E793A1 /* IconDescriptionButton.swift */; };
 		A75688142242608D00E793A1 /* IconDescriptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75688112242608D00E793A1 /* IconDescriptionButton.swift */; };
+		A756B265224BA23F00CC335E /* LevelWood.swift in Sources */ = {isa = PBXBuildFile; fileRef = A756B264224BA23F00CC335E /* LevelWood.swift */; };
+		A756B266224BA23F00CC335E /* LevelWood.swift in Sources */ = {isa = PBXBuildFile; fileRef = A756B264224BA23F00CC335E /* LevelWood.swift */; };
+		A756B267224BA23F00CC335E /* LevelWood.swift in Sources */ = {isa = PBXBuildFile; fileRef = A756B264224BA23F00CC335E /* LevelWood.swift */; };
+		A756B269224BA29F00CC335E /* LevelSun.swift in Sources */ = {isa = PBXBuildFile; fileRef = A756B268224BA29F00CC335E /* LevelSun.swift */; };
+		A756B26A224BA29F00CC335E /* LevelSun.swift in Sources */ = {isa = PBXBuildFile; fileRef = A756B268224BA29F00CC335E /* LevelSun.swift */; };
+		A756B26B224BA29F00CC335E /* LevelSun.swift in Sources */ = {isa = PBXBuildFile; fileRef = A756B268224BA29F00CC335E /* LevelSun.swift */; };
 		A765DC032215A48400B34284 /* CGVector+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A765DC022215A48400B34284 /* CGVector+Extensions.swift */; };
 		A765DC042215A48400B34284 /* CGVector+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A765DC022215A48400B34284 /* CGVector+Extensions.swift */; };
 		A765DC052215A48400B34284 /* CGVector+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A765DC022215A48400B34284 /* CGVector+Extensions.swift */; };
@@ -211,32 +214,32 @@
 		A7A228AB220604EF00081E0E /* EndLevelPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A5199215E907300E7CDDB /* EndLevelPlatform.swift */; };
 		A7A228AC220604EF00081E0E /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D4C82F2201BB9E0060F352 /* Coin.swift */; };
 		A7A228AD220604F600081E0E /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A518D215A6A0600E7CDDB /* Level.swift */; };
-		A7A228AE220604F600081E0E /* Level01.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A5190215A6AC200E7CDDB /* Level01.swift */; };
-		A7A228AF220604F600081E0E /* Level02.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A5192215A6B0400E7CDDB /* Level02.swift */; };
-		A7A228B0220604F600081E0E /* Level03.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A5194215E41F000E7CDDB /* Level03.swift */; };
-		A7A228B1220604F600081E0E /* Level04.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A5196215E41FD00E7CDDB /* Level04.swift */; };
-		A7A228B2220604F600081E0E /* Level05.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE066D216243FE0009D905 /* Level05.swift */; };
-		A7A228B3220604F600081E0E /* Level06.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE0669216243D70009D905 /* Level06.swift */; };
-		A7A228B4220604F600081E0E /* Level07.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE066B216243E40009D905 /* Level07.swift */; };
-		A7A228B5220604F600081E0E /* Level08.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71F2D9B2163956D00FAF0EB /* Level08.swift */; };
+		A7A228AE220604F600081E0E /* LevelBase1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A5190215A6AC200E7CDDB /* LevelBase1.swift */; };
+		A7A228AF220604F600081E0E /* LevelBase2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A5192215A6B0400E7CDDB /* LevelBase2.swift */; };
+		A7A228B0220604F600081E0E /* LevelSnow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A5194215E41F000E7CDDB /* LevelSnow.swift */; };
+		A7A228B1220604F600081E0E /* LevelDesert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A5196215E41FD00E7CDDB /* LevelDesert.swift */; };
+		A7A228B2220604F600081E0E /* LevelSunset.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE066D216243FE0009D905 /* LevelSunset.swift */; };
+		A7A228B3220604F600081E0E /* LevelMoon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE0669216243D70009D905 /* LevelMoon.swift */; };
+		A7A228B4220604F600081E0E /* LevelMoonStars.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE066B216243E40009D905 /* LevelMoonStars.swift */; };
+		A7A228B5220604F600081E0E /* LevelFinal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71F2D9B2163956D00FAF0EB /* LevelFinal.swift */; };
 		A7A228B6220604F700081E0E /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A518D215A6A0600E7CDDB /* Level.swift */; };
-		A7A228B7220604F700081E0E /* Level01.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A5190215A6AC200E7CDDB /* Level01.swift */; };
-		A7A228B8220604F700081E0E /* Level02.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A5192215A6B0400E7CDDB /* Level02.swift */; };
-		A7A228B9220604F700081E0E /* Level03.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A5194215E41F000E7CDDB /* Level03.swift */; };
-		A7A228BA220604F700081E0E /* Level04.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A5196215E41FD00E7CDDB /* Level04.swift */; };
-		A7A228BB220604F700081E0E /* Level05.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE066D216243FE0009D905 /* Level05.swift */; };
-		A7A228BC220604F700081E0E /* Level06.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE0669216243D70009D905 /* Level06.swift */; };
-		A7A228BD220604F700081E0E /* Level07.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE066B216243E40009D905 /* Level07.swift */; };
-		A7A228BE220604F700081E0E /* Level08.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71F2D9B2163956D00FAF0EB /* Level08.swift */; };
+		A7A228B7220604F700081E0E /* LevelBase1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A5190215A6AC200E7CDDB /* LevelBase1.swift */; };
+		A7A228B8220604F700081E0E /* LevelBase2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A5192215A6B0400E7CDDB /* LevelBase2.swift */; };
+		A7A228B9220604F700081E0E /* LevelSnow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A5194215E41F000E7CDDB /* LevelSnow.swift */; };
+		A7A228BA220604F700081E0E /* LevelDesert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A5196215E41FD00E7CDDB /* LevelDesert.swift */; };
+		A7A228BB220604F700081E0E /* LevelSunset.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE066D216243FE0009D905 /* LevelSunset.swift */; };
+		A7A228BC220604F700081E0E /* LevelMoon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE0669216243D70009D905 /* LevelMoon.swift */; };
+		A7A228BD220604F700081E0E /* LevelMoonStars.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE066B216243E40009D905 /* LevelMoonStars.swift */; };
+		A7A228BE220604F700081E0E /* LevelFinal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71F2D9B2163956D00FAF0EB /* LevelFinal.swift */; };
 		A7A228BF220604F700081E0E /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A518D215A6A0600E7CDDB /* Level.swift */; };
-		A7A228C0220604F700081E0E /* Level01.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A5190215A6AC200E7CDDB /* Level01.swift */; };
-		A7A228C1220604F700081E0E /* Level02.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A5192215A6B0400E7CDDB /* Level02.swift */; };
-		A7A228C2220604F700081E0E /* Level03.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A5194215E41F000E7CDDB /* Level03.swift */; };
-		A7A228C3220604F700081E0E /* Level04.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A5196215E41FD00E7CDDB /* Level04.swift */; };
-		A7A228C4220604F700081E0E /* Level05.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE066D216243FE0009D905 /* Level05.swift */; };
-		A7A228C5220604F700081E0E /* Level06.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE0669216243D70009D905 /* Level06.swift */; };
-		A7A228C6220604F700081E0E /* Level07.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE066B216243E40009D905 /* Level07.swift */; };
-		A7A228C7220604F700081E0E /* Level08.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71F2D9B2163956D00FAF0EB /* Level08.swift */; };
+		A7A228C0220604F700081E0E /* LevelBase1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A5190215A6AC200E7CDDB /* LevelBase1.swift */; };
+		A7A228C1220604F700081E0E /* LevelBase2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A5192215A6B0400E7CDDB /* LevelBase2.swift */; };
+		A7A228C2220604F700081E0E /* LevelSnow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A5194215E41F000E7CDDB /* LevelSnow.swift */; };
+		A7A228C3220604F700081E0E /* LevelDesert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A5196215E41FD00E7CDDB /* LevelDesert.swift */; };
+		A7A228C4220604F700081E0E /* LevelSunset.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE066D216243FE0009D905 /* LevelSunset.swift */; };
+		A7A228C5220604F700081E0E /* LevelMoon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE0669216243D70009D905 /* LevelMoon.swift */; };
+		A7A228C6220604F700081E0E /* LevelMoonStars.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE066B216243E40009D905 /* LevelMoonStars.swift */; };
+		A7A228C7220604F700081E0E /* LevelFinal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71F2D9B2163956D00FAF0EB /* LevelFinal.swift */; };
 		A7A228CA2206050E00081E0E /* SKSpriteNode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71F2DA72164ED4500FAF0EB /* SKSpriteNode+Extensions.swift */; };
 		A7A228CB2206050E00081E0E /* ScoreParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = A792AE06216538DC004280A5 /* ScoreParticle.sks */; };
 		A7A228CC2206050E00081E0E /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D4C8312201C8C80060F352 /* Config.swift */; };
@@ -287,14 +290,14 @@
 		A71875B2220AFB11003ED6F1 /* ResourceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceView.swift; sourceTree = "<group>"; };
 		A71875B4220B0619003ED6F1 /* ConsumableExtraLife.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumableExtraLife.swift; sourceTree = "<group>"; };
 		A71A518D215A6A0600E7CDDB /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
-		A71A5190215A6AC200E7CDDB /* Level01.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level01.swift; sourceTree = "<group>"; };
-		A71A5192215A6B0400E7CDDB /* Level02.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level02.swift; sourceTree = "<group>"; };
-		A71A5194215E41F000E7CDDB /* Level03.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level03.swift; sourceTree = "<group>"; };
-		A71A5196215E41FD00E7CDDB /* Level04.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level04.swift; sourceTree = "<group>"; };
+		A71A5190215A6AC200E7CDDB /* LevelBase1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelBase1.swift; sourceTree = "<group>"; };
+		A71A5192215A6B0400E7CDDB /* LevelBase2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelBase2.swift; sourceTree = "<group>"; };
+		A71A5194215E41F000E7CDDB /* LevelSnow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelSnow.swift; sourceTree = "<group>"; };
+		A71A5196215E41FD00E7CDDB /* LevelDesert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelDesert.swift; sourceTree = "<group>"; };
 		A71A5199215E907300E7CDDB /* EndLevelPlatform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndLevelPlatform.swift; sourceTree = "<group>"; };
 		A71E741221F9035900E7E193 /* Overlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Overlay.swift; sourceTree = "<group>"; };
 		A71E741421F907BD00E7E193 /* OverlayMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayMain.swift; sourceTree = "<group>"; };
-		A71F2D9B2163956D00FAF0EB /* Level08.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level08.swift; sourceTree = "<group>"; };
+		A71F2D9B2163956D00FAF0EB /* LevelFinal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelFinal.swift; sourceTree = "<group>"; };
 		A71F2D9D2163A4BF00FAF0EB /* Settings.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Settings.sks; sourceTree = "<group>"; };
 		A71F2D9F2163A4D600FAF0EB /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		A71F2DA12163A93700FAF0EB /* OverlayGameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayGameOver.swift; sourceTree = "<group>"; };
@@ -305,7 +308,6 @@
 		A7240992222444F100B18095 /* ScoresNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresNode.swift; sourceTree = "<group>"; };
 		A72F3BCD2241319000D7267A /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		A73B3FF3224A3696002B8D2C /* AmbientSnow.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AmbientSnow.sks; sourceTree = "<group>"; };
-		A73B3FF4224A3696002B8D2C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A745E17622395C260043EC5A /* JumpParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = JumpParticle.sks; sourceTree = "<group>"; };
 		A745E1782239648A0043EC5A /* StandardPlatform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardPlatform.swift; sourceTree = "<group>"; };
 		A74E3C8722131B2400D38AEB /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -319,6 +321,8 @@
 		A74EF25F223AC74300A69176 /* ClosePremiumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosePremiumCell.swift; sourceTree = "<group>"; };
 		A756880D22423A3F00E793A1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A75688112242608D00E793A1 /* IconDescriptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconDescriptionButton.swift; sourceTree = "<group>"; };
+		A756B264224BA23F00CC335E /* LevelWood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelWood.swift; sourceTree = "<group>"; };
+		A756B268224BA29F00CC335E /* LevelSun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelSun.swift; sourceTree = "<group>"; };
 		A765DC022215A48400B34284 /* CGVector+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGVector+Extensions.swift"; sourceTree = "<group>"; };
 		A7736A902205D6B600A28B5D /* InfoBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoBox.swift; sourceTree = "<group>"; };
 		A7736A9B2206025100A28B5D /* BouncyJump.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BouncyJump.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -354,9 +358,9 @@
 		A7AA89B1221FE6BB00C5D73A /* CoinManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinManager.swift; sourceTree = "<group>"; };
 		A7AA89B5222019C400C5D73A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A7AE0667216239AF0009D905 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
-		A7AE0669216243D70009D905 /* Level06.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level06.swift; sourceTree = "<group>"; };
-		A7AE066B216243E40009D905 /* Level07.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level07.swift; sourceTree = "<group>"; };
-		A7AE066D216243FE0009D905 /* Level05.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level05.swift; sourceTree = "<group>"; };
+		A7AE0669216243D70009D905 /* LevelMoon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelMoon.swift; sourceTree = "<group>"; };
+		A7AE066B216243E40009D905 /* LevelMoonStars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelMoonStars.swift; sourceTree = "<group>"; };
+		A7AE066D216243FE0009D905 /* LevelSunset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelSunset.swift; sourceTree = "<group>"; };
 		A7AE06712162479C0009D905 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		A7AE0674216248AA0009D905 /* Main.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Main.sks; sourceTree = "<group>"; };
 		A7AE067621624B500009D905 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
@@ -457,14 +461,16 @@
 			children = (
 				A7901467222962830025368A /* LevelConfiguration.swift */,
 				A71A518D215A6A0600E7CDDB /* Level.swift */,
-				A71A5190215A6AC200E7CDDB /* Level01.swift */,
-				A71A5192215A6B0400E7CDDB /* Level02.swift */,
-				A71A5194215E41F000E7CDDB /* Level03.swift */,
-				A71A5196215E41FD00E7CDDB /* Level04.swift */,
-				A7AE066D216243FE0009D905 /* Level05.swift */,
-				A7AE0669216243D70009D905 /* Level06.swift */,
-				A7AE066B216243E40009D905 /* Level07.swift */,
-				A71F2D9B2163956D00FAF0EB /* Level08.swift */,
+				A71A5190215A6AC200E7CDDB /* LevelBase1.swift */,
+				A71A5192215A6B0400E7CDDB /* LevelBase2.swift */,
+				A756B264224BA23F00CC335E /* LevelWood.swift */,
+				A71A5196215E41FD00E7CDDB /* LevelDesert.swift */,
+				A756B268224BA29F00CC335E /* LevelSun.swift */,
+				A71A5194215E41F000E7CDDB /* LevelSnow.swift */,
+				A7AE066D216243FE0009D905 /* LevelSunset.swift */,
+				A7AE0669216243D70009D905 /* LevelMoon.swift */,
+				A7AE066B216243E40009D905 /* LevelMoonStars.swift */,
+				A71F2D9B2163956D00FAF0EB /* LevelFinal.swift */,
 			);
 			path = Levels;
 			sourceTree = "<group>";
@@ -487,7 +493,6 @@
 				A7DC9BC322177E430038EC58 /* SuperJump.sks */,
 				A745E17622395C260043EC5A /* JumpParticle.sks */,
 				A73B3FF3224A3696002B8D2C /* AmbientSnow.sks */,
-				A73B3FF4224A3696002B8D2C /* Assets.xcassets */,
 			);
 			path = Particles;
 			sourceTree = "<group>";
@@ -797,7 +802,6 @@
 			files = (
 				A7A22864220604DB00081E0E /* Main.sks in Resources */,
 				A7186DFE220C43B700187C6E /* message.aif in Resources */,
-				A73B3FF8224A3696002B8D2C /* Assets.xcassets in Resources */,
 				A7186DFB220C43B700187C6E /* collectcoin.aif in Resources */,
 				A776C4EE22455EE8004FAD3B /* brick_diamond.aif in Resources */,
 				A73B3FF5224A3696002B8D2C /* AmbientSnow.sks in Resources */,
@@ -838,7 +842,6 @@
 				A7186E08220C4B6F00187C6E /* superjump.aif in Resources */,
 				A776C4EF22455EE8004FAD3B /* brick_diamond.aif in Resources */,
 				A7A22868220604DB00081E0E /* Main.sks in Resources */,
-				A73B3FF9224A3696002B8D2C /* Assets.xcassets in Resources */,
 				A776C4F222455EE8004FAD3B /* brick_standard.aif in Resources */,
 				A7A228D02206050E00081E0E /* ScoreParticle.sks in Resources */,
 				A7186E03220C451400187C6E /* jump.aif in Resources */,
@@ -865,7 +868,6 @@
 				A7186E09220C4B6F00187C6E /* superjump.aif in Resources */,
 				A776C4F022455EE8004FAD3B /* brick_diamond.aif in Resources */,
 				A7A2286C220604DC00081E0E /* Main.sks in Resources */,
-				A73B3FFA224A3696002B8D2C /* Assets.xcassets in Resources */,
 				A776C4F322455EE8004FAD3B /* brick_standard.aif in Resources */,
 				A7A228D52206050E00081E0E /* ScoreParticle.sks in Resources */,
 				A7186E04220C451400187C6E /* jump.aif in Resources */,
@@ -903,7 +905,7 @@
 			files = (
 				A77B389D22254F3F003DEB38 /* ShopViewController.swift in Sources */,
 				A7AA89B2221FE6BB00C5D73A /* CoinManager.swift in Sources */,
-				A7A228B0220604F600081E0E /* Level03.swift in Sources */,
+				A7A228B0220604F600081E0E /* LevelSnow.swift in Sources */,
 				A7A228AD220604F600081E0E /* Level.swift in Sources */,
 				A7A22880220604E700081E0E /* InfoBox.swift in Sources */,
 				A7A22884220604E700081E0E /* World.swift in Sources */,
@@ -911,11 +913,11 @@
 				A71538F8222D1AD200A81322 /* ResourceManager.swift in Sources */,
 				A7A228CA2206050E00081E0E /* SKSpriteNode+Extensions.swift in Sources */,
 				A765DC032215A48400B34284 /* CGVector+Extensions.swift in Sources */,
-				A7A228B3220604F600081E0E /* Level06.swift in Sources */,
+				A7A228B3220604F600081E0E /* LevelMoon.swift in Sources */,
 				A745E1792239648A0043EC5A /* StandardPlatform.swift in Sources */,
-				A7A228AE220604F600081E0E /* Level01.swift in Sources */,
+				A7A228AE220604F600081E0E /* LevelBase1.swift in Sources */,
 				A74EF244223A3A9C00A69176 /* ProductCell.swift in Sources */,
-				A7A228AF220604F600081E0E /* Level02.swift in Sources */,
+				A7A228AF220604F600081E0E /* LevelBase2.swift in Sources */,
 				A7186DDE220C3F8900187C6E /* SoundController.swift in Sources */,
 				A74EF254223A6F1B00A69176 /* PremiumViewController.swift in Sources */,
 				A7A2287D220604E700081E0E /* Game.swift in Sources */,
@@ -927,23 +929,24 @@
 				A7A228A4220604EE00081E0E /* Platform.swift in Sources */,
 				A74EF24C223A5E4E00A69176 /* ShopProduct.swift in Sources */,
 				A74EF248223A3C9E00A69176 /* ShopTVC.swift in Sources */,
-				A7A228B1220604F600081E0E /* Level04.swift in Sources */,
-				A7A228B5220604F600081E0E /* Level08.swift in Sources */,
+				A7A228B1220604F600081E0E /* LevelDesert.swift in Sources */,
+				A7A228B5220604F600081E0E /* LevelFinal.swift in Sources */,
 				A7A22883220604E700081E0E /* NodeZOrder.swift in Sources */,
 				A7DC9BB62216BF670038EC58 /* GameState.swift in Sources */,
 				A74E3C8822131B2400D38AEB /* GameViewController.swift in Sources */,
 				A72F3BCE2241319000D7267A /* Logger.swift in Sources */,
-				A7A228B4220604F600081E0E /* Level07.swift in Sources */,
+				A7A228B4220604F600081E0E /* LevelMoonStars.swift in Sources */,
 				A7A22871220604E000081E0E /* Overlay.swift in Sources */,
 				A7A22882220604E700081E0E /* NodeCategories.swift in Sources */,
 				A74EF260223AC74300A69176 /* ClosePremiumCell.swift in Sources */,
 				A7A228A6220604EE00081E0E /* Coin.swift in Sources */,
 				A7901475222B2DB30025368A /* PersonalTower.swift in Sources */,
 				A71538F4222D10DA00A81322 /* Collectable.swift in Sources */,
+				A756B265224BA23F00CC335E /* LevelWood.swift in Sources */,
 				A7DC9BBC221756CF0038EC58 /* PerfectJumpDetector.swift in Sources */,
 				A790146D222984120025368A /* IconButton.swift in Sources */,
 				A7A228A5220604EE00081E0E /* EndLevelPlatform.swift in Sources */,
-				A7A228B2220604F600081E0E /* Level05.swift in Sources */,
+				A7A228B2220604F600081E0E /* LevelSunset.swift in Sources */,
 				A7901471222AF1470025368A /* TowerBricks.swift in Sources */,
 				A7A22887220604E700081E0E /* OverlayPause.swift in Sources */,
 				A74EF258223A709200A69176 /* BuyPremiumCell.swift in Sources */,
@@ -961,6 +964,7 @@
 				A71538FC222D241F00A81322 /* ConsumableBrick.swift in Sources */,
 				A776C4FC224575C9004FAD3B /* CGSize+Extensions.swift in Sources */,
 				A7A22859220604D500081E0E /* AdvertisingController.swift in Sources */,
+				A756B269224BA29F00CC335E /* LevelSun.swift in Sources */,
 				A724098322243DF100B18095 /* Score.swift in Sources */,
 				A7736A9E2206025100A28B5D /* AppDelegate.swift in Sources */,
 				A74EF25C223A70A700A69176 /* PremiumFeatureCell.swift in Sources */,
@@ -973,7 +977,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7A228B9220604F700081E0E /* Level03.swift in Sources */,
+				A7A228B9220604F700081E0E /* LevelSnow.swift in Sources */,
 				A7A228B6220604F700081E0E /* Level.swift in Sources */,
 				A77B389E22254F3F003DEB38 /* ShopViewController.swift in Sources */,
 				A7A2288D220604E800081E0E /* InfoBox.swift in Sources */,
@@ -989,9 +993,9 @@
 				A7901472222AF1470025368A /* TowerBricks.swift in Sources */,
 				A7A228CF2206050E00081E0E /* SKSpriteNode+Extensions.swift in Sources */,
 				A75688132242608D00E793A1 /* IconDescriptionButton.swift in Sources */,
-				A7A228BC220604F700081E0E /* Level06.swift in Sources */,
-				A7A228B7220604F700081E0E /* Level01.swift in Sources */,
-				A7A228B8220604F700081E0E /* Level02.swift in Sources */,
+				A7A228BC220604F700081E0E /* LevelMoon.swift in Sources */,
+				A7A228B7220604F700081E0E /* LevelBase1.swift in Sources */,
+				A7A228B8220604F700081E0E /* LevelBase2.swift in Sources */,
 				A7A2288A220604E800081E0E /* Game.swift in Sources */,
 				A7A2288E220604E800081E0E /* Player.swift in Sources */,
 				A74EF24D223A5E4E00A69176 /* ShopProduct.swift in Sources */,
@@ -1003,13 +1007,14 @@
 				A7A228A7220604EF00081E0E /* Platform.swift in Sources */,
 				A7240994222444F100B18095 /* ScoresNode.swift in Sources */,
 				A7AA89B3221FE6BB00C5D73A /* CoinManager.swift in Sources */,
-				A7A228BA220604F700081E0E /* Level04.swift in Sources */,
-				A7A228BE220604F700081E0E /* Level08.swift in Sources */,
+				A7A228BA220604F700081E0E /* LevelDesert.swift in Sources */,
+				A7A228BE220604F700081E0E /* LevelFinal.swift in Sources */,
 				A765DC042215A48400B34284 /* CGVector+Extensions.swift in Sources */,
 				A74EF245223A3A9C00A69176 /* ProductCell.swift in Sources */,
 				A7A22890220604E800081E0E /* NodeZOrder.swift in Sources */,
 				A71538F5222D10DA00A81322 /* Collectable.swift in Sources */,
-				A7A228BD220604F700081E0E /* Level07.swift in Sources */,
+				A756B26A224BA29F00CC335E /* LevelSun.swift in Sources */,
+				A7A228BD220604F700081E0E /* LevelMoonStars.swift in Sources */,
 				A71538FD222D241F00A81322 /* ConsumableBrick.swift in Sources */,
 				A7A22876220604E100081E0E /* Overlay.swift in Sources */,
 				A7A2288F220604E800081E0E /* NodeCategories.swift in Sources */,
@@ -1017,7 +1022,7 @@
 				A724098422243DF100B18095 /* Score.swift in Sources */,
 				A7A228A8220604EF00081E0E /* EndLevelPlatform.swift in Sources */,
 				A756880F22423A3F00E793A1 /* Constants.swift in Sources */,
-				A7A228BB220604F700081E0E /* Level05.swift in Sources */,
+				A7A228BB220604F700081E0E /* LevelSunset.swift in Sources */,
 				A74EF259223A709200A69176 /* BuyPremiumCell.swift in Sources */,
 				A7A22894220604E800081E0E /* OverlayPause.swift in Sources */,
 				A7736AB12206025100A28B5D /* TVOSGameViewController.swift in Sources */,
@@ -1032,6 +1037,7 @@
 				A74EF255223A6F1B00A69176 /* PremiumViewController.swift in Sources */,
 				A72F3BCF2241319000D7267A /* Logger.swift in Sources */,
 				A776C4FD224575C9004FAD3B /* CGSize+Extensions.swift in Sources */,
+				A756B266224BA23F00CC335E /* LevelWood.swift in Sources */,
 				A74EF25D223A70A700A69176 /* PremiumFeatureCell.swift in Sources */,
 				A745E17A2239648A0043EC5A /* StandardPlatform.swift in Sources */,
 				A7736AAF2206025100A28B5D /* AppDelegate.swift in Sources */,
@@ -1043,7 +1049,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7A228C2220604F700081E0E /* Level03.swift in Sources */,
+				A7A228C2220604F700081E0E /* LevelSnow.swift in Sources */,
 				A7A228BF220604F700081E0E /* Level.swift in Sources */,
 				A77B389F22254F3F003DEB38 /* ShopViewController.swift in Sources */,
 				A7A2289A220604E800081E0E /* InfoBox.swift in Sources */,
@@ -1059,9 +1065,9 @@
 				A7901473222AF1470025368A /* TowerBricks.swift in Sources */,
 				A7A228D42206050E00081E0E /* SKSpriteNode+Extensions.swift in Sources */,
 				A75688142242608D00E793A1 /* IconDescriptionButton.swift in Sources */,
-				A7A228C5220604F700081E0E /* Level06.swift in Sources */,
-				A7A228C0220604F700081E0E /* Level01.swift in Sources */,
-				A7A228C1220604F700081E0E /* Level02.swift in Sources */,
+				A7A228C5220604F700081E0E /* LevelMoon.swift in Sources */,
+				A7A228C0220604F700081E0E /* LevelBase1.swift in Sources */,
+				A7A228C1220604F700081E0E /* LevelBase2.swift in Sources */,
 				A7A22897220604E800081E0E /* Game.swift in Sources */,
 				A7A2289B220604E800081E0E /* Player.swift in Sources */,
 				A74EF24E223A5E4E00A69176 /* ShopProduct.swift in Sources */,
@@ -1073,13 +1079,14 @@
 				A7A228AA220604EF00081E0E /* Platform.swift in Sources */,
 				A7240995222444F100B18095 /* ScoresNode.swift in Sources */,
 				A7AA89B4221FE6BB00C5D73A /* CoinManager.swift in Sources */,
-				A7A228C3220604F700081E0E /* Level04.swift in Sources */,
-				A7A228C7220604F700081E0E /* Level08.swift in Sources */,
+				A7A228C3220604F700081E0E /* LevelDesert.swift in Sources */,
+				A7A228C7220604F700081E0E /* LevelFinal.swift in Sources */,
 				A765DC052215A48400B34284 /* CGVector+Extensions.swift in Sources */,
 				A74EF246223A3A9C00A69176 /* ProductCell.swift in Sources */,
 				A7A2289D220604E800081E0E /* NodeZOrder.swift in Sources */,
 				A71538F6222D10DA00A81322 /* Collectable.swift in Sources */,
-				A7A228C6220604F700081E0E /* Level07.swift in Sources */,
+				A756B26B224BA29F00CC335E /* LevelSun.swift in Sources */,
+				A7A228C6220604F700081E0E /* LevelMoonStars.swift in Sources */,
 				A71538FE222D241F00A81322 /* ConsumableBrick.swift in Sources */,
 				A7A2287B220604E100081E0E /* Overlay.swift in Sources */,
 				A7A2289C220604E800081E0E /* NodeCategories.swift in Sources */,
@@ -1087,7 +1094,7 @@
 				A724098522243DF100B18095 /* Score.swift in Sources */,
 				A7A228AB220604EF00081E0E /* EndLevelPlatform.swift in Sources */,
 				A756881022423A3F00E793A1 /* Constants.swift in Sources */,
-				A7A228C4220604F700081E0E /* Level05.swift in Sources */,
+				A7A228C4220604F700081E0E /* LevelSunset.swift in Sources */,
 				A74EF25A223A709200A69176 /* BuyPremiumCell.swift in Sources */,
 				A7A228A1220604E800081E0E /* OverlayPause.swift in Sources */,
 				A7736ABF2206025200A28B5D /* OSXGameViewController.swift in Sources */,
@@ -1102,6 +1109,7 @@
 				A74EF256223A6F1B00A69176 /* PremiumViewController.swift in Sources */,
 				A72F3BD02241319000D7267A /* Logger.swift in Sources */,
 				A776C4FE224575C9004FAD3B /* CGSize+Extensions.swift in Sources */,
+				A756B267224BA23F00CC335E /* LevelWood.swift in Sources */,
 				A74EF25E223A70A700A69176 /* PremiumFeatureCell.swift in Sources */,
 				A745E17B2239648A0043EC5A /* StandardPlatform.swift in Sources */,
 				A7736ABD2206025200A28B5D /* AppDelegate.swift in Sources */,
