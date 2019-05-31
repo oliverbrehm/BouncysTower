@@ -38,7 +38,8 @@ class GameViewController: UIViewController {
         }
     }
     
-    var shopDelegate: ShopDelegate?
+    weak var shopDelegate: ShopDelegate?
+    
     func showShop(delegate: ShopDelegate? = nil) {
         self.shopDelegate = delegate
         self.performSegue(withIdentifier: "showShop", sender: self)

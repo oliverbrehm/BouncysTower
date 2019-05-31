@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-protocol PersonalTowerDelegate {
+protocol PersonalTowerDelegate: class {
     func towerViewModeStarted()
 }
 
@@ -105,7 +105,7 @@ class PersonalTower: SKNode {
     private var brickStore: BrickStore?
     private var buildParticles: [SKEmitterNode] = []
     
-    var delegate: PersonalTowerDelegate?
+    weak var delegate: PersonalTowerDelegate?
     
     var height: CGFloat {
         return bricksLabel.position.y + bricksLabel.frame.size.height
@@ -175,19 +175,9 @@ class PersonalTower: SKNode {
         
         TowerBricks.standard.buildRow()
         
+        setupNodes()
+        
         let nRows = TowerBricks.standard.rows.count
-        
-        background.size = CGSize(width: 5 * TowerBrick.brickWidth, height: CGFloat(nRows) * TowerBrick.brickHeight)
-        background.position = CGPoint(x: 0.0, y: towerImage.top + background.size.height / 2.0)
-        background.physicsBody = SKPhysicsBody.init(rectangleOf: background.size)
-        background.physicsBody?.isDynamic = false
-        
-        brickStore?.position.y += TowerBrick.brickHeight
-        bricksLabel.position.y += TowerBrick.brickHeight
-        viewModeButton.position.y += TowerBrick.brickHeight
-        buildRowButton.position.y += TowerBrick.brickHeight
-        towerTop.position.y += TowerBrick.brickHeight
-        rowsLabel.position.y += TowerBrick.brickHeight
         
         buildParticles.removeAll()
         for n in 0 ..< 5 {
@@ -217,13 +207,26 @@ class PersonalTower: SKNode {
             self.buildRowButton.isHidden = false
             self.rowsLabel.text = "Tower height: \(nRows)"
             if let main = self.scene, nRows >= 2 && Config.standard.shouldShow(tutorial: .towerMultiplicator) {
-                InfoBox.show(in: main, text: "x2\n\n"
-                    + "Awesome, your tower is growing!\n"
-                    + "You even get a higher in-game score the taller the tower gets. "
-                    + "The score for each jump will be multiplied by the height of your tower.")
+                InfoBox.show(in: main, text: Tutorial.towerMultiplicator.message)
                 Config.standard.setTutorialShown(.towerMultiplicator)
             }
         }
+    }
+    
+    private func setupNodes() {
+        background.size = CGSize(
+            width: 5 * TowerBrick.brickWidth,
+            height: CGFloat(TowerBricks.standard.rows.count) * TowerBrick.brickHeight)
+        background.position = CGPoint(x: 0.0, y: towerImage.top + background.size.height / 2.0)
+        background.physicsBody = SKPhysicsBody.init(rectangleOf: background.size)
+        background.physicsBody?.isDynamic = false
+        
+        brickStore?.position.y += TowerBrick.brickHeight
+        bricksLabel.position.y += TowerBrick.brickHeight
+        viewModeButton.position.y += TowerBrick.brickHeight
+        buildRowButton.position.y += TowerBrick.brickHeight
+        towerTop.position.y += TowerBrick.brickHeight
+        rowsLabel.position.y += TowerBrick.brickHeight
     }
     
     private func addBrickFromStore(posX: Int) {

@@ -265,6 +265,9 @@
 		A7DC9BC422177E430038EC58 /* SuperJump.sks in Resources */ = {isa = PBXBuildFile; fileRef = A7DC9BC322177E430038EC58 /* SuperJump.sks */; };
 		A7DC9BC522177E430038EC58 /* SuperJump.sks in Resources */ = {isa = PBXBuildFile; fileRef = A7DC9BC322177E430038EC58 /* SuperJump.sks */; };
 		A7DC9BC622177E430038EC58 /* SuperJump.sks in Resources */ = {isa = PBXBuildFile; fileRef = A7DC9BC322177E430038EC58 /* SuperJump.sks */; };
+		BB4A245522A12B850049962E /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = BB4A245422A12B850049962E /* .swiftlint.yml */; };
+		BB4A245622A12B850049962E /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = BB4A245422A12B850049962E /* .swiftlint.yml */; };
+		BB4A245722A12B850049962E /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = BB4A245422A12B850049962E /* .swiftlint.yml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -371,6 +374,7 @@
 		A7DC9BBB221756CF0038EC58 /* PerfectJumpDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfectJumpDetector.swift; sourceTree = "<group>"; };
 		A7DC9BBF221775270038EC58 /* ComboParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ComboParticle.sks; sourceTree = "<group>"; };
 		A7DC9BC322177E430038EC58 /* SuperJump.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SuperJump.sks; sourceTree = "<group>"; };
+		BB4A245422A12B850049962E /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -552,6 +556,7 @@
 		A7797EDD20E2A89200E3B664 = {
 			isa = PBXGroup;
 			children = (
+				BB4A245422A12B850049962E /* .swiftlint.yml */,
 				A7797EE820E2A89200E3B664 /* BouncyJump */,
 				A7736A9C2206025100A28B5D /* BouncyJump iOS */,
 				A7736AAD2206025100A28B5D /* BouncyJump tvOS */,
@@ -747,7 +752,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1010;
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Oliver Brehm";
 				TargetAttributes = {
 					A7736A9A2206025100A28B5D = {
@@ -777,7 +782,7 @@
 			};
 			buildConfigurationList = A7797EE120E2A89200E3B664 /* Build configuration list for PBXProject "BouncyJump" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -810,6 +815,7 @@
 				A7AA89B6222019C400C5D73A /* Assets.xcassets in Resources */,
 				A776C4F122455EE8004FAD3B /* brick_standard.aif in Resources */,
 				A7DC9BC422177E430038EC58 /* SuperJump.sks in Resources */,
+				BB4A245522A12B850049962E /* .swiftlint.yml in Resources */,
 				A7A228CB2206050E00081E0E /* ScoreParticle.sks in Resources */,
 				A776C4F422455EE8004FAD3B /* cheer.aif in Resources */,
 				A7DC9BC0221775270038EC58 /* ComboParticle.sks in Resources */,
@@ -828,6 +834,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB4A245622A12B850049962E /* .swiftlint.yml in Resources */,
 				A7186DFF220C43B700187C6E /* message.aif in Resources */,
 				A776C4F922455FE6004FAD3B /* extralife.aif in Resources */,
 				A7A22866220604DB00081E0E /* MainGame.sks in Resources */,
@@ -854,6 +861,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB4A245722A12B850049962E /* .swiftlint.yml in Resources */,
 				A7186E00220C43B700187C6E /* message.aif in Resources */,
 				A776C4FA22455FE6004FAD3B /* extralife.aif in Resources */,
 				A7A2286A220604DC00081E0E /* MainGame.sks in Resources */,

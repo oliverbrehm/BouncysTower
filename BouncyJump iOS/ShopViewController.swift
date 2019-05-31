@@ -10,7 +10,7 @@ import UIKit
 
 class ShopViewController: UIViewController {
     
-    var delegate: ShopDelegate?
+    weak var delegate: ShopDelegate?
 
     @IBOutlet weak var coinsLabel: UILabel!
     @IBOutlet weak var extralivesLabel: UILabel!

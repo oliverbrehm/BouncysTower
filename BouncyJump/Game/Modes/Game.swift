@@ -177,53 +177,13 @@ class Game: SKScene, SKPhysicsContactDelegate {
     }
     
     func checkShowTutorial(_ tutorial: Tutorial, brick: Brick? = nil) {
-        let message: String?
-        var image: String?
-        var imageHeight: CGFloat = 0.0
+        let imageName = (brick != nil) ? brick?.textureName : tutorial.imageName
         
-        switch tutorial {
-        case .move:
-            message = "Touch and hold to move. "
-                + "Use the entire left half of the screen to move left and the right half to move right. "
-                + "You move faster the longer you touch the screen."
-            image = "leftright"
-            imageHeight = 80.0
-            
-        case .wallJump:
-            message = "Great, you reached the next Level! Did you notice: "
-                + "You get an extra boost upwards if you jump against the wall! "
-                + "If you roll left or right on the platform, you gain more speed and jump higher."
-            
-        case .combos:
-            message = "Nice jumping! You get an even higher score if you do combos. "
-                + "Always keep rolling by holding your touch while on the platform. "
-                + "To get a combo you have to jump at least two platforms at once "
-                + "and hit the left or right wall between each jump."
-            image = "combo"
-            imageHeight = 160.0
-            
-        case .bricks:
-            message = "Cool, you collected a loose brick! "
-                + "Use it in the main screen to build your own personal tower."
-            image = brick?.textureName
-            imageHeight = 50.0
-            
-        case .extraLives:
-            message = "Hey, you found an extra life! "
-                + "If you fall down, you can decide to use it and it will save you once."
-            image = "extralife"
-            imageHeight = 50.0
-        default:
-            message = nil
-        }
-        
-        if(message == nil) {
-            return
-        }
+        guard !tutorial.message.isEmpty else { return }
         
         if(Config.standard.shouldShow(tutorial: tutorial)) {
             self.run(SKAction.wait(forDuration: 0.3)) {
-                InfoBox.show(in: self, text: message!, imageName: image, imageHeight: imageHeight, onShow: {
+                InfoBox.show(in: self, text: tutorial.message, imageName: imageName, imageHeight: tutorial.imageHeight, onShow: {
                     self.pause()
                 }, completion: {
                     Config.standard.setTutorialShown(tutorial)

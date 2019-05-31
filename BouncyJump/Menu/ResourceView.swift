@@ -18,7 +18,7 @@ class ResourceView: Button, ShopDelegate {
     private let lifeLabel = SKLabelNode(fontNamed: Constants.fontName)
     private let coinLabel = SKLabelNode(fontNamed: Constants.fontName)
     
-    var shopDelegate: ShopDelegate?
+    weak var shopDelegate: ShopDelegate?
     
     init() {
         super.init(size: CGSize(width: 50.0, height: 50.0))
