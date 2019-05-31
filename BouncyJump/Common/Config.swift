@@ -164,6 +164,12 @@ class Config {
         }
     }
     
+    func debugBuyLotsOfBricks() {
+        for _ in 1...200 {
+            buyBrick(.standard)
+        }
+    }
+    
     func buyBrick(_ brick: Brick) {
         if(self.coins >= brick.cost) {
             self.coins -= brick.cost

@@ -108,7 +108,7 @@ class PersonalTower: SKNode {
     weak var delegate: PersonalTowerDelegate?
     
     var height: CGFloat {
-        return bricksLabel.position.y + bricksLabel.frame.size.height
+        return bricksLabel.position.y + bricksLabel.frame.size.height + 15
     }
     
     required init?(coder aDecoder: NSCoder) {

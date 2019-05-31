@@ -97,15 +97,27 @@ class Main: SKScene, ShopDelegate, PersonalTowerDelegate {
     }
     
     private func moveTower(dy: CGFloat) {
-        self.tower.position.y = min(self.bottom, self.tower.position.y + dy)
-        self.tower.position.y = max(self.tower.position.y, -self.tower.height + self.size.height / 2.0 - 20.0)
-        self.background?.position.y = bottom + (self.tower.position.y - bottom) * 0.2
+        if tower.height < size.height {
+            return
+        }
+        
+        tower.position.y += dy
+        
+        if tower.position.y > bottom {
+            tower.position.y = bottom
+            scrollSpeed = 0.0
+        } else if tower.position.y + tower.height < size.height / 2.0 {
+            tower.position.y = size.height / 2.0 - tower.height
+            scrollSpeed = 0.0
+        }
+
+        background?.position.y = bottom + (tower.position.y - bottom) * 0.2
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         let y2 = touches.first?.location(in: self).y
         let y1 = touches.first?.previousLocation(in: self).y
-        if(y1 != nil && y2 != nil) {
+        if(y1 != nil && y2 != nil && TowerBricks.standard.rows.count > 0) {
             let dy = CGFloat(y2! - y1!)
             self.moveTower(dy: dy)
             self.scrollSpeed = dy
@@ -125,9 +137,8 @@ class Main: SKScene, ShopDelegate, PersonalTowerDelegate {
     override func update(_ currentTime: TimeInterval) {
         if(touching) {
             self.releaseTime = currentTime
-        } else if(abs(scrollSpeed) > 0.1) {
+        } else if(abs(scrollSpeed) > 0.1 && TowerBricks.standard.rows.count > 0) {
             self.moveTower(dy: scrollSpeed)
-            
             let dt = currentTime - releaseTime
             self.scrollSpeed = CGFloat(afterScrollTime - dt) * scrollReleaseSpeed
         }
