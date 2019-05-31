@@ -9,19 +9,19 @@
 import SpriteKit
 
 extension SKSpriteNode {
-    func top() -> CGFloat {
+    var top: CGFloat {
         return self.position.y + self.frame.size.height / 2.0
     }
     
-    func bottom() -> CGFloat {
+    var bottom: CGFloat {
         return self.position.y - self.frame.size.height / 2.0
     }
     
-    func left() -> CGFloat {
+    var left: CGFloat {
         return self.position.x - self.frame.size.width / 2.0
     }
     
-    func right() -> CGFloat {
+    var right: CGFloat {
         return self.position.x + self.frame.size.width / 2.0
     }
 }

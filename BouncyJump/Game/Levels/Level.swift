@@ -219,7 +219,7 @@ class Level: SKNode, LevelConfiguration {
             for platform in platforms {
                 if platform.position.y < playerBottom - sceneHeight {
                     toRemove.append(platform)
-                } else if(playerBottom < platform.top() - 0.25 * player.size.height) {
+                } else if(playerBottom < platform.top - 0.25 * player.size.height) {
                     platform.deactivateCollisions()
                 }
             }
@@ -230,7 +230,7 @@ class Level: SKNode, LevelConfiguration {
         } else if(player.state == .falling) {
             // falling: activate collisions for platforms underneath player
             for platform in platforms {
-                if(playerBottom > platform.top() - 0.25 * player.size.height) {
+                if(playerBottom > platform.top - 0.25 * player.size.height) {
                     platform.activateCollisions()
                 } else {
                     platform.deactivateCollisions()

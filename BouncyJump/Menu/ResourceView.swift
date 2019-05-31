@@ -80,8 +80,8 @@ class ResourceView: Button, ShopDelegate {
         self.lifeLabel.text = "x \(Config.standard.extraLives)"
         self.coinLabel.text = "x \(Config.standard.coins)"
 
-        let width = iconSize + textMargin + max(lifeLabel.frame.size.width, coinLabel.frame.size.width)
-        let height = 2 * iconSize + textMargin
+        let width: CGFloat = iconSize + textMargin + max(lifeLabel.frame.size.width, coinLabel.frame.size.width)
+        let height: CGFloat = 2 * iconSize + textMargin
         self.size = CGSize(width: width, height: height)
         
         lifeView.position = CGPoint(x: -width / 2.0 + iconSize / 2.0, y: textMargin / 2.0 + iconSize / 2.0)
@@ -89,7 +89,9 @@ class ResourceView: Button, ShopDelegate {
         
         lifeLabel.position = CGPoint(x: -width / 2.0 + iconSize + textMargin + lifeLabel.frame.size.width / 2.0,
                                      y: textMargin / 2.0 + iconSize / 2.0 - lifeLabel.frame.size.height / 2.0)
-        coinLabel.position = CGPoint(x: -width / 2.0 + iconSize + textMargin + coinLabel.frame.size.width / 2.0,
+        
+        let coinXStart: CGFloat = -width / 2.0
+        coinLabel.position = CGPoint(x: coinXStart + iconSize + textMargin + coinLabel.frame.size.width / 2.0,
                                      y: -height / 2.0 + iconSize / 2.0 - coinLabel.frame.size.height / 2.0)
     }
 }

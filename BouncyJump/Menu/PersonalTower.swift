@@ -178,7 +178,7 @@ class PersonalTower: SKNode {
         let nRows = TowerBricks.standard.rows.count
         
         background.size = CGSize(width: 5 * TowerBrick.brickWidth, height: CGFloat(nRows) * TowerBrick.brickHeight)
-        background.position = CGPoint(x: 0.0, y: towerImage.top() + background.size.height / 2.0)
+        background.position = CGPoint(x: 0.0, y: towerImage.top + background.size.height / 2.0)
         background.physicsBody = SKPhysicsBody.init(rectangleOf: background.size)
         background.physicsBody?.isDynamic = false
         
@@ -195,7 +195,7 @@ class PersonalTower: SKNode {
             emitter.zPosition = NodeZOrder.world + 0.04
             self.addChild(emitter)
             emitter.position = CGPoint(x: -background.size.width / 2.0 + TowerBrick.brickWidth / 2.0 + CGFloat(n) * TowerBrick.brickWidth,
-                                       y: self.background.top() - TowerBrick.brickHeight / 2.0)
+                                       y: self.background.top - TowerBrick.brickHeight / 2.0)
             buildParticles.append(emitter)
         }
         
@@ -237,7 +237,7 @@ class PersonalTower: SKNode {
                 self.addChild(brick)
 
                 brick.position = CGPoint(x: -self.background.size.width / 2.0 + TowerBrick.brickWidth / 2.0 + CGFloat(posX) * TowerBrick.brickWidth,
-                                         y: self.background.top() - TowerBrick.brickHeight / 2.0)
+                                         y: self.background.top - TowerBrick.brickHeight / 2.0)
                 brick.run(SKAction.fadeIn(withDuration: 0.3)) {
                     let emitter = self.buildParticles[posX]
                     emitter.removeFromParent()
