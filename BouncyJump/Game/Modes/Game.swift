@@ -39,6 +39,7 @@ class Game: SKScene, SKPhysicsContactDelegate {
     override func didMove(to view: SKView) {
         if(player.parent == nil) {
             self.physicsWorld.contactDelegate = self
+            self.physicsWorld.gravity = CGVector(dx: 0, dy: Config.physicsYFactor * (-9.81))
             
             self.player.initialize(world: self.world, scene: self)
             

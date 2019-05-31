@@ -16,10 +16,10 @@ class Level: SKNode, LevelConfiguration {
     private var backgroundTiles: [SKSpriteNode] = []
     
     private var platforms: [Platform] = []
-    private let maxPlatforms = 25
+    private let maxPlatforms = 30
     private var wallY: CGFloat = 0.0
     private var wallTiles: [SKSpriteNode] = []
-    private let maxWallTiles = 250
+    private let maxWallTiles = 350
     
     private var levelPlatformIndex = 1
     private var speedEaseIn: CGFloat = 999999999.0

@@ -114,6 +114,14 @@ class Config {
         }
     }
     
+    static var physicsXFactor: CGFloat {
+        return UIScreen.main.nativeBounds.width / 700
+    }
+    
+    static var physicsYFactor: CGFloat {
+        return UIScreen.main.nativeBounds.height / 1200
+    }
+    
     static var isIphoneX: Bool {
         let deviceHeight = UIScreen.main.nativeBounds.height
         return [2436, 2688, 1792].contains(deviceHeight)

@@ -18,9 +18,9 @@ class Player: SKSpriteNode {
     
     static let size: CGFloat = 30.0
     
-    private let jumpImpulse: CGFloat = 35.0
-    private let superJumpImpulse: CGFloat = 120.0
-    private let movingForce: CGFloat = 5000.0
+    private let jumpImpulse: CGFloat = 35.0 * Config.physicsYFactor
+    private let superJumpImpulse: CGFloat = 120.0 * Config.physicsYFactor
+    private let movingForce: CGFloat = 5000.0 * Config.physicsXFactor
     private let onPlatformForceMultiplicator: CGFloat = 1.8
     private let actionScale = "PLAYER_SCALE"
     
@@ -191,7 +191,7 @@ class Player: SKSpriteNode {
     
     func update(dt: TimeInterval) {
         if let p = self.physicsBody, self.state != .falling {
-            if self.state == .onPlatform && p.velocity.dy < -50.0 { // TODO why -50.0?
+            if self.state == .onPlatform && p.velocity.dy < -50.0 {
                 // falling from platform
                 Logger.standard.playerState(message: "--- falling from platform, dy: \(p.velocity.dy)")
                 self.state = .falling
