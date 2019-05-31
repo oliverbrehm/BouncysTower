@@ -66,7 +66,7 @@ class CoinManager {
     func removeCoin(coin: Coin) {
         coin.removeFromParent()
 
-        if let index = self.coins.index(of: coin) {
+        if let index = self.coins.firstIndex(of: coin) {
             self.coins.remove(at: index)
         }
     }

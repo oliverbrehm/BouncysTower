@@ -758,6 +758,7 @@
 					A7736A9A2206025100A28B5D = {
 						CreatedOnToolsVersion = 10.1;
 						DevelopmentTeam = CR6FRMMTU7;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.GameCenter.iOS = {
@@ -1182,7 +1183,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Oliver-Brehm.BouncysTower";
 				PRODUCT_NAME = BouncyJump;
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1205,7 +1206,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Oliver-Brehm.BouncysTower";
 				PRODUCT_NAME = BouncyJump;
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
