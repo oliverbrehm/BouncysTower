@@ -134,8 +134,15 @@ class World: SKNode {
         }
         
         if let texture = level.textureStaticBackground, let camera = self.scene?.camera {
-            let size = CGSize(width: self.width, height: self.height)
-            self.staticLevelBackground = SKSpriteNode(texture: texture, color: level.backgroundColor, size: size)
+            let texRatio = texture.size().height / texture.size().width
+            let worldRatio = self.height / self.width
+            
+            if texRatio > worldRatio {
+                staticLevelBackground = SKSpriteNode(texture: texture, color: level.backgroundColor, width: self.width)
+            } else {
+                staticLevelBackground = SKSpriteNode(texture: texture, color: level.backgroundColor, height: self.height)
+            }
+            
             staticLevelBackground!.colorBlendFactor = 1.0
             staticLevelBackground!.zPosition = NodeZOrder.background - 0.1
             camera.addChild(staticLevelBackground!)

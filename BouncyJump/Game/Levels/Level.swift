@@ -166,7 +166,7 @@ class Level: SKNode, LevelConfiguration {
             let size = CGSize(width: world.width, height: world.width * texture.size().height / texture.size().width)
             
             while(self.backgroundY < y + 2 * size.height) {
-                let background = SKSpriteNode(texture: texture, color: self.backgroundColor, size: size)
+                let background = SKSpriteNode(texture: texture, color: self.backgroundColor, width: world.width)
                 background.colorBlendFactor = 1.0
                 background.position = CGPoint(x: 0.0, y: self.backgroundY + size.height / 2.0)
                 background.zPosition = NodeZOrder.background

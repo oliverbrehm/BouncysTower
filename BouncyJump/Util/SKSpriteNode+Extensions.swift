@@ -24,6 +24,16 @@ extension SKSpriteNode {
     var right: CGFloat {
         return self.position.x + self.frame.size.width / 2.0
     }
+    
+    convenience init(texture: SKTexture, color: SKColor, width: CGFloat) {
+        let size = CGSize(width: width, height: width * texture.size().height / texture.size().width)
+        self.init(texture: texture, color: color, size: size)
+    }
+    
+    convenience init(texture: SKTexture, color: SKColor, height: CGFloat) {
+        let size = CGSize(width: height * texture.size().width / texture.size().height, height: height)
+        self.init(texture: texture, color: color, size: size)
+    }
 }
 
 extension CGPoint {
