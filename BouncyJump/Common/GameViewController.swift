@@ -24,6 +24,14 @@ class GameViewController: UIViewController {
         
         showMainMenu()
     }
+    
+    override var prefersHomeIndicatorAutoHidden: Bool {
+        return true
+    }
+    
+    override var preferredScreenEdgesDeferringSystemGestures: UIRectEdge {
+        return .top
+    }
 
     func showGame() {
         if let scene = SKScene(fileNamed: "MainGame") as? MainGame {
