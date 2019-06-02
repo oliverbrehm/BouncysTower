@@ -24,9 +24,7 @@ class GameViewController: UIViewController {
         
         GameCenterManager.standard.presentingViewController = self
         GameCenterManager.standard.authenticate { success in
-            if success {
-                GameCenterManager.standard.showLeaderboard()
-            } else {
+            if !success {
                 print("Error authenticating with GameCenter")
             }
         }

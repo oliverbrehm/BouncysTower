@@ -12,7 +12,7 @@ class ScoreNode: SKNode {
     override init() {
         super.init()
         
-        var currentY = 80.0
+        var currentY = 100.0
         let dY = 20.0
         
         let titleLabel = SKLabelNode(fontNamed: Constants.fontName)
@@ -56,6 +56,13 @@ class ScoreNode: SKNode {
                 currentY -= dY
             }
         }
+        
+        let gameCenterButton = IconDescriptionButton(description: "GAME CENTER", image: "options")
+        gameCenterButton.position = CGPoint(x: 0, y: currentY - dY)
+        gameCenterButton.action = {
+            GameCenterManager.standard.showLeaderboard()
+        }
+        self.addChild(gameCenterButton)
     }
     
     required init?(coder aDecoder: NSCoder) {

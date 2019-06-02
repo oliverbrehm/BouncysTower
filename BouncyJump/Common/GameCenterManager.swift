@@ -61,7 +61,7 @@ class GameCenterManager: NSObject, GKGameCenterControllerDelegate {
     func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
         gameCenterViewController.dismiss(animated: true)
     }
-
+    
     // MARK: - upload leader boards
     private func uploadScore(leaderboard: Leaderboard, score: Int, completion: @escaping (Bool) -> Void) {
         guard GKLocalPlayer.local.isAuthenticated else {
@@ -70,12 +70,11 @@ class GameCenterManager: NSObject, GKGameCenterControllerDelegate {
             return
         }
         
-        let gkScore = GKScore(leaderboardIdentifier: leaderboard.identifier)
-        
+        let gkScore = GKScore(leaderboardIdentifier: leaderboard.identifier, player: GKLocalPlayer.local)
         gkScore.value = Int64(score)
         
         GKScore.report([gkScore]) { (error: Error?) in
-            // TODO did not upload?
+            // TODO is this working? not showing immediately/delay? wrong identifier?
             completion(error == nil)
         }
     }
