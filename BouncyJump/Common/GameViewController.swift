@@ -22,6 +22,15 @@ class GameViewController: UIViewController {
             view.showsNodeCount = true
         }
         
+        GameCenterManager.standard.presentingViewController = self
+        GameCenterManager.standard.authenticate { success in
+            if success {
+                GameCenterManager.standard.showLeaderboard()
+            } else {
+                print("Error authenticating with GameCenter")
+            }
+        }
+        
         showMainMenu()
     }
     

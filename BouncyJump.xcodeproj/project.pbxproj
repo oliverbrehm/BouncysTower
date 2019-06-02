@@ -268,6 +268,7 @@
 		BB4A245522A12B850049962E /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = BB4A245422A12B850049962E /* .swiftlint.yml */; };
 		BB4A245622A12B850049962E /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = BB4A245422A12B850049962E /* .swiftlint.yml */; };
 		BB4A245722A12B850049962E /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = BB4A245422A12B850049962E /* .swiftlint.yml */; };
+		BBFE1A9C22A40D2600FDCB84 /* GameCenterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFE1A9B22A40D2600FDCB84 /* GameCenterManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -375,6 +376,7 @@
 		A7DC9BBF221775270038EC58 /* ComboParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ComboParticle.sks; sourceTree = "<group>"; };
 		A7DC9BC322177E430038EC58 /* SuperJump.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SuperJump.sks; sourceTree = "<group>"; };
 		BB4A245422A12B850049962E /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
+		BBFE1A9B22A40D2600FDCB84 /* GameCenterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -686,6 +688,7 @@
 				A74EF24B223A5E4E00A69176 /* ShopProduct.swift */,
 				A72F3BCD2241319000D7267A /* Logger.swift */,
 				A756880D22423A3F00E793A1 /* Constants.swift */,
+				BBFE1A9B22A40D2600FDCB84 /* GameCenterManager.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -916,6 +919,7 @@
 				A7AA89B2221FE6BB00C5D73A /* CoinManager.swift in Sources */,
 				A7A228B0220604F600081E0E /* LevelSnow.swift in Sources */,
 				A7A228AD220604F600081E0E /* Level.swift in Sources */,
+				BBFE1A9C22A40D2600FDCB84 /* GameCenterManager.swift in Sources */,
 				A7A22880220604E700081E0E /* InfoBox.swift in Sources */,
 				A7A22884220604E700081E0E /* World.swift in Sources */,
 				A7A2286E220604E000081E0E /* Main.swift in Sources */,
