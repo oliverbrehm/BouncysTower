@@ -14,7 +14,7 @@ class Button: SKSpriteNode {
     var focussed: Bool = false
     
     static func focusNextInScene(_ scene: SKScene) {
-        // TODO
+        // TODO for OSX, TVOS
     }
     
     init(size: CGSize, color: SKColor = SKColor.clear) {

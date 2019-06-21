@@ -10,22 +10,21 @@ import SpriteKit
 
 class PerfectJumpDetector {
     
-    // constants
+    // MARK: - constants
     private let minimumRotation: CGFloat = 4.0
     private let maximumTimeOnPlatform: TimeInterval = 0.8
     
-    // nodes
+    // MARK: - nodes
     private var player: Player?
     private var currentPlatform: Platform?
     
-    // state
-    //private var rotationOnLanding: CGFloat = 0.0 // TODO REMOVE
+    // MARK: - state
     private var lastPlatformNumber = -1
     private var perfectJumpPossible = false
     private var timeOnPlatform: TimeInterval = 0.0
     private var hitWallSinceJump = false
     
-    // actions
+    // MARK: - actions
     private let shakeAction: SKAction
     private let perfectJumpAction: SKAction
     

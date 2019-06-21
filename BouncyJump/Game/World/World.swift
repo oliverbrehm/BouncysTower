@@ -36,7 +36,7 @@ class World: SKNode {
         
         self.coinManager.setup(world: self)
 
-        // left wall
+        // MARK: - left wall
         leftWall.size.height = height * 3.0
         leftWall.position.x = -width / 2.0 + World.wallWidth / 2.0
         leftWall.physicsBody = SKPhysicsBody.init(rectangleOf: leftWall.size)
@@ -48,7 +48,7 @@ class World: SKNode {
         self.addChild(leftWall)
         leftWall.zPosition = NodeZOrder.world
         
-        // right wall
+        // MARK: - right wall
         rightWall.size.height = height * 3.0
         rightWall.position.x = width / 2.0 - World.wallWidth / 2.0
         rightWall.physicsBody = SKPhysicsBody.init(rectangleOf: rightWall.size)

@@ -268,6 +268,7 @@
 		BB4A245522A12B850049962E /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = BB4A245422A12B850049962E /* .swiftlint.yml */; };
 		BB4A245622A12B850049962E /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = BB4A245422A12B850049962E /* .swiftlint.yml */; };
 		BB4A245722A12B850049962E /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = BB4A245422A12B850049962E /* .swiftlint.yml */; };
+		BB74F39D22BD222C00657282 /* InAppPurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB74F39C22BD222C00657282 /* InAppPurchaseManager.swift */; };
 		BBFE1A9C22A40D2600FDCB84 /* GameCenterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFE1A9B22A40D2600FDCB84 /* GameCenterManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -376,6 +377,7 @@
 		A7DC9BBF221775270038EC58 /* ComboParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ComboParticle.sks; sourceTree = "<group>"; };
 		A7DC9BC322177E430038EC58 /* SuperJump.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SuperJump.sks; sourceTree = "<group>"; };
 		BB4A245422A12B850049962E /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
+		BB74F39C22BD222C00657282 /* InAppPurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseManager.swift; sourceTree = "<group>"; };
 		BBFE1A9B22A40D2600FDCB84 /* GameCenterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -689,6 +691,7 @@
 				A72F3BCD2241319000D7267A /* Logger.swift */,
 				A756880D22423A3F00E793A1 /* Constants.swift */,
 				BBFE1A9B22A40D2600FDCB84 /* GameCenterManager.swift */,
+				BB74F39C22BD222C00657282 /* InAppPurchaseManager.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -947,6 +950,7 @@
 				A7A22883220604E700081E0E /* NodeZOrder.swift in Sources */,
 				A7DC9BB62216BF670038EC58 /* GameState.swift in Sources */,
 				A74E3C8822131B2400D38AEB /* GameViewController.swift in Sources */,
+				BB74F39D22BD222C00657282 /* InAppPurchaseManager.swift in Sources */,
 				A72F3BCE2241319000D7267A /* Logger.swift in Sources */,
 				A7A228B4220604F600081E0E /* LevelMoonStars.swift in Sources */,
 				A7A22871220604E000081E0E /* Overlay.swift in Sources */,

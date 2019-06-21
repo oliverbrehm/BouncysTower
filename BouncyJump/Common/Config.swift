@@ -135,11 +135,6 @@ class Config {
         coins += 1
     }
     
-    func buyCoins() {
-        // TODO in-app purchase here
-        coins += 50
-    }
-    
     func hasExtralives() -> Bool {
         return extraLives > 0
     }
