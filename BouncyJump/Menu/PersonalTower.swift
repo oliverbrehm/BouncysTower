@@ -132,21 +132,32 @@ class PersonalTower: SKNode {
         towerTop.zPosition = NodeZOrder.background + 0.02
         
         buildRowButton.action = {
-            if(TowerBricks.standard.canBuildRow) {
+            if !InAppPurchaseManager.shared.premiumPurchased && Score.standard.towerHeight >= 4 {
+                if let main = self.scene as? Main {
+                    InfoBox.show(in: main, text: "You cannot build your tower any higher in the free version. " +
+                        "Please consider buying premium to build as far up as you like!", onShow: nil)
+                    {
+                        if let vc = self.scene?.view?.window?.rootViewController as? GameViewController {
+                            AdvertisingController.shared.present(in: vc)
+                        }
+                    }
+                }
+            } else if(TowerBricks.standard.canBuildRow) {
                 self.buildRow()
             } else {
                 if let main = self.scene as? Main {
                     InfoBox.show(in: main,
                                  text: "Here you can build your own personal tower! Collect or buy five bricks to build a new row.",
-                                 onShow: {
-                                    self.buildRowButton.isHidden = true
-                                    main.disableUserInteraction()
-                                    // TODO freeze user input in main
-                                 },
-                                 completion: {
-                                    self.buildRowButton.isHidden = false
-                                    main.isUserInteractionEnabled = true
-                                 }
+                                 onShow:
+                        {
+                            self.buildRowButton.isHidden = true
+                            main.disableUserInteraction()
+                            // TODO freeze user input in main
+                         },
+                         completion: {
+                            self.buildRowButton.isHidden = false
+                            main.isUserInteractionEnabled = true
+                         }
                     )
                 }
             }

@@ -63,10 +63,10 @@ class GameCenterManager: NSObject, GKGameCenterControllerDelegate {
     }
     
     // MARK: - upload leader boards
-    private func uploadScore(leaderboard: Leaderboard, score: Int, completion: @escaping (Bool) -> Void) {
+    private func uploadScore(leaderboard: Leaderboard, score: Int, completion: ((Bool) -> Void)?) {
         guard GKLocalPlayer.local.isAuthenticated else {
             print("uploadScore: GameCenter not authenticated")
-            completion(false)
+            completion?(false)
             return
         }
         
@@ -75,23 +75,23 @@ class GameCenterManager: NSObject, GKGameCenterControllerDelegate {
         
         GKScore.report([gkScore]) { (error: Error?) in
             // TODO is this working? not showing immediately/delay? wrong identifier?
-            completion(error == nil)
+            completion?(error == nil)
         }
     }
     
-    func uploadHighscore(highscore: Int, completion: @escaping (Bool) -> Void) {
+    func uploadHighscore(highscore: Int, completion: ((Bool) -> Void)? = nil) {
         uploadScore(leaderboard: .highscore, score: highscore, completion: completion)
     }
     
-    func uploadHighestJump(highestJump: Int, completion: @escaping (Bool) -> Void) {
+    func uploadHighestJump(highestJump: Int, completion: ((Bool) -> Void)? = nil) {
         uploadScore(leaderboard: .highestJump, score: highestJump, completion: completion)
     }
     
-    func uploadTowerHeight(towerHeight: Int, completion: @escaping (Bool) -> Void) {
+    func uploadTowerHeight(towerHeight: Int, completion: ((Bool) -> Void)? = nil) {
         uploadScore(leaderboard: .towerHeight, score: towerHeight, completion: completion)
     }
     
-    func uploadLongestCombo(longestCombo: Int, completion: @escaping (Bool) -> Void) {
+    func uploadLongestCombo(longestCombo: Int, completion: ((Bool) -> Void)? = nil) {
         uploadScore(leaderboard: .longestCombo, score: longestCombo, completion: completion)
     }
 }

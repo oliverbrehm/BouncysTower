@@ -155,14 +155,8 @@ class MainGame: Game {
         let score = self.player.score
         let rank = Score.standard.addScore(score)
         
-        // TODO upload other leaderboards
-        if rank == 0 { // best score -> upload to GameCenter
-            GameCenterManager.standard.uploadHighscore(highscore: score) { success in
-                if success {
-                    print("Score \(score) was uploaded.")
-                }
-            }
-        }
+        Score.standard.highestJump = player.currentPlatform?.platformNumber ?? 0
+        Score.standard.longestCombo = player.longestCombo
         
         self.gameOverOverlay.show(score: score, rank: rank)
         self.pause()

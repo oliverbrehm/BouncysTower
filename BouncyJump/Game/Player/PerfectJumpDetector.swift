@@ -33,6 +33,8 @@ class PerfectJumpDetector {
         return max(comboCount, 1)
     }
     
+    var longestCombo = 0
+    
     init() {
         let shakesDuration = 0.3
         let nShakes = 2
@@ -63,6 +65,7 @@ class PerfectJumpDetector {
     func setup(player: Player) {
         self.player = player
         self.reset()
+        self.longestCombo = 0
     }
     
     func reset() {
@@ -98,6 +101,7 @@ class PerfectJumpDetector {
             }
         } else {
             if(self.comboCount > 1) {
+                longestCombo = max(longestCombo, comboCount)
                 self.showComboFinished()
             }
             self.comboCount = -1

@@ -87,6 +87,8 @@ class TowerBricks {
             let rowValues = rows.map { $0.map { $0.rawValue } }
             UserDefaults.standard.set(rowValues, forKey: TowerBricks.keyRows)
             UserDefaults.standard.synchronize()
+            
+            Score.standard.towerHeight = rows.count
         }
     }
     

@@ -41,6 +41,10 @@ class Player: SKSpriteNode {
         }
     }
     
+    var longestCombo: Int {
+        return perfectJumpDetector.longestCombo
+    }
+    
     private(set) var hitWallSinceJumping = false
     
     private let particleEmitter = SKEmitterNode(fileNamed: "ScoreParticle")!
@@ -97,7 +101,7 @@ class Player: SKSpriteNode {
         
         self.particleEmitter.particleBirthRate = 0.0
         
-        self.perfectJumpDetector.reset()
+        self.perfectJumpDetector.setup(player: self)
     }
     
     func nextLevelJump() {
