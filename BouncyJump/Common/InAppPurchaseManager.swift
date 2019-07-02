@@ -11,7 +11,11 @@ import StoreKit
 class InAppPurchaseManager: NSObject {
     private static let premiumProductIdentifier = "1"
     
-    static let shared = InAppPurchaseManager()
+    static let shared: InAppPurchaseManager = {
+        let instance = InAppPurchaseManager()
+        SKPaymentQueue.default().add(instance)
+        return instance
+    }()
     
     var hasProduct: Bool {
         return premiumProduct != nil
@@ -101,6 +105,7 @@ extension InAppPurchaseManager: SKPaymentTransactionObserver {
                 queue.finishTransaction(transaction)
                 
             case .restored:
+                premiumPurchased = true
                 restoreCompletionHandler?(true)
                 restoreCompletionHandler = nil
                 queue.finishTransaction(transaction)

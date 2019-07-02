@@ -180,21 +180,14 @@
                                     <rect key="frame" x="0.0" y="0.0" width="250" height="120"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="player" translatesAutoresizingMaskIntoConstraints="NO" id="WYI-6L-dbU">
-                                            <rect key="frame" x="55" y="8" width="40" height="40"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="40" id="Dg2-E1-uRX"/>
-                                                <constraint firstAttribute="height" constant="40" id="r8p-pB-qFl"/>
-                                            </constraints>
-                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="loading price..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aDZ-oz-yWg">
-                                            <rect key="frame" x="18.999999999999993" y="85.666666666666671" width="112.33333333333331" height="18.666666666666671"/>
+                                            <rect key="frame" x="18.999999999999993" y="37.333333333333336" width="112.33333333333331" height="18.666666666666664"/>
                                             <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="16"/>
                                             <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BUY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qcg-zc-eix">
-                                            <rect key="frame" x="8" y="51.999999999999993" width="134" height="29.666666666666664"/>
+                                            <rect key="frame" x="8" y="3.6666666666666643" width="134" height="29.666666666666671"/>
                                             <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="24"/>
                                             <color key="textColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -202,17 +195,16 @@
                                     </subviews>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="WYI-6L-dbU" firstAttribute="centerX" secondItem="sMq-dv-RJu" secondAttribute="centerX" id="8mC-yl-I5K"/>
                                     <constraint firstItem="aDZ-oz-yWg" firstAttribute="centerX" secondItem="sMq-dv-RJu" secondAttribute="centerX" id="Ody-9G-XmN"/>
-                                    <constraint firstItem="Qcg-zc-eix" firstAttribute="top" secondItem="WYI-6L-dbU" secondAttribute="bottom" constant="4" id="a99-x0-woL"/>
+                                    <constraint firstItem="Qcg-zc-eix" firstAttribute="centerY" secondItem="sMq-dv-RJu" secondAttribute="centerY" id="Qjy-7H-EXg"/>
                                     <constraint firstItem="Qcg-zc-eix" firstAttribute="centerX" secondItem="sMq-dv-RJu" secondAttribute="centerX" id="i3S-WD-oaa"/>
-                                    <constraint firstItem="WYI-6L-dbU" firstAttribute="top" secondItem="sMq-dv-RJu" secondAttribute="top" constant="8" id="icJ-sZ-Gyo"/>
                                     <constraint firstItem="Qcg-zc-eix" firstAttribute="leading" secondItem="sMq-dv-RJu" secondAttribute="leading" constant="8" id="vwD-mb-FxJ"/>
                                     <constraint firstItem="aDZ-oz-yWg" firstAttribute="top" secondItem="Qcg-zc-eix" secondAttribute="bottom" constant="4" id="zCK-am-3MT"/>
                                 </constraints>
                                 <size key="customSize" width="250" height="120"/>
                                 <connections>
                                     <outlet property="priceLabel" destination="aDZ-oz-yWg" id="b9z-pc-HQI"/>
+                                    <outlet property="titleLabel" destination="Qcg-zc-eix" id="pXa-hB-lRg"/>
                                 </connections>
                             </collectionViewCell>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="featureCell" id="y4v-ID-DNC" customClass="PremiumFeatureCell" customModule="BouncyJump" customModuleProvider="target">
@@ -261,7 +253,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CLOSE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j87-SK-xKg">
-                                            <rect key="frame" x="34" y="3.6666666666666714" width="82" height="30.000000000000004"/>
+                                            <rect key="frame" x="34" y="3.6666666666666679" width="82" height="30.000000000000004"/>
                                             <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="24"/>
                                             <color key="textColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -380,7 +372,6 @@
         <image name="buttonbg" width="62" height="62"/>
         <image name="coin" width="63" height="63"/>
         <image name="extralife" width="64" height="64"/>
-        <image name="player" width="509" height="507"/>
         <namedColor name="overlay">
             <color red="0.0" green="0.23399999737739563" blue="0.18999999761581421" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

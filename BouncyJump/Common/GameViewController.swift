@@ -67,7 +67,7 @@ class GameViewController: UIViewController {
             }
         } else if(segue.identifier == "showPremium") {
             if let vc = segue.destination as? PremiumViewController {
-                vc.setCountdown(seconds: AdvertisingController.standard.waitingTime)
+                vc.setCountdown(seconds: AdvertisingController.shared.waitingTime)
             }
         }
     }

@@ -16,7 +16,7 @@ class PremiumCVC: UICollectionViewController, UICollectionViewDelegateFlowLayout
     private let featureList = [
         "No more waiting time and reminders!",
         "Build your personal tower as high as you like!",
-        "Support the development of this game and other awesome games!"
+        "Support the development of this and other games!"
     ]
     
     private enum PremiumSection: Int, CaseIterable {
@@ -25,11 +25,19 @@ class PremiumCVC: UICollectionViewController, UICollectionViewDelegateFlowLayout
         case close
     }
     
-    private func setupBuyCell(_ cell: BuyPremiumCell) {
+    private func setupBuyCell(_ cell: BuyPremiumCell, restore: Bool) {
+        cell.layer.cornerRadius = 8.0
+        cell.isUserInteractionEnabled = false
+        cell.backgroundColor = UIColor.darkGray
+        cell.titleLabel.text = restore ? "Restore" : "BUY"
+        
         if paymentInProgress {
             cell.priceLabel.text = "buying..."
+            cell.isUserInteractionEnabled = false
         } else if InAppPurchaseManager.shared.hasProduct, let price = InAppPurchaseManager.shared.premiumPriceLocalized {
-            cell.priceLabel.text = price
+            cell.priceLabel.text = restore ? "" : price
+            cell.backgroundColor = UIColor(named: "cellBg") ?? UIColor.white
+            cell.isUserInteractionEnabled = true
         } else {
             cell.priceLabel.text = "loading price..."
             InAppPurchaseManager.shared.requestProduct { success in
@@ -39,8 +47,6 @@ class PremiumCVC: UICollectionViewController, UICollectionViewDelegateFlowLayout
                 }
             }
         }
-        cell.backgroundColor = UIColor(named: "cellBg") ?? UIColor.white
-        cell.layer.cornerRadius = 8.0
     }
     
     private func setupCloseCell(_ cell: ClosePremiumCell) {
@@ -64,6 +70,8 @@ class PremiumCVC: UICollectionViewController, UICollectionViewDelegateFlowLayout
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if(section == PremiumSection.features.rawValue) {
             return featureList.count
+        } else if section == PremiumSection.buy.rawValue {
+            return 2
         } else {
             return 1
         }
@@ -73,7 +81,7 @@ class PremiumCVC: UICollectionViewController, UICollectionViewDelegateFlowLayout
         switch(indexPath.section) {
         case PremiumSection.buy.rawValue:
             if let buyCell = collectionView.dequeueReusableCell(withReuseIdentifier: "buyCell", for: indexPath) as? BuyPremiumCell {
-                self.setupBuyCell(buyCell)
+                self.setupBuyCell(buyCell, restore: indexPath.row == 1)
                 return buyCell
             }
         case PremiumSection.close.rawValue:
@@ -100,9 +108,9 @@ class PremiumCVC: UICollectionViewController, UICollectionViewDelegateFlowLayout
         let height: CGFloat
         switch indexPath.section {
         case PremiumSection.buy.rawValue:
-            height = 120.0
+            height = 85.0
         case PremiumSection.close.rawValue:
-            height = 80.0
+            height = 85.0
         default:
             height = 180.0
         }
@@ -129,7 +137,7 @@ class PremiumCVC: UICollectionViewController, UICollectionViewDelegateFlowLayout
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if(indexPath.section == PremiumSection.buy.rawValue) {
-            showPurchaseAlert()
+            showPurchaseAlert(restore: indexPath.row == 1)
         } else if(indexPath.section == PremiumSection.close.rawValue) {
             self.tryDismissPremiumViewController(from: self.collectionView.cellForItem(at: indexPath) as? ClosePremiumCell)
         } else {
@@ -145,34 +153,57 @@ class PremiumCVC: UICollectionViewController, UICollectionViewDelegateFlowLayout
         if(closePremiumCell != nil && closePremiumCell!.isReadyToClose) {
             if let premiumVC = self.parent as? PremiumViewController {
                 premiumVC.dismiss(animated: true)
-                AdvertisingController.standard.dismiss()
+                AdvertisingController.shared.dismiss()
             }
         }
     }
     
-    private func showPurchaseAlert() {
+    private func showPurchaseAlert(restore: Bool) {
         paymentInProgress = true
         collectionView.reloadData()
         
-        InAppPurchaseManager.shared.purchase { success in
-            if success {
-                let alert = UIAlertController(title: "Sold", message: "Thank you for buying premium!", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "OK", style: .default) { _ in
-                    self.dismiss(animated: true)
+        if restore {
+            InAppPurchaseManager.shared.restorePremiumPurchase { success in
+                if success {
+                    let alert = UIAlertController(title: "Restored", message: "Restore was successfull.", preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+                        self.dismiss(animated: true)
+                    }
+                    alert.addAction(okAction)
+                    self.present(alert, animated: true)
+                } else {
+                    let alert = UIAlertController(title: "Error", message: "Error restoring premium, please try again.", preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+                        self.collectionView.reloadData()
+                    }
+                    alert.addAction(okAction)
+                    self.present(alert, animated: true)
                 }
-                alert.addAction(okAction)
-                self.present(alert, animated: true)
-            } else {
-                let alert = UIAlertController(title: "Error", message: "Error buying premium, please try again.", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "OK", style: .default) { _ in
-                    self.collectionView.reloadData()
-                }
-                alert.addAction(okAction)
-                self.present(alert, animated: true)
+                
+                self.paymentInProgress = false
+                self.collectionView.reloadData()
             }
-            
-            self.paymentInProgress = false
-            self.collectionView.reloadData()
+        } else {
+            InAppPurchaseManager.shared.purchase { success in
+                if success {
+                    let alert = UIAlertController(title: "Sold", message: "Thank you for buying premium!", preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+                        self.dismiss(animated: true)
+                    }
+                    alert.addAction(okAction)
+                    self.present(alert, animated: true)
+                } else {
+                    let alert = UIAlertController(title: "Error", message: "Error buying premium, please try again.", preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+                        self.collectionView.reloadData()
+                    }
+                    alert.addAction(okAction)
+                    self.present(alert, animated: true)
+                }
+                
+                self.paymentInProgress = false
+                self.collectionView.reloadData()
+            }
         }
     }
 }

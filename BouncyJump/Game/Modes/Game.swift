@@ -135,7 +135,7 @@ class Game: SKScene, SKPhysicsContactDelegate {
         self.resume()
         
         if let game = self.gameViewController {
-            let presented = AdvertisingController.standard.presentIfNeccessary(in: game) {
+            let presented = AdvertisingController.shared.presentIfNeccessary(in: game) {
                 self.resume()
             }
             if(presented) {

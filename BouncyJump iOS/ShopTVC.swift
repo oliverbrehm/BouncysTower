@@ -12,17 +12,21 @@ class ShopTVC: UITableViewController {
     
     private var products: [ShopProduct] = []
     
-    override func didMove(toParent parent: UIViewController?) {
-        self.makeProducts()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        makeProducts()
+        tableView.reloadData()
     }
     
     private func makeProducts() {
         products = []
         
-        let buyPremium = ShopProduct(imageName: "player", title: "Buy premium",
-                                 description: "For no more reminders to buy and a good concience",
-                                 cost: 0, type: .buyPremium)
-        products.append(buyPremium)
+        if !InAppPurchaseManager.shared.premiumPurchased {
+            let buyPremium = ShopProduct(imageName: "player", title: "Buy premium",
+                                         description: "For no more reminders to buy and a good concience",
+                                         cost: 0, type: .buyPremium)
+            products.append(buyPremium)
+        }
         
         let extralife = ShopProduct(imageName: "extralife", title: "Extra life",
                                 description: "Saves you once from falling down",
@@ -85,14 +89,11 @@ class ShopTVC: UITableViewController {
     }
 
     // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return products.count
     }
     
@@ -135,7 +136,7 @@ class ShopTVC: UITableViewController {
         switch product.type {
         case .buyPremium:
             if let shop = self.parent as? ShopViewController {
-                AdvertisingController.standard.present(in: shop)
+                AdvertisingController.shared.present(in: shop)
             }
         case .extalife:
             self.askToBuy(product: product) {
@@ -146,13 +147,5 @@ class ShopTVC: UITableViewController {
                 Config.standard.buyBrick(brick)
             }
         }
-    }
-
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
 }

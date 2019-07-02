@@ -9,7 +9,7 @@
 import SpriteKit
 
 class AdvertisingController {
-    static var standard = AdvertisingController()
+    static var shared = AdvertisingController()
     
     private let timeToAdvertising = 2 * 60.0; // seconds
     
@@ -29,6 +29,10 @@ class AdvertisingController {
     
     // returns true if advertising was presented
     func presentIfNeccessary(in viewController: UIViewController, completion: @escaping () -> Void) -> Bool {
+        if InAppPurchaseManager.shared.premiumPurchased {
+            return false
+        }
+        
         if(!Config.standard.allTutorialsShown()) {
             // don't show if player is still "learning"
             return false
