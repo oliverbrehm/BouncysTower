@@ -51,8 +51,8 @@ enum SoundAction: CaseIterable, Hashable {
     }
 }
 
-class SoundController {
-    static let standard = SoundController()
+class AudioController {
+    static let standard = AudioController()
     
     private var sounds: [SoundAction: SKAction] = [:]
     

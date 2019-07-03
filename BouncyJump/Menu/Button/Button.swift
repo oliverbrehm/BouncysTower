@@ -40,7 +40,7 @@ class Button: SKSpriteNode {
     
     func touchDown(point: CGPoint) {
         self.focussed = true
-        self.run(SoundController.standard.getSoundAction(action: .button))
+        self.run(AudioController.standard.getSoundAction(action: .button))
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

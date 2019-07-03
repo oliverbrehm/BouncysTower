@@ -40,7 +40,7 @@ class TowerBrick: SKSpriteNode {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.zPosition = NodeZOrder.overlay + 0.03
-        self.run(SoundController.standard.getSoundAction(action: .brick(type: self.brick)))
+        self.run(AudioController.standard.getSoundAction(action: .brick(type: self.brick)))
         self.run(self.brick.selectAction) {
             self.zPosition = NodeZOrder.overlay + 0.02
         }
@@ -213,7 +213,7 @@ class PersonalTower: SKNode {
         self.run(SKAction.sequence([
             buildAction,
             SKAction.wait(forDuration: 0.5),
-            SoundController.standard.getSoundAction(action: .cheer)
+            AudioController.standard.getSoundAction(action: .cheer)
         ])) {
             self.buildRowButton.isHidden = false
             self.rowsLabel.text = "Tower height: \(nRows)"

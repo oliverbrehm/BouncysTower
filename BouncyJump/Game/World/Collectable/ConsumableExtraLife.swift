@@ -24,7 +24,7 @@ class ConsumableExtraLife: Collectable {
         
         self.run(SKAction.sequence([
             SKAction.group([
-                SoundController.standard.getSoundAction(action: .collectExtralife),
+                AudioController.standard.getSoundAction(action: .collectExtralife),
                 SKAction.scale(to: 15.0, duration: 0.3),
                 SKAction.fadeOut(withDuration: 0.3)
             ]),

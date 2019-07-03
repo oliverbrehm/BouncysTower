@@ -26,7 +26,7 @@ class Coin: Collectable {
 
         self.run(SKAction.sequence([
             SKAction.group([
-                SoundController.standard.getSoundAction(action: .coin),
+                AudioController.standard.getSoundAction(action: .coin),
                 SKAction.sequence([
                     SKAction.moveBy(x: 0.0, y: 4.0, duration: 0.1),
                     SKAction.scale(by: 0.2, duration: 0.1),
