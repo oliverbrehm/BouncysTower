@@ -238,6 +238,8 @@
 		BB4A245522A12B850049962E /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = BB4A245422A12B850049962E /* .swiftlint.yml */; };
 		BB4A245622A12B850049962E /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = BB4A245422A12B850049962E /* .swiftlint.yml */; };
 		BB4A245722A12B850049962E /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = BB4A245422A12B850049962E /* .swiftlint.yml */; };
+		BB6452BF22CCBAE900EF8E03 /* menu.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BB6452BD22CCBAE900EF8E03 /* menu.mp3 */; };
+		BB6452C122CCC14F00EF8E03 /* level.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BB6452C022CCC14F00EF8E03 /* level.mp3 */; };
 		BB67E5AC22CC99EE007E15E2 /* brick_diamond.aif in Resources */ = {isa = PBXBuildFile; fileRef = BB67E5A222CC99ED007E15E2 /* brick_diamond.aif */; };
 		BB67E5AD22CC99EE007E15E2 /* brick_diamond.aif in Resources */ = {isa = PBXBuildFile; fileRef = BB67E5A222CC99ED007E15E2 /* brick_diamond.aif */; };
 		BB67E5AE22CC99EE007E15E2 /* brick_diamond.aif in Resources */ = {isa = PBXBuildFile; fileRef = BB67E5A222CC99ED007E15E2 /* brick_diamond.aif */; };
@@ -367,6 +369,8 @@
 		A7DC9BBF221775270038EC58 /* ComboParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ComboParticle.sks; sourceTree = "<group>"; };
 		A7DC9BC322177E430038EC58 /* SuperJump.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SuperJump.sks; sourceTree = "<group>"; };
 		BB4A245422A12B850049962E /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
+		BB6452BD22CCBAE900EF8E03 /* menu.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = menu.mp3; sourceTree = "<group>"; };
+		BB6452C022CCC14F00EF8E03 /* level.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = level.mp3; sourceTree = "<group>"; };
 		BB67E5A222CC99ED007E15E2 /* brick_diamond.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = brick_diamond.aif; sourceTree = "<group>"; };
 		BB67E5A322CC99ED007E15E2 /* cheer.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = cheer.aif; sourceTree = "<group>"; };
 		BB67E5A422CC99ED007E15E2 /* collectcoin.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = collectcoin.aif; sourceTree = "<group>"; };
@@ -441,6 +445,7 @@
 		A7186DD8220C3E0100187C6E /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				BB6452BB22CCBACF00EF8E03 /* Music */,
 				BB67E59B22CC967A007E15E2 /* Sounds */,
 			);
 			path = Audio;
@@ -673,6 +678,15 @@
 			path = Shared;
 			sourceTree = "<group>";
 		};
+		BB6452BB22CCBACF00EF8E03 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				BB6452BD22CCBAE900EF8E03 /* menu.mp3 */,
+				BB6452C022CCC14F00EF8E03 /* level.mp3 */,
+			);
+			path = Music;
+			sourceTree = "<group>";
+		};
 		BB67E59B22CC967A007E15E2 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
@@ -863,6 +877,7 @@
 				BB4A245522A12B850049962E /* .swiftlint.yml in Resources */,
 				A7A228CB2206050E00081E0E /* ScoreParticle.sks in Resources */,
 				A7DC9BC0221775270038EC58 /* ComboParticle.sks in Resources */,
+				BB6452BF22CCBAE900EF8E03 /* menu.mp3 in Resources */,
 				BB67E5C122CC99EE007E15E2 /* brick_standard.aif in Resources */,
 				A7736AA32206025100A28B5D /* Main.storyboard in Resources */,
 				A7A22865220604DB00081E0E /* Settings.sks in Resources */,
@@ -874,6 +889,7 @@
 				A745E17722395C260043EC5A /* JumpParticle.sks in Resources */,
 				BB67E5B222CC99EE007E15E2 /* collectcoin.aif in Resources */,
 				BB67E5C722CC99EE007E15E2 /* extralife.aif in Resources */,
+				BB6452C122CCC14F00EF8E03 /* level.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

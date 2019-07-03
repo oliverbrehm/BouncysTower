@@ -139,7 +139,7 @@ class InfoBox: Button {
         self.removeAllActions()
 
         self.run(SKAction.scale(to: 1.0, duration: 0.3))
-        self.run(AudioController.standard.getSoundAction(action: .message))
+        self.run(AudioManager.standard.getSoundAction(action: .message))
         self.isHidden = false
         
         self.run(SKAction.repeatForever(SKAction.sequence([

@@ -145,7 +145,7 @@ class Player: SKSpriteNode {
         self.state = PlayerState.jumping
         self.perfectJumpDetector.playerHitWall()
         
-        self.run(AudioController.standard.getSoundAction(action: .superJump))
+        self.run(AudioManager.standard.getSoundAction(action: .superJump))
     }
 
     var movingDirectionLeft: Bool {
@@ -184,7 +184,7 @@ class Player: SKSpriteNode {
         self.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: xVelocityFactor * jumpImpulse))
         self.state = PlayerState.jumping
         
-        self.run(AudioController.standard.getSoundAction(action: .jump))
+        self.run(AudioManager.standard.getSoundAction(action: .jump))
         
         self.perfectJumpDetector.playerLeftPlatform()
         

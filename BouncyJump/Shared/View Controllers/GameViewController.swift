@@ -49,6 +49,7 @@ class GameViewController: UIViewController {
             
             if let view = self.view as? SKView {
                 view.presentScene(scene, transition: SKTransition.push(with: SKTransitionDirection.left, duration: 0.5))
+                AudioManager.standard.playBackgroundMusic(backgroundMusic: .level)
             }
         }
     }
@@ -84,6 +85,7 @@ class GameViewController: UIViewController {
                 scene.scaleMode = .resizeFill
                 scene.gameViewController = self
                 view.presentScene(scene, transition: SKTransition.push(with: transitionDirection, duration: 0.5))
+                AudioManager.standard.playBackgroundMusic(backgroundMusic: .menu)
             }
         }
     }
