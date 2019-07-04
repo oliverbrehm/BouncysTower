@@ -24,7 +24,7 @@ class ConsumableBrick: Collectable {
         
         self.run(SKAction.sequence([
             SKAction.group([
-                AudioManager.standard.getSoundAction(action: .brick(type: brick)),
+                SoundAction.brick(type: brick).action,
                 SKAction.scale(to: 15.0, duration: 0.3),
                 SKAction.fadeOut(withDuration: 0.3)
                 ]),

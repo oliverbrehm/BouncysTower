@@ -137,7 +137,7 @@ class MainGame: Game {
         }
         
         if(player.position.y + player.size.height / 2.0 + gameOverTolerance < state.gameOverY) {
-            self.run(AudioManager.standard.getSoundAction(action: .gameOver))
+            self.run(SoundAction.gameOver.action)
             
             player.died()
             
@@ -180,7 +180,7 @@ class MainGame: Game {
             self.resume()
             self.player.useExtralife()
             self.world.currentLevel!.easeInSpeed()
-            self.run(AudioManager.standard.getSoundAction(action: .collectExtralife))
+            self.run(SoundAction.collectExtralife.action)
         } else {
             self.gameOver()
         }

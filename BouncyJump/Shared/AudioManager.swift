@@ -50,6 +50,20 @@ enum SoundAction: CaseIterable, Hashable {
             return brick.soundName
         }
     }
+    
+    static var sounds: [SoundAction: SKAction] = {
+        var sounds: [SoundAction: SKAction]  = [:]
+        
+        for soundAction in SoundAction.allCases {
+            sounds[soundAction] = SKAction.playSoundFileNamed(soundAction.soundFileName, waitForCompletion: true)
+        }
+        
+        return sounds
+    }()
+    
+    var action: SKAction {
+        return SoundAction.sounds[self] ?? SKAction.wait(forDuration: 0.0)
+    }
 }
 
 enum BackgroundMusic: String, CaseIterable {
@@ -82,7 +96,6 @@ enum BackgroundMusic: String, CaseIterable {
 class AudioManager {
     static let standard = AudioManager()
     
-    private var sounds: [SoundAction: SKAction] = [:]
     private var currentBackgroundMusic: BackgroundMusic?
     
     init() {
@@ -93,14 +106,6 @@ class AudioManager {
         } catch let error {
             NSLog("Error configuring AVAudioSession, error: \(error.localizedDescription)")
         }
-        
-        for soundAction in SoundAction.allCases {
-            sounds[soundAction] = SKAction.playSoundFileNamed(soundAction.soundFileName, waitForCompletion: true)
-        }
-    }
-    
-    func getSoundAction(action: SoundAction) -> SKAction {
-        return self.sounds[action] ?? SKAction.wait(forDuration: 0.0)
     }
     
     var userAudioPlaying: Bool {

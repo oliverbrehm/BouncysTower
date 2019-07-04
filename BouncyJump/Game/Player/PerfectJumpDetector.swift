@@ -155,7 +155,7 @@ class PerfectJumpDetector {
             c.addChild(particelEmitter)
             
             if(self.comboCount >= 5) {
-                self.player!.scene!.run(AudioManager.standard.getSoundAction(action: .cheer))
+                self.player!.scene!.run(SoundAction.cheer.action)
             }
             
             c.addChild(comboFinishedLabel)
