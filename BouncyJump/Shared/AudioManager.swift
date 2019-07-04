@@ -55,14 +55,34 @@ enum SoundAction: CaseIterable, Hashable {
 enum BackgroundMusic: String, CaseIterable {
     case menu
     case level
+    
+    var audioPlayer: AVAudioPlayer? {
+        return BackgroundMusic.audioPlayers[self]
+    }
+    
+    static var audioPlayers: [BackgroundMusic: AVAudioPlayer] = {
+        var players: [BackgroundMusic: AVAudioPlayer] = [:]
+        
+        for backgroundMusic in BackgroundMusic.allCases {
+            do {
+                if let url = Bundle.main.url(forResource: backgroundMusic.rawValue, withExtension: "mp3"){
+                    let player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+                    player.numberOfLoops = -1 // play indefinitely
+                    players[backgroundMusic] = player
+                }
+            } catch let error {
+                print("Error initializing AVAudioPlayer for background music named \(backgroundMusic.rawValue), error: \(error.localizedDescription)")
+            }
+        }
+        
+        return players
+    }()
 }
 
 class AudioManager {
     static let standard = AudioManager()
     
     private var sounds: [SoundAction: SKAction] = [:]
-    private var audioPlayers: [BackgroundMusic: AVAudioPlayer] = [:]
-    private var currentAudioPlayer: AVAudioPlayer?
     private var currentBackgroundMusic: BackgroundMusic?
     
     init() {
@@ -77,18 +97,6 @@ class AudioManager {
         for soundAction in SoundAction.allCases {
             sounds[soundAction] = SKAction.playSoundFileNamed(soundAction.soundFileName, waitForCompletion: true)
         }
-        
-        for backgroundMusic in BackgroundMusic.allCases {
-            do {
-                if let url = Bundle.main.url(forResource: backgroundMusic.rawValue, withExtension: "mp3"){
-                    let player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
-                    player.numberOfLoops = -1 // play indefinitely
-                    audioPlayers[backgroundMusic] = player
-                }
-            } catch let error {
-                print("Error initializing AVAudioPlayer for background music named \(backgroundMusic.rawValue), error: \(error.localizedDescription)")
-            }
-        }
     }
     
     func getSoundAction(action: SoundAction) -> SKAction {
@@ -100,31 +108,41 @@ class AudioManager {
     }
     
     func playBackgroundMusic(backgroundMusic: BackgroundMusic) {
-        if userAudioPlaying {
-            currentAudioPlayer?.stop()
-            return
-        }
-        
-        if let current = currentBackgroundMusic, current == backgroundMusic {
-            return
-        }
-        
-        currentAudioPlayer?.stop()
-        currentAudioPlayer?.currentTime = 0
-        
-        if let audioPlayer = audioPlayers[backgroundMusic] {
-            audioPlayer.prepareToPlay()
-            audioPlayer.play()
-            currentAudioPlayer = audioPlayer
+        if let current = currentBackgroundMusic {
+            if current == backgroundMusic {
+                playCurrentMusic()
+            } else {
+                stopCurrentMusic()
+                currentBackgroundMusic = backgroundMusic
+                playCurrentMusic()
+            }
+        } else {
+            // no music set yet
             currentBackgroundMusic = backgroundMusic
+            playCurrentMusic()
         }
     }
     
     func checkMusicAfterReturningToApp() {
         if userAudioPlaying {
-            currentAudioPlayer?.stop()
+            // stop without resetting play time
+            currentBackgroundMusic?.audioPlayer?.stop()
         } else {
-            currentAudioPlayer?.play()
+            playCurrentMusic()
+        }
+    }
+    
+    private func playCurrentMusic() {
+        if let current = currentBackgroundMusic, !userAudioPlaying {
+            current.audioPlayer?.prepareToPlay()
+            current.audioPlayer?.play()
+        }
+    }
+    
+    private func stopCurrentMusic() {
+        if let current = currentBackgroundMusic {
+            current.audioPlayer?.stop()
+            current.audioPlayer?.currentTime = 0
         }
     }
 }
