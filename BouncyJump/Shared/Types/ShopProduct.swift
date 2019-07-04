@@ -6,7 +6,7 @@
 //  Copyright © 2019 Oliver Brehm. All rights reserved.
 //
 
-import Foundation
+import SpriteKit
 
 enum ProductType: Equatable {
     case buyPremium
@@ -20,4 +20,5 @@ struct ShopProduct {
     let description: String
     let cost: Int
     let type: ProductType
+    let color: SKColor?
 }

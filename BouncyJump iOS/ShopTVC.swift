@@ -24,19 +24,19 @@ class ShopTVC: UITableViewController {
         if !InAppPurchaseManager.shared.premiumPurchased {
             let buyPremium = ShopProduct(imageName: "player", title: "Buy premium",
                                          description: "For no more reminders to buy and a good concience",
-                                         cost: 0, type: .buyPremium)
+                                         cost: 0, type: .buyPremium, color: nil)
             products.append(buyPremium)
         }
         
         let extralife = ShopProduct(imageName: "extralife", title: "Extra life",
                                 description: "Saves you once from falling down",
-                                cost: ResourceManager.costExtraLife, type: .extalife)
+                                cost: ResourceManager.costExtraLife, type: .extalife, color: nil)
         products.append(extralife)
         
         for brick in Brick.allCases {
             let brickProduct = ShopProduct(imageName: brick.textureName, title: brick.name,
                                        description: brick.description,
-                                       cost: brick.cost, type: .brick(brick))
+                                       cost: brick.cost, type: .brick(brick), color: brick.color)
             products.append(brickProduct)
         }
     }
@@ -106,9 +106,18 @@ class ShopTVC: UITableViewController {
             let product = products[indexPath.row]
             cell.product = product
             
-            cell.productImageView.image = UIImage(named: product.imageName)
             cell.productTitleLabel.text = product.title
             cell.productDescriptionLabel.text = product.description
+            
+            let productImage = UIImage(named: product.imageName)
+            
+            if let productColor = product.color {
+                cell.productImageView.backgroundColor = productColor
+            } else {
+                cell.productImageView.backgroundColor = UIColor.clear
+            }
+            
+            cell.productImageView.image = productImage
             
             if(product.cost > 0) {
                 cell.productCostLabel.text = "x \(product.cost)"

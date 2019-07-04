@@ -75,16 +75,6 @@ class ResourceManager {
     }
     
     private func setNextBrickType() {
-        let maxRandom = Brick.standard.cost.inverted + Brick.diamond.cost.inverted
-        let random = Double.random(in: 0.0 ..< maxRandom)
-        
-        switch(random) {
-        case 0.0 ..< Brick.standard.cost.inverted:
-            nextBrickType = Brick.standard
-        case Brick.standard.cost.inverted ..< Brick.standard.cost.inverted + Brick.diamond.cost.inverted:
-            nextBrickType = Brick.diamond
-        default:
-            nextBrickType = Brick.standard
-        }
+        nextBrickType = Brick.randomBrick()
     }
 }

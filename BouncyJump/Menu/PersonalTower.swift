@@ -25,6 +25,11 @@ class TowerBrick: SKSpriteNode {
         
         self.zPosition = NodeZOrder.overlay + 0.02
         
+        if let color = brick.color {
+            self.color = color
+            self.colorBlendFactor = 1.0
+        }
+        
         self.setInStore(inStore)
     }
     
