@@ -128,7 +128,7 @@ class PerfectJumpDetector {
             
             comboLabel.position = p.position
             comboLabel.text = self.comboCount >= 2 ? "x \(self.comboCount)"
-                : (self.comboCount == 0 ? "Perfect!" : "AWESOME")
+                : (self.comboCount == 0 ? Strings.GameElements.comboPerfectMessage : Strings.GameElements.comboAwesomeMessage)
             
             if let w = p.world {
                 w.addChild(comboLabel)
