@@ -67,7 +67,7 @@ class ResourceManager {
         if(nextBrickIn <= 0) {
             let toConsume = nextBrickType
             self.setNextBrickType()
-            nextBrickIn = nextBrickType.cost
+            nextBrickIn = nextBrickType.cost + Int.random(in: -5 ... 5)
             return toConsume
         }
         

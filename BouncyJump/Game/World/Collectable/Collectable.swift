@@ -30,7 +30,7 @@ class Collectable: SKSpriteNode {
             self.addChild(light)
             light.size = self.size * 6.0
             light.colorBlendFactor = 1.0
-            light.color = SKColor.yellow
+            light.color = SKColor(named: "collectableBacklight") ?? SKColor.white
             light.zPosition = -1.0 // behind collectable
         }
     }

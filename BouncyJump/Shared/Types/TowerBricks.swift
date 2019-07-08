@@ -37,14 +37,16 @@ enum Brick: Int, CaseIterable {
     
     var textureName: String {
         switch self {
-        case .standard, .standardRed, .standardBlue, .standardGreen, .standardOrange, .standardPurple, .standardYellow:
+        case .standard, .standardRed, .standardBlue, .standardGreen:
             return "brick"
+        case .standardOrange, .standardPurple, .standardYellow:
+            return "brickDotted"
         case .glass:
-            return "brick" // TODO
+            return "brickGlass"
         case .diamond:
-            return "brick2" // TODO
+            return "brickDiamond"
         case .magic:
-            return "brick" // TODO
+            return "brickMagic"
         }
     }
     
