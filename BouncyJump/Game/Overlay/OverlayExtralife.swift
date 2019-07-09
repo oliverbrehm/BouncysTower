@@ -14,7 +14,7 @@ class OverlayExtralife: Overlay {
     func setup(game: MainGame) {
         super.setup(size: game.frame.size, width: 0.6)
         
-        let label = SKLabelNode(text: "Use extralife?")
+        let label = SKLabelNode(text: Strings.GameOverlay.useExtralifeQuestion)
         label.fontSize = 20.0
         label.fontName = Constants.fontName
         label.fontColor = SKColor.white

@@ -30,7 +30,6 @@
 "orangeBrickDescription" = "Colorful orange brick";
 "glassBrickDescription" = "Bick made of glass";
 "diamondBrickDescription" = "Fancy diamond brick for your tower";
-"magicBrickDescription" = "Description sentence for Magic Brick";
 
 // Tutorials
 "moveTutorialDescription" = "Touch and hold to move. Use the entire left half of the screen to move left and the right half to move right. You move faster the longer you touch the screen.";

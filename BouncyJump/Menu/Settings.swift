@@ -43,14 +43,14 @@ class Settings: SKScene {
         info2.zPosition = NodeZOrder.label
         self.addChild(info2)
         
-        let shopButton = IconDescriptionButton(description: "SHOP", image: "shop")
+        let shopButton = IconDescriptionButton(description: Strings.MenuMain.shopTitle, image: "shop")
         shopButton.position = CGPoint(x: rightX, y: 80.0)
         shopButton.action = {
             self.gameViewController?.showShop()
         }
         self.addChild(shopButton)
         
-        let backButton = IconDescriptionButton(description: "BACK", image: "back")
+        let backButton = IconDescriptionButton(description: Strings.backTitle, image: "back")
         backButton.position = CGPoint(x: rightX, y: 0.0)
         backButton.action = {
             self.gameViewController?.showMainMenu()

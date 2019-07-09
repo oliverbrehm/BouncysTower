@@ -139,8 +139,7 @@ class PersonalTower: SKNode {
         buildRowButton.action = {
             if !InAppPurchaseManager.shared.premiumPurchased && Score.standard.towerHeight >= 4 {
                 if let main = self.scene as? Main {
-                    InfoBox.show(in: main, text: "You cannot build your tower any higher in the free version. " +
-                        "Please consider buying premium to build as far up as you like!", onShow: nil)
+                    InfoBox.show(in: main, text: Strings.MenuMain.towerHeightRestrictionMessage, onShow: nil)
                     {
                         if let vc = self.scene?.view?.window?.rootViewController as? GameViewController {
                             AdvertisingController.shared.present(in: vc)
@@ -151,15 +150,13 @@ class PersonalTower: SKNode {
                 self.buildRow()
             } else {
                 if let main = self.scene as? Main {
-                    InfoBox.show(in: main,
-                                 text: "Here you can build your own personal tower! Collect or buy five bricks to build a new row.",
-                                 onShow:
+                    InfoBox.show(in: main, text: Strings.MenuMain.buildTowerInfoMessage, onShow:
                         {
                             self.buildRowButton.isHidden = true
                             main.disableUserInteraction()
                             // TODO freeze user input in main
-                         },
-                         completion: {
+                         }, completion:
+                         {
                             self.buildRowButton.isHidden = false
                             main.isUserInteractionEnabled = true
                          }
@@ -221,7 +218,7 @@ class PersonalTower: SKNode {
             SoundAction.cheer.action
         ])) {
             self.buildRowButton.isHidden = false
-            self.rowsLabel.text = "Tower height: \(nRows)"
+            self.rowsLabel.text = "\(Strings.MenuMain.towerHeightLabel): \(nRows)"
             if let main = self.scene, nRows >= 2 && Config.standard.shouldShow(tutorial: .towerMultiplicator) {
                 InfoBox.show(in: main, text: Tutorial.towerMultiplicator.message)
                 Config.standard.setTutorialShown(.towerMultiplicator)
@@ -249,7 +246,7 @@ class PersonalTower: SKNode {
         if let store = brickStore {
             let brick = store.takeBrick()
             self.run(SKAction.wait(forDuration: 0.4)) {
-                self.bricksLabel.text = "Bricks left: \(store.numberOfBricks)"
+                self.bricksLabel.text = "\(Strings.MenuMain.bricksLeftLabel): \(store.numberOfBricks)"
                 if(store.numberOfBricks == 0) {
                     self.bricksLabel.isHidden = true
                 }
@@ -302,7 +299,7 @@ class PersonalTower: SKNode {
         var y = startY
         
         let rows = TowerBricks.standard.rows
-        rowsLabel.text = "Tower height: \(rows.count)"
+        rowsLabel.text = "\(Strings.MenuMain.towerHeightLabel): \(rows.count)"
         
         background.size = CGSize(width: 5 * TowerBrick.brickWidth, height: CGFloat(rows.count) * TowerBrick.brickHeight)
         background.zPosition = NodeZOrder.world + 0.01
@@ -328,7 +325,7 @@ class PersonalTower: SKNode {
     
     private func buildBrickStore(at startY: CGFloat) {
         let bricks = TowerBricks.standard.bricks
-        bricksLabel.text = bricks.count > 0 ? "Bricks left: \(bricks.count)" : ""
+        bricksLabel.text = bricks.count > 0 ? "\(Strings.MenuMain.bricksLeftLabel): \(bricks.count)" : ""
         
         let x = player.position.x - player.size.width / 2.0 - TowerBrick.brickWidth / 2.0 - 35.0
         

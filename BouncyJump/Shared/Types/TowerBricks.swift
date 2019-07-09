@@ -53,50 +53,50 @@ enum Brick: Int, CaseIterable {
     var name: String {
         switch self {
         case .standard:
-            return "Brick"
+            return Strings.Brick.standardBrickTitle
         case .standardBlue:
-            return "Blue brick"
+            return Strings.Brick.blueBrickTitle
         case .standardRed:
-            return "Red brick"
+            return Strings.Brick.redBrickTitle
         case .standardGreen:
-            return "Green brick"
+            return Strings.Brick.greenBrickTitle
         case .standardYellow:
-            return "Yellow brick"
+            return Strings.Brick.yellowBrickTitle
         case .standardPurple:
-            return "Purple brick"
+            return Strings.Brick.purpleBrickTitle
         case .standardOrange:
-            return "Orange brick"
+            return Strings.Brick.orangeBrickTitle
         case .glass:
-            return "Glass brick"
+            return Strings.Brick.glassBrickTitle
         case .diamond:
-            return "Diamond brick"
+            return Strings.Brick.diamondBrickTitle
         case .magic:
-            return "Magic brick"
+            return Strings.Brick.magicBrickTitle
         }
     }
         
     var description: String {
         switch self {
         case .standard:
-            return "Use it to build your personal tower"
+            return Strings.Brick.standardBrickDescription
         case .standardBlue:
-            return "Colorful blue brick"
+            return Strings.Brick.blueBrickDescription
         case .standardRed:
-            return "Colorful red brick"
+            return Strings.Brick.redBrickDescription
         case .standardGreen:
-            return "Colorful green brick"
+            return Strings.Brick.greenBrickDescription
         case .standardYellow:
-            return "Colorful yellow brick"
+            return Strings.Brick.yellowBrickDescription
         case .standardPurple:
-            return "Colorful purple brick"
+            return Strings.Brick.purpleBrickDescription
         case .standardOrange:
-            return "Colorful orange brick"
+            return Strings.Brick.orangeBrickDescription
         case .glass:
-            return "Bick made of glass"
+            return Strings.Brick.glassBrickDescription
         case .diamond:
-            return "Fancy diamond brick for your tower"
+            return Strings.Brick.diamondBrickDescription
         case .magic:
-            return "?)$#%(*?#)@(#*% )#W%  )#(% ##%#%"
+            return Strings.Brick.magicBrickDescription
         }
     }
     

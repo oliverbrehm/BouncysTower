@@ -29,7 +29,7 @@ class ScoreNode: SKNode {
             emptyLabel.position = CGPoint(x: 0.0, y: currentY)
             emptyLabel.fontColor = SKColor.white
             emptyLabel.fontSize = 15.0
-            emptyLabel.text = "No scores yet..."
+            emptyLabel.text = Strings.MenuSettings.noScoresMessage
             emptyLabel.zPosition = NodeZOrder.label
             self.addChild(emptyLabel)
             

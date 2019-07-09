@@ -26,7 +26,7 @@ class ScoreView: Button {
         self.rankLabel.fontSize = 10.0
         self.rankLabel.fontColor = SKColor.white
         self.scoreLabel.zPosition = NodeZOrder.label
-        self.rankLabel.text = "RANK"
+        self.rankLabel.text = Strings.GameOverlay.rankLabel
         self.rankLabel.position = CGPoint(x: 0.0, y: -margin / 2.0 - rankLabel.frame.size.height)
         self.addChild(self.rankLabel)
         
@@ -47,7 +47,7 @@ class ScoreView: Button {
         self.scoreLabel.text = "Score: \(score)"
 
         if let r = rank {
-            self.rankLabel.text = (r == 0) ? "NEW HIGHSCORE" : "RANK \(r + 1)"
+            self.rankLabel.text = (r == 0) ? Strings.GameOverlay.newHighscoreLabel : "\(Strings.GameOverlay.rankLabel) \(r + 1)"
             self.rankLabel.isHidden = false
             self.rankLabel.run(SKAction.repeatForever(SKAction.sequence([
                 SKAction.colorize(with: Constants.colors.menuForeground, colorBlendFactor: 1.0, duration: 0.3),

@@ -1,0 +1,62 @@
+/* 
+  Localizable.strings
+  BouncyJump
+
+  Created by Oliver Brehm on 08.07.19.
+  Copyright © 2019 Oliver Brehm. All rights reserved.
+*/
+
+// Shared
+"backTitle" = "ZURÜCK";
+
+// Bricks
+"standardBrickTitle" = "Stein";
+"blueBrickTitle" = "Blauer Stein";
+"redBrickTitle" = "Roter Stein";
+"greenBrickTitle" = "Grüner Stein";
+"yellowBrickTitle" = "Gelber Stein";
+"purpleBrickTitle" = "Lila Stein";
+"orangeBrickTitle" = "Orangener Stein";
+"glassBrickTitle" = "Glas";
+"diamondBrickTitle" = "Diamantenstein";
+"magicBrickTitle" = "Magischer Stein";
+
+"standardBrickDescription" = "Benutze ihn um damit deinen Turm zu bauen!";
+"blueBrickDescription" = "Ein blauer Stein.";
+"redBrickDescription" = "Ein bunter roter stein.";
+"greenBrickDescription" = "Ein grüner stein.";
+"yellowBrickDescription" = "Ein Stein mit gelbem Schein.";
+"purpleBrickDescription" = "Dieser Stein ist lila.";
+"orangeBrickDescription" = "Ein orangener Stein.";
+"glassBrickDescription" = "Ein Stein aus Glas.";
+"diamondBrickDescription" = "Funkelnder Stein aus Diamanten.";
+
+// Tutorials
+"moveTutorialDescription" = "Touch and hold to move. Use the entire left half of the screen to move left and the right half to move right. You move faster the longer you touch the screen.";
+"wallTutorialDescription" = "Great, you reached the next Level! Did you notice: You get an extra boost upwards if you jump against the wall! If you roll left or right on the platform, you gain more speed and jump higher.";
+"combosTutorialDescription" = "Nice jumping! You get an even higher score if you do combos. Always keep rolling by holding your touch while on the platform. To get a combo you have to jump at least two platforms at once and hit the left or right wall between each jump.";
+"bricksTutorialDescription" = "Cool, you collected a loose brick! Use it in the main screen to build your own personal tower.";
+"extraLivesTutorialDescription" = "Hey, you found an extra life! If you fall down, you can decide to use it and it will save you once.";
+"towerMultiplicatorTutorialDescription" = "Awesome, your tower is growing! You even get a higher in-game score the taller the tower gets. The score for each jump will be multiplied by the height of your tower.";
+
+// Game Elements
+"comboPerfectMessage" =  "Perfekt!";
+"comboAwesomeMessage" = "SUPER";
+
+"rankLabel" = "RANG";
+"newHighscoreLabel" = "NEUER HIGHSCORE";
+"pausedLabel" = "PAUSE";
+"useExtralifeQuestion" = "Extraleben benutzen?";
+
+// Second menu
+"noScoresMessage" = "Noch keine Scores...";
+
+// Main menu
+"visitStoreMessage" = "Hey, inzwischen hast du sehr viele Münzen gesammelt! Wie wäre es einmal den Shop zu besuchen? Dort gibt es viele nützliche Sachen wie Extraleben oder Steine, um deinen Turm zu bauen! Du kannst jederzeit die Münzen oder Extraleben im Menü berühren um zum Shop zu gelangen.";
+"shopTitle" = "SHOP";
+"startTitle" = "SPIELEN";
+"secondMenuTitle" = "SCORES";
+"towerHeightRestrictionMessage" = "In der kostenlosen Version geht es nicht mehr höher hinaus. Bitte kaufe die Premium Version um so hoch zu bauen, wie du möchtest!";
+"buildTowerInfoMessage" = "Hier kannst du deinen eigenen Turm bauen! Sammle oder kaufe mindestens fünf Steine um eine neue Reihe hinzuzufügen.";
+"towerHeightLabel" = "Turmhöhe";
+"bricksLeftLabel" = "Übrige Steine";

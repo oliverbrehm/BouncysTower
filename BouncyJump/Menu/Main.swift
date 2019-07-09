@@ -77,10 +77,7 @@ class Main: SKScene, ShopDelegate, PersonalTowerDelegate {
             // show shop if player collected enough coins for an extra life
             if(Config.standard.shouldShow(tutorial: .shop)) {
                 self.run(SKAction.wait(forDuration: 1.0)) {
-                    let message = "Hey there, it seems you have collected a lot of coins! Why not visit the shop? "
-                        + "You can get extra lives and shiny bricks for your personal tower! "
-                        + "Click on the coin icon in the menu any time to open the shop."
-                    InfoBox.show(in: self, text: message) {
+                    InfoBox.show(in: self, text: Strings.MenuMain.visitStoreMessage) {
                         Config.standard.setTutorialShown(.shop)
                         self.menuOverlay.highlightResourceView()
                     }

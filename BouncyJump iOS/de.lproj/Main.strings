@@ -1,0 +1,36 @@
+
+/* Class = "UIButton"; normalTitle = "BACK"; ObjectID = "1xS-p2-mQL"; */
+"1xS-p2-mQL.normalTitle" = "BACK";
+
+/* Class = "UILabel"; text = "price"; ObjectID = "530-LG-b2b"; */
+"530-LG-b2b.text" = "price";
+
+/* Class = "UILabel"; text = "BOUNCY JUMP PREMIUM"; ObjectID = "6LX-xM-6MA"; */
+"6LX-xM-6MA.text" = "BOUNCY JUMP PREMIUM";
+
+/* Class = "UILabel"; text = "BUY"; ObjectID = "Qcg-zc-eix"; */
+"Qcg-zc-eix.text" = "BUY";
+
+/* Class = "UILabel"; text = "x 0"; ObjectID = "YLx-U7-E3D"; */
+"YLx-U7-E3D.text" = "x 0";
+
+/* Class = "UILabel"; text = "loading price..."; ObjectID = "aDZ-oz-yWg"; */
+"aDZ-oz-yWg.text" = "loading price...";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."; ObjectID = "dtE-J8-OiM"; */
+"dtE-J8-OiM.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+
+/* Class = "UILabel"; text = "productDescription"; ObjectID = "ha8-rF-Kma"; */
+"ha8-rF-Kma.text" = "productDescription";
+
+/* Class = "UILabel"; text = "x 0"; ObjectID = "iZ1-9X-MTy"; */
+"iZ1-9X-MTy.text" = "x 0";
+
+/* Class = "UILabel"; text = "CLOSE"; ObjectID = "j87-SK-xKg"; */
+"j87-SK-xKg.text" = "CLOSE";
+
+/* Class = "UILabel"; text = "productTitle"; ObjectID = "rey-Vz-bj1"; */
+"rey-Vz-bj1.text" = "productTitle";
+
+/* Class = "UILabel"; text = "SHOP"; ObjectID = "uGI-Co-46h"; */
+"uGI-Co-46h.text" = "SHOP";

@@ -16,7 +16,7 @@ class OverlayPause: Overlay {
         
         let pausedLabel = SKLabelNode(fontNamed: Constants.fontName)
         pausedLabel.position = CGPoint(x: 80.0, y: 120.0)
-        pausedLabel.text = "PAUSED"
+        pausedLabel.text = Strings.GameOverlay.pausedLabel.uppercased()
         pausedLabel.fontSize = 24.0
         pausedLabel.fontColor = SKColor.white
         pausedLabel.zPosition = NodeZOrder.label

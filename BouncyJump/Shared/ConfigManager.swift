@@ -20,35 +20,17 @@ enum Tutorial: String, CaseIterable {
     var message: String {
         switch self {
         case .move:
-            return "Touch and hold to move. "
-                + "Use the entire left half of the screen to move left and the right half to move right. "
-                + "You move faster the longer you touch the screen."
-            
+            return Strings.Tutorial.moveTutorialDescription
         case .wallJump:
-            return "Great, you reached the next Level! Did you notice: "
-                + "You get an extra boost upwards if you jump against the wall! "
-                + "If you roll left or right on the platform, you gain more speed and jump higher."
-            
+            return Strings.Tutorial.wallTutorialDescription
         case .combos:
-            return "Nice jumping! You get an even higher score if you do combos. "
-                + "Always keep rolling by holding your touch while on the platform. "
-                + "To get a combo you have to jump at least two platforms at once "
-                + "and hit the left or right wall between each jump."
-            
+            return Strings.Tutorial.combosTutorialDescription
         case .bricks:
-            return "Cool, you collected a loose brick! "
-                + "Use it in the main screen to build your own personal tower."
-            
+            return Strings.Tutorial.bricksTutorialDescription
         case .extraLives:
-            return "Hey, you found an extra life! "
-                + "If you fall down, you can decide to use it and it will save you once."
-            
+            return Strings.Tutorial.extraLivesTutorialDescription
         case .towerMultiplicator:
-            return "x2\n\n"
-                + "Awesome, your tower is growing!\n"
-                + "You even get a higher in-game score the taller the tower gets. "
-                + "The score for each jump will be multiplied by the height of your tower."
-            
+            return Strings.Tutorial.towerMultiplicatorTutorialDescription
         default:
             return ""
         }
