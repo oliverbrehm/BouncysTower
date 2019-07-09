@@ -14,9 +14,9 @@ class PremiumCVC: UICollectionViewController, UICollectionViewDelegateFlowLayout
     private let cellSpacing: CGFloat = 30.0
     
     private let featureList = [
-        "No more waiting time and reminders!",
-        "Build your personal tower as high as you like!",
-        "Support the development of this and other games!"
+        Strings.Premium.featureWaitingTime,
+        Strings.Premium.featureTowerHeight,
+        Strings.Premium.featureSupport
     ]
     
     private enum PremiumSection: Int, CaseIterable {
@@ -29,17 +29,17 @@ class PremiumCVC: UICollectionViewController, UICollectionViewDelegateFlowLayout
         cell.layer.cornerRadius = 8.0
         cell.isUserInteractionEnabled = false
         cell.backgroundColor = UIColor.darkGray
-        cell.titleLabel.text = restore ? "Restore" : "BUY"
+        cell.titleLabel.text = restore ? Strings.Premium.restoreTitle : Strings.Premium.buyTitle
         
         if paymentInProgress {
-            cell.priceLabel.text = "buying..."
+            cell.priceLabel.text = Strings.Premium.buyingLabel
             cell.isUserInteractionEnabled = false
         } else if InAppPurchaseManager.shared.hasProduct, let price = InAppPurchaseManager.shared.premiumPriceLocalized {
             cell.priceLabel.text = restore ? "" : price
             cell.backgroundColor = UIColor(named: "cellBg") ?? UIColor.white
             cell.isUserInteractionEnabled = true
         } else {
-            cell.priceLabel.text = "loading price..."
+            cell.priceLabel.text = Strings.Premium.loadingPriceLabel
             InAppPurchaseManager.shared.requestProduct { success in
                 if success, InAppPurchaseManager.shared.hasProduct, let price = InAppPurchaseManager.shared.premiumPriceLocalized  {
                     cell.priceLabel.text = price
@@ -165,14 +165,14 @@ class PremiumCVC: UICollectionViewController, UICollectionViewDelegateFlowLayout
         if restore {
             InAppPurchaseManager.shared.restorePremiumPurchase { success in
                 if success {
-                    let alert = UIAlertController(title: "Restored", message: "Restore was successfull.", preferredStyle: .alert)
+                    let alert = UIAlertController(title: Strings.Premium.restoredTitle, message: Strings.Premium.restoredMessage, preferredStyle: .alert)
                     let okAction = UIAlertAction(title: "OK", style: .default) { _ in
                         self.dismiss(animated: true)
                     }
                     alert.addAction(okAction)
                     self.present(alert, animated: true)
                 } else {
-                    let alert = UIAlertController(title: "Error", message: "Error restoring premium, please try again.", preferredStyle: .alert)
+                    let alert = UIAlertController(title: Strings.Premium.errorTitle, message: Strings.Premium.errorMessage, preferredStyle: .alert)
                     let okAction = UIAlertAction(title: "OK", style: .default) { _ in
                         self.collectionView.reloadData()
                     }
@@ -186,14 +186,14 @@ class PremiumCVC: UICollectionViewController, UICollectionViewDelegateFlowLayout
         } else {
             InAppPurchaseManager.shared.purchase { success in
                 if success {
-                    let alert = UIAlertController(title: "Sold", message: "Thank you for buying premium!", preferredStyle: .alert)
+                    let alert = UIAlertController(title: Strings.Premium.purchaseConfirmationTitle, message: Strings.Premium.purchaseConfirmationMessage, preferredStyle: .alert)
                     let okAction = UIAlertAction(title: "OK", style: .default) { _ in
                         self.dismiss(animated: true)
                     }
                     alert.addAction(okAction)
                     self.present(alert, animated: true)
                 } else {
-                    let alert = UIAlertController(title: "Error", message: "Error buying premium, please try again.", preferredStyle: .alert)
+                    let alert = UIAlertController(title: Strings.Premium.errorTitle, message: Strings.Premium.errorMessage, preferredStyle: .alert)
                     let okAction = UIAlertAction(title: "OK", style: .default) { _ in
                         self.collectionView.reloadData()
                     }

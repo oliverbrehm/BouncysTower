@@ -22,14 +22,14 @@ class ShopTVC: UITableViewController {
         products = []
         
         if !InAppPurchaseManager.shared.premiumPurchased {
-            let buyPremium = ShopProduct(imageName: "player", title: "Buy premium",
-                                         description: "For no more reminders to buy and a good concience",
+            let buyPremium = ShopProduct(imageName: "player", title: Strings.Shop.buyPremiumTitle,
+                                         description: Strings.Shop.buyPremiumDescription,
                                          cost: 0, type: .buyPremium, color: nil)
             products.append(buyPremium)
         }
         
-        let extralife = ShopProduct(imageName: "extralife", title: "Extra life",
-                                description: "Saves you once from falling down",
+        let extralife = ShopProduct(imageName: "extralife", title: Strings.Shop.extralifeTitle,
+                                description: Strings.Shop.extralifeDescription,
                                 cost: ResourceManager.costExtraLife, type: .extalife, color: nil)
         products.append(extralife)
         
@@ -48,8 +48,7 @@ class ShopTVC: UITableViewController {
     }
     
     private func showNotEnoughCoinsAlert(for product: ShopProduct) {
-        let message = "Sorry, but you don't have enough coins to buy this. Come back if you have collected \(product.cost) coins!"
-        let alert = UIAlertController(title: "Not enough coins", message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: Strings.Shop.insufficientCoinsTitle, message: Strings.Shop.insufficientCoinsMessage(coins: product.cost), preferredStyle: .alert)
         
         let action = UIAlertAction(title: "OK", style: .default)
         alert.addAction(action)
@@ -58,14 +57,13 @@ class ShopTVC: UITableViewController {
     }
     
     private func askToBuy(product: ShopProduct, didBuyHandler: @escaping () -> Void) {
-        let question = "Do you want to buy \"\(product.title)\" for \(product.cost) coins?"
-        let alert = UIAlertController(title: "Buy", message: question, preferredStyle: .alert)
+        let alert = UIAlertController(title: Strings.Shop.confirmBuyTitle, message: Strings.Shop.confirmBuyQuestion(productName: product.title, coins: product.cost), preferredStyle: .alert)
         
-        let buyAction = UIAlertAction(title: "Buy", style: .destructive) { (_) in
+        let buyAction = UIAlertAction(title: Strings.Shop.confirmBuyTitle, style: .destructive) { (_) in
             didBuyHandler()
             self.confirmPurchase(for: product)
         }
-        let cancelAction = UIAlertAction(title: "No thanks", style: .cancel)
+        let cancelAction = UIAlertAction(title: Strings.Shop.noThanksMessage, style: .cancel)
         alert.addAction(buyAction)
         alert.addAction(cancelAction)
         
@@ -73,8 +71,7 @@ class ShopTVC: UITableViewController {
     }
     
     private func confirmPurchase(for product: ShopProduct) {
-        let message = "You bought a new \(product.title)!"
-        let alert = UIAlertController(title: "Thanks!", message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: Strings.Shop.confirmBuyTitle, message: Strings.Shop.buyConfimationMessage(productName: product.title), preferredStyle: .alert)
         
         let action = UIAlertAction(title: "OK", style: .default)
         alert.addAction(action)
@@ -131,7 +128,7 @@ class ShopTVC: UITableViewController {
             return cell
         }
 
-        return UITableViewCell(style: .default, reuseIdentifier: "")
+        return UITableViewCell()
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

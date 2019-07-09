@@ -42,7 +42,6 @@
 // Game Elements
 "comboPerfectMessage" =  "Perfect!";
 "comboAwesomeMessage" = "AWESOME";
-
 "rankLabel" = "RANK";
 "newHighscoreLabel" = "NEW HIGHSCORE";
 "pausedLabel" = "PAUSED";
@@ -60,3 +59,31 @@
 "buildTowerInfoMessage" = "Here you can build your own personal tower! Collect or buy five bricks to build a new row.";
 "towerHeightLabel" = "Tower height";
 "bricksLeftLabel" = "Bricks left";
+
+// Shop
+"buyPremiumTitle" = "Buy premium";
+"buyPremiumDescription" = "For no more reminders to buy and a good concience";
+"extralifeTitle" = "Extra life";
+"extralifeDescription" = "Saves you once from falling down";
+"insufficientCoinsTitle" = "Not enough coins";
+"confirmBuyTitle" = "Buy";
+"noThanksMessage" = "No thanks";
+"thanksMessage" = "Thanks!";
+"insufficientCoinsMessage" = "Sorry, but you don't have enough coins to buy this. Come back if you have collected %@ coins!";
+"confirmBuyQuestion" = "Do you want to buy \"%@\" for %@ coins?";
+"buyConfimationMessage" = "You bought a new %@!";
+
+// Premium
+"featureWaitingTime" = "No more waiting time and reminders!";
+"featureTowerHeight" = "Build your personal tower as high as you like!";
+"featureSupport" = "Support the development of this and other games!";
+"restoreTitle" = "Restore";
+"buyTitle" = "BUY";
+"buyingLabel" = "buying...";
+"loadingPriceLabel" = "loading price...";
+"restoredTitle" = "Restored";
+"errorTitle" = "Error";
+"restoredMessage" = "Restore was successfull.";
+"errorMessage" = "Error restoring premium, please try again.";
+"purchaseConfirmationTitle" = "Sold";
+"purchaseConfirmationMessage" = "Thank you for buying premium!";

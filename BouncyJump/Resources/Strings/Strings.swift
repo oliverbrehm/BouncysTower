@@ -10,6 +10,7 @@ import Foundation
 
 class Strings {
     static let backTitle = NSLocalizedString("backTitle", comment: "BACK")
+    static let continueLabel = NSLocalizedString("continueLabel", comment: "CONTINUE")
 
     struct Brick {
         static let standardBrickTitle = NSLocalizedString("standardBrickTitle", comment: "Standard Brick")
@@ -75,5 +76,47 @@ class Strings {
         static let buildTowerInfoMessage = NSLocalizedString("buildTowerInfoMessage", comment: "Build tower info sentence")
         static let towerHeightLabel = NSLocalizedString("towerHeightLabel", comment: "Tower height")
         static let bricksLeftLabel = NSLocalizedString("bricksLeftLabel", comment: "Bricks left")
+    }
+    
+    struct Shop {
+        static let buyPremiumTitle = NSLocalizedString("buyPremiumTitle", comment: "Buy premium")
+        static let buyPremiumDescription = NSLocalizedString("buyPremiumDescription", comment: "For no more reminders to buy and a good concience")
+        static let extralifeTitle = NSLocalizedString("extralifeTitle", comment: "Extra life")
+        static let extralifeDescription = NSLocalizedString("extralifeDescription", comment: "Saves you once from falling down")
+        static let insufficientCoinsTitle = NSLocalizedString("insufficientCoinsTitle", comment: "Not enough coins")
+        static let confirmBuyTitle = NSLocalizedString("confirmBuyTitle", comment: "Buy")
+        static let noThanksMessage = NSLocalizedString("noThanksMessage", comment: "No thanks")
+        static let thanksMessage = NSLocalizedString("thanksMessage", comment: "Thanks!")
+        
+        static func insufficientCoinsMessage(coins: Int) -> String {
+            let template = NSLocalizedString(
+                "insufficientCoinsMessage",
+                comment: "Sorry, but you don't have enough coins to buy this. Come back if you have collected %@ coins!")
+            return String(format: template, "\(coins)")
+        }
+        static func confirmBuyQuestion(productName: String, coins: Int) -> String {
+            let template = NSLocalizedString("confirmBuyQuestion", comment: "Do you want to buy \"%@\" for %@ coins?")
+            return String(format: template, "\(productName)", "\(coins)")
+        }
+        static func buyConfimationMessage(productName: String) -> String {
+            let template = NSLocalizedString("buyConfimationMessage", comment: "You bought a new %@!")
+            return String(format: "\(template)", "\(productName)")
+        }
+    }
+    
+    struct Premium {
+        static let featureWaitingTime = NSLocalizedString("featureWaitingTime", comment: "No more waiting time and reminders!")
+        static let featureTowerHeight = NSLocalizedString("featureTowerHeight", comment: "Build your personal tower as high as you like!")
+        static let featureSupport = NSLocalizedString("featureSupport", comment: "Support the development of this and other games!")
+        static let restoreTitle = NSLocalizedString("restoreTitle", comment: "Restore")
+        static let buyTitle = NSLocalizedString("buyTitle", comment: "BUY")
+        static let buyingLabel = NSLocalizedString("buyingLabel", comment: "buying...")
+        static let loadingPriceLabel = NSLocalizedString("loadingPriceLabel", comment: "loading price...")
+        static let restoredTitle = NSLocalizedString("restoredTitle", comment: "Restored")
+        static let errorTitle = NSLocalizedString("errorTitle", comment: "Error")
+        static let restoredMessage = NSLocalizedString("restoredMessage", comment: "Restore was successfull.")
+        static let errorMessage = NSLocalizedString("errorMessage", comment: "Error restoring premium, please try again.")
+        static let purchaseConfirmationTitle = NSLocalizedString("purchaseConfirmationTitle", comment: "Sold")
+        static let purchaseConfirmationMessage = NSLocalizedString("purchaseConfirmationMessage", comment: "Thank you for buying premium!")
     }
 }

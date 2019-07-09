@@ -32,17 +32,16 @@
 "diamondBrickDescription" = "Funkelnder Stein aus Diamanten.";
 
 // Tutorials
-"moveTutorialDescription" = "Touch and hold to move. Use the entire left half of the screen to move left and the right half to move right. You move faster the longer you touch the screen.";
-"wallTutorialDescription" = "Great, you reached the next Level! Did you notice: You get an extra boost upwards if you jump against the wall! If you roll left or right on the platform, you gain more speed and jump higher.";
-"combosTutorialDescription" = "Nice jumping! You get an even higher score if you do combos. Always keep rolling by holding your touch while on the platform. To get a combo you have to jump at least two platforms at once and hit the left or right wall between each jump.";
-"bricksTutorialDescription" = "Cool, you collected a loose brick! Use it in the main screen to build your own personal tower.";
-"extraLivesTutorialDescription" = "Hey, you found an extra life! If you fall down, you can decide to use it and it will save you once.";
-"towerMultiplicatorTutorialDescription" = "Awesome, your tower is growing! You even get a higher in-game score the taller the tower gets. The score for each jump will be multiplied by the height of your tower.";
+"moveTutorialDescription" = "Zum Bewegen musst du den Bildschirm Berühren und halten. Benutze die ganze linke Hälfte des Bildschirms, um nach links zu steuern und die rechte Hälfte, um nach rechts zu steuern. Du wirst schneller je länger du den Bildschirm berührst.";
+"wallTutorialDescription" = "Super, du hast das nächste Level erreicht! Übrigens: Wenn du gegen die Wand springst, bekommst du nochmal einen extra Stoß nach oben! Wenn du auf der Platform nach links oder rechts rollst, wirst du schneller und springst höher.";
+"combosTutorialDescription" = "Gut gesprungen! Du kannst sogar noch mehr Punkte bekommen, wenn du Combos machst. Halte den Spieler auf jeder Platform am Rollen indem du später loslässt. Um eine Combo zu bekommen musst du immer mindestens zwei Plattformen auf einmal überspringen und jedes mal die linke oder rechte Wand berühren.";
+"bricksTutorialDescription" = "Cool, du hast einen losen Stein gefunden! Benutze ihn im Hauptmenü um deinen eigenen Turm aufzubauen.";
+"extraLivesTutorialDescription" = "Hey, du hast ein Extraleben gefunden! Wenn du runterfällst kannst du es benutzen um eine zweite Chance zu bekommen.";
+"towerMultiplicatorTutorialDescription" = "Super, dein Turm wird immer höher! Je höher der Turm, desto mehr Punkte wirst du im Spiel bekommen. Die Punktzahl für jeden Sprung wird mit der Höhe des Turms multipliziert.";
 
 // Game Elements
 "comboPerfectMessage" =  "Perfekt!";
 "comboAwesomeMessage" = "SUPER";
-
 "rankLabel" = "RANG";
 "newHighscoreLabel" = "NEUER HIGHSCORE";
 "pausedLabel" = "PAUSE";
@@ -60,3 +59,31 @@
 "buildTowerInfoMessage" = "Hier kannst du deinen eigenen Turm bauen! Sammle oder kaufe mindestens fünf Steine um eine neue Reihe hinzuzufügen.";
 "towerHeightLabel" = "Turmhöhe";
 "bricksLeftLabel" = "Übrige Steine";
+
+// Shop
+"buyPremiumTitle" = "Premium kaufen";
+"buyPremiumDescription" = "Schluss mit Erinnerungen zum Kaufen und Wartezeiten!";
+"extralifeTitle" = "Extraleben";
+"extralifeDescription" = "Gibt dir eine zweite Chance wenn du runterfällst.";
+"insufficientCoinsTitle" = "Zu wenige Münzen";
+"confirmBuyTitle" = "Kaufen";
+"noThanksMessage" = "Nein danke";
+"thanksMessage" = "Danke!";
+"insufficientCoinsMessage" = "Leider hast du dafür nicht genügend Münzen. Komm zurück wenn du %@ Münzen gesammelt hast!";
+"confirmBuyQuestion" = "Möchtest du \"%@\" für %@ Münzen kaufen?";
+"buyConfimationMessage" = "Du hast \"%@\" gekauft!";
+
+// Premium
+"featureWaitingTime" = "Schluss mit Erinnerungen zum Kaufen und Wartezeiten!";
+"featureTowerHeight" = "Baue deinen eigenen Turm so hoch wie du möchtest!";
+"featureSupport" = "Unterstütze die Entwicklung von diesem und anderen Spielen!";
+"restoreTitle" = "Wiederherstellen";
+"buyTitle" = "KAUFEN";
+"buyingLabel" = "kaufe...";
+"loadingPriceLabel" = "Preis laden...";
+"restoredTitle" = "Wiederherstellen";
+"errorTitle" = "Fehler";
+"restoredMessage" = "Wiederherstellen war erfolgreich.";
+"errorMessage" = "Fehler beim Wiederherstellen, bitte versuche es noch einmal.";
+"purchaseConfirmationTitle" = "Sold";
+"purchaseConfirmationMessage" = "Thank you for buying premium!";

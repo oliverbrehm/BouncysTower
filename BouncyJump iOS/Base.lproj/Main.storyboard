@@ -187,7 +187,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BUY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qcg-zc-eix">
-                                            <rect key="frame" x="8" y="3.6666666666666643" width="134" height="29.666666666666671"/>
+                                            <rect key="frame" x="8" y="3.6666666666666661" width="134" height="29.666666666666671"/>
                                             <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="24"/>
                                             <color key="textColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -368,7 +368,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="brick" width="600" height="400"/>
+        <image name="brick" width="450" height="300"/>
         <image name="buttonbg" width="62" height="62"/>
         <image name="coin" width="63" height="63"/>
         <image name="extralife" width="64" height="64"/>
