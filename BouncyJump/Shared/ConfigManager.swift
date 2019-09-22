@@ -178,4 +178,13 @@ class Config {
         
         return true
     }
+    
+    func reset() {
+        self.coins = 0
+        self.extraLives = 0
+        
+        for tutorial in Tutorial.allCases {
+            UserDefaults.standard.set(false, forKey: tutorial.rawValue)
+        }
+    }
 }

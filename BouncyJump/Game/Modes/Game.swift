@@ -116,6 +116,8 @@ class Game: SKScene, SKPhysicsContactDelegate {
     }
     
     func resetGame() {
+        AudioManager.standard.playBackgroundMusic(backgroundMusic: .level)
+
         world.create(self)
         self.state.gameOverY = world.absoluteZero()
         

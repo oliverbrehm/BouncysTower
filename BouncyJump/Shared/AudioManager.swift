@@ -69,6 +69,7 @@ enum SoundAction: CaseIterable, Hashable {
 enum BackgroundMusic: String, CaseIterable {
     case menu
     case level
+    case gameover
     
     var audioPlayer: AVAudioPlayer? {
         return BackgroundMusic.audioPlayers[self]
@@ -81,7 +82,7 @@ enum BackgroundMusic: String, CaseIterable {
             do {
                 if let url = Bundle.main.url(forResource: backgroundMusic.rawValue, withExtension: "mp3"){
                     let player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
-                    player.numberOfLoops = -1 // play indefinitely
+                    player.numberOfLoops = backgroundMusic == .gameover ? 0 : -1 // play indefinitely
                     players[backgroundMusic] = player
                 }
             } catch let error {

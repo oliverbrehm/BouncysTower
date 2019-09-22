@@ -137,11 +137,11 @@ enum Brick: Int, CaseIterable {
         case .standard, .standardRed, .standardBlue, .standardGreen, .standardOrange, .standardPurple, .standardYellow:
             return Brick.growShrinkAction
         case .glass:
-            return Brick.twistAction // TODO
+            return Brick.shakeAction
         case .diamond:
             return Brick.twistAction
         case .magic:
-            return Brick.twistAction // TODO
+            return Brick.magicAction
         }
     }
     
@@ -199,6 +199,27 @@ enum Brick: Int, CaseIterable {
         SKAction.rotate(byAngle: 2 * CGFloat.pi, duration: 0.2),
         SKAction.scale(to: 1.0, duration: 0.2)
     ])
+    
+    private static let shakeRadius: CGFloat = 30.0
+    private static let shakeTime: TimeInterval = 0.15
+    private static func singleShakeAction(radius: CGFloat) -> SKAction {
+        return SKAction.sequence([
+            SKAction.moveBy(x: radius / 2, y: 0, duration: shakeTime / 4),
+            SKAction.moveBy(x: -radius, y: 0, duration: shakeTime / 2),
+            SKAction.moveBy(x: radius / 2, y: 0, duration: shakeTime / 4)
+        ])
+    }
+    private static let shakeAction = SKAction.sequence([
+        singleShakeAction(radius: shakeRadius),
+        singleShakeAction(radius: shakeRadius / 2),
+        singleShakeAction(radius: shakeRadius / 4),
+        singleShakeAction(radius: shakeRadius / 8)
+    ])
+    
+    private static let magicAction = SKAction.sequence([
+        SKAction.scale(to: 5.0, duration: 0.3),
+        SKAction.scale(to: 1.0, duration: 0.3)
+    ])
 }
 
 class TowerBricks {
@@ -251,5 +272,10 @@ class TowerBricks {
             self.rows += [Array(bricks[0 ..< TowerBricks.numberOfBricksInRow])]
             self.bricks.removeFirst(TowerBricks.numberOfBricksInRow)
         }
+    }
+    
+    func reset() {
+        self.bricks = []
+        self.rows = []
     }
 }

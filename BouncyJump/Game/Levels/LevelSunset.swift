@@ -11,9 +11,9 @@ import SpriteKit
 class LevelSunset: Level {
     override init(world: World) {
         super.init(world: world)
-        self.texturePlatform = SKTexture(imageNamed: "platformFinal")
-        self.textureWall = SKTexture(imageNamed: "wallFinal")
-        self.textureStaticBackground = SKTexture(imageNamed: "bgFinal")
+        self.texturePlatform = SKTexture(imageNamed: "platformSunset")
+        self.textureWall = SKTexture(imageNamed: "wallSunset")
+        self.textureStaticBackground = SKTexture(imageNamed: "bgSunsetStatic")
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -21,7 +21,7 @@ class LevelSunset: Level {
     }
     
     override var multiplicator: Int {
-        return 5
+        return 6
     }
     
     override var backgroundColor: SKColor {
@@ -33,11 +33,11 @@ class LevelSunset: Level {
     }
     
     override var platformMaxFactor: CGFloat {
-        return 0.55
+        return 0.5
     }
     
     override var levelSpeed: CGFloat {
-        return 90.0
+        return 125.0
     }
     
     override var platformYDistance: CGFloat {
@@ -45,6 +45,6 @@ class LevelSunset: Level {
     }
     
     override var numberOfPlatforms: Int {
-        return 80
+        return 100
     }
 }

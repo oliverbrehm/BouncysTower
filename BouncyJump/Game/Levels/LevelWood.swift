@@ -23,7 +23,7 @@ class LevelWood: Level {
     }
     
     override var multiplicator: Int {
-        return 2
+        return 4
     }
     
     override var backgroundColor: SKColor {
@@ -35,11 +35,11 @@ class LevelWood: Level {
     }
     
     override var platformMaxFactor: CGFloat {
-        return 0.8
+        return 0.6
     }
     
     override var levelSpeed: CGFloat {
-        return 60.0
+        return 110.0
     }
     
     override var platformYDistance: CGFloat {
@@ -48,5 +48,9 @@ class LevelWood: Level {
     
     override var numberOfPlatforms: Int {
         return 100
+    }
+    
+    override var amientParticleName: String? {
+        return "AmbientRain"
     }
 }

@@ -21,7 +21,7 @@ class LevelFinal: Level {
     }
 
     override var multiplicator: Int {
-        return 8
+        return 10
     }
 
     override var backgroundColor: SKColor {
@@ -33,11 +33,11 @@ class LevelFinal: Level {
     }
     
     override var platformMaxFactor: CGFloat {
-        return 0.24
+        return 0.25
     }
     
     override var levelSpeed: CGFloat {
-        return 120.0
+        return 160.0
     }
     
     override var numberOfPlatforms: Int {
@@ -45,6 +45,6 @@ class LevelFinal: Level {
     }
     
     override var platformYDistance: CGFloat {
-        return 0.35
+        return 0.4
     }
 }

@@ -22,7 +22,7 @@ class LevelMoonStars: Level {
     }
     
     override var multiplicator: Int {
-        return 7
+        return 8
     }
     
     override var backgroundColor: SKColor {
@@ -34,11 +34,11 @@ class LevelMoonStars: Level {
     }
     
     override var platformMaxFactor: CGFloat {
-        return 0.35
+        return 0.3
     }
     
     override var levelSpeed: CGFloat {
-        return 110.0
+        return 140.0
     }
     
     override var platformYDistance: CGFloat {

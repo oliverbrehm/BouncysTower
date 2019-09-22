@@ -26,7 +26,7 @@ class LevelSnow: Level {
     }
     
     override var multiplicator: Int {
-        return 3
+        return 5
     }
     
     override var backgroundColor: SKColor {
@@ -34,22 +34,22 @@ class LevelSnow: Level {
     }
     
     override var platformMinFactor: CGFloat {
-        return 0.3
+        return 0.2
     }
     
     override var platformMaxFactor: CGFloat {
-        return 0.7
+        return 0.6
     }
     
     override var levelSpeed: CGFloat {
-        return 70.0
+        return 120.0
     }
     
     override var platformYDistance: CGFloat {
-        return 0.3
+        return 0.35
     }
     
     override var numberOfPlatforms: Int {
-        return 70
+        return 100
     }
 }

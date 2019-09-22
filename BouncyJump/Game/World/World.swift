@@ -63,12 +63,11 @@ class World: SKNode {
         // levels
         self.levels = [
             LevelBase1(world: self),
-            //LevelBase2(world: self),
+            LevelBase2(world: self),
+            LevelDesert(world: self),
             LevelWood(world: self),
-            //LevelDesert(world: self),
-            //LevelSun(world: self),
             LevelSnow(world: self),
-            //LevelSunset(world: self),
+            LevelSunset(world: self),
             LevelMoon(world: self),
             LevelMoonStars(world: self),
             LevelFinal(world: self)

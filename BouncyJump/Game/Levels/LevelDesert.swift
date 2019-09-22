@@ -11,10 +11,10 @@ import SpriteKit
 class LevelDesert: Level {
     override init(world: World) {
         super.init(world: world)
-        self.texturePlatform = SKTexture(imageNamed: "platformMoon")
-        self.texturePlatformEnds = SKTexture(imageNamed: "platformEndsMoon")
-        self.textureWall = SKTexture(imageNamed: "wallMoonStars")
-        self.textureStaticBackground = SKTexture(imageNamed: "bgStaticMoonStars")
+        self.texturePlatform = SKTexture(imageNamed: "platformDesert")
+        self.texturePlatformEnds = SKTexture(imageNamed: "platformEndsDesert")
+        self.textureWall = SKTexture(imageNamed: "wallDesert")
+        self.textureBackground = SKTexture(imageNamed: "bgDesert")
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -22,7 +22,7 @@ class LevelDesert: Level {
     }
     
     override var multiplicator: Int {
-        return 4
+        return 3
     }
     
     override var backgroundColor: SKColor {
@@ -30,7 +30,7 @@ class LevelDesert: Level {
     }
     
     override var platformMinFactor: CGFloat {
-        return 0.2
+        return 0.3
     }
     
     override var platformMaxFactor: CGFloat {
@@ -38,7 +38,7 @@ class LevelDesert: Level {
     }
     
     override var levelSpeed: CGFloat {
-        return 80.0
+        return 90.0
     }
     
     override var platformYDistance: CGFloat {
@@ -46,6 +46,6 @@ class LevelDesert: Level {
     }
     
     override var numberOfPlatforms: Int {
-        return 80
+        return 100
     }
 }

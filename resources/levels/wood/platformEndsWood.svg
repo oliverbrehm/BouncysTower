@@ -15,35 +15,36 @@
    viewBox="0 0 128.00001 128"
    id="svg2"
    version="1.1"
-   inkscape:version="0.91 r13725"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
    sodipodi:docname="platformEndsWood.svg"
-   inkscape:export-filename="/projects/TowerJump/resources/levels/wood/platformEndsWood.png"
+   inkscape:export-filename="/Users/oliverbrehm/privat/towerjump/resources/levels/wood/platformEndsWood.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
   <defs
      id="defs4">
     <linearGradient
-       id="linearGradient4164"
-       inkscape:collect="always">
-      <stop
-         id="stop4166"
-         offset="0"
-         style="stop-color:#643200;stop-opacity:1" />
-      <stop
-         id="stop4168"
-         offset="1"
-         style="stop-color:#6b4015;stop-opacity:1" />
-    </linearGradient>
-    <linearGradient
-       gradientUnits="userSpaceOnUse"
-       y2="1015.22"
-       x2="67.500008"
-       y1="924.86279"
-       x1="67.500008"
-       id="linearGradient4170"
-       xlink:href="#linearGradient4164"
        inkscape:collect="always"
-       gradientTransform="matrix(1,0,0,1.4010743,0.64975754,-370.7379)" />
+       id="linearGradient4164">
+      <stop
+         style="stop-color:#ac7800;stop-opacity:1"
+         offset="0"
+         id="stop4166" />
+      <stop
+         style="stop-color:#473000;stop-opacity:1"
+         offset="1"
+         id="stop4168" />
+    </linearGradient>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4164"
+       id="radialGradient5053"
+       cx="64.089798"
+       cy="1010.8644"
+       fx="64.089798"
+       fy="1010.8644"
+       r="64.000015"
+       gradientTransform="matrix(9.2001729,6.7673819e-8,0,0.60026908,-524.81119,395.45403)"
+       gradientUnits="userSpaceOnUse" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -53,16 +54,16 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:zoom="3.959798"
-     inkscape:cx="77.98978"
-     inkscape:cy="69.079214"
+     inkscape:cx="77.863511"
+     inkscape:cy="76.177082"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      units="px"
      inkscape:window-width="1833"
      inkscape:window-height="942"
-     inkscape:window-x="1383"
-     inkscape:window-y="19"
+     inkscape:window-x="1464"
+     inkscape:window-y="11"
      inkscape:window-maximized="0" />
   <metadata
      id="metadata7">
@@ -72,7 +73,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -82,9 +83,9 @@
      id="layer1"
      transform="translate(0,-924.36221)">
     <path
-       style="opacity:1;fill:url(#linearGradient4170);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:26;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 128.64979,924.3622 0,128 c 0,0 -89.471907,-23.2642 -117.645971,-55.30587 -41.644278,-74.55211 62.699476,-71.74226 117.645971,-72.69413 z"
-       id="rect4143-8"
+       style="opacity:1;fill:url(#radialGradient5053);fill-opacity:1;fill-rule:nonzero;stroke:#533f17;stroke-width:4.4639039;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:45.05548477;stroke-opacity:1"
+       d="m 123.87344,928.38679 h 9.90699 V 1049.761 c -183.116634,0.08 -160.631698,-122.87903 -9.90699,-121.37421 z"
+       id="rect4143"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cccc" />
   </g>

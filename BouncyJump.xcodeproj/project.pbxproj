@@ -80,9 +80,6 @@
 		A756B265224BA23F00CC335E /* LevelWood.swift in Sources */ = {isa = PBXBuildFile; fileRef = A756B264224BA23F00CC335E /* LevelWood.swift */; };
 		A756B266224BA23F00CC335E /* LevelWood.swift in Sources */ = {isa = PBXBuildFile; fileRef = A756B264224BA23F00CC335E /* LevelWood.swift */; };
 		A756B267224BA23F00CC335E /* LevelWood.swift in Sources */ = {isa = PBXBuildFile; fileRef = A756B264224BA23F00CC335E /* LevelWood.swift */; };
-		A756B269224BA29F00CC335E /* LevelSun.swift in Sources */ = {isa = PBXBuildFile; fileRef = A756B268224BA29F00CC335E /* LevelSun.swift */; };
-		A756B26A224BA29F00CC335E /* LevelSun.swift in Sources */ = {isa = PBXBuildFile; fileRef = A756B268224BA29F00CC335E /* LevelSun.swift */; };
-		A756B26B224BA29F00CC335E /* LevelSun.swift in Sources */ = {isa = PBXBuildFile; fileRef = A756B268224BA29F00CC335E /* LevelSun.swift */; };
 		A765DC032215A48400B34284 /* CGVector+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A765DC022215A48400B34284 /* CGVector+Extensions.swift */; };
 		A765DC042215A48400B34284 /* CGVector+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A765DC022215A48400B34284 /* CGVector+Extensions.swift */; };
 		A765DC052215A48400B34284 /* CGVector+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A765DC022215A48400B34284 /* CGVector+Extensions.swift */; };
@@ -235,6 +232,7 @@
 		A7DC9BC422177E430038EC58 /* SuperJump.sks in Resources */ = {isa = PBXBuildFile; fileRef = A7DC9BC322177E430038EC58 /* SuperJump.sks */; };
 		A7DC9BC522177E430038EC58 /* SuperJump.sks in Resources */ = {isa = PBXBuildFile; fileRef = A7DC9BC322177E430038EC58 /* SuperJump.sks */; };
 		A7DC9BC622177E430038EC58 /* SuperJump.sks in Resources */ = {isa = PBXBuildFile; fileRef = A7DC9BC322177E430038EC58 /* SuperJump.sks */; };
+		BB47B2C0232D8F92008CCDA2 /* AmbientRain.sks in Resources */ = {isa = PBXBuildFile; fileRef = BB47B2BF232D8F92008CCDA2 /* AmbientRain.sks */; };
 		BB4A245522A12B850049962E /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = BB4A245422A12B850049962E /* .swiftlint.yml */; };
 		BB4A245622A12B850049962E /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = BB4A245422A12B850049962E /* .swiftlint.yml */; };
 		BB4A245722A12B850049962E /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = BB4A245422A12B850049962E /* .swiftlint.yml */; };
@@ -276,6 +274,7 @@
 		BB67E5C722CC99EE007E15E2 /* extralife.aif in Resources */ = {isa = PBXBuildFile; fileRef = BB67E5AB22CC99EE007E15E2 /* extralife.aif */; };
 		BB67E5C822CC99EE007E15E2 /* extralife.aif in Resources */ = {isa = PBXBuildFile; fileRef = BB67E5AB22CC99EE007E15E2 /* extralife.aif */; };
 		BB67E5C922CC99EE007E15E2 /* extralife.aif in Resources */ = {isa = PBXBuildFile; fileRef = BB67E5AB22CC99EE007E15E2 /* extralife.aif */; };
+		BB6B5B6F2337969100EF8D77 /* gameover.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BB6B5B6E2337969100EF8D77 /* gameover.mp3 */; };
 		BB74F39D22BD222C00657282 /* InAppPurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB74F39C22BD222C00657282 /* InAppPurchaseManager.swift */; };
 		BBFE1A9C22A40D2600FDCB84 /* GameCenterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFE1A9B22A40D2600FDCB84 /* GameCenterManager.swift */; };
 /* End PBXBuildFile section */
@@ -329,7 +328,6 @@
 		A756880D22423A3F00E793A1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A75688112242608D00E793A1 /* IconDescriptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconDescriptionButton.swift; sourceTree = "<group>"; };
 		A756B264224BA23F00CC335E /* LevelWood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelWood.swift; sourceTree = "<group>"; };
-		A756B268224BA29F00CC335E /* LevelSun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelSun.swift; sourceTree = "<group>"; };
 		A765DC022215A48400B34284 /* CGVector+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGVector+Extensions.swift"; sourceTree = "<group>"; };
 		A7736A902205D6B600A28B5D /* InfoBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoBox.swift; sourceTree = "<group>"; };
 		A7736A9B2206025100A28B5D /* BouncyJump.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BouncyJump.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -374,6 +372,7 @@
 		A7DC9BBB221756CF0038EC58 /* PerfectJumpDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfectJumpDetector.swift; sourceTree = "<group>"; };
 		A7DC9BBF221775270038EC58 /* ComboParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ComboParticle.sks; sourceTree = "<group>"; };
 		A7DC9BC322177E430038EC58 /* SuperJump.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SuperJump.sks; sourceTree = "<group>"; };
+		BB47B2BF232D8F92008CCDA2 /* AmbientRain.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AmbientRain.sks; sourceTree = "<group>"; };
 		BB4A245422A12B850049962E /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		BB51D91A22D38D7100346B46 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		BB51D91E22D39A6F00346B46 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
@@ -394,6 +393,7 @@
 		BB67E5A922CC99EE007E15E2 /* brick_standard.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = brick_standard.aif; sourceTree = "<group>"; };
 		BB67E5AA22CC99EE007E15E2 /* button.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = button.aif; sourceTree = "<group>"; };
 		BB67E5AB22CC99EE007E15E2 /* extralife.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = extralife.aif; sourceTree = "<group>"; };
+		BB6B5B6E2337969100EF8D77 /* gameover.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameover.mp3; sourceTree = "<group>"; };
 		BB74F39C22BD222C00657282 /* InAppPurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseManager.swift; sourceTree = "<group>"; };
 		BBFE1A9B22A40D2600FDCB84 /* GameCenterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -471,9 +471,8 @@
 				A71A518D215A6A0600E7CDDB /* Level.swift */,
 				A71A5190215A6AC200E7CDDB /* LevelBase1.swift */,
 				A71A5192215A6B0400E7CDDB /* LevelBase2.swift */,
-				A756B264224BA23F00CC335E /* LevelWood.swift */,
 				A71A5196215E41FD00E7CDDB /* LevelDesert.swift */,
-				A756B268224BA29F00CC335E /* LevelSun.swift */,
+				A756B264224BA23F00CC335E /* LevelWood.swift */,
 				A71A5194215E41F000E7CDDB /* LevelSnow.swift */,
 				A7AE066D216243FE0009D905 /* LevelSunset.swift */,
 				A7AE0669216243D70009D905 /* LevelMoon.swift */,
@@ -501,6 +500,7 @@
 				A7DC9BC322177E430038EC58 /* SuperJump.sks */,
 				A745E17622395C260043EC5A /* JumpParticle.sks */,
 				A73B3FF3224A3696002B8D2C /* AmbientSnow.sks */,
+				BB47B2BF232D8F92008CCDA2 /* AmbientRain.sks */,
 			);
 			path = Particles;
 			sourceTree = "<group>";
@@ -705,6 +705,7 @@
 			children = (
 				BB6452BD22CCBAE900EF8E03 /* menu.mp3 */,
 				BB6452C022CCC14F00EF8E03 /* level.mp3 */,
+				BB6B5B6E2337969100EF8D77 /* gameover.mp3 */,
 			);
 			path = Music;
 			sourceTree = "<group>";
@@ -898,6 +899,7 @@
 				BB67E5AC22CC99EE007E15E2 /* brick_diamond.aif in Resources */,
 				A7AA89B6222019C400C5D73A /* Assets.xcassets in Resources */,
 				A7DC9BC422177E430038EC58 /* SuperJump.sks in Resources */,
+				BB6B5B6F2337969100EF8D77 /* gameover.mp3 in Resources */,
 				BB4A245522A12B850049962E /* .swiftlint.yml in Resources */,
 				A7A228CB2206050E00081E0E /* ScoreParticle.sks in Resources */,
 				BB51D92222D39ABD00346B46 /* Localizable.strings in Resources */,
@@ -908,6 +910,7 @@
 				A7A22865220604DB00081E0E /* Settings.sks in Resources */,
 				A7A22862220604DB00081E0E /* MainGame.sks in Resources */,
 				BB67E5C422CC99EE007E15E2 /* button.aif in Resources */,
+				BB47B2C0232D8F92008CCDA2 /* AmbientRain.sks in Resources */,
 				BB67E5B822CC99EE007E15E2 /* gameover.aif in Resources */,
 				BB67E5BB22CC99EE007E15E2 /* message.aif in Resources */,
 				A7736AA62206025100A28B5D /* LaunchScreen.storyboard in Resources */,
@@ -1065,7 +1068,6 @@
 				A776C4FC224575C9004FAD3B /* CGSize+Extensions.swift in Sources */,
 				BB51D91B22D38D7100346B46 /* Strings.swift in Sources */,
 				A7A22859220604D500081E0E /* AdvertisingController.swift in Sources */,
-				A756B269224BA29F00CC335E /* LevelSun.swift in Sources */,
 				A724098322243DF100B18095 /* ScoreManager.swift in Sources */,
 				A7736A9E2206025100A28B5D /* AppDelegate.swift in Sources */,
 				A74EF25C223A70A700A69176 /* PremiumFeatureCell.swift in Sources */,
@@ -1115,7 +1117,6 @@
 				BB51D91C22D38D7100346B46 /* Strings.swift in Sources */,
 				A7A22890220604E800081E0E /* NodeZOrder.swift in Sources */,
 				A71538F5222D10DA00A81322 /* Collectable.swift in Sources */,
-				A756B26A224BA29F00CC335E /* LevelSun.swift in Sources */,
 				A7A228BD220604F700081E0E /* LevelMoonStars.swift in Sources */,
 				A71538FD222D241F00A81322 /* ConsumableBrick.swift in Sources */,
 				A7A22876220604E100081E0E /* Overlay.swift in Sources */,
@@ -1188,7 +1189,6 @@
 				BB51D91D22D38D7100346B46 /* Strings.swift in Sources */,
 				A7A2289D220604E800081E0E /* NodeZOrder.swift in Sources */,
 				A71538F6222D10DA00A81322 /* Collectable.swift in Sources */,
-				A756B26B224BA29F00CC335E /* LevelSun.swift in Sources */,
 				A7A228C6220604F700081E0E /* LevelMoonStars.swift in Sources */,
 				A71538FE222D241F00A81322 /* ConsumableBrick.swift in Sources */,
 				A7A2287B220604E100081E0E /* Overlay.swift in Sources */,

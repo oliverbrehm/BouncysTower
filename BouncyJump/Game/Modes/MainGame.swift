@@ -137,11 +137,10 @@ class MainGame: Game {
         }
         
         if(player.position.y + player.size.height / 2.0 + gameOverTolerance < state.gameOverY) {
-            self.run(SoundAction.gameOver.action)
-            
             player.died()
             
             if(Config.standard.hasExtralives()) {
+                self.run(SoundAction.gameOver.action)
                 self.showExtralifeDialog()
             } else {
                 self.gameOver()
@@ -151,6 +150,8 @@ class MainGame: Game {
     
     func gameOver() {
         AdvertisingController.shared.gamePlayed(gameTime: self.state.currentGameTime)
+        
+        AudioManager.standard.playBackgroundMusic(backgroundMusic: .gameover)
         
         let score = self.player.score
         let rank = Score.standard.addScore(score)

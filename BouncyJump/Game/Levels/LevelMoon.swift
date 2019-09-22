@@ -23,7 +23,7 @@ class LevelMoon: Level {
     }
 
     override var multiplicator: Int {
-        return 6
+        return 7
     }
 
     override var backgroundColor: SKColor {
@@ -31,15 +31,15 @@ class LevelMoon: Level {
     }
     
     override var platformMinFactor: CGFloat {
-        return 0.2
+        return 0.15
     }
     
     override var platformMaxFactor: CGFloat {
-        return 0.40
+        return 0.45
     }
     
     override var levelSpeed: CGFloat {
-        return 100.0
+        return 130
     }
     
     override var platformYDistance: CGFloat {
@@ -47,6 +47,6 @@ class LevelMoon: Level {
     }
     
     override var numberOfPlatforms: Int {
-        return 80
+        return 100
     }
 }

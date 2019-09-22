@@ -15,9 +15,9 @@
    viewBox="0 0 128.00001 128"
    id="svg2"
    version="1.1"
-   inkscape:version="0.91 r13725"
-   sodipodi:docname="platformEndsSnow.svg"
-   inkscape:export-filename="/projects/TowerJump/resources/levels/snow/platformEndsSnow.png"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="platformEndsDesert.svg"
+   inkscape:export-filename="/Users/oliverbrehm/privat/towerjump/resources/levels/desert/platformEndsDesert.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
   <defs
@@ -26,11 +26,11 @@
        inkscape:collect="always"
        id="linearGradient4136">
       <stop
-         style="stop-color:#ebebeb;stop-opacity:1"
+         style="stop-color:#3a3a3a;stop-opacity:1"
          offset="0"
          id="stop4138" />
       <stop
-         style="stop-color:#ffffff;stop-opacity:1"
+         style="stop-color:#5e5e5e;stop-opacity:1"
          offset="1"
          id="stop4140" />
     </linearGradient>
@@ -43,27 +43,27 @@
        fx="31.298113"
        fy="1026.7736"
        r="31.5625"
-       gradientTransform="matrix(103.58627,-1.583466e-5,0,0.79910473,-3144.6126,155.48324)"
+       gradientTransform="matrix(105.47245,-9.4775268e-6,0,0.47828855,-3201.8723,463.16469)"
        gradientUnits="userSpaceOnUse" />
   </defs>
   <sodipodi:namedview
      id="base"
-     pagecolor="#d7f5ff"
+     pagecolor="#dcb060"
      bordercolor="#666666"
      borderopacity="1.0"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:zoom="3.959798"
-     inkscape:cx="53.998657"
+     inkscape:cx="92.88953"
      inkscape:cy="62.295304"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      units="px"
-     inkscape:window-width="1903"
-     inkscape:window-height="1023"
-     inkscape:window-x="1302"
-     inkscape:window-y="14"
+     inkscape:window-width="1440"
+     inkscape:window-height="856"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
      inkscape:window-maximized="0" />
   <metadata
      id="metadata7">
@@ -73,7 +73,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -83,12 +83,28 @@
      id="layer1"
      transform="translate(0,-924.36221)">
     <rect
-       style="opacity:1;fill:url(#radialGradient4142);fill-opacity:1;stroke:none;stroke-width:5.00000048;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="opacity:1;fill:url(#radialGradient4142);fill-opacity:1;stroke:none;stroke-width:4.80742025;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4145"
-       width="194.16504"
-       height="84.290611"
-       x="-3.8146982e-06"
-       y="924.36218"
-       ry="42.145306" />
+       width="197.70056"
+       height="50.4505"
+       x="-7.6293932e-06"
+       y="923.36218"
+       ry="25.22525" />
+    <rect
+       style="opacity:1;fill:#5e5e5e;fill-opacity:1;stroke:none;stroke-width:38.7278595;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect933"
+       width="160.30045"
+       height="86.52356"
+       x="26.323782"
+       y="973.16211"
+       ry="41.668793" />
+    <rect
+       ry="0"
+       y="973.16211"
+       x="26.323782"
+       height="46.622536"
+       width="160.30045"
+       id="rect1569"
+       style="opacity:1;fill:#5e5e5e;fill-opacity:1;stroke:none;stroke-width:28.4285202;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
   </g>
 </svg>

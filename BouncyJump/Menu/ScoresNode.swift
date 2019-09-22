@@ -60,7 +60,11 @@ class ScoreNode: SKNode {
         let gameCenterButton = IconDescriptionButton(description: "GAME CENTER", image: "options")
         gameCenterButton.position = CGPoint(x: 0, y: currentY - dY)
         gameCenterButton.action = {
-            GameCenterManager.standard.showLeaderboard()
+            // GameCenterManager.standard.showLeaderboard()
+            
+            // TODO button used as reset for testing
+            Config.standard.reset()
+            TowerBricks.standard.reset()
         }
         self.addChild(gameCenterButton)
     }

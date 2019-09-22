@@ -8,6 +8,34 @@
 
 import UIKit
 
+extension UIImage {
+    func imageWithColor(color: UIColor) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(self.size, false, UIScreen.main.scale)
+        
+        let context = UIGraphicsGetCurrentContext()!
+        color.setFill()
+        
+        context.translateBy(x: 0, y: self.size.height)
+        context.scaleBy(x: 1.0, y: -1.0)
+        
+        context.setBlendMode(CGBlendMode.normal)
+        
+        let rect = CGRect(x: 0, y: 0, width: self.size.width, height: self.size.height)
+        context.draw(self.cgImage!, in: rect)
+        
+        // TODO hack, find correwct blend mode or use SpriteKit
+        let inset: CGFloat = 12.5
+        context.setBlendMode(CGBlendMode.multiply)
+        context.addRect(rect.inset(by: UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)))
+        context.drawPath(using: CGPathDrawingMode.fill)
+        
+        let coloredImg: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        return coloredImg
+    }
+}
+
 class ShopTVC: UITableViewController {
     
     private var products: [ShopProduct] = []
@@ -48,7 +76,10 @@ class ShopTVC: UITableViewController {
     }
     
     private func showNotEnoughCoinsAlert(for product: ShopProduct) {
-        let alert = UIAlertController(title: Strings.Shop.insufficientCoinsTitle, message: Strings.Shop.insufficientCoinsMessage(coins: product.cost), preferredStyle: .alert)
+        let alert = UIAlertController(
+            title: Strings.Shop.insufficientCoinsTitle,
+            message: Strings.Shop.insufficientCoinsMessage(coins: product.cost),
+            preferredStyle: .alert)
         
         let action = UIAlertAction(title: "OK", style: .default)
         alert.addAction(action)
@@ -57,7 +88,10 @@ class ShopTVC: UITableViewController {
     }
     
     private func askToBuy(product: ShopProduct, didBuyHandler: @escaping () -> Void) {
-        let alert = UIAlertController(title: Strings.Shop.confirmBuyTitle, message: Strings.Shop.confirmBuyQuestion(productName: product.title, coins: product.cost), preferredStyle: .alert)
+        let alert = UIAlertController(
+            title: Strings.Shop.confirmBuyTitle,
+            message: Strings.Shop.confirmBuyQuestion(productName: product.title, coins: product.cost),
+            preferredStyle: .alert)
         
         let buyAction = UIAlertAction(title: Strings.Shop.confirmBuyTitle, style: .destructive) { (_) in
             didBuyHandler()
@@ -71,15 +105,13 @@ class ShopTVC: UITableViewController {
     }
     
     private func confirmPurchase(for product: ShopProduct) {
-        let alert = UIAlertController(title: Strings.Shop.confirmBuyTitle, message: Strings.Shop.buyConfimationMessage(productName: product.title), preferredStyle: .alert)
+        let alert = UIAlertController(
+            title: Strings.Shop.confirmBuyTitle,
+            message: Strings.Shop.buyConfimationMessage(productName: product.title),
+            preferredStyle: .alert)
         
         let action = UIAlertAction(title: "OK", style: .default)
         alert.addAction(action)
-        
-        let productImage = UIImageView(frame: CGRect(x: 5, y: 5, width: 35, height: 35))
-        productImage.image = UIImage(named: product.imageName)
-        productImage.contentMode = .scaleAspectFit
-        alert.view.addSubview(productImage)
         
         self.present(alert, animated: true)
         self.update()
@@ -106,15 +138,11 @@ class ShopTVC: UITableViewController {
             cell.productTitleLabel.text = product.title
             cell.productDescriptionLabel.text = product.description
             
-            let productImage = UIImage(named: product.imageName)
-            
             if let productColor = product.color {
-                cell.productImageView.backgroundColor = productColor
+                cell.productImageView.image = UIImage(named: product.imageName)?.imageWithColor(color: productColor)
             } else {
-                cell.productImageView.backgroundColor = UIColor.clear
+                cell.productImageView.image = UIImage(named: product.imageName)
             }
-            
-            cell.productImageView.image = productImage
             
             if(product.cost > 0) {
                 cell.productCostLabel.text = "x \(product.cost)"

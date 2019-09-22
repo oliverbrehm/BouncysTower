@@ -52,6 +52,6 @@ class LevelBase1: Level {
     }
     
     override var numberOfPlatforms: Int {
-        return 100
+        return 60
     }
 }
