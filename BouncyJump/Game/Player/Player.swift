@@ -194,10 +194,6 @@ class Player: SKSpriteNode {
     }
     
     func update(dt: TimeInterval) {
-        if state == .onPlatform {
-            print("player on platform, y: \(physicsBody?.velocity.dy ?? 9999999)")
-        }
-        
         if let p = self.physicsBody, self.state != .falling {
             if self.state == .onPlatform && p.velocity.dy < -50.0 {
                 // falling from platform

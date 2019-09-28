@@ -24,8 +24,11 @@ class PerfectJumpDetector {
     
     private var perfectJump: Bool {
         // player must have hit wall and jumped at least 2 platforms at once
-        let hasJumpedMinPlatforms = currentPlatformNumber >= self.lastPlatformNumber + 2
-        return hasJumpedMinPlatforms && hitWallSinceJump
+        // or jump at least 3 platforms without hitting the wall
+        let jumpedPlatforms = currentPlatformNumber - lastPlatformNumber
+        let hasJumpedMinPlatforms = jumpedPlatforms >=  2
+        let hasJumpedManyPlatforms = jumpedPlatforms >= 3
+        return hasJumpedMinPlatforms && hitWallSinceJump || hasJumpedManyPlatforms
     }
     
     // MARK: - actions
@@ -111,7 +114,7 @@ class PerfectJumpDetector {
             comboLabel.alpha = 0.8
             comboLabel.setScale(0.0)
             
-            comboLabel.position = p.position
+            comboLabel.position = CGPoint(x: p.position.x, y: p.position.y + 2 * p.size.height)
             comboLabel.text = self.comboCount >= 2 ? "x \(self.comboCount)"
                 : (self.comboCount == 0 ? Strings.GameElements.comboPerfectMessage : Strings.GameElements.comboAwesomeMessage)
             
