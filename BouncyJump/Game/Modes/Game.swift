@@ -99,6 +99,12 @@ class Game: SKScene, SKPhysicsContactDelegate {
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
+        
+        if contact.bodyA.node is Platform || contact.bodyB.node is Platform {
+            print("START    contact platform!")
+        }
+        
+        
         if(player.state == .falling && (contact.bodyA.node is Platform || contact.bodyB.node is Platform)) {
             let platform = contact.bodyA.node is Platform ? contact.bodyA.node as! Platform : contact.bodyB.node as! Platform
             player.landOnPlatform(platform: platform)
@@ -112,6 +118,12 @@ class Game: SKScene, SKPhysicsContactDelegate {
             if let coin = collectable as? Coin {
                 self.hitCoin(coin: coin)
             }
+        }
+    }
+    
+    func didEnd(_ contact: SKPhysicsContact) {
+        if contact.bodyA.node is Platform || contact.bodyB.node is Platform {
+            print("END contact platform!")
         }
     }
     

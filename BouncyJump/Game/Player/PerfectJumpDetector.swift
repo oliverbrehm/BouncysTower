@@ -16,13 +16,17 @@ class PerfectJumpDetector {
     
     // MARK: - nodes
     private var player: Player?
-    private var currentPlatform: Platform?
     
     // MARK: - state
+    private var currentPlatformNumber = -1
     private var lastPlatformNumber = -1
-    private var perfectJumpPossible = false
-    private var timeOnPlatform: TimeInterval = 0.0
     private var hitWallSinceJump = false
+    
+    private var perfectJump: Bool {
+        // player must have hit wall and jumped at least 2 platforms at once
+        let hasJumpedMinPlatforms = currentPlatformNumber >= self.lastPlatformNumber + 2
+        return hasJumpedMinPlatforms && hitWallSinceJump
+    }
     
     // MARK: - actions
     private let shakeAction: SKAction
@@ -72,28 +76,14 @@ class PerfectJumpDetector {
         self.comboCount = 0
     }
     
-    func playerLandedOnPlatform(_ platform: Platform) {
-        self.currentPlatform = platform
-        self.timeOnPlatform = 0.0
-        
-        // player must have hit wall and jumped at least 2 platforms at once
-        let hasJumpedMinPlatforms = platform.platformNumber >= self.lastPlatformNumber + 2
-        self.perfectJumpPossible = self.hitWallSinceJump && hasJumpedMinPlatforms
-        
-        Logger.standard.perfectJumpState(message:
-            "LAND. possible: \(self.perfectJumpPossible), min2platforms: \(hasJumpedMinPlatforms), hitWall: \(hitWallSinceJump)")
-        
-        self.hitWallSinceJump = false
-    }
-    
     func playerHitWall() {
         self.hitWallSinceJump = true
     }
     
-    func playerLeftPlatform() {
-        Logger.standard.perfectJumpState(message: "LEFT. possible: \(self.perfectJumpPossible)")
+    func playerJumped(from platform: Platform?) {
+        currentPlatformNumber = platform?.platformNumber ?? -1
 
-        if(self.perfectJumpPossible && self.timeOnPlatform < self.maximumTimeOnPlatform) {
+        if(self.perfectJump) {
             // perfect jump done
             self.comboCount += 1
             if(self.comboCount >= 0) {
@@ -107,15 +97,10 @@ class PerfectJumpDetector {
             self.comboCount = -1
         }
         
-        self.lastPlatformNumber = self.currentPlatform?.platformNumber ?? -1
-        self.currentPlatform = nil
-        self.perfectJumpPossible = false
+        lastPlatformNumber = currentPlatformNumber
+        hitWallSinceJump = false
     }
-    
-    func update(dt: TimeInterval) {
-        self.timeOnPlatform += dt
-    }
-    
+
     private func showPerfectJumpDone() {
         if let p = self.player {
             let comboLabel = SKLabelNode(fontNamed: Constants.fontName)

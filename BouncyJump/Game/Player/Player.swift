@@ -186,7 +186,7 @@ class Player: SKSpriteNode {
         
         self.run(SoundAction.jump.action)
         
-        self.perfectJumpDetector.playerLeftPlatform()
+        self.perfectJumpDetector.playerJumped(from: currentPlatform)
         
         if let w = self.world {
             w.makeExplosion(at: self.position)
@@ -194,6 +194,10 @@ class Player: SKSpriteNode {
     }
     
     func update(dt: TimeInterval) {
+        if state == .onPlatform {
+            print("player on platform, y: \(physicsBody?.velocity.dy ?? 9999999)")
+        }
+        
         if let p = self.physicsBody, self.state != .falling {
             if self.state == .onPlatform && p.velocity.dy < -50.0 {
                 // falling from platform
@@ -226,8 +230,6 @@ class Player: SKSpriteNode {
                 self.particleEmitter.particleBirthRate = 40.0
             }
         }
-        
-        self.perfectJumpDetector.update(dt: dt)
     }
     
     func updateScoreLandingOn(platform: Platform) {
@@ -265,10 +267,6 @@ class Player: SKSpriteNode {
         self.state = .onPlatform
         self.currentPlatform = platform
         self.hitWallSinceJumping = false
-
-        if(platform is StandardPlatform) {
-            self.perfectJumpDetector.playerLandedOnPlatform(platform)
-        }
         
         if(self.controllerMovingDirectionLeft == nil) {
             // user not moving left or right -> auto jump
