@@ -121,14 +121,26 @@ enum Brick: Int, CaseIterable {
     
     var soundName: String {
         switch self {
-        case .standard, .standardRed, .standardBlue, .standardGreen, .standardOrange, .standardPurple, .standardYellow:
-            return "brick_standard.aif"
+        case .standard:
+            return "brick_c.aif"
+        case .standardRed:
+            return "brick_d.aif"
+        case .standardBlue:
+            return "brick_e.aif"
+        case .standardGreen:
+            return "brick_f.aif"
+        case .standardOrange:
+            return "brick_g.aif"
+        case .standardPurple:
+            return "brick_a.aif"
+        case .standardYellow:
+            return "brick_bb.aif"
         case .glass:
-            return "brick_diamond.aif" // TODO
+            return "brick_ice.aif"
         case .diamond:
             return "brick_diamond.aif"
         case .magic:
-            return "brick_diamond.aif" // TODO
+            return "brick_magic.aif"
         }
     }
     

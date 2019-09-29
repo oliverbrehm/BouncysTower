@@ -244,9 +244,6 @@
 		BB51D92422D39ABD00346B46 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BB51D92622D39ABD00346B46 /* Localizable.strings */; };
 		BB6452BF22CCBAE900EF8E03 /* menu.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BB6452BD22CCBAE900EF8E03 /* menu.mp3 */; };
 		BB6452C122CCC14F00EF8E03 /* level.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BB6452C022CCC14F00EF8E03 /* level.mp3 */; };
-		BB67E5AC22CC99EE007E15E2 /* brick_diamond.aif in Resources */ = {isa = PBXBuildFile; fileRef = BB67E5A222CC99ED007E15E2 /* brick_diamond.aif */; };
-		BB67E5AD22CC99EE007E15E2 /* brick_diamond.aif in Resources */ = {isa = PBXBuildFile; fileRef = BB67E5A222CC99ED007E15E2 /* brick_diamond.aif */; };
-		BB67E5AE22CC99EE007E15E2 /* brick_diamond.aif in Resources */ = {isa = PBXBuildFile; fileRef = BB67E5A222CC99ED007E15E2 /* brick_diamond.aif */; };
 		BB67E5AF22CC99EE007E15E2 /* cheer.aif in Resources */ = {isa = PBXBuildFile; fileRef = BB67E5A322CC99ED007E15E2 /* cheer.aif */; };
 		BB67E5B022CC99EE007E15E2 /* cheer.aif in Resources */ = {isa = PBXBuildFile; fileRef = BB67E5A322CC99ED007E15E2 /* cheer.aif */; };
 		BB67E5B122CC99EE007E15E2 /* cheer.aif in Resources */ = {isa = PBXBuildFile; fileRef = BB67E5A322CC99ED007E15E2 /* cheer.aif */; };
@@ -265,9 +262,6 @@
 		BB67E5BE22CC99EE007E15E2 /* superjump.aif in Resources */ = {isa = PBXBuildFile; fileRef = BB67E5A822CC99EE007E15E2 /* superjump.aif */; };
 		BB67E5BF22CC99EE007E15E2 /* superjump.aif in Resources */ = {isa = PBXBuildFile; fileRef = BB67E5A822CC99EE007E15E2 /* superjump.aif */; };
 		BB67E5C022CC99EE007E15E2 /* superjump.aif in Resources */ = {isa = PBXBuildFile; fileRef = BB67E5A822CC99EE007E15E2 /* superjump.aif */; };
-		BB67E5C122CC99EE007E15E2 /* brick_standard.aif in Resources */ = {isa = PBXBuildFile; fileRef = BB67E5A922CC99EE007E15E2 /* brick_standard.aif */; };
-		BB67E5C222CC99EE007E15E2 /* brick_standard.aif in Resources */ = {isa = PBXBuildFile; fileRef = BB67E5A922CC99EE007E15E2 /* brick_standard.aif */; };
-		BB67E5C322CC99EE007E15E2 /* brick_standard.aif in Resources */ = {isa = PBXBuildFile; fileRef = BB67E5A922CC99EE007E15E2 /* brick_standard.aif */; };
 		BB67E5C422CC99EE007E15E2 /* button.aif in Resources */ = {isa = PBXBuildFile; fileRef = BB67E5AA22CC99EE007E15E2 /* button.aif */; };
 		BB67E5C522CC99EE007E15E2 /* button.aif in Resources */ = {isa = PBXBuildFile; fileRef = BB67E5AA22CC99EE007E15E2 /* button.aif */; };
 		BB67E5C622CC99EE007E15E2 /* button.aif in Resources */ = {isa = PBXBuildFile; fileRef = BB67E5AA22CC99EE007E15E2 /* button.aif */; };
@@ -276,6 +270,16 @@
 		BB67E5C922CC99EE007E15E2 /* extralife.aif in Resources */ = {isa = PBXBuildFile; fileRef = BB67E5AB22CC99EE007E15E2 /* extralife.aif */; };
 		BB6B5B6F2337969100EF8D77 /* gameover.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BB6B5B6E2337969100EF8D77 /* gameover.mp3 */; };
 		BB74F39D22BD222C00657282 /* InAppPurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB74F39C22BD222C00657282 /* InAppPurchaseManager.swift */; };
+		BBDF2E172340A06900DC919F /* brick_a.aif in Resources */ = {isa = PBXBuildFile; fileRef = BBDF2E0F2340A03B00DC919F /* brick_a.aif */; };
+		BBDF2E182340A06900DC919F /* brick_bb.aif in Resources */ = {isa = PBXBuildFile; fileRef = BBDF2E132340A03B00DC919F /* brick_bb.aif */; };
+		BBDF2E192340A06900DC919F /* brick_c.aif in Resources */ = {isa = PBXBuildFile; fileRef = BBDF2E112340A03B00DC919F /* brick_c.aif */; };
+		BBDF2E1A2340A06900DC919F /* brick_d.aif in Resources */ = {isa = PBXBuildFile; fileRef = BBDF2E102340A03B00DC919F /* brick_d.aif */; };
+		BBDF2E1B2340A06900DC919F /* brick_diamond.aif in Resources */ = {isa = PBXBuildFile; fileRef = BBDF2E162340A03B00DC919F /* brick_diamond.aif */; };
+		BBDF2E1C2340A06900DC919F /* brick_e.aif in Resources */ = {isa = PBXBuildFile; fileRef = BBDF2E152340A03B00DC919F /* brick_e.aif */; };
+		BBDF2E1D2340A06900DC919F /* brick_f.aif in Resources */ = {isa = PBXBuildFile; fileRef = BBDF2E122340A03B00DC919F /* brick_f.aif */; };
+		BBDF2E1E2340A06900DC919F /* brick_g.aif in Resources */ = {isa = PBXBuildFile; fileRef = BBDF2E142340A03B00DC919F /* brick_g.aif */; };
+		BBDF2E212340A2F600DC919F /* brick_ice.aif in Resources */ = {isa = PBXBuildFile; fileRef = BBDF2E202340A2F300DC919F /* brick_ice.aif */; };
+		BBDF2E222340A2F600DC919F /* brick_magic.aif in Resources */ = {isa = PBXBuildFile; fileRef = BBDF2E1F2340A2F300DC919F /* brick_magic.aif */; };
 		BBFE1A9C22A40D2600FDCB84 /* GameCenterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFE1A9B22A40D2600FDCB84 /* GameCenterManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -383,18 +387,26 @@
 		BB51D92722D39AC400346B46 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BB6452BD22CCBAE900EF8E03 /* menu.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = menu.mp3; sourceTree = "<group>"; };
 		BB6452C022CCC14F00EF8E03 /* level.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = level.mp3; sourceTree = "<group>"; };
-		BB67E5A222CC99ED007E15E2 /* brick_diamond.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = brick_diamond.aif; sourceTree = "<group>"; };
 		BB67E5A322CC99ED007E15E2 /* cheer.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = cheer.aif; sourceTree = "<group>"; };
 		BB67E5A422CC99ED007E15E2 /* collectcoin.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = collectcoin.aif; sourceTree = "<group>"; };
 		BB67E5A522CC99EE007E15E2 /* jump.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = jump.aif; sourceTree = "<group>"; };
 		BB67E5A622CC99EE007E15E2 /* gameover.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = gameover.aif; sourceTree = "<group>"; };
 		BB67E5A722CC99EE007E15E2 /* message.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = message.aif; sourceTree = "<group>"; };
 		BB67E5A822CC99EE007E15E2 /* superjump.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = superjump.aif; sourceTree = "<group>"; };
-		BB67E5A922CC99EE007E15E2 /* brick_standard.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = brick_standard.aif; sourceTree = "<group>"; };
 		BB67E5AA22CC99EE007E15E2 /* button.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = button.aif; sourceTree = "<group>"; };
 		BB67E5AB22CC99EE007E15E2 /* extralife.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = extralife.aif; sourceTree = "<group>"; };
 		BB6B5B6E2337969100EF8D77 /* gameover.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameover.mp3; sourceTree = "<group>"; };
 		BB74F39C22BD222C00657282 /* InAppPurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseManager.swift; sourceTree = "<group>"; };
+		BBDF2E0F2340A03B00DC919F /* brick_a.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = brick_a.aif; sourceTree = "<group>"; };
+		BBDF2E102340A03B00DC919F /* brick_d.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = brick_d.aif; sourceTree = "<group>"; };
+		BBDF2E112340A03B00DC919F /* brick_c.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = brick_c.aif; sourceTree = "<group>"; };
+		BBDF2E122340A03B00DC919F /* brick_f.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = brick_f.aif; sourceTree = "<group>"; };
+		BBDF2E132340A03B00DC919F /* brick_bb.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = brick_bb.aif; sourceTree = "<group>"; };
+		BBDF2E142340A03B00DC919F /* brick_g.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = brick_g.aif; sourceTree = "<group>"; };
+		BBDF2E152340A03B00DC919F /* brick_e.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = brick_e.aif; sourceTree = "<group>"; };
+		BBDF2E162340A03B00DC919F /* brick_diamond.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = brick_diamond.aif; sourceTree = "<group>"; };
+		BBDF2E1F2340A2F300DC919F /* brick_magic.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = brick_magic.aif; sourceTree = "<group>"; };
+		BBDF2E202340A2F300DC919F /* brick_ice.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = brick_ice.aif; sourceTree = "<group>"; };
 		BBFE1A9B22A40D2600FDCB84 /* GameCenterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -713,8 +725,7 @@
 		BB67E59B22CC967A007E15E2 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				BB67E5A222CC99ED007E15E2 /* brick_diamond.aif */,
-				BB67E5A922CC99EE007E15E2 /* brick_standard.aif */,
+				BBDF2E0E23409FF100DC919F /* bricks */,
 				BB67E5AA22CC99EE007E15E2 /* button.aif */,
 				BB67E5A322CC99ED007E15E2 /* cheer.aif */,
 				BB67E5A422CC99ED007E15E2 /* collectcoin.aif */,
@@ -772,6 +783,23 @@
 				A74E3C8722131B2400D38AEB /* GameViewController.swift */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		BBDF2E0E23409FF100DC919F /* bricks */ = {
+			isa = PBXGroup;
+			children = (
+				BBDF2E0F2340A03B00DC919F /* brick_a.aif */,
+				BBDF2E132340A03B00DC919F /* brick_bb.aif */,
+				BBDF2E112340A03B00DC919F /* brick_c.aif */,
+				BBDF2E102340A03B00DC919F /* brick_d.aif */,
+				BBDF2E162340A03B00DC919F /* brick_diamond.aif */,
+				BBDF2E152340A03B00DC919F /* brick_e.aif */,
+				BBDF2E122340A03B00DC919F /* brick_f.aif */,
+				BBDF2E142340A03B00DC919F /* brick_g.aif */,
+				BBDF2E202340A2F300DC919F /* brick_ice.aif */,
+				BBDF2E1F2340A2F300DC919F /* brick_magic.aif */,
+			);
+			path = bricks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -893,25 +921,33 @@
 			files = (
 				BB67E5AF22CC99EE007E15E2 /* cheer.aif in Resources */,
 				A7A22864220604DB00081E0E /* Main.sks in Resources */,
+				BBDF2E192340A06900DC919F /* brick_c.aif in Resources */,
 				BB67E5BE22CC99EE007E15E2 /* superjump.aif in Resources */,
 				BB67E5B522CC99EE007E15E2 /* jump.aif in Resources */,
 				A73B3FF5224A3696002B8D2C /* AmbientSnow.sks in Resources */,
-				BB67E5AC22CC99EE007E15E2 /* brick_diamond.aif in Resources */,
+				BBDF2E1C2340A06900DC919F /* brick_e.aif in Resources */,
 				A7AA89B6222019C400C5D73A /* Assets.xcassets in Resources */,
 				A7DC9BC422177E430038EC58 /* SuperJump.sks in Resources */,
 				BB6B5B6F2337969100EF8D77 /* gameover.mp3 in Resources */,
+				BBDF2E1B2340A06900DC919F /* brick_diamond.aif in Resources */,
+				BBDF2E1E2340A06900DC919F /* brick_g.aif in Resources */,
 				BB4A245522A12B850049962E /* .swiftlint.yml in Resources */,
 				A7A228CB2206050E00081E0E /* ScoreParticle.sks in Resources */,
 				BB51D92222D39ABD00346B46 /* Localizable.strings in Resources */,
 				A7DC9BC0221775270038EC58 /* ComboParticle.sks in Resources */,
 				BB6452BF22CCBAE900EF8E03 /* menu.mp3 in Resources */,
-				BB67E5C122CC99EE007E15E2 /* brick_standard.aif in Resources */,
 				A7736AA32206025100A28B5D /* Main.storyboard in Resources */,
 				A7A22865220604DB00081E0E /* Settings.sks in Resources */,
 				A7A22862220604DB00081E0E /* MainGame.sks in Resources */,
+				BBDF2E212340A2F600DC919F /* brick_ice.aif in Resources */,
 				BB67E5C422CC99EE007E15E2 /* button.aif in Resources */,
 				BB47B2C0232D8F92008CCDA2 /* AmbientRain.sks in Resources */,
+				BBDF2E222340A2F600DC919F /* brick_magic.aif in Resources */,
+				BBDF2E182340A06900DC919F /* brick_bb.aif in Resources */,
+				BBDF2E1A2340A06900DC919F /* brick_d.aif in Resources */,
+				BBDF2E172340A06900DC919F /* brick_a.aif in Resources */,
 				BB67E5B822CC99EE007E15E2 /* gameover.aif in Resources */,
+				BBDF2E1D2340A06900DC919F /* brick_f.aif in Resources */,
 				BB67E5BB22CC99EE007E15E2 /* message.aif in Resources */,
 				A7736AA62206025100A28B5D /* LaunchScreen.storyboard in Resources */,
 				A745E17722395C260043EC5A /* JumpParticle.sks in Resources */,
@@ -925,14 +961,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB67E5AD22CC99EE007E15E2 /* brick_diamond.aif in Resources */,
 				BB4A245622A12B850049962E /* .swiftlint.yml in Resources */,
 				BB67E5B322CC99EE007E15E2 /* collectcoin.aif in Resources */,
 				A7A22866220604DB00081E0E /* MainGame.sks in Resources */,
 				BB67E5B922CC99EE007E15E2 /* gameover.aif in Resources */,
 				A7736AB42206025100A28B5D /* Main.storyboard in Resources */,
 				BB67E5BF22CC99EE007E15E2 /* superjump.aif in Resources */,
-				BB67E5C222CC99EE007E15E2 /* brick_standard.aif in Resources */,
 				A7A22869220604DB00081E0E /* Settings.sks in Resources */,
 				A7DC9BC1221775270038EC58 /* ComboParticle.sks in Resources */,
 				BB51D92322D39ABD00346B46 /* Localizable.strings in Resources */,
@@ -953,14 +987,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB67E5AE22CC99EE007E15E2 /* brick_diamond.aif in Resources */,
 				BB4A245722A12B850049962E /* .swiftlint.yml in Resources */,
 				BB67E5B422CC99EE007E15E2 /* collectcoin.aif in Resources */,
 				A7A2286A220604DC00081E0E /* MainGame.sks in Resources */,
 				BB67E5BA22CC99EE007E15E2 /* gameover.aif in Resources */,
 				A7736AC22206025200A28B5D /* Main.storyboard in Resources */,
 				BB67E5C022CC99EE007E15E2 /* superjump.aif in Resources */,
-				BB67E5C322CC99EE007E15E2 /* brick_standard.aif in Resources */,
 				A7A2286D220604DC00081E0E /* Settings.sks in Resources */,
 				A7DC9BC2221775270038EC58 /* ComboParticle.sks in Resources */,
 				BB51D92422D39ABD00346B46 /* Localizable.strings in Resources */,
