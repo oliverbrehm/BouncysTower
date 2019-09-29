@@ -284,7 +284,7 @@ class Player: SKSpriteNode {
     func hitWall() {
         if(self.state == PlayerState.jumping && !hitWallSinceJumping && self.physicsBody!.velocity.dy > 0.0) {
             self.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 0.5 * jumpImpulse))
-            self.world?.makeExplosion(at: self.position, color: Constants.colors.menuForeground)
+            self.world?.makeExplosion(at: self.position, color: Colors.menuForeground)
         }
         
         if let pb = self.physicsBody {

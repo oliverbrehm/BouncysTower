@@ -14,7 +14,7 @@ class OverlayPause: Overlay {
     func setup(game: Game) {
         super.setup(size: game.frame.size, width: 0.6)
         
-        let pausedLabel = SKLabelNode(fontNamed: Constants.fontName)
+        let pausedLabel = SKLabelNode(fontNamed: Font.fontName)
         pausedLabel.position = CGPoint(x: 80.0, y: 120.0)
         pausedLabel.text = Strings.GameOverlay.pausedLabel.uppercased()
         pausedLabel.fontSize = 24.0

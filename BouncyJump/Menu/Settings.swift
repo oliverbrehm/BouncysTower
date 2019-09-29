@@ -14,7 +14,7 @@ class Settings: SKScene {
     override func didMove(to view: SKView) {
         let towerImage = SKSpriteNode(imageNamed: "bg")
         towerImage.zPosition = NodeZOrder.background + 0.01
-        towerImage.color = SKColor(named: "bgLevel01") ?? SKColor.white
+        towerImage.color = Colors.bgLevel01
         towerImage.colorBlendFactor = 1.0
         towerImage.size = self.size
         towerImage.position = CGPoint.zero
@@ -28,8 +28,8 @@ class Settings: SKScene {
         self.addChild(scoreNode)
         
         let info1 = SKLabelNode(text: "Made by")
-        info1.fontColor = Constants.colors.menuForeground
-        info1.fontName = Constants.fontName
+        info1.fontColor = Colors.menuForeground
+        info1.fontName = Font.fontName
         info1.fontSize = 20.0
         info1.position = CGPoint(x: rightX, y: -110.0)
         info1.zPosition = NodeZOrder.label
@@ -37,7 +37,7 @@ class Settings: SKScene {
         
         let info2 = SKLabelNode(text: "Oliver Brehm")
         info2.fontColor = SKColor.white
-        info2.fontName = Constants.fontName
+        info2.fontName = Font.fontName
         info2.fontSize = 16.0
         info2.position = CGPoint(x: rightX, y: -135.0)
         info2.zPosition = NodeZOrder.label

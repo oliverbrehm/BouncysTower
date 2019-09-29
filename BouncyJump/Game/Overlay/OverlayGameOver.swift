@@ -11,8 +11,8 @@ import SpriteKit
 class ScoreView: Button {
     private let margin: CGFloat = 5.0
 
-    private let scoreLabel = SKLabelNode(fontNamed: Constants.fontName)
-    private let rankLabel = SKLabelNode(fontNamed: Constants.fontName)
+    private let scoreLabel = SKLabelNode(fontNamed: Font.fontName)
+    private let rankLabel = SKLabelNode(fontNamed: Font.fontName)
     
     init() {
         super.init(size: CGSize.zero)
@@ -50,7 +50,7 @@ class ScoreView: Button {
             self.rankLabel.text = (r == 0) ? Strings.GameOverlay.newHighscoreLabel : "\(Strings.GameOverlay.rankLabel) \(r + 1)"
             self.rankLabel.isHidden = false
             self.rankLabel.run(SKAction.repeatForever(SKAction.sequence([
-                SKAction.colorize(with: Constants.colors.menuForeground, colorBlendFactor: 1.0, duration: 0.3),
+                SKAction.colorize(with: Colors.menuForeground, colorBlendFactor: 1.0, duration: 0.3),
                 SKAction.colorize(with: SKColor.white, colorBlendFactor: 1.0, duration: 0.3)
                 ])))
         } else {
@@ -68,7 +68,7 @@ class OverlayGameOver: Overlay {
     func setup(game: Game) {
         super.setup(size: game.frame.size, width: 0.8)
         
-        let gameOverLabel = SKLabelNode(fontNamed: Constants.fontName)
+        let gameOverLabel = SKLabelNode(fontNamed: Font.fontName)
         gameOverLabel.position = CGPoint(x: 80.0, y: 100.0)
         gameOverLabel.text = "GAME OVER"
         gameOverLabel.fontSize = 24.0

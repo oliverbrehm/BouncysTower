@@ -71,9 +71,9 @@
 		A74EF260223AC74300A69176 /* ClosePremiumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74EF25F223AC74300A69176 /* ClosePremiumCell.swift */; };
 		A74EF261223AC74300A69176 /* ClosePremiumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74EF25F223AC74300A69176 /* ClosePremiumCell.swift */; };
 		A74EF262223AC74300A69176 /* ClosePremiumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74EF25F223AC74300A69176 /* ClosePremiumCell.swift */; };
-		A756880E22423A3F00E793A1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A756880D22423A3F00E793A1 /* Constants.swift */; };
-		A756880F22423A3F00E793A1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A756880D22423A3F00E793A1 /* Constants.swift */; };
-		A756881022423A3F00E793A1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A756880D22423A3F00E793A1 /* Constants.swift */; };
+		A756880E22423A3F00E793A1 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A756880D22423A3F00E793A1 /* Colors.swift */; };
+		A756880F22423A3F00E793A1 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A756880D22423A3F00E793A1 /* Colors.swift */; };
+		A756881022423A3F00E793A1 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A756880D22423A3F00E793A1 /* Colors.swift */; };
 		A75688122242608D00E793A1 /* IconDescriptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75688112242608D00E793A1 /* IconDescriptionButton.swift */; };
 		A75688132242608D00E793A1 /* IconDescriptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75688112242608D00E793A1 /* IconDescriptionButton.swift */; };
 		A75688142242608D00E793A1 /* IconDescriptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75688112242608D00E793A1 /* IconDescriptionButton.swift */; };
@@ -281,6 +281,7 @@
 		BBDF2E282340BA1600DC919F /* bigjump2.aif in Resources */ = {isa = PBXBuildFile; fileRef = BBDF2E242340BA1500DC919F /* bigjump2.aif */; };
 		BBDF2E292340BA1600DC919F /* bigjump1.aif in Resources */ = {isa = PBXBuildFile; fileRef = BBDF2E252340BA1500DC919F /* bigjump1.aif */; };
 		BBDF2E2A2340BA1600DC919F /* jump1.aif in Resources */ = {isa = PBXBuildFile; fileRef = BBDF2E262340BA1500DC919F /* jump1.aif */; };
+		BBDF9BF42341169500465338 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDF9BF32341169500465338 /* Font.swift */; };
 		BBFE1A9C22A40D2600FDCB84 /* GameCenterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFE1A9B22A40D2600FDCB84 /* GameCenterManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -330,7 +331,7 @@
 		A74EF257223A709200A69176 /* BuyPremiumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyPremiumCell.swift; sourceTree = "<group>"; };
 		A74EF25B223A70A700A69176 /* PremiumFeatureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumFeatureCell.swift; sourceTree = "<group>"; };
 		A74EF25F223AC74300A69176 /* ClosePremiumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosePremiumCell.swift; sourceTree = "<group>"; };
-		A756880D22423A3F00E793A1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A756880D22423A3F00E793A1 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		A75688112242608D00E793A1 /* IconDescriptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconDescriptionButton.swift; sourceTree = "<group>"; };
 		A756B264224BA23F00CC335E /* LevelWood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelWood.swift; sourceTree = "<group>"; };
 		A765DC022215A48400B34284 /* CGVector+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGVector+Extensions.swift"; sourceTree = "<group>"; };
@@ -411,6 +412,7 @@
 		BBDF2E242340BA1500DC919F /* bigjump2.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = bigjump2.aif; sourceTree = "<group>"; };
 		BBDF2E252340BA1500DC919F /* bigjump1.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = bigjump1.aif; sourceTree = "<group>"; };
 		BBDF2E262340BA1500DC919F /* jump1.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = jump1.aif; sourceTree = "<group>"; };
+		BBDF9BF32341169500465338 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		BBFE1A9B22A40D2600FDCB84 /* GameCenterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -762,7 +764,8 @@
 		BB67E59E22CC9727007E15E2 /* Design */ = {
 			isa = PBXGroup;
 			children = (
-				A756880D22423A3F00E793A1 /* Constants.swift */,
+				A756880D22423A3F00E793A1 /* Colors.swift */,
+				BBDF9BF32341169500465338 /* Font.swift */,
 			);
 			path = Design;
 			sourceTree = "<group>";
@@ -1046,6 +1049,7 @@
 			files = (
 				A77B389D22254F3F003DEB38 /* ShopViewController.swift in Sources */,
 				A7AA89B2221FE6BB00C5D73A /* CoinManager.swift in Sources */,
+				BBDF9BF42341169500465338 /* Font.swift in Sources */,
 				A7A228B0220604F600081E0E /* LevelSnow.swift in Sources */,
 				A7A228AD220604F600081E0E /* Level.swift in Sources */,
 				BBFE1A9C22A40D2600FDCB84 /* GameCenterManager.swift in Sources */,
@@ -1100,7 +1104,7 @@
 				A7A22886220604E700081E0E /* OverlayGameOver.swift in Sources */,
 				A74EF250223A6EE000A69176 /* PremiumCVC.swift in Sources */,
 				A7A22889220604E700081E0E /* OverlayExtralife.swift in Sources */,
-				A756880E22423A3F00E793A1 /* Constants.swift in Sources */,
+				A756880E22423A3F00E793A1 /* Colors.swift in Sources */,
 				A7901468222962830025368A /* LevelConfiguration.swift in Sources */,
 				A7A22870220604E000081E0E /* Settings.swift in Sources */,
 				A71875B3220AFB11003ED6F1 /* ResourceView.swift in Sources */,
@@ -1164,7 +1168,7 @@
 				A7A228A9220604EF00081E0E /* Coin.swift in Sources */,
 				A724098422243DF100B18095 /* ScoreManager.swift in Sources */,
 				A7A228A8220604EF00081E0E /* EndLevelPlatform.swift in Sources */,
-				A756880F22423A3F00E793A1 /* Constants.swift in Sources */,
+				A756880F22423A3F00E793A1 /* Colors.swift in Sources */,
 				A7A228BB220604F700081E0E /* LevelSunset.swift in Sources */,
 				A74EF259223A709200A69176 /* BuyPremiumCell.swift in Sources */,
 				A7A22894220604E800081E0E /* OverlayPause.swift in Sources */,
@@ -1236,7 +1240,7 @@
 				A7A228AC220604EF00081E0E /* Coin.swift in Sources */,
 				A724098522243DF100B18095 /* ScoreManager.swift in Sources */,
 				A7A228AB220604EF00081E0E /* EndLevelPlatform.swift in Sources */,
-				A756881022423A3F00E793A1 /* Constants.swift in Sources */,
+				A756881022423A3F00E793A1 /* Colors.swift in Sources */,
 				A7A228C4220604F700081E0E /* LevelSunset.swift in Sources */,
 				A74EF25A223A709200A69176 /* BuyPremiumCell.swift in Sources */,
 				A7A228A1220604E800081E0E /* OverlayPause.swift in Sources */,
@@ -1323,7 +1327,7 @@
 				DEVELOPMENT_TEAM = CR6FRMMTU7;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "BouncyJump iOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -1347,7 +1351,7 @@
 				DEVELOPMENT_TEAM = CR6FRMMTU7;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "BouncyJump iOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "Oliver-Brehm.BouncysTower";

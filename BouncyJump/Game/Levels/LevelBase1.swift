@@ -27,7 +27,7 @@ class LevelBase1: Level {
     }
     
     override var backgroundColor: SKColor {
-        return SKColor.init(named: "bgLevel01") ?? super.backgroundColor
+        return Colors.bgLevel01
     }
     
     override var platformMinFactor: CGFloat {

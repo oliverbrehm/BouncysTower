@@ -106,7 +106,7 @@ class PerfectJumpDetector {
 
     private func showPerfectJumpDone() {
         if let p = self.player {
-            let comboLabel = SKLabelNode(fontNamed: Constants.fontName)
+            let comboLabel = SKLabelNode(fontNamed: Font.fontName)
             comboLabel.zPosition = NodeZOrder.consumable
             comboLabel.fontSize = min(14.0 + CGFloat(2 * self.comboCount), 50.0) // bigger label with bigger combo
             comboLabel.color = SKColor.darkGray
@@ -127,11 +127,11 @@ class PerfectJumpDetector {
     
     private func showComboFinished() {
         if let c = self.player?.scene?.camera {
-            let comboFinishedLabel = SKLabelNode(fontNamed: Constants.fontName)
+            let comboFinishedLabel = SKLabelNode(fontNamed: Font.fontName)
             comboFinishedLabel.zPosition = NodeZOrder.consumable
             comboFinishedLabel.fontSize = 32.0
             comboFinishedLabel.color = SKColor.darkGray
-            comboFinishedLabel.fontColor = Constants.colors.menuForeground
+            comboFinishedLabel.fontColor = Colors.menuForeground
             
             comboFinishedLabel.position = CGPoint.zero
             comboFinishedLabel.text = "!!COMBO: \(self.comboCount)!!"

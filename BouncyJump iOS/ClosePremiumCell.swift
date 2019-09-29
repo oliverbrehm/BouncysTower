@@ -44,7 +44,7 @@ class ClosePremiumCell: UICollectionViewCell {
             DispatchQueue.main.async {
                 self.closeLabel.isEnabled = true
                 self.closeLabel.text = "CONTINUE"
-                self.backgroundColor = UIColor(named: "cellBg") ?? UIColor.white
+                self.backgroundColor = Colors.cellBg
             }
             return true
         } else {

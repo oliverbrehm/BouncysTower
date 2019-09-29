@@ -9,18 +9,18 @@
 import SpriteKit
 
 class ScoreLabel: SKSpriteNode {
-    var scoreLabel = SKLabelNode(fontNamed: Constants.fontName)
-    var multiplicatorLabel = SKLabelNode(fontNamed: Constants.fontName)
+    var scoreLabel = SKLabelNode(fontNamed: Font.fontName)
+    var multiplicatorLabel = SKLabelNode(fontNamed: Font.fontName)
     
     init() {
-        super.init(texture: SKTexture(imageNamed: "scorebg"), color: Constants.colors.menuForeground, size: CGSize.zero)
+        super.init(texture: SKTexture(imageNamed: "scorebg"), color: Colors.menuForeground, size: CGSize.zero)
         
         self.colorBlendFactor = 1.0
         self.zPosition = NodeZOrder.overlay
         self.updateCenterRect()
         
         self.scoreLabel.fontSize = 14.0
-        self.scoreLabel.fontColor = SKColor(named: "overlay")
+        self.scoreLabel.fontColor = Colors.overlay
 
         self.text = "0"
 
@@ -30,7 +30,7 @@ class ScoreLabel: SKSpriteNode {
         
         self.multiplicatorLabel.text = "x 1"
         self.multiplicatorLabel.fontSize = 12.0
-        self.multiplicatorLabel.fontColor = Constants.colors.menuForeground
+        self.multiplicatorLabel.fontColor = Colors.menuForeground
         self.multiplicatorLabel.zPosition = NodeZOrder.label
         self.multiplicatorLabel.position =
             CGPoint(x: 0.0, y: -self.size.height / 2.0 - 5.0 - multiplicatorLabel.frame.size.height / 2.0)

@@ -40,7 +40,7 @@ class Platform: SKSpriteNode {
         
         if(platformNumber % 5 == 0) {
             let label = SKLabelNode(text: "\(platformNumber)")
-            label.fontName = Constants.fontName
+            label.fontName = Font.fontName
             label.fontSize = 16.0
             label.fontColor = SKColor.white
             label.position = CGPoint(x: 0.0, y: -label.frame.size.height)

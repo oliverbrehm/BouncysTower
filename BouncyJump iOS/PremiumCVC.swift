@@ -36,7 +36,7 @@ class PremiumCVC: UICollectionViewController, UICollectionViewDelegateFlowLayout
             cell.isUserInteractionEnabled = false
         } else if InAppPurchaseManager.shared.hasProduct, let price = InAppPurchaseManager.shared.premiumPriceLocalized {
             cell.priceLabel.text = restore ? "" : price
-            cell.backgroundColor = UIColor(named: "cellBg") ?? UIColor.white
+            cell.backgroundColor = Colors.cellBg
             cell.isUserInteractionEnabled = true
         } else {
             cell.priceLabel.text = Strings.Premium.loadingPriceLabel
@@ -53,7 +53,7 @@ class PremiumCVC: UICollectionViewController, UICollectionViewDelegateFlowLayout
         if let countdownSeconds = closeCountdownSeconds {
             cell.startCountdown(seconds: countdownSeconds)
         } else {
-            cell.backgroundColor = UIColor(named: "cellBg") ?? UIColor.white
+            cell.backgroundColor = Colors.cellBg
         }
         cell.layer.cornerRadius = 8.0
     }
@@ -93,7 +93,7 @@ class PremiumCVC: UICollectionViewController, UICollectionViewDelegateFlowLayout
             if let featureCell = collectionView.dequeueReusableCell(withReuseIdentifier: "featureCell", for: indexPath) as? PremiumFeatureCell {
                 let description = self.featureList[indexPath.row]
                 featureCell.featureDescriptionTextView.text = description
-                featureCell.backgroundColor = UIColor(named: "cellBg") ?? UIColor.white
+                featureCell.backgroundColor = Colors.cellBg
                 featureCell.layer.cornerRadius = 8.0
                 return featureCell
             }

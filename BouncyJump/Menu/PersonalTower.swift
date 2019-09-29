@@ -100,16 +100,16 @@ class PersonalTower: SKNode {
     }
     
     private let towerImage = SKSpriteNode(imageNamed: "menuTower")
-    private let bricksLabel = SKLabelNode(fontNamed: Constants.fontName)
-    private let rowsLabel = SKLabelNode(fontNamed: Constants.fontName)
+    private let bricksLabel = SKLabelNode(fontNamed: Font.fontName)
+    private let rowsLabel = SKLabelNode(fontNamed: Font.fontName)
     private let buildRowButton = IconButton(image: "build")
     private let viewModeButton = IconButton(image: "back")
     private let player = Player(jumpOnTouch: true)
     private let towerTop = SKSpriteNode(imageNamed: "towerTop")
-    private let background = SKSpriteNode(color: SKColor(named: "towerBg") ?? SKColor.black, size: CGSize.zero)
+    private let background = SKSpriteNode(color: Colors.towerBg, size: CGSize.zero)
     private var brickStore: BrickStore?
     private var buildParticles: [SKEmitterNode] = []
-    
+        
     weak var delegate: PersonalTowerDelegate?
     
     var height: CGFloat {
@@ -171,11 +171,11 @@ class PersonalTower: SKNode {
         }
         
         bricksLabel.zPosition = NodeZOrder.world
-        bricksLabel.fontColor = Constants.colors.menuForeground
+        bricksLabel.fontColor = Colors.menuForeground
         bricksLabel.fontSize = 16.0
         
         rowsLabel.zPosition = NodeZOrder.world
-        rowsLabel.fontColor = Constants.colors.menuForeground
+        rowsLabel.fontColor = Colors.menuForeground
         rowsLabel.fontSize = 18.0
         
         self.update()

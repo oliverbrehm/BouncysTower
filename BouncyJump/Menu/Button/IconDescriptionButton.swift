@@ -31,7 +31,7 @@ class IconDescriptionButton: SKSpriteNode {
         
         let margin: CGFloat = 10.0
         
-        let label = SKLabelNode(fontNamed: Constants.fontName)
+        let label = SKLabelNode(fontNamed: Font.fontName)
         self.addChild(iconButton)
         self.addChild(label)
         

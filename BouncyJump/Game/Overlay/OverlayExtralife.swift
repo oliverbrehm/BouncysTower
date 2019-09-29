@@ -16,7 +16,7 @@ class OverlayExtralife: Overlay {
         
         let label = SKLabelNode(text: Strings.GameOverlay.useExtralifeQuestion)
         label.fontSize = 20.0
-        label.fontName = Constants.fontName
+        label.fontName = Font.fontName
         label.fontColor = SKColor.white
         label.position = CGPoint(x: 80.0, y: 100.0)
         label.zPosition = NodeZOrder.button

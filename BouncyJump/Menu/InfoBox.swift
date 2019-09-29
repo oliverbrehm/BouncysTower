@@ -10,7 +10,7 @@ import SpriteKit
 
 class InfoBox: Button {
     
-    private let label = SKLabelNode(fontNamed: Constants.fontName)
+    private let label = SKLabelNode(fontNamed: Font.fontName)
     private var image: SKSpriteNode?
     
     private let minHeight: CGFloat
@@ -31,10 +31,15 @@ class InfoBox: Button {
         
         label.fontSize = 12.0
         label.fontColor = SKColor.black
-        label.numberOfLines = 0
-        label.preferredMaxLayoutWidth = size.width * 0.9
-        label.lineBreakMode = .byWordWrapping
+        
+        if #available(iOS 11.0, *) {
+            label.numberOfLines = 0
+            label.preferredMaxLayoutWidth = size.width * 0.9
+            label.lineBreakMode = .byWordWrapping
+        }
+
         label.horizontalAlignmentMode = .center
+        
         self.addChild(label)
     }
     

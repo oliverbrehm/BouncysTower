@@ -15,8 +15,8 @@ class ResourceView: Button, ShopDelegate {
     private lazy var lifeView = self.getLifeView()
     private lazy var coinView = self.getCoinView()
 
-    private let lifeLabel = SKLabelNode(fontNamed: Constants.fontName)
-    private let coinLabel = SKLabelNode(fontNamed: Constants.fontName)
+    private let lifeLabel = SKLabelNode(fontNamed: Font.fontName)
+    private let coinLabel = SKLabelNode(fontNamed: Font.fontName)
     
     weak var shopDelegate: ShopDelegate?
     

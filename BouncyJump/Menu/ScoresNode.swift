@@ -15,9 +15,9 @@ class ScoreNode: SKNode {
         var currentY = 100.0
         let dY = 20.0
         
-        let titleLabel = SKLabelNode(fontNamed: Constants.fontName)
+        let titleLabel = SKLabelNode(fontNamed: Font.fontName)
         titleLabel.position = CGPoint(x: 0.0, y: currentY + 35.0)
-        titleLabel.fontColor = Constants.colors.menuForeground
+        titleLabel.fontColor = Colors.menuForeground
         titleLabel.fontSize = 30.0
         titleLabel.text = "SCORES"
         titleLabel.zPosition = NodeZOrder.label
@@ -25,7 +25,7 @@ class ScoreNode: SKNode {
         
         let scores = Score.standard.scores
         if(scores.isEmpty) {
-            let emptyLabel = SKLabelNode(fontNamed: Constants.fontName)
+            let emptyLabel = SKLabelNode(fontNamed: Font.fontName)
             emptyLabel.position = CGPoint(x: 0.0, y: currentY)
             emptyLabel.fontColor = SKColor.white
             emptyLabel.fontSize = 15.0
@@ -37,7 +37,7 @@ class ScoreNode: SKNode {
         } else {
             for index in scores.indices {
                 let score = scores[index]
-                let scoreLabel = SKLabelNode(fontNamed: Constants.fontName)
+                let scoreLabel = SKLabelNode(fontNamed: Font.fontName)
                 scoreLabel.position = CGPoint(x: 0.0, y: currentY)
                 scoreLabel.fontColor = SKColor.white
                 scoreLabel.fontSize = 15.0
@@ -47,7 +47,7 @@ class ScoreNode: SKNode {
                 
                 if let mostRecentRank = Score.standard.mostRecentRank, index == mostRecentRank {
                     scoreLabel.run(SKAction.repeatForever(SKAction.sequence([
-                        SKAction.colorize(with: Constants.colors.menuForeground, colorBlendFactor: 1.0, duration: 0.3),
+                        SKAction.colorize(with: Colors.menuForeground, colorBlendFactor: 1.0, duration: 0.3),
                         SKAction.colorize(with: SKColor.white, colorBlendFactor: 1.0, duration: 0.3)
                     ])))
                     scoreLabel.fontSize = 20.0
