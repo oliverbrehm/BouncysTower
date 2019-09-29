@@ -13,7 +13,10 @@ enum SoundAction: CaseIterable, Hashable {
     case coin
     case button
     case message
-    case jump
+    case jump1
+    case jump2
+    case bigJump1
+    case bigJump2
     case superJump
     case gameOver
     case brick(type: Brick)
@@ -21,7 +24,7 @@ enum SoundAction: CaseIterable, Hashable {
     case cheer
     
     static var allCases: [SoundAction] {
-        var cases: [SoundAction] = [.coin, .button, .message, .jump, .superJump, .gameOver, .collectExtralife, .cheer]
+        var cases: [SoundAction] = [.coin, .button, .message, .jump1, .jump2, .bigJump1, .bigJump2, .superJump, .gameOver, .collectExtralife, .cheer]
         for brick in Brick.allCases {
             cases.append(.brick(type: brick))
         }
@@ -36,8 +39,14 @@ enum SoundAction: CaseIterable, Hashable {
             return "button.aif"
         case .message:
             return "message.aif"
-        case .jump:
-            return "jump.aif"
+        case .jump1:
+            return "jump1.aif"
+        case .jump2:
+            return "jump2.aif"
+        case .bigJump1:
+            return "bigjump1.aif"
+        case .bigJump2:
+            return "bigjump2.aif"
         case .superJump:
             return "superjump.aif"
         case .gameOver:
@@ -63,6 +72,14 @@ enum SoundAction: CaseIterable, Hashable {
     
     var action: SKAction {
         return SoundAction.sounds[self] ?? SKAction.wait(forDuration: 0.0)
+    }
+    
+    static var jump: SoundAction {
+        return Double.random(in: 0 ..< 1) < 0.7 ? .jump1 : .jump2
+    }
+    
+    static var bigJump: SoundAction {
+        return Double.random(in: 0 ..< 1) < 0.6 ? .bigJump1 : .bigJump2
     }
 }
 

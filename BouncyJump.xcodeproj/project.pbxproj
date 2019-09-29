@@ -250,9 +250,6 @@
 		BB67E5B222CC99EE007E15E2 /* collectcoin.aif in Resources */ = {isa = PBXBuildFile; fileRef = BB67E5A422CC99ED007E15E2 /* collectcoin.aif */; };
 		BB67E5B322CC99EE007E15E2 /* collectcoin.aif in Resources */ = {isa = PBXBuildFile; fileRef = BB67E5A422CC99ED007E15E2 /* collectcoin.aif */; };
 		BB67E5B422CC99EE007E15E2 /* collectcoin.aif in Resources */ = {isa = PBXBuildFile; fileRef = BB67E5A422CC99ED007E15E2 /* collectcoin.aif */; };
-		BB67E5B522CC99EE007E15E2 /* jump.aif in Resources */ = {isa = PBXBuildFile; fileRef = BB67E5A522CC99EE007E15E2 /* jump.aif */; };
-		BB67E5B622CC99EE007E15E2 /* jump.aif in Resources */ = {isa = PBXBuildFile; fileRef = BB67E5A522CC99EE007E15E2 /* jump.aif */; };
-		BB67E5B722CC99EE007E15E2 /* jump.aif in Resources */ = {isa = PBXBuildFile; fileRef = BB67E5A522CC99EE007E15E2 /* jump.aif */; };
 		BB67E5B822CC99EE007E15E2 /* gameover.aif in Resources */ = {isa = PBXBuildFile; fileRef = BB67E5A622CC99EE007E15E2 /* gameover.aif */; };
 		BB67E5B922CC99EE007E15E2 /* gameover.aif in Resources */ = {isa = PBXBuildFile; fileRef = BB67E5A622CC99EE007E15E2 /* gameover.aif */; };
 		BB67E5BA22CC99EE007E15E2 /* gameover.aif in Resources */ = {isa = PBXBuildFile; fileRef = BB67E5A622CC99EE007E15E2 /* gameover.aif */; };
@@ -280,6 +277,10 @@
 		BBDF2E1E2340A06900DC919F /* brick_g.aif in Resources */ = {isa = PBXBuildFile; fileRef = BBDF2E142340A03B00DC919F /* brick_g.aif */; };
 		BBDF2E212340A2F600DC919F /* brick_ice.aif in Resources */ = {isa = PBXBuildFile; fileRef = BBDF2E202340A2F300DC919F /* brick_ice.aif */; };
 		BBDF2E222340A2F600DC919F /* brick_magic.aif in Resources */ = {isa = PBXBuildFile; fileRef = BBDF2E1F2340A2F300DC919F /* brick_magic.aif */; };
+		BBDF2E272340BA1600DC919F /* jump2.aif in Resources */ = {isa = PBXBuildFile; fileRef = BBDF2E232340BA1500DC919F /* jump2.aif */; };
+		BBDF2E282340BA1600DC919F /* bigjump2.aif in Resources */ = {isa = PBXBuildFile; fileRef = BBDF2E242340BA1500DC919F /* bigjump2.aif */; };
+		BBDF2E292340BA1600DC919F /* bigjump1.aif in Resources */ = {isa = PBXBuildFile; fileRef = BBDF2E252340BA1500DC919F /* bigjump1.aif */; };
+		BBDF2E2A2340BA1600DC919F /* jump1.aif in Resources */ = {isa = PBXBuildFile; fileRef = BBDF2E262340BA1500DC919F /* jump1.aif */; };
 		BBFE1A9C22A40D2600FDCB84 /* GameCenterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFE1A9B22A40D2600FDCB84 /* GameCenterManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -389,7 +390,6 @@
 		BB6452C022CCC14F00EF8E03 /* level.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = level.mp3; sourceTree = "<group>"; };
 		BB67E5A322CC99ED007E15E2 /* cheer.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = cheer.aif; sourceTree = "<group>"; };
 		BB67E5A422CC99ED007E15E2 /* collectcoin.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = collectcoin.aif; sourceTree = "<group>"; };
-		BB67E5A522CC99EE007E15E2 /* jump.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = jump.aif; sourceTree = "<group>"; };
 		BB67E5A622CC99EE007E15E2 /* gameover.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = gameover.aif; sourceTree = "<group>"; };
 		BB67E5A722CC99EE007E15E2 /* message.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = message.aif; sourceTree = "<group>"; };
 		BB67E5A822CC99EE007E15E2 /* superjump.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = superjump.aif; sourceTree = "<group>"; };
@@ -407,6 +407,10 @@
 		BBDF2E162340A03B00DC919F /* brick_diamond.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = brick_diamond.aif; sourceTree = "<group>"; };
 		BBDF2E1F2340A2F300DC919F /* brick_magic.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = brick_magic.aif; sourceTree = "<group>"; };
 		BBDF2E202340A2F300DC919F /* brick_ice.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = brick_ice.aif; sourceTree = "<group>"; };
+		BBDF2E232340BA1500DC919F /* jump2.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = jump2.aif; sourceTree = "<group>"; };
+		BBDF2E242340BA1500DC919F /* bigjump2.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = bigjump2.aif; sourceTree = "<group>"; };
+		BBDF2E252340BA1500DC919F /* bigjump1.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = bigjump1.aif; sourceTree = "<group>"; };
+		BBDF2E262340BA1500DC919F /* jump1.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = jump1.aif; sourceTree = "<group>"; };
 		BBFE1A9B22A40D2600FDCB84 /* GameCenterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -731,9 +735,12 @@
 				BB67E5A422CC99ED007E15E2 /* collectcoin.aif */,
 				BB67E5AB22CC99EE007E15E2 /* extralife.aif */,
 				BB67E5A622CC99EE007E15E2 /* gameover.aif */,
-				BB67E5A522CC99EE007E15E2 /* jump.aif */,
 				BB67E5A722CC99EE007E15E2 /* message.aif */,
 				BB67E5A822CC99EE007E15E2 /* superjump.aif */,
+				BBDF2E252340BA1500DC919F /* bigjump1.aif */,
+				BBDF2E242340BA1500DC919F /* bigjump2.aif */,
+				BBDF2E262340BA1500DC919F /* jump1.aif */,
+				BBDF2E232340BA1500DC919F /* jump2.aif */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -923,13 +930,14 @@
 				A7A22864220604DB00081E0E /* Main.sks in Resources */,
 				BBDF2E192340A06900DC919F /* brick_c.aif in Resources */,
 				BB67E5BE22CC99EE007E15E2 /* superjump.aif in Resources */,
-				BB67E5B522CC99EE007E15E2 /* jump.aif in Resources */,
 				A73B3FF5224A3696002B8D2C /* AmbientSnow.sks in Resources */,
 				BBDF2E1C2340A06900DC919F /* brick_e.aif in Resources */,
 				A7AA89B6222019C400C5D73A /* Assets.xcassets in Resources */,
 				A7DC9BC422177E430038EC58 /* SuperJump.sks in Resources */,
 				BB6B5B6F2337969100EF8D77 /* gameover.mp3 in Resources */,
 				BBDF2E1B2340A06900DC919F /* brick_diamond.aif in Resources */,
+				BBDF2E2A2340BA1600DC919F /* jump1.aif in Resources */,
+				BBDF2E292340BA1600DC919F /* bigjump1.aif in Resources */,
 				BBDF2E1E2340A06900DC919F /* brick_g.aif in Resources */,
 				BB4A245522A12B850049962E /* .swiftlint.yml in Resources */,
 				A7A228CB2206050E00081E0E /* ScoreParticle.sks in Resources */,
@@ -940,6 +948,7 @@
 				A7A22865220604DB00081E0E /* Settings.sks in Resources */,
 				A7A22862220604DB00081E0E /* MainGame.sks in Resources */,
 				BBDF2E212340A2F600DC919F /* brick_ice.aif in Resources */,
+				BBDF2E272340BA1600DC919F /* jump2.aif in Resources */,
 				BB67E5C422CC99EE007E15E2 /* button.aif in Resources */,
 				BB47B2C0232D8F92008CCDA2 /* AmbientRain.sks in Resources */,
 				BBDF2E222340A2F600DC919F /* brick_magic.aif in Resources */,
@@ -949,6 +958,7 @@
 				BB67E5B822CC99EE007E15E2 /* gameover.aif in Resources */,
 				BBDF2E1D2340A06900DC919F /* brick_f.aif in Resources */,
 				BB67E5BB22CC99EE007E15E2 /* message.aif in Resources */,
+				BBDF2E282340BA1600DC919F /* bigjump2.aif in Resources */,
 				A7736AA62206025100A28B5D /* LaunchScreen.storyboard in Resources */,
 				A745E17722395C260043EC5A /* JumpParticle.sks in Resources */,
 				BB67E5B222CC99EE007E15E2 /* collectcoin.aif in Resources */,
@@ -976,7 +986,6 @@
 				A7A22868220604DB00081E0E /* Main.sks in Resources */,
 				BB67E5C522CC99EE007E15E2 /* button.aif in Resources */,
 				A7A228D02206050E00081E0E /* ScoreParticle.sks in Resources */,
-				BB67E5B622CC99EE007E15E2 /* jump.aif in Resources */,
 				BB67E5BC22CC99EE007E15E2 /* message.aif in Resources */,
 				A7AA89B7222019C400C5D73A /* Assets.xcassets in Resources */,
 				BB67E5C822CC99EE007E15E2 /* extralife.aif in Resources */,
@@ -1002,7 +1011,6 @@
 				A7A2286C220604DC00081E0E /* Main.sks in Resources */,
 				BB67E5C622CC99EE007E15E2 /* button.aif in Resources */,
 				A7A228D52206050E00081E0E /* ScoreParticle.sks in Resources */,
-				BB67E5B722CC99EE007E15E2 /* jump.aif in Resources */,
 				BB67E5BD22CC99EE007E15E2 /* message.aif in Resources */,
 				A7AA89B8222019C400C5D73A /* Assets.xcassets in Resources */,
 				BB67E5C922CC99EE007E15E2 /* extralife.aif in Resources */,

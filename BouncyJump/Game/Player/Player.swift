@@ -177,19 +177,26 @@ class Player: SKSpriteNode {
     
     func jump() {
         let vxMax: CGFloat = 2000.0
-        let vx: CGFloat = abs(self.physicsBody!.velocity.dx)
+        let vx: CGFloat = abs(physicsBody!.velocity.dx)
         
         let xVelocityFactor: CGFloat = 1.0 + min((vx / vxMax), 2.0)
         
-        self.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: xVelocityFactor * jumpImpulse))
-        self.state = PlayerState.jumping
+        physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: xVelocityFactor * jumpImpulse))
+        state = PlayerState.jumping
         
-        self.run(SoundAction.jump.action)
+        playJumpSound()
+        perfectJumpDetector.playerJumped(from: currentPlatform)
         
-        self.perfectJumpDetector.playerJumped(from: currentPlatform)
-        
-        if let w = self.world {
-            w.makeExplosion(at: self.position)
+        if let world = world {
+            world.makeExplosion(at: self.position)
+        }
+    }
+    
+    func playJumpSound() {
+        if perfectJumpDetector.comboCount > 0 {
+            self.run(SoundAction.bigJump.action)
+        } else {
+            self.run(SoundAction.jump.action)
         }
     }
     
