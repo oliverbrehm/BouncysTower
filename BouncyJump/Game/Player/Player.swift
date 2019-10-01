@@ -126,18 +126,22 @@ class Player: SKSpriteNode {
         self.zRotation = 0.0
         self.position = CGPoint(x: 0.0, y: self.position.y + 100.0)
         self.physicsBody?.velocity = CGVector.zero
-
-        if let s = self.scene, let level = self.currentPlatform?.level {
-            // calculate a factor so the player won't jump too far if very near the end of the level
-            let playerYInLevel = level.convert(self.position, from: s).y
-            
-            let distanceToLevelTop = level.topPlatformY - playerYInLevel
-            let minDistanceForFullImpulse: CGFloat = 800.0
-            let impulseFactor = min(minDistanceForFullImpulse, distanceToLevelTop * 2.5) / minDistanceForFullImpulse
-            let impulse = max(impulseFactor * superJumpImpulse, 0.5 * superJumpImpulse)
-            
-            superJump(impulse: impulse)
+        
+        // expand platforms above
+        if let currentPlatform = currentPlatform {
+            var platform: Platform? = currentPlatform
+            for _ in 0 ..< 8 {
+                if let current = platform {
+                    current.expand()
+                } else {
+                    break
+                }
+                
+                platform = platform?.nextPlatform
+            }
         }
+
+        superJump(impulse: 0.5 * superJumpImpulse)
     }
     
     private func superJump(impulse: CGFloat) {

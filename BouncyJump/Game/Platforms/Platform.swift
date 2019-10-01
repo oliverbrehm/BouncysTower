@@ -15,43 +15,28 @@ class Platform: SKSpriteNode {
     
     let level: Level
     
+    var nextPlatform: Platform?
+    
     let backgroundColor: SKColor
+    
+    var tileTexture: SKTexture?
+    var tileEndTexture: SKTexture?
     
     init(width: CGFloat, texture: SKTexture?, textureEnds: SKTexture?, level: Level, platformNumber: Int, backgroundColor: SKColor = SKColor.white) {
         self.level = level
         self.platformNumber = platformNumber
         self.backgroundColor = backgroundColor
+        self.tileTexture = texture
+        self.tileEndTexture = textureEnds
         
         let nTiles = (width / Platform.height).rounded(.up)
         let platformSize = CGSize(width: nTiles * Platform.height, height: Platform.height)
 
         super.init(texture: nil, color: SKColor.clear, size: platformSize)
         
-        self.physicsBody = SKPhysicsBody.init(rectangleOf: platformSize)
-        self.physicsBody?.isDynamic = false
-        self.physicsBody?.categoryBitMask = NodeCategories.platform
-        self.physicsBody?.contactTestBitMask = NodeCategories.platform | NodeCategories.player
-        self.physicsBody?.collisionBitMask = 0x0
-        self.physicsBody?.usesPreciseCollisionDetection = true
+        initChildern()
         
         ResourceManager.standard.advancePlatform()
-        
-        self.initTiles(platformSize: platformSize, texture: texture, textureEnds: textureEnds)
-        
-        if(platformNumber % 5 == 0) {
-            let label = SKLabelNode(text: "\(platformNumber)")
-            label.fontName = Font.fontName
-            label.fontSize = 16.0
-            label.fontColor = SKColor.white
-            label.position = CGPoint(x: 0.0, y: -label.frame.size.height)
-            let container = SKSpriteNode(color: SKColor.brown,
-                                         size: CGSize(width: label.frame.size.width + 2.0, height: label.frame.size.height + 2.0))
-            container.anchorPoint = CGPoint(x: 0.5, y: 1.0)
-            container.addChild(label)
-            container.zPosition = NodeZOrder.platformLabelContainer
-            label.zPosition = 0.1 // relative to parent node
-            self.addChild(container)
-        }
 
         self.zPosition = NodeZOrder.world
     }
@@ -62,7 +47,7 @@ class Platform: SKSpriteNode {
         self.backgroundColor = SKColor.white
         super.init(coder: aDecoder)
     }
-    
+
     private func randomX(withOffset offset: CGFloat) -> CGFloat {
         let xRangeMin = -self.size.width / 2.0 + offset
         let xRangeMax = self.size.width / 2.0 - offset
@@ -91,6 +76,16 @@ class Platform: SKSpriteNode {
         // override in subclasses
     }
     
+    func expand() {
+        // expand platform over entier width (for respawn when using extra life)
+        let expandedWidth = level.world.width * 0.8
+        position = CGPoint(x: 0.0, y: position.y)
+        size = CGSize(width: expandedWidth, height: size.height)
+        
+        removeAllChildren()
+        initChildern()
+    }
+    
     func hitPlayer(player: Player, world: World) {
         self.level.reached = true
         // special behaviour in subclasses
@@ -110,20 +105,54 @@ class Platform: SKSpriteNode {
         return 1
     }
     
-    private func initTiles(platformSize: CGSize, texture: SKTexture?, textureEnds: SKTexture?) {
-        var x = -platformSize.width / 2.0
-        let w = platformSize.height
+    private func initChildern() {
+        initPhysicsBody()
+        initTiles()
+        initNumberBadge()
+    }
+    
+    private func initPhysicsBody() {
+        self.physicsBody = SKPhysicsBody.init(rectangleOf: size)
+        self.physicsBody?.isDynamic = false
+        self.physicsBody?.categoryBitMask = NodeCategories.platformDeactivated
+        self.physicsBody?.contactTestBitMask = NodeCategories.platformDeactivated
+        self.physicsBody?.collisionBitMask = 0x0
+        self.physicsBody?.usesPreciseCollisionDetection = true
+    }
+    
+    private func initNumberBadge() {
+        if(platformNumber % 5 == 0) {
+            let label = SKLabelNode(text: "\(platformNumber)")
+            label.fontName = Font.fontName
+            label.fontSize = 16.0
+            label.fontColor = SKColor.white
+            label.position = CGPoint(x: 0.0, y: -label.frame.size.height)
+            let container = SKSpriteNode(color: SKColor.brown,
+                                         size: CGSize(width: label.frame.size.width + 2.0, height: label.frame.size.height + 2.0))
+            container.anchorPoint = CGPoint(x: 0.5, y: 1.0)
+            container.addChild(label)
+            container.zPosition = NodeZOrder.platformLabelContainer
+            label.zPosition = 0.1 // relative to parent node
+            self.addChild(container)
+        }
+    }
+    
+    private func initTiles() {
+        guard let tileTexture = tileTexture else { return }
+        
+        var x = -size.width / 2.0
+        let w = size.height
 
-        while x < platformSize.width / 2.0 {
-            let tile = SKSpriteNode(texture: texture, size: CGSize(width: w, height: platformSize.height))
+        while x < size.width / 2.0 {
+            let tile = SKSpriteNode(texture: tileTexture, size: CGSize(width: w, height: size.height))
             
-            if let t = textureEnds {
-                if(x < -platformSize.width / 2.0 + w / 2.0) {
-                    tile.texture = t
-                } else if(x > platformSize.width / 2.0 - 1.5 * w) {
-                    tile.texture = t
-                    tile.xScale = -1
-                }
+            let tileEndTexture = self.tileEndTexture ?? tileTexture
+            
+            if(x < -size.width / 2.0 + w / 2.0) {
+                tile.texture = tileEndTexture
+            } else if(x > size.width / 2.0 - 1.5 * w) {
+                tile.texture = tileEndTexture
+                tile.xScale = -1
             }
             
             tile.position = CGPoint(x: x + w / 2.0, y: 0.0)

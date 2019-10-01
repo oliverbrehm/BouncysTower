@@ -20,10 +20,10 @@ class Level: SKNode, LevelConfiguration {
     private var wallY: CGFloat = 0.0
     private var wallTiles: [SKSpriteNode] = []
     private let maxWallTiles = 350
+    private var lastSpawnedPlatform: Platform?
     
     private var levelPlatformIndex = 1
     private var speedEaseIn: CGFloat = 999999999.0
-    private var lastPlatform: Platform?
     
     var texturePlatform: SKTexture?
     var texturePlatformEnds: SKTexture?
@@ -86,7 +86,7 @@ class Level: SKNode, LevelConfiguration {
     
     // of screen height
     var firstPlatformOffset: CGFloat {
-        return 0.0// TODO reset 2.0
+        return 2.0
     }
     
     var amientParticleName: String? {
@@ -154,6 +154,8 @@ class Level: SKNode, LevelConfiguration {
                 ..< levelWidth / 2.0 - w / 2.0)
             platform = StandardPlatform(width: w, texture: self.texturePlatform, textureEnds: self.texturePlatformEnds,
                                         level: self, platformNumber: platformNumber)
+            lastSpawnedPlatform?.nextPlatform = platform
+            lastSpawnedPlatform = platform
             self.spawnBackground(above: platformY)
         }
 
