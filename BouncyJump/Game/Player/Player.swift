@@ -47,7 +47,8 @@ class Player: SKSpriteNode {
     
     private(set) var hitWallSinceJumping = false
     
-    private let particleEmitter = SKEmitterNode(fileNamed: "ScoreParticle")!
+    private let rollingParticleEmitter = SKEmitterNode(fileNamed: "ScoreParticle")!
+    let comboParticleEmitter = SKEmitterNode(fileNamed: "ComboParticle")!
     
     init(jumpOnTouch: Bool = false) {
         super.init(texture: SKTexture(imageNamed: "player"), color: SKColor.red, size: CGSize(width: Player.size, height: Player.size))
@@ -66,16 +67,23 @@ class Player: SKSpriteNode {
         
         self.zPosition = NodeZOrder.player
         
-        self.particleEmitter.particleBirthRate = 0.0
-        self.addChild(self.particleEmitter)
-        
+        addChild(rollingParticleEmitter)
+        addChild(comboParticleEmitter)
+        comboParticleEmitter.particleBirthRate = 0
+        rollingParticleEmitter.particleBirthRate = 0
+
         self.perfectJumpDetector.setup(player: self)
     }
     
     func initialize(world: World, scene: Game) {
         self.world = world
-        self.particleEmitter.targetNode = scene
-        self.particleEmitter.particleBirthRate = 0.0
+        
+        comboParticleEmitter.targetNode = scene
+        comboParticleEmitter.particleColorSequence = nil
+        comboParticleEmitter.particleColorBlendFactor = 1
+        comboParticleEmitter.particleColor = SKColor.random
+        
+        rollingParticleEmitter.targetNode = scene
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -99,7 +107,7 @@ class Player: SKSpriteNode {
         self.state = .onPlatform
         self.score = 0
         
-        self.particleEmitter.particleBirthRate = 0.0
+        self.rollingParticleEmitter.particleBirthRate = 0.0
         
         self.perfectJumpDetector.setup(player: self)
     }
@@ -230,11 +238,11 @@ class Player: SKSpriteNode {
         
         if let rotation = self.physicsBody?.angularVelocity {
             if(abs(rotation) < 18.0) {
-                self.particleEmitter.particleBirthRate = 0.0
+                self.rollingParticleEmitter.particleBirthRate = 0.0
             } else if(abs(rotation) < 30.0) {
-                self.particleEmitter.particleBirthRate = 10.0
+                self.rollingParticleEmitter.particleBirthRate = 10.0
             } else {
-                self.particleEmitter.particleBirthRate = 40.0
+                self.rollingParticleEmitter.particleBirthRate = 40.0
             }
         }
     }

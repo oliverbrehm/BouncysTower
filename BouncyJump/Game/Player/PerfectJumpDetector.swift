@@ -102,6 +102,22 @@ class PerfectJumpDetector {
         
         lastPlatformNumber = currentPlatformNumber
         hitWallSinceJump = false
+        
+        updateComboParticles()
+    }
+    
+    private func updateComboParticles() {
+        guard let comboParticleEmitter = player?.comboParticleEmitter else { return }
+        
+        guard comboCount >= 2 else {
+            comboParticleEmitter.particleBirthRate = 0
+            return
+        }
+        
+        let intensity = CGFloat(50 + comboCount * 10)
+        comboParticleEmitter.particleBirthRate = intensity
+        comboParticleEmitter.speed = intensity
+        comboParticleEmitter.particleColor = SKColor.random
     }
 
     private func showPerfectJumpDone() {
@@ -136,7 +152,7 @@ class PerfectJumpDetector {
             comboFinishedLabel.position = CGPoint.zero
             comboFinishedLabel.text = "!!COMBO: \(self.comboCount)!!"
             
-            let particelEmitter = SKEmitterNode(fileNamed: "ComboParticle")!
+            let particelEmitter = SKEmitterNode(fileNamed: "ComboFinishedParticle")!
             particelEmitter.targetNode = self.player?.scene
             particelEmitter.particleBirthRate = comboCount >= 5 ? min(CGFloat(50 * self.comboCount), 2000.0) : 0.0
             particelEmitter.position = CGPoint(x: 0.0, y: -(self.player?.scene?.frame.size.height ?? 0.0) / 2.0)

@@ -226,12 +226,14 @@
 		A7DC9BBC221756CF0038EC58 /* PerfectJumpDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DC9BBB221756CF0038EC58 /* PerfectJumpDetector.swift */; };
 		A7DC9BBD221756CF0038EC58 /* PerfectJumpDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DC9BBB221756CF0038EC58 /* PerfectJumpDetector.swift */; };
 		A7DC9BBE221756CF0038EC58 /* PerfectJumpDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DC9BBB221756CF0038EC58 /* PerfectJumpDetector.swift */; };
-		A7DC9BC0221775270038EC58 /* ComboParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = A7DC9BBF221775270038EC58 /* ComboParticle.sks */; };
-		A7DC9BC1221775270038EC58 /* ComboParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = A7DC9BBF221775270038EC58 /* ComboParticle.sks */; };
-		A7DC9BC2221775270038EC58 /* ComboParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = A7DC9BBF221775270038EC58 /* ComboParticle.sks */; };
+		A7DC9BC0221775270038EC58 /* ComboFinishedParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = A7DC9BBF221775270038EC58 /* ComboFinishedParticle.sks */; };
+		A7DC9BC1221775270038EC58 /* ComboFinishedParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = A7DC9BBF221775270038EC58 /* ComboFinishedParticle.sks */; };
+		A7DC9BC2221775270038EC58 /* ComboFinishedParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = A7DC9BBF221775270038EC58 /* ComboFinishedParticle.sks */; };
 		A7DC9BC422177E430038EC58 /* SuperJump.sks in Resources */ = {isa = PBXBuildFile; fileRef = A7DC9BC322177E430038EC58 /* SuperJump.sks */; };
 		A7DC9BC522177E430038EC58 /* SuperJump.sks in Resources */ = {isa = PBXBuildFile; fileRef = A7DC9BC322177E430038EC58 /* SuperJump.sks */; };
 		A7DC9BC622177E430038EC58 /* SuperJump.sks in Resources */ = {isa = PBXBuildFile; fileRef = A7DC9BC322177E430038EC58 /* SuperJump.sks */; };
+		BB471AC723439D4E0097BD69 /* ComboParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = BB471AC623439D4E0097BD69 /* ComboParticle.sks */; };
+		BB471AC92343A2810097BD69 /* SKColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB471AC82343A2810097BD69 /* SKColor+Extensions.swift */; };
 		BB47B2C0232D8F92008CCDA2 /* AmbientRain.sks in Resources */ = {isa = PBXBuildFile; fileRef = BB47B2BF232D8F92008CCDA2 /* AmbientRain.sks */; };
 		BB4A245522A12B850049962E /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = BB4A245422A12B850049962E /* .swiftlint.yml */; };
 		BB4A245622A12B850049962E /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = BB4A245422A12B850049962E /* .swiftlint.yml */; };
@@ -376,8 +378,10 @@
 		A7D4C8332201CEAA0060F352 /* OverlayExtralife.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayExtralife.swift; sourceTree = "<group>"; };
 		A7DC9BB52216BF670038EC58 /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 		A7DC9BBB221756CF0038EC58 /* PerfectJumpDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfectJumpDetector.swift; sourceTree = "<group>"; };
-		A7DC9BBF221775270038EC58 /* ComboParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ComboParticle.sks; sourceTree = "<group>"; };
+		A7DC9BBF221775270038EC58 /* ComboFinishedParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ComboFinishedParticle.sks; sourceTree = "<group>"; };
 		A7DC9BC322177E430038EC58 /* SuperJump.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SuperJump.sks; sourceTree = "<group>"; };
+		BB471AC623439D4E0097BD69 /* ComboParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ComboParticle.sks; sourceTree = "<group>"; };
+		BB471AC82343A2810097BD69 /* SKColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKColor+Extensions.swift"; sourceTree = "<group>"; };
 		BB47B2BF232D8F92008CCDA2 /* AmbientRain.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AmbientRain.sks; sourceTree = "<group>"; };
 		BB4A245422A12B850049962E /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		BB51D91A22D38D7100346B46 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
@@ -514,11 +518,12 @@
 			isa = PBXGroup;
 			children = (
 				A792AE06216538DC004280A5 /* ScoreParticle.sks */,
-				A7DC9BBF221775270038EC58 /* ComboParticle.sks */,
+				A7DC9BBF221775270038EC58 /* ComboFinishedParticle.sks */,
 				A7DC9BC322177E430038EC58 /* SuperJump.sks */,
 				A745E17622395C260043EC5A /* JumpParticle.sks */,
 				A73B3FF3224A3696002B8D2C /* AmbientSnow.sks */,
 				BB47B2BF232D8F92008CCDA2 /* AmbientRain.sks */,
+				BB471AC623439D4E0097BD69 /* ComboParticle.sks */,
 			);
 			path = Particles;
 			sourceTree = "<group>";
@@ -529,6 +534,7 @@
 				A765DC022215A48400B34284 /* CGVector+Extensions.swift */,
 				A71F2DA72164ED4500FAF0EB /* SKSpriteNode+Extensions.swift */,
 				A776C4FB224575C9004FAD3B /* CGSize+Extensions.swift */,
+				BB471AC82343A2810097BD69 /* SKColor+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -945,7 +951,7 @@
 				BB4A245522A12B850049962E /* .swiftlint.yml in Resources */,
 				A7A228CB2206050E00081E0E /* ScoreParticle.sks in Resources */,
 				BB51D92222D39ABD00346B46 /* Localizable.strings in Resources */,
-				A7DC9BC0221775270038EC58 /* ComboParticle.sks in Resources */,
+				A7DC9BC0221775270038EC58 /* ComboFinishedParticle.sks in Resources */,
 				BB6452BF22CCBAE900EF8E03 /* menu.mp3 in Resources */,
 				A7736AA32206025100A28B5D /* Main.storyboard in Resources */,
 				A7A22865220604DB00081E0E /* Settings.sks in Resources */,
@@ -966,6 +972,7 @@
 				A745E17722395C260043EC5A /* JumpParticle.sks in Resources */,
 				BB67E5B222CC99EE007E15E2 /* collectcoin.aif in Resources */,
 				BB67E5C722CC99EE007E15E2 /* extralife.aif in Resources */,
+				BB471AC723439D4E0097BD69 /* ComboParticle.sks in Resources */,
 				BB6452C122CCC14F00EF8E03 /* level.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -981,7 +988,7 @@
 				A7736AB42206025100A28B5D /* Main.storyboard in Resources */,
 				BB67E5BF22CC99EE007E15E2 /* superjump.aif in Resources */,
 				A7A22869220604DB00081E0E /* Settings.sks in Resources */,
-				A7DC9BC1221775270038EC58 /* ComboParticle.sks in Resources */,
+				A7DC9BC1221775270038EC58 /* ComboFinishedParticle.sks in Resources */,
 				BB51D92322D39ABD00346B46 /* Localizable.strings in Resources */,
 				BB67E5B022CC99EE007E15E2 /* cheer.aif in Resources */,
 				A7DC9BC522177E430038EC58 /* SuperJump.sks in Resources */,
@@ -1006,7 +1013,7 @@
 				A7736AC22206025200A28B5D /* Main.storyboard in Resources */,
 				BB67E5C022CC99EE007E15E2 /* superjump.aif in Resources */,
 				A7A2286D220604DC00081E0E /* Settings.sks in Resources */,
-				A7DC9BC2221775270038EC58 /* ComboParticle.sks in Resources */,
+				A7DC9BC2221775270038EC58 /* ComboFinishedParticle.sks in Resources */,
 				BB51D92422D39ABD00346B46 /* Localizable.strings in Resources */,
 				BB67E5B122CC99EE007E15E2 /* cheer.aif in Resources */,
 				A7DC9BC622177E430038EC58 /* SuperJump.sks in Resources */,
@@ -1105,6 +1112,7 @@
 				A74EF250223A6EE000A69176 /* PremiumCVC.swift in Sources */,
 				A7A22889220604E700081E0E /* OverlayExtralife.swift in Sources */,
 				A756880E22423A3F00E793A1 /* Colors.swift in Sources */,
+				BB471AC92343A2810097BD69 /* SKColor+Extensions.swift in Sources */,
 				A7901468222962830025368A /* LevelConfiguration.swift in Sources */,
 				A7A22870220604E000081E0E /* Settings.swift in Sources */,
 				A71875B3220AFB11003ED6F1 /* ResourceView.swift in Sources */,
