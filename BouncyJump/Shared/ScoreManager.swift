@@ -87,6 +87,16 @@ class Score {
         }
     }
     
+    func reset() {
+        UserDefaults.standard.setValue(0, forKey: UserDefaultsKeys.highestJump.rawValue)
+        UserDefaults.standard.setValue(0, forKey: UserDefaultsKeys.longestCombo.rawValue)
+        UserDefaults.standard.setValue([], forKey: UserDefaultsKeys.scores.rawValue)
+        UserDefaults.standard.setValue(0, forKey: UserDefaultsKeys.towerHeight.rawValue)
+        UserDefaults.standard.synchronize()
+        
+        unsetRecentRank()
+    }
+    
     // adds the score and returns the rank (0-based)
     func addScore(_ score: Int) -> Int? {
         self.scores.append(score)

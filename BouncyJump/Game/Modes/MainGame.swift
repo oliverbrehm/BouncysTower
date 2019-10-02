@@ -155,11 +155,20 @@ class MainGame: Game {
         
         let score = self.player.score
         let rank = Score.standard.addScore(score)
+        let platformNumber = player.currentPlatform?.platformNumber ?? 0
+        let longestCombo = player.longestCombo
         
-        Score.standard.highestJump = player.currentPlatform?.platformNumber ?? 0
-        Score.standard.longestCombo = player.longestCombo
+        let bestPlatformNumber = platformNumber > Score.standard.highestJump
+        let bestCombo = longestCombo > Score.standard.longestCombo
+                
+        Score.standard.highestJump = platformNumber
+        Score.standard.longestCombo = longestCombo
         
-        self.gameOverOverlay.show(score: score, rank: rank)
+        self.gameOverOverlay.show(
+            score: score, rank: rank,
+            platformNumber: platformNumber, isBestPlatformNumber: bestPlatformNumber,
+            longestCombo: longestCombo, isBestCombo: bestCombo)
+        
         self.pause()
         self.state.runningState = .over
     }

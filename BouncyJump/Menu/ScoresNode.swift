@@ -57,16 +57,21 @@ class ScoreNode: SKNode {
             }
         }
         
-        let gameCenterButton = IconDescriptionButton(description: "GAME CENTER", image: "options")
-        gameCenterButton.position = CGPoint(x: 0, y: currentY - dY)
-        gameCenterButton.action = {
-            // GameCenterManager.standard.showLeaderboard()
-            
-            // TODO button used as reset for testing
-            Config.standard.reset()
-            TowerBricks.standard.reset()
-        }
-        self.addChild(gameCenterButton)
+        let highestJumpLabel = SKLabelNode(fontNamed: Font.fontName)
+        highestJumpLabel.position = CGPoint(x: 0.0, y: currentY - dY)
+        highestJumpLabel.fontColor = Colors.menuForeground
+        highestJumpLabel.fontSize = 15.0
+        highestJumpLabel.zPosition = NodeZOrder.label
+        highestJumpLabel.text = "\(Strings.Scores.highestJumpLabel): \(Score.standard.highestJump)"
+        self.addChild(highestJumpLabel)
+
+        let longestComboLabel = SKLabelNode(fontNamed: Font.fontName)
+        longestComboLabel.position = CGPoint(x: 0.0, y: currentY - 2 * dY)
+        longestComboLabel.fontColor = Colors.menuForeground
+        longestComboLabel.fontSize = 15.0
+        longestComboLabel.zPosition = NodeZOrder.label
+        longestComboLabel.text = "\(Strings.Scores.longestComboLabel): \(Score.standard.longestCombo)"
+        self.addChild(longestComboLabel)
     }
     
     required init?(coder aDecoder: NSCoder) {

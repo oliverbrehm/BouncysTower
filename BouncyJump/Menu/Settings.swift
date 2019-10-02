@@ -31,7 +31,7 @@ class Settings: SKScene {
         info1.fontColor = Colors.menuForeground
         info1.fontName = Font.fontName
         info1.fontSize = 20.0
-        info1.position = CGPoint(x: rightX, y: -110.0)
+        info1.position = CGPoint(x: rightX, y: -120.0)
         info1.zPosition = NodeZOrder.label
         self.addChild(info1)
         
@@ -39,19 +39,31 @@ class Settings: SKScene {
         info2.fontColor = SKColor.white
         info2.fontName = Font.fontName
         info2.fontSize = 16.0
-        info2.position = CGPoint(x: rightX, y: -135.0)
+        info2.position = CGPoint(x: rightX, y: -145.0)
         info2.zPosition = NodeZOrder.label
         self.addChild(info2)
         
         let shopButton = IconDescriptionButton(description: Strings.MenuMain.shopTitle, image: "shop")
-        shopButton.position = CGPoint(x: rightX, y: 80.0)
+        shopButton.position = CGPoint(x: rightX, y: 120.0)
         shopButton.action = {
             self.gameViewController?.showShop()
         }
         self.addChild(shopButton)
         
+        let gameCenterButton = IconDescriptionButton(description: "GAME CENTER", image: "options")
+        gameCenterButton.position = CGPoint(x: rightX, y: 50)
+        gameCenterButton.action = {
+            // GameCenterManager.standard.showLeaderboard()
+            
+            // TODO button used as reset for testing
+            Config.standard.reset()
+            TowerBricks.standard.reset()
+            Score.standard.reset()
+        }
+        self.addChild(gameCenterButton)
+        
         let backButton = IconDescriptionButton(description: Strings.backTitle, image: "back")
-        backButton.position = CGPoint(x: rightX, y: 0.0)
+        backButton.position = CGPoint(x: rightX, y: -20.0)
         backButton.action = {
             self.gameViewController?.showMainMenu()
         }

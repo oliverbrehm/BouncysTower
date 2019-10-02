@@ -8,29 +8,63 @@
 
 import SpriteKit
 
+extension SKLabelNode {
+    
+    var top: CGFloat {
+        return position.y + frame.size.height / 2.0
+    }
+    
+    var bottom: CGFloat {
+        return position.y - frame.size.height / 2.0
+    }
+    
+    var height: CGFloat {
+        return frame.size.height
+    }
+}
+
 class ScoreView: Button {
-    private let margin: CGFloat = 5.0
+    private let margin: CGFloat = 10.0
 
     private let scoreLabel = SKLabelNode(fontNamed: Font.fontName)
     private let rankLabel = SKLabelNode(fontNamed: Font.fontName)
+    private let platformNumberLabel = SKLabelNode(fontNamed: Font.fontName)
+    private let longestComboLabel = SKLabelNode(fontNamed: Font.fontName)
+    
+    private let highlightAction = SKAction.repeatForever(SKAction.sequence([
+       SKAction.colorize(with: Colors.menuForeground, colorBlendFactor: 1.0, duration: 0.3),
+       SKAction.colorize(with: SKColor.white, colorBlendFactor: 1.0, duration: 0.3)
+    ]))
     
     init() {
         super.init(size: CGSize.zero)
         
-        self.scoreLabel.position = CGPoint(x: 0.0, y: margin / 2.0)
-        self.scoreLabel.fontSize = 24.0
-        self.scoreLabel.fontColor = SKColor.white
-        self.scoreLabel.zPosition = NodeZOrder.label
-        self.addChild(self.scoreLabel)
+        scoreLabel.position = CGPoint(x: 0.0, y: 0)
+        scoreLabel.fontSize = 24.0
+        scoreLabel.fontColor = SKColor.white
+        scoreLabel.zPosition = NodeZOrder.label
+        addChild(scoreLabel)
         
-        self.rankLabel.fontSize = 10.0
-        self.rankLabel.fontColor = SKColor.white
-        self.scoreLabel.zPosition = NodeZOrder.label
-        self.rankLabel.text = Strings.GameOverlay.rankLabel
-        self.rankLabel.position = CGPoint(x: 0.0, y: -margin / 2.0 - rankLabel.frame.size.height)
-        self.addChild(self.rankLabel)
+        rankLabel.fontSize = 10.0
+        rankLabel.fontColor = SKColor.white
+        rankLabel.zPosition = NodeZOrder.label
+        rankLabel.text = Strings.Scores.rankLabel
+        rankLabel.position = CGPoint(x: 0.0, y: scoreLabel.bottom - margin - rankLabel.height / 2.0)
+        addChild(rankLabel)
         
-        self.action = {
+        platformNumberLabel.fontSize = 16.0
+        platformNumberLabel.fontColor = SKColor.white
+        platformNumberLabel.zPosition = NodeZOrder.label
+        platformNumberLabel.position = CGPoint(x: 0.0, y: scoreLabel.top + 4 * margin + platformNumberLabel.height / 2.0)
+        addChild(platformNumberLabel)
+        
+        longestComboLabel.fontSize = 16.0
+        longestComboLabel.fontColor = SKColor.white
+        longestComboLabel.zPosition = NodeZOrder.label
+        longestComboLabel.position = CGPoint(x: 0.0, y: platformNumberLabel.top + 2 * margin + platformNumberLabel.height / 2.0)
+        addChild(longestComboLabel)
+        
+        action = {
             if let game = self.scene as? Game {
                 game.gameViewController?.showSettings()
             }
@@ -41,20 +75,27 @@ class ScoreView: Button {
         super.init(coder: aDecoder)
     }
     
-    func setup(position: CGPoint, score: Int, rank: Int?) {
+    func setup(position: CGPoint, score: Int, rank: Int?, platformNumber: Int, isBestPlatformNumber: Bool, longestCombo: Int, isBestCombo: Bool) {
         self.position = position
         
-        self.scoreLabel.text = "Score: \(score)"
+        scoreLabel.text = "Score: \(score)"
 
         if let r = rank {
-            self.rankLabel.text = (r == 0) ? Strings.GameOverlay.newHighscoreLabel : "\(Strings.GameOverlay.rankLabel) \(r + 1)"
-            self.rankLabel.isHidden = false
-            self.rankLabel.run(SKAction.repeatForever(SKAction.sequence([
-                SKAction.colorize(with: Colors.menuForeground, colorBlendFactor: 1.0, duration: 0.3),
-                SKAction.colorize(with: SKColor.white, colorBlendFactor: 1.0, duration: 0.3)
-                ])))
+            rankLabel.text = (r == 0) ? Strings.Scores.newHighscoreLabel : "\(Strings.Scores.rankLabel) \(r + 1)"
+            rankLabel.isHidden = false
+            rankLabel.run(highlightAction)
         } else {
-            self.rankLabel.isHidden = true
+            rankLabel.isHidden = true
+        }
+        
+        platformNumberLabel.text = "Platform: \(platformNumber)"
+        if isBestPlatformNumber {
+            platformNumberLabel.run(highlightAction)
+        }
+        
+        longestComboLabel.text = "\(Strings.Scores.longestComboLabel): \(longestCombo)"
+        if isBestCombo {
+            longestComboLabel.run(highlightAction)
         }
         
         self.size = CGSize(width: scoreLabel.frame.size.width, height: 2 * scoreLabel.frame.size.height + margin)
@@ -69,7 +110,7 @@ class OverlayGameOver: Overlay {
         super.setup(size: game.frame.size, width: 0.8)
         
         let gameOverLabel = SKLabelNode(fontNamed: Font.fontName)
-        gameOverLabel.position = CGPoint(x: 80.0, y: 100.0)
+        gameOverLabel.position = CGPoint(x: 80.0, y: 130.0)
         gameOverLabel.text = "GAME OVER"
         gameOverLabel.fontSize = 24.0
         gameOverLabel.fontColor = SKColor.white
@@ -77,14 +118,14 @@ class OverlayGameOver: Overlay {
         addChild(gameOverLabel)
         
         let backButton = IconButton(image: "back")
-        backButton.position = CGPoint(x: 110.0, y: 0.0)
+        backButton.position = CGPoint(x: 110.0, y: -20.0)
         backButton.action = {
             game.gameViewController?.showMainMenu()
         }
         self.addChild(backButton)
         
         let retryButton = IconButton(image: "retry")
-        retryButton.position = CGPoint(x: 50.0, y: 0.0)
+        retryButton.position = CGPoint(x: 50.0, y: -20.0)
         retryButton.action = {
             game.resetGame()
         }
@@ -92,13 +133,17 @@ class OverlayGameOver: Overlay {
         
         self.addChild(scoreView)
         
-        resourceView.setup(position: CGPoint(x: 80.0, y: -90.0))
+        resourceView.setup(position: CGPoint(x: 80.0, y: -110.0))
         self.addChild(resourceView)
     }
     
-    func show(score: Int, rank: Int?) {
+    func show(score: Int, rank: Int?, platformNumber: Int, isBestPlatformNumber: Bool, longestCombo: Int, isBestCombo: Bool) {
         self.resourceView.updateValues()
-        self.scoreView.setup(position: CGPoint(x: 80.0, y: 60.0), score: score, rank: rank)
+        self.scoreView.setup(
+            position: CGPoint(x: 80.0, y: 40.0),
+            score: score, rank: rank,
+            platformNumber: platformNumber, isBestPlatformNumber: isBestPlatformNumber,
+            longestCombo: longestCombo, isBestCombo: isBestCombo)
         
         super.show()
     }

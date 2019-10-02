@@ -36,6 +36,13 @@ class Strings {
         static let magicBrickDescription = "?)#%(*?#)@(#*% )#W%  )#(% ##%#%"
     }
     
+    struct Scores {
+        static let rankLabel = NSLocalizedString("rankLabel", comment: "RANK")
+        static let newHighscoreLabel = NSLocalizedString("newHighscoreLabel", comment: "NEW HIGHSCORE")
+        static let longestComboLabel = NSLocalizedString("longestComboLabel", comment: "Longest combo")
+        static let highestJumpLabel = NSLocalizedString("highestJumpLabel", comment: "Highest jump")
+    }
+    
     struct Tutorial {
         static let moveTutorialDescription = NSLocalizedString("moveTutorialDescription", comment: "Description sentence for Move Tutorial")
         static let wallTutorialDescription = NSLocalizedString("wallTutorialDescription", comment: "Description sentence for Wall Tutorial")
@@ -55,8 +62,6 @@ class Strings {
     }
     
     struct GameOverlay {
-        static let rankLabel = NSLocalizedString("rankLabel", comment: "RANK")
-        static let newHighscoreLabel = NSLocalizedString("newHighscoreLabel", comment: "NEW HIGHSCORE")
         static let pausedLabel = NSLocalizedString("pausedLabel", comment: "PAUSED")
         static let useExtralifeQuestion = NSLocalizedString("useExtralifeQuestion", comment: "Use extralife?")
     }

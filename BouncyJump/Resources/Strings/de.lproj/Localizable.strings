@@ -87,3 +87,7 @@
 "errorMessage" = "Fehler beim Wiederherstellen, bitte versuche es noch einmal.";
 "purchaseConfirmationTitle" = "Sold";
 "purchaseConfirmationMessage" = "Thank you for buying premium!";
+
+// Scores
+"longestComboLabel" = "Längste Combo";
+"highestJumpLabel" = "Höchster Sprung";

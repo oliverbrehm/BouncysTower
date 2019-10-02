@@ -87,3 +87,7 @@
 "errorMessage" = "Error restoring premium, please try again.";
 "purchaseConfirmationTitle" = "Sold";
 "purchaseConfirmationMessage" = "Thank you for buying premium!";
+
+// Scores
+"longestComboLabel" = "Longest combo";
+"highestJumpLabel" = "Highest jump";
