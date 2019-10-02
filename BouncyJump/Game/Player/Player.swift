@@ -81,7 +81,7 @@ class Player: SKSpriteNode {
         comboParticleEmitter.targetNode = scene
         comboParticleEmitter.particleColorSequence = nil
         comboParticleEmitter.particleColorBlendFactor = 1
-        comboParticleEmitter.particleColor = SKColor.random
+        comboParticleEmitter.particleColor = SKColor.random()
         
         rollingParticleEmitter.targetNode = scene
     }

@@ -21,6 +21,7 @@ class PerfectJumpDetector {
     private var currentPlatformNumber = -1
     private var lastPlatformNumber = -1
     private var hitWallSinceJump = false
+    private var lastJumpColor: SKColor?
     
     private var perfectJump: Bool {
         // player must have hit wall and jumped at least 2 platforms at once
@@ -85,17 +86,24 @@ class PerfectJumpDetector {
     
     func playerJumped(from platform: Platform?) {
         currentPlatformNumber = platform?.platformNumber ?? -1
+        
+        let jumpColor: SKColor
+        if let lastColor = lastJumpColor {
+            jumpColor = SKColor.random(excluding: lastColor)
+        } else {
+            jumpColor = SKColor.random()
+        }
 
         if(self.perfectJump) {
             // perfect jump done
             self.comboCount += 1
             if(self.comboCount >= 0) {
-                self.showPerfectJumpDone()
+                self.showPerfectJumpDone(color: jumpColor)
             }
         } else {
             if(self.comboCount > 1) {
                 longestCombo = max(longestCombo, comboCount)
-                self.showComboFinished()
+                self.showComboFinished(color: lastJumpColor ?? SKColor.random())
             }
             self.comboCount = -1
         }
@@ -103,10 +111,12 @@ class PerfectJumpDetector {
         lastPlatformNumber = currentPlatformNumber
         hitWallSinceJump = false
         
-        updateComboParticles()
+        updateComboParticles(color: jumpColor)
+        
+        lastJumpColor = jumpColor
     }
     
-    private func updateComboParticles() {
+    private func updateComboParticles(color: SKColor) {
         guard let comboParticleEmitter = player?.comboParticleEmitter else { return }
         
         guard comboCount >= 2 else {
@@ -117,16 +127,16 @@ class PerfectJumpDetector {
         let intensity = CGFloat(50 + comboCount * 10)
         comboParticleEmitter.particleBirthRate = intensity
         comboParticleEmitter.speed = intensity
-        comboParticleEmitter.particleColor = SKColor.random
+        comboParticleEmitter.particleColor = color
     }
 
-    private func showPerfectJumpDone() {
+    private func showPerfectJumpDone(color: SKColor) {
         if let p = self.player {
             let comboLabel = SKLabelNode(fontNamed: Font.fontName)
             comboLabel.zPosition = NodeZOrder.consumable
             comboLabel.fontSize = min(14.0 + CGFloat(2 * self.comboCount), 50.0) // bigger label with bigger combo
             comboLabel.color = SKColor.darkGray
-            comboLabel.fontColor = self.getColorForComboCount()
+            comboLabel.fontColor = color
             comboLabel.alpha = 0.8
             comboLabel.setScale(0.0)
             
@@ -141,7 +151,7 @@ class PerfectJumpDetector {
         }
     }
     
-    private func showComboFinished() {
+    private func showComboFinished(color: SKColor) {
         if let c = self.player?.scene?.camera {
             let comboFinishedLabel = SKLabelNode(fontNamed: Font.fontName)
             comboFinishedLabel.zPosition = NodeZOrder.consumable
@@ -156,6 +166,8 @@ class PerfectJumpDetector {
             particelEmitter.targetNode = self.player?.scene
             particelEmitter.particleBirthRate = comboCount >= 5 ? min(CGFloat(50 * self.comboCount), 2000.0) : 0.0
             particelEmitter.position = CGPoint(x: 0.0, y: -(self.player?.scene?.frame.size.height ?? 0.0) / 2.0)
+            particelEmitter.particleColorSequence = nil
+            particelEmitter.particleColor = color
             c.addChild(particelEmitter)
             
             if(self.comboCount >= 5) {
@@ -182,11 +194,5 @@ class PerfectJumpDetector {
                 }
             ]))
         }
-    }
-    
-    private func getColorForComboCount() -> SKColor {
-        // color dependent on _comboCount
-        // TODO the bigger the brighter
-        return SKColor.green
     }
 }

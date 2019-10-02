@@ -43,3 +43,25 @@ extension SKColor {
        )
    }
 }
+
+extension SKColor {
+    static func random(excluding: SKColor? = nil) -> SKColor {
+        
+        var possibleColors: [SKColor] = [
+            SKColor.green,
+            SKColor.purple,
+            SKColor.orange,
+            SKColor.yellow,
+            SKColor.red,
+            SKColor.blue,
+            SKColor.systemTeal,
+            SKColor.magenta
+        ]
+        
+        if let excludedColor = excluding, let index = possibleColors.firstIndex(of: excludedColor) {
+            possibleColors.remove(at: index)
+        }
+        
+        return possibleColors[Int.random(in: 0 ..< possibleColors.count)]
+    }
+}

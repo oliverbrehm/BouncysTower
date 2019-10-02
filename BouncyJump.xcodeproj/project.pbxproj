@@ -233,7 +233,6 @@
 		A7DC9BC522177E430038EC58 /* SuperJump.sks in Resources */ = {isa = PBXBuildFile; fileRef = A7DC9BC322177E430038EC58 /* SuperJump.sks */; };
 		A7DC9BC622177E430038EC58 /* SuperJump.sks in Resources */ = {isa = PBXBuildFile; fileRef = A7DC9BC322177E430038EC58 /* SuperJump.sks */; };
 		BB471AC723439D4E0097BD69 /* ComboParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = BB471AC623439D4E0097BD69 /* ComboParticle.sks */; };
-		BB471AC92343A2810097BD69 /* SKColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB471AC82343A2810097BD69 /* SKColor+Extensions.swift */; };
 		BB47B2C0232D8F92008CCDA2 /* AmbientRain.sks in Resources */ = {isa = PBXBuildFile; fileRef = BB47B2BF232D8F92008CCDA2 /* AmbientRain.sks */; };
 		BB4A245522A12B850049962E /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = BB4A245422A12B850049962E /* .swiftlint.yml */; };
 		BB4A245622A12B850049962E /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = BB4A245422A12B850049962E /* .swiftlint.yml */; };
@@ -381,7 +380,6 @@
 		A7DC9BBF221775270038EC58 /* ComboFinishedParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ComboFinishedParticle.sks; sourceTree = "<group>"; };
 		A7DC9BC322177E430038EC58 /* SuperJump.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SuperJump.sks; sourceTree = "<group>"; };
 		BB471AC623439D4E0097BD69 /* ComboParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ComboParticle.sks; sourceTree = "<group>"; };
-		BB471AC82343A2810097BD69 /* SKColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKColor+Extensions.swift"; sourceTree = "<group>"; };
 		BB47B2BF232D8F92008CCDA2 /* AmbientRain.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AmbientRain.sks; sourceTree = "<group>"; };
 		BB4A245422A12B850049962E /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		BB51D91A22D38D7100346B46 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
@@ -534,7 +532,6 @@
 				A765DC022215A48400B34284 /* CGVector+Extensions.swift */,
 				A71F2DA72164ED4500FAF0EB /* SKSpriteNode+Extensions.swift */,
 				A776C4FB224575C9004FAD3B /* CGSize+Extensions.swift */,
-				BB471AC82343A2810097BD69 /* SKColor+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1112,7 +1109,6 @@
 				A74EF250223A6EE000A69176 /* PremiumCVC.swift in Sources */,
 				A7A22889220604E700081E0E /* OverlayExtralife.swift in Sources */,
 				A756880E22423A3F00E793A1 /* Colors.swift in Sources */,
-				BB471AC92343A2810097BD69 /* SKColor+Extensions.swift in Sources */,
 				A7901468222962830025368A /* LevelConfiguration.swift in Sources */,
 				A7A22870220604E000081E0E /* Settings.swift in Sources */,
 				A71875B3220AFB11003ED6F1 /* ResourceView.swift in Sources */,
