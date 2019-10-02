@@ -45,7 +45,7 @@ class LevelDesert: Level {
         return 0.3
     }
     
-    override var numberOfPlatforms: Int {
-        return 100
+    override var amientParticleName: String? {
+        return "AmbientDesert"
     }
 }

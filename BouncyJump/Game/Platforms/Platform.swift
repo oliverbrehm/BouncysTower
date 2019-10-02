@@ -12,6 +12,7 @@ class Platform: SKSpriteNode {
     static let height: CGFloat = 15.0
     
     let platformNumber: Int
+    let platformNumberInLevel: Int
     
     let level: Level
     
@@ -22,13 +23,26 @@ class Platform: SKSpriteNode {
     var tileTexture: SKTexture?
     var tileEndTexture: SKTexture?
     
-    init(width: CGFloat, texture: SKTexture?, textureEnds: SKTexture?, level: Level, platformNumber: Int, backgroundColor: SKColor = SKColor.white) {
+    var isInTopPartOfLevel: Bool {
+        return level.numberOfPlatforms - platformNumberInLevel < 20
+    }
+    
+    init(
+        width: CGFloat,
+        texture: SKTexture?,
+        textureEnds: SKTexture?,
+        level: Level,
+        platformNumber: Int,
+        platformNumberInLevel: Int,
+        backgroundColor: SKColor = SKColor.white)
+    {
         self.level = level
         self.platformNumber = platformNumber
         self.backgroundColor = backgroundColor
         self.tileTexture = texture
         self.tileEndTexture = textureEnds
-        
+        self.platformNumberInLevel = platformNumberInLevel
+                
         let nTiles = (width / Platform.height).rounded(.up)
         let platformSize = CGSize(width: nTiles * Platform.height, height: Platform.height)
 
@@ -37,12 +51,17 @@ class Platform: SKSpriteNode {
         initChildern()
         
         ResourceManager.standard.advancePlatform()
+        
+        if !isInTopPartOfLevel {
+            ResourceManager.standard.advanceSuperJumpConsumable()
+        }
 
         self.zPosition = NodeZOrder.world
     }
     
     required init?(coder aDecoder: NSCoder) {
         self.platformNumber = -1
+        self.platformNumberInLevel = -1
         self.level = LevelBase1(world: World())
         self.backgroundColor = SKColor.white
         super.init(coder: aDecoder)
@@ -54,22 +73,55 @@ class Platform: SKSpriteNode {
         return CGFloat.random(in: xRangeMin ..< xRangeMax)
     }
     
-    func spawnBrick() {
+    func spawnBrick() -> Bool {
         if let brick = ResourceManager.standard.consumeBrick() {
             let brickNode = ConsumableBrick(brick: brick)
-            let y = self.size.height / 2.0 + brickNode.size.height / 2.0 + 5.0
-            brickNode.position = CGPoint(x: self.randomX(withOffset: brickNode.size.width / 2.0), y: y)
+            brickNode.position = getConsumableRandomPosition(forNode: brickNode)
             self.addChild(brickNode)
+            return true
         }
+        
+        return false
     }
     
-    func spawnExtraLife() {
+    func spawnExtraLife() -> Bool {
         if(ResourceManager.standard.consumeExtraLife()) {
             let extraLife = ConsumableExtraLife()
-            let y = self.size.height / 2.0 + extraLife.size.height / 2.0 + 5.0
-            extraLife.position = CGPoint(x: self.randomX(withOffset: extraLife.size.width / 2.0), y: y)
+            extraLife.position = getConsumableRandomPosition(forNode: extraLife)
             self.addChild(extraLife)
+            return true
         }
+        
+        return false
+    }
+    
+    func spawnSuperCoin() -> Bool {
+        if(ResourceManager.standard.consumeSuperCoin()) {
+            let superCoin = SuperCoin()
+            superCoin.position = getConsumableRandomPosition(forNode: superCoin)
+            self.addChild(superCoin)
+            return true
+        }
+        
+        return false
+    }
+    
+    func spawnSuperJump() -> Bool {
+        guard !isInTopPartOfLevel else { return false }
+        
+        if(ResourceManager.standard.consumeSuperJump()) {
+            let superJump = SuperJump()
+            superJump.hitAction = { [weak self] in
+                if let game = self?.scene as? Game {
+                    game.player.superJump()
+                }
+            }
+            superJump.position = getConsumableRandomPosition(forNode: superJump)
+            self.addChild(superJump)
+            return true
+        }
+        
+        return false
     }
     
     func setup() {
@@ -103,6 +155,11 @@ class Platform: SKSpriteNode {
     
     func score() -> Int {
         return 1
+    }
+    
+    private func getConsumableRandomPosition(forNode node: SKSpriteNode) -> CGPoint {
+        let y: CGFloat = self.size.height / 2.0 + node.size.height / 2.0 + 5.0
+        return CGPoint(x: self.randomX(withOffset: node.size.width / 2.0), y: y)
     }
     
     private func initChildern() {

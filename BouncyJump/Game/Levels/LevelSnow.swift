@@ -48,8 +48,4 @@ class LevelSnow: Level {
     override var platformYDistance: CGFloat {
         return 0.35
     }
-    
-    override var numberOfPlatforms: Int {
-        return 100
-    }
 }

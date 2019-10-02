@@ -84,7 +84,7 @@ class World: SKNode {
         let floorTexture = SKTexture(imageNamed: "platformBase")
         let platform = Platform(width: width - 2 * World.wallWidth,
                                 texture: floorTexture, textureEnds: nil,
-                                level: self.currentLevel!, platformNumber: 0)
+                                level: self.currentLevel!, platformNumber: 0, platformNumberInLevel: 0)
         platform.position = CGPoint(x: 0.0, y: absoluteZero())
         platform.activateCollisions()
         self.addChild(platform)

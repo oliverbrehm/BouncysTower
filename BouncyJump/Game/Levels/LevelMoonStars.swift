@@ -38,14 +38,14 @@ class LevelMoonStars: Level {
     }
     
     override var levelSpeed: CGFloat {
-        return 140.0
+        return 160.0
     }
     
     override var platformYDistance: CGFloat {
         return 0.4
     }
     
-    override var numberOfPlatforms: Int {
-        return 100
+    override var amientParticleName: String? {
+        return "AmbientMoon"
     }
 }

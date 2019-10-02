@@ -14,15 +14,17 @@ class StandardPlatform: Platform {
         width: CGFloat,
         texture: SKTexture?,
         textureEnds: SKTexture?,
-        level: Level, platformNumber: Int,
+        level: Level, platformNumber: Int, platformNumberInLevel: Int,
         backgroundColor: SKColor = SKColor.white)
     {
         super.init(width: width, texture: texture, textureEnds: textureEnds, level: level,
-                   platformNumber: platformNumber, backgroundColor: backgroundColor)
+                   platformNumber: platformNumber, platformNumberInLevel: platformNumberInLevel, backgroundColor: backgroundColor)
         
-        // consumables
-        self.spawnBrick()
-        self.spawnExtraLife()
+        // consumables, if one item was spawned return, so only one item can be on a platform
+        guard !spawnBrick() else { return }
+        guard !spawnExtraLife() else { return }
+        guard !spawnSuperCoin() else { return }
+        _ = spawnSuperJump()
     }
     
     required init?(coder aDecoder: NSCoder) {

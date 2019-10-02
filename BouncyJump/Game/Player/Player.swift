@@ -19,7 +19,7 @@ class Player: SKSpriteNode {
     static let size: CGFloat = 30.0
     
     private let jumpImpulse: CGFloat = 35.0 * Config.physicsYFactor
-    private let superJumpImpulse: CGFloat = 120.0 * Config.physicsYFactor
+    private let superJumpImpulse: CGFloat = 80.0 * Config.physicsYFactor
     private let movingForce: CGFloat = 5000.0 * Config.physicsXFactor
     private let onPlatformForceMultiplicator: CGFloat = 1.8
     private let actionScale = "PLAYER_SCALE"
@@ -100,20 +100,26 @@ class Player: SKSpriteNode {
     
     func reset() {
         self.physicsBody?.velocity = CGVector.zero
-        self.physicsBody?.angularVelocity = 0.0
-        self.zRotation = 0.0
+        self.physicsBody?.angularVelocity = 0
+        self.zRotation = 0
         
         self.currentPlatform = nil
         self.state = .onPlatform
         self.score = 0
         
-        self.rollingParticleEmitter.particleBirthRate = 0.0
+        self.rollingParticleEmitter.particleBirthRate = 0
+        self.comboParticleEmitter.particleBirthRate = 0
         
         self.perfectJumpDetector.setup(player: self)
     }
     
+    func gameover() {
+        self.rollingParticleEmitter.particleBirthRate = 0
+        self.comboParticleEmitter.particleBirthRate = 0
+    }
+    
     func nextLevelJump() {
-        self.superJump(impulse: superJumpImpulse)
+        self.bigJump(impulse: 1.5 * superJumpImpulse)
         
         let particelEmitter = SKEmitterNode(fileNamed: "SuperJump")!
         particelEmitter.targetNode = self.scene
@@ -149,15 +155,22 @@ class Player: SKSpriteNode {
             }
         }
 
-        superJump(impulse: 0.5 * superJumpImpulse)
+        bigJump(impulse: superJumpImpulse / 2.0)
     }
     
-    private func superJump(impulse: CGFloat) {
-        self.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: impulse))
-        self.state = PlayerState.jumping
-        self.perfectJumpDetector.playerHitWall()
+    func superJump() {
+        bigJump(impulse: superJumpImpulse)
+    }
+    
+    private func bigJump(impulse: CGFloat) {
+        guard let physicsBody = physicsBody else { return }
         
-        self.run(SoundAction.superJump.action)
+        physicsBody.velocity = CGVector(dx: physicsBody.velocity.dx, dy: 0)
+        physicsBody.applyImpulse(CGVector(dx: 0.0, dy: impulse))
+        state = PlayerState.jumping
+        perfectJumpDetector.playerHitWall()
+        
+        run(SoundAction.superJump.action)
     }
 
     var movingDirectionLeft: Bool {

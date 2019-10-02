@@ -37,7 +37,7 @@ class LevelFinal: Level {
     }
     
     override var levelSpeed: CGFloat {
-        return 160.0
+        return 200.0
     }
     
     override var numberOfPlatforms: Int {
@@ -46,5 +46,17 @@ class LevelFinal: Level {
     
     override var platformYDistance: CGFloat {
         return 0.4
+    }
+    
+    override var amientParticleName: String? {
+        return "AmbientFinal"
+    }
+    
+    override func getPlatform(platformNumber: Int, yDistance: CGFloat = -1.0) -> Platform? {
+        let platform = super.getPlatform(platformNumber: platformNumber, yDistance: yDistance)
+        
+        // TODO colorize tiles
+        
+        return platform
     }
 }

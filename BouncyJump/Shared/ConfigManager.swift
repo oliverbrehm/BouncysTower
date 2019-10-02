@@ -117,6 +117,10 @@ class Config {
         coins += 1
     }
     
+    func addCoins(_ number: Int) {
+        coins += number
+    }
+    
     func hasExtralives() -> Bool {
         return extraLives > 0
     }

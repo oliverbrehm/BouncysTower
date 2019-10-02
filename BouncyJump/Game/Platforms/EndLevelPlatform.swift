@@ -9,9 +9,9 @@
 import SpriteKit
 
 class EndLevelPlatform: Platform {
-    init(width: CGFloat, level: Level, platformNumber: Int, backgroundColor: SKColor = SKColor.white) {
+    init(width: CGFloat, level: Level, platformNumber: Int, platformNumberInLevel: Int, backgroundColor: SKColor = SKColor.white) {
         super.init(width: width, texture: nil, textureEnds: nil, level: level,
-                   platformNumber: platformNumber, backgroundColor: backgroundColor)
+                   platformNumber: platformNumber, platformNumberInLevel: platformNumberInLevel, backgroundColor: backgroundColor)
     }
     
     required init?(coder aDecoder: NSCoder) {

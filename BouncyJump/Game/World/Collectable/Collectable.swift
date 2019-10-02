@@ -10,6 +10,8 @@ import SpriteKit
 
 class Collectable: SKSpriteNode {
     
+    var hitAction: (() -> Void)?
+    
     init(textureName: String, size: CGSize, useBacklight: Bool = false) {
         super.init(
             texture: SKTexture(imageNamed: textureName),
@@ -41,6 +43,7 @@ class Collectable: SKSpriteNode {
     
     func hit() {
         self.physicsBody?.contactTestBitMask = 0x0
+        hitAction?()
     }
     
     var score: Int {

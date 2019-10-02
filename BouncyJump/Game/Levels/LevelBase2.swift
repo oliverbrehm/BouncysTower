@@ -45,8 +45,8 @@ class LevelBase2: Level {
     override var platformYDistance: CGFloat {
         return 0.3
     }
-    
-    override var numberOfPlatforms: Int {
-        return 80
+
+    override var amientParticleName: String? {
+        return "AmbientOrange"
     }
 }

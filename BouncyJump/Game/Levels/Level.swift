@@ -21,6 +21,7 @@ class Level: SKNode, LevelConfiguration {
     private var wallTiles: [SKSpriteNode] = []
     private let maxWallTiles = 350
     private var lastSpawnedPlatform: Platform?
+    private var currentPlatformNumber = 0
     
     private var levelPlatformIndex = 1
     private var speedEaseIn: CGFloat = 999999999.0
@@ -77,7 +78,7 @@ class Level: SKNode, LevelConfiguration {
     }
     
     var numberOfPlatforms: Int {
-        return 50
+        return 30
     }
     
     var levelSpeed: CGFloat {
@@ -86,7 +87,7 @@ class Level: SKNode, LevelConfiguration {
     
     // of screen height
     var firstPlatformOffset: CGFloat {
-        return 2.0
+        return 4.0
     }
     
     var amientParticleName: String? {
@@ -142,7 +143,7 @@ class Level: SKNode, LevelConfiguration {
             platform = EndLevelPlatform(
                 width: world.width,
                 level: self,
-                platformNumber: platformNumber,
+                platformNumber: platformNumber, platformNumberInLevel: currentPlatformNumber,
                 backgroundColor: self.backgroundColor)
             self.spawnBackground(above: platformY)
         } else {
@@ -153,13 +154,16 @@ class Level: SKNode, LevelConfiguration {
             x = CGFloat.random(in: -levelWidth / 2.0 + w / 2.0
                 ..< levelWidth / 2.0 - w / 2.0)
             platform = StandardPlatform(width: w, texture: self.texturePlatform, textureEnds: self.texturePlatformEnds,
-                                        level: self, platformNumber: platformNumber)
+                                        level: self, platformNumber: platformNumber, platformNumberInLevel: currentPlatformNumber)
             lastSpawnedPlatform?.nextPlatform = platform
             lastSpawnedPlatform = platform
             self.spawnBackground(above: platformY)
         }
 
         platform!.position = CGPoint(x: x, y: platformY)
+        
+        currentPlatformNumber += 1
+
         return platform!
     }
     

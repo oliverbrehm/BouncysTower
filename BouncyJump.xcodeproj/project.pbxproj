@@ -268,6 +268,14 @@
 		BB67E5C922CC99EE007E15E2 /* extralife.aif in Resources */ = {isa = PBXBuildFile; fileRef = BB67E5AB22CC99EE007E15E2 /* extralife.aif */; };
 		BB6B5B6F2337969100EF8D77 /* gameover.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BB6B5B6E2337969100EF8D77 /* gameover.mp3 */; };
 		BB74F39D22BD222C00657282 /* InAppPurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB74F39C22BD222C00657282 /* InAppPurchaseManager.swift */; };
+		BB795CC12344A19F00E262E1 /* SuperCoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB795CC02344A19F00E262E1 /* SuperCoin.swift */; };
+		BB795CC32344A1AB00E262E1 /* SuperJump.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB795CC22344A1AB00E262E1 /* SuperJump.swift */; };
+		BB795CC52344CB3300E262E1 /* AmbientGreen.sks in Resources */ = {isa = PBXBuildFile; fileRef = BB795CC42344CB3300E262E1 /* AmbientGreen.sks */; };
+		BB795CCB2344CD8D00E262E1 /* AmbientMoon.sks in Resources */ = {isa = PBXBuildFile; fileRef = BB795CC62344CD8C00E262E1 /* AmbientMoon.sks */; };
+		BB795CCC2344CD8D00E262E1 /* AmbientSunset.sks in Resources */ = {isa = PBXBuildFile; fileRef = BB795CC72344CD8D00E262E1 /* AmbientSunset.sks */; };
+		BB795CCD2344CD8D00E262E1 /* AmbientOrange.sks in Resources */ = {isa = PBXBuildFile; fileRef = BB795CC82344CD8D00E262E1 /* AmbientOrange.sks */; };
+		BB795CCE2344CD8D00E262E1 /* AmbientDesert.sks in Resources */ = {isa = PBXBuildFile; fileRef = BB795CC92344CD8D00E262E1 /* AmbientDesert.sks */; };
+		BB795CCF2344CD8D00E262E1 /* AmbientFinal.sks in Resources */ = {isa = PBXBuildFile; fileRef = BB795CCA2344CD8D00E262E1 /* AmbientFinal.sks */; };
 		BBDF2E172340A06900DC919F /* brick_a.aif in Resources */ = {isa = PBXBuildFile; fileRef = BBDF2E0F2340A03B00DC919F /* brick_a.aif */; };
 		BBDF2E182340A06900DC919F /* brick_bb.aif in Resources */ = {isa = PBXBuildFile; fileRef = BBDF2E132340A03B00DC919F /* brick_bb.aif */; };
 		BBDF2E192340A06900DC919F /* brick_c.aif in Resources */ = {isa = PBXBuildFile; fileRef = BBDF2E112340A03B00DC919F /* brick_c.aif */; };
@@ -400,6 +408,14 @@
 		BB67E5AB22CC99EE007E15E2 /* extralife.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = extralife.aif; sourceTree = "<group>"; };
 		BB6B5B6E2337969100EF8D77 /* gameover.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameover.mp3; sourceTree = "<group>"; };
 		BB74F39C22BD222C00657282 /* InAppPurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseManager.swift; sourceTree = "<group>"; };
+		BB795CC02344A19F00E262E1 /* SuperCoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperCoin.swift; sourceTree = "<group>"; };
+		BB795CC22344A1AB00E262E1 /* SuperJump.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperJump.swift; sourceTree = "<group>"; };
+		BB795CC42344CB3300E262E1 /* AmbientGreen.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AmbientGreen.sks; sourceTree = "<group>"; };
+		BB795CC62344CD8C00E262E1 /* AmbientMoon.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AmbientMoon.sks; sourceTree = "<group>"; };
+		BB795CC72344CD8D00E262E1 /* AmbientSunset.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AmbientSunset.sks; sourceTree = "<group>"; };
+		BB795CC82344CD8D00E262E1 /* AmbientOrange.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AmbientOrange.sks; sourceTree = "<group>"; };
+		BB795CC92344CD8D00E262E1 /* AmbientDesert.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AmbientDesert.sks; sourceTree = "<group>"; };
+		BB795CCA2344CD8D00E262E1 /* AmbientFinal.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AmbientFinal.sks; sourceTree = "<group>"; };
 		BBDF2E0F2340A03B00DC919F /* brick_a.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = brick_a.aif; sourceTree = "<group>"; };
 		BBDF2E102340A03B00DC919F /* brick_d.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = brick_d.aif; sourceTree = "<group>"; };
 		BBDF2E112340A03B00DC919F /* brick_c.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = brick_c.aif; sourceTree = "<group>"; };
@@ -462,6 +478,8 @@
 				A7D4C82F2201BB9E0060F352 /* Coin.swift */,
 				A71538F3222D10DA00A81322 /* Collectable.swift */,
 				A71538FB222D241F00A81322 /* ConsumableBrick.swift */,
+				BB795CC02344A19F00E262E1 /* SuperCoin.swift */,
+				BB795CC22344A1AB00E262E1 /* SuperJump.swift */,
 			);
 			path = Collectable;
 			sourceTree = "<group>";
@@ -522,6 +540,12 @@
 				A73B3FF3224A3696002B8D2C /* AmbientSnow.sks */,
 				BB47B2BF232D8F92008CCDA2 /* AmbientRain.sks */,
 				BB471AC623439D4E0097BD69 /* ComboParticle.sks */,
+				BB795CC42344CB3300E262E1 /* AmbientGreen.sks */,
+				BB795CC92344CD8D00E262E1 /* AmbientDesert.sks */,
+				BB795CCA2344CD8D00E262E1 /* AmbientFinal.sks */,
+				BB795CC62344CD8C00E262E1 /* AmbientMoon.sks */,
+				BB795CC82344CD8D00E262E1 /* AmbientOrange.sks */,
+				BB795CC72344CD8D00E262E1 /* AmbientSunset.sks */,
 			);
 			path = Particles;
 			sourceTree = "<group>";
@@ -933,6 +957,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB67E5AF22CC99EE007E15E2 /* cheer.aif in Resources */,
+				BB795CCB2344CD8D00E262E1 /* AmbientMoon.sks in Resources */,
 				A7A22864220604DB00081E0E /* Main.sks in Resources */,
 				BBDF2E192340A06900DC919F /* brick_c.aif in Resources */,
 				BB67E5BE22CC99EE007E15E2 /* superjump.aif in Resources */,
@@ -940,6 +965,7 @@
 				BBDF2E1C2340A06900DC919F /* brick_e.aif in Resources */,
 				A7AA89B6222019C400C5D73A /* Assets.xcassets in Resources */,
 				A7DC9BC422177E430038EC58 /* SuperJump.sks in Resources */,
+				BB795CC52344CB3300E262E1 /* AmbientGreen.sks in Resources */,
 				BB6B5B6F2337969100EF8D77 /* gameover.mp3 in Resources */,
 				BBDF2E1B2340A06900DC919F /* brick_diamond.aif in Resources */,
 				BBDF2E2A2340BA1600DC919F /* jump1.aif in Resources */,
@@ -950,6 +976,7 @@
 				BB51D92222D39ABD00346B46 /* Localizable.strings in Resources */,
 				A7DC9BC0221775270038EC58 /* ComboFinishedParticle.sks in Resources */,
 				BB6452BF22CCBAE900EF8E03 /* menu.mp3 in Resources */,
+				BB795CCD2344CD8D00E262E1 /* AmbientOrange.sks in Resources */,
 				A7736AA32206025100A28B5D /* Main.storyboard in Resources */,
 				A7A22865220604DB00081E0E /* Settings.sks in Resources */,
 				A7A22862220604DB00081E0E /* MainGame.sks in Resources */,
@@ -964,10 +991,13 @@
 				BB67E5B822CC99EE007E15E2 /* gameover.aif in Resources */,
 				BBDF2E1D2340A06900DC919F /* brick_f.aif in Resources */,
 				BB67E5BB22CC99EE007E15E2 /* message.aif in Resources */,
+				BB795CCC2344CD8D00E262E1 /* AmbientSunset.sks in Resources */,
 				BBDF2E282340BA1600DC919F /* bigjump2.aif in Resources */,
 				A7736AA62206025100A28B5D /* LaunchScreen.storyboard in Resources */,
 				A745E17722395C260043EC5A /* JumpParticle.sks in Resources */,
+				BB795CCE2344CD8D00E262E1 /* AmbientDesert.sks in Resources */,
 				BB67E5B222CC99EE007E15E2 /* collectcoin.aif in Resources */,
+				BB795CCF2344CD8D00E262E1 /* AmbientFinal.sks in Resources */,
 				BB67E5C722CC99EE007E15E2 /* extralife.aif in Resources */,
 				BB471AC723439D4E0097BD69 /* ComboParticle.sks in Resources */,
 				BB6452C122CCC14F00EF8E03 /* level.mp3 in Resources */,
@@ -1088,12 +1118,14 @@
 				A72F3BCE2241319000D7267A /* Logger.swift in Sources */,
 				A7A228B4220604F600081E0E /* LevelMoonStars.swift in Sources */,
 				A7A22871220604E000081E0E /* Overlay.swift in Sources */,
+				BB795CC32344A1AB00E262E1 /* SuperJump.swift in Sources */,
 				A7A22882220604E700081E0E /* NodeCategories.swift in Sources */,
 				A74EF260223AC74300A69176 /* ClosePremiumCell.swift in Sources */,
 				A7A228A6220604EE00081E0E /* Coin.swift in Sources */,
 				A7901475222B2DB30025368A /* PersonalTower.swift in Sources */,
 				A71538F4222D10DA00A81322 /* Collectable.swift in Sources */,
 				A756B265224BA23F00CC335E /* LevelWood.swift in Sources */,
+				BB795CC12344A19F00E262E1 /* SuperCoin.swift in Sources */,
 				A7DC9BBC221756CF0038EC58 /* PerfectJumpDetector.swift in Sources */,
 				A790146D222984120025368A /* IconButton.swift in Sources */,
 				A7A228A5220604EE00081E0E /* EndLevelPlatform.swift in Sources */,

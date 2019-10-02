@@ -18,6 +18,12 @@ class ResourceManager {
     static let standard = ResourceManager()
     
     static let costExtraLife = 300
+    static var superCoinTimeout: Int {
+        return 25 + Int.random(in: -5 ... 5)
+    }
+    static var superJumpTimeout: Int {
+        return 40 + Int.random(in: -10 ... 10)
+    }
     
     private let maxCoins = 8
     private var coinsStore = 0
@@ -26,11 +32,18 @@ class ResourceManager {
     private var nextBrickIn = Brick.standard.cost
     
     private var nextExtraLifeIn = ResourceManager.costExtraLife
+    private var nextSuperCoinIn = ResourceManager.superCoinTimeout
+    private var nextSuperJumpIn = ResourceManager.superJumpTimeout
     
     func advancePlatform() {
         self.coinsStore += 1
         self.nextBrickIn -= 1
         self.nextExtraLifeIn -= 1
+        self.nextSuperCoinIn -= 1
+    }
+    
+    func advanceSuperJumpConsumable() {
+        self.nextSuperJumpIn -= 1
     }
     
     // returns the number of consumed coins
@@ -52,10 +65,27 @@ class ResourceManager {
         return toConsume
     }
     
-    // returns true if ExtraLife consumed
     func consumeExtraLife() -> Bool {
         if(nextExtraLifeIn <= 0) {
-            nextExtraLifeIn = ResourceManager.costExtraLife
+            nextExtraLifeIn = ResourceManager.costExtraLife / 2 + Int.random(in: -10 ... 10)
+            return true
+        }
+        
+        return false
+    }
+    
+    func consumeSuperCoin() -> Bool {
+        if(nextSuperCoinIn <= 0) {
+            nextSuperCoinIn = ResourceManager.superCoinTimeout
+            return true
+        }
+        
+        return false
+    }
+    
+    func consumeSuperJump() -> Bool {
+        if(nextSuperJumpIn <= 0) {
+            nextSuperJumpIn = ResourceManager.superJumpTimeout
             return true
         }
         

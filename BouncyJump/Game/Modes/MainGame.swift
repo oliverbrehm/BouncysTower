@@ -171,6 +171,8 @@ class MainGame: Game {
         
         self.pause()
         self.state.runningState = .over
+        
+        player.gameover()
     }
     
     func showExtralifeDialog() {

@@ -26,6 +26,10 @@ class LevelBase1: Level {
         return 1
     }
     
+    override var amientParticleName: String? {
+        return "AmbientGreen"
+    }
+    
     override var backgroundColor: SKColor {
         return Colors.bgLevel01
     }
@@ -49,9 +53,5 @@ class LevelBase1: Level {
     override var firstPlatformOffset: CGFloat {
         // no offset for first level
         return 0.0
-    }
-    
-    override var numberOfPlatforms: Int {
-        return 60
     }
 }
