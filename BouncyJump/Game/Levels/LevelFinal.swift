@@ -52,11 +52,7 @@ class LevelFinal: Level {
         return "AmbientFinal"
     }
     
-    override func getPlatform(platformNumber: Int, yDistance: CGFloat = -1.0) -> Platform? {
-        let platform = super.getPlatform(platformNumber: platformNumber, yDistance: yDistance)
-        
-        // TODO colorize tiles
-        
-        return platform
+    override var platformColor: SKColor? {
+        return SKColor.random()
     }
 }

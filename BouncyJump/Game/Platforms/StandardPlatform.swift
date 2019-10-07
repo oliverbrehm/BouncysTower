@@ -15,10 +15,11 @@ class StandardPlatform: Platform {
         texture: SKTexture?,
         textureEnds: SKTexture?,
         level: Level, platformNumber: Int, platformNumberInLevel: Int,
-        backgroundColor: SKColor = SKColor.white)
+        backgroundColor: SKColor = SKColor.white, tileColor: SKColor? = nil)
     {
         super.init(width: width, texture: texture, textureEnds: textureEnds, level: level,
-                   platformNumber: platformNumber, platformNumberInLevel: platformNumberInLevel, backgroundColor: backgroundColor)
+                   platformNumber: platformNumber, platformNumberInLevel: platformNumberInLevel,
+                   backgroundColor: backgroundColor, tileColor: tileColor)
         
         // consumables, if one item was spawned return, so only one item can be on a platform
         guard !spawnBrick() else { return }

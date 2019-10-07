@@ -15,9 +15,9 @@
    viewBox="0 0 128.00001 128"
    id="svg2"
    version="1.1"
-   inkscape:version="0.91 r13725"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
    sodipodi:docname="wallFinal.svg"
-   inkscape:export-filename="/projects/TowerJump/resources/levels/final/wallFinal.png"
+   inkscape:export-filename="/Users/oliverbrehm/privat/towerjump/resources/levels/final/wallFinal.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
   <defs
@@ -37,42 +37,9 @@
     <radialGradient
        inkscape:collect="always"
        xlink:href="#linearGradient4154"
-       id="radialGradient4152"
-       cx="111.45942"
-       cy="989.19751"
-       fx="111.45942"
-       fy="989.19751"
-       r="17.677662"
-       gradientTransform="matrix(0.67316706,0,0,62.859985,42.469218,-61191.744)"
-       gradientUnits="userSpaceOnUse" />
-    <radialGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient4154"
-       id="radialGradient4162"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.680001,0,0,62.859985,11.885162,-61191.744)"
-       cx="111.45942"
-       cy="989.19751"
-       fx="111.45942"
-       fy="989.19751"
-       r="17.677662" />
-    <radialGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient4154"
-       id="radialGradient4166"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.680001,0,0,62.859985,-18.114842,-61191.744)"
-       cx="111.45942"
-       cy="989.19751"
-       fx="111.45942"
-       fy="989.19751"
-       r="17.677662" />
-    <radialGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient4154"
        id="radialGradient4170"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.680001,0,0,62.859985,-48.114848,-61191.744)"
+       gradientTransform="matrix(2.6457399,0,0,62.859985,-230.89262,-61192.33)"
        cx="111.45942"
        cy="989.19751"
        fx="111.45942"
@@ -86,18 +53,18 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.8284271"
-     inkscape:cx="83.701066"
-     inkscape:cy="83.194833"
+     inkscape:zoom="6.7265625"
+     inkscape:cx="64"
+     inkscape:cy="64"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      units="px"
-     inkscape:window-width="1619"
-     inkscape:window-height="861"
-     inkscape:window-x="1360"
-     inkscape:window-y="43"
-     inkscape:window-maximized="0" />
+     inkscape:window-width="1920"
+     inkscape:window-height="1036"
+     inkscape:window-x="1440"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1" />
   <metadata
      id="metadata7">
     <rdf:RDF>
@@ -106,7 +73,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -115,41 +82,13 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(0,-924.36221)">
-    <g
-       id="g4172"
-       transform="matrix(1.1159655,0,0,1,-15.655347,0)">
-      <rect
-         ry="0"
-         y="923.08301"
-         x="100.00002"
-         height="132.22897"
-         width="35.000008"
-         id="rect4145"
-         style="opacity:1;fill:url(#radialGradient4152);fill-opacity:1;stroke:none;stroke-width:10;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-      <rect
-         style="opacity:1;fill:url(#radialGradient4162);fill-opacity:1;stroke:none;stroke-width:10;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         id="rect4160"
-         width="35.355324"
-         height="132.22897"
-         x="70.000008"
-         y="923.08301"
-         ry="0" />
-      <rect
-         ry="0"
-         y="923.08301"
-         x="40.000004"
-         height="132.22897"
-         width="35.355324"
-         id="rect4164"
-         style="opacity:1;fill:url(#radialGradient4166);fill-opacity:1;stroke:none;stroke-width:10;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-      <rect
-         style="opacity:1;fill:url(#radialGradient4170);fill-opacity:1;stroke:none;stroke-width:10;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         id="rect4168"
-         width="35.355324"
-         height="132.22897"
-         x="9.9999981"
-         y="923.08301"
-         ry="0" />
-    </g>
+    <rect
+       ry="0"
+       y="922.49719"
+       x="14.767818"
+       height="132.22897"
+       width="98.464363"
+       id="rect4168"
+       style="opacity:1;fill:url(#radialGradient4170);fill-opacity:1;stroke:none;stroke-width:16.68830109;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
   </g>
 </svg>

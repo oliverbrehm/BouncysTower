@@ -64,6 +64,10 @@ class Level: SKNode, LevelConfiguration {
         return SKColor.black
     }
     
+    var platformColor: SKColor? {
+        return nil
+    }
+    
     var platformMinFactor: CGFloat {
         return 0.01
     }
@@ -78,7 +82,7 @@ class Level: SKNode, LevelConfiguration {
     }
     
     var numberOfPlatforms: Int {
-        return 30
+        return 100
     }
     
     var levelSpeed: CGFloat {
@@ -87,7 +91,7 @@ class Level: SKNode, LevelConfiguration {
     
     // of screen height
     var firstPlatformOffset: CGFloat {
-        return 4.0
+        return 0//4.0
     }
     
     var amientParticleName: String? {
@@ -154,7 +158,8 @@ class Level: SKNode, LevelConfiguration {
             x = CGFloat.random(in: -levelWidth / 2.0 + w / 2.0
                 ..< levelWidth / 2.0 - w / 2.0)
             platform = StandardPlatform(width: w, texture: self.texturePlatform, textureEnds: self.texturePlatformEnds,
-                                        level: self, platformNumber: platformNumber, platformNumberInLevel: currentPlatformNumber)
+                                        level: self, platformNumber: platformNumber, platformNumberInLevel: currentPlatformNumber,
+                                        tileColor: platformColor)
             lastSpawnedPlatform?.nextPlatform = platform
             lastSpawnedPlatform = platform
             self.spawnBackground(above: platformY)

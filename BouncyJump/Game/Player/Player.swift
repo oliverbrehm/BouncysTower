@@ -155,7 +155,7 @@ class Player: SKSpriteNode {
             }
         }
 
-        bigJump(impulse: superJumpImpulse / 2.0)
+        bigJump(impulse: superJumpImpulse * 0.75)
     }
     
     func superJump() {

@@ -34,7 +34,8 @@ class Platform: SKSpriteNode {
         level: Level,
         platformNumber: Int,
         platformNumberInLevel: Int,
-        backgroundColor: SKColor = SKColor.white)
+        backgroundColor: SKColor = SKColor.white,
+        tileColor: SKColor? = nil)
     {
         self.level = level
         self.platformNumber = platformNumber
@@ -48,7 +49,7 @@ class Platform: SKSpriteNode {
 
         super.init(texture: nil, color: SKColor.clear, size: platformSize)
         
-        initChildern()
+        initChildern(tileColor: tileColor)
         
         ResourceManager.standard.advancePlatform()
         
@@ -135,7 +136,7 @@ class Platform: SKSpriteNode {
         size = CGSize(width: expandedWidth, height: size.height)
         
         removeAllChildren()
-        initChildern()
+        initChildern(tileColor: level.platformColor)
     }
     
     func hitPlayer(player: Player, world: World) {
@@ -162,9 +163,9 @@ class Platform: SKSpriteNode {
         return CGPoint(x: self.randomX(withOffset: node.size.width / 2.0), y: y)
     }
     
-    private func initChildern() {
+    private func initChildern(tileColor: SKColor?) {
         initPhysicsBody()
-        initTiles()
+        initTiles(tileColor: tileColor)
         initNumberBadge()
     }
     
@@ -194,7 +195,7 @@ class Platform: SKSpriteNode {
         }
     }
     
-    private func initTiles() {
+    private func initTiles(tileColor: SKColor?) {
         guard let tileTexture = tileTexture else { return }
         
         var x = -size.width / 2.0
@@ -202,6 +203,10 @@ class Platform: SKSpriteNode {
 
         while x < size.width / 2.0 {
             let tile = SKSpriteNode(texture: tileTexture, size: CGSize(width: w, height: size.height))
+            
+            if let tileColor = tileColor {
+                initColorAnimation(forTile: tile, withColor: tileColor)
+            }
             
             let tileEndTexture = self.tileEndTexture ?? tileTexture
             
@@ -215,6 +220,26 @@ class Platform: SKSpriteNode {
             tile.position = CGPoint(x: x + w / 2.0, y: 0.0)
             self.addChild(tile)
             x += w
+        }
+    }
+    
+    private func initColorAnimation(forTile tile: SKSpriteNode, withColor color: SKColor) {
+        if platformNumberInLevel >= 10 {
+            let secondColor = platformNumber > 50 ? SKColor.random(excluding: color) : SKColor.white
+                
+            let intensity = Double(platformNumberInLevel - 10)
+            let startAnimationTime = 2.0
+            let minAnimationTime = 0.2
+            let intensityFactor = 0.02
+            let animationTime = max(minAnimationTime, startAnimationTime - intensity * intensityFactor)
+            
+            tile.run(SKAction.repeatForever(SKAction.sequence([
+                SKAction.colorize(with: color, colorBlendFactor: 1.0, duration: animationTime / 2.0),
+                SKAction.colorize(with: secondColor, colorBlendFactor: 1.0, duration: animationTime / 2.0)
+            ])))
+        } else {
+            tile.colorBlendFactor = 1
+            tile.color = color
         }
     }
 }
