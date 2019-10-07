@@ -138,9 +138,9 @@ class World: SKNode {
             let worldRatio = self.height / self.width
             
             if texRatio > worldRatio {
-                staticLevelBackground = SKSpriteNode(texture: texture, color: level.backgroundColor, width: self.width)
+                staticLevelBackground = SKSpriteNode(texture: texture, color: SKColor.white, width: self.width)
             } else {
-                staticLevelBackground = SKSpriteNode(texture: texture, color: level.backgroundColor, height: self.height)
+                staticLevelBackground = SKSpriteNode(texture: texture, color: SKColor.white, height: self.height)
             }
             
             staticLevelBackground!.colorBlendFactor = 1.0

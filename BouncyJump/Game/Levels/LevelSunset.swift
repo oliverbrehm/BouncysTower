@@ -24,8 +24,8 @@ class LevelSunset: Level {
         return 6
     }
     
-    override var backgroundColor: SKColor {
-        return SKColor.white
+    override var tintColor: SKColor {
+        return Colors.bgSunset
     }
     
     override var platformMinFactor: CGFloat {

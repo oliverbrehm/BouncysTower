@@ -26,8 +26,8 @@ class LevelMoon: Level {
         return 7
     }
 
-    override var backgroundColor: SKColor {
-        return SKColor.white
+    override var tintColor: SKColor {
+        return Colors.bgMoon
     }
     
     override var platformMinFactor: CGFloat {

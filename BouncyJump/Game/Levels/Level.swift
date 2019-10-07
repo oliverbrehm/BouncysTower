@@ -61,6 +61,10 @@ class Level: SKNode, LevelConfiguration {
     }
     
     var backgroundColor: SKColor {
+        return SKColor.white
+    }
+    
+    var tintColor: SKColor {
         return SKColor.black
     }
     

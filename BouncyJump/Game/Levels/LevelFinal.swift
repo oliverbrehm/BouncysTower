@@ -23,9 +23,9 @@ class LevelFinal: Level {
     override var multiplicator: Int {
         return 10
     }
-
-    override var backgroundColor: SKColor {
-        return SKColor.white
+    
+    override var tintColor: SKColor {
+        return Colors.bgFinal
     }
     
     override var platformMinFactor: CGFloat {

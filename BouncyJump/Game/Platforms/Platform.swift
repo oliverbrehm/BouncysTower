@@ -179,15 +179,17 @@ class Platform: SKSpriteNode {
     }
     
     private func initNumberBadge() {
-        if(platformNumber % 5 == 0) {
+        if platformNumber % 5 == 0, platformNumber >= 5 {
             let label = SKLabelNode(text: "\(platformNumber)")
             label.fontName = Font.fontName
             label.fontSize = 16.0
             label.fontColor = SKColor.white
-            label.position = CGPoint(x: 0.0, y: -label.frame.size.height)
-            let container = SKSpriteNode(color: SKColor.brown,
-                                         size: CGSize(width: label.frame.size.width + 2.0, height: label.frame.size.height + 2.0))
-            container.anchorPoint = CGPoint(x: 0.5, y: 1.0)
+            label.position = CGPoint(x: 0.0, y: -label.frame.size.height / 2.0)
+            let container = SKShapeNode(rectOf: CGSize(width: label.frame.size.width + 2.0, height: label.frame.size.height + 2.0), cornerRadius: 5.0)
+            container.fillColor = level.tintColor
+            container.lineWidth = 3.0
+            container.strokeColor = level.tintColor
+            container.position = CGPoint(x: 0.0, y: -Platform.height * 0.5)
             container.addChild(label)
             container.zPosition = NodeZOrder.platformLabelContainer
             label.zPosition = 0.1 // relative to parent node

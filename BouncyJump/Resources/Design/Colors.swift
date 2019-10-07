@@ -19,6 +19,10 @@ struct Colors {
     
     static let bgLevel01 = SKColor(hex: 0x257052)
     static let bgLevel02 = SKColor(hex: 0xFF8A50)
+    static let bgSnow = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
+    static let bgSunset = #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)
+    static let bgMoon = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
+    static let bgFinal = #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)
 }
 
 extension SKColor {

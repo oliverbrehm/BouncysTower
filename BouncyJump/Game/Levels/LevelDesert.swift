@@ -25,8 +25,8 @@ class LevelDesert: Level {
         return 3
     }
     
-    override var backgroundColor: SKColor {
-        return SKColor.white
+    override var tintColor: SKColor {
+        return SKColor.darkGray
     }
     
     override var platformMinFactor: CGFloat {

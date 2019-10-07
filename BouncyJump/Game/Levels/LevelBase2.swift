@@ -30,6 +30,10 @@ class LevelBase2: Level {
         return Colors.bgLevel02
     }
     
+    override var tintColor: SKColor {
+        return Colors.bgLevel02
+    }
+    
     override var platformMinFactor: CGFloat {
         return 0.3
     }

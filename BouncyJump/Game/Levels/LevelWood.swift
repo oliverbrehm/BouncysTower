@@ -26,8 +26,8 @@ class LevelWood: Level {
         return 4
     }
     
-    override var backgroundColor: SKColor {
-        return SKColor.white
+    override var tintColor: SKColor {
+        return Colors.bgLevel01
     }
     
     override var platformMinFactor: CGFloat {

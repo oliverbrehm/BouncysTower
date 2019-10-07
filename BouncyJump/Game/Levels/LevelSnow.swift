@@ -29,8 +29,8 @@ class LevelSnow: Level {
         return 5
     }
     
-    override var backgroundColor: SKColor {
-        return SKColor.white
+    override var tintColor: SKColor {
+        return Colors.bgSnow
     }
     
     override var platformMinFactor: CGFloat {
