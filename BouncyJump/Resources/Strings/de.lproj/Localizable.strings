@@ -32,7 +32,7 @@
 "diamondBrickDescription" = "Funkelnder Stein aus Diamanten.";
 
 // Tutorials
-"moveTutorialDescription" = "Zum Bewegen musst du den Bildschirm Berühren und halten. Benutze die ganze linke Hälfte des Bildschirms, um nach links zu steuern und die rechte Hälfte, um nach rechts zu steuern. Du wirst schneller je länger du den Bildschirm berührst.";
+"moveTutorialDescription" = "Zum Bewegen musst du den Bildschirm links oder rechts berühren und halten. Du wirst schneller je länger du den Bildschirm berührst.";
 "wallTutorialDescription" = "Super, du hast das nächste Level erreicht! Übrigens: Wenn du gegen die Wand springst, bekommst du nochmal einen extra Stoß nach oben! Wenn du auf der Platform nach links oder rechts rollst, wirst du schneller und springst höher.";
 "combosTutorialDescription" = "Gut gesprungen! Du kannst sogar noch mehr Punkte bekommen, wenn du Combos machst. Halte den Spieler auf jeder Platform am Rollen indem du später loslässt. Um eine Combo zu bekommen musst du immer mindestens zwei Plattformen auf einmal überspringen und jedes mal die linke oder rechte Wand berühren.";
 "bricksTutorialDescription" = "Cool, du hast einen losen Stein gefunden! Benutze ihn im Hauptmenü um deinen eigenen Turm aufzubauen.";

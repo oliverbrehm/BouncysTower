@@ -13,7 +13,7 @@ class SuperJump: Collectable {
     private let radius: CGFloat = 30
 
     init() {
-        super.init(textureName: "player", size: CGSize(width: radius, height: radius), useBacklight: true)
+        super.init(textureName: "superjump", size: CGSize(width: radius, height: radius), useBacklight: true)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -24,8 +24,7 @@ class SuperJump: Collectable {
         super.hit()
         
         run(SKAction.group([
-            SKAction.fadeOut(withDuration: 0.2),
-            SoundAction.collectSuperCoin.action
+            SKAction.fadeOut(withDuration: 0.1)
         ])) { [weak self] in
             self?.removeFromParent()
         }

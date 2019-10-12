@@ -48,7 +48,10 @@ class SuperCoin: Collectable {
             }
         }
         
-        run(SKAction.fadeOut(withDuration: 0.6)) { [weak self] in
+        run(SKAction.group([
+            SKAction.fadeOut(withDuration: 0.6),
+            SoundAction.collectSuperCoin.action
+        ])) { [weak self] in
             self?.removeFromParent()
         }
     }

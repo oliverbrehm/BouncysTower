@@ -179,14 +179,12 @@ class Game: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func checkShowTutorial(_ tutorial: Tutorial, brick: Brick? = nil) {
-        let imageName = (brick != nil) ? brick?.textureName : tutorial.imageName
-        
+    func checkShowTutorial(_ tutorial: Tutorial) {
         guard !tutorial.message.isEmpty else { return }
         
         if(Config.standard.shouldShow(tutorial: tutorial)) {
             self.run(SKAction.wait(forDuration: 0.3)) {
-                InfoBox.show(in: self, text: tutorial.message, imageName: imageName, imageHeight: tutorial.imageHeight, onShow: {
+                InfoBox.show(in: self, text: tutorial.message, imageName: tutorial.imageName, imageHeight: tutorial.imageHeight, onShow: {
                     self.pause()
                 }, completion: {
                     Config.standard.setTutorialShown(tutorial)

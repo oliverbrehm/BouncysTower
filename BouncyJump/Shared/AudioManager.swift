@@ -55,7 +55,7 @@ enum SoundAction: CaseIterable, Hashable {
         case .collectExtralife:
             return "extralife.aif"
         case .collectSuperCoin:
-            return "brick_ice.aif" // TODO collectSuperCoin sound
+            return "brick_ice.aif"
         case .cheer:
             return "cheer.aif"
         case .brick(let brick):

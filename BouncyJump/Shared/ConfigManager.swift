@@ -46,6 +46,10 @@ enum Tutorial: String, CaseIterable {
             
         case .extraLives:
             return "extralife"
+            
+        case .bricks:
+            return Brick.standard.textureName
+            
         default:
             return nil
         }

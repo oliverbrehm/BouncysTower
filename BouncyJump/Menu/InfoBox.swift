@@ -10,6 +10,7 @@ import SpriteKit
 
 class InfoBox: Button {
     
+    private let backgroundBox = SKShapeNode(rectOf: CGSize.zero, cornerRadius: 5)
     private let label = SKLabelNode(fontNamed: Font.fontName)
     private var image: SKSpriteNode?
     
@@ -22,14 +23,16 @@ class InfoBox: Button {
     
     init(width: CGFloat, minHeight: CGFloat) {
         self.minHeight = minHeight
-        super.init(size: CGSize(width: width, height: minHeight), color: SKColor.white)
+        super.init(size: CGSize(width: width, height: minHeight), color: SKColor.clear)
+        
+        backgroundBox.fillColor = SKColor.white
+        addChild(backgroundBox)
         
         self.zPosition = NodeZOrder.info
         self.anchorPoint = CGPoint(x: 0.5, y: 1.0)
-        //self.setScale(0.0) // TODO somehow background is missing and text too long
         self.isHidden = true
         
-        label.fontSize = 12.0
+        label.fontSize = 20.0
         label.fontColor = SKColor.black
         
         if #available(iOS 11.0, *) {
@@ -135,9 +138,11 @@ class InfoBox: Button {
         
         self.size.height = max(contentHeight + 2 * margin, self.minHeight)
         
+        backgroundBox.path = UIBezierPath.init(roundedRect: self.frame, cornerRadius: 10).cgPath
+        backgroundBox.position = CGPoint.zero
+        
         label.position = CGPoint(x: 0.0, y: -self.size.height / 2.0 + contentHeight / 2.0 - label.frame.size.height)
         image?.position = CGPoint(x: 0.0, y: label.position.y - margin - image!.size.height / 2.0)
-        
     }
     
     private func show() {

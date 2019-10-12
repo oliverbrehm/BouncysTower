@@ -35,7 +35,7 @@ class ConsumableBrick: Collectable {
                 ]),
             SKAction.run {
                 if let game = self.scene as? Game {
-                    game.checkShowTutorial(.bricks, brick: self.brick)
+                    game.checkShowTutorial(.bricks)
                 }
                 
                 self.removeAllActions()
