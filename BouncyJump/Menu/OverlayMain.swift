@@ -51,13 +51,11 @@ class OverlayMain: Overlay {
     }
     
     func disableUserInteraction() {
-        isUserInteractionEnabled = false
         startButton.enabled = false
         creditsButton.enabled = false
     }
     
     func enableUserInteraction() {
-        isUserInteractionEnabled = true
         startButton.enabled = true
         creditsButton.enabled = true
     }

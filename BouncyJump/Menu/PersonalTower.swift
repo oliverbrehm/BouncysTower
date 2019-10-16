@@ -154,7 +154,6 @@ class PersonalTower: SKNode {
                          {
                             self.buildRowButton.isHidden = false
                             self.viewModeButton.isHidden = false
-                            main.isUserInteractionEnabled = true
                             main.enableUserInteraction()
                          }
                     )
@@ -221,9 +220,9 @@ class PersonalTower: SKNode {
             if let main = self.scene as? Main, nRows >= 2 && Config.standard.shouldShow(tutorial: .towerMultiplicator) {
                 main.disableUserInteraction()
                 
-                InfoBox.show(in: main, text: Tutorial.towerMultiplicator.message) {
+                InfoBox.show(in: main, text: Tutorial.towerMultiplicator.message, completion: {
                     main.enableUserInteraction()
-                }
+                })
                 
                 Config.standard.setTutorialShown(.towerMultiplicator)
             }

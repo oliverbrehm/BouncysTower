@@ -10,18 +10,47 @@ import SpriteKit
 
 class Background: SKNode {
     
-    init(screenSize: CGSize) {
+    let height: CGFloat
+    
+    init(screenSize: CGSize, towerHeight: CGFloat) {
+        self.height = 3 * screenSize.height
+        
         super.init()
         
         let bg = SKSpriteNode(imageNamed: "menuBackground")
         bg.zPosition = NodeZOrder.background
-        bg.size = CGSize(width: screenSize.width, height: 3 * screenSize.height)
-        bg.position = CGPoint(x: 0.0, y: 1.5 * screenSize.height)
+        bg.size = CGSize(width: screenSize.width, height: height)
+        bg.position = CGPoint(x: 0.0, y: height / 2)
         self.addChild(bg)
+
+        setupStars(towerHeight: towerHeight, screenSize: screenSize)
     }
     
     required init?(coder aDecoder: NSCoder) {
+        self.height = 0
         super.init(coder: aDecoder)
+    }
+    
+    func setupStars(towerHeight: CGFloat, screenSize: CGSize) {
+        let start = height - screenSize.height / 2
+
+        guard towerHeight > start else { return }
+
+        var y = start
+        
+        while y < towerHeight {
+            let starNode = SKSpriteNode(imageNamed: "spark")
+            let x = CGFloat.random(in: -screenSize.width / 2 ... screenSize.width / 2)
+            starNode.position = CGPoint(x: x, y: y)
+            let diameter = CGFloat.random(in: 3 ... 8)
+            let color = SKColor.random()
+            starNode.size = CGSize(width: diameter, height: diameter)
+            starNode.color = color
+            starNode.colorBlendFactor = CGFloat.random(in: 0 ... 0.2)
+            addChild(starNode)
+            
+            y += 5
+        }
     }
 }
 
@@ -55,14 +84,10 @@ class Main: SKScene, ShopDelegate, PersonalTowerDelegate {
         self.menuOverlay.setup(size: size, menu: self)
         self.menuOverlay.show()
         
-        self.background = Background(screenSize: size)
-        self.addChild(background!)
-        
         self.bottom = -size.height / 2.0
         
         self.addChild(tower)
         tower.position = CGPoint(x: -0.25 * size.width, y: bottom)
-        background!.position = CGPoint(x: 0.0, y: bottom)
         
         stopViewModeButton.position = CGPoint(
             x: size.width / 2.0 - stopViewModeButton.size.width / 2.0 - Config.roundedDisplayMargin,
@@ -72,6 +97,10 @@ class Main: SKScene, ShopDelegate, PersonalTowerDelegate {
         stopViewModeButton.action = self.towerViewModeStopped
         
         tower.delegate = self
+        
+        self.background = Background(screenSize: size, towerHeight: tower.height)
+        background!.position = CGPoint(x: 0.0, y: bottom)
+        self.addChild(background!)
         
         if(Config.standard.coins >= ResourceManager.costExtraLife) {
             // show shop if player collected enough coins for an extra life
@@ -89,12 +118,10 @@ class Main: SKScene, ShopDelegate, PersonalTowerDelegate {
     }
     
     func disableUserInteraction() {
-        isUserInteractionEnabled = false
         menuOverlay.disableUserInteraction()
     }
     
     func enableUserInteraction() {
-        isUserInteractionEnabled = true
         menuOverlay.enableUserInteraction()
     }
     
