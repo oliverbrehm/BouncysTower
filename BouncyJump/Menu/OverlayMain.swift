@@ -10,6 +10,8 @@ import SpriteKit
 
 class OverlayMain: Overlay {
     private let resourceView = ResourceView()
+    private let startButton = IconDescriptionButton(description: Strings.MenuMain.startTitle, image: "play")
+    private let creditsButton = IconDescriptionButton(description: Strings.MenuMain.secondMenuTitle, image: "options")
     
     private lazy var highlight = SKSpriteNode(color: SKColor.white,
                                               size: CGSize(width: resourceView.size.width * 1.2, height: resourceView.size.height * 1.2))
@@ -17,14 +19,12 @@ class OverlayMain: Overlay {
     func setup(size: CGSize, menu: Main) {
         super.setup(size: size, width: 0.65)
         
-        let startButton = IconDescriptionButton(description: Strings.MenuMain.startTitle, image: "play")
         startButton.position = CGPoint(x: 60.0, y: 90.0)
         startButton.action = {
             menu.gameViewController?.showGame()
         }
         self.addChild(startButton)
         
-        let creditsButton = IconDescriptionButton(description: Strings.MenuMain.secondMenuTitle, image: "options")
         creditsButton.position = CGPoint(x: 60.0, y: 10.0)
         creditsButton.action = {
             menu.gameViewController?.showSettings()
@@ -48,5 +48,17 @@ class OverlayMain: Overlay {
     func stopHighlightingResourceView() {
         highlight.removeAllActions()
         highlight.removeFromParent()
+    }
+    
+    func disableUserInteraction() {
+        isUserInteractionEnabled = false
+        startButton.enabled = false
+        creditsButton.enabled = false
+    }
+    
+    func enableUserInteraction() {
+        isUserInteractionEnabled = true
+        startButton.enabled = true
+        creditsButton.enabled = true
     }
 }

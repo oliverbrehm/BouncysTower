@@ -52,19 +52,19 @@ class ShopTVC: UITableViewController {
         if !InAppPurchaseManager.shared.premiumPurchased {
             let buyPremium = ShopProduct(imageName: "player", title: Strings.Shop.buyPremiumTitle,
                                          description: Strings.Shop.buyPremiumDescription,
-                                         cost: 0, type: .buyPremium, color: nil)
+                                         cost: 0, type: .buyPremium)
             products.append(buyPremium)
         }
         
         let extralife = ShopProduct(imageName: "extralife", title: Strings.Shop.extralifeTitle,
                                 description: Strings.Shop.extralifeDescription,
-                                cost: ResourceManager.costExtraLife, type: .extalife, color: nil)
+                                cost: ResourceManager.costExtraLife, type: .extalife)
         products.append(extralife)
         
         for brick in Brick.allCases {
             let brickProduct = ShopProduct(imageName: brick.textureName, title: brick.name,
                                        description: brick.description,
-                                       cost: brick.cost, type: .brick(brick), color: brick.color)
+                                       cost: brick.cost, type: .brick(brick))
             products.append(brickProduct)
         }
     }
@@ -137,12 +137,7 @@ class ShopTVC: UITableViewController {
             
             cell.productTitleLabel.text = product.title
             cell.productDescriptionLabel.text = product.description
-            
-            if let productColor = product.color {
-                cell.productImageView.image = UIImage(named: product.imageName)?.imageWithColor(color: productColor)
-            } else {
-                cell.productImageView.image = UIImage(named: product.imageName)
-            }
+            cell.productImageView.image = UIImage(named: product.imageName)
             
             if(product.cost > 0) {
                 cell.productCostLabel.text = "x \(product.cost)"

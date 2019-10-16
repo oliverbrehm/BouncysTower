@@ -89,8 +89,13 @@ class Main: SKScene, ShopDelegate, PersonalTowerDelegate {
     }
     
     func disableUserInteraction() {
-        self.isUserInteractionEnabled = false
-        self.menuOverlay.isUserInteractionEnabled = false
+        isUserInteractionEnabled = false
+        menuOverlay.disableUserInteraction()
+    }
+    
+    func enableUserInteraction() {
+        isUserInteractionEnabled = true
+        menuOverlay.enableUserInteraction()
     }
     
     private func moveTower(dy: CGFloat) {

@@ -20,5 +20,4 @@ struct ShopProduct {
     let description: String
     let cost: Int
     let type: ProductType
-    let color: SKColor?
 }

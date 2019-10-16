@@ -25,11 +25,6 @@ class TowerBrick: SKSpriteNode {
         
         self.zPosition = NodeZOrder.overlay + 0.02
         
-        if let color = brick.color {
-            self.color = color
-            self.colorBlendFactor = 1.0
-        }
-        
         self.setInStore(inStore)
     }
     
@@ -103,7 +98,7 @@ class PersonalTower: SKNode {
     private let bricksLabel = SKLabelNode(fontNamed: Font.fontName)
     private let rowsLabel = SKLabelNode(fontNamed: Font.fontName)
     private let buildRowButton = IconButton(image: "build")
-    private let viewModeButton = IconButton(image: "back")
+    private let viewModeButton = IconButton(image: "view")
     private let player = Player(jumpOnTouch: true)
     private let towerTop = SKSpriteNode(imageNamed: "towerTop")
     private let background = SKSpriteNode(color: Colors.towerBg, size: CGSize.zero)
@@ -132,7 +127,7 @@ class PersonalTower: SKNode {
         towerImage.physicsBody?.isDynamic = false
         
         towerTop.size = CGSize(
-            width: towerImage.size.width * 0.8,
+            width: 5 * brickSize.width + 10,
             height: towerImage.size.height * 0.25)
         towerTop.zPosition = NodeZOrder.background + 0.02
         
@@ -153,12 +148,14 @@ class PersonalTower: SKNode {
                     InfoBox.show(in: main, text: Strings.MenuMain.buildTowerInfoMessage, onShow:
                         {
                             self.buildRowButton.isHidden = true
+                            self.viewModeButton.isHidden = true
                             main.disableUserInteraction()
-                            // TODO freeze user input in main
                          }, completion:
                          {
                             self.buildRowButton.isHidden = false
+                            self.viewModeButton.isHidden = false
                             main.isUserInteractionEnabled = true
+                            main.enableUserInteraction()
                          }
                     )
                 }
@@ -183,6 +180,7 @@ class PersonalTower: SKNode {
     
     private func buildRow() {
         buildRowButton.isHidden = true
+        viewModeButton.isHidden = true
 
         player.jump()
         
@@ -218,9 +216,15 @@ class PersonalTower: SKNode {
             SoundAction.cheer.action
         ])) {
             self.buildRowButton.isHidden = false
+            self.viewModeButton.isHidden = false
             self.rowsLabel.text = "\(Strings.MenuMain.towerHeightLabel): \(nRows)"
-            if let main = self.scene, nRows >= 2 && Config.standard.shouldShow(tutorial: .towerMultiplicator) {
-                InfoBox.show(in: main, text: Tutorial.towerMultiplicator.message)
+            if let main = self.scene as? Main, nRows >= 2 && Config.standard.shouldShow(tutorial: .towerMultiplicator) {
+                main.disableUserInteraction()
+                
+                InfoBox.show(in: main, text: Tutorial.towerMultiplicator.message) {
+                    main.enableUserInteraction()
+                }
+                
                 Config.standard.setTutorialShown(.towerMultiplicator)
             }
         }
@@ -272,11 +276,11 @@ class PersonalTower: SKNode {
         
         player.position = CGPoint(x: 0.0, y: y + 2.0 + player.size.height / 2.0)
         self.addChild(player)
+      
+        towerTop.position = player.position
+        self.addChild(towerTop)
         
         if(!viewMode) {
-            towerTop.position = player.position
-            self.addChild(towerTop)
-            
             buildRowButton.position = CGPoint(x: 0.0, y: player.position.y + player.size.height / 2.0 + 20.0 + buildRowButton.size.height / 2.0)
             self.addChild(buildRowButton)
             
@@ -311,7 +315,8 @@ class PersonalTower: SKNode {
         for row in rows {
             var x: CGFloat = -CGFloat(TowerBricks.numberOfBricksInRow) / 2.0 * TowerBrick.brickWidth
             for brick in row {
-                let brickNode = TowerBrick(brick: brick, size: brickSize, inStore: false)
+                let insetSize = CGSize(width: brickSize.width - 1, height: brickSize.height - 1)
+                let brickNode = TowerBrick(brick: brick, size: insetSize, inStore: false)
                 brickNode.position = CGPoint(x: x + TowerBrick.brickWidth / 2.0, y: y + TowerBrick.brickHeight / 2.0)
                 self.addChild(brickNode)
                 x += TowerBrick.brickWidth

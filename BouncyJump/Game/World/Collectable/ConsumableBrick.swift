@@ -14,11 +14,6 @@ class ConsumableBrick: Collectable {
     init(brick: Brick) {
         self.brick = brick
         super.init(textureName: brick.textureName, size: CGSize(width: 36.0, height: 24.0), useBacklight: true)
-        
-        if let color = brick.color {
-            self.color = color
-            self.colorBlendFactor = 1.0
-        }
     }
     
     override func hit() {

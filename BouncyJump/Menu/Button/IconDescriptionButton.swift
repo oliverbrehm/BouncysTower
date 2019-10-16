@@ -12,6 +12,15 @@ class IconDescriptionButton: SKSpriteNode {
     
     private let iconButton: IconButton
     
+    var enabled: Bool {
+        get {
+            return iconButton.enabled
+        }
+        set {
+            iconButton.enabled = newValue
+        }
+    }
+    
     var action : (() -> Void)? {
         get {
             return iconButton.action

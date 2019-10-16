@@ -24,7 +24,7 @@ class IconButton: Button {
             }
         }
     }
-    
+        
     init(image: String,
          backgroundColor: SKColor = Colors.menuForeground,
          color: SKColor = Colors.overlay,
@@ -58,15 +58,21 @@ class IconButton: Button {
     
     override func touchDown(point: CGPoint) {
         super.touchDown(point: point)
-        let rotate = SKAction.rotate(byAngle: -1.5, duration: 0.15)
-        rotate.timingMode = .easeInEaseOut
-        self.backgroundImage.run(rotate)
+        
+        if enabled {
+            let rotate = SKAction.rotate(byAngle: -1.5, duration: 0.15)
+            rotate.timingMode = .easeInEaseOut
+            self.backgroundImage.run(rotate)
+        }
     }
     
     override func touchUp(point: CGPoint) {
         super.touchUp(point: point)
-        let rotate = SKAction.rotate(byAngle: 1.5, duration: 0.15)
-        rotate.timingMode = .easeInEaseOut
-        self.backgroundImage.run(rotate)
+        
+        if enabled {
+            let rotate = SKAction.rotate(byAngle: 1.5, duration: 0.15)
+            rotate.timingMode = .easeInEaseOut
+            self.backgroundImage.run(rotate)
+        }
     }
 }

@@ -17,6 +17,8 @@ class Button: SKSpriteNode {
         // TODO for OSX, TVOS
     }
     
+    var enabled = true
+    
     init(size: CGSize, color: SKColor = SKColor.clear) {
         super.init(texture: nil, color: color, size: size)
         self.name = "button"
@@ -29,16 +31,20 @@ class Button: SKSpriteNode {
     }
     
     func touchUp(point: CGPoint) {
+        guard enabled else { return }
+        
         if(self.focussed) {
             self.focussed = false
             
-            if(self.frame.contains(point) && self.action != nil) {
+            if self.frame.contains(point), self.action != nil, enabled {
                 self.action?()
             }
         }
     }
     
     func touchDown(point: CGPoint) {
+        guard enabled else { return }
+        
         self.focussed = true
         self.run(SoundAction.button.action)
     }

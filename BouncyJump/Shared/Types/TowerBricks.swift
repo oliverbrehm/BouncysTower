@@ -24,8 +24,10 @@ enum Brick: Int, CaseIterable {
         switch self {
         case .standard:
             return 40
-        case .standardRed, .standardBlue, .standardGreen, .standardOrange, .standardPurple, .standardYellow:
+        case .standardRed, .standardPurple, .standardGreen:
             return 50
+        case .standardBlue, .standardOrange, .standardYellow:
+            return 60
         case .glass:
             return 80
         case .diamond:
@@ -37,10 +39,20 @@ enum Brick: Int, CaseIterable {
     
     var textureName: String {
         switch self {
-        case .standard, .standardRed, .standardBlue, .standardGreen:
-            return "brick"
-        case .standardOrange, .standardPurple, .standardYellow:
-            return "brickDotted"
+        case .standard:
+            return "brickBroken"
+        case .standardGreen:
+            return "brickBrokenGreen"
+        case .standardRed:
+            return "brickBrokenRed"
+        case .standardPurple:
+            return "brickBrokenPurple"
+        case .standardBlue:
+            return "brickBlue"
+        case .standardYellow:
+            return "brickYellow"
+        case .standardOrange:
+            return "brickOrange"
         case .glass:
             return "brickGlass"
         case .diamond:
@@ -97,25 +109,6 @@ enum Brick: Int, CaseIterable {
             return Strings.Brick.diamondBrickDescription
         case .magic:
             return Strings.Brick.magicBrickDescription
-        }
-    }
-    
-    var color: SKColor? {
-        switch self {
-        case .standardBlue:
-            return SKColor.blue
-        case .standardRed:
-            return SKColor.red
-        case .standardGreen:
-            return SKColor.green
-        case .standardYellow:
-            return SKColor.yellow
-        case .standardPurple:
-            return SKColor.purple
-        case .standardOrange:
-            return SKColor.orange
-        default:
-            return nil
         }
     }
     
@@ -229,7 +222,7 @@ enum Brick: Int, CaseIterable {
     ])
     
     private static let magicAction = SKAction.sequence([
-        SKAction.scale(to: 5.0, duration: 0.3),
+        SKAction.scale(to: 10.0, duration: 0.3),
         SKAction.scale(to: 1.0, duration: 0.3)
     ])
 }
@@ -289,5 +282,18 @@ class TowerBricks {
     func reset() {
         self.bricks = []
         self.rows = []
+        
+        // TODO remove add random bricks
+        for _ in 0 ..< 12 {
+            self.bricks.append(Brick.randomBrick())
+        }
+        
+        for _ in 0 ..< 100 {
+            var row: [Brick] = []
+            for _ in 0 ..< 5 {
+                row.append(Brick.randomBrick())
+            }
+            self.rows.append(row)
+        }
     }
 }
