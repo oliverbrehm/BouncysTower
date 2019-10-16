@@ -73,6 +73,9 @@ class Main: SKScene, ShopDelegate, PersonalTowerDelegate {
     private var background: Background?
     private let stopViewModeButton = IconButton(image: "options")
     
+    private let ambientLightsParticles = SKEmitterNode(fileNamed: "MenuLights")!
+    private let ambientSkyParticles = SKEmitterNode(fileNamed: "MenuSky")!
+    
     private var bottom: CGFloat = 0.0
     
     override func didMove(to view: SKView) {
@@ -102,6 +105,17 @@ class Main: SKScene, ShopDelegate, PersonalTowerDelegate {
         background!.position = CGPoint(x: 0.0, y: bottom)
         self.addChild(background!)
         
+        addChild(ambientLightsParticles)
+        addChild(ambientSkyParticles)
+        
+        ambientLightsParticles.targetNode = background
+        ambientSkyParticles.targetNode = background
+        
+        ambientLightsParticles.position = CGPoint.zero
+        ambientSkyParticles.position = CGPoint(x: -size.width / 2, y: 0)
+        
+        ambientSkyParticles.particleBirthRate = 0
+        
         if(Config.standard.coins >= ResourceManager.costExtraLife) {
             // show shop if player collected enough coins for an extra life
             if(Config.standard.shouldShow(tutorial: .shop)) {
@@ -115,6 +129,19 @@ class Main: SKScene, ShopDelegate, PersonalTowerDelegate {
         }
         
         Score.standard.unsetRecentRank() // clear recent rank (will not be highlighted in score list)
+    }
+    
+    private func updateAmbientParticles(backgroundPosition: CGFloat) {
+        let screenHeight = min(self.frame.size.width, self.frame.size.height)
+        
+        // if user scrolls up far enough the sky particles become visible and the lights disappear
+        if backgroundPosition > 1.4 * screenHeight {
+            ambientSkyParticles.particleBirthRate = 0.4
+            ambientLightsParticles.particleBirthRate = 0
+        } else {
+            ambientSkyParticles.particleBirthRate = 0
+            ambientLightsParticles.particleBirthRate = 1.0
+        }
     }
     
     func disableUserInteraction() {
@@ -140,7 +167,10 @@ class Main: SKScene, ShopDelegate, PersonalTowerDelegate {
             scrollSpeed = 0.0
         }
 
-        background?.position.y = bottom + (tower.position.y - bottom) * 0.5
+        let backgroundAdjustment = bottom + (tower.position.y - bottom) * 0.5
+        background?.position.y = backgroundAdjustment
+        
+        updateAmbientParticles(backgroundPosition: -backgroundAdjustment)
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {

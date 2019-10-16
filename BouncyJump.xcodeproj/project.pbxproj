@@ -291,6 +291,8 @@
 		BBDF2E292340BA1600DC919F /* bigjump1.aif in Resources */ = {isa = PBXBuildFile; fileRef = BBDF2E252340BA1500DC919F /* bigjump1.aif */; };
 		BBDF2E2A2340BA1600DC919F /* jump1.aif in Resources */ = {isa = PBXBuildFile; fileRef = BBDF2E262340BA1500DC919F /* jump1.aif */; };
 		BBDF9BF42341169500465338 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDF9BF32341169500465338 /* Font.swift */; };
+		BBF0906223574744006262D1 /* MenuLights.sks in Resources */ = {isa = PBXBuildFile; fileRef = BBF0906123574743006262D1 /* MenuLights.sks */; };
+		BBF09066235748B7006262D1 /* MenuSky.sks in Resources */ = {isa = PBXBuildFile; fileRef = BBF09065235748B7006262D1 /* MenuSky.sks */; };
 		BBFE1A9C22A40D2600FDCB84 /* GameCenterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFE1A9B22A40D2600FDCB84 /* GameCenterManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -431,6 +433,8 @@
 		BBDF2E252340BA1500DC919F /* bigjump1.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = bigjump1.aif; sourceTree = "<group>"; };
 		BBDF2E262340BA1500DC919F /* jump1.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = jump1.aif; sourceTree = "<group>"; };
 		BBDF9BF32341169500465338 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		BBF0906123574743006262D1 /* MenuLights.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuLights.sks; sourceTree = "<group>"; };
+		BBF09065235748B7006262D1 /* MenuSky.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuSky.sks; sourceTree = "<group>"; };
 		BBFE1A9B22A40D2600FDCB84 /* GameCenterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -546,6 +550,8 @@
 				BB795CC62344CD8C00E262E1 /* AmbientMoon.sks */,
 				BB795CC82344CD8D00E262E1 /* AmbientOrange.sks */,
 				BB795CC72344CD8D00E262E1 /* AmbientSunset.sks */,
+				BBF09065235748B7006262D1 /* MenuSky.sks */,
+				BBF0906123574743006262D1 /* MenuLights.sks */,
 			);
 			path = Particles;
 			sourceTree = "<group>";
@@ -968,6 +974,7 @@
 				BB795CC52344CB3300E262E1 /* AmbientGreen.sks in Resources */,
 				BB6B5B6F2337969100EF8D77 /* gameover.mp3 in Resources */,
 				BBDF2E1B2340A06900DC919F /* brick_diamond.aif in Resources */,
+				BBF09066235748B7006262D1 /* MenuSky.sks in Resources */,
 				BBDF2E2A2340BA1600DC919F /* jump1.aif in Resources */,
 				BBDF2E292340BA1600DC919F /* bigjump1.aif in Resources */,
 				BBDF2E1E2340A06900DC919F /* brick_g.aif in Resources */,
@@ -977,6 +984,7 @@
 				A7DC9BC0221775270038EC58 /* ComboFinishedParticle.sks in Resources */,
 				BB6452BF22CCBAE900EF8E03 /* menu.mp3 in Resources */,
 				BB795CCD2344CD8D00E262E1 /* AmbientOrange.sks in Resources */,
+				BBF0906223574744006262D1 /* MenuLights.sks in Resources */,
 				A7736AA32206025100A28B5D /* Main.storyboard in Resources */,
 				A7A22865220604DB00081E0E /* Settings.sks in Resources */,
 				A7A22862220604DB00081E0E /* MainGame.sks in Resources */,
