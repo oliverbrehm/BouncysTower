@@ -45,8 +45,12 @@ class Strings {
     
     struct Tutorial {
         static let moveTutorialDescription = NSLocalizedString("moveTutorialDescription", comment: "Description sentence for Move Tutorial")
-        static let wallTutorialDescription = NSLocalizedString("wallTutorialDescription", comment: "Description sentence for Wall Tutorial")
-        static let combosTutorialDescription = NSLocalizedString("combosTutorialDescription", comment: "Description sentence for Combos Tutorial")
+        static let rollTutorialDescription1 = NSLocalizedString("rollTutorialDescription1", comment: "Description sentence for Roll Tutorial 1")
+        static let rollTutorialDescription2 = NSLocalizedString("rollTutorialDescription2", comment: "Description sentence for Roll Tutorial 2")
+        static let wallTutorialDescription1 = NSLocalizedString("wallTutorialDescription1", comment: "Description sentence for Wall Tutorial 1")
+        static let wallTutorialDescription2 = NSLocalizedString("wallTutorialDescription2", comment: "Description sentence for Wall Tutorial 2")
+        static let combosTutorialDescription1 = NSLocalizedString("combosTutorialDescription1", comment: "Description sentence for Combos Tutorial 1")
+        static let combosTutorialDescription2 = NSLocalizedString("combosTutorialDescription2", comment: "Description sentence for Combos Tutorial 2")
         static let bricksTutorialDescription = NSLocalizedString("bricksTutorialDescription", comment: "Description sentence for Bricks Tutorial")
         static let extraLivesTutorialDescription = NSLocalizedString(
             "extraLivesTutorialDescription",

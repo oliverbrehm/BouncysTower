@@ -17,12 +17,12 @@ extension Int {
 class ResourceManager {
     static let standard = ResourceManager()
     
-    static let costExtraLife = 300
+    static let costExtraLife = 400
     static var superCoinTimeout: Int {
-        return 25 + Int.random(in: -5 ... 5)
+        return 20 + Int.random(in: -5 ... 5)
     }
     static var superJumpTimeout: Int {
-        return 40 + Int.random(in: -10 ... 10)
+        return 35 + Int.random(in: -10 ... 10)
     }
     
     private let maxCoins = 8

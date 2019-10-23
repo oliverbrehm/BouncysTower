@@ -44,7 +44,7 @@ class World: SKNode {
         leftWall.physicsBody?.categoryBitMask = NodeCategories.wall
         leftWall.physicsBody?.contactTestBitMask = NodeCategories.player | NodeCategories.wall
         leftWall.physicsBody?.collisionBitMask = 0x0
-        leftWall.name = "Wall" // TODO make own entity
+        leftWall.name = "Wall"
         self.addChild(leftWall)
         leftWall.zPosition = NodeZOrder.world
         

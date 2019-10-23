@@ -13,12 +13,13 @@ class OverlayMain: Overlay {
     private let startButton = IconDescriptionButton(description: Strings.MenuMain.startTitle, image: "play")
     private let creditsButton = IconDescriptionButton(description: Strings.MenuMain.secondMenuTitle, image: "options")
     
-    private lazy var highlight = SKSpriteNode(color: SKColor.white,
-                                              size: CGSize(width: resourceView.size.width * 1.2, height: resourceView.size.height * 1.2))
+    private lazy var highlight = SKShapeNode(
+        rectOf: CGSize(width: resourceView.size.width * 1.2, height: resourceView.size.height * 1.2),
+        cornerRadius: 5)
 
     func setup(size: CGSize, menu: Main) {
         super.setup(size: size, width: 0.65)
-        
+                
         startButton.position = CGPoint(x: 60.0, y: 90.0)
         startButton.action = {
             menu.gameViewController?.showGame()
@@ -32,6 +33,8 @@ class OverlayMain: Overlay {
         self.addChild(creditsButton)
         
         resourceView.setup(position: CGPoint(x: 60.0, y: -90.0), shopDelegate: menu)
+        highlight.fillColor = SKColor.white
+
         self.addChild(resourceView)
     }
     

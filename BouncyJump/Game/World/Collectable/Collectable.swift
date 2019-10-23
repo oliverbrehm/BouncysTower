@@ -43,6 +43,7 @@ class Collectable: SKSpriteNode {
     
     func hit() {
         self.physicsBody?.contactTestBitMask = 0x0
+        self.physicsBody?.categoryBitMask = 0x0
         hitAction?()
     }
     

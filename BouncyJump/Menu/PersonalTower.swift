@@ -134,8 +134,11 @@ class PersonalTower: SKNode {
         buildRowButton.action = {
             if !InAppPurchaseManager.shared.premiumPurchased && Score.standard.towerHeight >= 4 {
                 if let main = self.scene as? Main {
-                    InfoBox.show(in: main, text: Strings.MenuMain.towerHeightRestrictionMessage, onShow: nil)
+                    InfoBox.show(in: main, text: Strings.MenuMain.towerHeightRestrictionMessage, onShow: {
+                        main.disableUserInteraction()
+                    })
                     {
+                        main.enableUserInteraction()
                         if let vc = self.scene?.view?.window?.rootViewController as? GameViewController {
                             AdvertisingController.shared.present(in: vc)
                         }
@@ -145,7 +148,7 @@ class PersonalTower: SKNode {
                 self.buildRow()
             } else {
                 if let main = self.scene as? Main {
-                    InfoBox.show(in: main, text: Strings.MenuMain.buildTowerInfoMessage, onShow:
+                    InfoBox.show(in: main, text: Strings.MenuMain.buildTowerInfoMessage, imageName: "build", imageHeight: 50, onShow:
                         {
                             self.buildRowButton.isHidden = true
                             self.viewModeButton.isHidden = true
@@ -220,7 +223,11 @@ class PersonalTower: SKNode {
             if let main = self.scene as? Main, nRows >= 2 && Config.standard.shouldShow(tutorial: .towerMultiplicator) {
                 main.disableUserInteraction()
                 
-                InfoBox.show(in: main, text: Tutorial.towerMultiplicator.message, completion: {
+                InfoBox.show(
+                    in: main, text: Tutorial.towerMultiplicator.message,
+                    imageName: Tutorial.towerMultiplicator.imageName,
+                    imageHeight: Tutorial.towerMultiplicator.imageHeight, completion:
+                {
                     main.enableUserInteraction()
                 })
                 

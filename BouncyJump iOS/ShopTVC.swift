@@ -8,34 +8,6 @@
 
 import UIKit
 
-extension UIImage {
-    func imageWithColor(color: UIColor) -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(self.size, false, UIScreen.main.scale)
-        
-        let context = UIGraphicsGetCurrentContext()!
-        color.setFill()
-        
-        context.translateBy(x: 0, y: self.size.height)
-        context.scaleBy(x: 1.0, y: -1.0)
-        
-        context.setBlendMode(CGBlendMode.normal)
-        
-        let rect = CGRect(x: 0, y: 0, width: self.size.width, height: self.size.height)
-        context.draw(self.cgImage!, in: rect)
-        
-        // TODO hack, find correwct blend mode or use SpriteKit
-        let inset: CGFloat = 12.5
-        context.setBlendMode(CGBlendMode.multiply)
-        context.addRect(rect.inset(by: UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)))
-        context.drawPath(using: CGPathDrawingMode.fill)
-        
-        let coloredImg: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        
-        return coloredImg
-    }
-}
-
 class ShopTVC: UITableViewController {
     
     private var products: [ShopProduct] = []

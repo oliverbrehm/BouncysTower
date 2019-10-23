@@ -12,7 +12,7 @@ class SuperCoin: Collectable {
     
     static let coinTexture = SKTexture(imageNamed: "coin")
     
-    private let nCoins = 25
+    private let nCoins = 15
     private let sizeRadius: CGFloat = 30
     private let smallCoinRadius: CGFloat = 15
     private let explosionRadius: CGFloat = 350

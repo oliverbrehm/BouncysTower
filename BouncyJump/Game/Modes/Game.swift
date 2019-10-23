@@ -171,24 +171,36 @@ class Game: SKScene, SKPhysicsContactDelegate {
     func levelReached(level: Level) {
         switch level {
         case is LevelBase2:
-            self.checkShowTutorial(.wallJump)
+            self.checkShowTutorial(.roll1, followUpTutorial: .roll2)
+        case is LevelDesert:
+            self.checkShowTutorial(.wallJump1, followUpTutorial: .wallJump2)
         case is LevelWood:
-            self.checkShowTutorial(.combos)
+            self.checkShowTutorial(.combos1, followUpTutorial: .combos2)
         default:
             break
         }
     }
     
-    func checkShowTutorial(_ tutorial: Tutorial) {
+    func checkShowTutorial(_ tutorial: Tutorial, followUpTutorial: Tutorial? = nil) {
         guard !tutorial.message.isEmpty else { return }
         
         if(Config.standard.shouldShow(tutorial: tutorial)) {
-            self.run(SKAction.wait(forDuration: 0.3)) {
+            self.run(SKAction.wait(forDuration: 0.2)) {
                 InfoBox.show(in: self, text: tutorial.message, imageName: tutorial.imageName, imageHeight: tutorial.imageHeight, onShow: {
                     self.pause()
                 }, completion: {
                     Config.standard.setTutorialShown(tutorial)
-                    self.resume()
+                    
+                    if let followUpTutorial = followUpTutorial {
+                        InfoBox.show(in: self, text: followUpTutorial.message,
+                                     imageName: followUpTutorial.imageName, imageHeight: followUpTutorial.imageHeight,
+                                     onShow: { }, completion:
+                        {
+                            self.resume()
+                        })
+                    } else {
+                        self.resume()
+                    }
                 })
             }
         }

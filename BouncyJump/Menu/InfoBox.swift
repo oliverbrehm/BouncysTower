@@ -31,6 +31,7 @@ class InfoBox: Button {
         self.zPosition = NodeZOrder.info
         self.anchorPoint = CGPoint(x: 0.5, y: 1.0)
         self.isHidden = true
+        self.enabled = false
         
         label.fontSize = 20.0
         label.fontColor = SKColor.black
@@ -58,8 +59,10 @@ class InfoBox: Button {
                      completion: (() -> Void)? = nil) {
         let width = scene.size.width * 0.8
         let height = scene.size.height * 0.3
+        
         let infoBox = InfoBox(width: width, minHeight: height)
         infoBox.setText(text: text)
+
         if let img = imageName, let h = imageHeight {
             infoBox.setImage(name: img, height: h)
         }
@@ -148,13 +151,18 @@ class InfoBox: Button {
     private func show() {
         self.removeAllActions()
 
-        self.run(SKAction.scale(to: 1.0, duration: 0.3))
         self.run(SoundAction.message.action)
         self.isHidden = false
+
+        self.run(SKAction.scale(to: 1.0, duration: 0.3))
+        
+        self.run(SKAction.wait(forDuration: 1)) { [weak self] in
+            self?.enabled = true
+        }
         
         self.run(SKAction.repeatForever(SKAction.sequence([
-            SKAction.fadeAlpha(to: 0.95, duration: 0.5),
-            SKAction.fadeAlpha(to: 0.85, duration: 0.5)
+            SKAction.fadeAlpha(to: 1.00, duration: 0.5),
+            SKAction.fadeAlpha(to: 0.80, duration: 0.5)
         ])))
     }
 }

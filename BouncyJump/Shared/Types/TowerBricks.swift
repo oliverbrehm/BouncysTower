@@ -284,7 +284,7 @@ class TowerBricks {
         self.rows = []
         
         // TODO remove add random bricks
-        for _ in 0 ..< 12 {
+        /*for _ in 0 ..< 12 {
             self.bricks.append(Brick.randomBrick())
         }
         
@@ -294,6 +294,6 @@ class TowerBricks {
                 row.append(Brick.randomBrick())
             }
             self.rows.append(row)
-        }
+        }*/
     }
 }

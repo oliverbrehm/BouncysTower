@@ -10,8 +10,12 @@ import SpriteKit
 
 enum Tutorial: String, CaseIterable {
     case move = "TUTORIAL_MOVE"
-    case wallJump = "TUTORIAL_WALL_JUMP"
-    case combos = "TUTORIAL_COMBOS"
+    case roll1 = "TUTORIAL_ROLL1"
+    case roll2 = "TUTORIAL_ROLL2"
+    case wallJump1 = "TUTORIAL_WALL_JUMP1"
+    case wallJump2 = "TUTORIAL_WALL_JUMP2"
+    case combos1 = "TUTORIAL_COMBOS1"
+    case combos2 = "TUTORIAL_COMBOS2"
     case extraLives = "TUTORIAL_EXTRA_LIVES"
     case bricks = "TUTORIAL_BRICKS"
     case shop = "TUTORIAL_SHOP"
@@ -21,18 +25,26 @@ enum Tutorial: String, CaseIterable {
         switch self {
         case .move:
             return Strings.Tutorial.moveTutorialDescription
-        case .wallJump:
-            return Strings.Tutorial.wallTutorialDescription
-        case .combos:
-            return Strings.Tutorial.combosTutorialDescription
+        case .roll1:
+            return Strings.Tutorial.rollTutorialDescription1
+        case .roll2:
+            return Strings.Tutorial.rollTutorialDescription2
+        case .wallJump1:
+            return Strings.Tutorial.wallTutorialDescription1
+        case .wallJump2:
+            return Strings.Tutorial.wallTutorialDescription2
+        case .combos1:
+            return Strings.Tutorial.combosTutorialDescription1
+        case .combos2:
+            return Strings.Tutorial.combosTutorialDescription2
         case .bricks:
             return Strings.Tutorial.bricksTutorialDescription
         case .extraLives:
             return Strings.Tutorial.extraLivesTutorialDescription
         case .towerMultiplicator:
             return Strings.Tutorial.towerMultiplicatorTutorialDescription
-        default:
-            return ""
+        case .shop:
+            return Strings.MenuMain.visitStoreMessage
         }
     }
     
@@ -40,18 +52,26 @@ enum Tutorial: String, CaseIterable {
         switch self {
         case .move:
             return "leftright"
-            
-        case .combos:
+        case .roll1:
+            return "player"
+        case .roll2:
+            return "roll"
+        case .wallJump1:
+            return "roll"
+        case .wallJump2:
+            return "comboWall"
+        case .combos1:
             return "combo"
-            
-        case .extraLives:
-            return "extralife"
-            
+        case .combos2:
+            return "comboWall"
         case .bricks:
             return Brick.standard.textureName
-            
-        default:
-            return nil
+        case .extraLives:
+            return "extralife"
+        case .towerMultiplicator:
+            return "combo"
+        case .shop:
+            return "coin"
         }
     }
     
@@ -59,17 +79,26 @@ enum Tutorial: String, CaseIterable {
         switch self {
         case .move:
             return 80.0
-            
-        case .combos:
-            return 160.0
-            
+        case .roll1:
+            return 50.0
+        case .roll2:
+            return 120.0
+        case .wallJump1:
+            return 120.0
+        case .wallJump2:
+            return 120.0
+        case .combos1:
+            return 120.0
+        case .combos2:
+            return 120.0
         case .bricks:
             return 50.0
-            
         case .extraLives:
             return 50.0
-        default:
-            return 0
+        case .towerMultiplicator:
+            return 50.0
+        case .shop:
+            return 50.0
         }
     }
 }
@@ -173,10 +202,13 @@ class Config {
     // returns true if all "level" tutorials were shown
     func allTutorialsShown() -> Bool {
         for tutorial in Tutorial.allCases {
-            if(tutorial == .extraLives
-                || tutorial == .bricks
-                || tutorial == .towerMultiplicator) {
-                continue
+            guard
+                tutorial == .move ||
+                tutorial == .roll1 ||
+                tutorial == .wallJump1 ||
+                tutorial == .combos1 else
+            {
+                    continue
             }
             
             if(shouldShow(tutorial: tutorial)) {
@@ -188,7 +220,7 @@ class Config {
     }
     
     func reset() {
-        self.coins = 0
+        self.coins = 301
         self.extraLives = 0
         
         for tutorial in Tutorial.allCases {
