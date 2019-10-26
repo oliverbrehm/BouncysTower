@@ -21,7 +21,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="towerTop" translatesAutoresizingMaskIntoConstraints="NO" id="uXM-yw-Z5R">
-                                <rect key="frame" x="340" y="129" width="216" height="128.00000000000011"/>
+                                <rect key="frame" x="340" y="129" width="216" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="127.99999999999989" id="P37-2w-q10"/>
                                     <constraint firstAttribute="width" constant="216" id="myT-gT-OJR"/>
