@@ -14,7 +14,7 @@
    viewBox="0 0 1400 1000"
    id="svg3336"
    version="1.1"
-   inkscape:version="0.91 r13725"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
    sodipodi:docname="menuTower.svg"
    inkscape:export-filename="/projects/TowerJump/resources/menuTower.png"
    inkscape:export-xdpi="90"
@@ -29,7 +29,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.7"
-     inkscape:cx="685.49718"
+     inkscape:cx="448.35432"
      inkscape:cy="523.22649"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -37,7 +37,7 @@
      units="px"
      inkscape:window-width="1920"
      inkscape:window-height="1036"
-     inkscape:window-x="1280"
+     inkscape:window-x="1440"
      inkscape:window-y="0"
      inkscape:window-maximized="1" />
   <metadata
@@ -95,33 +95,29 @@
        id="path4165"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccccccccccccccccccc" />
-    <g
-       id="g4913"
-       transform="matrix(1.1545685,0,0,1.2289941,107.99755,-25.419576)">
-      <text
-         sodipodi:linespacing="125%"
-         id="text4905"
-         y="468.49405"
-         x="125.25891"
-         style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffda0e;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         xml:space="preserve"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:175px;line-height:125%;font-family:'American Typewriter';-inkscape-font-specification:'American Typewriter, Bold';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffda0e;fill-opacity:1"
-           y="468.49405"
-           x="125.25891"
-           id="tspan4907"
-           sodipodi:role="line">BOUNCY</tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-weight:normal;font-size:60.21382523px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffda0e;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         x="81.505951"
-         y="725.9126"
-         id="text4909"
-         sodipodi:linespacing="125%"><tspan
-           sodipodi:role="line"
-           id="tspan4911"
-           x="81.505951"
-           y="725.9126"
-           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:263.43548584px;line-height:125%;font-family:'American Typewriter';-inkscape-font-specification:'American Typewriter, Bold';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffda0e;fill-opacity:1">JUMP</tspan></text>
-    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:12.23038864px;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffda0e;fill-opacity:1;stroke:none;stroke-width:1.01919913px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="246.14603"
+       y="532.19849"
+       id="text4905"
+       transform="scale(0.96924809,1.0317276)"><tspan
+         sodipodi:role="line"
+         id="tspan4907"
+         x="246.14603"
+         y="532.19849"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:178.35983276px;line-height:125%;font-family:'American Typewriter';-inkscape-font-specification:'American Typewriter, Bold';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffda0e;fill-opacity:1;stroke-width:1.01919913px">BOUNCY'S</tspan></text>
+    <text
+       id="text4909"
+       y="820.42084"
+       x="167.68924"
+       style="font-style:normal;font-weight:normal;font-size:12.85888481px;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffda0e;fill-opacity:1;stroke:none;stroke-width:1.07157373px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"
+       transform="scale(0.96924809,1.0317276)"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:282.29052734px;line-height:125%;font-family:'American Typewriter';-inkscape-font-specification:'American Typewriter, Bold';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffda0e;fill-opacity:1;stroke-width:1.07157373px"
+         y="820.42084"
+         x="167.68924"
+         id="tspan4911"
+         sodipodi:role="line">TOWER</tspan></text>
   </g>
 </svg>
