@@ -848,9 +848,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A7736A9A2206025100A28B5D /* BouncyJump iOS */ = {
+		A7736A9A2206025100A28B5D /* BouncysTower iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A7736AD02206025200A28B5D /* Build configuration list for PBXNativeTarget "BouncyJump iOS" */;
+			buildConfigurationList = A7736AD02206025200A28B5D /* Build configuration list for PBXNativeTarget "BouncysTower iOS" */;
 			buildPhases = (
 				A7736A972206025100A28B5D /* Sources */,
 				A7736A982206025100A28B5D /* Frameworks */,
@@ -861,14 +861,14 @@
 			);
 			dependencies = (
 			);
-			name = "BouncyJump iOS";
+			name = "BouncysTower iOS";
 			productName = "TowerJump iOS";
 			productReference = A7736A9B2206025100A28B5D /* Bouncys Tower.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A7736AAB2206025100A28B5D /* BouncyJump tvOS */ = {
+		A7736AAB2206025100A28B5D /* BouncysTower tvOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A7736AD32206025200A28B5D /* Build configuration list for PBXNativeTarget "BouncyJump tvOS" */;
+			buildConfigurationList = A7736AD32206025200A28B5D /* Build configuration list for PBXNativeTarget "BouncysTower tvOS" */;
 			buildPhases = (
 				A7736AA82206025100A28B5D /* Sources */,
 				A7736AA92206025100A28B5D /* Frameworks */,
@@ -878,14 +878,14 @@
 			);
 			dependencies = (
 			);
-			name = "BouncyJump tvOS";
+			name = "BouncysTower tvOS";
 			productName = "TowerJump tvOS";
 			productReference = A7736AAC2206025100A28B5D /* BouncysTower.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A7736AB92206025100A28B5D /* BouncyJump macOS */ = {
+		A7736AB92206025100A28B5D /* BouncysTower macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A7736AD62206025200A28B5D /* Build configuration list for PBXNativeTarget "BouncyJump macOS" */;
+			buildConfigurationList = A7736AD62206025200A28B5D /* Build configuration list for PBXNativeTarget "BouncysTower macOS" */;
 			buildPhases = (
 				A7736AB62206025100A28B5D /* Sources */,
 				A7736AB72206025100A28B5D /* Frameworks */,
@@ -895,7 +895,7 @@
 			);
 			dependencies = (
 			);
-			name = "BouncyJump macOS";
+			name = "BouncysTower macOS";
 			productName = "TowerJump macOS";
 			productReference = A7736ABA2206025100A28B5D /* BouncysTower.app */;
 			productType = "com.apple.product-type.application";
@@ -936,7 +936,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A7797EE120E2A89200E3B664 /* Build configuration list for PBXProject "BouncyJump" */;
+			buildConfigurationList = A7797EE120E2A89200E3B664 /* Build configuration list for PBXProject "BouncysTower" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -950,9 +950,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A7736A9A2206025100A28B5D /* BouncyJump iOS */,
-				A7736AAB2206025100A28B5D /* BouncyJump tvOS */,
-				A7736AB92206025100A28B5D /* BouncyJump macOS */,
+				A7736A9A2206025100A28B5D /* BouncysTower iOS */,
+				A7736AAB2206025100A28B5D /* BouncysTower tvOS */,
+				A7736AB92206025100A28B5D /* BouncysTower macOS */,
 			);
 		};
 /* End PBXProject section */
@@ -1622,7 +1622,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A7736AD02206025200A28B5D /* Build configuration list for PBXNativeTarget "BouncyJump iOS" */ = {
+		A7736AD02206025200A28B5D /* Build configuration list for PBXNativeTarget "BouncysTower iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A7736AD12206025200A28B5D /* Debug */,
@@ -1631,7 +1631,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A7736AD32206025200A28B5D /* Build configuration list for PBXNativeTarget "BouncyJump tvOS" */ = {
+		A7736AD32206025200A28B5D /* Build configuration list for PBXNativeTarget "BouncysTower tvOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A7736AD42206025200A28B5D /* Debug */,
@@ -1640,7 +1640,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A7736AD62206025200A28B5D /* Build configuration list for PBXNativeTarget "BouncyJump macOS" */ = {
+		A7736AD62206025200A28B5D /* Build configuration list for PBXNativeTarget "BouncysTower macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A7736AD72206025200A28B5D /* Debug */,
@@ -1649,7 +1649,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A7797EE120E2A89200E3B664 /* Build configuration list for PBXProject "BouncyJump" */ = {
+		A7797EE120E2A89200E3B664 /* Build configuration list for PBXProject "BouncysTower" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A7797EFC20E2A89200E3B664 /* Debug */,
