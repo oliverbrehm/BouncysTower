@@ -347,7 +347,7 @@
 		A756B264224BA23F00CC335E /* LevelWood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelWood.swift; sourceTree = "<group>"; };
 		A765DC022215A48400B34284 /* CGVector+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGVector+Extensions.swift"; sourceTree = "<group>"; };
 		A7736A902205D6B600A28B5D /* InfoBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoBox.swift; sourceTree = "<group>"; };
-		A7736A9B2206025100A28B5D /* BouncyJump.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BouncyJump.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7736A9B2206025100A28B5D /* Bouncys Tower.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bouncys Tower.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7736A9D2206025100A28B5D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7736A9F2206025100A28B5D /* IOSGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSGameViewController.swift; sourceTree = "<group>"; };
 		A7736AA22206025100A28B5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -597,7 +597,7 @@
 			path = "BouncyJump tvOS";
 			sourceTree = "<group>";
 		};
-		A7736ABB2206025100A28B5D /* BouncyJumpmacOS */ = {
+		A7736ABB2206025100A28B5D /* BouncyJump macOS */ = {
 			isa = PBXGroup;
 			children = (
 				A7736ABC2206025200A28B5D /* AppDelegate.swift */,
@@ -605,7 +605,7 @@
 				A7736AC02206025200A28B5D /* Main.storyboard */,
 				A7736AC32206025200A28B5D /* Info.plist */,
 			);
-			path = BouncyJumpmacOS;
+			path = "BouncyJump macOS";
 			sourceTree = "<group>";
 		};
 		A7797EDD20E2A89200E3B664 = {
@@ -615,7 +615,7 @@
 				A7797EE820E2A89200E3B664 /* BouncyJump */,
 				A7736A9C2206025100A28B5D /* BouncyJump iOS */,
 				A7736AAD2206025100A28B5D /* BouncyJump tvOS */,
-				A7736ABB2206025100A28B5D /* BouncyJumpmacOS */,
+				A7736ABB2206025100A28B5D /* BouncyJump macOS */,
 				A7797EE720E2A89200E3B664 /* Products */,
 				A7175FAF20E2A90000968329 /* Frameworks */,
 			);
@@ -624,7 +624,7 @@
 		A7797EE720E2A89200E3B664 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A7736A9B2206025100A28B5D /* BouncyJump.app */,
+				A7736A9B2206025100A28B5D /* Bouncys Tower.app */,
 				A7736AAC2206025100A28B5D /* BouncyJump.app */,
 				A7736ABA2206025100A28B5D /* BouncyJump.app */,
 			);
@@ -863,7 +863,7 @@
 			);
 			name = "BouncyJump iOS";
 			productName = "TowerJump iOS";
-			productReference = A7736A9B2206025100A28B5D /* BouncyJump.app */;
+			productReference = A7736A9B2206025100A28B5D /* Bouncys Tower.app */;
 			productType = "com.apple.product-type.application";
 		};
 		A7736AAB2206025100A28B5D /* BouncyJump tvOS */ = {
@@ -1373,10 +1373,11 @@
 				INFOPLIST_FILE = "BouncyJump iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "Oliver-Brehm.BouncysTower";
-				PRODUCT_NAME = BouncyJump;
+				PRODUCT_NAME = "Bouncys Tower";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1397,9 +1398,10 @@
 				INFOPLIST_FILE = "BouncyJump iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "Oliver-Brehm.BouncysTower";
-				PRODUCT_NAME = BouncyJump;
+				PRODUCT_NAME = "Bouncys Tower";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

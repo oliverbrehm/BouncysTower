@@ -220,7 +220,7 @@ class Config {
     }
     
     func reset() {
-        self.coins = 301
+        self.coins = 0
         self.extraLives = 0
         
         for tutorial in Tutorial.allCases {
