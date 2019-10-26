@@ -1,0 +1,97 @@
+/* 
+  Localizable.strings
+  BouncysTower
+
+  Created by Oliver Brehm on 08.07.19.
+  Copyright © 2019 Oliver Brehm. All rights reserved.
+*/
+
+// Shared
+"backTitle" = "BACK";
+
+// Bricks
+"standardBrickTitle" = "Standard Brick";
+"blueBrickTitle" = "Blue Brick";
+"redBrickTitle" = "Red Brick";
+"greenBrickTitle" = "Green Brick";
+"yellowBrickTitle" = "Yellow Brick";
+"purpleBrickTitle" = "Purple Brick";
+"orangeBrickTitle" = "Orange Brick";
+"glassBrickTitle" = "Glass Brick";
+"diamondBrickTitle" = "Diamond Brick";
+"magicBrickTitle" = "Magic Brick";
+
+"standardBrickDescription" = "Use it to build your personal tower";
+"blueBrickDescription" = "Colorful blue brick";
+"redBrickDescription" = "Colorful red brick";
+"greenBrickDescription" = "Colorful green brick";
+"yellowBrickDescription" = "Colorful yellow brick";
+"purpleBrickDescription" = "Colorful purple brick";
+"orangeBrickDescription" = "Colorful orange brick";
+"glassBrickDescription" = "Bick made of glass";
+"diamondBrickDescription" = "Fancy diamond brick for your tower";
+
+// Tutorials
+"moveTutorialDescription" = "Touch the left or right part of the screen to move. Jumping happens automatically!";
+"rollTutorialDescription1" = "Great, you reached the next Level!";
+"rollTutorialDescription2" = "If you hold your touch on landing, you start rolling and you jump higher.";
+"wallTutorialDescription1" = "After rolling on the platform, you can jump against the wall.";
+"wallTutorialDescription2" = "That will give you another boost upwards!";
+"combosTutorialDescription1" = "Nice jumping! You get an even higher score if you do combos. Always jump over at least three platforms at once...";
+"combosTutorialDescription2" = "... OR jump against the wall each time!";
+"bricksTutorialDescription" = "Cool, you collected a loose brick! Use it in the main screen to build your own personal tower.";
+"extraLivesTutorialDescription" = "Hey, you found an extra life! If you fall down, you can decide to use it and it will save you once.";
+"towerMultiplicatorTutorialDescription" = "Awesome, your tower is growing! You get a higher in-game score the taller the tower gets. The score for each jump will be multiplied by the height of your tower.";
+
+// Game Elements
+"comboPerfectMessage" =  "Perfect!";
+"comboAwesomeMessage" = "AWESOME";
+"rankLabel" = "RANK";
+"newHighscoreLabel" = "NEW HIGHSCORE";
+"pausedLabel" = "PAUSED";
+"useExtralifeQuestion" = "Use extralife?";
+
+// Second menu
+"noScoresMessage" = "No scores yet...";
+
+// Main menu
+"visitStoreMessage" = "Hey there, it seems you have collected a lot of coins, why not visit the shop? You can get extra lives and shiny bricks for your personal tower!";
+"shopTitle" = "SHOP";
+"startTitle" = "PLAY";
+"secondMenuTitle" = "SCORES";
+"towerHeightRestrictionMessage" = "You cannot build your tower any higher in the free version. Please consider buying premium to build as far up as you like!";
+"buildTowerInfoMessage" = "Here you can build your own personal tower! Collect or buy five bricks to build a new row.";
+"towerHeightLabel" = "Tower height";
+"bricksLeftLabel" = "Bricks left";
+
+// Shop
+"buyPremiumTitle" = "Buy premium";
+"buyPremiumDescription" = "For no more reminders to buy and a good concience";
+"extralifeTitle" = "Extra life";
+"extralifeDescription" = "Saves you once from falling down";
+"insufficientCoinsTitle" = "Not enough coins";
+"confirmBuyTitle" = "Buy";
+"noThanksMessage" = "No thanks";
+"thanksMessage" = "Thanks!";
+"insufficientCoinsMessage" = "Sorry, but you don't have enough coins to buy this. Come back if you have collected %@ coins!";
+"confirmBuyQuestion" = "Do you want to buy \"%@\" for %@ coins?";
+"buyConfimationMessage" = "You bought a new %@!";
+
+// Premium
+"featureWaitingTime" = "No more waiting time and reminders!";
+"featureTowerHeight" = "Build your personal tower as high as you like!";
+"featureSupport" = "Support the development of this and other games!";
+"restoreTitle" = "Restore";
+"buyTitle" = "BUY";
+"buyingLabel" = "buying...";
+"loadingPriceLabel" = "loading price...";
+"restoredTitle" = "Restored";
+"errorTitle" = "Error";
+"restoredMessage" = "Restore was successfull.";
+"errorMessage" = "Error restoring premium, please try again.";
+"purchaseConfirmationTitle" = "Sold";
+"purchaseConfirmationMessage" = "Thank you for buying premium!";
+
+// Scores
+"longestComboLabel" = "Longest combo";
+"highestJumpLabel" = "Highest jump";

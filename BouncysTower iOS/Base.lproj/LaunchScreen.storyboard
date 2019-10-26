@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.34999999999999998" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="h3G-Im-3Qt">
+                                <rect key="frame" x="-50" y="-6" width="996" height="436"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="towerTop" translatesAutoresizingMaskIntoConstraints="NO" id="uXM-yw-Z5R">
+                                <rect key="frame" x="340" y="129" width="216" height="128.00000000000011"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="127.99999999999989" id="P37-2w-q10"/>
+                                    <constraint firstAttribute="width" constant="216" id="myT-gT-OJR"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menuTower" translatesAutoresizingMaskIntoConstraints="NO" id="j3l-gN-ZUg">
+                                <rect key="frame" x="308" y="220" width="280" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="YJq-3x-joX"/>
+                                    <constraint firstAttribute="width" constant="280" id="bQm-4s-x7J"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.1387387407" green="0.41166322970000002" blue="0.30462065960000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="h3G-Im-3Qt" firstAttribute="leading" secondItem="tZ6-bH-Vph" secondAttribute="leading" constant="-50" id="7qZ-tF-pva"/>
+                            <constraint firstItem="tZ6-bH-Vph" firstAttribute="bottom" secondItem="h3G-Im-3Qt" secondAttribute="bottom" constant="-50" id="ABI-EX-gZl"/>
+                            <constraint firstItem="j3l-gN-ZUg" firstAttribute="bottom" secondItem="tZ6-bH-Vph" secondAttribute="bottom" constant="40" id="KdD-gO-zZh"/>
+                            <constraint firstItem="j3l-gN-ZUg" firstAttribute="top" secondItem="uXM-yw-Z5R" secondAttribute="bottom" constant="-36.999999999999886" id="ap9-ZR-Wqi"/>
+                            <constraint firstItem="h3G-Im-3Qt" firstAttribute="top" secondItem="tZ6-bH-Vph" secondAttribute="top" constant="-50" id="b0k-JX-e6d"/>
+                            <constraint firstItem="tZ6-bH-Vph" firstAttribute="trailing" secondItem="h3G-Im-3Qt" secondAttribute="trailing" constant="-50" id="b26-f3-FIz"/>
+                            <constraint firstItem="uXM-yw-Z5R" firstAttribute="centerX" secondItem="h3G-Im-3Qt" secondAttribute="centerX" id="bh6-4c-qtB"/>
+                            <constraint firstItem="j3l-gN-ZUg" firstAttribute="centerX" secondItem="tZ6-bH-Vph" secondAttribute="centerX" id="eOA-ZF-NZx"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="tZ6-bH-Vph"/>
+                    </view>
+                    <size key="freeformSize" width="896" height="414"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52.173913043478265" y="375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="bg" width="2091" height="1176"/>
+        <image name="menuTower" width="1313" height="938"/>
+        <image name="towerTop" width="1404" height="392"/>
+    </resources>
+</document>
