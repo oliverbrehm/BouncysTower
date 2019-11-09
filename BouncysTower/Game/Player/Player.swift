@@ -18,7 +18,7 @@ class Player: SKSpriteNode {
         
     private let jumpImpulse: CGFloat = 3500.0
     private lazy var superJumpImpulse: CGFloat = 2.5 * jumpImpulse
-    private let movingForce: CGFloat = 200000 * Config.screenXFactor
+    private let movingForce: CGFloat = 200000 * Config.screenWidthFactor
     private let onPlatformForceMultiplicator: CGFloat = 1.8
     private let actionScale = "PLAYER_SCALE"
     

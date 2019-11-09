@@ -129,14 +129,10 @@ class Config {
         }
     }
     
-    static var screenXFactor: CGFloat {
-        return UIScreen.main.nativeBounds.height / 1000
+    static var screenWidthFactor: CGFloat {
+        return UIScreen.main.nativeBounds.height / UIScreen.main.nativeBounds.width
     }
-    
-    static var screenYFactor: CGFloat {
-        return UIScreen.main.nativeBounds.width / 1000
-    }
-    
+
     static var isIphoneX: Bool {
         let deviceHeight = UIScreen.main.nativeBounds.height
         return [2436, 2688, 1792].contains(deviceHeight)

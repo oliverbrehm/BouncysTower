@@ -208,7 +208,7 @@ class Game: SKScene, SKPhysicsContactDelegate {
 
     private func movePlayer(pos: CGPoint) {
         if(state.runningState == .running && state.allowJump) {
-            if pos.x < world.width / 2.0 {
+            if pos.x < 0 {
                 player.startMoving(directionLeft: true)
             } else {
                 player.startMoving(directionLeft: false)
@@ -218,7 +218,7 @@ class Game: SKScene, SKPhysicsContactDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
-            let pos = touch.location(in: self.view)
+            let pos = touch.location(in: self)
             self.movePlayer(pos: pos)
             lastX = pos.x
         }
@@ -231,7 +231,7 @@ class Game: SKScene, SKPhysicsContactDelegate {
     }
     
     private func moveForTouch(_ touch: UITouch) {
-        let pos = touch.location(in: self.view)
+        let pos = touch.location(in: self)
         self.movePlayer(pos: pos)
     }
     
