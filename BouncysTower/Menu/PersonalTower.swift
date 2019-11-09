@@ -118,7 +118,7 @@ class PersonalTower: SKNode {
     override init() {
         super.init()
         
-        towerImage.zPosition = NodeZOrder.background + 0.01
+        towerImage.zPosition = NodeZOrder.background + 0.02
         let towerWidth = CGFloat(TowerBricks.numberOfBricksInRow + 2) * TowerBrick.brickWidth
         let towerHeight = CGFloat(TowerBricks.numberOfBricksInRow) * TowerBrick.brickWidth
         towerImage.size = CGSize(width: towerWidth, height: towerHeight)
@@ -129,7 +129,7 @@ class PersonalTower: SKNode {
         towerTop.size = CGSize(
             width: 5 * brickSize.width + 10,
             height: towerImage.size.height * 0.25)
-        towerTop.zPosition = NodeZOrder.background + 0.02
+        towerTop.zPosition = NodeZOrder.background + 0.01
         
         buildRowButton.action = {
             if !InAppPurchaseManager.shared.premiumPurchased && Score.standard.towerHeight >= 4 {
@@ -312,7 +312,7 @@ class PersonalTower: SKNode {
         rowsLabel.text = "\(Strings.MenuMain.towerHeightLabel): \(rows.count)"
         
         background.size = CGSize(width: 5 * TowerBrick.brickWidth, height: CGFloat(rows.count) * TowerBrick.brickHeight)
-        background.zPosition = NodeZOrder.world + 0.01
+        background.zPosition = NodeZOrder.world + 0.03
         background.position = CGPoint(x: 0.0, y: y + background.size.height / 2.0)
         background.physicsBody = SKPhysicsBody.init(rectangleOf: background.size)
         background.physicsBody?.isDynamic = false

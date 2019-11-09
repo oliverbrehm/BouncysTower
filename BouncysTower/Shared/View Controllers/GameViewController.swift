@@ -13,6 +13,18 @@ import GameplayKit
 class GameViewController: UIViewController {
     var game: Game?
     
+    var sceneSize: CGSize {
+        let fixedHeight: CGFloat = 450
+        
+        // native screen bounds return portrait dimensions, but game runs in landscape mode
+        let screenWidth = UIScreen.main.bounds.height
+        let screenHeight = UIScreen.main.bounds.width
+        
+        let width = screenHeight / screenWidth * fixedHeight
+        
+        return CGSize(width: width, height: fixedHeight)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,7 +54,8 @@ class GameViewController: UIViewController {
 
     func showGame() {
         if let scene = SKScene(fileNamed: "MainGame") as? MainGame {
-            scene.scaleMode = .resizeFill
+            scene.size = sceneSize
+            scene.scaleMode = .fill
             scene.gameViewController = self
             
             self.game = scene
@@ -81,7 +94,8 @@ class GameViewController: UIViewController {
             }
             
             if let scene = SKScene(fileNamed: "Main") as? Main {
-                scene.scaleMode = .resizeFill
+                scene.size = sceneSize
+                scene.scaleMode = .fill
                 scene.gameViewController = self
                 view.presentScene(scene, transition: SKTransition.push(with: transitionDirection, duration: 0.5))
                 AudioManager.standard.playBackgroundMusic(backgroundMusic: .menu)
@@ -91,7 +105,8 @@ class GameViewController: UIViewController {
 
     func showSettings() {
         if let scene = SKScene(fileNamed: "Settings") as? Settings {
-            scene.scaleMode = .resizeFill
+            scene.size = sceneSize
+            scene.scaleMode = .fill
             scene.gameViewController = self
             
             if let view = self.view as! SKView? {

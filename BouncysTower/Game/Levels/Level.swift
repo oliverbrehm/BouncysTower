@@ -285,7 +285,7 @@ class Level: SKNode, LevelConfiguration {
             }
             
             let n = numberOfCoins ?? ResourceManager.standard.consumeCoins()
-            let platformSize = CGSize(width: platform.size.width, height: Platform.height)
+            let platformSize = CGSize(width: platform.size.width, height: platform.size.height)
             let platformInWorld = self.convert(platform.position, to: scene.world)
             let coinPlatformMargin: CGFloat = platformSize.width * 0.175
             scene.world.coinManager.spawnHorizontalLine(

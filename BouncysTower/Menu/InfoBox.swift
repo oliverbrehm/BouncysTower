@@ -156,7 +156,7 @@ class InfoBox: Button {
 
         self.run(SKAction.scale(to: 1.0, duration: 0.3))
         
-        self.run(SKAction.wait(forDuration: 1)) { [weak self] in
+        self.run(SKAction.wait(forDuration: 0.65)) { [weak self] in
             self?.enabled = true
         }
         

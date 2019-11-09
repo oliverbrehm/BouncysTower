@@ -10,7 +10,8 @@ import SpriteKit
 
 class ConsumableExtraLife: Collectable {
     init() {
-        super.init(textureName: "extralife", size: CGSize(width: 25.0, height: 25.0), useBacklight: true)
+        let diameter = 30
+        super.init(textureName: "extralife", size: CGSize(width: diameter, height: diameter), useBacklight: true)
     }
     
     override var score: Int {

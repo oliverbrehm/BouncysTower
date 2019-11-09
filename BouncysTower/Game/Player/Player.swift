@@ -15,12 +15,10 @@ class Player: SKSpriteNode {
         case jumping
         case falling
     }
-    
-    static let size: CGFloat = 30.0
-    
-    private let jumpImpulse: CGFloat = 35.0 * Config.physicsYFactor
-    private let superJumpImpulse: CGFloat = 80.0 * Config.physicsYFactor
-    private let movingForce: CGFloat = 5000.0 * Config.physicsXFactor
+        
+    private let jumpImpulse: CGFloat = 3500.0
+    private lazy var superJumpImpulse: CGFloat = 2.5 * jumpImpulse
+    private let movingForce: CGFloat = 200000 * Config.screenXFactor
     private let onPlatformForceMultiplicator: CGFloat = 1.8
     private let actionScale = "PLAYER_SCALE"
     
@@ -51,11 +49,14 @@ class Player: SKSpriteNode {
     let comboParticleEmitter = SKEmitterNode(fileNamed: "ComboParticle")!
     
     init(jumpOnTouch: Bool = false) {
-        super.init(texture: SKTexture(imageNamed: "player"), color: SKColor.red, size: CGSize(width: Player.size, height: Player.size))
+        let playerDiameter: CGFloat = 36
+        super.init(texture: SKTexture(imageNamed: "player"), color: SKColor.red, size: CGSize(width: playerDiameter, height: playerDiameter))
         
         self.isUserInteractionEnabled = jumpOnTouch
         
-        self.physicsBody = SKPhysicsBody.init(circleOfRadius: Player.size / 2.0)
+        self.zPosition = NodeZOrder.player
+        
+        self.physicsBody = SKPhysicsBody.init(circleOfRadius: playerDiameter / 2.0)
         self.physicsBody?.allowsRotation = true
         self.physicsBody?.angularDamping = 0.8
         self.physicsBody?.usesPreciseCollisionDetection = true
@@ -63,20 +64,19 @@ class Player: SKSpriteNode {
         self.physicsBody?.collisionBitMask = NodeCategories.platform | NodeCategories.wall
         self.physicsBody?.contactTestBitMask = NodeCategories.platform | NodeCategories.player | NodeCategories.consumable
         self.physicsBody?.friction = 3.0
-        self.physicsBody?.mass = 0.05
+        self.physicsBody?.mass = 3.0
         
-        self.zPosition = NodeZOrder.player
         
         addChild(rollingParticleEmitter)
         addChild(comboParticleEmitter)
         comboParticleEmitter.particleBirthRate = 0
         rollingParticleEmitter.particleBirthRate = 0
-
-        self.perfectJumpDetector.setup(player: self)
     }
     
     func initialize(world: World, scene: Game) {
         self.world = world
+
+        self.perfectJumpDetector.setup(player: self)
         
         comboParticleEmitter.targetNode = scene
         comboParticleEmitter.particleColorSequence = nil

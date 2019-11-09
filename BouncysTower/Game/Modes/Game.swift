@@ -39,10 +39,10 @@ class Game: SKScene, SKPhysicsContactDelegate {
     override func didMove(to view: SKView) {
         if(player.parent == nil) {
             self.physicsWorld.contactDelegate = self
-            self.physicsWorld.gravity = CGVector(dx: 0, dy: Config.physicsYFactor * (-9.81))
-            
+            self.physicsWorld.gravity = CGVector(dx: 0, dy: -20)
+                        
             self.player.initialize(world: self.world, scene: self)
-            
+
             self.camera = cameraNode
             self.addChild(cameraNode)
             
@@ -208,7 +208,7 @@ class Game: SKScene, SKPhysicsContactDelegate {
 
     private func movePlayer(pos: CGPoint) {
         if(state.runningState == .running && state.allowJump) {
-            if pos.x < self.frame.size.width / 2.0 {
+            if pos.x < world.width / 2.0 {
                 player.startMoving(directionLeft: true)
             } else {
                 player.startMoving(directionLeft: false)

@@ -83,6 +83,8 @@ class Main: SKScene, ShopDelegate, PersonalTowerDelegate {
         let h = self.frame.size.height
         let size = CGSize(width: max(w, h), height: min(w, h))
         
+        self.physicsWorld.gravity = CGVector(dx: 0, dy: -20)
+        
         self.addChild(self.menuOverlay)
         self.menuOverlay.setup(size: size, menu: self)
         self.menuOverlay.show()

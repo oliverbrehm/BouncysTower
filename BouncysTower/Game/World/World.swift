@@ -188,7 +188,7 @@ class World: SKNode {
     }
 
     func absoluteZero() -> CGFloat {
-        return -height / 2.0 + Platform.height / 2.0
+        return -height / 2.0 + (Platform.height) / 2.0
     }
     
     func makeExplosion(at position: CGPoint, color: SKColor = SKColor.white) {

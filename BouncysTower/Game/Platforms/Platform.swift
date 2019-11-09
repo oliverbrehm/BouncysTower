@@ -9,7 +9,7 @@
 import SpriteKit
 
 class Platform: SKSpriteNode {
-    static let height: CGFloat = 15.0
+    static let height: CGFloat = 20
     
     let platformNumber: Int
     let platformNumberInLevel: Int
@@ -44,8 +44,9 @@ class Platform: SKSpriteNode {
         self.tileEndTexture = textureEnds
         self.platformNumberInLevel = platformNumberInLevel
                 
-        let nTiles = (width / Platform.height).rounded(.up)
-        let platformSize = CGSize(width: nTiles * Platform.height, height: Platform.height)
+        let platformHeight = Platform.height
+        let nTiles = (width / platformHeight).rounded(.up)
+        let platformSize = CGSize(width: nTiles * platformHeight, height: platformHeight)
 
         super.init(texture: nil, color: SKColor.clear, size: platformSize)
         
@@ -189,7 +190,7 @@ class Platform: SKSpriteNode {
             container.fillColor = level.tintColor
             container.lineWidth = 3.0
             container.strokeColor = level.tintColor
-            container.position = CGPoint(x: 0.0, y: -Platform.height * 0.5)
+            container.position = CGPoint(x: 0.0, y: -size.height * 0.5)
             container.addChild(label)
             container.zPosition = NodeZOrder.platformLabelContainer
             label.zPosition = 0.1 // relative to parent node

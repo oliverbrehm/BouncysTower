@@ -129,12 +129,12 @@ class Config {
         }
     }
     
-    static var physicsXFactor: CGFloat {
-        return UIScreen.main.nativeBounds.width / 700
+    static var screenXFactor: CGFloat {
+        return UIScreen.main.nativeBounds.height / 1000
     }
     
-    static var physicsYFactor: CGFloat {
-        return UIScreen.main.nativeBounds.height / 1200
+    static var screenYFactor: CGFloat {
+        return UIScreen.main.nativeBounds.width / 1000
     }
     
     static var isIphoneX: Bool {

@@ -13,7 +13,7 @@ class ConsumableBrick: Collectable {
     
     init(brick: Brick) {
         self.brick = brick
-        super.init(textureName: brick.textureName, size: CGSize(width: 36.0, height: 24.0), useBacklight: true)
+        super.init(textureName: brick.textureName, size: CGSize(width: 45.0, height: 30.0), useBacklight: true)
     }
     
     override func hit() {
