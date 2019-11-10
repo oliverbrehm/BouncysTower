@@ -30,8 +30,11 @@ class GameViewController: UIViewController {
         
         if let view = self.view as! SKView? {
             view.ignoresSiblingOrder = true
+            
+            #if DEBUG
             view.showsFPS = true
             view.showsNodeCount = true
+            #endif
         }
         
         GameCenterManager.standard.presentingViewController = self

@@ -37,7 +37,7 @@ class ShopTVC: UITableViewController {
                                 cost: ResourceManager.costExtraLife, type: .extalife)
         products.append(extralife)
         
-        for brick in Brick.allCases {
+        for brick in Brick.allCases.sorted(by: { $0.cost < $1.cost }) {
             let brickProduct = ShopProduct(imageName: brick.textureName, title: brick.name,
                                        description: brick.description,
                                        cost: brick.cost, type: .brick(brick))

@@ -23,17 +23,17 @@ enum Brick: Int, CaseIterable {
     var cost: Int {
         switch self {
         case .standard:
-            return 40
+            return 200
         case .standardRed, .standardPurple, .standardGreen:
-            return 50
-        case .standardBlue, .standardOrange, .standardYellow:
-            return 60
-        case .glass:
-            return 80
-        case .diamond:
-            return 120
-        case .magic:
             return 250
+        case .standardBlue, .standardOrange, .standardYellow:
+            return 300
+        case .glass:
+            return 400
+        case .diamond:
+            return 500
+        case .magic:
+            return 800
         }
     }
     

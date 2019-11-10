@@ -29,7 +29,7 @@ class ResourceManager {
     private var coinsStore = 0
     
     private var nextBrickType = Brick.standard
-    private var nextBrickIn = Brick.standard.cost
+    private var nextBrickIn = 70
     
     private var nextExtraLifeIn = ResourceManager.costExtraLife
     private var nextSuperCoinIn = ResourceManager.superCoinTimeout
@@ -97,7 +97,7 @@ class ResourceManager {
         if(nextBrickIn <= 0) {
             let toConsume = nextBrickType
             self.setNextBrickType()
-            nextBrickIn = nextBrickType.cost + Int.random(in: -5 ... 5)
+            nextBrickIn = 70 + Int.random(in: 0 ... 30)
             return toConsume
         }
         
