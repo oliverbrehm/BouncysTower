@@ -10,7 +10,6 @@ import SpriteKit
 
 class Coin: Collectable {
     static let size: CGFloat = 14.0
-
     
     private let manager: CoinManager
     

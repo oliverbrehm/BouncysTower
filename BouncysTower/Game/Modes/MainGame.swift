@@ -154,7 +154,8 @@ class MainGame: Game {
         AudioManager.standard.playBackgroundMusic(backgroundMusic: .gameover)
         
         let score = self.player.score
-        let rank = Score.standard.addScore(score)
+        let rank = score > 0 ? Score.standard.addScore(score) : nil
+        
         let platformNumber = player.currentPlatform?.platformNumber ?? 0
         let longestCombo = player.longestCombo
         

@@ -11,6 +11,8 @@ import UIKit
 class ShopViewController: UIViewController {
     
     weak var delegate: ShopDelegate?
+    
+    weak var tableViewController: ShopTVC?
 
     @IBOutlet weak var coinsLabel: UILabel!
     @IBOutlet weak var extralivesLabel: UILabel!
@@ -19,14 +21,27 @@ class ShopViewController: UIViewController {
         self.dismiss(animated: true)
     }
     
-    override func viewDidLoad() {
-        self.updateInventory()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.update()
     }
     
-    func updateInventory() {
+    func update() {
         self.coinsLabel.text = "x \(Config.standard.coins)"
         self.extralivesLabel.text = "x \(Config.standard.extraLives)"
         
+        if let shopTVC = tableViewController {
+            shopTVC.reloadData()
+        }
+        
         self.delegate?.purchaseDone()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let shopTVC = segue.destination as? ShopTVC {
+            self.tableViewController = shopTVC
+        } else if let premiumVC = segue.destination as? PremiumViewController {
+            premiumVC.closeDelegate = update
+        }
     }
 }

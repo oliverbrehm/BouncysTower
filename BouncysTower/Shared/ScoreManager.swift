@@ -103,7 +103,7 @@ class Score {
         mostRecentRank = self.scores.firstIndex(of: score)
         
         if mostRecentRank == 0 {
-            GameCenterManager.standard.uploadHighscore(highscore: score) // TODO test
+            GameCenterManager.standard.uploadHighscore(highscore: score)
         }
         
         return mostRecentRank

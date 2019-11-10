@@ -11,10 +11,10 @@ import GameKit
 class GameCenterManager: NSObject, GKGameCenterControllerDelegate {
     
     private enum Leaderboard: String {
-        case highscore = "1"
-        case highestJump = "2"
-        case towerHeight = "3"
-        case longestCombo = "4"
+        case highscore = "brehm.oliver.BouncysTower.highscore"
+        case highestJump = "brehm.oliver.BouncysTower.highestjump"
+        case towerHeight = "brehm.oliver.BouncysTower.towerheight"
+        case longestCombo = "brehm.oliver.BouncysTower.longestcombo"
         
         var identifier: String {
             return rawValue
@@ -74,7 +74,6 @@ class GameCenterManager: NSObject, GKGameCenterControllerDelegate {
         gkScore.value = Int64(score)
         
         GKScore.report([gkScore]) { (error: Error?) in
-            // TODO is this working? not showing immediately/delay? wrong identifier?
             completion?(error == nil)
         }
     }

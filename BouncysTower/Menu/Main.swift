@@ -13,11 +13,11 @@ class Background: SKNode {
     let height: CGFloat
     
     init(screenSize: CGSize, towerHeight: CGFloat) {
-        self.height = 3 * screenSize.height
+        let bg = SKSpriteNode(imageNamed: "menuBackground")
+        self.height = screenSize.height * (bg.size.width / screenSize.width)
         
         super.init()
-        
-        let bg = SKSpriteNode(imageNamed: "menuBackground")
+                
         bg.zPosition = NodeZOrder.background
         bg.size = CGSize(width: screenSize.width, height: height)
         bg.position = CGPoint(x: 0.0, y: height / 2)

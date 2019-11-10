@@ -11,9 +11,16 @@ import UIKit
 class PremiumViewController: UIViewController {
     
     var countdownSeconds: Int?
+    
+    var closeDelegate: (() -> Void)?
 
     func setCountdown(seconds: Int) {
         self.countdownSeconds = seconds
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        closeDelegate?()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

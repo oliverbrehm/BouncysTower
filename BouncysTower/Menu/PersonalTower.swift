@@ -136,13 +136,13 @@ class PersonalTower: SKNode {
                 if let main = self.scene as? Main {
                     InfoBox.show(in: main, text: Strings.MenuMain.towerHeightRestrictionMessage, onShow: {
                         main.disableUserInteraction()
-                    })
+                    }, completion:
                     {
                         main.enableUserInteraction()
                         if let vc = self.scene?.view?.window?.rootViewController as? GameViewController {
                             AdvertisingController.shared.present(in: vc)
                         }
-                    }
+                    })
                 }
             } else if(TowerBricks.standard.canBuildRow) {
                 self.buildRow()

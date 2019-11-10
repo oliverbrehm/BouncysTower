@@ -114,7 +114,7 @@ class Strings {
     }
     
     struct Premium {
-        static let featureWaitingTime = NSLocalizedString("featureWaitingTime", comment: "No more waiting time and reminders!")
+        static let featureWaitingTime = NSLocalizedString("featureWaitingTime", comment: "No more waiting time and purchase reminders!")
         static let featureTowerHeight = NSLocalizedString("featureTowerHeight", comment: "Build your personal tower as high as you like!")
         static let featureSupport = NSLocalizedString("featureSupport", comment: "Support the development of this and other games!")
         static let restoreTitle = NSLocalizedString("restoreTitle", comment: "Restore")

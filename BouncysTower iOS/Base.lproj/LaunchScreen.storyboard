@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,35 +16,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.34999999999999998" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="h3G-Im-3Qt">
-                                <rect key="frame" x="-50" y="-6" width="996" height="436"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="towerTop" translatesAutoresizingMaskIntoConstraints="NO" id="uXM-yw-Z5R">
-                                <rect key="frame" x="340" y="129" width="216" height="128"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BOUNCY'S TOWER" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c6a-4n-Wy3">
+                                <rect key="frame" x="288.5" y="155.5" width="319" height="113"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="127.99999999999989" id="P37-2w-q10"/>
-                                    <constraint firstAttribute="width" constant="216" id="myT-gT-OJR"/>
+                                    <constraint firstAttribute="width" constant="319" id="nCF-iN-fCm"/>
                                 </constraints>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menuTower" translatesAutoresizingMaskIntoConstraints="NO" id="j3l-gN-ZUg">
-                                <rect key="frame" x="308" y="220" width="280" height="200"/>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="46"/>
+                                <color key="textColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="player" translatesAutoresizingMaskIntoConstraints="NO" id="LTE-Mp-NIf">
+                                <rect key="frame" x="408" y="276" width="80" height="80"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="YJq-3x-joX"/>
-                                    <constraint firstAttribute="width" constant="280" id="bQm-4s-x7J"/>
+                                    <constraint firstAttribute="height" constant="80" id="nvi-8d-oSE"/>
+                                    <constraint firstAttribute="width" constant="80" id="uXw-nH-RVv"/>
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.1387387407" green="0.41166322970000002" blue="0.30462065960000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.047058823529411764" green="0.23137254901960785" blue="0.19215686274509802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="h3G-Im-3Qt" firstAttribute="leading" secondItem="tZ6-bH-Vph" secondAttribute="leading" constant="-50" id="7qZ-tF-pva"/>
-                            <constraint firstItem="tZ6-bH-Vph" firstAttribute="bottom" secondItem="h3G-Im-3Qt" secondAttribute="bottom" constant="-50" id="ABI-EX-gZl"/>
-                            <constraint firstItem="j3l-gN-ZUg" firstAttribute="bottom" secondItem="tZ6-bH-Vph" secondAttribute="bottom" constant="40" id="KdD-gO-zZh"/>
-                            <constraint firstItem="j3l-gN-ZUg" firstAttribute="top" secondItem="uXM-yw-Z5R" secondAttribute="bottom" constant="-36.999999999999886" id="ap9-ZR-Wqi"/>
-                            <constraint firstItem="h3G-Im-3Qt" firstAttribute="top" secondItem="tZ6-bH-Vph" secondAttribute="top" constant="-50" id="b0k-JX-e6d"/>
-                            <constraint firstItem="tZ6-bH-Vph" firstAttribute="trailing" secondItem="h3G-Im-3Qt" secondAttribute="trailing" constant="-50" id="b26-f3-FIz"/>
-                            <constraint firstItem="uXM-yw-Z5R" firstAttribute="centerX" secondItem="h3G-Im-3Qt" secondAttribute="centerX" id="bh6-4c-qtB"/>
-                            <constraint firstItem="j3l-gN-ZUg" firstAttribute="centerX" secondItem="tZ6-bH-Vph" secondAttribute="centerX" id="eOA-ZF-NZx"/>
+                            <constraint firstItem="c6a-4n-Wy3" firstAttribute="centerY" secondItem="tZ6-bH-Vph" secondAttribute="centerY" id="NfU-so-uvV"/>
+                            <constraint firstItem="LTE-Mp-NIf" firstAttribute="top" secondItem="c6a-4n-Wy3" secondAttribute="bottom" constant="7.5" id="dfs-2F-BEh"/>
+                            <constraint firstItem="LTE-Mp-NIf" firstAttribute="centerX" secondItem="c6a-4n-Wy3" secondAttribute="centerX" id="fpD-2l-zcc"/>
+                            <constraint firstItem="c6a-4n-Wy3" firstAttribute="centerX" secondItem="tZ6-bH-Vph" secondAttribute="centerX" id="tBM-Fy-WZ6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tZ6-bH-Vph"/>
                     </view>
@@ -56,8 +50,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bg" width="2091" height="1176"/>
-        <image name="menuTower" width="1313" height="938"/>
-        <image name="towerTop" width="1404" height="392"/>
+        <image name="player" width="509" height="507"/>
     </resources>
 </document>

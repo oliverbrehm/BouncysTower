@@ -25,7 +25,21 @@ enum SoundAction: CaseIterable, Hashable {
     case cheer
     
     static var allCases: [SoundAction] {
-        var cases: [SoundAction] = [.coin, .button, .message, .jump1, .jump2, .bigJump1, .bigJump2, .superJump, .gameOver, .collectExtralife, .collectSuperCoin, .cheer]
+        var cases: [SoundAction] = [
+            .coin,
+            .button,
+            .message,
+            .jump1,
+            .jump2,
+            .bigJump1,
+            .bigJump2,
+            .superJump,
+            .gameOver,
+            .collectExtralife,
+            .collectSuperCoin,
+            .cheer
+        ]
+        
         for brick in Brick.allCases {
             cases.append(.brick(type: brick))
         }

@@ -165,7 +165,9 @@ class PremiumCVC: UICollectionViewController, UICollectionViewDelegateFlowLayout
         if restore {
             InAppPurchaseManager.shared.restorePremiumPurchase { success in
                 if success {
-                    let alert = UIAlertController(title: Strings.Premium.restoredTitle, message: Strings.Premium.restoredMessage, preferredStyle: .alert)
+                    let alert = UIAlertController(title: Strings.Premium.restoredTitle,
+                                                  message: Strings.Premium.restoredMessage,
+                                                  preferredStyle: .alert)
                     let okAction = UIAlertAction(title: "OK", style: .default) { _ in
                         self.dismiss(animated: true)
                     }
@@ -186,7 +188,9 @@ class PremiumCVC: UICollectionViewController, UICollectionViewDelegateFlowLayout
         } else {
             InAppPurchaseManager.shared.purchase { success in
                 if success {
-                    let alert = UIAlertController(title: Strings.Premium.purchaseConfirmationTitle, message: Strings.Premium.purchaseConfirmationMessage, preferredStyle: .alert)
+                    let alert = UIAlertController(title: Strings.Premium.purchaseConfirmationTitle,
+                                                  message: Strings.Premium.purchaseConfirmationMessage,
+                                                  preferredStyle: .alert)
                     let okAction = UIAlertAction(title: "OK", style: .default) { _ in
                         self.dismiss(animated: true)
                     }

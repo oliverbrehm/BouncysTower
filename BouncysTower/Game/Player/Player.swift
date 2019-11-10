@@ -66,7 +66,6 @@ class Player: SKSpriteNode {
         self.physicsBody?.friction = 3.0
         self.physicsBody?.mass = 3.0
         
-        
         addChild(rollingParticleEmitter)
         addChild(comboParticleEmitter)
         comboParticleEmitter.particleBirthRate = 0

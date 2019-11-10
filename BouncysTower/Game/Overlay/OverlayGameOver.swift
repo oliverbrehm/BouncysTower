@@ -41,25 +41,21 @@ class ScoreView: Button {
         
         scoreLabel.position = CGPoint(x: 0.0, y: 0)
         scoreLabel.fontSize = 24.0
-        scoreLabel.fontColor = SKColor.white
         scoreLabel.zPosition = NodeZOrder.label
         addChild(scoreLabel)
         
         rankLabel.fontSize = 10.0
-        rankLabel.fontColor = SKColor.white
         rankLabel.zPosition = NodeZOrder.label
         rankLabel.text = Strings.Scores.rankLabel
         rankLabel.position = CGPoint(x: 0.0, y: scoreLabel.bottom - margin - rankLabel.height / 2.0)
         addChild(rankLabel)
         
         platformNumberLabel.fontSize = 16.0
-        platformNumberLabel.fontColor = SKColor.white
         platformNumberLabel.zPosition = NodeZOrder.label
         platformNumberLabel.position = CGPoint(x: 0.0, y: scoreLabel.top + 4 * margin + platformNumberLabel.height / 2.0)
         addChild(platformNumberLabel)
         
         longestComboLabel.fontSize = 16.0
-        longestComboLabel.fontColor = SKColor.white
         longestComboLabel.zPosition = NodeZOrder.label
         longestComboLabel.position = CGPoint(x: 0.0, y: platformNumberLabel.top + 2 * margin + platformNumberLabel.height / 2.0)
         addChild(longestComboLabel)
@@ -76,6 +72,15 @@ class ScoreView: Button {
     }
     
     func setup(position: CGPoint, score: Int, rank: Int?, platformNumber: Int, isBestPlatformNumber: Bool, longestCombo: Int, isBestCombo: Bool) {
+        rankLabel.removeAllActions()
+        platformNumberLabel.removeAllActions()
+        longestComboLabel.removeAllActions()
+
+        scoreLabel.color = SKColor.white
+        rankLabel.color = SKColor.white
+        platformNumberLabel.color = SKColor.white
+        longestComboLabel.color = SKColor.white
+        
         self.position = position
         
         scoreLabel.text = "Score: \(score)"

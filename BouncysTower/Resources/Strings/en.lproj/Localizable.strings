@@ -78,9 +78,9 @@
 "buyConfimationMessage" = "You bought a new %@!";
 
 // Premium
-"featureWaitingTime" = "No more waiting time and reminders!";
+"featureWaitingTime" = "No more waiting time and purchase reminders!";
 "featureTowerHeight" = "Build your personal tower as high as you like!";
-"featureSupport" = "Support the development of this and other games!";
+"featureSupport" = "Support the development of this and other apps!";
 "restoreTitle" = "Restore";
 "buyTitle" = "BUY";
 "buyingLabel" = "buying...";

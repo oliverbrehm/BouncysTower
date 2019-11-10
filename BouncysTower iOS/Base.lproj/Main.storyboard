@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
     <device id="retina5_5" orientation="landscape" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,7 +11,7 @@
         <!--iOS Game View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController id="BV1-FR-VrT" customClass="IOSGameViewController" customModule="BouncyJump" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BV1-FR-VrT" customClass="IOSGameViewController" customModule="Bouncys_Tower" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -30,7 +30,7 @@
         <!--Shop View Controller-->
         <scene sceneID="JxE-7d-T2N">
             <objects>
-                <viewController id="uWn-jt-Z4l" customClass="ShopViewController" customModule="BouncyJump" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="uWn-jt-Z4l" customClass="ShopViewController" customModule="Bouncys_Tower" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uHF-c1-20O">
                         <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -84,7 +84,7 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.047516293823719025" green="0.23285579681396484" blue="0.19065701961517334" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.047058823529411764" green="0.23137254901960785" blue="0.19215686274509802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="5Hd-m0-rmJ" firstAttribute="leading" secondItem="RDA-Ne-LTa" secondAttribute="leading" constant="20" id="9B3-qe-lBn"/>
                             <constraint firstItem="uGI-Co-46h" firstAttribute="centerX" secondItem="RDA-Ne-LTa" secondAttribute="centerX" id="9UW-ZF-haj"/>
@@ -119,7 +119,7 @@
         <!--Premium View Controller-->
         <scene sceneID="JO8-j9-uVK">
             <objects>
-                <viewController id="oza-VG-ViW" customClass="PremiumViewController" customModule="BouncyJump" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="oza-VG-ViW" customClass="PremiumViewController" customModule="Bouncys_Tower" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mZL-76-1Nh">
                         <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -158,7 +158,7 @@
         <!--PremiumCVC-->
         <scene sceneID="vuT-LF-9if">
             <objects>
-                <collectionViewController id="cf6-IC-jif" customClass="PremiumCVC" customModule="BouncyJump" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="cf6-IC-jif" customClass="PremiumCVC" customModule="Bouncys_Tower" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="gE1-aB-eRI">
                         <rect key="frame" x="0.0" y="0.0" width="636" height="331"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -170,20 +170,20 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="buyCell" id="sMq-dv-RJu" customClass="BuyPremiumCell" customModule="BouncyJump" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="buyCell" id="sMq-dv-RJu" customClass="BuyPremiumCell" customModule="Bouncys_Tower" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="65" width="250" height="120"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="250" height="120"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="loading price..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aDZ-oz-yWg">
-                                            <rect key="frame" x="69" y="79" width="112.33333333333331" height="18.666666666666671"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="loading price..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="aDZ-oz-yWg">
+                                            <rect key="frame" x="69" y="75" width="112.33333333333331" height="18.666666666666671"/>
                                             <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="16"/>
                                             <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BUY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qcg-zc-eix">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BUY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Qcg-zc-eix">
                                             <rect key="frame" x="8" y="45.333333333333336" width="234" height="29.666666666666664"/>
                                             <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="24"/>
                                             <color key="textColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -196,7 +196,7 @@
                                     <constraint firstItem="Qcg-zc-eix" firstAttribute="centerY" secondItem="sMq-dv-RJu" secondAttribute="centerY" id="Qjy-7H-EXg"/>
                                     <constraint firstItem="Qcg-zc-eix" firstAttribute="centerX" secondItem="sMq-dv-RJu" secondAttribute="centerX" id="i3S-WD-oaa"/>
                                     <constraint firstItem="Qcg-zc-eix" firstAttribute="leading" secondItem="sMq-dv-RJu" secondAttribute="leading" constant="8" id="vwD-mb-FxJ"/>
-                                    <constraint firstItem="aDZ-oz-yWg" firstAttribute="top" secondItem="Qcg-zc-eix" secondAttribute="bottom" constant="4" id="zCK-am-3MT"/>
+                                    <constraint firstItem="aDZ-oz-yWg" firstAttribute="top" secondItem="Qcg-zc-eix" secondAttribute="bottom" id="zCK-am-3MT"/>
                                 </constraints>
                                 <size key="customSize" width="250" height="120"/>
                                 <connections>
@@ -204,14 +204,14 @@
                                     <outlet property="titleLabel" destination="Qcg-zc-eix" id="pXa-hB-lRg"/>
                                 </connections>
                             </collectionViewCell>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="featureCell" id="y4v-ID-DNC" customClass="PremiumFeatureCell" customModule="BouncyJump" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="featureCell" id="y4v-ID-DNC" customClass="PremiumFeatureCell" customModule="Bouncys_Tower" customModuleProvider="target">
                                 <rect key="frame" x="386" y="0.0" width="250" height="250"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="buttonbg" translatesAutoresizingMaskIntoConstraints="NO" id="Q7W-2b-fBk">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="combo" translatesAutoresizingMaskIntoConstraints="NO" id="Q7W-2b-fBk">
                                             <rect key="frame" x="110" y="20" width="30" height="30"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
@@ -242,7 +242,7 @@
                                     <outlet property="featureDescriptionTextView" destination="dtE-J8-OiM" id="rSv-Vc-sa2"/>
                                 </connections>
                             </collectionViewCell>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="closePremiumCell" id="jds-V2-WBa" customClass="ClosePremiumCell" customModule="BouncyJump" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="closePremiumCell" id="jds-V2-WBa" customClass="ClosePremiumCell" customModule="Bouncys_Tower" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="260" width="250" height="120"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -275,19 +275,19 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aEo-qE-acw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1876.6304347826087" y="1824.6376811594205"/>
+            <point key="canvasLocation" x="1876.6304347826087" y="1823.913043478261"/>
         </scene>
         <!--ShopTVC-->
         <scene sceneID="h55-gi-Igq">
             <objects>
-                <tableViewController id="NJV-lS-sxP" customClass="ShopTVC" customModule="BouncyJump" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="NJV-lS-sxP" customClass="ShopTVC" customModule="Bouncys_Tower" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="yX2-np-RqO">
                         <rect key="frame" x="0.0" y="0.0" width="696" height="276.66666666666669"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="separatorColor" name="systemPurpleColor" catalog="System" colorSpace="catalog"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="productCell" rowHeight="80" id="Pp9-A9-hNU" customClass="ProductCell" customModule="BouncyJump" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="productCell" rowHeight="80" id="Pp9-A9-hNU" customClass="ProductCell" customModule="Bouncys_Tower" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="696" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Pp9-A9-hNU" id="Vkh-aS-a5i">
@@ -366,8 +366,8 @@
     </scenes>
     <resources>
         <image name="brick" width="450" height="300"/>
-        <image name="buttonbg" width="62" height="62"/>
         <image name="coin" width="63" height="63"/>
+        <image name="combo" width="480" height="480"/>
         <image name="extralife" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>

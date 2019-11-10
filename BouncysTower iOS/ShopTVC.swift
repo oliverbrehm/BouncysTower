@@ -14,6 +14,10 @@ class ShopTVC: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        reloadData()
+    }
+    
+    func reloadData() {
         makeProducts()
         tableView.reloadData()
     }
@@ -43,7 +47,7 @@ class ShopTVC: UITableViewController {
     
     private func update() {
         if let shopVC = self.parent as? ShopViewController {
-            shopVC.updateInventory()
+            shopVC.update()
         }
     }
     
