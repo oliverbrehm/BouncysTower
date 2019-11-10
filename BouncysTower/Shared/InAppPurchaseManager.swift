@@ -21,7 +21,7 @@ class InAppPurchaseManager: NSObject {
         return premiumProduct != nil
     }
     
-    /*private(set) TODO */var premiumPurchased: Bool {
+    var premiumPurchased: Bool {
         get {
             return UserDefaults.standard.bool(forKey: InAppPurchaseManager.premiumProductIdentifier)
         }

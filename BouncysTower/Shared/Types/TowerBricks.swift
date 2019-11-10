@@ -279,21 +279,22 @@ class TowerBricks {
         }
     }
     
+    #if DEBUG
     func reset() {
         self.bricks = []
         self.rows = []
         
-        // TODO remove add random bricks
-        /*for _ in 0 ..< 12 {
+        for _ in 0 ..< 12 {
             self.bricks.append(Brick.randomBrick())
         }
         
-        for _ in 0 ..< 100 {
+        for _ in 0 ..< 50 {
             var row: [Brick] = []
             for _ in 0 ..< 5 {
                 row.append(Brick.randomBrick())
             }
             self.rows.append(row)
-        }*/
+        }
     }
+    #endif
 }

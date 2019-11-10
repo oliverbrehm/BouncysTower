@@ -11,10 +11,10 @@ import GameKit
 class GameCenterManager: NSObject, GKGameCenterControllerDelegate {
     
     private enum Leaderboard: String {
-        case highscore = "0"
-        case highestJump = "1"
-        case towerHeight = "2"
-        case longestCombo = "3"
+        case highscore = "1"
+        case highestJump = "2"
+        case towerHeight = "3"
+        case longestCombo = "4"
         
         var identifier: String {
             return rawValue

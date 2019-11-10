@@ -53,13 +53,14 @@ class Settings: SKScene {
         let gameCenterButton = IconDescriptionButton(description: "GAME CENTER", image: "options")
         gameCenterButton.position = CGPoint(x: rightX, y: 50)
         gameCenterButton.action = {
-            // GameCenterManager.standard.showLeaderboard()
-            
-            // TODO button used as reset for testing
+            /*#if DEBUG
             Config.standard.reset()
             TowerBricks.standard.reset()
             Score.standard.reset()
             InAppPurchaseManager.shared.premiumPurchased = false
+            #else*/
+            GameCenterManager.standard.showLeaderboard()
+            //#endif
         }
         self.addChild(gameCenterButton)
         
