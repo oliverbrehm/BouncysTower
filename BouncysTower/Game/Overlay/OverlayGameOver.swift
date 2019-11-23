@@ -123,14 +123,14 @@ class OverlayGameOver: Overlay {
         addChild(gameOverLabel)
         
         let backButton = IconButton(image: "back")
-        backButton.position = CGPoint(x: 110.0, y: -20.0)
+        backButton.position = CGPoint(x: 120.0, y: -20.0)
         backButton.action = {
             game.gameViewController?.showMainMenu()
         }
         self.addChild(backButton)
         
         let retryButton = IconButton(image: "retry")
-        retryButton.position = CGPoint(x: 50.0, y: -20.0)
+        retryButton.position = CGPoint(x: 40.0, y: -20.0)
         retryButton.action = {
             game.resetGame()
         }
