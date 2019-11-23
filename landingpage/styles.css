@@ -10,6 +10,8 @@ body {
     margin-top: 2em;
     margin-bottom: 2em;
     opacity: 50%;
+    -moz-opacity: 0.5; /* Firefox and Mozilla browsers */
+    -webkit-opacity: 0.5; /* WebKit browser e.g. Safari */
 }
 
 #header {
@@ -43,27 +45,17 @@ h1 {
     margin-top: 6em;
 }
 
-#videoContainer {
-    width: 80%;
-    max-width: 1024px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 1em;
-}
-
-video {
-    width: 100%;
-}
-
 #footer {
     background-color: rgb(52, 80, 139);
-    margin-top: 1em;
     padding: 1em;
+    margin-top: 1em;
+    text-align: right;
 }
 
 #footer p {
     margin: 0;
     color: white;
+    font-size: 1em;
 }
 
 .rotate20 {
@@ -81,8 +73,8 @@ video {
     padding-top: 2em;
     border-radius: 1em;
     margin: 2em;
-    width: 45%;
-    min-width: 15em;
+    width: 90%;
+    max-width: 45em;
 }
 
 .teaser img {
@@ -93,11 +85,22 @@ video {
 .teaser p {
     font-size: 1.5em;
     color: white;
-    padding: 0.5em;
 }
 
-#videoTeaser {
+#videoContainer {
+    width: 90%;
+    max-width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1em;
+}
+
+h2 {
     font-size: 2em;
     font-weight: bold;
     color: #FFFB00; 
+}
+
+video {
+    width: 100%;
 }
