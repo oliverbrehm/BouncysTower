@@ -47,6 +47,7 @@ h1 {
     border-radius: 1em;
     display: inline-block;
     padding: 1em;
+    margin: 1em;
 }
 
 .text {
