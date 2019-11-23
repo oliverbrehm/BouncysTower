@@ -9,6 +9,8 @@
 import SpriteKit
 
 class IconButton: Button {
+    static let diameter: CGFloat = 62
+    
     private let backgroundImage = SKSpriteNode(imageNamed: "buttonbg")
     private let buttonImage: SKSpriteNode
     
@@ -29,7 +31,7 @@ class IconButton: Button {
          backgroundColor: SKColor = Colors.menuForeground,
          color: SKColor = Colors.overlay,
          pressedColor: SKColor = Colors.cellBg) {
-        let standardSize = CGSize(width: 50.0, height: 50.0)
+        let standardSize = CGSize(width: IconButton.diameter, height: IconButton.diameter)
         
         self.normalColor = color
         self.pressedColor = pressedColor

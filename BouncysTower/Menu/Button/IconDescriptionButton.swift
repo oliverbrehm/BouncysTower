@@ -11,6 +11,7 @@ import SpriteKit
 class IconDescriptionButton: SKSpriteNode {
     
     private let iconButton: IconButton
+    private let labelButton: LabelButton
     
     var enabled: Bool {
         get {
@@ -18,6 +19,7 @@ class IconDescriptionButton: SKSpriteNode {
         }
         set {
             iconButton.enabled = newValue
+            labelButton.enabled = newValue
         }
     }
     
@@ -27,37 +29,33 @@ class IconDescriptionButton: SKSpriteNode {
         }
         set {
             iconButton.action = newValue
+            labelButton.action = newValue
         }
     }
     
     init(description: String, image: String) {
 
         iconButton = IconButton(image: image)
+        labelButton = LabelButton(withText: description)
 
         super.init(texture: nil, color: SKColor.clear, size: CGSize.zero)
+        
+        self.addChild(iconButton)
+        self.addChild(labelButton)
         
         self.zPosition = NodeZOrder.button
         
         let margin: CGFloat = 10.0
         
-        let label = SKLabelNode(fontNamed: Font.fontName)
-        self.addChild(iconButton)
-        self.addChild(label)
-        
-        label.text = description
-        label.fontSize = 22.0
-        label.fontColor = SKColor.white
-        
-        let width = label.frame.size.width + margin + iconButton.size.width
-        let height = max(label.frame.size.height, iconButton.size.height)
-        self.size = CGSize(width: width, height: height)
+        let width = iconButton.size.width + margin + labelButton.size.width
         
         iconButton.position = CGPoint(x: -width / 2.0 + iconButton.size.width / 2.0, y: 0.0)
-        label.position = CGPoint(x: width / 2.0 - label.frame.size.width / 2.0, y: -label.frame.size.height / 2.0)
+        labelButton.position = CGPoint(x: width / 2.0 - labelButton.frame.size.width / 2.0, y: -labelButton.label.frame.size.height / 2.0)
     }
     
     required init?(coder aDecoder: NSCoder) {
         iconButton = IconButton(coder: aDecoder)!
+        labelButton = LabelButton(withText: "")
         super.init(coder: aDecoder)
     }
 }

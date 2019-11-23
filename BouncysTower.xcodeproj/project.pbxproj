@@ -232,6 +232,7 @@
 		A7DC9BC422177E430038EC58 /* SuperJump.sks in Resources */ = {isa = PBXBuildFile; fileRef = A7DC9BC322177E430038EC58 /* SuperJump.sks */; };
 		A7DC9BC522177E430038EC58 /* SuperJump.sks in Resources */ = {isa = PBXBuildFile; fileRef = A7DC9BC322177E430038EC58 /* SuperJump.sks */; };
 		A7DC9BC622177E430038EC58 /* SuperJump.sks in Resources */ = {isa = PBXBuildFile; fileRef = A7DC9BC322177E430038EC58 /* SuperJump.sks */; };
+		BB0F36B72389098800A49239 /* LabelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0F36B62389098800A49239 /* LabelButton.swift */; };
 		BB471AC723439D4E0097BD69 /* ComboParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = BB471AC623439D4E0097BD69 /* ComboParticle.sks */; };
 		BB47B2C0232D8F92008CCDA2 /* AmbientRain.sks in Resources */ = {isa = PBXBuildFile; fileRef = BB47B2BF232D8F92008CCDA2 /* AmbientRain.sks */; };
 		BB4A245522A12B850049962E /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = BB4A245422A12B850049962E /* .swiftlint.yml */; };
@@ -389,6 +390,7 @@
 		A7DC9BBB221756CF0038EC58 /* PerfectJumpDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfectJumpDetector.swift; sourceTree = "<group>"; };
 		A7DC9BBF221775270038EC58 /* ComboFinishedParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ComboFinishedParticle.sks; sourceTree = "<group>"; };
 		A7DC9BC322177E430038EC58 /* SuperJump.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SuperJump.sks; sourceTree = "<group>"; };
+		BB0F36B62389098800A49239 /* LabelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelButton.swift; sourceTree = "<group>"; };
 		BB471AC623439D4E0097BD69 /* ComboParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ComboParticle.sks; sourceTree = "<group>"; };
 		BB47B2BF232D8F92008CCDA2 /* AmbientRain.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AmbientRain.sks; sourceTree = "<group>"; };
 		BB4A245422A12B850049962E /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -648,6 +650,7 @@
 				A7AE067621624B500009D905 /* Button.swift */,
 				A790146C222984120025368A /* IconButton.swift */,
 				A75688112242608D00E793A1 /* IconDescriptionButton.swift */,
+				BB0F36B62389098800A49239 /* LabelButton.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -1118,6 +1121,7 @@
 				A74EF24C223A5E4E00A69176 /* ShopProduct.swift in Sources */,
 				A74EF248223A3C9E00A69176 /* ShopTVC.swift in Sources */,
 				A7A228B1220604F600081E0E /* LevelDesert.swift in Sources */,
+				BB0F36B72389098800A49239 /* LabelButton.swift in Sources */,
 				A7A228B5220604F600081E0E /* LevelFinal.swift in Sources */,
 				A7A22883220604E700081E0E /* NodeZOrder.swift in Sources */,
 				A7DC9BB62216BF670038EC58 /* GameState.swift in Sources */,

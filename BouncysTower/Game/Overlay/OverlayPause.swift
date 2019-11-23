@@ -30,14 +30,14 @@ class OverlayPause: Overlay {
         self.addChild(backButton)
         
         let retryButton = IconButton(image: "retry")
-        retryButton.position = CGPoint(x: 50.0, y: 0.0)
+        retryButton.position = CGPoint(x: 40.0, y: 0.0)
         retryButton.action = {
             game.resetGame()
         }
         self.addChild(retryButton)
         
         let exitButton = IconButton(image: "back")
-        exitButton.position = CGPoint(x: 110.0, y: 0.0)
+        exitButton.position = CGPoint(x: 120.0, y: 0.0)
         exitButton.action = {
             game.gameViewController?.showMainMenu()
         }
