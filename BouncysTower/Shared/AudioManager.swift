@@ -134,10 +134,12 @@ class AudioManager {
     private var currentBackgroundMusic: BackgroundMusic?
     
     init() {
+        let session = AVAudioSession.sharedInstance()
+        
         do {
-            try AVAudioSession.sharedInstance().setCategory(.playback, options: .mixWithOthers)
-            try AVAudioSession.sharedInstance().setMode(.default)
-            try AVAudioSession.sharedInstance().setActive(true)
+            try session.setCategory(.ambient, options: .mixWithOthers)
+            try session.setMode(.default)
+            try session.setActive(true)
         } catch let error {
             NSLog("Error configuring AVAudioSession, error: \(error.localizedDescription)")
         }
