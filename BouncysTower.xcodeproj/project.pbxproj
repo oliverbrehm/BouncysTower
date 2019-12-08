@@ -367,7 +367,6 @@
 		A776C4FB224575C9004FAD3B /* CGSize+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+Extensions.swift"; sourceTree = "<group>"; };
 		A7797EEB20E2A89200E3B664 /* MainGame.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainGame.sks; sourceTree = "<group>"; };
 		A7797EEF20E2A89200E3B664 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
-		A7797EFB20E2A89200E3B664 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A77B389C22254F3F003DEB38 /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
 		A7901467222962830025368A /* LevelConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelConfiguration.swift; sourceTree = "<group>"; };
 		A790146C222984120025368A /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
@@ -787,7 +786,6 @@
 			isa = PBXGroup;
 			children = (
 				A7AA89B5222019C400C5D73A /* Assets.xcassets */,
-				A7797EFB20E2A89200E3B664 /* Info.plist */,
 				BB51D91422D38D4600346B46 /* Strings */,
 				BB67E59E22CC9727007E15E2 /* Design */,
 				A7186DD8220C3E0100187C6E /* Audio */,
@@ -1372,7 +1370,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = CR6FRMMTU7;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "BouncysTower iOS/Info.plist";
@@ -1385,7 +1383,7 @@
 				PRODUCT_NAME = "Bouncys Tower";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1398,7 +1396,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = CR6FRMMTU7;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "BouncysTower iOS/Info.plist";
@@ -1410,7 +1408,7 @@
 				PRODUCT_NAME = "Bouncys Tower";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
