@@ -136,8 +136,7 @@ class PersonalTower: SKNode {
                 if let main = self.scene as? Main {
                     InfoBox.show(in: main, text: Strings.MenuMain.towerHeightRestrictionMessage, onShow: {
                         main.disableUserInteraction()
-                    }, completion:
-                    {
+                    }, completion: {
                         main.enableUserInteraction()
                         if let vc = self.scene?.view?.window?.rootViewController as? GameViewController {
                             AdvertisingController.shared.present(in: vc)
@@ -148,13 +147,11 @@ class PersonalTower: SKNode {
                 self.buildRow()
             } else {
                 if let main = self.scene as? Main {
-                    InfoBox.show(in: main, text: Strings.MenuMain.buildTowerInfoMessage, imageName: "build", imageHeight: 50, onShow:
-                        {
+                    InfoBox.show(in: main, text: Strings.MenuMain.buildTowerInfoMessage, imageName: "build", imageHeight: 50, onShow: {
                             self.buildRowButton.isHidden = true
                             self.viewModeButton.isHidden = true
                             main.disableUserInteraction()
-                         }, completion:
-                         {
+                         }, completion: {
                             self.buildRowButton.isHidden = false
                             self.viewModeButton.isHidden = false
                             main.enableUserInteraction()
@@ -226,8 +223,7 @@ class PersonalTower: SKNode {
                 InfoBox.show(
                     in: main, text: Tutorial.towerMultiplicator.message,
                     imageName: Tutorial.towerMultiplicator.imageName,
-                    imageHeight: Tutorial.towerMultiplicator.imageHeight, completion:
-                {
+                    imageHeight: Tutorial.towerMultiplicator.imageHeight, completion: {
                     main.enableUserInteraction()
                 })
                 

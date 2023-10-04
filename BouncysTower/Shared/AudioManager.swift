@@ -114,7 +114,7 @@ enum BackgroundMusic: String, CaseIterable {
         
         for backgroundMusic in BackgroundMusic.allCases {
             do {
-                if let url = Bundle.main.url(forResource: backgroundMusic.rawValue, withExtension: "mp3"){
+                if let url = Bundle.main.url(forResource: backgroundMusic.rawValue, withExtension: "mp3") {
                     let player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
                     player.numberOfLoops = backgroundMusic == .gameover ? 0 : -1 // play indefinitely
                     players[backgroundMusic] = player

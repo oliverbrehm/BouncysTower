@@ -35,8 +35,7 @@ class Platform: SKSpriteNode {
         platformNumber: Int,
         platformNumberInLevel: Int,
         backgroundColor: SKColor = SKColor.white,
-        tileColor: SKColor? = nil)
-    {
+        tileColor: SKColor? = nil) {
         self.level = level
         self.platformNumber = platformNumber
         self.backgroundColor = backgroundColor

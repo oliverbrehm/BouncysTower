@@ -15,8 +15,7 @@ class StandardPlatform: Platform {
         texture: SKTexture?,
         textureEnds: SKTexture?,
         level: Level, platformNumber: Int, platformNumberInLevel: Int,
-        backgroundColor: SKColor = SKColor.white, tileColor: SKColor? = nil)
-    {
+        backgroundColor: SKColor = SKColor.white, tileColor: SKColor? = nil) {
         super.init(width: width, texture: texture, textureEnds: textureEnds, level: level,
                    platformNumber: platformNumber, platformNumberInLevel: platformNumberInLevel,
                    backgroundColor: backgroundColor, tileColor: tileColor)

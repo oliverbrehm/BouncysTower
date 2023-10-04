@@ -195,8 +195,7 @@ class Game: SKScene, SKPhysicsContactDelegate {
                     if let followUpTutorial = followUpTutorial {
                         InfoBox.show(in: self, text: followUpTutorial.message,
                                      imageName: followUpTutorial.imageName, imageHeight: followUpTutorial.imageHeight,
-                                     onShow: { }, completion:
-                        {
+                                     onShow: { }, completion: {
                             self.resume()
                         })
                     } else {

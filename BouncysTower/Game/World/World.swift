@@ -158,8 +158,10 @@ class World: SKNode {
     }
     
     func spawnPlatform(numberOfCoins: Int? = nil) {
+        guard let scene = scene as? Game else { return }
+
         self.currentLevel!.spawnPlatform(
-            scene: self.scene as! Game,
+            scene: scene,
             number: self.currentPlatformNumber,
             numberOfCoins: numberOfCoins)
         self.currentPlatformNumber += 1

@@ -41,7 +41,7 @@ class PremiumCVC: UICollectionViewController, UICollectionViewDelegateFlowLayout
         } else {
             cell.priceLabel.text = Strings.Premium.loadingPriceLabel
             InAppPurchaseManager.shared.requestProduct { success in
-                if success, InAppPurchaseManager.shared.hasProduct, let price = InAppPurchaseManager.shared.premiumPriceLocalized  {
+                if success, InAppPurchaseManager.shared.hasProduct, let price = InAppPurchaseManager.shared.premiumPriceLocalized {
                     cell.priceLabel.text = price
                     self.collectionView.reloadData()
                 }
@@ -130,8 +130,7 @@ class PremiumCVC: UICollectionViewController, UICollectionViewDelegateFlowLayout
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
-                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat
-    {
+                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return cellSpacing
     }
     

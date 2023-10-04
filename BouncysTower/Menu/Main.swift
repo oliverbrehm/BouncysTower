@@ -127,8 +127,7 @@ class Main: SKScene, ShopDelegate, PersonalTowerDelegate {
                         text: Tutorial.shop.message,
                         imageName: Tutorial.shop.imageName,
                         imageHeight: Tutorial.shop.imageHeight,
-                        completion: 
-                    {
+                        completion: {
                         Config.standard.setTutorialShown(.shop)
                         self.menuOverlay.highlightResourceView()
                     })
