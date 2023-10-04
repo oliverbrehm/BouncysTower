@@ -153,10 +153,8 @@ enum Brick: Int, CaseIterable {
     static func randomBrick() -> Brick {
         let random = Double.random(in: 0.0 ..< maxRandom)
         
-        for brick in Brick.allCases {
-            if brick.randomRange.contains(random) {
-                return brick
-            }
+        for brick in Brick.allCases where brick.randomRange.contains(random) {
+            return brick
         }
         
         return .standard

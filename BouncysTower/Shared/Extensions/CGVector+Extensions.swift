@@ -189,3 +189,5 @@ func /= (vector: inout CGVector, scalar: CGFloat) {
 func lerp(start: CGVector, end: CGVector, t: CGFloat) -> CGVector {
     return start + (end - start) * t
 }
+
+// swiftlint:enable all

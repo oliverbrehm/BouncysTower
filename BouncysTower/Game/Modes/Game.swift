@@ -100,14 +100,15 @@ class Game: SKScene, SKPhysicsContactDelegate {
     
     func didBegin(_ contact: SKPhysicsContact) {
         if(player.state == .falling && (contact.bodyA.node is Platform || contact.bodyB.node is Platform)) {
-            let platform = contact.bodyA.node is Platform ? contact.bodyA.node as! Platform : contact.bodyB.node as! Platform
+            guard let platform = contact.bodyA.node is Platform ? contact.bodyA.node as? Platform : contact.bodyB.node as? Platform else { return }
+
             player.landOnPlatform(platform: platform)
             world.landOnPlatform(platform: platform, player: player)
             self.hitPlatform(platform: platform)
         } else if(contact.bodyA.node?.name == "Wall" || contact.bodyB.node?.name == "Wall") {
             player.hitWall()
         } else if(contact.bodyA.node is Collectable || contact.bodyB.node is Collectable) {
-            let collectable = (contact.bodyA.node is Collectable ? contact.bodyA.node : contact.bodyB.node) as! Collectable
+            guard let collectable = (contact.bodyA.node is Collectable ? contact.bodyA.node : contact.bodyB.node) as? Collectable else { return }
             collectable.hit()
             if let coin = collectable as? Coin {
                 self.hitCoin(coin: coin)
@@ -243,11 +244,9 @@ class Game: SKScene, SKPhysicsContactDelegate {
                 player.stopMoving()
             } else {
                 // not all touches ended -> find touch that is still there and move in this direction
-                for touch in eventTouches {
-                    if(!touches.contains(touch)) {
-                        moveForTouch(touch)
-                        return
-                    }
+                for touch in eventTouches where !touches.contains(touch) {
+                    moveForTouch(touch)
+                    return
                 }
             }
         }

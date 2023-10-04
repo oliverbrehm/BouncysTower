@@ -21,3 +21,5 @@ class NodeZOrder {
     static let label                     : CGFloat = 4.0
     static let info                      : CGFloat = 100.0
 }
+
+// swiftlint:enable colon

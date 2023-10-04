@@ -11,7 +11,7 @@ import SpriteKit
 class AdvertisingController {
     static var shared = AdvertisingController()
     
-    private let timeToAdvertising = 2 * 60.0; // seconds
+    private let timeToAdvertising = 2 * 60.0 // seconds
     
     private var timePlayed = 0.0
     private var gamesPlayedSinceLastPresent = 0

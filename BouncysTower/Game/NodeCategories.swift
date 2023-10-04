@@ -17,3 +17,5 @@ class NodeCategories {
     static let particle              : UInt32 = 0x1 << 5
     static let consumable            : UInt32 = 0x1 << 6
 }
+
+// swiftlint:enable colon

@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol ShopDelegate: class {
+protocol ShopDelegate: AnyObject {
     func purchaseDone()
 }

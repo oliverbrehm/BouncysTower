@@ -60,7 +60,7 @@ class Settings: SKScene {
             InAppPurchaseManager.shared.premiumPurchased = false
             #else*/
             GameCenterManager.standard.showLeaderboard()
-            //#endif
+            // #endif
         }
         self.addChild(gameCenterButton)
         

@@ -9,12 +9,12 @@
 import SpriteKit
 
 class Button: SKSpriteNode {
-    var action : (() -> Void)?
+    var action: (() -> Void)?
     
     var focussed: Bool = false
     
     static func focusNextInScene(_ scene: SKScene) {
-        // TODO for OSX, TVOS
+        // TODO: for OSX, TVOS
     }
     
     var enabled = true

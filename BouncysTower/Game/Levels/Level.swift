@@ -95,7 +95,7 @@ class Level: SKNode, LevelConfiguration {
     
     // of screen height
     var firstPlatformOffset: CGFloat {
-        return 0//4.0
+        return 0
     }
     
     var amientParticleName: String? {

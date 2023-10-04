@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-protocol PersonalTowerDelegate: class {
+protocol PersonalTowerDelegate: AnyObject {
     func towerViewModeStarted()
 }
 

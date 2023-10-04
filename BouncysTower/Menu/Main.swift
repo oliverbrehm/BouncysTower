@@ -122,10 +122,16 @@ class Main: SKScene, ShopDelegate, PersonalTowerDelegate {
             // show shop if player collected enough coins for an extra life
             if(Config.standard.shouldShow(tutorial: .shop)) {
                 self.run(SKAction.wait(forDuration: 1.0)) {
-                    InfoBox.show(in: self, text: Tutorial.shop.message, imageName: Tutorial.shop.imageName, imageHeight: Tutorial.shop.imageHeight) {
+                    InfoBox.show(
+                        in: self,
+                        text: Tutorial.shop.message,
+                        imageName: Tutorial.shop.imageName,
+                        imageHeight: Tutorial.shop.imageHeight,
+                        completion: 
+                    {
                         Config.standard.setTutorialShown(.shop)
                         self.menuOverlay.highlightResourceView()
-                    }
+                    })
                 }
             }
         }

@@ -23,7 +23,7 @@ class IconDescriptionButton: SKSpriteNode {
         }
     }
     
-    var action : (() -> Void)? {
+    var action: (() -> Void)? {
         get {
             return iconButton.action
         }

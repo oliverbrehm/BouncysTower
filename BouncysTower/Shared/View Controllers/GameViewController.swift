@@ -28,7 +28,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let view = self.view as! SKView? {
+        if let view = self.view as? SKView {
             view.ignoresSiblingOrder = true
             
             #if DEBUG
@@ -112,7 +112,7 @@ class GameViewController: UIViewController {
             scene.scaleMode = .fill
             scene.gameViewController = self
             
-            if let view = self.view as! SKView? {
+            if let view = self.view as? SKView {
                 view.presentScene(scene, transition: SKTransition.push(with: SKTransitionDirection.right, duration: 0.5))
             }
         }
