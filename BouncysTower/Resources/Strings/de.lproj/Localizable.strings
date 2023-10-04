@@ -1,0 +1,97 @@
+/* 
+  Localizable.strings
+  BouncysTower
+
+  Created by Oliver Brehm on 08.07.19.
+  Copyright © 2019 Oliver Brehm. All rights reserved.
+*/
+
+// Shared
+"backTitle" = "ZURÜCK";
+
+// Bricks
+"standardBrickTitle" = "Stein";
+"blueBrickTitle" = "Blauer Stein";
+"redBrickTitle" = "Roter Stein";
+"greenBrickTitle" = "Grüner Stein";
+"yellowBrickTitle" = "Gelber Stein";
+"purpleBrickTitle" = "Lila Stein";
+"orangeBrickTitle" = "Orangener Stein";
+"glassBrickTitle" = "Glas";
+"diamondBrickTitle" = "Diamantenstein";
+"magicBrickTitle" = "Magischer Stein";
+
+"standardBrickDescription" = "Benutze ihn um damit deinen Turm zu bauen!";
+"blueBrickDescription" = "Ein blauer Stein.";
+"redBrickDescription" = "Ein bunter roter stein.";
+"greenBrickDescription" = "Ein grüner stein.";
+"yellowBrickDescription" = "Ein Stein mit gelbem Schein.";
+"purpleBrickDescription" = "Dieser Stein ist lila.";
+"orangeBrickDescription" = "Ein orangener Stein.";
+"glassBrickDescription" = "Ein Stein aus Glas.";
+"diamondBrickDescription" = "Funkelnder Stein aus Diamanten.";
+
+// Tutorials
+"moveTutorialDescription" = "Zum Bewegen berührst du den Bildschirm links oder rechts. Du springst von alleine.";
+"rollTutorialDescription1" = "Super, du hast das nächste Level erreicht!";
+"rollTutorialDescription2" = "Wenn du beim Landen gedrückt hältst, rollst du und springst höher!";
+"wallTutorialDescription1" = "Wenn du auf der Platform rollst kannst du auch gegen die Wand springen.";
+"wallTutorialDescription2" = "Das gibt dir nochmal einen extra Stoß nach oben!";
+"combosTutorialDescription1" = "Gut gesprungen! Für noch mehr Punkte kannst du Combos machen. Überspringe dafür bei jedem Sprung mindestens zwei Plattformen...";
+"combosTutorialDescription2" = "... ODER springe jedes mal gegen die Wand!";
+"bricksTutorialDescription" = "Cool, du hast einen losen Stein gefunden! Benutze ihn im Hauptmenü um deinen eigenen Turm aufzubauen.";
+"extraLivesTutorialDescription" = "Hey, du hast ein Extraleben gefunden! Wenn du runterfällst kannst du es benutzen und bekommst eine zweite Chance.";
+"towerMultiplicatorTutorialDescription" = "Super, dein Turm wird immer höher! Je höher der Turm, desto mehr Punkte wirst du im Spiel bekommen. Die Punktzahl für jeden Sprung wird mit der Höhe des Turms multipliziert.";
+
+// Game Elements
+"comboPerfectMessage" =  "Perfekt!";
+"comboAwesomeMessage" = "SUPER";
+"rankLabel" = "RANG";
+"newHighscoreLabel" = "NEUER HIGHSCORE";
+"pausedLabel" = "PAUSE";
+"useExtralifeQuestion" = "Extraleben benutzen?";
+
+// Second menu
+"noScoresMessage" = "Noch keine Scores...";
+
+// Main menu
+"visitStoreMessage" = "Hey, inzwischen hast du sehr viele Münzen gesammelt, wie wäre es einmal den Shop zu besuchen? Dort gibt es viele nützliche Sachen wie Extraleben oder Steine mit denen du deinenTurm bauen kannst!";
+"shopTitle" = "SHOP";
+"startTitle" = "SPIELEN";
+"secondMenuTitle" = "SCORES";
+"towerHeightRestrictionMessage" = "In der kostenlosen Version geht es nicht mehr höher hinaus. Bitte kaufe die Premium Version um so hoch zu bauen, wie du möchtest!";
+"buildTowerInfoMessage" = "Hier kannst du deinen eigenen Turm bauen! Sammle oder kaufe mindestens fünf Steine um eine neue Reihe hinzuzufügen.";
+"towerHeightLabel" = "Turmhöhe";
+"bricksLeftLabel" = "Übrige Steine";
+
+// Shop
+"buyPremiumTitle" = "Premium kaufen";
+"buyPremiumDescription" = "Schluss mit Wartezeiten und Erinnerungen zum Kaufen!";
+"extralifeTitle" = "Extraleben";
+"extralifeDescription" = "Gibt dir eine zweite Chance wenn du runterfällst.";
+"insufficientCoinsTitle" = "Zu wenige Münzen";
+"confirmBuyTitle" = "Kaufen";
+"noThanksMessage" = "Nein danke";
+"thanksMessage" = "Danke!";
+"insufficientCoinsMessage" = "Leider hast du dafür nicht genügend Münzen. Komm zurück wenn du %@ Münzen gesammelt hast!";
+"confirmBuyQuestion" = "Möchtest du \"%@\" für %@ Münzen kaufen?";
+"buyConfimationMessage" = "Du hast \"%@\" gekauft!";
+
+// Premium
+"featureWaitingTime" = "Schluss mit Wartezeiten und Erinnerungen zum Kaufen!";
+"featureTowerHeight" = "Baue deinen eigenen Turm so hoch wie du möchtest!";
+"featureSupport" = "Unterstütze die Entwicklung dieser und anderer Apps!";
+"restoreTitle" = "Wiederherstellen";
+"buyTitle" = "KAUFEN";
+"buyingLabel" = "kaufe...";
+"loadingPriceLabel" = "Preis laden...";
+"restoredTitle" = "Wiederherstellen";
+"errorTitle" = "Fehler";
+"restoredMessage" = "Wiederherstellen war erfolgreich.";
+"errorMessage" = "Fehler beim Wiederherstellen, bitte versuche es noch einmal.";
+"purchaseConfirmationTitle" = "Sold";
+"purchaseConfirmationMessage" = "Thank you for buying premium!";
+
+// Scores
+"longestComboLabel" = "Längste Combo";
+"highestJumpLabel" = "Höchster Sprung";

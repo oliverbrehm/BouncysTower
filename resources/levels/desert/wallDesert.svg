@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="128"
+   height="128"
+   viewBox="0 0 128.00001 128"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="wallDesert.svg"
+   inkscape:export-filename="/Users/oliverbrehm/privat/towerjump/resources/levels/desert/wallDesert.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2.8284271"
+     inkscape:cx="73.021768"
+     inkscape:cy="68.511393"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     units="px"
+     inkscape:window-width="1440"
+     inkscape:window-height="856"
+     inkscape:window-x="2"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-924.36221)">
+    <path
+       style="fill:#373737;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 0.35355338,924.72944 127.63277662,-0.35356 -11.66726,13.43503 7.07106,8.83884 -5.3033,13.08147 8.48528,19.09188 -13.43502,11.66727 7.42462,9.19238 -5.65686,9.54595 9.54594,9.1924 -7.42462,20.5061 11.31371,13.7886 L 4.8477122e-8,1053.0694 Z"
+       id="path2197"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccccccccc" />
+    <path
+       style="fill:#575757;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1"
+       d="m 0.35355338,924.72944 99.70205662,-10e-6 -14.495689,20.85965 11.313709,6.71752 -24.041631,12.37437 26.516505,15.55635 -19.445437,24.04158 22.980973,12.3744 -27.930721,21.5668 20.152544,14.4957 L 4.8477122e-8,1053.0694 Z"
+       id="path2199"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:#242424;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1"
+       d="m 0.35355338,924.72944 59.75052362,-0.35356 -24.395184,28.28427 10.253048,12.72792 -15.556349,28.63783 24.041631,14.8492 -13.788583,23.3346 18.73833,20.8596 L 4.8477122e-8,1053.0694 Z"
+       id="path2201"
+       inkscape:connector-curvature="0" />
+  </g>
+</svg>
