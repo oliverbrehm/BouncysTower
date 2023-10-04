@@ -68,7 +68,7 @@ class PremiumCVC: UICollectionViewController, UICollectionViewDelegateFlowLayout
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if(section == PremiumSection.features.rawValue) {
+        if section == PremiumSection.features.rawValue {
             return featureList.count
         } else if section == PremiumSection.buy.rawValue {
             return 2
@@ -78,7 +78,7 @@ class PremiumCVC: UICollectionViewController, UICollectionViewDelegateFlowLayout
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {        
-        switch(indexPath.section) {
+        switch indexPath.section {
         case PremiumSection.buy.rawValue:
             if let buyCell = collectionView.dequeueReusableCell(withReuseIdentifier: "buyCell", for: indexPath) as? BuyPremiumCell {
                 self.setupBuyCell(buyCell, restore: indexPath.row == 1)
@@ -120,7 +120,7 @@ class PremiumCVC: UICollectionViewController, UICollectionViewDelegateFlowLayout
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
-        if(section == PremiumSection.buy.rawValue || section == PremiumSection.close.rawValue) {
+        if section == PremiumSection.buy.rawValue || section == PremiumSection.close.rawValue {
             let totalWidth = collectionView.frame.size.width
             let totalInset = totalWidth - cellWidth
             return UIEdgeInsets(top: 0.0, left: totalInset / 2.0, bottom: cellSpacing, right: totalInset / 2.0)
@@ -136,9 +136,9 @@ class PremiumCVC: UICollectionViewController, UICollectionViewDelegateFlowLayout
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if(indexPath.section == PremiumSection.buy.rawValue) {
+        if indexPath.section == PremiumSection.buy.rawValue {
             showPurchaseAlert(restore: indexPath.row == 1)
-        } else if(indexPath.section == PremiumSection.close.rawValue) {
+        } else if indexPath.section == PremiumSection.close.rawValue {
             self.tryDismissPremiumViewController(from: self.collectionView.cellForItem(at: indexPath) as? ClosePremiumCell)
         } else {
             self.collectionView.scrollToItem(at: IndexPath(item: 0, section: PremiumSection.buy.rawValue), at: .top, animated: true)
@@ -150,7 +150,7 @@ class PremiumCVC: UICollectionViewController, UICollectionViewDelegateFlowLayout
     }
     
     private func tryDismissPremiumViewController(from closePremiumCell: ClosePremiumCell?) {
-        if(closePremiumCell != nil && closePremiumCell!.isReadyToClose) {
+        if closePremiumCell != nil && closePremiumCell!.isReadyToClose {
             if let premiumVC = self.parent as? PremiumViewController {
                 premiumVC.dismiss(animated: true)
                 AdvertisingController.shared.dismiss()

@@ -118,9 +118,9 @@ class Main: SKScene, ShopDelegate, PersonalTowerDelegate {
         
         ambientSkyParticles.particleBirthRate = 0
         
-        if(Config.standard.coins >= ResourceManager.costExtraLife) {
+        if Config.standard.coins >= ResourceManager.costExtraLife {
             // show shop if player collected enough coins for an extra life
-            if(Config.standard.shouldShow(tutorial: .shop)) {
+            if Config.standard.shouldShow(tutorial: .shop) {
                 self.run(SKAction.wait(forDuration: 1.0)) {
                     InfoBox.show(
                         in: self,
@@ -184,7 +184,7 @@ class Main: SKScene, ShopDelegate, PersonalTowerDelegate {
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         let y2 = touches.first?.location(in: self).y
         let y1 = touches.first?.previousLocation(in: self).y
-        if(y1 != nil && y2 != nil && TowerBricks.standard.rows.count > 0) {
+        if y1 != nil && y2 != nil && TowerBricks.standard.rows.count > 0 {
             let dy = CGFloat(y2! - y1!)
             self.moveTower(dy: dy)
             self.scrollSpeed = dy
@@ -202,9 +202,9 @@ class Main: SKScene, ShopDelegate, PersonalTowerDelegate {
     }
     
     override func update(_ currentTime: TimeInterval) {
-        if(touching) {
+        if touching {
             self.releaseTime = currentTime
-        } else if(abs(scrollSpeed) > 0.1 && TowerBricks.standard.rows.count > 0) {
+        } else if abs(scrollSpeed) > 0.1 && TowerBricks.standard.rows.count > 0 {
             self.moveTower(dy: scrollSpeed)
             let dt = currentTime - releaseTime
             self.scrollSpeed = CGFloat(afterScrollTime - dt) * scrollReleaseSpeed

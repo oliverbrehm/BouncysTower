@@ -94,14 +94,14 @@ class PerfectJumpDetector {
             jumpColor = SKColor.random()
         }
 
-        if(self.perfectJump) {
+        if self.perfectJump {
             // perfect jump done
             self.comboCount += 1
-            if(self.comboCount >= 0) {
+            if self.comboCount >= 0 {
                 self.showPerfectJumpDone(color: jumpColor)
             }
         } else {
-            if(self.comboCount > 1) {
+            if self.comboCount > 1 {
                 longestCombo = max(longestCombo, comboCount)
                 self.showComboFinished(color: lastJumpColor ?? SKColor.random())
             }
@@ -170,7 +170,7 @@ class PerfectJumpDetector {
             particelEmitter.particleColor = color
             c.addChild(particelEmitter)
             
-            if(self.comboCount >= 5) {
+            if self.comboCount >= 5 {
                 self.player!.scene!.run(SoundAction.cheer.action)
             }
             

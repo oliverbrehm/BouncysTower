@@ -16,19 +16,19 @@ class Logger {
     private let logScore = false
     
     func playerState(message: String) {
-        if(logPlayerState) {
+        if logPlayerState {
             print("Logger(PlayerState): \(message)")
         }
     }
     
     func perfectJumpState(message: String) {
-        if(logPerfectJumpState) {
+        if logPerfectJumpState {
             print("Logger(PerfectJumpState): \(message)")
         }
     }
     
     func logScore(message: String) {
-        if(logScore) {
+        if logScore {
             print("Logger(Score): \(message)")
         }
     }

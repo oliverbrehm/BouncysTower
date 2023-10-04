@@ -115,7 +115,7 @@ class ShopTVC: UITableViewController {
             cell.productDescriptionLabel.text = product.description
             cell.productImageView.image = UIImage(named: product.imageName)
             
-            if(product.cost > 0) {
+            if product.cost > 0 {
                 cell.productCostLabel.text = "x \(product.cost)"
                 cell.productCostLabel.isHidden = false
                 cell.coinImageView.isHidden = false
@@ -133,7 +133,7 @@ class ShopTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let product = products[indexPath.row]
         
-        if(Config.standard.coins < product.cost) {
+        if Config.standard.coins < product.cost {
             self.showNotEnoughCoinsAlert(for: product)
             return
         }

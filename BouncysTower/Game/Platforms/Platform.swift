@@ -87,7 +87,7 @@ class Platform: SKSpriteNode {
     }
     
     func spawnExtraLife() -> Bool {
-        if(ResourceManager.standard.consumeExtraLife()) {
+        if ResourceManager.standard.consumeExtraLife() {
             let extraLife = ConsumableExtraLife()
             extraLife.position = getConsumableRandomPosition(forNode: extraLife)
             self.addChild(extraLife)
@@ -98,7 +98,7 @@ class Platform: SKSpriteNode {
     }
     
     func spawnSuperCoin() -> Bool {
-        if(ResourceManager.standard.consumeSuperCoin()) {
+        if ResourceManager.standard.consumeSuperCoin() {
             let superCoin = SuperCoin()
             superCoin.position = getConsumableRandomPosition(forNode: superCoin)
             self.addChild(superCoin)
@@ -111,7 +111,7 @@ class Platform: SKSpriteNode {
     func spawnSuperJump() -> Bool {
         guard !isInTopPartOfLevel else { return false }
         
-        if(ResourceManager.standard.consumeSuperJump()) {
+        if ResourceManager.standard.consumeSuperJump() {
             let superJump = SuperJump()
             superJump.hitAction = { [weak self] in
                 if let game = self?.scene as? Game {
@@ -213,9 +213,9 @@ class Platform: SKSpriteNode {
             
             let tileEndTexture = self.tileEndTexture ?? tileTexture
             
-            if(x < -size.width / 2.0 + w / 2.0) {
+            if x < -size.width / 2.0 + w / 2.0 {
                 tile.texture = tileEndTexture
-            } else if(x > size.width / 2.0 - 1.5 * w) {
+            } else if x > size.width / 2.0 - 1.5 * w {
                 tile.texture = tileEndTexture
                 tile.xScale = -1
             }

@@ -50,13 +50,13 @@ class ResourceManager {
     func consumeCoins() -> Int {
         var toConsume = 0
         
-        if(coinsStore >= maxCoins) {
+        if coinsStore >= maxCoins {
             toConsume = coinsStore
-        } else if(coinsStore < 3) {
+        } else if coinsStore < 3 {
             return 0
         } else {
             let random = Double.random(in: 0.0 ..< Double(maxCoins + 1 - coinsStore))
-            if(random < 1.0) {
+            if random < 1.0 {
                 toConsume = coinsStore
             }
         }
@@ -66,7 +66,7 @@ class ResourceManager {
     }
     
     func consumeExtraLife() -> Bool {
-        if(nextExtraLifeIn <= 0) {
+        if nextExtraLifeIn <= 0 {
             nextExtraLifeIn = ResourceManager.costExtraLife / 2 + Int.random(in: -10 ... 10)
             return true
         }
@@ -75,7 +75,7 @@ class ResourceManager {
     }
     
     func consumeSuperCoin() -> Bool {
-        if(nextSuperCoinIn <= 0) {
+        if nextSuperCoinIn <= 0 {
             nextSuperCoinIn = ResourceManager.superCoinTimeout
             return true
         }
@@ -84,7 +84,7 @@ class ResourceManager {
     }
     
     func consumeSuperJump() -> Bool {
-        if(nextSuperJumpIn <= 0) {
+        if nextSuperJumpIn <= 0 {
             nextSuperJumpIn = ResourceManager.superJumpTimeout
             return true
         }
@@ -94,7 +94,7 @@ class ResourceManager {
     
     // returns the type of the consumed brick or nil
     func consumeBrick() -> Brick? {
-        if(nextBrickIn <= 0) {
+        if nextBrickIn <= 0 {
             let toConsume = nextBrickType
             self.setNextBrickType()
             nextBrickIn = 70 + Int.random(in: 0 ... 30)

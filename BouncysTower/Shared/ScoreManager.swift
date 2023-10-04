@@ -25,7 +25,7 @@ class Score {
             scores.sort { (a, b) -> Bool in
                 a > b
             }
-            while(scores.count > Score.maxScores) {
+            while scores.count > Score.maxScores {
                 scores.removeLast()
             }
             UserDefaults.standard.set(scores, forKey: UserDefaultsKeys.scores.rawValue)

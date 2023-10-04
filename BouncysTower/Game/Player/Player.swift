@@ -177,7 +177,7 @@ class Player: SKSpriteNode {
     }
     
     func startMoving(directionLeft: Bool) {
-        if(self.movingDirectionLeft != directionLeft) {
+        if self.movingDirectionLeft != directionLeft {
             // direction changed
             self.physicsBody?.velocity.dx = 0.0
         }
@@ -189,7 +189,7 @@ class Player: SKSpriteNode {
     }
     
     func stopMoving() {
-        if(self.state == .onPlatform) {
+        if self.state == .onPlatform {
             self.jump()
         }
         
@@ -236,12 +236,12 @@ class Player: SKSpriteNode {
             }
         }
         
-        if(self.state == .falling) {
+        if self.state == .falling {
             self.world?.currentLevel?.updatePlatforms(for: self)
         }
         
         if let movingDirectionLeft = self.controllerMovingDirectionLeft {
-            if(movingDirectionLeft) {
+            if movingDirectionLeft {
                 self.move(x: -movingForce * CGFloat(dt))
             } else {
                 self.move(x: movingForce * CGFloat(dt))
@@ -249,9 +249,9 @@ class Player: SKSpriteNode {
         }
         
         if let rotation = self.physicsBody?.angularVelocity {
-            if(abs(rotation) < 18.0) {
+            if abs(rotation) < 18.0 {
                 self.rollingParticleEmitter.particleBirthRate = 0.0
-            } else if(abs(rotation) < 30.0) {
+            } else if abs(rotation) < 30.0 {
                 self.rollingParticleEmitter.particleBirthRate = 10.0
             } else {
                 self.rollingParticleEmitter.particleBirthRate = 40.0
@@ -284,7 +284,7 @@ class Player: SKSpriteNode {
     }
     
     func landOnPlatform(platform: Platform) {
-        if(self.state == .onPlatform) {
+        if self.state == .onPlatform {
             return
         }
         
@@ -295,10 +295,10 @@ class Player: SKSpriteNode {
         self.currentPlatform = platform
         self.hitWallSinceJumping = false
         
-        if(self.controllerMovingDirectionLeft == nil) {
+        if self.controllerMovingDirectionLeft == nil {
             // user not moving left or right -> auto jump
             self.run(SKAction.wait(forDuration: 0.07)) {
-                if(self.controllerMovingDirectionLeft == nil && self.state == .onPlatform) {
+                if self.controllerMovingDirectionLeft == nil && self.state == .onPlatform {
                     self.jump()
                 }
             }
@@ -306,7 +306,7 @@ class Player: SKSpriteNode {
     }
     
     func hitWall() {
-        if(self.state == PlayerState.jumping && !hitWallSinceJumping && self.physicsBody!.velocity.dy > 0.0) {
+        if self.state == PlayerState.jumping && !hitWallSinceJumping && self.physicsBody!.velocity.dy > 0.0 {
             self.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 0.5 * jumpImpulse))
             self.world?.makeExplosion(at: self.position, color: Colors.menuForeground)
         }
@@ -329,7 +329,7 @@ class Player: SKSpriteNode {
         var dx = x
         
         // while in the air, less force is needed because of friction
-        if(self.state == PlayerState.onPlatform) {
+        if self.state == PlayerState.onPlatform {
             dx = x * self.onPlatformForceMultiplicator
         }
         

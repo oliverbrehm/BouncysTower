@@ -271,7 +271,7 @@ class TowerBricks {
     }
     
     func buildRow() {
-        if(self.canBuildRow) {
+        if self.canBuildRow {
             self.rows += [Array(bricks[0 ..< TowerBricks.numberOfBricksInRow])]
             self.bricks.removeFirst(TowerBricks.numberOfBricksInRow)
         }

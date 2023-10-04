@@ -155,7 +155,7 @@ class Config {
     }
     
     func useExtralive() -> Bool {
-        if (extraLives > 0) {
+        if extraLives > 0 {
             extraLives -= 1
             return true
         } else {
@@ -168,7 +168,7 @@ class Config {
     }
     
     func buyExtralife() {
-        if(self.coins >= ResourceManager.costExtraLife) {
+        if self.coins >= ResourceManager.costExtraLife {
             self.coins -= ResourceManager.costExtraLife
             addExtralife()
         }
@@ -181,7 +181,7 @@ class Config {
     }
     
     func buyBrick(_ brick: Brick) {
-        if(self.coins >= brick.cost) {
+        if self.coins >= brick.cost {
             self.coins -= brick.cost
             TowerBricks.standard.add(brick: brick)
         }
@@ -207,7 +207,7 @@ class Config {
                     continue
             }
             
-            if(shouldShow(tutorial: tutorial)) {
+            if shouldShow(tutorial: tutorial) {
                 return false
             }
         }

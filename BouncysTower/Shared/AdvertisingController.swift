@@ -33,12 +33,12 @@ class AdvertisingController {
             return false
         }
         
-        if(!Config.standard.allTutorialsShown()) {
+        if !Config.standard.allTutorialsShown() {
             // don't show if player is still "learning"
             return false
         }
         
-        if(self.gamesPlayedSinceLastPresent >= 2 && self.timePlayed >= timeToAdvertising) {
+        if self.gamesPlayedSinceLastPresent >= 2 && self.timePlayed >= timeToAdvertising {
             self.timePlayed = 0.0
             self.gamesPlayedSinceLastPresent = 0
             self.present(in: viewController)

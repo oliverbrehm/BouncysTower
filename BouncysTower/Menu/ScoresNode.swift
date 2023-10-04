@@ -24,7 +24,7 @@ class ScoreNode: SKNode {
         self.addChild(titleLabel)
         
         let scores = Score.standard.scores
-        if(scores.isEmpty) {
+        if scores.isEmpty {
             let emptyLabel = SKLabelNode(fontNamed: Font.fontName)
             emptyLabel.position = CGPoint(x: 0.0, y: currentY)
             emptyLabel.fontColor = SKColor.white

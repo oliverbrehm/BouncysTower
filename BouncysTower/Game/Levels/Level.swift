@@ -131,11 +131,11 @@ class Level: SKNode, LevelConfiguration {
     }
     
     func getPlatform(platformNumber: Int, yDistance: CGFloat = -1.0) -> Platform? {
-        if(self.isFinished) {
+        if self.isFinished {
             return nil
         }
         
-        if(yDistance < 0) {
+        if yDistance < 0 {
             platformY += self.platformYDistance * world.height
         } else {
             platformY += yDistance
@@ -147,7 +147,7 @@ class Level: SKNode, LevelConfiguration {
         
         var platform: Platform?
         
-        if(self.isLastPlatform) {
+        if self.isLastPlatform {
             platform = EndLevelPlatform(
                 width: world.width,
                 level: self,
@@ -180,7 +180,7 @@ class Level: SKNode, LevelConfiguration {
         if let texture = self.textureBackground {
             let size = CGSize(width: world.width, height: world.width * texture.size().height / texture.size().width)
             
-            while(self.backgroundY < y + 2 * size.height) {
+            while self.backgroundY < y + 2 * size.height {
                 let background = SKSpriteNode(texture: texture, color: self.backgroundColor, width: world.width)
                 background.colorBlendFactor = 1.0
                 background.position = CGPoint(x: 0.0, y: self.backgroundY + size.height / 2.0)
@@ -199,7 +199,7 @@ class Level: SKNode, LevelConfiguration {
     }
     
     func spawnWallTiles(above y: CGFloat) {
-        while(self.wallY <= y + 2 * world.width) {
+        while self.wallY <= y + 2 * world.width {
             let left = SKSpriteNode(texture: self.textureWall, color: SKColor.white, size: CGSize(width: World.wallWidth, height: World.wallWidth))
             left.zPosition = NodeZOrder.world
             let right = SKSpriteNode(texture: self.textureWall, color: SKColor.white, size: CGSize(width: World.wallWidth, height: World.wallWidth))
@@ -218,7 +218,7 @@ class Level: SKNode, LevelConfiguration {
             self.wallY += World.wallWidth
         }
         
-        while(self.wallTiles.count > maxWallTiles) {
+        while self.wallTiles.count > maxWallTiles {
             self.wallTiles.first?.removeFromParent()
             self.wallTiles.removeFirst()
         }
@@ -228,13 +228,13 @@ class Level: SKNode, LevelConfiguration {
         let playerBottom =  self.convert(player.position, from: player.world!).y - player.size.height / 2.0
         let sceneHeight = self.scene?.size.height ?? 500.0
         
-        if(player.state == .onPlatform) {
+        if player.state == .onPlatform {
             // landing on platform: remove platforms under player and deactivate collisions
             var toRemove: [Platform] = []
             for platform in platforms {
                 if platform.position.y < playerBottom - sceneHeight {
                     toRemove.append(platform)
-                } else if(playerBottom < platform.top - 0.25 * player.size.height) {
+                } else if playerBottom < platform.top - 0.25 * player.size.height {
                     platform.deactivateCollisions()
                 }
             }
@@ -242,10 +242,10 @@ class Level: SKNode, LevelConfiguration {
             for platform in toRemove {
                 self.removePlatform(platform)
             }
-        } else if(player.state == .falling) {
+        } else if player.state == .falling {
             // falling: activate collisions for platforms underneath player
             for platform in platforms {
-                if(playerBottom > platform.top - 0.25 * player.size.height) {
+                if playerBottom > platform.top - 0.25 * player.size.height {
                     platform.activateCollisions()
                 } else {
                     platform.deactivateCollisions()
@@ -280,7 +280,7 @@ class Level: SKNode, LevelConfiguration {
             self.platforms.append(platform)
             platform.setup()
             
-            if(self.platforms.count > self.maxPlatforms) {
+            if self.platforms.count > self.maxPlatforms {
                 self.platforms.removeFirst().removeFromParent()
             }
             

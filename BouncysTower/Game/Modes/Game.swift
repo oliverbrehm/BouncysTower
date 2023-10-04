@@ -37,7 +37,7 @@ class Game: SKScene, SKPhysicsContactDelegate {
     }
     
     override func didMove(to view: SKView) {
-        if(player.parent == nil) {
+        if player.parent == nil {
             self.physicsWorld.contactDelegate = self
             self.physicsWorld.gravity = CGVector(dx: 0, dy: -20)
                         
@@ -69,20 +69,20 @@ class Game: SKScene, SKPhysicsContactDelegate {
     }
     
     override func update(_ currentTime: TimeInterval) {
-        if(self.state.lastTime < 0.0) {
+        if self.state.lastTime < 0.0 {
             self.state.lastTime = currentTime
         }
         var dt = currentTime - self.state.lastTime
-        if(self.state.timeWasPaused) {
+        if self.state.timeWasPaused {
             dt = 0.0
             self.state.timeWasPaused = false
         }
         
-        if(state.runningState == .running) {
+        if state.runningState == .running {
             world.updateWallY(player.position.y)
         }
         
-        if(state.runningState == .running) {
+        if state.runningState == .running {
             player.update(dt: dt)
         }
         
@@ -92,22 +92,22 @@ class Game: SKScene, SKPhysicsContactDelegate {
     }
     
     func showPause() {
-        if(self.state.runningState == .running) {
+        if self.state.runningState == .running {
             self.pause()
             self.pausedOverlay.show()
         }
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
-        if(player.state == .falling && (contact.bodyA.node is Platform || contact.bodyB.node is Platform)) {
+        if player.state == .falling && (contact.bodyA.node is Platform || contact.bodyB.node is Platform) {
             guard let platform = contact.bodyA.node is Platform ? contact.bodyA.node as? Platform : contact.bodyB.node as? Platform else { return }
 
             player.landOnPlatform(platform: platform)
             world.landOnPlatform(platform: platform, player: player)
             self.hitPlatform(platform: platform)
-        } else if(contact.bodyA.node?.name == "Wall" || contact.bodyB.node?.name == "Wall") {
+        } else if contact.bodyA.node?.name == "Wall" || contact.bodyB.node?.name == "Wall" {
             player.hitWall()
-        } else if(contact.bodyA.node is Collectable || contact.bodyB.node is Collectable) {
+        } else if contact.bodyA.node is Collectable || contact.bodyB.node is Collectable {
             guard let collectable = (contact.bodyA.node is Collectable ? contact.bodyA.node : contact.bodyB.node) as? Collectable else { return }
             collectable.hit()
             if let coin = collectable as? Coin {
@@ -141,7 +141,7 @@ class Game: SKScene, SKPhysicsContactDelegate {
             let presented = AdvertisingController.shared.presentIfNeccessary(in: game) {
                 self.resume()
             }
-            if(presented) {
+            if presented {
                 self.pause()
             }
         }
@@ -185,7 +185,7 @@ class Game: SKScene, SKPhysicsContactDelegate {
     func checkShowTutorial(_ tutorial: Tutorial, followUpTutorial: Tutorial? = nil) {
         guard !tutorial.message.isEmpty else { return }
         
-        if(Config.standard.shouldShow(tutorial: tutorial)) {
+        if Config.standard.shouldShow(tutorial: tutorial) {
             self.run(SKAction.wait(forDuration: 0.2)) {
                 InfoBox.show(in: self, text: tutorial.message, imageName: tutorial.imageName, imageHeight: tutorial.imageHeight, onShow: {
                     self.pause()
@@ -208,7 +208,7 @@ class Game: SKScene, SKPhysicsContactDelegate {
     }
 
     private func movePlayer(pos: CGPoint) {
-        if(state.runningState == .running && state.allowJump) {
+        if state.runningState == .running && state.allowJump {
             if pos.x < 0 {
                 player.startMoving(directionLeft: true)
             } else {
@@ -240,7 +240,7 @@ class Game: SKScene, SKPhysicsContactDelegate {
         let nTouchesEnded = touches.count
         if let e = event, let v = self.view, let eventTouches = e.touches(for: v) {
             let nTouchesTotal = eventTouches.count
-            if(nTouchesEnded == nTouchesTotal) {
+            if nTouchesEnded == nTouchesTotal {
                 player.stopMoving()
             } else {
                 // not all touches ended -> find touch that is still there and move in this direction

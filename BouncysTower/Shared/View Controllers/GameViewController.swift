@@ -77,11 +77,11 @@ class GameViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier == "showShop") {
+        if segue.identifier == "showShop" {
             if let vc = segue.destination as? ShopViewController {
                 vc.delegate = self.shopDelegate
             }
-        } else if(segue.identifier == "showPremium") {
+        } else if segue.identifier == "showPremium" {
             if let vc = segue.destination as? PremiumViewController {
                 vc.setCountdown(seconds: AdvertisingController.shared.waitingTime)
             }
@@ -92,7 +92,7 @@ class GameViewController: UIViewController {
         if let view = self.view as? SKView {
             
             var transitionDirection = SKTransitionDirection.right
-            if(view.scene is Settings) {
+            if view.scene is Settings {
                 transitionDirection = SKTransitionDirection.left
             }
             

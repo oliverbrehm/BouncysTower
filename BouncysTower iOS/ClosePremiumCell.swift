@@ -19,7 +19,7 @@ class ClosePremiumCell: UICollectionViewCell {
     }
     
     func startCountdown(seconds: Int) {
-        if(!countdownStarted) {
+        if !countdownStarted {
             countdownStarted = true
             self.countdownSecondsLeft = seconds + 1
             self.countdown()
@@ -29,7 +29,7 @@ class ClosePremiumCell: UICollectionViewCell {
     private func countdown() {
         self.countdownSecondsLeft -= 1
 
-        if(updateCloseButton()) {
+        if updateCloseButton() {
             return
         }
         
@@ -40,7 +40,7 @@ class ClosePremiumCell: UICollectionViewCell {
     
     // returns true is there is no countdown left
     private func updateCloseButton() -> Bool {
-        if(self.isReadyToClose) {
+        if self.isReadyToClose {
             DispatchQueue.main.async {
                 self.closeLabel.isEnabled = true
                 self.closeLabel.text = "CONTINUE"

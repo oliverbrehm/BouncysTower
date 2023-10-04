@@ -33,7 +33,7 @@ class Button: SKSpriteNode {
     func touchUp(point: CGPoint) {
         guard enabled else { return }
         
-        if(self.focussed) {
+        if self.focussed {
             self.focussed = false
             
             if self.frame.contains(point), self.action != nil, enabled {

@@ -98,7 +98,7 @@ class InfoBox: Button {
     }
     
     private static func showNextInQueue() {
-        if(!messageQueueBusy && !self.messageQueue.isEmpty) {
+        if !messageQueueBusy && !self.messageQueue.isEmpty {
             let infoBox = messageQueue.removeFirst()
             infoBox.onShow?()
             infoBox.show()
@@ -119,7 +119,7 @@ class InfoBox: Button {
     }
     
     func setImage(name: String, height: CGFloat) {
-        if(self.image != nil) {
+        if self.image != nil {
             self.image?.removeFromParent()
         }
         

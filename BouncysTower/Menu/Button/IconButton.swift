@@ -19,7 +19,7 @@ class IconButton: Button {
     
     override var focussed: Bool {
         didSet {
-            if(focussed) {
+            if focussed {
                 self.buttonImage.color = self.pressedColor ?? SKColor.clear
             } else {
                 self.buttonImage.color = self.normalColor ?? SKColor.clear

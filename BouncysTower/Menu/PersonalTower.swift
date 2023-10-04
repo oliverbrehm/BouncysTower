@@ -144,7 +144,7 @@ class PersonalTower: SKNode {
                         }
                     })
                 }
-            } else if(TowerBricks.standard.canBuildRow) {
+            } else if TowerBricks.standard.canBuildRow {
                 self.buildRow()
             } else {
                 if let main = self.scene as? Main {
@@ -257,7 +257,7 @@ class PersonalTower: SKNode {
             let brick = store.takeBrick()
             self.run(SKAction.wait(forDuration: 0.4)) {
                 self.bricksLabel.text = "\(Strings.MenuMain.bricksLeftLabel): \(store.numberOfBricks)"
-                if(store.numberOfBricks == 0) {
+                if store.numberOfBricks == 0 {
                     self.bricksLabel.isHidden = true
                 }
                 self.addChild(brick)
@@ -286,7 +286,7 @@ class PersonalTower: SKNode {
         towerTop.position = player.position
         self.addChild(towerTop)
         
-        if(!viewMode) {
+        if !viewMode {
             buildRowButton.position = CGPoint(x: 0.0, y: player.position.y + player.size.height / 2.0 + 20.0 + buildRowButton.size.height / 2.0)
             self.addChild(buildRowButton)
             

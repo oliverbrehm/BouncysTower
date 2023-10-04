@@ -92,13 +92,13 @@ class World: SKNode {
     
     func spawnNextLevel() {
         let y = topPlatformY()
-        if(self.levels.count > 0) {
+        if self.levels.count > 0 {
             self.currentLevel?.fadeOutAndRemove()
             self.currentLevel = self.levels.removeFirst()
 
             if let level = self.currentLevel {
                 self.addChild(level)
-                if(!(level is LevelBase1)) {
+                if !(level is LevelBase1) {
                     level.fadeIn()
                 }
                 level.position = CGPoint(x: 0.0, y: y)
@@ -151,8 +151,8 @@ class World: SKNode {
     }
     
     func spawnPlatformsAbove(y: CGFloat) {
-        while((self.currentLevel != nil && !self.currentLevel!.isFinished)
-                && (topPlatformY() - y < 3.0 * height)) {
+        while (self.currentLevel != nil && !self.currentLevel!.isFinished)
+                && (topPlatformY() - y < 3.0 * height) {
             self.spawnPlatform()
         }
     }
@@ -174,7 +174,7 @@ class World: SKNode {
     }
     
     func landOnPlatform(platform: Platform, player: Player) {
-        if(!platform.level.reached) {
+        if !platform.level.reached {
             (self.scene as? Game)?.levelReached(level: platform.level)
         }
         platform.hitPlayer(player: player, world: self)

@@ -27,7 +27,7 @@ class Collectable: SKSpriteNode {
         
         self.zPosition = NodeZOrder.consumable
         
-        if(useBacklight) {
+        if useBacklight {
             let light = SKSpriteNode(imageNamed: "pointlight")
             self.addChild(light)
             light.size = self.size * 6.0

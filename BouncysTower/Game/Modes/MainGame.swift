@@ -116,12 +116,12 @@ class MainGame: Game {
     }
     
     override func updateGame(_ dt: TimeInterval) {
-        if(state.runningState == .running) {
+        if state.runningState == .running {
             self.cameraNode.updateIn(game: self, player: player, world: world)
             self.world.spawnPlatformsAbove(y: self.player.position.y)
         }
         
-        if(state.runningState == .running) {
+        if state.runningState == .running {
             self.state.currentGameTime += dt
             self.checkGameOver(dt: dt)
         }
@@ -136,10 +136,10 @@ class MainGame: Game {
             self.state.gameOverY = min(self.state.gameOverY, l.position.y + l.topPlatformY)
         }
         
-        if(player.position.y + player.size.height / 2.0 + gameOverTolerance < state.gameOverY) {
+        if player.position.y + player.size.height / 2.0 + gameOverTolerance < state.gameOverY {
             player.died()
             
-            if(Config.standard.hasExtralives()) {
+            if Config.standard.hasExtralives() {
                 self.run(SoundAction.gameOver.action)
                 self.showExtralifeDialog()
             } else {
@@ -189,7 +189,7 @@ class MainGame: Game {
     }
     
     func useExtralife() {
-        if(Config.standard.useExtralive()) {
+        if Config.standard.useExtralive() {
             self.resume()
             self.player.useExtralife()
             self.world.currentLevel!.easeInSpeed()
@@ -200,7 +200,7 @@ class MainGame: Game {
     }
     
     func updateScore() {
-        if(self.state.runningState != .running) {
+        if self.state.runningState != .running {
             return
         }
         
@@ -208,7 +208,7 @@ class MainGame: Game {
         
         self.scoreLabel.run(SKAction.repeatForever(SKAction.sequence([
             SKAction.run {
-                if(self.currentScore >= self.player.score) {
+                if self.currentScore >= self.player.score {
                     self.scoreLabel.removeAction(forKey: self.keyUpdateScoreAction)
                     return
                 }
