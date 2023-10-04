@@ -9,6 +9,5 @@
 import UIKit
 
 class PremiumFeatureCell: UICollectionViewCell {
-    
     @IBOutlet weak var featureDescriptionTextView: UITextView!
 }

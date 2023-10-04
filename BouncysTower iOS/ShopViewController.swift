@@ -9,7 +9,6 @@
 import UIKit
 
 class ShopViewController: UIViewController {
-    
     weak var delegate: ShopDelegate?
     
     weak var tableViewController: ShopTVC?

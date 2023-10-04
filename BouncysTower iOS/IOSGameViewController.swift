@@ -11,7 +11,6 @@ import SpriteKit
 import GameplayKit
 
 class IOSGameViewController: GameViewController {
-    
     override var shouldAutorotate: Bool {
         return true
     }

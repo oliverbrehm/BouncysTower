@@ -9,7 +9,6 @@
 import UIKit
 
 class PremiumViewController: UIViewController {
-    
     var countdownSeconds: Int?
     
     var closeDelegate: (() -> Void)?

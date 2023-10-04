@@ -9,7 +9,6 @@
 import UIKit
 
 class ShopTVC: UITableViewController {
-    
     private var products: [ShopProduct] = []
     
     override func viewWillAppear(_ animated: Bool) {

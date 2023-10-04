@@ -9,7 +9,6 @@
 import UIKit
 
 class PremiumCVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-    
     private let cellWidth: CGFloat = 200.0
     private let cellSpacing: CGFloat = 30.0
     
