@@ -132,18 +132,7 @@ class PersonalTower: SKNode {
         towerTop.zPosition = NodeZOrder.background + 0.01
         
         buildRowButton.action = {
-            if !InAppPurchaseManager.shared.premiumPurchased && Score.standard.towerHeight >= 4 {
-                if let main = self.scene as? Main {
-                    InfoBox.show(in: main, text: Strings.MenuMain.towerHeightRestrictionMessage, onShow: {
-                        main.disableUserInteraction()
-                    }, completion: {
-                        main.enableUserInteraction()
-                        if let vc = self.scene?.view?.window?.rootViewController as? GameViewController {
-                            AdvertisingController.shared.present(in: vc)
-                        }
-                    })
-                }
-            } else if TowerBricks.standard.canBuildRow {
+            if TowerBricks.standard.canBuildRow {
                 self.buildRow()
             } else {
                 if let main = self.scene as? Main {

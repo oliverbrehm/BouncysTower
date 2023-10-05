@@ -81,10 +81,6 @@ class GameViewController: UIViewController {
             if let vc = segue.destination as? ShopViewController {
                 vc.delegate = self.shopDelegate
             }
-        } else if segue.identifier == "showPremium" {
-            if let vc = segue.destination as? PremiumViewController {
-                vc.setCountdown(seconds: AdvertisingController.shared.waitingTime)
-            }
         }
     }
 

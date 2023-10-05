@@ -24,13 +24,6 @@ class ShopTVC: UITableViewController {
     private func makeProducts() {
         products = []
         
-        if !InAppPurchaseManager.shared.premiumPurchased {
-            let buyPremium = ShopProduct(imageName: "player", title: Strings.Shop.buyPremiumTitle,
-                                         description: Strings.Shop.buyPremiumDescription,
-                                         cost: 0, type: .buyPremium)
-            products.append(buyPremium)
-        }
-        
         let extralife = ShopProduct(imageName: "extralife", title: Strings.Shop.extralifeTitle,
                                 description: Strings.Shop.extralifeDescription,
                                 cost: ResourceManager.costExtraLife, type: .extalife)
@@ -138,10 +131,6 @@ class ShopTVC: UITableViewController {
         }
         
         switch product.type {
-        case .buyPremium:
-            if let shop = self.parent as? ShopViewController {
-                AdvertisingController.shared.present(in: shop)
-            }
         case .extalife:
             self.askToBuy(product: product) {
                 Config.standard.buyExtralife()

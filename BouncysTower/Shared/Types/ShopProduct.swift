@@ -9,7 +9,6 @@
 import SpriteKit
 
 enum ProductType: Equatable {
-    case buyPremium
     case extalife
     case brick(Brick)
 }

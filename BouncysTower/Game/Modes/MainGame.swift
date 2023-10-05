@@ -148,9 +148,7 @@ class MainGame: Game {
         }
     }
     
-    func gameOver() {
-        AdvertisingController.shared.gamePlayed(gameTime: self.state.currentGameTime)
-        
+    func gameOver() {        
         AudioManager.standard.playBackgroundMusic(backgroundMusic: .gameover)
         
         let score = self.player.score

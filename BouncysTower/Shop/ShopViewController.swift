@@ -39,8 +39,6 @@ class ShopViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let shopTVC = segue.destination as? ShopTVC {
             self.tableViewController = shopTVC
-        } else if let premiumVC = segue.destination as? PremiumViewController {
-            premiumVC.closeDelegate = update
         }
     }
 }
