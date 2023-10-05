@@ -2,7 +2,7 @@
 
 SpriteKit Based iOS jumping game.
 
-Gameplay overview on [landing page]([https://www.google.com](https://oliverbrehm.github.io/BouncysTower/)).
+Gameplay overview on [landing page]([https://www.google.com](https://oliverbrehm.github.io/BouncysTower/).
 
 # App Store
 
