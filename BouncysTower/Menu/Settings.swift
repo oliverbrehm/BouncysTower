@@ -57,7 +57,6 @@ class Settings: SKScene {
             Config.standard.reset()
             TowerBricks.standard.reset()
             Score.standard.reset()
-            InAppPurchaseManager.shared.premiumPurchased = false
             #else*/
             GameCenterManager.standard.showLeaderboard()
             // #endif

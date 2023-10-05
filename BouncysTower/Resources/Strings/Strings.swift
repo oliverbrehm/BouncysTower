@@ -88,8 +88,6 @@ class Strings {
     }
     
     struct Shop {
-        static let buyPremiumTitle = NSLocalizedString("buyPremiumTitle", comment: "Buy premium")
-        static let buyPremiumDescription = NSLocalizedString("buyPremiumDescription", comment: "For no more reminders to buy and a good concience")
         static let extralifeTitle = NSLocalizedString("extralifeTitle", comment: "Extra life")
         static let extralifeDescription = NSLocalizedString("extralifeDescription", comment: "Saves you once from falling down")
         static let insufficientCoinsTitle = NSLocalizedString("insufficientCoinsTitle", comment: "Not enough coins")
@@ -111,21 +109,5 @@ class Strings {
             let template = NSLocalizedString("buyConfimationMessage", comment: "You bought a new %@!")
             return String(format: "\(template)", "\(productName)")
         }
-    }
-    
-    struct Premium {
-        static let featureWaitingTime = NSLocalizedString("featureWaitingTime", comment: "No more waiting time and purchase reminders!")
-        static let featureTowerHeight = NSLocalizedString("featureTowerHeight", comment: "Build your personal tower as high as you like!")
-        static let featureSupport = NSLocalizedString("featureSupport", comment: "Support the development of this and other games!")
-        static let restoreTitle = NSLocalizedString("restoreTitle", comment: "Restore")
-        static let buyTitle = NSLocalizedString("buyTitle", comment: "BUY")
-        static let buyingLabel = NSLocalizedString("buyingLabel", comment: "buying...")
-        static let loadingPriceLabel = NSLocalizedString("loadingPriceLabel", comment: "loading price...")
-        static let restoredTitle = NSLocalizedString("restoredTitle", comment: "Restored")
-        static let errorTitle = NSLocalizedString("errorTitle", comment: "Error")
-        static let restoredMessage = NSLocalizedString("restoredMessage", comment: "Restore was successfull.")
-        static let errorMessage = NSLocalizedString("errorMessage", comment: "Error restoring premium, please try again.")
-        static let purchaseConfirmationTitle = NSLocalizedString("purchaseConfirmationTitle", comment: "Sold")
-        static let purchaseConfirmationMessage = NSLocalizedString("purchaseConfirmationMessage", comment: "Thank you for buying premium!")
     }
 }

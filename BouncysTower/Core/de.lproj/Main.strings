@@ -5,9 +5,6 @@
 /* Class = "UILabel"; text = "price"; ObjectID = "530-LG-b2b"; */
 "530-LG-b2b.text" = "Preis";
 
-/* Class = "UILabel"; text = "BOUNCY JUMP PREMIUM"; ObjectID = "6LX-xM-6MA"; */
-"6LX-xM-6MA.text" = "BOUNCY JUMP PREMIUM";
-
 /* Class = "UILabel"; text = "BUY"; ObjectID = "Qcg-zc-eix"; */
 "Qcg-zc-eix.text" = "KAUFEN";
 

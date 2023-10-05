@@ -59,14 +59,11 @@
 "shopTitle" = "SHOP";
 "startTitle" = "SPIELEN";
 "secondMenuTitle" = "SCORES";
-"towerHeightRestrictionMessage" = "In der kostenlosen Version geht es nicht mehr höher hinaus. Bitte kaufe die Premium Version um so hoch zu bauen, wie du möchtest!";
 "buildTowerInfoMessage" = "Hier kannst du deinen eigenen Turm bauen! Sammle oder kaufe mindestens fünf Steine um eine neue Reihe hinzuzufügen.";
 "towerHeightLabel" = "Turmhöhe";
 "bricksLeftLabel" = "Übrige Steine";
 
 // Shop
-"buyPremiumTitle" = "Premium kaufen";
-"buyPremiumDescription" = "Schluss mit Wartezeiten und Erinnerungen zum Kaufen!";
 "extralifeTitle" = "Extraleben";
 "extralifeDescription" = "Gibt dir eine zweite Chance wenn du runterfällst.";
 "insufficientCoinsTitle" = "Zu wenige Münzen";
@@ -76,21 +73,6 @@
 "insufficientCoinsMessage" = "Leider hast du dafür nicht genügend Münzen. Komm zurück wenn du %@ Münzen gesammelt hast!";
 "confirmBuyQuestion" = "Möchtest du \"%@\" für %@ Münzen kaufen?";
 "buyConfimationMessage" = "Du hast \"%@\" gekauft!";
-
-// Premium
-"featureWaitingTime" = "Schluss mit Wartezeiten und Erinnerungen zum Kaufen!";
-"featureTowerHeight" = "Baue deinen eigenen Turm so hoch wie du möchtest!";
-"featureSupport" = "Unterstütze die Entwicklung dieser und anderer Apps!";
-"restoreTitle" = "Wiederherstellen";
-"buyTitle" = "KAUFEN";
-"buyingLabel" = "kaufe...";
-"loadingPriceLabel" = "Preis laden...";
-"restoredTitle" = "Wiederherstellen";
-"errorTitle" = "Fehler";
-"restoredMessage" = "Wiederherstellen war erfolgreich.";
-"errorMessage" = "Fehler beim Wiederherstellen, bitte versuche es noch einmal.";
-"purchaseConfirmationTitle" = "Sold";
-"purchaseConfirmationMessage" = "Thank you for buying premium!";
 
 // Scores
 "longestComboLabel" = "Längste Combo";
