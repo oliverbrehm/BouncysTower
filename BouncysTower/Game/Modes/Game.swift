@@ -60,8 +60,8 @@ class Game: SKScene, SKPhysicsContactDelegate {
             }
             self.pauseButton.zPosition = NodeZOrder.overlay
             self.pauseButton.position = CGPoint(
-                x: world.width / 2.0 - pauseButton.frame.size.width / 2.0 - Config.roundedDisplayMargin,
-                y: world.height / 2.0 - pauseButton.frame.size.height / 2.0  - Config.roundedDisplayMargin)
+                x: world.width / 2.0 - pauseButton.frame.size.width / 2.0 - 10,
+                y: world.height / 2.0 - pauseButton.frame.size.height / 2.0  - 10)
             self.cameraNode.addChild(self.pauseButton)
                         
             self.setup()

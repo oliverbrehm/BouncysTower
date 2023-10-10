@@ -224,8 +224,8 @@ class MainGame: Game {
     
     func updateScorePosition() {
         self.scoreLabel.position = CGPoint(
-            x: -world.width / 2.0 + scoreLabel.size.width / 2.0 + Config.roundedDisplayMargin + 5.0,
-            y: world.height / 2.0 - scoreLabel.size.height / 2.0 - Config.roundedDisplayMargin - 5.0)
+            x: -world.width / 2.0 + scoreLabel.size.width / 2.0 + 15,
+            y: world.height / 2.0 - scoreLabel.size.height / 2.0 - 15)
     }
     
     override func hitPlatform(platform: Platform) {

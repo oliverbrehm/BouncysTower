@@ -132,15 +132,6 @@ class Config {
     static var screenWidthFactor: CGFloat {
         return UIScreen.main.nativeBounds.height / UIScreen.main.nativeBounds.width
     }
-
-    static var isIphoneX: Bool {
-        let deviceHeight = UIScreen.main.nativeBounds.height
-        return [2436, 2688, 1792].contains(deviceHeight)
-    }
-    
-    static var roundedDisplayMargin: CGFloat {
-        return isIphoneX ? 10 : 0
-    }
     
     func addCoin() {
         coins += 1

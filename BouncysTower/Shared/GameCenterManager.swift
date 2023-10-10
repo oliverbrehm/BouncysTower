@@ -25,13 +25,15 @@ class GameCenterManager: NSObject, GKGameCenterControllerDelegate {
     
     var presentingViewController: UIViewController?
     
-    private let gameCenterViewController = GKGameCenterViewController()
-    
+    private let gameCenterViewController = GKGameCenterViewController(
+        leaderboardID: Leaderboard.highscore.identifier,
+        playerScope: .global,
+        timeScope: .allTime
+    )
+
     override init() {
         super.init()
         
-        gameCenterViewController.viewState = .leaderboards
-        gameCenterViewController.leaderboardIdentifier = Leaderboard.highscore.identifier
         gameCenterViewController.gameCenterDelegate = self
     }
     
@@ -69,11 +71,8 @@ class GameCenterManager: NSObject, GKGameCenterControllerDelegate {
             completion?(false)
             return
         }
-        
-        let gkScore = GKScore(leaderboardIdentifier: leaderboard.identifier, player: GKLocalPlayer.local)
-        gkScore.value = Int64(score)
-        
-        GKScore.report([gkScore]) { (error: Error?) in
+
+        GKLeaderboard.submitScore(score, context: 0, player: GKLocalPlayer.local, leaderboardIDs: [leaderboard.identifier]) { (error: Error?) in
             completion?(error == nil)
         }
     }

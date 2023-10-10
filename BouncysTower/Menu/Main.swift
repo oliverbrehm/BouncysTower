@@ -95,8 +95,8 @@ class Main: SKScene, ShopDelegate, PersonalTowerDelegate {
         tower.position = CGPoint(x: -0.25 * size.width, y: bottom)
         
         stopViewModeButton.position = CGPoint(
-            x: size.width / 2.0 - stopViewModeButton.size.width / 2.0 - Config.roundedDisplayMargin,
-            y: size.height / 2.0 - stopViewModeButton.size.height / 2.0 - Config.roundedDisplayMargin)
+            x: size.width / 2.0 - stopViewModeButton.size.width / 2.0 - 10,
+            y: size.height / 2.0 - stopViewModeButton.size.height / 2.0 - 10)
         stopViewModeButton.isHidden = true
         self.addChild(stopViewModeButton)
         stopViewModeButton.action = self.towerViewModeStopped
