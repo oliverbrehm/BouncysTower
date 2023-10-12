@@ -484,8 +484,8 @@
 				A7186DDD220C3F8900187C6E /* AudioManager.swift */,
 				A724098222243DF100B18095 /* ScoreManager.swift */,
 				A71538F7222D1AD200A81322 /* ResourceManager.swift */,
-				A72F3BCD2241319000D7267A /* Logger.swift */,
 				BBFE1A9B22A40D2600FDCB84 /* GameCenterManager.swift */,
+				A72F3BCD2241319000D7267A /* Logger.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -876,7 +876,7 @@
 				CODE_SIGN_ENTITLEMENTS = "BouncysTower/Core/BouncysTower iOS.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = CR6FRMMTU7;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = BouncysTower/Core/Info.plist;
@@ -906,7 +906,7 @@
 				CODE_SIGN_ENTITLEMENTS = "BouncysTower/Core/BouncysTower iOS.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = CR6FRMMTU7;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = BouncysTower/Core/Info.plist;
